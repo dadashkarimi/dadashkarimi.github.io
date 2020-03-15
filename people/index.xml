@@ -2,74 +2,74 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Peoples on Amin Karbasi</title>
-    <link>http://www.dadashkarimi.github.io/people/</link>
+    <link>www.dadashkarimi.github.io/people/</link>
     <description>Recent content in Peoples on Amin Karbasi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     
-	<atom:link href="http://www.dadashkarimi.github.io/people/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="www.dadashkarimi.github.io/people/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Chris Harshaw</title>
-      <link>http://www.dadashkarimi.github.io/people/harshaw.md/</link>
+      <link>www.dadashkarimi.github.io/people/harshaw.md/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://www.dadashkarimi.github.io/people/harshaw.md/</guid>
+      <guid>www.dadashkarimi.github.io/people/harshaw.md/</guid>
       <description>Chris Harshaw is a 4th year PhD student in the Computer Science department where he is advised by Amin Karbasi and Dan Spielman. His research focuses on developing algorithmic techniques for causal inference, with the goal of enabling experimenters and analysts to be more confident in their findings. From an algorithmic perspective, he works on spectral algorithms, submodular optimization, and non-convex programming. More broadly, his interests lie in optimization, statistics, and their intersection.</description>
     </item>
     
     <item>
       <title>Ehsan Kazemi</title>
-      <link>http://www.dadashkarimi.github.io/people/kazemi.md/</link>
+      <link>www.dadashkarimi.github.io/people/kazemi.md/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://www.dadashkarimi.github.io/people/kazemi.md/</guid>
+      <guid>www.dadashkarimi.github.io/people/kazemi.md/</guid>
       <description>Ehsan Kazemi was Postdoc in the Department of Electrical Engineering and currently working in Google at Zürich.</description>
     </item>
     
     <item>
       <title>Javid Dadashkarimi</title>
-      <link>http://www.dadashkarimi.github.io/people/dadashkarimi.md/</link>
+      <link>www.dadashkarimi.github.io/people/dadashkarimi.md/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://www.dadashkarimi.github.io/people/dadashkarimi.md/</guid>
+      <guid>www.dadashkarimi.github.io/people/dadashkarimi.md/</guid>
       <description>Javid Dadashkarimi is a 3rd year PhD student in the Computer Science department where he is advised by Dustin Scheinost and Amin Karbasi. His research focuses on developing algorithmic techniques for causal inference, with the goal of enabling experimenters and analysts to be more confident in their findings. From an algorithmic perspective, he works on spectral algorithms, submodular optimization, and non-convex programming. More broadly, his interests lie in optimization, statistics, and their intersection.</description>
     </item>
     
     <item>
       <title>Lin Chen</title>
-      <link>http://www.dadashkarimi.github.io/people/lin.md/</link>
+      <link>www.dadashkarimi.github.io/people/lin.md/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://www.dadashkarimi.github.io/people/lin.md/</guid>
+      <guid>www.dadashkarimi.github.io/people/lin.md/</guid>
       <description>Lin is a 6th year PhD student in the Department of Electrical Engineering and will be joining the Simons Institute for the Theory of Computing at the University of California, Berkeley. His research focuses on theoretical machine learning, including online optimization, submodular optimization, and adversarial robustness.</description>
     </item>
     
     <item>
       <title>Mehraveh Salehi</title>
-      <link>http://www.dadashkarimi.github.io/people/salehi.md/</link>
+      <link>www.dadashkarimi.github.io/people/salehi.md/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://www.dadashkarimi.github.io/people/salehi.md/</guid>
+      <guid>www.dadashkarimi.github.io/people/salehi.md/</guid>
       <description>Mehraveh is currently Chief Experience Officer at Summary Analytics. She is interested in combinatorial optimization and machine learning algorithms with a focus on submodularity and its applications in the human brain. Her Ph.D. thesis focused on developing predictive models that relate human behavior to individual brain functional connectivity patterns as measured by fMRI. She enjoys playing Santour (a Persian music instrument), watching movies, and running.</description>
     </item>
     
     <item>
       <title>Min Yifei</title>
-      <link>http://www.dadashkarimi.github.io/people/yifei.md/</link>
+      <link>www.dadashkarimi.github.io/people/yifei.md/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://www.dadashkarimi.github.io/people/yifei.md/</guid>
+      <guid>www.dadashkarimi.github.io/people/yifei.md/</guid>
       <description>Yifei Min is a 2nd year PhD in Statistics and Data Science. His research interest is in theoretical machine learning and optimization. He likes tennis and movies.</description>
     </item>
     
     <item>
       <title>Mohammad Shadravan</title>
-      <link>http://www.dadashkarimi.github.io/people/shadravan.md/</link>
+      <link>www.dadashkarimi.github.io/people/shadravan.md/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://www.dadashkarimi.github.io/people/shadravan.md/</guid>
+      <guid>www.dadashkarimi.github.io/people/shadravan.md/</guid>
       <description>Mohammad is Postdoc in the Department of Electrical Engineering and will be joining the Simons Institute for the Theory of Computing at the University of California, Berkeley. His research focuses on theoretical machine learning, including online optimization, submodular optimization, and adversarial robustness.</description>
     </item>
     

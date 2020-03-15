@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Courses on Amin Karbasi</title>
+    <link>/courses/</link>
+    <description>Recent content in Courses on Amin Karbasi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 03 Jan 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/courses/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Stochastic Process</title>
+      <link>/courses/cources/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/courses/cources/</guid>
+      <description>In this course we will go through the following topics:
+ Review important notions of probability Expectation Convergence of random variables Law of large numbers Poisson Processes Renewal Processes Markov Chains and Random Walks Martingales If time permits, we will look at a few interesting applications of the above topics.  Textbook: We mainly use &amp;ldquo;Introduction to Stochastic Processes&amp;rdquo; by Erhan Cinlar
+Office Hours:
+-Prof. Karbasi: Mondays 2:30pm-3:30pm
+-Tianhao Wang: Tuesdays 4pm-5pm (17 Hillhouse Ave.</description>
+    </item>
+    
+  </channel>
+</rss>

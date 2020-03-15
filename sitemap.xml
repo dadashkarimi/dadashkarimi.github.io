@@ -4,16 +4,26 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2018-08-03T00:00:00+00:00</lastmod>
+    <lastmod>2020-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publications/mehraveh-2020a/</loc>
+    <lastmod>2020-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publications/</loc>
+    <lastmod>2020-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publications/mehraveh-2020b/</loc>
+    <lastmod>2020-01-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/posts/featuresofcoderportfolio.ja/</loc>
-    <lastmod>2018-08-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/projects/featuresofcoderportfolio.ja/</loc>
     <lastmod>2018-08-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -23,17 +33,7 @@
   </url>
   
   <url>
-    <loc>/projects/featuresofcoderportfolio/</loc>
-    <lastmod>2018-08-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/posts/</loc>
-    <lastmod>2018-08-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/projects/</loc>
     <lastmod>2018-08-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -43,17 +43,7 @@
   </url>
   
   <url>
-    <loc>/projects/theme-demo/</loc>
-    <lastmod>2018-08-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/posts/theme-demo.ja/</loc>
-    <lastmod>2018-08-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/projects/theme-demo.ja/</loc>
     <lastmod>2018-08-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -63,17 +53,7 @@
   </url>
   
   <url>
-    <loc>/projects/creating-a-new-theme/</loc>
-    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/posts/hugo-template-primer/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/projects/hugo-template-primer/</loc>
     <lastmod>2014-04-02T00:00:00+00:00</lastmod>
   </url>
   
@@ -98,7 +78,7 @@
   </url>
   
   <url>
-    <loc>/projects/hugoisforlovers/</loc>
+    <loc>/research/hugoisforlovers/</loc>
     <lastmod>2014-04-02T00:00:00+00:00</lastmod>
   </url>
   
@@ -123,6 +103,11 @@
   </url>
   
   <url>
+    <loc>/research/</loc>
+    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tags/</loc>
     <lastmod>2014-04-02T00:00:00+00:00</lastmod>
   </url>
@@ -143,11 +128,6 @@
   </url>
   
   <url>
-    <loc>/projects/migrate-from-jekyll/</loc>
-    <lastmod>2014-03-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/about/</loc>
   </url>
   
@@ -157,6 +137,10 @@
   
   <url>
     <loc>/contact/</loc>
+  </url>
+  
+  <url>
+    <loc>/openings/contact/</loc>
   </url>
   
   <url>
@@ -181,6 +165,10 @@
   
   <url>
     <loc>/people/shadravan.md/</loc>
+  </url>
+  
+  <url>
+    <loc>/openings/</loc>
   </url>
   
   <url>

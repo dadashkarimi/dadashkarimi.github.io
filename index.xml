@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Amin Karbasi</title>
-    <link>www.dadashkarimi.github.io/</link>
+    <link>/</link>
     <description>Recent content on Amin Karbasi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Fri, 03 Aug 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="www.dadashkarimi.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>CoderPortfolioの特徴</title>
-      <link>www.dadashkarimi.github.io/posts/featuresofcoderportfolio.ja/</link>
+      <link>/posts/featuresofcoderportfolio.ja/</link>
       <pubDate>Fri, 03 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>www.dadashkarimi.github.io/posts/featuresofcoderportfolio.ja/</guid>
+      <guid>/posts/featuresofcoderportfolio.ja/</guid>
       <description>変更点 ShortCode &amp;ldquo;private content&amp;quot;を追加しました 綺麗なサイトを崩さずに、あなたの個人的なコンテンツ（趣味や感情）を簡単に伝えることができます。
 実際の動きについては、&amp;ldquo;テーマデモ&amp;quot;をご覧ください。
 リンクに赤い下線のアニメーションを追加しました サイトがよりカラフルに美しくなりました。
@@ -29,10 +29,10 @@ ShortCode &amp;ldquo;portfolio&amp;quot;を追加しました あなたの作品
     
     <item>
       <title>CoderPortfolioの特徴</title>
-      <link>www.dadashkarimi.github.io/projects/featuresofcoderportfolio.ja/</link>
+      <link>/projects/featuresofcoderportfolio.ja/</link>
       <pubDate>Fri, 03 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>www.dadashkarimi.github.io/projects/featuresofcoderportfolio.ja/</guid>
+      <guid>/projects/featuresofcoderportfolio.ja/</guid>
       <description>変更点 ShortCode &amp;ldquo;private content&amp;quot;を追加しました 綺麗なサイトを崩さずに、あなたの個人的なコンテンツ（趣味や感情）を簡単に伝えることができます。
 実際の動きについては、&amp;ldquo;テーマデモ&amp;quot;をご覧ください。
 リンクに赤い下線のアニメーションを追加しました サイトがよりカラフルに美しくなりました。
@@ -45,10 +45,10 @@ ShortCode &amp;ldquo;portfolio&amp;quot;を追加しました あなたの作品
     
     <item>
       <title>Features Of CoderPortfolio</title>
-      <link>www.dadashkarimi.github.io/posts/featuresofcoderportfolio/</link>
+      <link>/posts/featuresofcoderportfolio/</link>
       <pubDate>Fri, 03 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>www.dadashkarimi.github.io/posts/featuresofcoderportfolio/</guid>
+      <guid>/posts/featuresofcoderportfolio/</guid>
       <description>Change Point &amp;ldquo;private content&amp;rdquo; short code added. It is now possible to communicate your personal hobby and your own content.
 You can use it easily. Please see &amp;ldquo;theme-demo&amp;rdquo; for details and demo.
 An animation of red underline was added to Anchor. The site became a little fun and colorful.
@@ -58,10 +58,10 @@ Changed the color scheme of code highlight.</description>
     
     <item>
       <title>Features Of CoderPortfolio</title>
-      <link>www.dadashkarimi.github.io/projects/featuresofcoderportfolio/</link>
+      <link>/projects/featuresofcoderportfolio/</link>
       <pubDate>Fri, 03 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>www.dadashkarimi.github.io/projects/featuresofcoderportfolio/</guid>
+      <guid>/projects/featuresofcoderportfolio/</guid>
       <description>Change Point &amp;ldquo;private content&amp;rdquo; short code added. It is now possible to communicate your personal hobby and your own content.
 You can use it easily. Please see &amp;ldquo;theme-demo&amp;rdquo; for details and demo.
 An animation of red underline was added to Anchor. The site became a little fun and colorful.
@@ -71,10 +71,10 @@ Changed the color scheme of code highlight.</description>
     
     <item>
       <title>Theme Demo</title>
-      <link>www.dadashkarimi.github.io/posts/theme-demo/</link>
+      <link>/posts/theme-demo/</link>
       <pubDate>Fri, 03 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>www.dadashkarimi.github.io/posts/theme-demo/</guid>
+      <guid>/posts/theme-demo/</guid>
       <description>Style Demo h1 Heading h2 Heading h3 Heading h4 Heading h5 Heading h6 Heading  This is bold text
 This is bold text
 This is italic text
@@ -87,10 +87,10 @@ $$ \sum_{n=1}^{\infty} 2^{-n} = 1 $$
     
     <item>
       <title>Theme Demo</title>
-      <link>www.dadashkarimi.github.io/projects/theme-demo/</link>
+      <link>/projects/theme-demo/</link>
       <pubDate>Fri, 03 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>www.dadashkarimi.github.io/projects/theme-demo/</guid>
+      <guid>/projects/theme-demo/</guid>
       <description>Style Demo h1 Heading h2 Heading h3 Heading h4 Heading h5 Heading h6 Heading  This is bold text
 This is bold text
 This is italic text
@@ -103,10 +103,10 @@ $$ \sum_{n=1}^{\infty} 2^{-n} = 1 $$
     
     <item>
       <title>テーマデモ</title>
-      <link>www.dadashkarimi.github.io/posts/theme-demo.ja/</link>
+      <link>/posts/theme-demo.ja/</link>
       <pubDate>Fri, 03 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>www.dadashkarimi.github.io/posts/theme-demo.ja/</guid>
+      <guid>/posts/theme-demo.ja/</guid>
       <description>Style Demo h1 Heading h2 Heading h3 Heading h4 Heading h5 Heading h6 Heading  This is bold text
 This is bold text
 This is italic text
@@ -119,10 +119,10 @@ $$ \sum_{n=1}^{\infty} 2^{-n} = 1 $$
     
     <item>
       <title>テーマデモ</title>
-      <link>www.dadashkarimi.github.io/projects/theme-demo.ja/</link>
+      <link>/projects/theme-demo.ja/</link>
       <pubDate>Fri, 03 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>www.dadashkarimi.github.io/projects/theme-demo.ja/</guid>
+      <guid>/projects/theme-demo.ja/</guid>
       <description>Style Demo h1 Heading h2 Heading h3 Heading h4 Heading h5 Heading h6 Heading  This is bold text
 This is bold text
 This is italic text
@@ -135,50 +135,50 @@ $$ \sum_{n=1}^{\infty} 2^{-n} = 1 $$
     
     <item>
       <title>Creating a New Theme</title>
-      <link>www.dadashkarimi.github.io/posts/creating-a-new-theme/</link>
+      <link>/posts/creating-a-new-theme/</link>
       <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>www.dadashkarimi.github.io/posts/creating-a-new-theme/</guid>
+      <guid>/posts/creating-a-new-theme/</guid>
       <description>Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.
 We&amp;rsquo;ll start with creating a new site with a very basic template.</description>
     </item>
     
     <item>
       <title>Creating a New Theme</title>
-      <link>www.dadashkarimi.github.io/projects/creating-a-new-theme/</link>
+      <link>/projects/creating-a-new-theme/</link>
       <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>www.dadashkarimi.github.io/projects/creating-a-new-theme/</guid>
+      <guid>/projects/creating-a-new-theme/</guid>
       <description>Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.
 We&amp;rsquo;ll start with creating a new site with a very basic template.</description>
     </item>
     
     <item>
       <title>(Hu)go Template Primer</title>
-      <link>www.dadashkarimi.github.io/posts/hugo-template-primer/</link>
+      <link>/posts/hugo-template-primer/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>www.dadashkarimi.github.io/posts/hugo-template-primer/</guid>
+      <guid>/posts/hugo-template-primer/</guid>
       <description>Hugo uses the excellent go html/template library for its template engine. It is an extremely lightweight engine that provides a very small amount of logic. In our experience that it is just the right amount of logic to be able to create a good static website. If you have used other template systems from different languages or frameworks you will find a lot of similarities in go templates.
 This document is a brief primer on using go templates.</description>
     </item>
     
     <item>
       <title>(Hu)go Template Primer</title>
-      <link>www.dadashkarimi.github.io/projects/hugo-template-primer/</link>
+      <link>/projects/hugo-template-primer/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>www.dadashkarimi.github.io/projects/hugo-template-primer/</guid>
+      <guid>/projects/hugo-template-primer/</guid>
       <description>Hugo uses the excellent go html/template library for its template engine. It is an extremely lightweight engine that provides a very small amount of logic. In our experience that it is just the right amount of logic to be able to create a good static website. If you have used other template systems from different languages or frameworks you will find a lot of similarities in go templates.
 This document is a brief primer on using go templates.</description>
     </item>
     
     <item>
       <title>Getting Started with Hugo</title>
-      <link>www.dadashkarimi.github.io/posts/hugoisforlovers/</link>
+      <link>/posts/hugoisforlovers/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>www.dadashkarimi.github.io/posts/hugoisforlovers/</guid>
+      <guid>/posts/hugoisforlovers/</guid>
       <description>Step 1. Install Hugo Goto hugo releases and download the appropriate version for your os and architecture.
 Save it somewhere specific as we will be using it in the next step.
 More complete instructions are available at installing hugo
@@ -189,10 +189,10 @@ Follow the following steps:
     
     <item>
       <title>Getting Started with Hugo</title>
-      <link>www.dadashkarimi.github.io/projects/hugoisforlovers/</link>
+      <link>/projects/hugoisforlovers/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>www.dadashkarimi.github.io/projects/hugoisforlovers/</guid>
+      <guid>/projects/hugoisforlovers/</guid>
       <description>Step 1. Install Hugo Goto hugo releases and download the appropriate version for your os and architecture.
 Save it somewhere specific as we will be using it in the next step.
 More complete instructions are available at installing hugo
@@ -203,10 +203,10 @@ Follow the following steps:
     
     <item>
       <title>Migrate to Hugo from Jekyll</title>
-      <link>www.dadashkarimi.github.io/posts/migrate-from-jekyll/</link>
+      <link>/posts/migrate-from-jekyll/</link>
       <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
       
-      <guid>www.dadashkarimi.github.io/posts/migrate-from-jekyll/</guid>
+      <guid>/posts/migrate-from-jekyll/</guid>
       <description>Move static content to static Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output. Hugo keeps all static content under static. You should therefore move it all there. With Jekyll, something that looked like
 ▾ &amp;lt;root&amp;gt;/ ▾ images/ logo.png  should become
 ▾ &amp;lt;root&amp;gt;/ ▾ static/ ▾ images/ logo.png  Additionally, you&amp;rsquo;ll want any files that should reside at the root (such as CNAME) to be moved to static.</description>
@@ -214,10 +214,10 @@ Follow the following steps:
     
     <item>
       <title>Migrate to Hugo from Jekyll</title>
-      <link>www.dadashkarimi.github.io/projects/migrate-from-jekyll/</link>
+      <link>/projects/migrate-from-jekyll/</link>
       <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
       
-      <guid>www.dadashkarimi.github.io/projects/migrate-from-jekyll/</guid>
+      <guid>/projects/migrate-from-jekyll/</guid>
       <description>Move static content to static Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output. Hugo keeps all static content under static. You should therefore move it all there. With Jekyll, something that looked like
 ▾ &amp;lt;root&amp;gt;/ ▾ images/ logo.png  should become
 ▾ &amp;lt;root&amp;gt;/ ▾ static/ ▾ images/ logo.png  Additionally, you&amp;rsquo;ll want any files that should reside at the root (such as CNAME) to be moved to static.</description>
@@ -225,10 +225,10 @@ Follow the following steps:
     
     <item>
       <title>About Hugo</title>
-      <link>www.dadashkarimi.github.io/about/</link>
+      <link>/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>www.dadashkarimi.github.io/about/</guid>
+      <guid>/about/</guid>
       <description>This theme is created based on hugo-coder.
 I made it possible to tell yourself more by my change.
 Please see &amp;ldquo;FeaturesOfCoderPortfolio&amp;rdquo; in the post about the change. Regarding other demo contents, it is hugo-coder&amp;rsquo;s thing.
@@ -239,73 +239,73 @@ It makes use of a variety of open source projects including:</description>
     
     <item>
       <title>Chris Harshaw</title>
-      <link>www.dadashkarimi.github.io/people/harshaw.md/</link>
+      <link>/people/harshaw.md/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>www.dadashkarimi.github.io/people/harshaw.md/</guid>
+      <guid>/people/harshaw.md/</guid>
       <description>Chris Harshaw is a 4th year PhD student in the Computer Science department where he is advised by Amin Karbasi and Dan Spielman. His research focuses on developing algorithmic techniques for causal inference, with the goal of enabling experimenters and analysts to be more confident in their findings. From an algorithmic perspective, he works on spectral algorithms, submodular optimization, and non-convex programming. More broadly, his interests lie in optimization, statistics, and their intersection.</description>
     </item>
     
     <item>
       <title>Contact</title>
-      <link>www.dadashkarimi.github.io/contact/</link>
+      <link>/contact/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>www.dadashkarimi.github.io/contact/</guid>
+      <guid>/contact/</guid>
       <description>Want Contact Us? Have questions or suggestions? Feel free to open an issue on GitHub or ask me on Twitter.</description>
     </item>
     
     <item>
       <title>Ehsan Kazemi</title>
-      <link>www.dadashkarimi.github.io/people/kazemi.md/</link>
+      <link>/people/kazemi.md/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>www.dadashkarimi.github.io/people/kazemi.md/</guid>
+      <guid>/people/kazemi.md/</guid>
       <description>Ehsan Kazemi was Postdoc in the Department of Electrical Engineering and currently working in Google at Zürich.</description>
     </item>
     
     <item>
       <title>Javid Dadashkarimi</title>
-      <link>www.dadashkarimi.github.io/people/dadashkarimi.md/</link>
+      <link>/people/dadashkarimi.md/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>www.dadashkarimi.github.io/people/dadashkarimi.md/</guid>
+      <guid>/people/dadashkarimi.md/</guid>
       <description>Javid Dadashkarimi is a 3rd year PhD student in the Computer Science department where he is advised by Dustin Scheinost and Amin Karbasi. His research focuses on developing algorithmic techniques for causal inference, with the goal of enabling experimenters and analysts to be more confident in their findings. From an algorithmic perspective, he works on spectral algorithms, submodular optimization, and non-convex programming. More broadly, his interests lie in optimization, statistics, and their intersection.</description>
     </item>
     
     <item>
       <title>Lin Chen</title>
-      <link>www.dadashkarimi.github.io/people/lin.md/</link>
+      <link>/people/lin.md/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>www.dadashkarimi.github.io/people/lin.md/</guid>
+      <guid>/people/lin.md/</guid>
       <description>Lin is a 6th year PhD student in the Department of Electrical Engineering and will be joining the Simons Institute for the Theory of Computing at the University of California, Berkeley. His research focuses on theoretical machine learning, including online optimization, submodular optimization, and adversarial robustness.</description>
     </item>
     
     <item>
       <title>Mehraveh Salehi</title>
-      <link>www.dadashkarimi.github.io/people/salehi.md/</link>
+      <link>/people/salehi.md/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>www.dadashkarimi.github.io/people/salehi.md/</guid>
+      <guid>/people/salehi.md/</guid>
       <description>Mehraveh is currently Chief Experience Officer at Summary Analytics. She is interested in combinatorial optimization and machine learning algorithms with a focus on submodularity and its applications in the human brain. Her Ph.D. thesis focused on developing predictive models that relate human behavior to individual brain functional connectivity patterns as measured by fMRI. She enjoys playing Santour (a Persian music instrument), watching movies, and running.</description>
     </item>
     
     <item>
       <title>Min Yifei</title>
-      <link>www.dadashkarimi.github.io/people/yifei.md/</link>
+      <link>/people/yifei.md/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>www.dadashkarimi.github.io/people/yifei.md/</guid>
+      <guid>/people/yifei.md/</guid>
       <description>Yifei Min is a 2nd year PhD in Statistics and Data Science. His research interest is in theoretical machine learning and optimization. He likes tennis and movies.</description>
     </item>
     
     <item>
       <title>Mohammad Shadravan</title>
-      <link>www.dadashkarimi.github.io/people/shadravan.md/</link>
+      <link>/people/shadravan.md/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>www.dadashkarimi.github.io/people/shadravan.md/</guid>
+      <guid>/people/shadravan.md/</guid>
       <description>Mohammad is Postdoc in the Department of Electrical Engineering and will be joining the Simons Institute for the Theory of Computing at the University of California, Berkeley. His research focuses on theoretical machine learning, including online optimization, submodular optimization, and adversarial robustness.</description>
     </item>
     

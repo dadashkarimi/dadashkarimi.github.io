@@ -17,14 +17,38 @@
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>/publications/mehraveh-2020a/</guid>
-      <description>Style Demo h1 Heading h2 Heading h3 Heading h4 Heading h5 Heading h6 Heading  This is bold text
-This is bold text
-This is italic text
-This is italic text
-Deleted text
-This is text with inline math $\sum_{n=1}^{\infty} 2^{-n} = 1$ and with math blocks:
-$$ \sum_{n=1}^{\infty} 2^{-n} = 1 $$
-   Heading Another heading     text text   text text   text text     Block quotes are written like so.</description>
+      <description>Abstract There is extensive evidence that functional organization of the human brain varies dynamically as the brain switches between task demands, or cognitive states. This functional organization also varies across subjects, even when engaged in similar tasks. To date, the functional network organization of the brain has been considered static. In this work, we use fMRI data obtained across multiple cognitive states (task-evoked and rest conditions) and across multiple subjects, to measure state- and subject-specific functional network parcellation (the assignment of nodes to networks).</description>
+    </item>
+    
+    <item>
+      <title>PhD students</title>
+      <link>/openings/phd.md/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/openings/phd.md/</guid>
+      <description>The I.I.D. Systems Group at the Yale Institute of Network Science has an open position for a Ph.D. student. We are looking for exceptional applicants who have a strong background in areas such as machine learning, statistics, optimization, theoretical computer science and distributed systems. Many problems studied in our group have a strong interdisciplinary component. See our research page for an overview of the projects that we are working on.</description>
+    </item>
+    
+    <item>
+      <title>Postdocs</title>
+      <link>/openings/postdoc.md/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/openings/postdoc.md/</guid>
+      <description>The I.I.D. Systems Group at the Yale Institute of Network Science has open positions for a postdoctoral scholar. We are looking for exceptional applicants who have a strong background in areas such as machine learning, statistics, optimization, theoretical computer science and distributed systems. Applicants for the postdoctoral scholar position need to have a strong publication record at the relevant conferences and journals. Many problems studied in our group have a strong interdisciplinary component.</description>
+    </item>
+    
+    <item>
+      <title>Stochastic Process</title>
+      <link>/courses/cources/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/courses/cources/</guid>
+      <description>In this course we will go through the following topics:
+ Review important notions of probability Expectation Convergence of random variables Law of large numbers Poisson Processes Renewal Processes Markov Chains and Random Walks Martingales If time permits, we will look at a few interesting applications of the above topics.  Textbook: We mainly use &amp;ldquo;Introduction to Stochastic Processes&amp;rdquo; by Erhan Cinlar
+Office Hours:
+-Prof. Karbasi: Mondays 2:30pm-3:30pm
+-Tianhao Wang: Tuesdays 4pm-5pm (17 Hillhouse Ave.</description>
     </item>
     
     <item>
@@ -33,14 +57,16 @@ $$ \sum_{n=1}^{\infty} 2^{-n} = 1 $$
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>/publications/mehraveh-2020b/</guid>
-      <description>Style Demo h1 Heading h2 Heading h3 Heading h4 Heading h5 Heading h6 Heading  This is bold text
-This is bold text
-This is italic text
-This is italic text
-Deleted text
-This is text with inline math $\sum_{n=1}^{\infty} 2^{-n} = 1$ and with math blocks:
-$$ \sum_{n=1}^{\infty} 2^{-n} = 1 $$
-   Heading Another heading     text text   text text   text text     Block quotes are written like so.</description>
+      <description>Abstract The goal of human brain mapping has long been to delineate the functional subunits in the brain and elucidate the functional role of each of these brain regions. Recent work has focused on whole-brain parcellation of functional Magnetic Resonance Imaging (fMRI) data to identify these subunits and create a functional atlas. Functional connectivity approaches to understand the brain at the network level require such an atlas to assess connections between parcels and extract network properties.</description>
+    </item>
+    
+    <item>
+      <title>Eliminating Latent Discrimination: Train Then Mask</title>
+      <link>/publications/ghili-2019/</link>
+      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/ghili-2019/</guid>
+      <description>Abstract How can we control for latent discrimination in predictive models? How can we provably remove it? Such questions are at the heart of algorithmic fairness and its impacts on society. In this paper, we define a new operational fairness criteria, inspired by the well-understood notion of omitted variable-bias in statistics and econometrics. Our notion of fairness effectively controls for sensitive features and provides diagnostics for deviations from fair decision making.</description>
     </item>
     
     <item>
@@ -164,6 +190,16 @@ Follow the following steps:
     </item>
     
     <item>
+      <title></title>
+      <link>/contact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/contact/</guid>
+      <description>Directions from Union Station to YINS building All you need is to drive the State St all the way up to Groove St and then turn left and follow up until Hillhouse Ave.
+Directions from the Airport to YINS Start out going northeast on Burr St toward Fort Hale Rd. Turn left onto Fort Hale Rd. Turn right onto Townsend Ave/CT-337. Turn left onto Main Street Anx. Merge onto I-95 S.</description>
+    </item>
+    
+    <item>
       <title>About Hugo</title>
       <link>/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -184,24 +220,6 @@ It makes use of a variety of open source projects including:</description>
       
       <guid>/people/harshaw.md/</guid>
       <description>Chris Harshaw is a 4th year PhD student in the Computer Science department where he is advised by Amin Karbasi and Dan Spielman. His research focuses on developing algorithmic techniques for causal inference, with the goal of enabling experimenters and analysts to be more confident in their findings. From an algorithmic perspective, he works on spectral algorithms, submodular optimization, and non-convex programming. More broadly, his interests lie in optimization, statistics, and their intersection.</description>
-    </item>
-    
-    <item>
-      <title>Contact</title>
-      <link>/contact/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/contact/</guid>
-      <description>Want Contact Us? Have questions or suggestions? Feel free to open an issue on GitHub or ask me on Twitter.</description>
-    </item>
-    
-    <item>
-      <title>Contact</title>
-      <link>/openings/contact/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/openings/contact/</guid>
-      <description>Want Contact Us? Have questions or suggestions? Feel free to open an issue on GitHub or ask me on Twitter.</description>
     </item>
     
     <item>

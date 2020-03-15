@@ -6,17 +6,27 @@
     <description>Recent content in Openings on Amin Karbasi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
+    <lastBuildDate>Fri, 03 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/openings/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Contact</title>
-      <link>/openings/contact/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>PhD students</title>
+      <link>/openings/phd.md/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>/openings/contact/</guid>
-      <description>Want Contact Us? Have questions or suggestions? Feel free to open an issue on GitHub or ask me on Twitter.</description>
+      <guid>/openings/phd.md/</guid>
+      <description>The I.I.D. Systems Group at the Yale Institute of Network Science has an open position for a Ph.D. student. We are looking for exceptional applicants who have a strong background in areas such as machine learning, statistics, optimization, theoretical computer science and distributed systems. Many problems studied in our group have a strong interdisciplinary component. See our research page for an overview of the projects that we are working on.</description>
+    </item>
+    
+    <item>
+      <title>Postdocs</title>
+      <link>/openings/postdoc.md/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/openings/postdoc.md/</guid>
+      <description>The I.I.D. Systems Group at the Yale Institute of Network Science has open positions for a postdoctoral scholar. We are looking for exceptional applicants who have a strong background in areas such as machine learning, statistics, optimization, theoretical computer science and distributed systems. Applicants for the postdoctoral scholar position need to have a strong publication record at the relevant conferences and journals. Many problems studied in our group have a strong interdisciplinary component.</description>
     </item>
     
   </channel>

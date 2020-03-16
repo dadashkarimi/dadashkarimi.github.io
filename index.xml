@@ -12,12 +12,165 @@
     
     
     <item>
+      <title>Streaming Submodular Maximization under a k-Set System Constraint. </title>
+      <link>/publications/haba-2020/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/haba-2020/</guid>
+      <description>Abstract In this paper, we propose a novel framework that converts streaming algorithms for monotone submodular maximization into streaming algorithms for non-monotone submodular maximization. This reduction readily leads to the currently tightest deterministic approximation ratio for submodular maximization subject to a k-matchoid constraint. Moreover, we propose the first streaming algorithm for monotone submodular maximization subject to k-extendible and k-set system constraints. Together with our proposed reduction, we obtain O(klogk) and O(k2logk) approximation ratio for submodular maximization subject to the above constraints, respectively.</description>
+    </item>
+    
+    <item>
+      <title>Adaptivity in Adaptive Submodularity.</title>
+      <link>/publications/esfandiari-2019b/</link>
+      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/esfandiari-2019b/</guid>
+      <description>Abstract Adaptive sequential decision making is one of the central challenges in machine learning and artificial intelligence. In such problems, the goal is to design an interactive policy that plans for an action to take, from a finite set of n actions, given some partial observations. It has been shown that in many applications such as active learning, robotics, sequential experimental design, and active detection, the utility function satisfies adaptive submodularity, a notion that generalizes the notion of diminishing returns to policies.</description>
+    </item>
+    
+    <item>
+      <title>Batched Multi-Armed Bandits with Optimal Regret</title>
+      <link>/publications/esfandiari-2019a/</link>
+      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/esfandiari-2019a/</guid>
+      <description>Abstract In this paper, we propose three online algorithms for submodular maximization. The first one, Mono-Frank-Wolfe, reduces the number of per-function gradient evaluations from $T^{1/2}$ [Chen2018Online] and $T^{3/2}$ [chen2018projection] to 1, and achieves a (1−1/e)-regret bound of $O(T^{4/5})$. The second one, Bandit-Frank-Wolfe, is the first bandit algorithm for continuous DR-submodular maximization, which achieves a (1−1/e)-regret bound of $O(T^{8/9})$. Finally, we extend Bandit-Frank-Wolfe to a bandit algorithm for discrete submodular maximization, Responsive-Frank-Wolfe, which attains a (1−1/e)-regret bound of $O(T^{8/9})$ in the responsive bandit setting.</description>
+    </item>
+    
+    <item>
+      <title>Black Box Submodular Maximization: Discrete and Continuous Settings</title>
+      <link>/publications/lin-2019c/</link>
+      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/lin-2019c/</guid>
+      <description>Abstract In this paper, we consider the problem of black box continuous submodular maximization where we only have access to the function values and no information about the derivatives is provided. For a monotone and continuous DR-submodular function, and subject to a bounded convex body constraint, we propose Black-box Continuous Greedy, a derivative-free algorithm that provably achieves the tight [(1−1/e)OPT−ϵ] approximation guarantee with $O(d/ϵ^3)$ function evaluations. We then extend our result to the stochastic setting where function values are subject to stochastic zero-mean noise.</description>
+    </item>
+    
+    <item>
+      <title>Minimax Regret of Switching-Constrained Online Convex Optimization: No Phase Transition.</title>
+      <link>/publications/lin-2019d/</link>
+      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/lin-2019d/</guid>
+      <description>Abstract We study the problem of switching-constrained online convex optimization (OCO), where the player has a limited number of opportunities to change her action. While the discrete analog of this online learning task has been studied extensively, previous work in the continuous setting has neither established the minimax rate nor algorithmically achieved it. We here show that T-round switching-constrained OCO with fewer than K switches has a minimax regret of $Θ(\frac{T}{\sqrt{K}})$.</description>
+    </item>
+    
+    <item>
+      <title>One Sample Stochastic Frank-Wolfe.</title>
+      <link>/publications/minguri-2019c/</link>
+      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/minguri-2019c/</guid>
+      <description>Abstract One of the beauties of the projected gradient descent method lies in its rather simple mechanism and yet stable behavior with inexact, stochastic gradients, which has led to its wide-spread use in many machine learning applications. However, once we replace the projection operator with a simpler linear program, as is done in the Frank-Wolfe method, both simplicity and stability take a serious hit. The aim of this paper is to bring them back without sacrificing the efficiency.</description>
+    </item>
+    
+    <item>
+      <title>Quantized Frank-Wolfe: Communication-Efficient Distributed Optimization</title>
+      <link>/publications/minguri-2019b/</link>
+      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/minguri-2019b/</guid>
+      <description>Abstract How can we efficiently mitigate the overhead of gradient communications in distributed optimization? This problem is at the heart of training scalable machine learning models and has been mainly studied in the unconstrained setting. In this paper, we propose Quantized-Frank-Wolfe (QFW), the first projection-free and communication-efficient algorithm for solving constrained optimization problems at scale. We consider both convex and non-convex objective functions, expressed as a finite-sum or more generally a stochastic optimization problem, and provide strong theoretical guarantees on the convergence rate of QFW.</description>
+    </item>
+    
+    <item>
+      <title>Stochastic Conditional Gradient&#43;&#43;.</title>
+      <link>/publications/hassani-2019a/</link>
+      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/hassani-2019a/</guid>
+      <description>Abstract In this paper, we consider the general non-oblivious stochastic optimization where the underlying stochasticity may change during the optimization procedure and depends on the point at which the function is evaluated. We develop Stochastic Frank-Wolfe++ (SFW++), an efficient variant of the conditional gradient method for minimizing a smooth non-convex function subject to a convex body constraint. We show that SFW++ converges to an ϵ-first order stationary point by using $O(1/ϵ^3)$ stochastic gradients.</description>
+    </item>
+    
+    <item>
+      <title>Adaptive Sequence Submodularity</title>
+      <link>/publications/marko-2019a/</link>
+      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/marko-2019a/</guid>
+      <description>Abstract In many machine learning applications, one needs to interactively select a sequence of items (e.g., recommending movies based on a user&amp;rsquo;s feedback) or make sequential decisions in a certain order (e.g., guiding an agent through a series of states). Not only do sequences already pose a dauntingly large search space, but we must also take into account past observations, as well as the uncertainty of future outcomes. Without further structure, finding an optimal sequence is notoriously challenging, if not completely intractable.</description>
+    </item>
+    
+    <item>
+      <title>Eliminating Latent Discrimination: Train Then Mask</title>
+      <link>/publications/ghili-2019/</link>
+      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/ghili-2019/</guid>
+      <description>Abstract How can we control for latent discrimination in predictive models? How can we provably remove it? Such questions are at the heart of algorithmic fairness and its impacts on society. In this paper, we define a new operational fairness criteria, inspired by the well-understood notion of omitted variable-bias in statistics and econometrics. Our notion of fairness effectively controls for sensitive features and provides diagnostics for deviations from fair decision making.</description>
+    </item>
+    
+    <item>
+      <title>Online Continuous Submodular Maximization: From Full-Information to Bandit Feedback.</title>
+      <link>/publications/minguri-2019a/</link>
+      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/minguri-2019a/</guid>
+      <description>Abstract In this paper, we propose three online algorithms for submodular maximization. The first one, Mono-Frank-Wolfe, reduces the number of per-function gradient evaluations from $T^{1/2}$ [Chen2018Online] and $T^{3/2}$ [chen2018projection] to 1, and achieves a (1−1/e)-regret bound of $O(T^{4/5})$. The second one, Bandit-Frank-Wolfe, is the first bandit algorithm for continuous DR-submodular maximization, which achieves a (1−1/e)-regret bound of $O(T^{8/9})$. Finally, we extend Bandit-Frank-Wolfe to a bandit algorithm for discrete submodular maximization, Responsive-Frank-Wolfe, which attains a (1−1/e)-regret bound of $O(T^{8/9})$ in the responsive bandit setting.</description>
+    </item>
+    
+    <item>
+      <title>Projection-Free Bandit Convex Optimization</title>
+      <link>/publications/lin-2019a/</link>
+      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/lin-2019a/</guid>
+      <description>Abstract In this paper, we propose the first computationally efficient projection-free algorithm for bandit convex optimization (BCO) with a general convex constraint. We show that our algorithm achieves a sublinear regret of $O(nT^{4/5})$ (where T is the horizon and n is the dimension) for any bounded convex functions with uniformly bounded gradients. We also evaluate the performance of our algorithm against baselines on both synthetic and real data sets for quadratic programming, portfolio selection and matrix completion problems.</description>
+    </item>
+    
+    <item>
+      <title>Stochastic Continuous Greedy &#43;&#43;: When Upper and Lower Bounds Match.</title>
+      <link>/publications/karbasi-2019a/</link>
+      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/karbasi-2019a/</guid>
+      <description>Abstract In this paper, we develop $\scg~(\text{SCG}{++})$, the first efficient variant of a conditional gradient method for maximizing a continuous submodular function subject to a convex constraint. Concretely, for a monotone and continuous DR-submodular function, \SCGPP achieves a tight [(1−1/e)\OPT−ϵ] solution while using $O(1/ϵ^2)$ stochastic gradients and O(1/ϵ) calls to the linear optimization oracle. The best previously known algorithms either achieve a suboptimal $[(1/2)\OPT−ϵ]$ solution with $O(1/ϵ^2)$ stochastic gradients or the tight $[(1−1/e)\OPT−ϵ]$ solution with suboptimal $O(1/ϵ^3)$ stochastic gradients.</description>
+    </item>
+    
+    <item>
+      <title>Submodular Maximization beyond Non-negativity: Guarantees, Fast Algorithms, and Applications.</title>
+      <link>/publications/harshaw-2019a/</link>
+      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/harshaw-2019a/</guid>
+      <description>Abstract It is generally believed that submodular functions–and the more general class of γ -weakly submodular functions–may only be optimized under the non-negativity assumption f(S)≥0 . In this paper, we show that once the function is expressed as the difference f=g−c , where g is monotone, non-negative, and γ -weakly submodular and c is non-negative modular, then strong approximation guarantees may be obtained. We present an algorithm for maximizing g−c under a k -cardinality constraint which produces a random feasible set S such that $𝔼[g(S)−c(S)]\geq (1−e−γ−\epsilon)g(OPT)−c(OPT)$ , whose running time is $O(\frac{n}{\epsilon}log2\frac{1}{\epsilon})$ , independent of k .</description>
+    </item>
+    
+    <item>
+      <title>Submodular Streaming in All Its Glory: Tight Approximation, Minimum Memory and Low Adaptive Complexity. </title>
+      <link>/publications/kazemi-2019a/</link>
+      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/kazemi-2019a/</guid>
+      <description>Abstract Streaming algorithms are generally judged by the quality of their solution, memory footprint, and computational complexity. In this paper, we study the problem of maximizing a monotone submodular function in the streaming setting with a cardinality constraint k . We first propose SIEVE-STREAMING++, which requires just one pass over the data, keeps only O(k) elements and achieves the tight $\frac{1}{2}$ -approximation guarantee. The best previously known streaming algorithms either achieve a suboptimal $\frac{1}{4}$ -approximation with Θ(k) memory or the optimal 12 -approximation with O(klogk) memory.</description>
+    </item>
+    
+    <item>
+      <title>Unconstrained submodular maximization with constant adaptive complexity</title>
+      <link>/publications/lin-2019b/</link>
+      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/lin-2019b/</guid>
+      <description>Abstract In this paper, we consider the unconstrained submodular maximization problem. We propose the first algorithm for this problem that achieves a tight $(1/2−ε)$-approximation guarantee using $O(ε^{−1})$ adaptive rounds and a linear number of function evaluations. No previously known algorithm for this problem achieves an approximation ratio better than 1/3 using less than Ω(n) rounds of adaptivity, where n is the size of the ground set. Moreover, our algorithm easily extends to the maximization of a non-negative continuous DR-submodular function subject to a box constraint, and achieves a tight (1/2−ε)-approximation guarantee for this problem while keeping the same adaptive and query complexities.</description>
+    </item>
+    
+    <item>
       <title>Individualized functional networks reconfigure with cognitive state</title>
       <link>/publications/mehraveh-2020a/</link>
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>/publications/mehraveh-2020a/</guid>
       <description>Abstract There is extensive evidence that functional organization of the human brain varies dynamically as the brain switches between task demands, or cognitive states. This functional organization also varies across subjects, even when engaged in similar tasks. To date, the functional network organization of the brain has been considered static. In this work, we use fMRI data obtained across multiple cognitive states (task-evoked and rest conditions) and across multiple subjects, to measure state- and subject-specific functional network parcellation (the assignment of nodes to networks).</description>
+    </item>
+    
+    <item>
+      <title>There is no single functional atlas even for a single individual: Functional parcel definitions change with task</title>
+      <link>/publications/mehraveh-2020b/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/mehraveh-2020b/</guid>
+      <description>Abstract The goal of human brain mapping has long been to delineate the functional subunits in the brain and elucidate the functional role of each of these brain regions. Recent work has focused on whole-brain parcellation of functional Magnetic Resonance Imaging (fMRI) data to identify these subunits and create a functional atlas. Functional connectivity approaches to understand the brain at the network level require such an atlas to assess connections between parcels and extract network properties.</description>
     </item>
     
     <item>
@@ -49,24 +202,6 @@
 Office Hours:
 -Prof. Karbasi: Mondays 2:30pm-3:30pm
 -Tianhao Wang: Tuesdays 4pm-5pm (17 Hillhouse Ave.</description>
-    </item>
-    
-    <item>
-      <title>There is no single functional atlas even for a single individual: Functional parcel definitions change with task</title>
-      <link>/publications/mehraveh-2020b/</link>
-      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/publications/mehraveh-2020b/</guid>
-      <description>Abstract The goal of human brain mapping has long been to delineate the functional subunits in the brain and elucidate the functional role of each of these brain regions. Recent work has focused on whole-brain parcellation of functional Magnetic Resonance Imaging (fMRI) data to identify these subunits and create a functional atlas. Functional connectivity approaches to understand the brain at the network level require such an atlas to assess connections between parcels and extract network properties.</description>
-    </item>
-    
-    <item>
-      <title>Eliminating Latent Discrimination: Train Then Mask</title>
-      <link>/publications/ghili-2019/</link>
-      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/publications/ghili-2019/</guid>
-      <description>Abstract How can we control for latent discrimination in predictive models? How can we provably remove it? Such questions are at the heart of algorithmic fairness and its impacts on society. In this paper, we define a new operational fairness criteria, inspired by the well-understood notion of omitted variable-bias in statistics and econometrics. Our notion of fairness effectively controls for sensitive features and provides diagnostics for deviations from fair decision making.</description>
     </item>
     
     <item>

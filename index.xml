@@ -340,6 +340,15 @@ Office Hours:
     </item>
     
     <item>
+      <title>Network Sciences</title>
+      <link>/courses/network_sciences.md/</link>
+      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/courses/network_sciences.md/</guid>
+      <description>Theoretical Challenges in Network Science (ENAS 962) Theoretical challenges in network science, as the title suggests, is about the (beautiful) mathematics behind network models. The course starts with the concept of “tipping points” or how little things can make a big difference in the formation of random networks. We then talk about preferential attachment model or the rich-get-richer phenomenon along with small world networks. We again see a different kind of tipping point on the way people can navigate such networks in a decentralized manner.</description>
+    </item>
+    
+    <item>
       <title>CoderPortfolioの特徴</title>
       <link>/posts/featuresofcoderportfolio.ja/</link>
       <pubDate>Fri, 03 Aug 2018 00:00:00 +0000</pubDate>

@@ -3,42 +3,42 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/publications/haba-2020/</loc>
+    <loc>/publications/2020/haba-2020/</loc>
     <lastmod>2020-01-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/publications/esfandiari-2019b/</loc>
+    <loc>/publications/2019/esfandiari-2019b/</loc>
     <lastmod>2019-01-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/publications/esfandiari-2019a/</loc>
+    <loc>/publications/2019/esfandiari-2019a/</loc>
     <lastmod>2019-01-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/publications/lin-2019c/</loc>
+    <loc>/publications/2019/lin-2019c/</loc>
     <lastmod>2019-01-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/publications/lin-2019d/</loc>
+    <loc>/publications/2019/lin-2019d/</loc>
     <lastmod>2019-01-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/publications/minguri-2019c/</loc>
+    <loc>/publications/2019/minguri-2019c/</loc>
     <lastmod>2019-01-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/publications/minguri-2019b/</loc>
+    <loc>/publications/2019/minguri-2019b/</loc>
     <lastmod>2019-01-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/publications/hassani-2019a/</loc>
+    <loc>/publications/2019/hassani-2019a/</loc>
     <lastmod>2019-01-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -73,42 +73,57 @@
   </url>
   
   <url>
-    <loc>/publications/marko-2019a/</loc>
+    <loc>/publications/2016/lin-16d/</loc>
+    <lastmod>2016-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publications/2016/lin-16e/</loc>
+    <lastmod>2016-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publications/2016/lucic-16a/</loc>
+    <lastmod>2016-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publications/2019/marko-2019a/</loc>
     <lastmod>2019-01-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/publications/ghili-2019/</loc>
+    <loc>/publications/2019/ghili-2019/</loc>
     <lastmod>2019-01-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/publications/minguri-2019a/</loc>
+    <loc>/publications/2019/minguri-2019a/</loc>
     <lastmod>2019-01-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/publications/lin-2019a/</loc>
+    <loc>/publications/2019/lin-2019a/</loc>
     <lastmod>2019-01-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/publications/karbasi-2019a/</loc>
+    <loc>/publications/2019/karbasi-2019a/</loc>
     <lastmod>2019-01-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/publications/harshaw-2019a/</loc>
+    <loc>/publications/2019/harshaw-2019a/</loc>
     <lastmod>2019-01-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/publications/kazemi-2019a/</loc>
+    <loc>/publications/2019/kazemi-2019a/</loc>
     <lastmod>2019-01-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/publications/lin-2019b/</loc>
+    <loc>/publications/2019/lin-2019b/</loc>
     <lastmod>2019-01-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -208,12 +223,32 @@
   </url>
   
   <url>
-    <loc>/publications/mehraveh-2020a/</loc>
+    <loc>/publications/2016/lin-16c/</loc>
+    <lastmod>2016-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publications/2016/lin-16b/</loc>
+    <lastmod>2016-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publications/2016/amin-16a/</loc>
+    <lastmod>2016-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publications/2016/lin-16a/</loc>
+    <lastmod>2016-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publications/2020/mehraveh-2020a/</loc>
     <lastmod>2020-01-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/publications/mehraveh-2020b/</loc>
+    <loc>/publications/2020/mehraveh-2020b/</loc>
     <lastmod>2020-01-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -225,6 +260,21 @@
   <url>
     <loc>/publications/2018/karbasi-2018a/</loc>
     <lastmod>2018-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publications/2016/baharan-16a/</loc>
+    <lastmod>2016-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publications/2016/baharan-16b/</loc>
+    <lastmod>2016-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publications/2016/baharan-16c/</loc>
+    <lastmod>2016-01-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>

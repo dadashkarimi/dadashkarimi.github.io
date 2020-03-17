@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Inference, Information,  and Decision Group">
+    <meta name="description" content="">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta property="og:site_name" content="Amin Karbasi">
+    <meta property="og:title" content="
+  Submodular Variational Inference for Network Reconstruction - Amin Karbasi
+">
+    <meta property="og:description" content="publication">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/publications/2016/lin-16e/">
+    <meta property="og:image" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="/publications/2016/lin-16e/">
+    <meta name="twitter:image" content="">
+
+    <base href="/publications/2016/lin-16e/">
+    <title>
+  Submodular Variational Inference for Network Reconstruction - Amin Karbasi
+</title>
+
+    <link rel="canonical" href="/publications/2016/lin-16e/">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    
+    <link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700">
+    <link rel="stylesheet" href="/css/normalize.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    
+      <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Amin Karbasi">
+      <link href="/index.xml" rel="feed" type="application/rss+xml" title="Amin Karbasi" />
+    
+
+    <meta name="generator" content="Hugo 0.67.0" />
+  </head>
+
+  <body class="">
+    <main class="wrapper">
+      
+<link href="https://fonts.googleapis.com/css?family=Baloo+Chettan+2&display=swap" rel="stylesheet">
+<nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">Amin Karbasi</a>
+    <input type="checkbox" id="menu-control"/>
+    <label class="menu-mobile  float-right " for="menu-control">
+      <span class="btn-mobile  float-right ">&#9776;</span>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item  align-center ">
+              <a class="navigation-link" href="/">About</a>
+            </li>
+          
+            <li class="navigation-item  align-center ">
+              <a class="navigation-link" href="/people">People</a>
+            </li>
+          
+            <li class="navigation-item  align-center ">
+              <a class="navigation-link" href="/publications/">Publications</a>
+            </li>
+          
+            <li class="navigation-item  align-center ">
+              <a class="navigation-link" href="/research">Research</a>
+            </li>
+          
+            <li class="navigation-item  align-center ">
+              <a class="navigation-link" href="/courses">Teaching</a>
+            </li>
+          
+            <li class="navigation-item  align-center ">
+              <a class="navigation-link" href="/openings">Openings</a>
+            </li>
+          
+            <li class="navigation-item  align-center ">
+              <a class="navigation-link" href="/contact">Contact</a>
+            </li>
+          
+        
+        
+      </ul>
+    </label>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container page">
+	<article>
+		<header>
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+			<div></div>
+			<h1 >Title:&nbsp;Submodular Variational Inference for Network Reconstruction</h1>
+			<h1 >Authors:&nbsp;Lin Chen, Amin Karbasi, Forrest W. Crawford</h1>
+			<div>
+			
+			<script type="text/javascript" async
+	   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full">
+MathJax.Hub.Config({
+	tex2jax: {
+		inlineMath: [['$','$']],
+		displayMath: [['$$','$$']],
+		processEscapes: true,
+		processEnvironments: true,
+		skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+		TeX: { extensions: ["AMSmath.js", "AMSsymbols.js"] }
+	}
+});
+MathJax.Hub.Queue(function() {
+	var all = MathJax.Hub.getAllJax(), i;
+	for(i = 0; i < all.length; i += 1) {
+		all[i].SourceElement().parentNode.className += ' has-jax';
+	}
+});
+			</script>
+			
+
+		</header>
+
+		<div  class="x-column x-sm x-1-6" style=""  >
+		</div>
+
+			<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+			<div>
+
+			<h2 id="abstract">Abstract</h2>
+<p>In real-world and online social networks, individuals receive and transmit information in real time. Cascading information transmissions (e.g. phone calls, text messages, social media posts) may be understood as a realization of a diffusion process operating on the network, and its branching path can be represented by a directed tree. The process only traverses and thus reveals a limited portion of the edges. The network reconstruction/inference problem is to infer the unrevealed connections. Most existing approaches derive a likelihood and attempt to find the network topology maximizing the likelihood, a problem that is highly intractable. In this paper, we focus on the network reconstruction problem for a broad class of real-world diffusion processes, exemplified by a network diffusion scheme called respondent-driven sampling (RDS). We prove that under realistic and general models of network diffusion, the posterior distribution of an observed RDS realization is a Bayesian log-submodular model.We then propose VINE (Variational Inference for Network rEconstruction), a novel, accurate, and computationally efficient variational inference algorithm, for the network reconstruction problem under this model. Crucially, we do not assume any particular probabilistic model for the underlying network. VINE recovers any connected graph with high accuracy as shown by our experimental results on real-life networks.</p>
+
+			</ul>
+			</div>
+
+	</article>
+</section>
+
+
+      </div>
+      
+        <footer class="footer">
+  <section class="container">
+    
+      <div class="sns-shares sp-sns-shares">
+        
+          <a class="sns-share twitter-share" href="https://twitter.com/intent/tweet?original_referer=%2fpublications%2f2016%2flin-16e%2f&ref_src=twsrc%5Etfw&text=Submodular%20Variational%20Inference%20for%20Network%20Reconstruction Amin%20Karbasi&tw_p=tweetbutton&url=%2fpublications%2f2016%2flin-16e%2f"><i class="fab fa-twitter"></i></a>
+        
+        
+          <a class="fb btn sns-share fb-share" href="http://www.facebook.com/share.php?u=%2fpublications%2f2016%2flin-16e%2f" onclick="window.open(this.href, 'FBwindow', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fab fa-facebook-f"></i></a>
+        
+        
+          <a class="sns-share line-share" href="https://social-plugins.line.me/lineit/share?url=%2fpublications%2f2016%2flin-16e%2f"><i class="fab fa-line"></i></a>
+        
+        
+          <a class="sns-share linkedIn-share" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fpublications%2f2016%2flin-16e%2f"><i class="fab fa-linkedin"></i></a>
+        
+      </div>
+    
+    
+      <p>Yale University</p>
+    
+
+  </section>
+</footer>
+<style>
+#extreme
+{
+z-index: 1;
+visibility: hidden;
+position: absolute;
+z-index: 10000;
+}
+</style>
+<div id=”extreme”>
+    <script style="width:28px;height:28px" src="//t1.extreme-dm.com/f.js" id="eXF-iid-0" async defer></script>
+</div>
+<div class="fixed-bar">
+  <section class="container">
+    
+      <p id="privateTriggerText">Inference, Information, and Decision Group at Yale </p>
+    
+    
+      <div class="sns-shares pc-sns-shares">
+        
+          <a class="sns-share twitter-share" href="https://twitter.com/intent/tweet?original_referer=%2fpublications%2f2016%2flin-16e%2f&ref_src=twsrc%5Etfw&text=Submodular%20Variational%20Inference%20for%20Network%20Reconstruction Amin%20Karbasi&tw_p=tweetbutton&url=%2fpublications%2f2016%2flin-16e%2f"><i class="fab fa-twitter"></i></a>
+        
+        
+          <a class="fb btn sns-share fb-share" href="http://www.facebook.com/share.php?u=%2fpublications%2f2016%2flin-16e%2f" onclick="window.open(this.href, 'FBwindow', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fab fa-facebook-f"></i></a>
+        
+        
+          <a class="sns-share hatena-share" href="http://b.hatena.ne.jp/entry//publications/2016/lin-16e/"  data-hatena-bookmark-layout="touch" data-hatena-bookmark-width="40" data-hatena-bookmark-height="40" title="このエントリーをはてなブックマークに追加"><i class="fas fa-bookmark"></i></a>
+        
+        
+          <a class="sns-share line-share" href="https://social-plugins.line.me/lineit/share?url=%2fpublications%2f2016%2flin-16e%2f"><i class="fab fa-line"></i></a>
+        
+        
+          <a class="sns-share linkedIn-share" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fpublications%2f2016%2flin-16e%2f"><i class="fab fa-linkedin"></i></a>
+        
+      </div>
+    
+  </section>
+</div>
+
+      
+    </main>
+
+    
+
+  <script src="js/app.js"></script>
+  
+  <script>
+  (function($) {
+    $(function() {
+      $('#privateTrigger').on('click', function() {
+        $('.private').slideToggle();
+        $('#privateTriggerText').text("Thank You! Please share it if you like it→");
+      });
+    });
+   })(jQuery);
+  </script>
+  
+  </body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Inference, Information,  and Decision Group">
+    <meta name="description" content="">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta property="og:site_name" content="Amin Karbasi">
+    <meta property="og:title" content="
+  Minimax Regret of Switching-Constrained Online Convex Optimization: No Phase Transition. - Amin Karbasi
+">
+    <meta property="og:description" content="publication">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/publications/2019/lin-2019d/">
+    <meta property="og:image" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="/publications/2019/lin-2019d/">
+    <meta name="twitter:image" content="">
+
+    <base href="/publications/2019/lin-2019d/">
+    <title>
+  Minimax Regret of Switching-Constrained Online Convex Optimization: No Phase Transition. - Amin Karbasi
+</title>
+
+    <link rel="canonical" href="/publications/2019/lin-2019d/">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    
+    <link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700">
+    <link rel="stylesheet" href="/css/normalize.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    
+      <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Amin Karbasi">
+      <link href="/index.xml" rel="feed" type="application/rss+xml" title="Amin Karbasi" />
+    
+
+    <meta name="generator" content="Hugo 0.67.0" />
+  </head>
+
+  <body class="">
+    <main class="wrapper">
+      
+<link href="https://fonts.googleapis.com/css?family=Baloo+Chettan+2&display=swap" rel="stylesheet">
+<nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">Amin Karbasi</a>
+    <input type="checkbox" id="menu-control"/>
+    <label class="menu-mobile  float-right " for="menu-control">
+      <span class="btn-mobile  float-right ">&#9776;</span>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item  align-center ">
+              <a class="navigation-link" href="/">About</a>
+            </li>
+          
+            <li class="navigation-item  align-center ">
+              <a class="navigation-link" href="/people">People</a>
+            </li>
+          
+            <li class="navigation-item  align-center ">
+              <a class="navigation-link" href="/publications/">Publications</a>
+            </li>
+          
+            <li class="navigation-item  align-center ">
+              <a class="navigation-link" href="/research">Research</a>
+            </li>
+          
+            <li class="navigation-item  align-center ">
+              <a class="navigation-link" href="/courses">Teaching</a>
+            </li>
+          
+            <li class="navigation-item  align-center ">
+              <a class="navigation-link" href="/openings">Openings</a>
+            </li>
+          
+            <li class="navigation-item  align-center ">
+              <a class="navigation-link" href="/contact">Contact</a>
+            </li>
+          
+        
+        
+      </ul>
+    </label>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container page">
+	<article>
+		<header>
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+			<div></div>
+			<h1 >Title:&nbsp;Minimax Regret of Switching-Constrained Online Convex Optimization: No Phase Transition.</h1>
+			<h1 >Authors:&nbsp;Lin Chen, Qian Yu, Hannah Lawrence, Amin Karbasi</h1>
+			<div>
+			
+			<script type="text/javascript" async
+	   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full">
+MathJax.Hub.Config({
+	tex2jax: {
+		inlineMath: [['$','$']],
+		displayMath: [['$$','$$']],
+		processEscapes: true,
+		processEnvironments: true,
+		skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+		TeX: { extensions: ["AMSmath.js", "AMSsymbols.js"] }
+	}
+});
+MathJax.Hub.Queue(function() {
+	var all = MathJax.Hub.getAllJax(), i;
+	for(i = 0; i < all.length; i += 1) {
+		all[i].SourceElement().parentNode.className += ' has-jax';
+	}
+});
+			</script>
+			
+
+		</header>
+
+		<div  class="x-column x-sm x-1-6" style=""  >
+		</div>
+
+			<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+			<div>
+
+			<h2 id="abstract">Abstract</h2>
+<p>We study the problem of switching-constrained online convex optimization (OCO), where the player has a limited number of opportunities to change her action. While the discrete analog of this online learning task has been studied extensively, previous work in the continuous setting has neither established the minimax rate nor algorithmically achieved it. We here show that T-round switching-constrained OCO with fewer than K switches has a minimax regret of $Θ(\frac{T}{\sqrt{K}})$. In particular, it is at least $Θ(\frac{T}{\sqrt{2K}})$ for one dimension and at least $Θ(\frac{T}{\sqrt{K}})$ for higher dimensions. The lower bound in higher dimensions is attained by an orthogonal subspace argument. The minimax analysis in one dimension is more involved. To establish the one-dimensional result, we introduce the fugal game relaxation, whose minimax regret lower bounds that of switching-constrained OCO. We show that the minimax regret of the fugal game is at least T2K√ and thereby establish the minimax lower bound in one dimension. We next show that a mini-batching algorithm provides an $O(\frac{T}{\sqrt{K}})$ upper bound, and therefore we conclude that the minimax regret of switching-constrained OCO is $Θ(\frac{T}{\sqrt{K}})$ for any K. This is in sharp contrast to its discrete counterpart, the switching-constrained prediction-from-experts problem, which exhibits a phase transition in minimax regret between the low-switching and high-switching regimes. In the case of bandit feedback, we first determine a novel linear (in T) minimax regret for bandit linear optimization against the strongly adaptive adversary of OCO, implying that a slightly weaker adversary is appropriate. We also establish the minimax regret of switching-constrained bandit convex optimization in dimension n&gt;2 to be $Θ(\frac{T}{\sqrt{K}})$.</p>
+
+			</ul>
+			</div>
+
+	</article>
+</section>
+
+
+      </div>
+      
+        <footer class="footer">
+  <section class="container">
+    
+      <div class="sns-shares sp-sns-shares">
+        
+          <a class="sns-share twitter-share" href="https://twitter.com/intent/tweet?original_referer=%2fpublications%2f2019%2flin-2019d%2f&ref_src=twsrc%5Etfw&text=Minimax%20Regret%20of%20Switching-Constrained%20Online%20Convex%20Optimization%3a%20No%20Phase%20Transition. Amin%20Karbasi&tw_p=tweetbutton&url=%2fpublications%2f2019%2flin-2019d%2f"><i class="fab fa-twitter"></i></a>
+        
+        
+          <a class="fb btn sns-share fb-share" href="http://www.facebook.com/share.php?u=%2fpublications%2f2019%2flin-2019d%2f" onclick="window.open(this.href, 'FBwindow', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fab fa-facebook-f"></i></a>
+        
+        
+          <a class="sns-share line-share" href="https://social-plugins.line.me/lineit/share?url=%2fpublications%2f2019%2flin-2019d%2f"><i class="fab fa-line"></i></a>
+        
+        
+          <a class="sns-share linkedIn-share" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fpublications%2f2019%2flin-2019d%2f"><i class="fab fa-linkedin"></i></a>
+        
+      </div>
+    
+    
+      <p>Yale University</p>
+    
+
+  </section>
+</footer>
+<style>
+#extreme
+{
+z-index: 1;
+visibility: hidden;
+position: absolute;
+z-index: 10000;
+}
+</style>
+<div id=”extreme”>
+    <script style="width:28px;height:28px" src="//t1.extreme-dm.com/f.js" id="eXF-iid-0" async defer></script>
+</div>
+<div class="fixed-bar">
+  <section class="container">
+    
+      <p id="privateTriggerText">Inference, Information, and Decision Group at Yale </p>
+    
+    
+      <div class="sns-shares pc-sns-shares">
+        
+          <a class="sns-share twitter-share" href="https://twitter.com/intent/tweet?original_referer=%2fpublications%2f2019%2flin-2019d%2f&ref_src=twsrc%5Etfw&text=Minimax%20Regret%20of%20Switching-Constrained%20Online%20Convex%20Optimization%3a%20No%20Phase%20Transition. Amin%20Karbasi&tw_p=tweetbutton&url=%2fpublications%2f2019%2flin-2019d%2f"><i class="fab fa-twitter"></i></a>
+        
+        
+          <a class="fb btn sns-share fb-share" href="http://www.facebook.com/share.php?u=%2fpublications%2f2019%2flin-2019d%2f" onclick="window.open(this.href, 'FBwindow', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fab fa-facebook-f"></i></a>
+        
+        
+          <a class="sns-share hatena-share" href="http://b.hatena.ne.jp/entry//publications/2019/lin-2019d/"  data-hatena-bookmark-layout="touch" data-hatena-bookmark-width="40" data-hatena-bookmark-height="40" title="このエントリーをはてなブックマークに追加"><i class="fas fa-bookmark"></i></a>
+        
+        
+          <a class="sns-share line-share" href="https://social-plugins.line.me/lineit/share?url=%2fpublications%2f2019%2flin-2019d%2f"><i class="fab fa-line"></i></a>
+        
+        
+          <a class="sns-share linkedIn-share" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fpublications%2f2019%2flin-2019d%2f"><i class="fab fa-linkedin"></i></a>
+        
+      </div>
+    
+  </section>
+</div>
+
+      
+    </main>
+
+    
+
+  <script src="js/app.js"></script>
+  
+  <script>
+  (function($) {
+    $(function() {
+      $('#privateTrigger').on('click', function() {
+        $('.private').slideToggle();
+        $('#privateTriggerText').text("Thank You! Please share it if you like it→");
+      });
+    });
+   })(jQuery);
+  </script>
+  
+  </body>
+</html>

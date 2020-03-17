@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Inference, Information,  and Decision Group">
+    <meta name="description" content="">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta property="og:site_name" content="Amin Karbasi">
+    <meta property="og:title" content="
+  Fast Distributed Submodular Cover: Public-Private Data Summarization. - Amin Karbasi
+">
+    <meta property="og:description" content="publication">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/publications/2016/baharan-16c/">
+    <meta property="og:image" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="/publications/2016/baharan-16c/">
+    <meta name="twitter:image" content="">
+
+    <base href="/publications/2016/baharan-16c/">
+    <title>
+  Fast Distributed Submodular Cover: Public-Private Data Summarization. - Amin Karbasi
+</title>
+
+    <link rel="canonical" href="/publications/2016/baharan-16c/">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    
+    <link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700">
+    <link rel="stylesheet" href="/css/normalize.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    
+      <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Amin Karbasi">
+      <link href="/index.xml" rel="feed" type="application/rss+xml" title="Amin Karbasi" />
+    
+
+    <meta name="generator" content="Hugo 0.67.0" />
+  </head>
+
+  <body class="">
+    <main class="wrapper">
+      
+<link href="https://fonts.googleapis.com/css?family=Baloo+Chettan+2&display=swap" rel="stylesheet">
+<nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">Amin Karbasi</a>
+    <input type="checkbox" id="menu-control"/>
+    <label class="menu-mobile  float-right " for="menu-control">
+      <span class="btn-mobile  float-right ">&#9776;</span>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item  align-center ">
+              <a class="navigation-link" href="/">About</a>
+            </li>
+          
+            <li class="navigation-item  align-center ">
+              <a class="navigation-link" href="/people">People</a>
+            </li>
+          
+            <li class="navigation-item  align-center ">
+              <a class="navigation-link" href="/publications/">Publications</a>
+            </li>
+          
+            <li class="navigation-item  align-center ">
+              <a class="navigation-link" href="/research">Research</a>
+            </li>
+          
+            <li class="navigation-item  align-center ">
+              <a class="navigation-link" href="/courses">Teaching</a>
+            </li>
+          
+            <li class="navigation-item  align-center ">
+              <a class="navigation-link" href="/openings">Openings</a>
+            </li>
+          
+            <li class="navigation-item  align-center ">
+              <a class="navigation-link" href="/contact">Contact</a>
+            </li>
+          
+        
+        
+      </ul>
+    </label>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container page">
+	<article>
+		<header>
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+			<div></div>
+			<h1 >Title:&nbsp;Fast Distributed Submodular Cover: Public-Private Data Summarization.</h1>
+			<h1 >Authors:&nbsp;Baharan Mirzasoleiman, Morteza Zadimoghaddam, Amin Karbasi</h1>
+			<div>
+			
+			<script type="text/javascript" async
+	   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full">
+MathJax.Hub.Config({
+	tex2jax: {
+		inlineMath: [['$','$']],
+		displayMath: [['$$','$$']],
+		processEscapes: true,
+		processEnvironments: true,
+		skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+		TeX: { extensions: ["AMSmath.js", "AMSsymbols.js"] }
+	}
+});
+MathJax.Hub.Queue(function() {
+	var all = MathJax.Hub.getAllJax(), i;
+	for(i = 0; i < all.length; i += 1) {
+		all[i].SourceElement().parentNode.className += ' has-jax';
+	}
+});
+			</script>
+			
+
+		</header>
+
+		<div  class="x-column x-sm x-1-6" style=""  >
+		</div>
+
+			<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+			<div>
+
+			<h2 id="abstract">Abstract</h2>
+<p>In this paper, we introduce the public-private framework of data summarization motivated by privacy concerns in personalized recommender systems and online social services. Such systems have usually access to massive data generated by a large pool of users. A major fraction of the data is public and is visible to (and can be used for) all users. However, each user can also contribute some private data that should not be shared with other users to ensure her privacy. The goal is to provide a succinct summary of massive dataset, ideally as small as possible, from which customized summaries can be built for each user, i.e. it can contain elements from the public data (for diversity) and users&rsquo; private data (for personalization). To formalize the above challenge, we assume that the scoring function according to which a user evaluates the utility of her summary satisfies submodularity, a widely used notion in data summarization applications. Thus, we model the data summarization targeted to each user as an instance of a submodular cover problem. However, when the data is massive it is infeasible to use the centralized greedy algorithm to find a customized summary even for a single user. Moreover, for a large pool of users, it is too time consuming to find such summaries separately. Instead, we develop a fast distributed algorithm for submodular cover, FASTCOVER, that provides a succinct summary in one shot and for all users. We show that the solution provided by FASTCOVER is competitive with that of the centralized algorithm with the number of rounds that is exponentially smaller than state of the art results. Moreover, we have implemented FASTCOVER with Spark to demonstrate its practical performance on a number of concrete applications, including personalized location recommendation, personalized movie recommendation, and dominating set on tens of millions of data points and varying number of users.</p>
+
+			</ul>
+			</div>
+
+	</article>
+</section>
+
+
+      </div>
+      
+        <footer class="footer">
+  <section class="container">
+    
+      <div class="sns-shares sp-sns-shares">
+        
+          <a class="sns-share twitter-share" href="https://twitter.com/intent/tweet?original_referer=%2fpublications%2f2016%2fbaharan-16c%2f&ref_src=twsrc%5Etfw&text=Fast%20Distributed%20Submodular%20Cover%3a%20Public-Private%20Data%20Summarization. Amin%20Karbasi&tw_p=tweetbutton&url=%2fpublications%2f2016%2fbaharan-16c%2f"><i class="fab fa-twitter"></i></a>
+        
+        
+          <a class="fb btn sns-share fb-share" href="http://www.facebook.com/share.php?u=%2fpublications%2f2016%2fbaharan-16c%2f" onclick="window.open(this.href, 'FBwindow', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fab fa-facebook-f"></i></a>
+        
+        
+          <a class="sns-share line-share" href="https://social-plugins.line.me/lineit/share?url=%2fpublications%2f2016%2fbaharan-16c%2f"><i class="fab fa-line"></i></a>
+        
+        
+          <a class="sns-share linkedIn-share" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fpublications%2f2016%2fbaharan-16c%2f"><i class="fab fa-linkedin"></i></a>
+        
+      </div>
+    
+    
+      <p>Yale University</p>
+    
+
+  </section>
+</footer>
+<style>
+#extreme
+{
+z-index: 1;
+visibility: hidden;
+position: absolute;
+z-index: 10000;
+}
+</style>
+<div id=”extreme”>
+    <script style="width:28px;height:28px" src="//t1.extreme-dm.com/f.js" id="eXF-iid-0" async defer></script>
+</div>
+<div class="fixed-bar">
+  <section class="container">
+    
+      <p id="privateTriggerText">Inference, Information, and Decision Group at Yale </p>
+    
+    
+      <div class="sns-shares pc-sns-shares">
+        
+          <a class="sns-share twitter-share" href="https://twitter.com/intent/tweet?original_referer=%2fpublications%2f2016%2fbaharan-16c%2f&ref_src=twsrc%5Etfw&text=Fast%20Distributed%20Submodular%20Cover%3a%20Public-Private%20Data%20Summarization. Amin%20Karbasi&tw_p=tweetbutton&url=%2fpublications%2f2016%2fbaharan-16c%2f"><i class="fab fa-twitter"></i></a>
+        
+        
+          <a class="fb btn sns-share fb-share" href="http://www.facebook.com/share.php?u=%2fpublications%2f2016%2fbaharan-16c%2f" onclick="window.open(this.href, 'FBwindow', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fab fa-facebook-f"></i></a>
+        
+        
+          <a class="sns-share hatena-share" href="http://b.hatena.ne.jp/entry//publications/2016/baharan-16c/"  data-hatena-bookmark-layout="touch" data-hatena-bookmark-width="40" data-hatena-bookmark-height="40" title="このエントリーをはてなブックマークに追加"><i class="fas fa-bookmark"></i></a>
+        
+        
+          <a class="sns-share line-share" href="https://social-plugins.line.me/lineit/share?url=%2fpublications%2f2016%2fbaharan-16c%2f"><i class="fab fa-line"></i></a>
+        
+        
+          <a class="sns-share linkedIn-share" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fpublications%2f2016%2fbaharan-16c%2f"><i class="fab fa-linkedin"></i></a>
+        
+      </div>
+    
+  </section>
+</div>
+
+      
+    </main>
+
+    
+
+  <script src="js/app.js"></script>
+  
+  <script>
+  (function($) {
+    $(function() {
+      $('#privateTrigger').on('click', function() {
+        $('.private').slideToggle();
+        $('#privateTriggerText').text("Thank You! Please share it if you like it→");
+      });
+    });
+   })(jQuery);
+  </script>
+  
+  </body>
+</html>

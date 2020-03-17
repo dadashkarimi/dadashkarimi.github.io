@@ -111,6 +111,33 @@
     </item>
     
     <item>
+      <title>Conditional Gradient Method for Stochastic Submodular Maximization: Closing the Gap</title>
+      <link>/publications/2017/mokhtari-17a/</link>
+      <pubDate>Tue, 03 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2017/mokhtari-17a/</guid>
+      <description>Abstract In this paper, we study the problem of $\textit{constrained}$ and $\textit{stochastic}$ continuous submodular maximization. Even though the objective function is not concave (nor convex) and is defined in terms of an expectation, we develop a variant of the conditional gradient method, called \alg, which achieves a \textit{tight} approximation guarantee. More precisely, for a monotone and continuous DR-submodular function and subject to a $\textit{general}$ convex body constraint, we prove that \alg achieves a $[(1-1/e)\text{OPT} -\eps]$ guarantee (in expectation) with $\mathcal{O}{(1/\eps^3)}$ stochastic gradient computations.</description>
+    </item>
+    
+    <item>
+      <title>Deletion-Robust Submodular Maximization at Scale.</title>
+      <link>/publications/2017/kazemi-17a/</link>
+      <pubDate>Tue, 03 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2017/kazemi-17a/</guid>
+      <description>Abstract Can we efficiently extract useful information from a large user-generated dataset while protecting the privacy of the users and/or ensuring fairness in representation. We cast this problem as an instance of a deletion-robust submodular maximization where part of the data may be deleted due to privacy concerns or fairness criteria. We propose the first memory-efficient centralized, streaming, and distributed methods with constant-factor approximation guarantees against any number of adversarial deletions.</description>
+    </item>
+    
+    <item>
+      <title>Weakly Submodular Maximization Beyond Cardinality Constraints: Does Randomization Help Greedy?</title>
+      <link>/publications/2017/lin-17c/</link>
+      <pubDate>Tue, 03 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2017/lin-17c/</guid>
+      <description>Abstract Submodular functions are a broad class of set functions, which naturally arise in diverse areas. Many algorithms have been suggested for the maximization of these functions. Unfortunately, once the function deviates from submodularity, the known algorithms may perform arbitrarily poorly. Amending this issue, by obtaining approximation results for set functions generalizing submodular functions, has been the focus of recent works. One such class, known as weakly submodular functions, has received a lot of attention.</description>
+    </item>
+    
+    <item>
       <title>Adaptive Sequence Submodularity</title>
       <link>/publications/marko-2019a/</link>
       <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
@@ -270,6 +297,87 @@
       
       <guid>/publications/2018/lin-18b/</guid>
       <description>Abstract Submodular functions are a broad class of set functions that naturally arise in many machine learning applications. Due to their combinatorial structures, there has been a myriad of algorithms for maximizing such functions under various constraints. Unfortunately, once a function deviates from submodularity (even slightly), the known algorithms may perform arbitrarily poorly. Amending this issue, by obtaining approximation results for functions obeying properties that generalize submodularity, has been the focus of several recent works.</description>
+    </item>
+    
+    <item>
+      <title>A Submodular Approach to Create Individualized Parcellations of the Human Brain</title>
+      <link>/publications/2017/mehraveh-17a/</link>
+      <pubDate>Tue, 03 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2017/mehraveh-17a/</guid>
+      <description>Abstract Recent studies on functional neuroimaging (e.g. fMRI) attempt to model the brain as a network. A conventional functional connectivity approach for defining nodes in the network is grouping similar voxels together, a method known as functional parcellation. The majority of previous work on human brain parcellation employs a group-level analysis by collapsing data from the entire population. However, these methods ignore the large amount of inter-individual variability and uniqueness in connectivity.</description>
+    </item>
+    
+    <item>
+      <title>Differentially Private Submodular Maximization: Data Summarization in Disguise.</title>
+      <link>/publications/2017/marko-17a/</link>
+      <pubDate>Tue, 03 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2017/marko-17a/</guid>
+      <description>Abstract Many data summarization applications are captured by the general framework of submodular maximization. As a consequence, a wide range of efficient approximation algorithms have been developed. However, when such applications involve sensitive data about individuals, their privacy concerns are not automatically addressed. To remedy this problem, we propose a general and systematic study of differentially private submodular maximization. We present privacy-preserving algorithms for both monotone and non-monotone submodular maximization under cardinality, matroid, and p-extendible system constraints, with guarantees that are competitive with optimal.</description>
+    </item>
+    
+    <item>
+      <title>Gradient Methods for Submodular Maximization</title>
+      <link>/publications/2017/hassani-17a/</link>
+      <pubDate>Tue, 03 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2017/hassani-17a/</guid>
+      <description>Abstract In this paper, we study the problem of maximizing continuous submodular functions that naturally arise in many learning applications such as those involving utility functions in active learning and sensing, matrix approximations and network inference. Despite the apparent lack of convexity in such functions, we prove that stochastic projected gradient methods can provide strong approximation guarantees for maximizing continuous submodular functions with convex constraints. More specifically, we prove that for monotone continuous DR-submodular functions, all fixed points of projected gradient ascent provide a factor 1/2 approximation to the global maxima.</description>
+    </item>
+    
+    <item>
+      <title>Greed Is Good: Near-Optimal Submodular Maximization via Greedy Optimization.</title>
+      <link>/publications/2017/baharan-17a/</link>
+      <pubDate>Tue, 03 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2017/baharan-17a/</guid>
+      <description>Abstract How can we summarize a dynamic data stream when elements selected for the summary can be deleted at any time? This is an important challenge in online services, where the users generating the data may decide to exercise their right to restrict the service provider from using (part of) their data due to privacy concerns. Motivated by this challenge, we introduce the dynamic deletion-robust submodular maximization problem. We develop the first resilient streaming algorithm, called ROBUST-STREAMING, with a constant factor approximation guarantee to the optimum solution.</description>
+    </item>
+    
+    <item>
+      <title>Greed Is Good: Near-Optimal Submodular Maximization via Greedy Optimization.</title>
+      <link>/publications/2017/moran-17a/</link>
+      <pubDate>Tue, 03 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2017/moran-17a/</guid>
+      <description>Abstract It is known that greedy methods perform well for maximizing \textitmonotone submodular functions. At the same time, such methods perform poorly in the face of non-monotonicity. In this paper, we show—arguably, surprisingly—that invoking the classical greedy algorithm $O(\sqrt(k))$ -times leads to the (currently) fastest deterministic algorithm, called RepeatedGreedy, for maximizing a general submodular function subject to k -independent system constraints. RepeatedGreedy achieves (1+O(1/$\sqrt(k)$))k approximation using $O(nr\sqrt{k})$ function evaluations (here, n and r denote the size of the ground set and the maximum size of a feasible solution, respectively).</description>
+    </item>
+    
+    <item>
+      <title>Interactive Submodular Bandit.</title>
+      <link>/publications/2017/lin-17b/</link>
+      <pubDate>Tue, 03 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2017/lin-17b/</guid>
+      <description>Abstract In many machine learning applications, submodular functions have been used as a model for evaluating the utility or payoff of a set such as news items to recommend, sensors to deploy in a terrain, nodes to influence in a social network, to name a few. At the heart of all these applications is the assumption that the underlying utility/payoff function is known a priori, hence maximizing it is in principle possible.</description>
+    </item>
+    
+    <item>
+      <title>Near-Optimal Active Learning of Halfspaces via Query Synthesis in the Noisy Setting.</title>
+      <link>/publications/2017/lin-17a/</link>
+      <pubDate>Tue, 03 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2017/lin-17a/</guid>
+      <description>Abstract In this paper, we consider the problem of actively learning a linear classifier through query synthesis where the learner can construct artificial queries in order to estimate the true decision boundaries. This problem has recently gained a lot of interest in automated science and adversarial reverse engineering for which only heuristic algorithms are known. In such applications, queries can be constructed de novo to elicit information (e.g., automated science) or to evade detection with minimal cost (e.</description>
+    </item>
+    
+    <item>
+      <title>Probabilistic Submodular Maximization in Sub-Linear Time.</title>
+      <link>/publications/2017/stan-17a/</link>
+      <pubDate>Tue, 03 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2017/stan-17a/</guid>
+      <description>Abstract In this paper, we consider optimizing submodular functions that are drawn from some unknown distribution. This setting arises, e.g., in recommender systems, where the utility of a subset of items may depend on a user-specific submodular utility function. In modern applications, the ground set of items is often so large that even the widely used (lazy) greedy algorithm is not efficient enough. As a remedy, we introduce the problem of sublinear time probabilistic submodular maximization: Given training examples of functions (e.</description>
+    </item>
+    
+    <item>
+      <title>Streaming Weak Submodularity: Interpreting Neural Networks on the Fly.</title>
+      <link>/publications/2017/elenberg-17a/</link>
+      <pubDate>Tue, 03 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2017/elenberg-17a/</guid>
+      <description>Abstract In many machine learning applications, it is important to explain the predictions of a black-box classifier. For example, why does a deep neural network assign an image to a particular class? We cast interpretability of black-box classifiers as a combinatorial maximization problem and propose an efficient streaming algorithm to solve it subject to cardinality constraints. By extending ideas from Badanidiyuru et al. [2014], we provide a constant factor approximation guarantee for our algorithm in the case of random stream order and a weakly submodular objective function.</description>
     </item>
     
     <item>

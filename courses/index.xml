@@ -13,10 +13,10 @@
     
     <item>
       <title>Stochastic Process</title>
-      <link>/courses/cources/</link>
+      <link>/courses/stochastic.md/</link>
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>/courses/cources/</guid>
+      <guid>/courses/stochastic.md/</guid>
       <description>In this course we will go through the following topics:
  Review important notions of probability Expectation Convergence of random variables Law of large numbers Poisson Processes Renewal Processes Markov Chains and Random Walks Martingales If time permits, we will look at a few interesting applications of the above topics.  Textbook: We mainly use &amp;ldquo;Introduction to Stochastic Processes&amp;rdquo; by Erhan Cinlar
 Office Hours:

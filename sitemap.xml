@@ -43,6 +43,21 @@
   </url>
   
   <url>
+    <loc>/publications/2018/ghili-18a/</loc>
+    <lastmod>2018-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publications/2018/mokhtari-18c/</loc>
+    <lastmod>2018-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publications/2018/lin-18d/</loc>
+    <lastmod>2018-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/publications/marko-2019a/</loc>
     <lastmod>2019-01-03T00:00:00+00:00</lastmod>
   </url>
@@ -83,6 +98,56 @@
   </url>
   
   <url>
+    <loc>/publications/2018/mokhtari-18a/</loc>
+    <lastmod>2018-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publications/2018/marko-18a/</loc>
+    <lastmod>2018-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publications/2018/mokhtari-18b/</loc>
+    <lastmod>2018-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publications/2018/feldman-18a/</loc>
+    <lastmod>2018-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publications/2018/lin-18a/</loc>
+    <lastmod>2018-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publications/2018/lin-18c/</loc>
+    <lastmod>2018-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publications/2018/kazemi-2018b/</loc>
+    <lastmod>2018-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publications/2018/kazemi-2018a/</loc>
+    <lastmod>2018-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publications/2018/makro-2018a/</loc>
+    <lastmod>2018-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publications/2018/lin-18b/</loc>
+    <lastmod>2018-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/publications/mehraveh-2020a/</loc>
     <lastmod>2020-01-03T00:00:00+00:00</lastmod>
   </url>
@@ -90,6 +155,16 @@
   <url>
     <loc>/publications/mehraveh-2020b/</loc>
     <lastmod>2020-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publications/2018/mehraveh-2018a/</loc>
+    <lastmod>2018-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publications/2018/karbasi-2018a/</loc>
+    <lastmod>2018-01-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -123,7 +198,7 @@
   </url>
   
   <url>
-    <loc>/courses/cources/</loc>
+    <loc>/courses/stochastic.md/</loc>
     <lastmod>2020-01-03T00:00:00+00:00</lastmod>
   </url>
   

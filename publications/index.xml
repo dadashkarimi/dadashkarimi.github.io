@@ -84,6 +84,33 @@
     </item>
     
     <item>
+      <title>Eliminating Latent Discrimination: Train Then Mask.</title>
+      <link>/publications/2018/ghili-18a/</link>
+      <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2018/ghili-18a/</guid>
+      <description>Abstract How can we control for latent discrimination in predictive models? How can we provably remove it? Such questions are at the heart of algorithmic fairness and its impacts on society. In this paper, we define a new operational fairness criteria, inspired by the well-understood notion of omitted variable-bias in statistics and econometrics. Our notion of fairness effectively controls for sensitive features and provides diagnostics for deviations from fair decision making.</description>
+    </item>
+    
+    <item>
+      <title>Stochastic Conditional Gradient Methods: From Convex Minimization to Submodular Maximization</title>
+      <link>/publications/2018/mokhtari-18c/</link>
+      <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2018/mokhtari-18c/</guid>
+      <description>Abstract This paper considers stochastic optimization problems for a large class of objective functions, including convex and continuous submodular. Stochastic proximal gradient methods have been widely used to solve such problems; however, their applicability remains limited when the problem dimension is large and the projection onto a convex set is costly. Instead, stochastic conditional gradient methods are proposed as an alternative solution relying on (i) Approximating gradients via a simple averaging technique requiring a single stochastic gradient evaluation per iteration; (ii) Solving a linear program to compute the descent/ascent direction.</description>
+    </item>
+    
+    <item>
+      <title>Unconstrained Submodular Maximization with Constant Adaptive Complexity.</title>
+      <link>/publications/2018/lin-18d/</link>
+      <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2018/lin-18d/</guid>
+      <description>Abstract In this paper, we consider the unconstrained submodular maximization problem. We propose the first algorithm for this problem that achieves a tight (1/2−ε)-approximation guarantee using $(ε^{−1})$ adaptive rounds and a linear number of function evaluations. No previously known algorithm for this problem achieves an approximation ratio better than 1/3 using less than Ω(n) rounds of adaptivity, where n is the size of the ground set. Moreover, our algorithm easily extends to the maximization of a non-negative continuous DR-submodular function subject to a box constraint and achieves a tight (1/2−ε)-approximation guarantee for this problem while keeping the same adaptive and query complexities.</description>
+    </item>
+    
+    <item>
       <title>Adaptive Sequence Submodularity</title>
       <link>/publications/marko-2019a/</link>
       <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
@@ -156,6 +183,96 @@
     </item>
     
     <item>
+      <title>Conditional Gradient Method for Stochastic Submodular Maximization: Closing the Gap</title>
+      <link>/publications/2018/mokhtari-18a/</link>
+      <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2018/mokhtari-18a/</guid>
+      <description>Abstract In this paper, we study the problem of constrained and stochastic continuous submodular maximization. Even though the objective function is not concave (nor convex) and is defined in terms of an expectation, we develop a variant of the conditional gradient method, called Stochastic Continuous Greedy, which achieves a tight approximation guarantee. More precisely, for a monotone and continuous DR-submodular function and subject to a general convex body constraint, we prove that Stochastic Continuous Greedy achieves a $[(1−1/e)OPT−\eps]$ guarantee (in expectation) with $O(1/\eps^3)$ stochastic gradient computations.</description>
+    </item>
+    
+    <item>
+      <title>Data Summarization at Scale: A Two-Stage Submodular Approach.</title>
+      <link>/publications/2018/marko-18a/</link>
+      <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2018/marko-18a/</guid>
+      <description>Abstract The sheer scale of modern datasets has resulted in a dire need for summarization techniques that can identify representative elements in a dataset. Fortunately, the vast majority of data summarization tasks satisfy an intuitive diminishing returns condition known as submodularity, which allows us to find nearly-optimal solutions in linear time. We focus on a two-stage submodular framework where the goal is to use some given training functions to reduce the ground set so that optimizing new functions (drawn from the same distribution) over the reduced set provides almost as much value as optimizing them over the entire ground set.</description>
+    </item>
+    
+    <item>
+      <title>Decentralized Submodular Maximization: Bridging Discrete and Continuous Settings.</title>
+      <link>/publications/2018/mokhtari-18b/</link>
+      <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2018/mokhtari-18b/</guid>
+      <description>Abstract In this paper, we showcase the interplay between discrete and continuous optimization in network-structured settings. We propose the first fully decentralized optimization method for a wide class of non-convex objective functions that possess a diminishing returns property. More specifically, given an arbitrary connected network and a global continuous submodular function, formed by a sum of local functions, we develop Decentralized Continuous Greedy (DCG), a message passing algorithm that converges to the tight (1−1/e) approximation factor of the optimum global solution using only local computation and communication.</description>
+    </item>
+    
+    <item>
+      <title>Do Less, Get More: Streaming Submodular Maximization with Subsampling</title>
+      <link>/publications/2018/feldman-18a/</link>
+      <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2018/feldman-18a/</guid>
+      <description>Abstract In this paper, we develop the first one-pass streaming algorithm for submodular maximization that does not evaluate the entire stream even once. By carefully subsampling each element of the data stream, our algorithm enjoys the tightest approximation guarantees in various settings while having the smallest memory footprint and requiring the lowest number of function evaluations. More specifically, for a monotone submodular function and a p-matchoid constraint, our randomized algorithm achieves a 4p approximation ratio (in expectation) with O(k) memory and O(km/p) queries per element (k is the size of the largest feasible solution and m is the number of matroids used to define the constraint).</description>
+    </item>
+    
+    <item>
+      <title>Online Continuous Submodular Maximization.</title>
+      <link>/publications/2018/lin-18a/</link>
+      <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2018/lin-18a/</guid>
+      <description>Abstract In this paper, we consider an online optimization process, where the objective functions are not convex (nor concave) but instead belong to a broad class of continuous submodular functions. We first propose a variant of the Frank-Wolfe algorithm that has access to the full gradient of the objective functions. We show that it achieves a regret bound of $O(\sqrt(T))$ (where T is the horizon of the online optimization problem) against a (1−1/e) -approximation to the best feasible solution in hindsight.</description>
+    </item>
+    
+    <item>
+      <title>Projection-Free Online Optimization with Stochastic Gradient: From Convexity to Submodularity.</title>
+      <link>/publications/2018/lin-18c/</link>
+      <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2018/lin-18c/</guid>
+      <description>Abstract Online optimization has been a successful framework for solving large-scale problems under computational constraints and partial information. Current methods for online convex optimization require either a projection or exact gradient computation at each step, both of which can be prohibitively expensive for large-scale applications. At the same time, there is a growing trend of non-convex optimization in machine learning community and a need for online methods. Continuous DR-submodular functions, which exhibit a natural diminishing returns condition, have recently been proposed as a broad class of non-convex functions which may be efficiently optimized.</description>
+    </item>
+    
+    <item>
+      <title>Scalable Deletion-Robust Submodular Maximization: Data Summarization with Privacy and Fairness Constraints.</title>
+      <link>/publications/2018/kazemi-2018b/</link>
+      <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2018/kazemi-2018b/</guid>
+      <description>Abstract Can we efficiently extract useful information from a large user-generated dataset while protecting the privacy of the users and/or ensuring fairness in representation? We cast this problem as an instance of a deletion-robust submodular maximization where part of the data may be deleted or masked due to privacy concerns or fairness criteria. We propose the first memory-efficient centralized, streaming, and distributed methods with constant-factor approximation guarantees against any number of adversarial deletions.</description>
+    </item>
+    
+    <item>
+      <title>Submodularity on Hypergraphs: From Sets to Sequences.</title>
+      <link>/publications/2018/kazemi-2018a/</link>
+      <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2018/kazemi-2018a/</guid>
+      <description>Abstract In a nutshell, submodular functions encode an intuitive notion of diminishing returns. As a result, submodularity appears in many important machine learning tasks such as feature selection and data summarization. Although there has been a large volume of work devoted to the study of submodular functions in recent years, the vast majority of this work has been focused on algorithms that output sets, not sequences. However, in many settings, the order in which we output items can be just as important as the items themselves.</description>
+    </item>
+    
+    <item>
+      <title>Submodularity on Hypergraphs: From Sets to Sequences.</title>
+      <link>/publications/2018/makro-2018a/</link>
+      <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2018/makro-2018a/</guid>
+      <description>Abstract In a nutshell, submodular functions encode an intuitive notion of diminishing returns. As a result, submodularity appears in many important machine learning tasks such as feature selection and data summarization. Although there has been a large volume of work devoted to the study of submodular functions in recent years, the vast majority of this work has been focused on algorithms that output sets, not sequences. However, in many settings, the order in which we output items can be just as important as the items themselves.</description>
+    </item>
+    
+    <item>
+      <title>Weakly Submodular Maximization Beyond Cardinality Constraints: Does Randomization Help Greedy?</title>
+      <link>/publications/2018/lin-18b/</link>
+      <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2018/lin-18b/</guid>
+      <description>Abstract Submodular functions are a broad class of set functions that naturally arise in many machine learning applications. Due to their combinatorial structures, there has been a myriad of algorithms for maximizing such functions under various constraints. Unfortunately, once a function deviates from submodularity (even slightly), the known algorithms may perform arbitrarily poorly. Amending this issue, by obtaining approximation results for functions obeying properties that generalize submodularity, has been the focus of several recent works.</description>
+    </item>
+    
+    <item>
       <title>Individualized functional networks reconfigure with cognitive state</title>
       <link>/publications/mehraveh-2020a/</link>
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
@@ -171,6 +288,24 @@
       
       <guid>/publications/mehraveh-2020b/</guid>
       <description>Abstract The goal of human brain mapping has long been to delineate the functional subunits in the brain and elucidate the functional role of each of these brain regions. Recent work has focused on whole-brain parcellation of functional Magnetic Resonance Imaging (fMRI) data to identify these subunits and create a functional atlas. Functional connectivity approaches to understand the brain at the network level require such an atlas to assess connections between parcels and extract network properties.</description>
+    </item>
+    
+    <item>
+      <title>An exemplar-based approach to individualized parcellation reveals the need for sex specific functional networks.</title>
+      <link>/publications/2018/mehraveh-2018a/</link>
+      <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2018/mehraveh-2018a/</guid>
+      <description>Abstract Recent work with functional connectivity data has led to significant progress in understanding the functional organization of the brain. While the majority of the literature has focused on group-level parcellation approaches, there is ample evidence that the brain varies in both structure and function across individuals. In this work, we introduce a parcellation technique that incorporates delineation of functional networks both at the individual- and group-level. The proposed technique deploys the notion of “submodularity” to jointly parcellate the cerebral cortex while establishing an inclusive correspondence between the individualized functional networks.</description>
+    </item>
+    
+    <item>
+      <title>Learning neural connectivity from firing activity: efficient algorithms with provable guarantees on topology.</title>
+      <link>/publications/2018/karbasi-2018a/</link>
+      <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2018/karbasi-2018a/</guid>
+      <description>Abstract The connectivity of a neuronal network has a major effect on its functionality and role. It is generally believed that the complex network structure of the brain provides a physiological basis for information processing. Therefore, identifying the network’s topology has received a lot of attentions in neuroscience and has been the center of many research initiatives such as Human Connectome Project. Nevertheless, direct and invasive approaches that slice and observe the neural tissue have proven to be time consuming, complex and costly.</description>
     </item>
     
   </channel>

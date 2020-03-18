@@ -615,6 +615,42 @@
     </item>
     
     <item>
+      <title>Comparison-Based Learning with Rank Nets.</title>
+      <link>/publications/2012/karbasi-12a/</link>
+      <pubDate>Tue, 03 Jan 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2012/karbasi-12a/</guid>
+      <description>Abstract We consider the problem of search through comparisons, where a user is presented with two candidate objects and reveals which is closer to her intended target. We study adap- tive strategies for finding the target, that require knowledge of rank relationships but not actual distances between objects. We propose a new strategy based on rank nets, and show that for target distributions with a bounded doubling constant, it finds the tar- get in a number of comparisons close to the entropy of the target distribution and, hence, of the optimum.</description>
+    </item>
+    
+    <item>
+      <title>Hot or not: Interactive content search using comparisons</title>
+      <link>/publications/2012/karbasi-12b/</link>
+      <pubDate>Tue, 03 Jan 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2012/karbasi-12b/</guid>
+      <description>Abstract In interactive content search through comparisons, a user searching for a target object in a database is asked to select the object most similar to her target from a small list of objects. A new object list is then presented to the user based on her earlier selections. This process is repeated until the target is included in the list presented, at which point the search terminates. We study this problem under the scenario of heterogeneous demand, where target objects are selected from a non-uniform probability distribution.</description>
+    </item>
+    
+    <item>
+      <title>Multi-level error-resilient neural networks.</title>
+      <link>/publications/2012/salavati-12a/</link>
+      <pubDate>Tue, 03 Jan 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2012/salavati-12a/</guid>
+      <description>Abstract The problem of neural network association is to retrieve a previously memorized pattern from its noisy version using a network of neurons. An ideal neural network should include three components simultaneously: a learning algorithm, a large pattern retrieval capacity and resilience against noise. Prior works in this area usually improve one or two aspects at the cost of the third. Our work takes a step forward in closing this gap.</description>
+    </item>
+    
+    <item>
+      <title>Sequential group testing with graph constraints</title>
+      <link>/publications/2012/karbasi-12c/</link>
+      <pubDate>Tue, 03 Jan 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2012/karbasi-12c/</guid>
+      <description>Abstract In conventional group testing, the goal is to detect a small subset of defecting items D in a large population N by grouping arbitrary subset of N into different pools. The result of each group test T is a binary output depending on whether the group contains a defective item or not. The main challenge is to minimize the number of pools required to identify the set D. Motivated by applications in network monitoring and infection propagation, we consider the problem of group testing with graph constraints.</description>
+    </item>
+    
+    <item>
       <title>Individualized functional networks reconfigure with cognitive state</title>
       <link>/publications/2020/mehraveh-2020a/</link>
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
@@ -720,6 +756,24 @@
       
       <guid>/publications/2013/karbasi-13a/</guid>
       <description>Abstract We consider the problem of localizing wireless devices in an ad hoc network embedded in a d-dimensional Euclidean space. Obtaining a good estimate of where wireless devices are located is crucial in wireless network applications including environment monitoring, geographic routing, and topology control. When the positions of the devices are unknown and only local distance information is given, we need to infer the positions from these local distance measurements. This problem is particularly challenging when we only have access to measurements that have limited accuracy and are incomplete.</description>
+    </item>
+    
+    <item>
+      <title>Graph-Constrained Group Testing.</title>
+      <link>/publications/2012/cheraghchi-12a/</link>
+      <pubDate>Tue, 03 Jan 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2012/cheraghchi-12a/</guid>
+      <description>Abstract Nonadaptive group testing involves grouping arbitrary subsets of n items into different pools. Each pool is then tested and defective items are identified. A fundamental question involves minimizing the number of pools required to identify at most d defective items. Motivated by applications in network tomography, sensor networks and infection propagation, a variation of group testing problems on graphs is formulated. Unlike conventional group testing problems, each group here must conform to the constraints imposed by a graph.</description>
+    </item>
+    
+    <item>
+      <title>Low-Rank Matrix Approximation Using Point-Wise Operators.</title>
+      <link>/publications/2012/amini-12a/</link>
+      <pubDate>Tue, 03 Jan 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2012/amini-12a/</guid>
+      <description>Abstract The problem of extracting low-dimensional structure from high-dimensional data arises in many applications such as machine learning, statistical pattern recognition, wireless sensor networks, and data compression. If the data is restricted to a lower dimensional subspace, then simple algorithms using linear projections can find the subspace and consequently estimate its dimensionality. However, if the data lies on a low-dimensional but nonlinear space (e.g., manifolds), then its structure may be highly nonlinear and, hence, linear methods are doomed to fail.</description>
     </item>
     
   </channel>

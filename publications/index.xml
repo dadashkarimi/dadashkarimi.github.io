@@ -174,15 +174,6 @@
     </item>
     
     <item>
-      <title>Convolutional Neural Associative Memories: Massive Capacity with Noise Tolerance.</title>
-      <link>/publications/2014/karbasi-14b/</link>
-      <pubDate>Fri, 03 Jan 2014 00:00:00 +0000</pubDate>
-      
-      <guid>/publications/2014/karbasi-14b/</guid>
-      <description>Abstract The task of a neural associative memory is to retrieve a set of previously memorized patterns from their noisy versions using a network of neurons. An ideal network should have the ability to 1) learn a set of patterns as they arrive, 2) retrieve the correct patterns from noisy queries, and 3) maximize the pattern retrieval capacity while maintaining the reliability in responding to queries. The majority of work on neural associative memories has focused on designing networks capable of memorizing any set of randomly chosen patterns at the expense of limiting the retrieval capacity.</description>
-    </item>
-    
-    <item>
       <title>Distributed Submodular Maximization</title>
       <link>/publications/2014/baharan-14a/</link>
       <pubDate>Fri, 03 Jan 2014 00:00:00 +0000</pubDate>
@@ -648,6 +639,15 @@
       
       <guid>/publications/2015/karbasi-15a/</guid>
       <description>Abstract The problem of content search through comparisons has recently received considerable attention. In short, a user searching for a target object navigates through a database in the following manner. The user is asked to select the object most similar to her target from a small list of objects. A new object list is then presented to the user based on her earlier selection. This process is repeated until the target is included in the list presented, at which point the search terminates.</description>
+    </item>
+    
+    <item>
+      <title>Convolutional Neural Associative Memories: Massive Capacity with Noise Tolerance.</title>
+      <link>/publications/2014/karbasi-14b/</link>
+      <pubDate>Fri, 03 Jan 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2014/karbasi-14b/</guid>
+      <description>Abstract The task of a neural associative memory is to retrieve a set of previously memorized patterns from their noisy versions using a network of neurons. An ideal network should have the ability to 1) learn a set of patterns as they arrive, 2) retrieve the correct patterns from noisy queries, and 3) maximize the pattern retrieval capacity while maintaining the reliability in responding to queries. The majority of work on neural associative memories has focused on designing networks capable of memorizing any set of randomly chosen patterns at the expense of limiting the retrieval capacity.</description>
     </item>
     
     <item>

@@ -165,6 +165,15 @@
     </item>
     
     <item>
+      <title>Seeing the Unseen Network: Inferring Hidden Social Ties from Respondent-Driven Sampling.</title>
+      <link>/publications/2015/lin-15a/</link>
+      <pubDate>Sat, 03 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2015/lin-15a/</guid>
+      <description>Abstract Learning about the social structure of hidden and hard-to-reach populations &amp;mdash; such as drug users and sex workers &amp;mdash; is a major goal of epidemiological and public health research on risk behaviors and disease prevention. Respondent-driven sampling (RDS) is a peer-referral process widely used by many health organizations, where research subjects recruit other subjects from their social network. In such surveys, researchers observe who recruited whom, along with the time of recruitment and the total number of acquaintances (network degree) of respondents.</description>
+    </item>
+    
+    <item>
       <title>Adaptive Sequence Submodularity</title>
       <link>/publications/2019/marko-2019a/</link>
       <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
@@ -444,6 +453,87 @@
     </item>
     
     <item>
+      <title>Asynchronous decoding of LDPC codes over BEC.</title>
+      <link>/publications/2015/haghighatshoar-15a/</link>
+      <pubDate>Sat, 03 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2015/haghighatshoar-15a/</guid>
+      <description>Abstract LDPC codes are typically decoded by running a synchronous message passing algorithm over the corresponding bipartite factor graph (made of variable and check nodes). More specifically, each synchronous round consists of 1) updating all variable nodes based on the information received from the check nodes in the previous round, and then 2) updating all the check nodes based on the information sent from variable nodes in the current round. However, in many applications, ranging from message passing in neural networks to hardware implementation of LDPC codes, assuming that all messages are sent and received at the same time is far from realistic.</description>
+    </item>
+    
+    <item>
+      <title>Distributed Submodular Cover: Succinctly Summarizing Massive Data. </title>
+      <link>/publications/2015/baharan-15b/</link>
+      <pubDate>Sat, 03 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2015/baharan-15b/</guid>
+      <description>Abstract How can one find a subset, ideally as small as possible, that well represents a massive dataset? I.e., its corresponding utility, measured according to a suitable utility function, should be comparable to that of the whole dataset. In this paper, we formalize this challenge as a submodular cover problem. Here, the utility is assumed to exhibit submodularity, a natural diminishing returns condition preva- lent in many data summarization applications. The classical greedy algorithm is known to provide solutions with logarithmic approximation guarantees compared to the optimum solution.</description>
+    </item>
+    
+    <item>
+      <title>Fast Mixing for Discrete Point Processes</title>
+      <link>/publications/2015/rebeschini-15a/</link>
+      <pubDate>Sat, 03 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2015/rebeschini-15a/</guid>
+      <description>Abstract We investigate the systematic mechanism for designing fast mixing Markov chain Monte Carlo algorithms to sample from discrete point processes under the Dobrushin uniqueness condition for Gibbs measures. Discrete point processes are defined as probability distributions μ(S)∝\exp(βf(S)) over all subsets $S\in 2^V$ of a finite set V through a bounded set function $f:2^V→\mathbb{R}$ and a parameter β&amp;gt;0. A subclass of discrete point processes characterized by submodular functions (which include log-submodular distributions, submodular point processes, and determinantal point processes) has recently gained a lot of interest in machine learning and shown to be effective for modeling diversity and coverage.</description>
+    </item>
+    
+    <item>
+      <title>Lazier Than Lazy Greedy.</title>
+      <link>/publications/2015/baharan-15a/</link>
+      <pubDate>Sat, 03 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2015/baharan-15a/</guid>
+      <description>Abstract Is it possible to maximize a monotone submodular function faster than the widely used lazy greedy algorithm (also known as accelerated greedy), both in theory and practice? In this paper, we develop the first linear-time algorithm for maximizing a general monotone submodular function subject to a cardinality constraint. We show that our randomized algorithm, STOCHASTIC-GREEDY, can achieve a (1 − 1/e − ε) approximation guarantee, in expectation, to the optimum solution in time linear in the size of the data and independent of the cardinality constraint.</description>
+    </item>
+    
+    <item>
+      <title>Non-Monotone Adaptive Submodular Maximization.</title>
+      <link>/publications/2015/gotovos-15a/</link>
+      <pubDate>Sat, 03 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2015/gotovos-15a/</guid>
+      <description>Abstract A wide range of AI problems, such as sensor placement, active learning, and network influence maximization, require sequentially selecting elements from a large set with the goal of optimizing the utility of the selected subset. Moreover, each element that is picked may provide stochastic feedback, which can be used to make smarter decisions about future selections. Finding efficient policies for this general class of adaptive optimization problems can be extremely hard.</description>
+    </item>
+    
+    <item>
+      <title>Normalization Phenomena in Asynchronous Networks.</title>
+      <link>/publications/2015/karbasi-15b/</link>
+      <pubDate>Sat, 03 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2015/karbasi-15b/</guid>
+      <description>Abstract In this work we study a diffusion process in a network that consists of two types of vertices: inhibitory vertices (those obstructing the diffusion) and excitatory vertices (those facilitating the diffusion). We consider a continuous time model in which every edge of the network draws its transmission time randomly. For such an asynchronous diffusion process it has been recently proven that in Erdős-Rényi random graphs a normalization phenomenon arises: whenever the diffusion starts from a large enough (but still tiny) set of active vertices, it only percolates to a certain level that depends only on the activation threshold and the ratio of inhibitory to excitatory vertices.</description>
+    </item>
+    
+    <item>
+      <title>Sequential Information Maximization: When is Greedy Near-optimal?</title>
+      <link>/publications/2015/chen-15b/</link>
+      <pubDate>Sat, 03 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2015/chen-15b/</guid>
+      <description>Abstract Optimal information gathering is a central challenge in machine learning and science in general. A common objective that quantifies the usefulness of observations is Shannon’s mutual information, defined w.r.t. a probabilistic model. Greedily selecting observations that maximize the mutual information is the method of choice in numerous applications, ranging from Bayesian experimental design to automated diagnosis, to active learning in Bayesian models. Despite its importance and widespread use in applications, little is known about the theoretical properties of sequential information maximization, in particular under noisy observations.</description>
+    </item>
+    
+    <item>
+      <title>Submodular Surrogates for Value of Information</title>
+      <link>/publications/2015/chen-15a/</link>
+      <pubDate>Sat, 03 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2015/chen-15a/</guid>
+      <description>Abstract How should we gather information to make effective decisions? A classical answer to this fundamental problem is given by the decision-theoretic value of information. Unfortunately, optimizing this objective is intractable, and myopic (greedy) approximations are known to perform poorly. In this paper, we introduce DiRECt, an efficient yet near-optimal algorithm for nonmyopically optimizing value of information. Crucially, DiRECt uses a novel surrogate objective that is: (1) aligned with the value of information problem (2) efficient to evaluate and (3) adaptive submodular.</description>
+    </item>
+    
+    <item>
+      <title>Tradeoffs for Space, Time, Data and Risk in Unsupervised Learning.</title>
+      <link>/publications/2015/lucic-15a/</link>
+      <pubDate>Sat, 03 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2015/lucic-15a/</guid>
+      <description>Abstract Faced with massive data, is it possible to trade off (statistical) risk, and (computational) space and time? This challenge lies at the heart of large-scale machine learning. Using k-means clustering as a prototypical unsupervised learning problem, we show how we can strategically summarize the data (control space) in order to trade off risk and time when data is generated by a probabilistic model. Our summarization is based on coreset constructions from computational geometry.</description>
+    </item>
+    
+    <item>
       <title>Individualized functional networks reconfigure with cognitive state</title>
       <link>/publications/2020/mehraveh-2020a/</link>
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
@@ -504,6 +594,24 @@
       
       <guid>/publications/2016/baharan-16c/</guid>
       <description>Abstract In this paper, we introduce the public-private framework of data summarization motivated by privacy concerns in personalized recommender systems and online social services. Such systems have usually access to massive data generated by a large pool of users. A major fraction of the data is public and is visible to (and can be used for) all users. However, each user can also contribute some private data that should not be shared with other users to ensure her privacy.</description>
+    </item>
+    
+    <item>
+      <title>From Small-World Networks to Comparison-Based Search.</title>
+      <link>/publications/2015/karbasi-15a/</link>
+      <pubDate>Sat, 03 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2015/karbasi-15a/</guid>
+      <description>Abstract The problem of content search through comparisons has recently received considerable attention. In short, a user searching for a target object navigates through a database in the following manner. The user is asked to select the object most similar to her target from a small list of objects. A new object list is then presented to the user based on her earlier selection. This process is repeated until the target is included in the list presented, at which point the search terminates.</description>
+    </item>
+    
+    <item>
+      <title>Noise Facilitation in Associative Memories of Exponential Capacity.</title>
+      <link>/publications/2014/karbasi-14a/</link>
+      <pubDate>Fri, 03 Jan 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2014/karbasi-14a/</guid>
+      <description>Abstract Recent advances in associative memory design through structured pattern sets and graph-based inference algorithms have allowed reliable learning and recall of an exponential number of patterns that satisfy certain subspace constraints. Although these designs correct external errors in recall, they assume neurons that compute noiselessly, in contrast to the highly variable neurons in brain regions thought to operate associatively, such as hippocampus and olfactory cortex. Here we consider associative memories with boundedly noisy internal computations and analytically characterize performance.</description>
     </item>
     
   </channel>

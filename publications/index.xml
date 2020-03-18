@@ -570,6 +570,51 @@
     </item>
     
     <item>
+      <title>Constrained Binary Identification Problem</title>
+      <link>/publications/2013/karbasi-13e/</link>
+      <pubDate>Thu, 03 Jan 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2013/karbasi-13e/</guid>
+      <description>Abstract We consider the problem of building a binary decision tree, to locate an object within a set by way of the least number of membership queries. This problem is equivalent to the &amp;ldquo;20 questions game&amp;rdquo; of information theory and is closely related to lossless source compression. If any query is admissible, Huffman coding is optimal with close to H[P] questions on average, the entropy of the prior distribution P over objects.</description>
+    </item>
+    
+    <item>
+      <title>Coupled neural associative memories.</title>
+      <link>/publications/2013/karbasi-13c/</link>
+      <pubDate>Thu, 03 Jan 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2013/karbasi-13c/</guid>
+      <description>Abstract We propose a novel architecture to design a neural associative memory that is capable of learning a large number of patterns and recalling them later in presence of noise. It is based on dividing the neurons into local clusters and parallel plains, an architecture that is similar to the visual cortex of macaque brain. The common features of our proposed model with those of spatially-coupled codes enable us to show that the performance of such networks in eliminating noise is drastically better than the previous approaches while maintaining the ability of learning an exponentially large number of patterns.</description>
+    </item>
+    
+    <item>
+      <title>Distributed Submodular Maximization: Identifying Representative Elements in Massive Data.</title>
+      <link>/publications/2013/baharan-13a/</link>
+      <pubDate>Thu, 03 Jan 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2013/baharan-13a/</guid>
+      <description>Abstract Many large-scale machine learning problems (such as clustering, non-parametric learning, kernel machines, etc.) require selecting, out of a massive data set, a manageable, representative subset. Such problems can often be reduced to maximizing a submodular set function subject to cardinality constraints. Classical approaches require centralized access to the full data set; but for truly large-scale problems, rendering the data centrally is often impractical. In this paper, we consider the problem of submodular function maximization in a distributed fashion.</description>
+    </item>
+    
+    <item>
+      <title>Iterative Learning and Denoising in Convolutional Neural Associative Memories.</title>
+      <link>/publications/2013/karbasi-13b/</link>
+      <pubDate>Thu, 03 Jan 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2013/karbasi-13b/</guid>
+      <description>Abstract The task of a neural associative memory is to retrieve a set of previously memorized patterns from their noisy versions by using a network of neurons. Hence, an ideal network should be able to 1) gradually learn a set of patterns, 2) retrieve the correct pattern from noisy queries and 3) maximize the number of memorized patterns while maintaining the reliability in responding to queries. We show that by considering the inherent redundancy in the memorized patterns, one can obtain all the mentioned properties at once.</description>
+    </item>
+    
+    <item>
+      <title>Noise-Enhanced Associative Memories</title>
+      <link>/publications/2013/karbasi-13d/</link>
+      <pubDate>Thu, 03 Jan 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2013/karbasi-13d/</guid>
+      <description>Abstract Recent advances in associative memory design through structured pattern sets and graph-based inference algorithms have allowed reliable learning and recall of an exponential number of patterns. Although these designs correct external errors in recall, they assume neurons that compute noiselessly, in contrast to the highly variable neurons in hippocampus and olfactory cortex. Here we consider associative memories with noisy internal computations and analytically characterize performance. As long as the internal noise level is below a specified threshold, the error probability in the recall phase can be made exceedingly small.</description>
+    </item>
+    
+    <item>
       <title>Individualized functional networks reconfigure with cognitive state</title>
       <link>/publications/2020/mehraveh-2020a/</link>
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
@@ -657,6 +702,24 @@
       
       <guid>/publications/2014/karbasi-14a/</guid>
       <description>Abstract Recent advances in associative memory design through structured pattern sets and graph-based inference algorithms have allowed reliable learning and recall of an exponential number of patterns that satisfy certain subspace constraints. Although these designs correct external errors in recall, they assume neurons that compute noiselessly, in contrast to the highly variable neurons in brain regions thought to operate associatively, such as hippocampus and olfactory cortex. Here we consider associative memories with boundedly noisy internal computations and analytically characterize performance.</description>
+    </item>
+    
+    <item>
+      <title>Calibration Using Matrix Completion With Application to Ultrasound Tomography.</title>
+      <link>/publications/2013/parhizkar-13a/</link>
+      <pubDate>Thu, 03 Jan 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2013/parhizkar-13a/</guid>
+      <description>Abstract We study the application of matrix completion in the process of calibrating physical devices. In particular we propose an algorithm together with reconstruction bounds for calibrating circular ultrasound tomography devices. We use the time-of-flight (ToF) measurements between sensor pairs in a homogeneous medium to calibrate the system. The calibration process consists of a low-rank matrix completion algorithm to de-noise and estimate random and structured missing ToFs, and the classic multi-dimensional scaling method to estimate the sensor positions from the ToF measurements.</description>
+    </item>
+    
+    <item>
+      <title>Robust Localization From Incomplete Local Information</title>
+      <link>/publications/2013/karbasi-13a/</link>
+      <pubDate>Thu, 03 Jan 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2013/karbasi-13a/</guid>
+      <description>Abstract We consider the problem of localizing wireless devices in an ad hoc network embedded in a d-dimensional Euclidean space. Obtaining a good estimate of where wireless devices are located is crucial in wireless network applications including environment monitoring, geographic routing, and topology control. When the positions of the devices are unknown and only local distance information is given, we need to infer the positions from these local distance measurements. This problem is particularly challenging when we only have access to measurements that have limited accuracy and are incomplete.</description>
     </item>
     
   </channel>

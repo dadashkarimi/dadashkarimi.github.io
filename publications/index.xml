@@ -183,6 +183,42 @@
     </item>
     
     <item>
+      <title>Adaptive Content Search Through Comparisons</title>
+      <link>/publications/2011/karbasi-11c/</link>
+      <pubDate>Mon, 03 Jan 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2011/karbasi-11c/</guid>
+      <description>Abstract The problem of content search through comparisons has recently received considerable attention. In short, a user searching for a target object navigates through a database in the following manner: the user is asked to select the object most similar to her target from a small list of objects. A new object list is then presented to the user based on her earlier selection. This process is repeated until the target is included in the list presented, at which point the search terminates.</description>
+    </item>
+    
+    <item>
+      <title>Robust Localization from Incomplete Local Information</title>
+      <link>/publications/2011/karbasi-11d/</link>
+      <pubDate>Mon, 03 Jan 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2011/karbasi-11d/</guid>
+      <description>Abstract We consider the problem of localizing wireless devices in an ad-hoc network embedded in a d-dimensional Euclidean space. Obtaining a good estimation of where wireless devices are located is crucial in wireless network applications including environment monitoring, geographic routing and topology control. When the positions of the devices are unknown and only local distance information is given, we need to infer the positions from these local distance measurements. This problem is particularly challenging when we only have access to measurements that have limited accuracy and are incomplete.</description>
+    </item>
+    
+    <item>
+      <title>Calibration for Ultrasound Breast Tomography Using Matrix Completion</title>
+      <link>/publications/2010/parhizkar-11a/</link>
+      <pubDate>Sun, 03 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2010/parhizkar-11a/</guid>
+      <description>Abstract We study the calibration process in circular ultrasound tomography devices where the sensor positions deviate from the circumference of a perfect circle. This problem arises in a variety of applications in signal processing ranging from breast imaging to sensor network localization. We introduce a novel method of calibration/localization based on the time-of-flight (ToF) measurements between sensors when the enclosed medium is homogeneous. In the presence of all the pairwise ToFs, one can easily estimate the sensor positions using multi-dimensional scaling (MDS) method.</description>
+    </item>
+    
+    <item>
+      <title>Group Testing with Probabilistic Tests: Theory, Design and Application</title>
+      <link>/publications/2010/cheraghchi-11b/</link>
+      <pubDate>Sun, 03 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2010/cheraghchi-11b/</guid>
+      <description>Abstract Identification of defective members of large populations has been widely studied in the statistics community under the name of group testing. It involves grouping subsets of items into different pools and detecting defective members based on the set of test results obtained for each pool. In a classical noiseless group testing setup, it is assumed that the sampling procedure is fully known to the reconstruction algorithm, in the sense that the existence of a defective member in a pool results in the test outcome of that pool to be positive.</description>
+    </item>
+    
+    <item>
       <title>Adaptive Sequence Submodularity</title>
       <link>/publications/2019/marko-2019a/</link>
       <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
@@ -651,6 +687,60 @@
     </item>
     
     <item>
+      <title>Calibration in circular ultrasound tomography devices.</title>
+      <link>/publications/2011/parhizkar-11a/</link>
+      <pubDate>Mon, 03 Jan 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2011/parhizkar-11a/</guid>
+      <description>Abstract We consider the position calibration problem in circular tomography devices, where sensors deviate from a perfect circle. We introduce a new method of calibration based on the time-of-fiight measurements between sensors when the enclosed medium is homogeneous. Bounds on the reconstruction errors are proven and results of simulations mimicking a scanning device are presented.</description>
+    </item>
+    
+    <item>
+      <title>Compression with graphical constraints: An interactive browser</title>
+      <link>/publications/2011/karbasi-11b/</link>
+      <pubDate>Mon, 03 Jan 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2011/karbasi-11b/</guid>
+      <description>Abstract We study the problem of searching for a given element in a set of objects using a membership oracle. The membership oracle, given a subset of objects A, and a target object t, determines whether A contains t or not. The goal is to find the target object with the minimum number of questions asked from the oracle. This problem is known to be strongly related to lossless source compression.</description>
+    </item>
+    
+    <item>
+      <title>Content Search through Comparisons.</title>
+      <link>/publications/2011/karbasi-11a/</link>
+      <pubDate>Mon, 03 Jan 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2011/karbasi-11a/</guid>
+      <description>Abstract We study the problem of navigating through a database of similar objects using comparisons under heterogeneous demand, a problem closely related to small-world network design. We show that, under heterogeneous demand, the small-world network design problem is NP-hard. Given the above negative result, we propose a novel mechanism for small-world network design and provide an upper bound on its performance under heterogeneous demand. The above mechanism has a natural equivalent in the context of content search through comparisons, again under heterogeneous demand; we use this to establish both upper and lower bounds on content search through comparisons.</description>
+    </item>
+    
+    <item>
+      <title>Distributed sensor network localization from local connectivity: performance analysis for the HOP-TERRAIN algorithm.</title>
+      <link>/publications/2010/karbasi-11b/</link>
+      <pubDate>Sun, 03 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2010/karbasi-11b/</guid>
+      <description>Abstract This paper addresses the problem of determining the node locations in ad-hoc sensor networks when only connectivity information is available. In previous work, we showed that the localization algorithm MDS-MAP proposed by Y. Shang et al. is able to localize sensors up to a bounded error decreasing at a rate inversely proportional to the radio range r. The main limitation of MDS-MAP is the assumption that the available connectivity information is processed in a centralized way.</description>
+    </item>
+    
+    <item>
+      <title>From centralized to distributed sensor localization.</title>
+      <link>/publications/2010/karbasi-11a/</link>
+      <pubDate>Sun, 03 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2010/karbasi-11a/</guid>
+      <description>Abstract In this work we consider the problem of sensor network localization when only the connectivity information is available. More specifically, we compare the performance of the centralized algorithm MDS-MAP with its distributed version HOP-TERRAIN. We show that both algorithms are able to localize sensors up to a bounded error decreasing at a rate inversely proportional to the radio range r.</description>
+    </item>
+    
+    <item>
+      <title>Graph-constrained group testing.</title>
+      <link>/publications/2010/cheraghchi-11a/</link>
+      <pubDate>Sun, 03 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2010/cheraghchi-11a/</guid>
+      <description>Abstract Non-adaptive group testing involves grouping arbitrary subsets of n items into different pools and identifying defective items based on tests obtained for each pool. Motivated by applications in network tomography, sensor networks and infection propagation we formulate non-adaptive group testing problems on graphs. Unlike conventional group testing problems each group here must conform to the constraints imposed by a graph. For instance, items can be associated with vertices and each pool is any set of nodes that must be path connected.</description>
+    </item>
+    
+    <item>
       <title>Individualized functional networks reconfigure with cognitive state</title>
       <link>/publications/2020/mehraveh-2020a/</link>
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
@@ -774,6 +864,15 @@
       
       <guid>/publications/2012/amini-12a/</guid>
       <description>Abstract The problem of extracting low-dimensional structure from high-dimensional data arises in many applications such as machine learning, statistical pattern recognition, wireless sensor networks, and data compression. If the data is restricted to a lower dimensional subspace, then simple algorithms using linear projections can find the subspace and consequently estimate its dimensionality. However, if the data lies on a low-dimensional but nonlinear space (e.g., manifolds), then its structure may be highly nonlinear and, hence, linear methods are doomed to fail.</description>
+    </item>
+    
+    <item>
+      <title>Group Testing With Probabilistic Tests: Theory, Design and Application.</title>
+      <link>/publications/2011/cheraghchi-11a/</link>
+      <pubDate>Mon, 03 Jan 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2011/cheraghchi-11a/</guid>
+      <description>Abstract Identification of defective members of large populations has been widely studied in the statistics community under the name of group testing. It involves grouping subsets of items into different pools and detecting defective members based on the set of test results obtained for each pool. In a classical noiseless group testing setup, it is assumed that the sampling procedure is fully known to the reconstruction algorithm, in the sense that the existence of a defective member in a pool results in the test outcome of that pool to be positive.</description>
     </item>
     
   </channel>

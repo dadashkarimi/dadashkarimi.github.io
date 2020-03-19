@@ -219,6 +219,24 @@
     </item>
     
     <item>
+      <title>An Estimation Theoretic Approach for Sparsity Pattern Recovery in the Noisy Setting</title>
+      <link>/publications/2009/hormati-09a/</link>
+      <pubDate>Sat, 03 Jan 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2009/hormati-09a/</guid>
+      <description>Abstract Compressed sensing deals with the reconstruction of sparse signals using a small number of linear measurements. One of the main challenges in compressed sensing is to find the support of a sparse signal. In the literature, several bounds on the scaling law of the number of measurements for successful support recovery have been derived where the main focus is on random Gaussian measurement matrices. In this paper, we investigate the noisy support recovery problem from an estimation theoretic point of view, where no specific assumption is made on the underlying measurement matrix.</description>
+    </item>
+    
+    <item>
+      <title>Compressed Sensing with Probabilistic Measurements: A Group Testing Solution</title>
+      <link>/publications/2009/cheraghchi-09a/</link>
+      <pubDate>Sat, 03 Jan 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2009/cheraghchi-09a/</guid>
+      <description>Abstract Detection of defective members of large populations has been widely studied in the statistics community under the name &amp;ldquo;group testing&amp;rdquo;, a problem which dates back to World War II when it was suggested for syphilis screening. There the main interest is to identify a small number of infected people among a large population using collective samples. In viral epidemics, one way to acquire collective samples is by sending agents inside the population.</description>
+    </item>
+    
+    <item>
       <title>Adaptive Sequence Submodularity</title>
       <link>/publications/2019/marko-2019a/</link>
       <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
@@ -738,6 +756,15 @@
       
       <guid>/publications/2010/cheraghchi-11a/</guid>
       <description>Abstract Non-adaptive group testing involves grouping arbitrary subsets of n items into different pools and identifying defective items based on tests obtained for each pool. Motivated by applications in network tomography, sensor networks and infection propagation we formulate non-adaptive group testing problems on graphs. Unlike conventional group testing problems each group here must conform to the constraints imposed by a graph. For instance, items can be associated with vertices and each pool is any set of nodes that must be path connected.</description>
+    </item>
+    
+    <item>
+      <title>Support recovery in compressed sensing: An estimation theoretic approach.</title>
+      <link>/publications/2009/karbasi-09a/</link>
+      <pubDate>Sat, 03 Jan 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2009/karbasi-09a/</guid>
+      <description>Abstract Compressed sensing (CS) deals with the reconstruction of sparse signals from a small number of linear measurements. One of the main challenges in CS is to find the support of a sparse signal from a set of noisy observations. In the CS literature, several information-theoretic bounds on the scaling law of the required number of measurements for exact support recovery have been derived, where the focus is mainly on random measurement matrices.</description>
     </item>
     
     <item>

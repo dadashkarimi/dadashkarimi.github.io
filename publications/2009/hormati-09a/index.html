@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Inference, Information,  and Decision Group">
+    <meta name="description" content="">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta property="og:site_name" content="Amin Karbasi">
+    <meta property="og:title" content="
+  An Estimation Theoretic Approach for Sparsity Pattern Recovery in the Noisy Setting - Amin Karbasi
+">
+    <meta property="og:description" content="publication">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/publications/2009/hormati-09a/">
+    <meta property="og:image" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="/publications/2009/hormati-09a/">
+    <meta name="twitter:image" content="">
+
+    <base href="/publications/2009/hormati-09a/">
+    <title>
+  An Estimation Theoretic Approach for Sparsity Pattern Recovery in the Noisy Setting - Amin Karbasi
+</title>
+
+    <link rel="canonical" href="/publications/2009/hormati-09a/">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    
+    <link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700">
+    <link rel="stylesheet" href="/css/normalize.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    
+      <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Amin Karbasi">
+      <link href="/index.xml" rel="feed" type="application/rss+xml" title="Amin Karbasi" />
+    
+
+    <meta name="generator" content="Hugo 0.67.0" />
+  </head>
+
+  <body class="">
+    <main class="wrapper">
+      
+<link href="https://fonts.googleapis.com/css?family=Baloo+Chettan+2&display=swap" rel="stylesheet">
+<nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">Amin Karbasi</a>
+    <input type="checkbox" id="menu-control"/>
+    <label class="menu-mobile  float-right " for="menu-control">
+      <span class="btn-mobile  float-right ">&#9776;</span>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item  align-center ">
+              <a class="navigation-link" href="/">About</a>
+            </li>
+          
+            <li class="navigation-item  align-center ">
+              <a class="navigation-link" href="/people">People</a>
+            </li>
+          
+            <li class="navigation-item  align-center ">
+              <a class="navigation-link" href="/publications/">Publications</a>
+            </li>
+          
+            <li class="navigation-item  align-center ">
+              <a class="navigation-link" href="/research">Research</a>
+            </li>
+          
+            <li class="navigation-item  align-center ">
+              <a class="navigation-link" href="/courses">Teaching</a>
+            </li>
+          
+            <li class="navigation-item  align-center ">
+              <a class="navigation-link" href="/openings">Openings</a>
+            </li>
+          
+            <li class="navigation-item  align-center ">
+              <a class="navigation-link" href="/contact">Contact</a>
+            </li>
+          
+        
+        
+      </ul>
+    </label>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container page">
+	<article>
+		<header>
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+			<div></div>
+			<h1 >Title:&nbsp;An Estimation Theoretic Approach for Sparsity Pattern Recovery in the Noisy Setting</h1>
+			<h1 >Authors:&nbsp;Ali Hormati, Amin Karbasi, Soheil Mohajer, Martin Vetterli</h1>
+			<div>
+			
+			<script type="text/javascript" async
+	   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full">
+MathJax.Hub.Config({
+	tex2jax: {
+		inlineMath: [['$','$']],
+		displayMath: [['$$','$$']],
+		processEscapes: true,
+		processEnvironments: true,
+		skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+		TeX: { extensions: ["AMSmath.js", "AMSsymbols.js"] }
+	}
+});
+MathJax.Hub.Queue(function() {
+	var all = MathJax.Hub.getAllJax(), i;
+	for(i = 0; i < all.length; i += 1) {
+		all[i].SourceElement().parentNode.className += ' has-jax';
+	}
+});
+			</script>
+			
+
+		</header>
+
+		<div  class="x-column x-sm x-1-6" style=""  >
+		</div>
+
+			<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+			<div>
+
+			<h2 id="abstract">Abstract</h2>
+<p>Compressed sensing deals with the reconstruction of sparse signals using a small number of linear measurements. One of the main challenges in compressed sensing is to find the support of a sparse signal. In the literature, several bounds on the scaling law of the number of measurements for successful support recovery have been derived where the main focus is on random Gaussian measurement matrices. In this paper, we investigate the noisy support recovery problem from an estimation theoretic point of view, where no specific assumption is made on the underlying measurement matrix. The linear measurements are perturbed by additive white Gaussian noise. We define the output of a support estimator to be a set of position values in increasing order. We set the error between the true and estimated supports as the ℓ2-norm of their difference. On the one hand, this choice allows us to use the machinery behind the ℓ2-norm error metric and on the other hand, converts the support recovery into a more intuitive and geometrical problem. First, by using the Hammersley-Chapman-Robbins (HCR) bound, we derive a fundamental lower bound on the performance of any \emph{unbiased} estimator of the support set. This lower bound provides us with necessary conditions on the number of measurements for reliable ℓ2-norm support recovery, which we specifically evaluate for uniform Gaussian measurement matrices. Then, we analyze the maximum likelihood estimator and derive conditions under which the HCR bound is achievable. This leads us to the number of measurements for the optimum decoder which is sufficient for reliable ℓ2-norm support recovery. Using this framework, we specifically evaluate sufficient conditions for uniform Gaussian measurement matrices.</p>
+
+			</ul>
+			</div>
+
+	</article>
+</section>
+
+
+      </div>
+      
+        <footer class="footer">
+  <section class="container">
+    
+      <div class="sns-shares sp-sns-shares">
+        
+          <a class="sns-share twitter-share" href="https://twitter.com/intent/tweet?original_referer=%2fpublications%2f2009%2fhormati-09a%2f&ref_src=twsrc%5Etfw&text=An%20Estimation%20Theoretic%20Approach%20for%20Sparsity%20Pattern%20Recovery%20in%20the%20Noisy%20Setting Amin%20Karbasi&tw_p=tweetbutton&url=%2fpublications%2f2009%2fhormati-09a%2f"><i class="fab fa-twitter"></i></a>
+        
+        
+          <a class="fb btn sns-share fb-share" href="http://www.facebook.com/share.php?u=%2fpublications%2f2009%2fhormati-09a%2f" onclick="window.open(this.href, 'FBwindow', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fab fa-facebook-f"></i></a>
+        
+        
+          <a class="sns-share line-share" href="https://social-plugins.line.me/lineit/share?url=%2fpublications%2f2009%2fhormati-09a%2f"><i class="fab fa-line"></i></a>
+        
+        
+          <a class="sns-share linkedIn-share" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fpublications%2f2009%2fhormati-09a%2f"><i class="fab fa-linkedin"></i></a>
+        
+      </div>
+    
+    
+      <p>Yale University</p>
+    
+
+  </section>
+</footer>
+<style>
+#extreme
+{
+z-index: 1;
+visibility: hidden;
+position: absolute;
+z-index: 10000;
+}
+</style>
+<div id=”extreme”>
+    <script style="width:28px;height:28px" src="//t1.extreme-dm.com/f.js" id="eXF-iid-0" async defer></script>
+</div>
+<div class="fixed-bar">
+  <section class="container">
+    
+      <p id="privateTriggerText">Inference, Information, and Decision Group at Yale </p>
+    
+    
+      <div class="sns-shares pc-sns-shares">
+        
+          <a class="sns-share twitter-share" href="https://twitter.com/intent/tweet?original_referer=%2fpublications%2f2009%2fhormati-09a%2f&ref_src=twsrc%5Etfw&text=An%20Estimation%20Theoretic%20Approach%20for%20Sparsity%20Pattern%20Recovery%20in%20the%20Noisy%20Setting Amin%20Karbasi&tw_p=tweetbutton&url=%2fpublications%2f2009%2fhormati-09a%2f"><i class="fab fa-twitter"></i></a>
+        
+        
+          <a class="fb btn sns-share fb-share" href="http://www.facebook.com/share.php?u=%2fpublications%2f2009%2fhormati-09a%2f" onclick="window.open(this.href, 'FBwindow', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fab fa-facebook-f"></i></a>
+        
+        
+          <a class="sns-share hatena-share" href="http://b.hatena.ne.jp/entry//publications/2009/hormati-09a/"  data-hatena-bookmark-layout="touch" data-hatena-bookmark-width="40" data-hatena-bookmark-height="40" title="このエントリーをはてなブックマークに追加"><i class="fas fa-bookmark"></i></a>
+        
+        
+          <a class="sns-share line-share" href="https://social-plugins.line.me/lineit/share?url=%2fpublications%2f2009%2fhormati-09a%2f"><i class="fab fa-line"></i></a>
+        
+        
+          <a class="sns-share linkedIn-share" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fpublications%2f2009%2fhormati-09a%2f"><i class="fab fa-linkedin"></i></a>
+        
+      </div>
+    
+  </section>
+</div>
+
+      
+    </main>
+
+    
+
+  <script src="js/app.js"></script>
+  
+  <script>
+  (function($) {
+    $(function() {
+      $('#privateTrigger').on('click', function() {
+        $('.private').slideToggle();
+        $('#privateTriggerText').text("Thank You! Please share it if you like it→");
+      });
+    });
+   })(jQuery);
+  </script>
+  
+  </body>
+</html>

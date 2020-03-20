@@ -768,6 +768,24 @@
     </item>
     
     <item>
+      <title>A new DOA estimation method using a circular microphone array.</title>
+      <link>/publications/2007/karbasi-07a/</link>
+      <pubDate>Wed, 03 Jan 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2007/karbasi-07a/</guid>
+      <description>Abstract This paper proposes a new DOA (direction of arrival) estimation method based on circular microphone array. For an arbitrary number of microphones, it is analytically shown that DOA estimation reduces to an efficient non-linear optimization problem. Simulation results demonstrate that deviation of the estimation error for 20 and 10 dB SNR is smaller than 0.7 degree which is comparable to high resolution DOA estimation methods. A larger number of microphones provide a more omni-directional spatial resolution.</description>
+    </item>
+    
+    <item>
+      <title>A DOA estimation method for an arbitrary triangular microphone arrangement.</title>
+      <link>/publications/2006/karbasi-06a/</link>
+      <pubDate>Tue, 03 Jan 2006 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2006/karbasi-06a/</guid>
+      <description>Abstract This paper proposes a new DOA (direction of arrival) estimation method for an arbitrary triangular microphone arrangement. Using the phase rotation factors for the crosscorrelations between the adjacent-microphone signals, a general form of the integrated cross spectrum is derived. DOA estimation is reduced to a non-linear optimization problem of the general integrated cross spectrum. It is shown that a conventional DOA estimation for the equilateral triangular microphone arrangement is a special case of the proposed method.</description>
+    </item>
+    
+    <item>
       <title>Individualized functional networks reconfigure with cognitive state</title>
       <link>/publications/2020/mehraveh-2020a/</link>
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>

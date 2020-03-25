@@ -309,6 +309,15 @@
     </item>
     
     <item>
+      <title>Comparison Based Learning from Weak Oracles</title>
+      <link>/publications/2018/kazemi-2018a/</link>
+      <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2018/kazemi-2018a/</guid>
+      <description>Abstract There is increasing interest in learning algorithms that involve interaction between hu- man and machine. Comparison-based queries are among the most natural ways to get feed- back from humans. A challenge in designing comparison-based interactive learning algorithms is coping with noisy answers. The most common fix is to submit a query several times, but this is not applicable in many situations due to its prohibitive cost and due to the unrealistic assumption of independent noise in different repetitions of the same query.</description>
+    </item>
+    
+    <item>
       <title>Conditional Gradient Method for Stochastic Submodular Maximization: Closing the Gap</title>
       <link>/publications/2018/mokhtari-18a/</link>
       <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
@@ -369,15 +378,6 @@
       
       <guid>/publications/2018/kazemi-2018b/</guid>
       <description>Abstract Can we efficiently extract useful information from a large user-generated dataset while protecting the privacy of the users and/or ensuring fairness in representation? We cast this problem as an instance of a deletion-robust submodular maximization where part of the data may be deleted or masked due to privacy concerns or fairness criteria. We propose the first memory-efficient centralized, streaming, and distributed methods with constant-factor approximation guarantees against any number of adversarial deletions.</description>
-    </item>
-    
-    <item>
-      <title>Submodularity on Hypergraphs: From Sets to Sequences.</title>
-      <link>/publications/2018/kazemi-2018a/</link>
-      <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/publications/2018/kazemi-2018a/</guid>
-      <description>Abstract In a nutshell, submodular functions encode an intuitive notion of diminishing returns. As a result, submodularity appears in many important machine learning tasks such as feature selection and data summarization. Although there has been a large volume of work devoted to the study of submodular functions in recent years, the vast majority of this work has been focused on algorithms that output sets, not sequences. However, in many settings, the order in which we output items can be just as important as the items themselves.</description>
     </item>
     
     <item>
@@ -1165,8 +1165,9 @@ It makes use of a variety of open source projects including:</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/people/marko.md/</guid>
-      <description>Marko Mitrovic is 6th year PhD student in computer science department.
- Ph.D. in Computer Science campuspress.yale.edu/markomitrovic New Haven, CT, USA August 2015 – May 2020 (expected) Marko Mitrovic Thesis: Machine Learning Applications of Submodularity § Yale University Fellowship § Yale Prize Teaching Fellowship Simon Fraser University B.Sc. with Distinction in Math and Computer Science   NSERC Undergraduate Student Research Award § SFU IB Excellence Scholarship Undergraduate Open Scholarship SFU Alumni Scholarship Dean’s Honour Roll Work Experience  Facebook Ph.</description>
+      <description>Marko was a Computer Science Ph.D. student advised by Amin Karbasi. His research focused on machine learning applications of submodularity.
+He is now at Google in Mountain View, California. His personal website can be found here.
+Education  Ph.D. in Computer Science New Haven, CT, USA August 2015 – May 2020 Thesis: Machine Learning Applications of Submodularity Yale University Fellowship Yale Prize Teaching Fellowship Simon Fraser University B.Sc. with Distinction in Math and Computer Science   NSERC Undergraduate Student Research Award § SFU IB Excellence Scholarship Undergraduate Open Scholarship SFU Alumni Scholarship Dean’s Honour Roll Work Experience  Facebook Ph.</description>
     </item>
     
     <item>

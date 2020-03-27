@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Inference, Information,  and Decision Group">
+    <meta name="description" content="">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta property="og:site_name" content="Amin Karbasi">
+    <meta property="og:title" content="
+  Special Investigations: Submodular Maximization - Amin Karbasi
+">
+    <meta property="og:description" content="course">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/courses/spring-19.md/">
+    <meta property="og:image" content="images/tn.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="/courses/spring-19.md/">
+    <meta name="twitter:image" content="images/tn.png">
+
+    <base href="/courses/spring-19.md/">
+    <title>
+  Special Investigations: Submodular Maximization - Amin Karbasi
+</title>
+
+    <link rel="canonical" href="/courses/spring-19.md/">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    
+    <link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700">
+    <link rel="stylesheet" href="/css/normalize.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    
+      <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Amin Karbasi">
+      <link href="/index.xml" rel="feed" type="application/rss+xml" title="Amin Karbasi" />
+    
+
+    <meta name="generator" content="Hugo 0.67.0" />
+  </head>
+
+  <body class="">
+    <main class="wrapper">
+      
+<link href="https://fonts.googleapis.com/css?family=Baloo+Chettan+2&display=swap" rel="stylesheet">
+<nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">Amin Karbasi</a>
+    <input type="checkbox" id="menu-control"/>
+    <label class="menu-mobile  float-right " for="menu-control">
+      <span class="btn-mobile  float-right ">&#9776;</span>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item  align-center ">
+              <a class="navigation-link" href="/">About</a>
+            </li>
+          
+            <li class="navigation-item  align-center ">
+              <a class="navigation-link" href="/people">People</a>
+            </li>
+          
+            <li class="navigation-item  align-center ">
+              <a class="navigation-link" href="/publications/">Publications</a>
+            </li>
+          
+            <li class="navigation-item  align-center ">
+              <a class="navigation-link" href="/research">Research</a>
+            </li>
+          
+            <li class="navigation-item  align-center ">
+              <a class="navigation-link" href="/courses">Teaching</a>
+            </li>
+          
+            <li class="navigation-item  align-center ">
+              <a class="navigation-link" href="/openings">Openings</a>
+            </li>
+          
+            <li class="navigation-item  align-center ">
+              <a class="navigation-link" href="/contact">Contact</a>
+            </li>
+          
+        
+        
+      </ul>
+    </label>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container page">
+	<article>
+		<header>
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+			<div></div>
+			<h1 >&nbsp;Special Investigations: Submodular Maximization</h1>
+			
+			
+
+		</header>
+
+		<div  class="x-column x-sm x-1-6" style=""  >
+		</div>
+
+			<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+			<div>
+
+			<h1 id="course-id-enas-990">Course ID: ENAS 990</h1>
+<p>Faculty-supervised individual projects with emphasis on research, laboratory, or theory. Students must define the scope of the proposed project with the faculty member who has agreed to act as supervisor, and submit a brief abstract to the director of graduate studies for approval.</p>
+<p>Class titles vary by section.</p>
+<table>
+<thead>
+<tr>
+<th>Class titles vary by section.</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Special Investigations</td>
+<td>01</td>
+<td>23069</td>
+<td>HTBA</td>
+<td>D. Scheinost</td>
+</tr>
+<tr>
+<td>Special Investigations</td>
+<td>02</td>
+<td>26490</td>
+<td>HTBA</td>
+<td>G. Benoit</td>
+</tr>
+<tr>
+<td>Special Investigations: LVAD</td>
+<td>03</td>
+<td>26492</td>
+<td>HTBA</td>
+<td>S. Campbell</td>
+</tr>
+<tr>
+<td>Special Investigations: Multi-modal Imaging</td>
+<td>04</td>
+<td>26493</td>
+<td>HTBA</td>
+<td>R. Carson</td>
+</tr>
+<tr>
+<td>Special Investigations: TMD Transistor Fabrication</td>
+<td>05</td>
+<td>26494</td>
+<td>HTBA</td>
+<td>J. Cha</td>
+</tr>
+<tr>
+<td>Special Investigations</td>
+<td>06</td>
+<td>26495</td>
+<td>HTBA</td>
+<td>R. Constable</td>
+</tr>
+<tr>
+<td>Special Investigations</td>
+<td>07</td>
+<td>26496</td>
+<td>HTBA</td>
+<td>A. Dollar</td>
+</tr>
+<tr>
+<td>Special Investigations: Domain Adapttion Echo</td>
+<td>08</td>
+<td>26497</td>
+<td>HTBA</td>
+<td>J. Duncan</td>
+</tr>
+<tr>
+<td>Special Investigations</td>
+<td>09</td>
+<td>26498</td>
+<td>HTBA</td>
+<td>J. Duncan</td>
+</tr>
+<tr>
+<td>Special Investigations</td>
+<td>10</td>
+<td>26499</td>
+<td>HTBA</td>
+<td>M. Elimelech</td>
+</tr>
+<tr>
+<td>Special Investigations: HPRO</td>
+<td>11</td>
+<td>26500</td>
+<td>HTBA</td>
+<td>M. Elimelech</td>
+</tr>
+<tr>
+<td>Special Investigations</td>
+<td>12</td>
+<td>26501</td>
+<td>HTBA</td>
+<td>R. Fan</td>
+</tr>
+<tr>
+<td>Special Investigations</td>
+<td>13</td>
+<td>26502</td>
+<td>HTBA</td>
+<td>D. Gentner</td>
+</tr>
+<tr>
+<td>Special Investigations: SOA due to Coal Combustion</td>
+<td>14</td>
+<td>26503</td>
+<td>HTBA</td>
+<td>D. Gentner</td>
+</tr>
+<tr>
+<td>Special Investigations</td>
+<td>15</td>
+<td>26504</td>
+<td>HTBA</td>
+<td>A. Gonzalez</td>
+</tr>
+<tr>
+<td>Special Investigations</td>
+<td>16</td>
+<td>26505</td>
+<td>HTBA</td>
+<td>A. Haji Akbari Balou</td>
+</tr>
+<tr>
+<td>Special Investigations: Ultrastable Glass Formation</td>
+<td>17</td>
+<td>26506</td>
+<td>HTBA</td>
+<td>A. Haji Akbari Balou</td>
+</tr>
+<tr>
+<td>Special Investigations</td>
+<td>18</td>
+<td>26507</td>
+<td>HTBA</td>
+<td>S. Hu</td>
+</tr>
+<tr>
+<td>Special Investigations: Brain Energy Budget</td>
+<td>19</td>
+<td>26508</td>
+<td>HTBA</td>
+<td>F. Hyder</td>
+</tr>
+<tr>
+<td>Special Investigations: Submodular Maximization</td>
+<td>20</td>
+<td>26512</td>
+<td>HTBA</td>
+<td>A. Karbasi</td>
+</tr>
+<tr>
+<td>Special Investigations</td>
+<td>21</td>
+<td>26513</td>
+<td>HTBA</td>
+<td>J. Kim</td>
+</tr>
+<tr>
+<td>Special Investigations: Deep Learning on Genetic Data</td>
+<td>22</td>
+<td>26514</td>
+<td>HTBA</td>
+<td>S. Krishnaswamy</td>
+</tr>
+<tr>
+<td>Special Investigations</td>
+<td>23</td>
+<td>26515</td>
+<td>HTBA</td>
+<td>A. Levchenko</td>
+</tr>
+<tr>
+<td>Special Investigations</td>
+<td>24</td>
+<td>26516</td>
+<td>HTBA</td>
+<td>C. Liu</td>
+</tr>
+<tr>
+<td>Special Investigations</td>
+<td>25</td>
+<td>26517</td>
+<td>HTBA</td>
+<td>M. Mak</td>
+</tr>
+<tr>
+<td>Special Investigations</td>
+<td>26</td>
+<td>26518</td>
+<td>HTBA</td>
+<td>R. Manohar</td>
+</tr>
+<tr>
+<td>Special Investigations</td>
+<td>27</td>
+<td>26519</td>
+<td>HTBA</td>
+<td>O. Miller</td>
+</tr>
+<tr>
+<td>Special Investigations</td>
+<td>28</td>
+<td>26520</td>
+<td>HTBA</td>
+<td>K. Miller-Jensen</td>
+</tr>
+<tr>
+<td>Special Investigations</td>
+<td>29</td>
+<td>26521</td>
+<td>HTBA</td>
+<td>M. Murrell</td>
+</tr>
+<tr>
+<td>Special Investigations: Dynamics of Protein Cores</td>
+<td>30</td>
+<td>26522</td>
+<td>HTBA</td>
+<td>C. O&rsquo;Hern</td>
+</tr>
+<tr>
+<td>Special Investigations</td>
+<td>31</td>
+<td>26523</td>
+<td>HTBA</td>
+<td>J. Peccia</td>
+</tr>
+<tr>
+<td>Special Investigations</td>
+<td>32</td>
+<td>26524</td>
+<td>HTBA</td>
+<td>L. Pfefferle</td>
+</tr>
+<tr>
+<td>Special Investigations</td>
+<td>33</td>
+<td>26525</td>
+<td>HTBA</td>
+<td>J. Saiers</td>
+</tr>
+<tr>
+<td>Special Investigations: Inhaled Nanoparticles</td>
+<td>34</td>
+<td>26526</td>
+<td>HTBA</td>
+<td>M. Saltzman</td>
+</tr>
+<tr>
+<td>Special Investigations: Degradable Contraceptives</td>
+<td>35</td>
+<td>26527</td>
+<td>HTBA</td>
+<td>M. Saltzman</td>
+</tr>
+<tr>
+<td>Special Investigations</td>
+<td>36</td>
+<td>26528</td>
+<td>HTBA</td>
+<td>J. Schroers</td>
+</tr>
+<tr>
+<td>Special Investigations</td>
+<td>37</td>
+<td>26529</td>
+<td>HTBA</td>
+<td>U. Schwarz</td>
+</tr>
+<tr>
+<td>Special Investigations: MICCAI 2018</td>
+<td>38</td>
+<td>26530</td>
+<td>HTBA</td>
+<td>L. Staib</td>
+</tr>
+<tr>
+<td>Special Investigations: Modeling Ordinal Data</td>
+<td>39</td>
+<td>26531</td>
+<td>HTBA</td>
+<td>H. Tagare</td>
+</tr>
+<tr>
+<td>Special Investigations: ErLiNb03 Quantum Memory</td>
+<td>40</td>
+<td>26532</td>
+<td>HTBA</td>
+<td>H. Tang</td>
+</tr>
+<tr>
+<td>Special Investigations: Narrow Linewidth Laser</td>
+<td>41</td>
+<td>26533</td>
+<td>HTBA</td>
+<td>H. Tang</td>
+</tr>
+<tr>
+<td>Special Investigations: Phononic and Photonic Circuit</td>
+<td>42</td>
+<td>26534</td>
+<td>HTBA</td>
+<td>H. Tang</td>
+</tr>
+<tr>
+<td>Special Investigations: QoS Provisioning in SDN</td>
+<td>43</td>
+<td>26535</td>
+<td>HTBA</td>
+<td>L. Tassiulas</td>
+</tr>
+<tr>
+<td>Special Investigations: Progammable Network</td>
+<td>44</td>
+<td>26536</td>
+<td>HTBA</td>
+<td>Y. Yang</td>
+</tr>
+<tr>
+<td>Special Investigations</td>
+<td>45</td>
+<td>26537</td>
+<td>HTBA</td>
+<td>J. Zhou</td>
+</tr>
+<tr>
+<td>Special Investigations</td>
+<td>46</td>
+<td>26538</td>
+<td>HTBA</td>
+<td>J. Zimmerman</td>
+</tr>
+<tr>
+<td>Special Investigations</td>
+<td>47</td>
+<td>26689</td>
+<td>HTBA</td>
+<td>T. Fahmy</td>
+</tr>
+</tbody>
+</table>
+
+			</ul>
+			</div>
+
+	</article>
+</section>
+
+
+      </div>
+      
+        <footer class="footer">
+  <section class="container">
+    
+      <div class="sns-shares sp-sns-shares">
+        
+          <a class="sns-share twitter-share" href="https://twitter.com/intent/tweet?original_referer=%2fcourses%2fspring-19.md%2f&ref_src=twsrc%5Etfw&text=Special%20Investigations%3a%20Submodular%20Maximization Amin%20Karbasi&tw_p=tweetbutton&url=%2fcourses%2fspring-19.md%2f"><i class="fab fa-twitter"></i></a>
+        
+        
+          <a class="fb btn sns-share fb-share" href="http://www.facebook.com/share.php?u=%2fcourses%2fspring-19.md%2f" onclick="window.open(this.href, 'FBwindow', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fab fa-facebook-f"></i></a>
+        
+        
+          <a class="sns-share line-share" href="https://social-plugins.line.me/lineit/share?url=%2fcourses%2fspring-19.md%2f"><i class="fab fa-line"></i></a>
+        
+        
+          <a class="sns-share linkedIn-share" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fcourses%2fspring-19.md%2f"><i class="fab fa-linkedin"></i></a>
+        
+      </div>
+    
+    
+      <p>Yale University</p>
+    
+
+  </section>
+</footer>
+<style>
+#extreme
+{
+z-index: 1;
+visibility: hidden;
+position: absolute;
+z-index: 10000;
+}
+</style>
+<div id=”extreme”>
+    <script style="width:28px;height:28px" src="//t1.extreme-dm.com/f.js" id="eXF-karbasi-0" async defer></script>
+</div>
+<div class="fixed-bar">
+  <section class="container">
+    
+    <p id="privateTriggerText" style="color:white"><a style="color:white" href="https://usability.yale.edu/web-accessibility/accessibility-yale">Accessibility at Yale</a> &nbsp; Inference, Information, and Decision Group at Yale </p>
+    
+    
+      
+    
+  </section>
+</div>
+
+      
+    </main>
+
+    
+
+  <script src="js/app.js"></script>
+  
+  <script>
+  (function($) {
+    $(function() {
+      $('#privateTrigger').on('click', function() {
+        $('.private').slideToggle();
+        $('#privateTriggerText').text("Thank You! Please share it if you like it→");
+      });
+    });
+   })(jQuery);
+  </script>
+  
+  </body>
+</html>

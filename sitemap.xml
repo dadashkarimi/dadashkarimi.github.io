@@ -58,17 +58,7 @@
   </url>
   
   <url>
-    <loc>/publications/2017/mokhtari-17a/</loc>
-    <lastmod>2017-01-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/publications/2017/kazemi-17a/</loc>
-    <lastmod>2017-01-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/publications/2017/lin-17c/</loc>
     <lastmod>2017-01-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -83,37 +73,12 @@
   </url>
   
   <url>
-    <loc>/publications/2016/lucic-16a/</loc>
-    <lastmod>2016-01-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/publications/2015/lin-15a/</loc>
-    <lastmod>2015-01-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/publications/2014/baharan-14a/</loc>
-    <lastmod>2014-01-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/publications/2011/karbasi-11c/</loc>
     <lastmod>2011-01-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/publications/2011/karbasi-11d/</loc>
-    <lastmod>2011-01-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/publications/2010/parhizkar-11a/</loc>
-    <lastmod>2010-01-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/publications/2010/cheraghchi-11b/</loc>
     <lastmod>2010-01-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -543,7 +508,17 @@
   </url>
   
   <url>
+    <loc>/courses/fall-19.md/</loc>
+    <lastmod>2019-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/courses/network_sciences.md/</loc>
+    <lastmod>2019-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/courses/spring-19.md/</loc>
     <lastmod>2019-01-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -570,6 +545,36 @@
   <url>
     <loc>/posts/theme-demo.ja/</loc>
     <lastmod>2018-08-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/courses/spring-18.md/</loc>
+    <lastmod>2018-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/courses/fall-18.md/</loc>
+    <lastmod>2018-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/courses/fall-17.md/</loc>
+    <lastmod>2017-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/courses/spring-16.md/</loc>
+    <lastmod>2016-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/courses/spring-15.md/</loc>
+    <lastmod>2015-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/courses/fall-15.md/</loc>
+    <lastmod>2015-01-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -650,6 +655,11 @@
   <url>
     <loc>/posts/migrate-from-jekyll/</loc>
     <lastmod>2014-03-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/courses/fall-14.md/</loc>
+    <lastmod>2014-01-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>

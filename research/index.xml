@@ -6,23 +6,63 @@
     <description>Recent content in Researches on Amin Karbasi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 02 Apr 2014 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 03 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/research/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Getting Started with Hugo</title>
-      <link>/research/hugoisforlovers/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      <title>Computational Neuroscience &amp; Neuroimaging</title>
+      <link>/research/computational_neuroscience_neurimaging.md/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>/research/hugoisforlovers/</guid>
-      <description>Step 1. Install Hugo Goto hugo releases and download the appropriate version for your os and architecture.
-Save it somewhere specific as we will be using it in the next step.
-More complete instructions are available at installing hugo
-Step 2. Build the Docs Hugo has its own example site which happens to also be the documentation site you are reading right now.
-Follow the following steps:
- Clone the hugo repository Go into the repo Run hugo in server mode and build the docs Open your browser to http://localhost:1313  Corresponding pseudo commands:</description>
+      <guid>/research/computational_neuroscience_neurimaging.md/</guid>
+      <description>Computational Neuroscience &amp;amp; NeuroImaging </description>
+    </item>
+    
+    <item>
+      <title>Continuous Optimization</title>
+      <link>/research/continuous_optimization.md/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/research/continuous_optimization.md/</guid>
+      <description>Continuous Optimization </description>
+    </item>
+    
+    <item>
+      <title>Online Learning</title>
+      <link>/research/online_learning.md/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/research/online_learning.md/</guid>
+      <description>Online Learning </description>
+    </item>
+    
+    <item>
+      <title>Statistical Learning Theory</title>
+      <link>/research/statistical_learning_theory.md/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/research/statistical_learning_theory.md/</guid>
+      <description>Statistical Learning Theory </description>
+    </item>
+    
+    <item>
+      <title>Submodular Optimization</title>
+      <link>/research/interactive_decision_making.md/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/research/interactive_decision_making.md/</guid>
+      <description>Interactive Decision Making </description>
+    </item>
+    
+    <item>
+      <title>Submodular Optimization</title>
+      <link>/research/submodular_optimization.md/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/research/submodular_optimization.md/</guid>
+      <description>Submodular Optimization </description>
     </item>
     
   </channel>

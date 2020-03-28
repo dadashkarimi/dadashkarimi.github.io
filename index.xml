@@ -858,6 +858,42 @@
     </item>
     
     <item>
+      <title>Computational Neuroscience &amp; Neuroimaging</title>
+      <link>/research/computational_neuroscience_neurimaging.md/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/research/computational_neuroscience_neurimaging.md/</guid>
+      <description>Computational Neuroscience &amp;amp; NeuroImaging </description>
+    </item>
+    
+    <item>
+      <title>Continuous Optimization</title>
+      <link>/research/continuous_optimization.md/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/research/continuous_optimization.md/</guid>
+      <description>Continuous Optimization </description>
+    </item>
+    
+    <item>
+      <title>Online Learning</title>
+      <link>/research/online_learning.md/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/research/online_learning.md/</guid>
+      <description>Online Learning </description>
+    </item>
+    
+    <item>
+      <title>Open Positions at INFERENCE, INFORMATION, AND DECISION GROUP</title>
+      <link>/openings/openings.md/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/openings/openings.md/</guid>
+      <description>PhD students The I.I.D. Systems Group at the Yale Institute of Network Science has an open position for a Ph.D. student. We are looking for exceptional applicants who have a strong background in areas such as machine learning, statistics, optimization, theoretical computer science and distributed systems. Many problems studied in our group have a strong interdisciplinary component. See our research page for an overview of the projects that we are working on.</description>
+    </item>
+    
+    <item>
       <title>PhD students</title>
       <link>/openings/phd.md/</link>
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
@@ -876,6 +912,15 @@
     </item>
     
     <item>
+      <title>Statistical Learning Theory</title>
+      <link>/research/statistical_learning_theory.md/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/research/statistical_learning_theory.md/</guid>
+      <description>Statistical Learning Theory </description>
+    </item>
+    
+    <item>
       <title>Stochastic Process</title>
       <link>/courses/stochastic.md/</link>
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
@@ -883,6 +928,24 @@
       <guid>/courses/stochastic.md/</guid>
       <description>Course ID: S&amp;amp;DS 351, MATH 251, S&amp;amp;DS 551, ENAS 502 In this course we will go through the following topics:
  Review important notions of probability Expectation Convergence of random variables Law of large numbers Poisson Processes Renewal Processes Markov Chains and Random Walks Martingales If time permits, we will look at a few interesting applications of the above topics.  Textbook: We mainly use &amp;ldquo;Introduction to Stochastic Processes&amp;rdquo; by Erhan Cinlar</description>
+    </item>
+    
+    <item>
+      <title>Submodular Optimization</title>
+      <link>/research/interactive_decision_making.md/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/research/interactive_decision_making.md/</guid>
+      <description>Interactive Decision Making </description>
+    </item>
+    
+    <item>
+      <title>Submodular Optimization</title>
+      <link>/research/submodular_optimization.md/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/research/submodular_optimization.md/</guid>
+      <description>Submodular Optimization </description>
     </item>
     
     <item>
@@ -1070,20 +1133,6 @@ Follow the following steps:
     </item>
     
     <item>
-      <title>Getting Started with Hugo</title>
-      <link>/research/hugoisforlovers/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>/research/hugoisforlovers/</guid>
-      <description>Step 1. Install Hugo Goto hugo releases and download the appropriate version for your os and architecture.
-Save it somewhere specific as we will be using it in the next step.
-More complete instructions are available at installing hugo
-Step 2. Build the Docs Hugo has its own example site which happens to also be the documentation site you are reading right now.
-Follow the following steps:
- Clone the hugo repository Go into the repo Run hugo in server mode and build the docs Open your browser to http://localhost:1313  Corresponding pseudo commands:</description>
-    </item>
-    
-    <item>
       <title>Migrate to Hugo from Jekyll</title>
       <link>/posts/migrate-from-jekyll/</link>
       <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
@@ -1101,16 +1150,6 @@ Follow the following steps:
       
       <guid>/courses/fall-14.md/</guid>
       <description>Course ID: ENAS 962 This is an interdisciplinary course with a focus on the emerging science of complex networks and their mathematical models. Students learn about the recent research on the structure and analysis of such networks, and on models that abstract their basic properties. Topics include random graphs and their properties, probabilistic techniques for link analysis, centralized and decentralized search algorithms, random walks, diffusion and epidemic processes, and spectral methods.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>/contact/contact.md/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/contact/contact.md/</guid>
-      <description>Directions from Union Station to YINS building All you need is to drive the State St all the way up to Groove St and then turn left and follow up until Hillhouse Ave.
-Directions from the Airport to YINS Start out going northeast on Burr St toward Fort Hale Rd. Turn left onto Fort Hale Rd. Turn right onto Townsend Ave/CT-337. Turn left onto Main Street Anx. Merge onto I-95 S.</description>
     </item>
     
     <item>
@@ -1183,6 +1222,16 @@ It makes use of a variety of open source projects including:</description>
     </item>
     
     <item>
+      <title>Mandy Singer</title>
+      <link>/contact/contact.md/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/contact/contact.md/</guid>
+      <description>Mandy Singer is the administrative assistant for the Yale Institute for Network Science. Mandy has phenomenally varied experience, with talents as a repo-woman, cherry-picker operator, and is all-around competent. She has yet to be unable to do anything we have asked her to do.
+ Directions from Union Station to YINS building All you need is to drive the State St all the way up to Groove St and then turn left and follow up until Hillhouse Ave.</description>
+    </item>
+    
+    <item>
       <title>Marko Mitrovic</title>
       <link>/people/marko.md/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1216,6 +1265,26 @@ It makes use of a variety of open source projects including:</description>
       
       <guid>/people/shadravan.md/</guid>
       <description>Mohammad is a Postdoctoral Associate in the Institute for Network Science. He earned his PhD from Columbia University under the supervision of Professor Clifford Stein and Shipra Agrawal. His research interests lie primarily in the area of submodulariy in machine learning, algorithms for massive dataset, and optimization for sequential decision making. He completed his Master’s degree in the department of Combinatorics and Optimization at the University of Waterloo. Before that, he obtained his B.</description>
+    </item>
+    
+    <item>
+      <title>Outreach</title>
+      <link>/outreach/outreach.md/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/outreach/outreach.md/</guid>
+      <description>I have been very fortunate to advise the following freshmen students at Yale:
+ Eric Duong Hristo Staykov Evelyn Huang Calvin Schwart Elizabeth Bays J Joseph Antonio Medina Madison Papir Kenia Hale Anthony Ji Greg Naratil Jason Kim Kenny Wang John Dallard Dan Shao Harshal Sheth Preston Smith   Julia Robinson Mathematical Festival: In the last two years, and with the help of Yale’s Pathway to Science, I have co-organized Julia Robinson Mathematical festival at Yale.</description>
+    </item>
+    
+    <item>
+      <title>Software</title>
+      <link>/software/software.md/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/software/software.md/</guid>
+      <description>We highly believe in open and reproducible science. To this end, we try our best to publicly release our software and data sets.
+ Paper: An Exemplar-Based Approach to Individualized Parcellation Reveals the Need for Sex Specific Functional Network Paper: A Submodular Approach to Create Individualized Parcellations of the Human Brain Paper: Streaming Weak Submodularity: Interpreting Neural Networks on the Fly  Code is released here.   Paper: Learning Neural Connectivity from Firing Activity: Scalable Algorithms with Provable Guarantees Paper: Probabilistic Submodular Maximization in Sub-Linear Time  Code is released here   Paper: Differentially Submodular Maximization: Data Summarization in Disguise  Code is released here.</description>
     </item>
     
     <item>

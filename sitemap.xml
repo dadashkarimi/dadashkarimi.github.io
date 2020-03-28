@@ -478,7 +478,27 @@
   </url>
   
   <url>
+    <loc>/research/computational_neuroscience_neurimaging.md/</loc>
+    <lastmod>2020-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/research/continuous_optimization.md/</loc>
+    <lastmod>2020-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/courses/</loc>
+    <lastmod>2020-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/research/online_learning.md/</loc>
+    <lastmod>2020-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/openings/openings.md/</loc>
     <lastmod>2020-01-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -503,7 +523,27 @@
   </url>
   
   <url>
+    <loc>/research/</loc>
+    <lastmod>2020-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/research/statistical_learning_theory.md/</loc>
+    <lastmod>2020-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/courses/stochastic.md/</loc>
+    <lastmod>2020-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/research/interactive_decision_making.md/</loc>
+    <lastmod>2020-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/research/submodular_optimization.md/</loc>
     <lastmod>2020-01-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -608,11 +648,6 @@
   </url>
   
   <url>
-    <loc>/research/hugoisforlovers/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/tags/go/</loc>
     <lastmod>2014-04-02T00:00:00+00:00</lastmod>
   </url>
@@ -629,11 +664,6 @@
   
   <url>
     <loc>/tags/hugo/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/research/</loc>
     <lastmod>2014-04-02T00:00:00+00:00</lastmod>
   </url>
   
@@ -660,10 +690,6 @@
   <url>
     <loc>/courses/fall-14.md/</loc>
     <lastmod>2014-01-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/contact/contact.md/</loc>
   </url>
   
   <url>
@@ -699,6 +725,10 @@
   </url>
   
   <url>
+    <loc>/contact/contact.md/</loc>
+  </url>
+  
+  <url>
     <loc>/people/marko.md/</loc>
   </url>
   
@@ -715,7 +745,23 @@
   </url>
   
   <url>
+    <loc>/outreach/outreach.md/</loc>
+  </url>
+  
+  <url>
+    <loc>/outreach/</loc>
+  </url>
+  
+  <url>
     <loc>/people/</loc>
+  </url>
+  
+  <url>
+    <loc>/software/software.md/</loc>
+  </url>
+  
+  <url>
+    <loc>/software/</loc>
   </url>
   
   <url>

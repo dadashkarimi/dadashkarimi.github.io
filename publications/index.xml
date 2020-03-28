@@ -39,39 +39,12 @@
     </item>
     
     <item>
-      <title>Black Box Submodular Maximization: Discrete and Continuous Settings</title>
-      <link>/publications/2019/lin-2019c/</link>
-      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/publications/2019/lin-2019c/</guid>
-      <description>Abstract In this paper, we consider the problem of black box continuous submodular maximization where we only have access to the function values and no information about the derivatives is provided. For a monotone and continuous DR-submodular function, and subject to a bounded convex body constraint, we propose Black-box Continuous Greedy, a derivative-free algorithm that provably achieves the tight [(1−1/e)OPT−ϵ] approximation guarantee with $O(d/ϵ^3)$ function evaluations. We then extend our result to the stochastic setting where function values are subject to stochastic zero-mean noise.</description>
-    </item>
-    
-    <item>
       <title>Minimax Regret of Switching-Constrained Online Convex Optimization: No Phase Transition.</title>
       <link>/publications/2019/lin-2019d/</link>
       <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
       
       <guid>/publications/2019/lin-2019d/</guid>
       <description>Abstract We study the problem of switching-constrained online convex optimization (OCO), where the player has a limited number of opportunities to change her action. While the discrete analog of this online learning task has been studied extensively, previous work in the continuous setting has neither established the minimax rate nor algorithmically achieved it. We here show that T-round switching-constrained OCO with fewer than K switches has a minimax regret of $Θ(\frac{T}{\sqrt{K}})$.</description>
-    </item>
-    
-    <item>
-      <title>One Sample Stochastic Frank-Wolfe.</title>
-      <link>/publications/2019/minguri-2019c/</link>
-      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/publications/2019/minguri-2019c/</guid>
-      <description>Abstract One of the beauties of the projected gradient descent method lies in its rather simple mechanism and yet stable behavior with inexact, stochastic gradients, which has led to its wide-spread use in many machine learning applications. However, once we replace the projection operator with a simpler linear program, as is done in the Frank-Wolfe method, both simplicity and stability take a serious hit. The aim of this paper is to bring them back without sacrificing the efficiency.</description>
-    </item>
-    
-    <item>
-      <title>Quantized Frank-Wolfe: Communication-Efficient Distributed Optimization</title>
-      <link>/publications/2019/minguri-2019b/</link>
-      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/publications/2019/minguri-2019b/</guid>
-      <description>Abstract How can we efficiently mitigate the overhead of gradient communications in distributed optimization? This problem is at the heart of training scalable machine learning models and has been mainly studied in the unconstrained setting. In this paper, we propose Quantized-Frank-Wolfe (QFW), the first projection-free and communication-efficient algorithm for solving constrained optimization problems at scale. We consider both convex and non-convex objective functions, expressed as a finite-sum or more generally a stochastic optimization problem, and provide strong theoretical guarantees on the convergence rate of QFW.</description>
     </item>
     
     <item>
@@ -171,6 +144,33 @@
       
       <guid>/publications/2009/cheraghchi-09a/</guid>
       <description>Abstract Detection of defective members of large populations has been widely studied in the statistics community under the name &amp;ldquo;group testing&amp;rdquo;, a problem which dates back to World War II when it was suggested for syphilis screening. There the main interest is to identify a small number of infected people among a large population using collective samples. In viral epidemics, one way to acquire collective samples is by sending agents inside the population.</description>
+    </item>
+    
+    <item>
+      <title>Black Box Submodular Maximization: Discrete and Continuous Settings</title>
+      <link>/publications/2020/lin-2020a/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2020/lin-2020a/</guid>
+      <description>Abstract In this paper, we consider the problem of black box continuous submodular maximization where we only have access to the function values and no information about the derivatives is provided. For a monotone and continuous DR-submodular function, and subject to a bounded convex body constraint, we propose Black-box Continuous Greedy, a derivative-free algorithm that provably achieves the tight [(1−1/e)OPT−ϵ] approximation guarantee with $O(d/ϵ^3)$ function evaluations. We then extend our result to the stochastic setting where function values are subject to stochastic zero-mean noise.</description>
+    </item>
+    
+    <item>
+      <title>One Sample Stochastic Frank-Wolfe.</title>
+      <link>/publications/2020/mingrui-2020c/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2020/mingrui-2020c/</guid>
+      <description>Abstract One of the beauties of the projected gradient descent method lies in its rather simple mechanism and yet stable behavior with inexact, stochastic gradients, which has led to its wide-spread use in many machine learning applications. However, once we replace the projection operator with a simpler linear program, as is done in the Frank-Wolfe method, both simplicity and stability take a serious hit. The aim of this paper is to bring them back without sacrificing the efficiency.</description>
+    </item>
+    
+    <item>
+      <title>Quantized Frank-Wolfe: Faster Optimization, Lower Communication, and Projection Free</title>
+      <link>/publications/2020/mingrui-2020a/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2020/mingrui-2020a/</guid>
+      <description>Abstract How can we efficiently mitigate the overhead of gradient communications in distributed optimization? This problem is at the heart of training scalable machine learning models and has been mainly studied in the unconstrained setting. In this paper, we propose Quantized-Frank-Wolfe (QFW), the first projection-free and communication-efficient algorithm for solving constrained optimization problems at scale. We consider both convex and non-convex objective functions, expressed as a finite-sum or more generally a stochastic optimization problem, and provide strong theoretical guarantees on the convergence rate of QFW.</description>
     </item>
     
     <item>

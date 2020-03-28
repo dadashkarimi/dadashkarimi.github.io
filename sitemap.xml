@@ -18,22 +18,7 @@
   </url>
   
   <url>
-    <loc>/publications/2019/lin-2019c/</loc>
-    <lastmod>2019-01-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/publications/2019/lin-2019d/</loc>
-    <lastmod>2019-01-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/publications/2019/minguri-2019c/</loc>
-    <lastmod>2019-01-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/publications/2019/minguri-2019b/</loc>
     <lastmod>2019-01-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -90,6 +75,21 @@
   <url>
     <loc>/publications/2009/cheraghchi-09a/</loc>
     <lastmod>2009-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publications/2020/lin-2020a/</loc>
+    <lastmod>2020-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publications/2020/mingrui-2020c/</loc>
+    <lastmod>2020-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publications/2020/mingrui-2020a/</loc>
+    <lastmod>2020-01-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -707,10 +707,6 @@
   </url>
   
   <url>
-    <loc>/people/yifei.md/</loc>
-  </url>
-  
-  <url>
     <loc>/people/minguri.md/</loc>
   </url>
   
@@ -720,6 +716,10 @@
   
   <url>
     <loc>/people/</loc>
+  </url>
+  
+  <url>
+    <loc>/people/yifei.md/</loc>
   </url>
   
 </urlset>

@@ -84,21 +84,12 @@
     </item>
     
     <item>
-      <title>Min Yifei</title>
-      <link>/people/yifei.md/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/people/yifei.md/</guid>
-      <description>Yifei Min is a 2nd year PhD in Statistics and Data Science. His research interest is in theoretical machine learning and optimization. He likes tennis and movies.</description>
-    </item>
-    
-    <item>
-      <title>Minguri Zhang</title>
+      <title>Mingrui Zhang</title>
       <link>/people/minguri.md/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/people/minguri.md/</guid>
-      <description>Mingrui is a 5th year Ph.D. student in the Department of Statistics and Data Science. His research interest is theoretical machine learning and optimization, including online learning, submodular maximization, and projection-free optimization methods. He likes reading books and watching movies. He is also a supporter of Liverpool F.C.</description>
+      <description>Mingrui is a 5th year Ph.D. student in the Department of Statistics and Data Science. His research interest is theoretical machine learning and optimization, including online learning, submodular maximization, and projection-free optimization methods. Prior to joining Yale, he received his Bachelor&amp;rsquo;s degree in math and applied math from Peking University. He likes reading books and watching movies. He is also a supporter of Liverpool FC.</description>
     </item>
     
     <item>
@@ -108,6 +99,15 @@
       
       <guid>/people/shadravan.md/</guid>
       <description>Mohammad is a Postdoctoral Associate in the Institute for Network Science. He earned his PhD from Columbia University under the supervision of Professor Clifford Stein and Shipra Agrawal. His research interests lie primarily in the area of submodulariy in machine learning, algorithms for massive dataset, and optimization for sequential decision making. He completed his Master’s degree in the department of Combinatorics and Optimization at the University of Waterloo. Before that, he obtained his B.</description>
+    </item>
+    
+    <item>
+      <title>Yifei Min</title>
+      <link>/people/yifei.md/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/people/yifei.md/</guid>
+      <description>Yifei Min is a 2nd year PhD in Statistics and Data Science. His research interest is in theoretical machine learning and optimization. He likes tennis and movies.</description>
     </item>
     
   </channel>

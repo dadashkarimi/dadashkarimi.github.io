@@ -93,21 +93,12 @@
     </item>
     
     <item>
-      <title>Dimension Coupling: Optimal Active Learning of Halfspaces via Query Synthesis. </title>
+      <title>Near-Optimal Active Learning of Halfspaces via Query Synthesis in the Noisy Setting</title>
       <link>/publications/2016/lin-16d/</link>
       <pubDate>Sun, 03 Jan 2016 00:00:00 +0000</pubDate>
       
       <guid>/publications/2016/lin-16d/</guid>
       <description>Abstract In this paper, we consider the problem of actively learning a linear classifier through query synthesis where the learner can construct artificial queries in order to estimate the true decision boundaries. This problem has recently gained a lot of interest in automated science and adversarial reverse engineering for which only heuristic algorithms are known. In such applications, queries can be constructed de novo to elicit information (e.g., automated science) or to evade detection with minimal cost (e.</description>
-    </item>
-    
-    <item>
-      <title>Submodular Variational Inference for Network Reconstruction</title>
-      <link>/publications/2016/lin-16e/</link>
-      <pubDate>Sun, 03 Jan 2016 00:00:00 +0000</pubDate>
-      
-      <guid>/publications/2016/lin-16e/</guid>
-      <description>Abstract In real-world and online social networks, individuals receive and transmit information in real time. Cascading information transmissions (e.g. phone calls, text messages, social media posts) may be understood as a realization of a diffusion process operating on the network, and its branching path can be represented by a directed tree. The process only traverses and thus reveals a limited portion of the edges. The network reconstruction/inference problem is to infer the unrevealed connections.</description>
     </item>
     
     <item>
@@ -453,6 +444,15 @@
     </item>
     
     <item>
+      <title>Submodular Variational Inference for Network Reconstruction</title>
+      <link>/publications/2016/lin-16e/</link>
+      <pubDate>Sun, 03 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2016/lin-16e/</guid>
+      <description>Abstract In real-world and online social networks, individuals receive and transmit information in real time. Cascading information transmissions (e.g. phone calls, text messages, social media posts) may be understood as a realization of a diffusion process operating on the network, and its branching path can be represented by a directed tree. The process only traverses and thus reveals a limited portion of the edges. The network reconstruction/inference problem is to infer the unrevealed connections.</description>
+    </item>
+    
+    <item>
       <title>Asynchronous decoding of LDPC codes over BEC.</title>
       <link>/publications/2015/haghighatshoar-15a/</link>
       <pubDate>Sat, 03 Jan 2015 00:00:00 +0000</pubDate>
@@ -687,15 +687,6 @@
     </item>
     
     <item>
-      <title>Graph-constrained group testing.</title>
-      <link>/publications/2010/cheraghchi-11a/</link>
-      <pubDate>Sun, 03 Jan 2010 00:00:00 +0000</pubDate>
-      
-      <guid>/publications/2010/cheraghchi-11a/</guid>
-      <description>Abstract Non-adaptive group testing involves grouping arbitrary subsets of n items into different pools and identifying defective items based on tests obtained for each pool. Motivated by applications in network tomography, sensor networks and infection propagation we formulate non-adaptive group testing problems on graphs. Unlike conventional group testing problems each group here must conform to the constraints imposed by a graph. For instance, items can be associated with vertices and each pool is any set of nodes that must be path connected.</description>
-    </item>
-    
-    <item>
       <title>Support recovery in compressed sensing: An estimation theoretic approach.</title>
       <link>/publications/2009/karbasi-09a/</link>
       <pubDate>Sat, 03 Jan 2009 00:00:00 +0000</pubDate>
@@ -863,7 +854,7 @@
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>/research/computational_neuroscience_neurimaging.md/</guid>
-      <description>Computational Neuroscience &amp;amp; NeuroImaging </description>
+      <description></description>
     </item>
     
     <item>
@@ -872,7 +863,7 @@
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>/research/continuous_optimization.md/</guid>
-      <description>Continuous Optimization </description>
+      <description></description>
     </item>
     
     <item>
@@ -881,7 +872,7 @@
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>/research/online_learning.md/</guid>
-      <description>Online Learning </description>
+      <description></description>
     </item>
     
     <item>
@@ -917,7 +908,7 @@
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>/research/statistical_learning_theory.md/</guid>
-      <description>Statistical Learning Theory </description>
+      <description></description>
     </item>
     
     <item>
@@ -936,7 +927,7 @@
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>/research/interactive_decision_making.md/</guid>
-      <description>Interactive Decision Making </description>
+      <description></description>
     </item>
     
     <item>
@@ -945,7 +936,7 @@
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>/research/submodular_optimization.md/</guid>
-      <description>Submodular Optimization </description>
+      <description></description>
     </item>
     
     <item>

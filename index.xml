@@ -264,15 +264,6 @@
     </item>
     
     <item>
-      <title>Data Summarization at Scale: A Two-Stage Submodular Approach.</title>
-      <link>/publications/2018/marko-18a/</link>
-      <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/publications/2018/marko-18a/</guid>
-      <description>Abstract The sheer scale of modern datasets has resulted in a dire need for summarization techniques that can identify representative elements in a dataset. Fortunately, the vast majority of data summarization tasks satisfy an intuitive diminishing returns condition known as submodularity, which allows us to find nearly-optimal solutions in linear time. We focus on a two-stage submodular framework where the goal is to use some given training functions to reduce the ground set so that optimizing new functions (drawn from the same distribution) over the reduced set provides almost as much value as optimizing them over the entire ground set.</description>
-    </item>
-    
-    <item>
       <title>Decentralized Submodular Maximization: Bridging Discrete and Continuous Settings.</title>
       <link>/publications/2018/mokhtari-18b/</link>
       <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
@@ -315,6 +306,15 @@
       
       <guid>/publications/2018/kazemi-2018b/</guid>
       <description>Abstract Can we efficiently extract useful information from a large user-generated dataset while protecting the privacy of the users and/or ensuring fairness in representation? We cast this problem as an instance of a deletion-robust submodular maximization where part of the data may be deleted or masked due to privacy concerns or fairness criteria. We propose the first memory-efficient centralized, streaming, and distributed methods with constant-factor approximation guarantees against any number of adversarial deletions.</description>
+    </item>
+    
+    <item>
+      <title>Submodularity on Hypergraphs: From Sets to Sequences</title>
+      <link>/publications/2018/marko-18a/</link>
+      <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2018/marko-18a/</guid>
+      <description>Abstract The sheer scale of modern datasets has resulted in a dire need for summarization techniques that can identify representative elements in a dataset. Fortunately, the vast majority of data summarization tasks satisfy an intuitive diminishing returns condition known as submodularity, which allows us to find nearly-optimal solutions in linear time. We focus on a two-stage submodular framework where the goal is to use some given training functions to reduce the ground set so that optimizing new functions (drawn from the same distribution) over the reduced set provides almost as much value as optimizing them over the entire ground set.</description>
     </item>
     
     <item>

@@ -854,7 +854,7 @@
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>/research/computational_neuroscience_neurimaging.md/</guid>
-      <description></description>
+      <description>The goal of human brain mapping has long been to delineate the functional subunits in the brain and elucidate the functional role of each of these brain regions. Recent work has focused on whole-brain parcellation of functional Magnetic Resonance Imaging (fMRI) data to identify these subunits and create a functional atlas. Functional connectivity approaches to understand the brain at the network level require such an atlas to assess connections between parcels and extract network properties.</description>
     </item>
     
     <item>
@@ -863,7 +863,16 @@
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>/research/continuous_optimization.md/</guid>
-      <description></description>
+      <description>Continuous DR-submodular functions are an important subset of non-convex functions that can be minimized exactly Bach [2016], Staib and Jegelka [2017] and maximized approximately Bian et al. [2017a,b], Hassani et al. [2017], Mokhtari et al. [2018a], Hassani et al. [2019], Zhang et al. [2019b] This class of functions generalize the notion of diminishing returns, usually defined over discrete set functions, to the continuous domains. They have found numerous applications in machine learning including MAP inference in determinantal point processes (DPPs) Kulesza et al.</description>
+    </item>
+    
+    <item>
+      <title>Interactive Decision Making</title>
+      <link>/research/interactive_decision_making.md/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/research/interactive_decision_making.md/</guid>
+      <description>Designing “teams of intelligent agents that success- fully coordinate and learn about their complex en- vironments inhabited by other agents (such as hu- mans)” is one of the major goals of AI, and it is the challenge that I aim to address in my research. In this paper I give an overview of some of the foun- dations, insights and challenges in this field of In- teractive Learning and Decision Making</description>
     </item>
     
     <item>
@@ -872,7 +881,7 @@
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>/research/online_learning.md/</guid>
-      <description></description>
+      <description>Online learning is a well established learning paradigm which has both theoretical and practical appeals. The goal of online learning is to make a sequence of accurate predictions given knowledge of the cor- rect answer to previous prediction tasks and possibly additional avail- able information. Online learning has been studied in several research fields including game theory, information theory, and machine learning. It also became of great interest to practitioners due the recent emer- gence of large scale applications such as online advertisement placement and online web ranking.</description>
     </item>
     
     <item>
@@ -908,7 +917,7 @@
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>/research/statistical_learning_theory.md/</guid>
-      <description></description>
+      <description>The goals of learning are understanding and prediction. Learning falls into many categories, including supervised learning, unsupervised learning, online learning, and reinforcement learning. From the perspective of statistical learning theory, supervised learning is best understood. Supervised learning involves learning from a training set of data. Every point in the training is an input-output pair, where the input maps to an output. The learning problem consists of inferring the function that maps between the input and the output, such that the learned function can be used to predict the output from future input.</description>
     </item>
     
     <item>
@@ -923,20 +932,11 @@
     
     <item>
       <title>Submodular Optimization</title>
-      <link>/research/interactive_decision_making.md/</link>
-      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/research/interactive_decision_making.md/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Submodular Optimization</title>
       <link>/research/submodular_optimization.md/</link>
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>/research/submodular_optimization.md/</guid>
-      <description></description>
+      <description>Submodularity is a property of set functions with deep theoretical consequences and far– reaching applications. At first glance it appears very similar to concavity, in other ways it resembles convexity. It appears in a wide variety of applications: in Computer Science it has recently been identified and utilized in domains such as viral marketing (Kempe et al., 2003), information gathering (Krause and Guestrin, 2007), image segmentation (Boykov and Jolly, 2001; Kohli et al.</description>
     </item>
     
     <item>

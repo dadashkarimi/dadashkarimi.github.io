@@ -940,6 +940,42 @@
     </item>
     
     <item>
+      <title>Mehraveh Salehi Graduated!</title>
+      <link>/news/mehraveh-19.md/</link>
+      <pubDate>Tue, 10 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/news/mehraveh-19.md/</guid>
+      <description>Mehraveh Salehi Graduated with her PhD thesis entitled “Individualized and Task-Specific Human Brain Mapping”.</description>
+    </item>
+    
+    <item>
+      <title>NSF CAREER Award 2019</title>
+      <link>/news/karbasi-19a.md/</link>
+      <pubDate>Sun, 21 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/news/karbasi-19a.md/</guid>
+      <description>Amin Karbasi won NSF CAREER Award 2019!</description>
+    </item>
+    
+    <item>
+      <title>Amazon Research Award</title>
+      <link>/news/karbasi-19b.md/</link>
+      <pubDate>Thu, 17 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/news/karbasi-19b.md/</guid>
+      <description>Amin Karbasi won NSF Amazon Research Award!</description>
+    </item>
+    
+    <item>
+      <title>Understanding Ourselves Through Neuroimaging and Algorithms</title>
+      <link>/news/mehraveh-18a.md/</link>
+      <pubDate>Tue, 15 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/news/mehraveh-18a.md/</guid>
+      <description>Understanding Ourselves Through Neuroimaging and Algorithms: link</description>
+    </item>
+    
+    <item>
       <title>Dynamic and Discrete Optimization</title>
       <link>/courses/fall-19.md/</link>
       <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
@@ -967,6 +1003,15 @@ Meeting Info TTh 1pm-2:15pm in BCT CO31</description>
       <description>Course ID: ENAS 990 Faculty-supervised individual projects with emphasis on research, laboratory, or theory. Students must define the scope of the proposed project with the faculty member who has agreed to act as supervisor, and submit a brief abstract to the director of graduate studies for approval.
 Class titles vary by section.
    Class titles vary by section.         Special Investigations 01 23069 HTBA D.</description>
+    </item>
+    
+    <item>
+      <title>ONR Young Investigator Award 2019</title>
+      <link>/news/karbasi-18a.md/</link>
+      <pubDate>Thu, 20 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/news/karbasi-18a.md/</guid>
+      <description>Amin Karbasi won ONR Young Investigator Award 2019!</description>
     </item>
     
     <item>
@@ -1031,6 +1076,33 @@ $$ \sum_{n=1}^{\infty} 2^{-n} = 1 $$
     </item>
     
     <item>
+      <title>CVPR 2018 Tutorial on Big Data Summarization</title>
+      <link>/news/isit-18a.md/</link>
+      <pubDate>Fri, 25 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/news/isit-18a.md/</guid>
+      <description>CVPR 2018 tutorial on Big Data Summarization: Algorithms and Applications.</description>
+    </item>
+    
+    <item>
+      <title>5 Papers in ICML 2018</title>
+      <link>/news/icml-18a.md/</link>
+      <pubDate>Thu, 24 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/news/icml-18a.md/</guid>
+      <description>5 papers accepted to International Conference on Machine Learning (ICML), 2018.</description>
+    </item>
+    
+    <item>
+      <title>Google PhD felloswhip</title>
+      <link>/news/lin-18a.md/</link>
+      <pubDate>Thu, 24 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/news/lin-18a.md/</guid>
+      <description>Lin Chen received 2018 Google PhD felloswhip. Congrats Lin.</description>
+    </item>
+    
+    <item>
       <title>Dynamic&amp;DiscreteOptimization</title>
       <link>/courses/spring-18.md/</link>
       <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
@@ -1049,6 +1121,33 @@ Meeting Info TTh 1pm-2:15pm in HLH17 03</description>
       <description>Course ID: ENAS 990 Faculty-supervised individual projects with emphasis on research, laboratory, or theory. Students must define the scope of the proposed project with the faculty member who has agreed to act as supervisor, and submit a brief abstract to the director of graduate studies for approval.
 Class titles vary by section.
    Class titles vary by section.         Special Investigations 01 13671 HTBA J.</description>
+    </item>
+    
+    <item>
+      <title>AFOSR Young Investigator Research Award 2018</title>
+      <link>/news/karbasi-17a.md/</link>
+      <pubDate>Wed, 11 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/news/karbasi-17a.md/</guid>
+      <description>Amin Karbasi won AFOSR Young Investigator Research Award 2018!</description>
+    </item>
+    
+    <item>
+      <title>ONR Young Investigator Award 2019</title>
+      <link>/news/nips-18.md/</link>
+      <pubDate>Mon, 09 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/news/nips-18.md/</guid>
+      <description>We are organizing a workshop at NIPS 2017 on Discrete Structures in Machine Learning.</description>
+    </item>
+    
+    <item>
+      <title>MICCAI Young Scientist Award</title>
+      <link>/news/mehraveh-17a.md/</link>
+      <pubDate>Mon, 09 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/news/mehraveh-17a.md/</guid>
+      <description>MICCAI Young Scientist Award for ”A Submodular Approach to Create Individualized Parcellations of Human Brain”</description>
     </item>
     
     <item>
@@ -1144,6 +1243,15 @@ Follow the following steps:
     </item>
     
     <item>
+      <title>4 papers in AISTATS 2018</title>
+      <link>/news/aistats-18.md/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/news/aistats-18.md/</guid>
+      <description>4 papers accepted to International Conference on Artificial Intelligence and Statistics (AISTATS), 2018</description>
+    </item>
+    
+    <item>
       <title>About Hugo</title>
       <link>/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1192,6 +1300,15 @@ It makes use of a variety of open source projects including:</description>
       
       <guid>/people/kazemi.md/</guid>
       <description>Ehsan Kazemi was Postdoc in the Department of Electrical Engineering and currently working in Google at Zürich.</description>
+    </item>
+    
+    <item>
+      <title>Facebook-Main Award for Mehraveh Salehi</title>
+      <link>/news/mehraveh-19b.md/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/news/mehraveh-19b.md/</guid>
+      <description>Facebook-Main Award for Mehraveh Salehi. Congratulations Mehraveh!</description>
     </item>
     
     <item>
@@ -1256,6 +1373,15 @@ It makes use of a variety of open source projects including:</description>
       
       <guid>/people/shadravan.md/</guid>
       <description>Mohammad is a Postdoctoral Associate in the Institute for Network Science. He earned his PhD from Columbia University under the supervision of Professor Clifford Stein and Shipra Agrawal. His research interests lie primarily in the area of submodulariy in machine learning, algorithms for massive dataset, and optimization for sequential decision making. He completed his Master’s degree in the department of Combinatorics and Optimization at the University of Waterloo. Before that, he obtained his B.</description>
+    </item>
+    
+    <item>
+      <title>ONR Young Investigator Award 2019</title>
+      <link>/news/isit-18a.md/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/news/isit-18a.md/</guid>
+      <description>ISIT 2018 Tutorial on Submodularity in Information and Data Science.</description>
     </item>
     
     <item>

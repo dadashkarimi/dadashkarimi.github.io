@@ -543,6 +543,31 @@
   </url>
   
   <url>
+    <loc>/news/mehraveh-19.md/</loc>
+    <lastmod>2019-09-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/news/</loc>
+    <lastmod>2019-09-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/news/karbasi-19a.md/</loc>
+    <lastmod>2019-04-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/news/karbasi-19b.md/</loc>
+    <lastmod>2019-01-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/news/mehraveh-18a.md/</loc>
+    <lastmod>2019-01-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/courses/fall-19.md/</loc>
     <lastmod>2019-01-03T00:00:00+00:00</lastmod>
   </url>
@@ -555,6 +580,11 @@
   <url>
     <loc>/courses/spring-19.md/</loc>
     <lastmod>2019-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/news/karbasi-18a.md/</loc>
+    <lastmod>2018-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -583,6 +613,21 @@
   </url>
   
   <url>
+    <loc>/news/isit-18a.md/</loc>
+    <lastmod>2018-05-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/news/icml-18a.md/</loc>
+    <lastmod>2018-05-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/news/lin-18a.md/</loc>
+    <lastmod>2018-05-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/courses/spring-18.md/</loc>
     <lastmod>2018-01-03T00:00:00+00:00</lastmod>
   </url>
@@ -590,6 +635,21 @@
   <url>
     <loc>/courses/fall-18.md/</loc>
     <lastmod>2018-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/news/karbasi-17a.md/</loc>
+    <lastmod>2017-10-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/news/nips-18.md/</loc>
+    <lastmod>2017-10-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/news/mehraveh-17a.md/</loc>
+    <lastmod>2017-01-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -688,6 +748,10 @@
   </url>
   
   <url>
+    <loc>/news/aistats-18.md/</loc>
+  </url>
+  
+  <url>
     <loc>/about/</loc>
   </url>
   
@@ -709,6 +773,10 @@
   
   <url>
     <loc>/people/kazemi.md/</loc>
+  </url>
+  
+  <url>
+    <loc>/news/mehraveh-19b.md/</loc>
   </url>
   
   <url>
@@ -737,6 +805,10 @@
   
   <url>
     <loc>/people/shadravan.md/</loc>
+  </url>
+  
+  <url>
+    <loc>/news/isit-18a.md/</loc>
   </url>
   
   <url>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>News on Amin Karbasi</title>
+    <link>/news/</link>
+    <description>Recent content in News on Amin Karbasi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 10 Sep 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/news/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mehraveh Salehi Graduated!</title>
+      <link>/news/mehraveh-19.md/</link>
+      <pubDate>Tue, 10 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/news/mehraveh-19.md/</guid>
+      <description>Mehraveh Salehi Graduated with her PhD thesis entitled “Individualized and Task-Specific Human Brain Mapping”.</description>
+    </item>
+    
+    <item>
+      <title>NSF CAREER Award 2019</title>
+      <link>/news/karbasi-19a.md/</link>
+      <pubDate>Sun, 21 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/news/karbasi-19a.md/</guid>
+      <description>Amin Karbasi won NSF CAREER Award 2019!</description>
+    </item>
+    
+    <item>
+      <title>Amazon Research Award</title>
+      <link>/news/karbasi-19b.md/</link>
+      <pubDate>Thu, 17 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/news/karbasi-19b.md/</guid>
+      <description>Amin Karbasi won NSF Amazon Research Award!</description>
+    </item>
+    
+    <item>
+      <title>Understanding Ourselves Through Neuroimaging and Algorithms</title>
+      <link>/news/mehraveh-18a.md/</link>
+      <pubDate>Tue, 15 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/news/mehraveh-18a.md/</guid>
+      <description>Understanding Ourselves Through Neuroimaging and Algorithms: link</description>
+    </item>
+    
+    <item>
+      <title>ONR Young Investigator Award 2019</title>
+      <link>/news/karbasi-18a.md/</link>
+      <pubDate>Thu, 20 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/news/karbasi-18a.md/</guid>
+      <description>Amin Karbasi won ONR Young Investigator Award 2019!</description>
+    </item>
+    
+    <item>
+      <title>CVPR 2018 Tutorial on Big Data Summarization</title>
+      <link>/news/isit-18a.md/</link>
+      <pubDate>Fri, 25 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/news/isit-18a.md/</guid>
+      <description>CVPR 2018 tutorial on Big Data Summarization: Algorithms and Applications.</description>
+    </item>
+    
+    <item>
+      <title>5 Papers in ICML 2018</title>
+      <link>/news/icml-18a.md/</link>
+      <pubDate>Thu, 24 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/news/icml-18a.md/</guid>
+      <description>5 papers accepted to International Conference on Machine Learning (ICML), 2018.</description>
+    </item>
+    
+    <item>
+      <title>Google PhD felloswhip</title>
+      <link>/news/lin-18a.md/</link>
+      <pubDate>Thu, 24 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/news/lin-18a.md/</guid>
+      <description>Lin Chen received 2018 Google PhD felloswhip. Congrats Lin.</description>
+    </item>
+    
+    <item>
+      <title>AFOSR Young Investigator Research Award 2018</title>
+      <link>/news/karbasi-17a.md/</link>
+      <pubDate>Wed, 11 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/news/karbasi-17a.md/</guid>
+      <description>Amin Karbasi won AFOSR Young Investigator Research Award 2018!</description>
+    </item>
+    
+    <item>
+      <title>ONR Young Investigator Award 2019</title>
+      <link>/news/nips-18.md/</link>
+      <pubDate>Mon, 09 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/news/nips-18.md/</guid>
+      <description>We are organizing a workshop at NIPS 2017 on Discrete Structures in Machine Learning.</description>
+    </item>
+    
+    <item>
+      <title>MICCAI Young Scientist Award</title>
+      <link>/news/mehraveh-17a.md/</link>
+      <pubDate>Mon, 09 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/news/mehraveh-17a.md/</guid>
+      <description>MICCAI Young Scientist Award for ”A Submodular Approach to Create Individualized Parcellations of Human Brain”</description>
+    </item>
+    
+    <item>
+      <title>4 papers in AISTATS 2018</title>
+      <link>/news/aistats-18.md/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/news/aistats-18.md/</guid>
+      <description>4 papers accepted to International Conference on Artificial Intelligence and Statistics (AISTATS), 2018</description>
+    </item>
+    
+    <item>
+      <title>Facebook-Main Award for Mehraveh Salehi</title>
+      <link>/news/mehraveh-19b.md/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/news/mehraveh-19b.md/</guid>
+      <description>Facebook-Main Award for Mehraveh Salehi. Congratulations Mehraveh!</description>
+    </item>
+    
+    <item>
+      <title>ONR Young Investigator Award 2019</title>
+      <link>/news/isit-18a.md/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/news/isit-18a.md/</guid>
+      <description>ISIT 2018 Tutorial on Submodularity in Information and Data Science.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -111,6 +111,42 @@
     </item>
     
     <item>
+      <title>Microsoft Azure for Research</title>
+      <link>/news/frontier-16.md/</link>
+      <pubDate>Mon, 19 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/news/frontier-16.md/</guid>
+      <description>Grainger Award 2017 from National Academy of Engineering for Advancement of Interdisciplinary Research</description>
+    </item>
+    
+    <item>
+      <title>Google Faculty Research</title>
+      <link>/news/google-16.md/</link>
+      <pubDate>Thu, 01 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/news/google-16.md/</guid>
+      <description>Grateful to receive Google Faculty Research Award 2016.</description>
+    </item>
+    
+    <item>
+      <title>AISTATS</title>
+      <link>/news/aistats-15.md/</link>
+      <pubDate>Sun, 13 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/news/aistats-15.md/</guid>
+      <description>Our paper Tradeoffs for Space, Time, Data and Risk in Unsupervised Learning received the Best Student Paper Award from the 18th International Conference on Artificial Intelligence and Statistics (AISTATS), 2015.</description>
+    </item>
+    
+    <item>
+      <title>IEEE Data Sorage</title>
+      <link>/news/ieee-15.md/</link>
+      <pubDate>Sat, 12 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/news/ieee-15.md/</guid>
+      <description>Our paper Noise-Enhanced Associative Memories received the IEEE Data Storage Best Student Paper Award.</description>
+    </item>
+    
+    <item>
       <title>4 papers in AISTATS 2018</title>
       <link>/news/aistats-18.md/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -129,12 +165,30 @@
     </item>
     
     <item>
+      <title>Microsoft Azure for Research</title>
+      <link>/news/azure-17.md/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/news/azure-17.md/</guid>
+      <description>Grateful to Receive Microsoft Azure for Research.</description>
+    </item>
+    
+    <item>
       <title>ONR Young Investigator Award 2019</title>
       <link>/news/isit-18a.md/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/news/isit-18a.md/</guid>
       <description>ISIT 2018 Tutorial on Submodularity in Information and Data Science.</description>
+    </item>
+    
+    <item>
+      <title>Simons Foundation</title>
+      <link>/news/frontier-16.md/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/news/frontier-16.md/</guid>
+      <description>Grateful to receive Simons Research Fellowship 2017 for the “Foundations of Machine Learning” program</description>
     </item>
     
   </channel>

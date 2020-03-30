@@ -468,11 +468,6 @@
   </url>
   
   <url>
-    <loc>/</loc>
-    <lastmod>2020-01-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/research/computational_neuroscience_neurimaging.md/</loc>
     <lastmod>2020-01-03T00:00:00+00:00</lastmod>
   </url>
@@ -484,6 +479,11 @@
   
   <url>
     <loc>/courses/</loc>
+    <lastmod>2020-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/</loc>
     <lastmod>2020-01-03T00:00:00+00:00</lastmod>
   </url>
   

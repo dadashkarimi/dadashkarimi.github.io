@@ -309,15 +309,6 @@
     </item>
     
     <item>
-      <title>Submodularity on Hypergraphs: From Sets to Sequences.</title>
-      <link>/publications/2018/makro-2018a/</link>
-      <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/publications/2018/makro-2018a/</guid>
-      <description>Abstract In a nutshell, submodular functions encode an intuitive notion of diminishing returns. As a result, submodularity appears in many important machine learning tasks such as feature selection and data summarization. Although there has been a large volume of work devoted to the study of submodular functions in recent years, the vast majority of this work has been focused on algorithms that output sets, not sequences. However, in many settings, the order in which we output items can be just as important as the items themselves.</description>
-    </item>
-    
-    <item>
       <title>Weakly Submodular Maximization Beyond Cardinality Constraints: Does Randomization Help Greedy?</title>
       <link>/publications/2018/lin-18b/</link>
       <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>

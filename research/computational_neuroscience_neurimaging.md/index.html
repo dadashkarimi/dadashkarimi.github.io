@@ -16,10 +16,10 @@
     <meta property="og:description" content="research">
     <meta property="og:type" content="website">
     <meta property="og:url" content="/research/computational_neuroscience_neurimaging.md/">
-    <meta property="og:image" content="images/tn.png">
+    <meta property="og:image" content="images/examplar.jpeg">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="/research/computational_neuroscience_neurimaging.md/">
-    <meta name="twitter:image" content="images/tn.png">
+    <meta name="twitter:image" content="images/examplar.jpeg">
 
     <base href="/research/computational_neuroscience_neurimaging.md/">
     <title>
@@ -188,6 +188,26 @@
 			<h1 >&nbsp;Computational Neuroscience &amp; Neuroimaging</h1>
 			
 			
+			<script type="text/javascript" async
+	   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full">
+MathJax.Hub.Config({
+	tex2jax: {
+		inlineMath: [['$','$']],
+		displayMath: [['$$','$$']],
+		processEscapes: true,
+		processEnvironments: true,
+		skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+		TeX: { extensions: ["AMSmath.js", "AMSsymbols.js"] }
+	}
+});
+MathJax.Hub.Queue(function() {
+	var all = MathJax.Hub.getAllJax(), i;
+	for(i = 0; i < all.length; i += 1) {
+		all[i].SourceElement().parentNode.className += ' has-jax';
+	}
+});
+			</script>
+			
 
 		</header>
 
@@ -197,7 +217,17 @@
 			<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
 			<div>
 
-			<p>The goal of human brain mapping has long been to delineate the functional subunits in the brain and elucidate the functional role of each of these brain regions. Recent work has focused on whole-brain parcellation of functional Magnetic Resonance Imaging (fMRI) data to identify these subunits and create a functional atlas. Functional connectivity approaches to understand the brain at the network level require such an atlas to assess connections between parcels and extract network properties. While no single functional atlas has emerged as the dominant atlas to date, there remains an underlying assumption that such an atlas exists. Using fMRI data from a highly sampled subject as well as two independent replication data sets, we demonstrate that functional parcellations based on fMRI connectivity data reconfigure substantially and in a meaningful manner, according to brain state.</p>
+			<p>The goal of human brain mapping has long been to delineate the functional subunits in the brain. To do so, a sequence of preprocessing applies on human brain images. Before 2017, whole-brain parcellation based on a group of participants was a common approch to segment brain into multiple functional nodes. Our lab proposed an award winning approach for individualized parcellation which is more accurately represents a person&rsquo;s brain. To construct the examplar-based individualized parcellation, we need to study all single voxels &ndash;1mm cubes&ndash; and assign each voxel to an appropriate cluster or node. To do so, we measure the amount of information is lost by representing whole brain with a subset $S$:</p>
+<p>$$
+L(S) = \frac{1}{|V|} \sum_{v\in V} \min_{e\in S} d(v,e)
+$$</p>
+<p>So we have to minimize this function. A good news is that by doing a little bit of math we can turn it into the following maximization of a monotone submodular function:</p>
+<p>$$
+f(S) = L(v_0)-L(SUv_0)
+$$</p>
+<p>For the choice of auxiliary element, any vector  $v_0$ whose distance to every data point is greater than the pairwise distances between the data points, can serve the purpose.
+Once we made the individualized parcellation for each participant, we can construct correlation matrices for all. People in neuroscience and brain imaging community use these matrices to investigate correlation between connectomes and behavioral measures like IQ or maybe age and sex.
+This is an intuition of how our lab&rsquo;s work is related to neuroscience.</p>
 
 			<div></div>
 			</ul>
@@ -213,6 +243,12 @@
 		
 
 		
+		<div>
+			<center>
+		<a href="/research/computational_neuroscience_neurimaging.md/"><img class="x-img x-img-thumbnail none" src="../../images/examplar.jpeg"  style="margin-right:2%;margin-top:1%" align="center"></a>
+			</center>
+		<br/>
+		</div>
 		<h1>Relevant Papers</h1>
 		<table>
 			

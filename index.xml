@@ -845,7 +845,7 @@
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>/research/computational_neuroscience_neurimaging.md/</guid>
-      <description>The goal of human brain mapping has long been to delineate the functional subunits in the brain and elucidate the functional role of each of these brain regions. Recent work has focused on whole-brain parcellation of functional Magnetic Resonance Imaging (fMRI) data to identify these subunits and create a functional atlas. Functional connectivity approaches to understand the brain at the network level require such an atlas to assess connections between parcels and extract network properties.</description>
+      <description>The goal of human brain mapping has long been to delineate the functional subunits in the brain. To do so, a sequence of preprocessing applies on human brain images. Before 2017, whole-brain parcellation based on a group of participants was a common approch to segment brain into multiple functional nodes. Our lab proposed an award winning approach for individualized parcellation which is more accurately represents a person&amp;rsquo;s brain. To construct the examplar-based individualized parcellation, we need to study all single voxels &amp;ndash;1mm cubes&amp;ndash; and assign each voxel to an appropriate cluster or node.</description>
     </item>
     
     <item>
@@ -863,7 +863,8 @@
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>/research/interactive_decision_making.md/</guid>
-      <description>Designing “teams of intelligent agents that success- fully coordinate and learn about their complex en- vironments inhabited by other agents (such as hu- mans)” is one of the major goals of AI, and it is the challenge that I aim to address in my research. In this paper I give an overview of some of the foun- dations, insights and challenges in this field of In- teractive Learning and Decision Making</description>
+      <description>In computer science, and machine learning in particular, the primary purpose of many systems is to help humans make decisions. Simultaneously, many of these systems also stand to benefit from having a human in the loop, whether it is to reinforce good decisions, warn against bad decisions, or simply to provide expert advice in areas of uncertainty.
+A simple, concrete example can be seen in recommender systems. Whether it is through explicit feedback (such as rating a movie on Netflix) or implicit feedback (such as clicking/not clicking on an advertisement), the vast majority of successful, real-world recommender systems are constantly interacting with and adapting to each user.</description>
     </item>
     
     <item>

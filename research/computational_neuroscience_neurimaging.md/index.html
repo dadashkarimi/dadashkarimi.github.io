@@ -223,7 +223,7 @@ L(S) = \frac{1}{|V|} \sum_{v\in V} \min_{e\in S} d(v,e)
 $$</p>
 <p>So we have to minimize this function. A good news is that by doing a little bit of math we can turn it into the following maximization of a monotone submodular function:</p>
 <p>$$
-f(S) = L(v_0)-L(SUv_0)
+f(S) = L(v_0)-L(S\cup v_0)
 $$</p>
 <p>For the choice of auxiliary element, any vector  $v_0$ whose distance to every data point is greater than the pairwise distances between the data points, can serve the purpose.
 Once we made the individualized parcellation for each participant, we can construct correlation matrices for all. People in neuroscience and brain imaging community use these matrices to investigate correlation between connectomes and behavioral measures like IQ or maybe age and sex.

@@ -66,15 +66,6 @@
     </item>
     
     <item>
-      <title>5 Papers in ICML 2018</title>
-      <link>/news/icml-18a.md/</link>
-      <pubDate>Thu, 24 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/news/icml-18a.md/</guid>
-      <description>5 papers accepted to International Conference on Machine Learning (ICML), 2018.</description>
-    </item>
-    
-    <item>
       <title>Google PhD felloswhip</title>
       <link>/news/lin-18a.md/</link>
       <pubDate>Thu, 24 May 2018 00:00:00 +0000</pubDate>
@@ -93,11 +84,11 @@
     </item>
     
     <item>
-      <title>ONR Young Investigator Award 2019</title>
-      <link>/news/nips-18.md/</link>
+      <title>NIPS 2017 workshop</title>
+      <link>/news/nips-17.md/</link>
       <pubDate>Mon, 09 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>/news/nips-18.md/</guid>
+      <guid>/news/nips-17.md/</guid>
       <description>We are organizing a workshop at NIPS 2017 on Discrete Structures in Machine Learning.</description>
     </item>
     
@@ -144,15 +135,6 @@
       
       <guid>/news/ieee-15.md/</guid>
       <description>Our paper Noise-Enhanced Associative Memories received the IEEE Data Storage Best Student Paper Award.</description>
-    </item>
-    
-    <item>
-      <title>4 papers in AISTATS 2018</title>
-      <link>/news/aistats-18.md/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/news/aistats-18.md/</guid>
-      <description>4 papers accepted to International Conference on Artificial Intelligence and Statistics (AISTATS), 2018</description>
     </item>
     
     <item>

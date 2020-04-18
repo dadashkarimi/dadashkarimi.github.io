@@ -44,7 +44,9 @@
       <pubDate>Tue, 15 Jan 2019 00:00:00 +0000</pubDate>
       
       <guid>/news/mehraveh-18a.md/</guid>
-      <description>Understanding Ourselves Through Neuroimaging and Algorithms: link</description>
+      <description>Understanding Ourselves Through Neuroimaging and Algorithms: link
+Combining neuroscience with algorithms and network science, Yale researchers have developed a method of analyzing the neuronal connections of individual brains that allow them to successfully predict the subjects’ IQs, their sex, and even tasks they were performing at the time of the brain scan.
+In a collaboration between the labs of Amin Karbasi, assistant professor of electrical engineering &amp;amp; computer science and Todd Constable, professor of radiology and biomedical imaging and of neurosurgery, the researchers analyzed the functional MRI scans of more than 100 subjects from the Human Connectome Project, a five-year effort to create a network map of the human brain.</description>
     </item>
     
     <item>
@@ -129,7 +131,7 @@
     </item>
     
     <item>
-      <title>IEEE Data Sorage</title>
+      <title>IEEE Data Storage</title>
       <link>/news/ieee-15.md/</link>
       <pubDate>Sat, 12 Sep 2015 00:00:00 +0000</pubDate>
       

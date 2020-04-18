@@ -217,6 +217,8 @@ MathJax.Hub.Queue(function() {
 			<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
 			<div>
 
+			
+
 			<p>Submodularity is a property of set functions with deep theoretical consequences and far– reaching applications. At first glance it appears very similar to concavity, in other ways it resembles convexity. It appears in a wide variety of applications: in Computer Science it has recently been identified and utilized in domains such as viral marketing (Kempe et al., 2003), information gathering (Krause and Guestrin, 2007), image segmentation (Boykov and Jolly, 2001; Kohli et al., 2009; Jegelka and Bilmes, 2011a), document summarization (Lin and Bilmes, 2011), and speeding up satisfiability solvers (Streeter and Golovin, 2008). In this survey we will introduce submodularity and some of its generalizations, illustrate how it arises in various applications, and discuss algorithms for optimizing submodular functions. Our emphasis here is on maximization; there are many important results and applications related to minimizing submodular functions that we do not cover.</p>
 <p>As a concrete running example, we will consider the problem of deploying sensors in a drinking water distribution network (see Figure 1) in order to detect contamination. In this domain, we may have a model of how contaminants, accidentally or maliciously introduced into the network, spread over time. Such a model then allows to quantify the benefit $f(A)$ of deploying sensors at a particular set A of locations (junctions or pipes in the network) in terms of the detection performance (such as average time to detection). Based on this notion of utility, we then wish to find an optimal subset $A \in V$ of locations maximizing the utility, $\max_A f(A)$, subject to some constraints (such as bounded cost). This application requires solving a difficult real-world optimization problem, that can be handled with the techniques discussed in this chapter (Krause et al. 2008b show in detail how submodular optimization can be applied in this domain.) We will also discuss more complex settings, for example how one can incorporate complex constraints on the feasible sets A, robustly optimize against adversarially chosen objective functions f, or adaptively select sensors based on previous observations.
 Several algorithms for submodular optimization described in this survey are implemented in an open source Matlab toolbox3 (Krause, 2010).</p>
@@ -1470,6 +1472,7 @@ Several algorithms for submodular optimization described in this survey are impl
 		</table>
 	</ul>
 </section>
+
 
 
 

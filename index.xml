@@ -6,7 +6,7 @@
     <description>Recent content on IID Group</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 03 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 10 Mar 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
@@ -840,6 +840,18 @@
     </item>
     
     <item>
+      <title>Lin Chen Graduated!</title>
+      <link>/news/lin-2020.md/</link>
+      <pubDate>Tue, 10 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/news/lin-2020.md/</guid>
+      <description>The final doctoral examination for Lin Chen will take place on Wednesday, March 11th, at 2:00pm in HLH17, Room 335.
+The title of the thesis is: Online Optimization: Convex and Submodular Functions
+Members of the Committee are:
+ Professor Karbasi Professor Negahban Professor Spielman  Abstract: In the first part, we study switching-constrained online convex optimization (OCO), where the player has a limited number of opportunities to change her action. While the discrete analog of this online learning task has been studied extensively, previous work in the continuous setting has neither established the minimax rate nor algorithmically achieved it.</description>
+    </item>
+    
+    <item>
       <title>Computational Neuroscience &amp; Neuroimaging</title>
       <link>/research/computational_neuroscience_neurimaging.md/</link>
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
@@ -937,7 +949,11 @@ A simple, concrete example can be seen in recommender systems. Whether it is thr
       <pubDate>Tue, 10 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>/news/mehraveh-19.md/</guid>
-      <description>Mehraveh Salehi Graduated with her PhD thesis entitled “Individualized and Task-Specific Human Brain Mapping”.</description>
+      <description>Mehraveh Salehi Graduated with her PhD thesis entitled “Individualized and Task-Specific Human Brain Mapping”.
+The final doctoral examination for Mehraveh Salehi took place on Tuesday, September 3rd, at 11:00am at YINS, 17 Hillhouse, 3rd floor.
+The title of the thesis is: Individualized and Task-Specific Functional Brain Mapping
+Members of the Committee are:
+ Professor Constable Professor Karbasi Professor Papademetris Professor Tassiulas  Abstract: Understanding the human brain, with its remarkable ability to control higher thought, behavior, and memory, remains one of the greatest intellectual challenges in all of science.</description>
     </item>
     
     <item>
@@ -1071,10 +1087,10 @@ $$ \sum_{n=1}^{\infty} 2^{-n} = 1 $$
     
     <item>
       <title>CVPR 2018 Tutorial on Big Data Summarization</title>
-      <link>/news/isit-18a.md/</link>
+      <link>/news/cvp4-18a.md/</link>
       <pubDate>Fri, 25 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>/news/isit-18a.md/</guid>
+      <guid>/news/cvp4-18a.md/</guid>
       <description>CVPR 2018 tutorial on Big Data Summarization: Algorithms and Applications.</description>
     </item>
     
@@ -1145,12 +1161,13 @@ Class titles vary by section.
     </item>
     
     <item>
-      <title>Microsoft Azure for Research</title>
+      <title>Grainger Award 2017</title>
       <link>/news/frontier-16.md/</link>
       <pubDate>Mon, 19 Sep 2016 00:00:00 +0000</pubDate>
       
       <guid>/news/frontier-16.md/</guid>
-      <description>Grainger Award 2017 from National Academy of Engineering for Advancement of Interdisciplinary Research</description>
+      <description>Grainger Award 2017 from National Academy of Engineering for Advancement of Interdisciplinary Research.
+Amin Karbasi (Yale University) and Amit Surana (United Technologies Research Center) have received a Grainger Grant to “develop a unified approach for saliency detection in heterogeneous temporal data.” The grant will support the team’s interdisciplinary research to develop algorithms for compressing massive amounts of time—varying data into small salient or informative datasets to allow faster decision making. For example, if salient or significant images in particular frames can be identified from terabytes of video stream, the original video can be summarized using a much smaller set of frames, enabling much faster video processing for surveillance applications such as anomaly detection and activity classification.</description>
     </item>
     
     <item>
@@ -1324,6 +1341,15 @@ Awards  Best Poster Award in International Workshop on Connectomics in Neuroimag
     </item>
     
     <item>
+      <title>ISIT 2018 </title>
+      <link>/news/isit-18a.md/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/news/isit-18a.md/</guid>
+      <description>ISIT 2018 Tutorial on Submodularity in Information and Data Science.</description>
+    </item>
+    
+    <item>
       <title>Javid Dadashkarimi</title>
       <link>/people/dadashkarimi.md/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1397,15 +1423,6 @@ Awards  Best Poster Award in International Workshop on Connectomics in Neuroimag
     </item>
     
     <item>
-      <title>ONR Young Investigator Award 2019</title>
-      <link>/news/isit-18a.md/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/news/isit-18a.md/</guid>
-      <description>ISIT 2018 Tutorial on Submodularity in Information and Data Science.</description>
-    </item>
-    
-    <item>
       <title>Outreach</title>
       <link>/outreach/outreach.md/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1418,10 +1435,10 @@ ICML 2013, 2015, 2015, 2017, 2017, 2018 (area chair), 2019 (area chair) Neural I
     
     <item>
       <title>Simons Foundation</title>
-      <link>/news/frontier-16.md/</link>
+      <link>/news/simons-16.md/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/news/frontier-16.md/</guid>
+      <guid>/news/simons-16.md/</guid>
       <description>Grateful to receive Simons Research Fellowship 2017 for the “Foundations of Machine Learning” program</description>
     </item>
     

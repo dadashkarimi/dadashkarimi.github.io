@@ -463,6 +463,21 @@
   </url>
   
   <url>
+    <loc>/</loc>
+    <lastmod>2020-03-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/news/lin-2020.md/</loc>
+    <lastmod>2020-03-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/news/</loc>
+    <lastmod>2020-03-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/research/computational_neuroscience_neurimaging.md/</loc>
     <lastmod>2020-01-03T00:00:00+00:00</lastmod>
   </url>
@@ -474,11 +489,6 @@
   
   <url>
     <loc>/courses/</loc>
-    <lastmod>2020-01-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/</loc>
     <lastmod>2020-01-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -543,11 +553,6 @@
   </url>
   
   <url>
-    <loc>/news/</loc>
-    <lastmod>2019-09-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/news/karbasi-19a.md/</loc>
     <lastmod>2019-04-21T00:00:00+00:00</lastmod>
   </url>
@@ -608,7 +613,7 @@
   </url>
   
   <url>
-    <loc>/news/isit-18a.md/</loc>
+    <loc>/news/cvp4-18a.md/</loc>
     <lastmod>2018-05-25T00:00:00+00:00</lastmod>
   </url>
   
@@ -786,6 +791,10 @@
   </url>
   
   <url>
+    <loc>/news/isit-18a.md/</loc>
+  </url>
+  
+  <url>
     <loc>/people/dadashkarimi.md/</loc>
   </url>
   
@@ -818,10 +827,6 @@
   </url>
   
   <url>
-    <loc>/news/isit-18a.md/</loc>
-  </url>
-  
-  <url>
     <loc>/outreach/outreach.md/</loc>
   </url>
   
@@ -834,7 +839,7 @@
   </url>
   
   <url>
-    <loc>/news/frontier-16.md/</loc>
+    <loc>/news/simons-16.md/</loc>
   </url>
   
   <url>

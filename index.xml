@@ -6,7 +6,7 @@
     <description>Recent content on IID Group</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 10 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 10 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
@@ -840,6 +840,20 @@
     </item>
     
     <item>
+      <title>Marko Mitrovic Graduated!</title>
+      <link>/news/marko-2020.md/</link>
+      <pubDate>Fri, 10 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/news/marko-2020.md/</guid>
+      <description>Student: Marko Mitrovic
+Dissertation Title: Modern Challenges for Machine Learning Applications of Submodularity: Privacy, Scalability, and Sequences
+Date: Thursday, March 5, 2020 Time: 4:00 PM Location: Room 335, 3rd floor, 17 Hillhouse Avenue
+Advisor: Amin Karbasi
+Other committee members:
+ Dan Spielman Dragomir Radev Yaron Singer (Harvard)  Abstract: In a nutshell, submodularity covers the class of all problems that exhibit some form of diminishing returns. From a theoretical perspective, this notion of diminishing returns is extremely useful as the resulting mathematical properties allow for provably efficient optimization.</description>
+    </item>
+    
+    <item>
       <title>Lin Chen Graduated!</title>
       <link>/news/lin-2020.md/</link>
       <pubDate>Tue, 10 Mar 2020 00:00:00 +0000</pubDate>
@@ -953,7 +967,7 @@ A simple, concrete example can be seen in recommender systems. Whether it is thr
 The final doctoral examination for Mehraveh Salehi took place on Tuesday, September 3rd, at 11:00am at YINS, 17 Hillhouse, 3rd floor.
 The title of the thesis is: Individualized and Task-Specific Functional Brain Mapping
 Members of the Committee are:
- Professor Constable Professor Karbasi Professor Papademetris Professor Tassiulas  Abstract: Understanding the human brain, with its remarkable ability to control higher thought, behavior, and memory, remains one of the greatest intellectual challenges in all of science.</description>
+ Professor Constable Professor Karbasi Professor Papademetris Professor Tassiulas Professor Jeff Bilmes  Abstract: Understanding the human brain, with its remarkable ability to control higher thought, behavior, and memory, remains one of the greatest intellectual challenges in all of science.</description>
     </item>
     
     <item>
@@ -962,7 +976,8 @@ Members of the Committee are:
       <pubDate>Sun, 21 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>/news/karbasi-19a.md/</guid>
-      <description>Amin Karbasi won NSF CAREER Award 2019!</description>
+      <description>Amin Karbasi won NSF CAREER Award 2019: link
+ABSTRACT The difficulty of searching through a massive amount of data in order to quickly make an informed decision is one of today&amp;rsquo;s most ubiquitous challenges. Many scientific and engineering models feature data with inherently discrete characteristics, where discrete means that the data takes on a finite set of possible values. Examples of such data include phrases in text to objects in an image.</description>
     </item>
     
     <item>
@@ -1110,7 +1125,7 @@ The increasing amounts of data in computer vision requires robust tools to extra
       <pubDate>Thu, 24 May 2018 00:00:00 +0000</pubDate>
       
       <guid>/news/lin-18a.md/</guid>
-      <description>Lin Chen received 2018 Google PhD felloswhip. Congrats Lin.</description>
+      <description>Lin Chen received Google PhD felloswhip 2018. Congrats Lin.</description>
     </item>
     
     <item>
@@ -1140,7 +1155,9 @@ Class titles vary by section.
       <pubDate>Wed, 11 Oct 2017 00:00:00 +0000</pubDate>
       
       <guid>/news/karbasi-17a.md/</guid>
-      <description>Amin Karbasi won AFOSR Young Investigator Research Award 2018!</description>
+      <description>Amin Karbasi won AFOSR Young Investigator Research Award 2018!
+ARLINGTON, Virginia &amp;ndash; The Air Force Office of Scientific Research today announced it will award approximately $19.9 million in grants to 45 scientists and engineers from 38 research institutions and small businesses who submitted winning research proposals through the Air Force&amp;rsquo;s Young Investigator Research Program (YIP).
+The YIP is open to scientists and engineers at research institutions across the United States who received Ph.</description>
     </item>
     
     <item>
@@ -1149,7 +1166,29 @@ Class titles vary by section.
       <pubDate>Mon, 09 Oct 2017 00:00:00 +0000</pubDate>
       
       <guid>/news/nips-17.md/</guid>
-      <description>We are organizing a workshop at NIPS 2017 on Discrete Structures in Machine Learning.</description>
+      <description>We are organizing a workshop at NIPS 2017 on Discrete Structures in Machine Learning.
+Abstract Traditionally, machine learning has been focused on methods where objects reside in continuous domains. The goal of this workshop is to advance state-of-the-art methods in machine learning that involve discrete structures.
+Models with ultimately discrete solutions play an important role in machine learning. At its core, statistical machine learning is concerned with making inferences from data, and when the underlying variables of the data are discrete, both the tasks of model inference as well as predictions using the inferred model are inherently discrete algorithmic problems.</description>
+    </item>
+    
+    <item>
+      <title>Simons Research Fellowship 2017</title>
+      <link>/news/simons-16.md/</link>
+      <pubDate>Sat, 02 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/news/simons-16.md/</guid>
+      <description>Amin Karbasi received Simons Research Fellowship 2017 for the “Foundations of Machine Learning” program: link
+T​he goal of this program is to grow the reach and impact of CS theory within machine learning.
+One central component of the program will be ​formalizing basic questions in developing areas of practice​, and gaining fundamental insights into these. Target areas of particular interest are ​interactive learning​ and representation learning. Interactive learning consists of scenarios in which the communication between human and learner is richer than a one-­way transmission of labeled examples; this happens, for instance, in teaching, or explanation-based learning, and in crowdsourcing.</description>
+    </item>
+    
+    <item>
+      <title>Microsoft Azure Research Award 2017</title>
+      <link>/news/azure-17.md/</link>
+      <pubDate>Sat, 01 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/news/azure-17.md/</guid>
+      <description>Amin Karbasi Received Microsoft Azure Research Award 2017. link</description>
     </item>
     
     <item>
@@ -1181,15 +1220,6 @@ Amin Karbasi (Yale University) and Amit Surana (United Technologies Research Cen
     </item>
     
     <item>
-      <title>Google Faculty Research</title>
-      <link>/news/google-16.md/</link>
-      <pubDate>Thu, 01 Sep 2016 00:00:00 +0000</pubDate>
-      
-      <guid>/news/google-16.md/</guid>
-      <description>Grateful to receive Google Faculty Research Award 2016.</description>
-    </item>
-    
-    <item>
       <title>Stochastic Processes</title>
       <link>/courses/spring-16.md/</link>
       <pubDate>Sun, 03 Jan 2016 00:00:00 +0000</pubDate>
@@ -1201,7 +1231,7 @@ Final Exam Tuesday, May 10, 2016 at 7pm</description>
     </item>
     
     <item>
-      <title>AISTATS</title>
+      <title>AISTATS Best Student Paper Award</title>
       <link>/news/aistats-15.md/</link>
       <pubDate>Sun, 13 Sep 2015 00:00:00 +0000</pubDate>
       
@@ -1210,12 +1240,14 @@ Final Exam Tuesday, May 10, 2016 at 7pm</description>
     </item>
     
     <item>
-      <title>IEEE Data Storage</title>
-      <link>/news/ieee-15.md/</link>
-      <pubDate>Sat, 12 Sep 2015 00:00:00 +0000</pubDate>
+      <title>Google Faculty Research</title>
+      <link>/news/google-16.md/</link>
+      <pubDate>Tue, 01 Sep 2015 00:00:00 +0000</pubDate>
       
-      <guid>/news/ieee-15.md/</guid>
-      <description>Our paper Noise-Enhanced Associative Memories received the IEEE Data Storage Best Student Paper Award.</description>
+      <guid>/news/google-16.md/</guid>
+      <description>Amin Karbasi received Google Faculty Research Award 2015:link
+Awardees:
+ Adnan Darwiche, University of California, Los Angeles Alexandr Andoni, Columbia University Amin Karbasi, Yale University Amir Ali Ahmadi, Princeton University Animashree Anandkumar, University of California, Irvine Barna Saha, University of Massachusetts - Amherst Emmanuel Abbe, Princeton University Fei Sha, University of California, Los Angeles J. Zico Kolter, Carnegie Mellon University Lei Xing, Stanford University Li Ma, Duke University Marc Deisenroth, Imperial College London Mehryar Mohri, New York University Michela Milano, University of Bologna Raquel Urtasun, University of Toronto Stefanie Jegelka, Massachusetts Institute of Technology Anirban Dasgupta - Indian Institute of Technology Gandhinagar Ronojoy Adhikari - Institute of Mathematical Sciences Chennai  </description>
     </item>
     
     <item>
@@ -1291,6 +1323,19 @@ Follow the following steps:
     </item>
     
     <item>
+      <title>IEEE Data Storage Best Student Paper Award</title>
+      <link>/news/ieee-15.md/</link>
+      <pubDate>Thu, 12 Sep 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/news/ieee-15.md/</guid>
+      <description>Our paper Noise-Enhanced Associative Memories received the IEEE Data Storage Best Student Paper Award.
+IEEE Data Storage Best Student Paper Award for 2013
+Awardees: Amin Karbasi, Amir Hesam Salavati, Amin Shokrollahi and Lar R. Varshney
+Paper: “Noise-Enhanced Associative Memories,” Proceedings of Neural Information Processing Systems, pp. 1682–1690, 2013. NIPS Proceedings
+Abstract: Recent advances in associative memory design through structured pattern sets and graph-based inference algorithms have allowed reliable learning and recall of an exponential number of patterns.</description>
+    </item>
+    
+    <item>
       <title>About Hugo</title>
       <link>/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1342,12 +1387,13 @@ Awards  Best Poster Award in International Workshop on Connectomics in Neuroimag
     </item>
     
     <item>
-      <title>ISIT 2018 </title>
+      <title>ISIT 2018 Tutorial on Submodularity</title>
       <link>/news/isit-18a.md/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/news/isit-18a.md/</guid>
-      <description>ISIT 2018 Tutorial on Submodularity in Information and Data Science.</description>
+      <description>ISIT 2018 Tutorial on Submodularity in Information and Data Science. link
+Abstract: Submodularity is a structural property over functions that has received significant attention in the mathematics community, owing to their natural and wide ranging applicability. In particular, numerous challenging problems in information theory, machine learning, and artificial intelligence rely on optimization techniques for which submodularity is key to solving them efficiently.We will start by defining submodularity and polymatroidality — we will survey a surprisingly diverse set of functions that are submodular and operations that preserve submodularity.</description>
     </item>
     
     <item>
@@ -1397,15 +1443,6 @@ Awards  Best Poster Award in International Workshop on Connectomics in Neuroimag
     </item>
     
     <item>
-      <title>Microsoft Azure for Research</title>
-      <link>/news/azure-17.md/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/news/azure-17.md/</guid>
-      <description>Grateful to Receive Microsoft Azure for Research.</description>
-    </item>
-    
-    <item>
       <title>Mingrui Zhang</title>
       <link>/people/minguri.md/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1432,15 +1469,6 @@ Awards  Best Poster Award in International Workshop on Connectomics in Neuroimag
       <description>Service: Amin Karbasi is (was/will be) on the following program committees:
 ICML 2013, 2015, 2015, 2017, 2017, 2018 (area chair), 2019 (area chair) Neural Information Processing Systems (NIPS), 2013, 2014, 2016, 2018 (area chair) SIAM Data mining Conference 2018 ACM SIGKDD Conference on Knowledge and Discovery, and Data Mining (KDD) 2017, 2018 ACM/SIGMETRICS, 2015, 2016 AAAI, 2015, 2016, 2017, 2018 International Joint Conference on Artificial Intelligence (IJCAI), 2016
  Workshops Amin Karbasi co-organized Discrete Structures in Machine Learning workshop at NIPS 2017.</description>
-    </item>
-    
-    <item>
-      <title>Simons Foundation</title>
-      <link>/news/simons-16.md/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/news/simons-16.md/</guid>
-      <description>Grateful to receive Simons Research Fellowship 2017 for the “Foundations of Machine Learning” program</description>
     </item>
     
     <item>

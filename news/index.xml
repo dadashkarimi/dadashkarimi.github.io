@@ -80,7 +80,8 @@ In a collaboration between the labs of Amin Karbasi, assistant professor of elec
       <pubDate>Fri, 25 May 2018 00:00:00 +0000</pubDate>
       
       <guid>/news/cvp4-18a.md/</guid>
-      <description>CVPR 2018 tutorial on Big Data Summarization: Algorithms and Applications.</description>
+      <description>CVPR 2018 tutorial on Big Data Summarization: Algorithms and Applications.
+The increasing amounts of data in computer vision requires robust tools to extract most important information from large collections of data. The summarization problem addresses this challenge by finding a small subset of most informative data points from large datasets. However, summarization often leads to optimization programs that are nonconvex and NP-hard. While (non)convex programming and submodular optimization have been studied intensively in mathematics, successful and effective applications of them for the problem of information summarization along with new theoretical results have recently emerged.</description>
     </item>
     
     <item>

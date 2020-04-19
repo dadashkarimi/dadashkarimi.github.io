@@ -16,10 +16,10 @@
     <meta property="og:description" content="research">
     <meta property="og:type" content="website">
     <meta property="og:url" content="/research/submodular_optimization.md/">
-    <meta property="og:image" content="images/submodular.png">
+    <meta property="og:image" content="images/submodular.jpg">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="/research/submodular_optimization.md/">
-    <meta name="twitter:image" content="images/submodular.png">
+    <meta name="twitter:image" content="images/submodular.jpg">
 
     <base href="/research/submodular_optimization.md/">
     <title>
@@ -219,9 +219,8 @@ MathJax.Hub.Queue(function() {
 
 			
 
-			<p>Submodularity is a property of set functions with deep theoretical consequences and far– reaching applications. At first glance it appears very similar to concavity, in other ways it resembles convexity. It appears in a wide variety of applications: in Computer Science it has recently been identified and utilized in domains such as viral marketing (Kempe et al., 2003), information gathering (Krause and Guestrin, 2007), image segmentation (Boykov and Jolly, 2001; Kohli et al., 2009; Jegelka and Bilmes, 2011a), document summarization (Lin and Bilmes, 2011), and speeding up satisfiability solvers (Streeter and Golovin, 2008). In this survey we will introduce submodularity and some of its generalizations, illustrate how it arises in various applications, and discuss algorithms for optimizing submodular functions. Our emphasis here is on maximization; there are many important results and applications related to minimizing submodular functions that we do not cover.</p>
-<p>As a concrete running example, we will consider the problem of deploying sensors in a drinking water distribution network (see Figure 1) in order to detect contamination. In this domain, we may have a model of how contaminants, accidentally or maliciously introduced into the network, spread over time. Such a model then allows to quantify the benefit $f(A)$ of deploying sensors at a particular set A of locations (junctions or pipes in the network) in terms of the detection performance (such as average time to detection). Based on this notion of utility, we then wish to find an optimal subset $A \in V$ of locations maximizing the utility, $\max_A f(A)$, subject to some constraints (such as bounded cost). This application requires solving a difficult real-world optimization problem, that can be handled with the techniques discussed in this chapter (Krause et al. 2008b show in detail how submodular optimization can be applied in this domain.) We will also discuss more complex settings, for example how one can incorporate complex constraints on the feasible sets A, robustly optimize against adversarially chosen objective functions f, or adaptively select sensors based on previous observations.
-Several algorithms for submodular optimization described in this survey are implemented in an open source Matlab toolbox3 (Krause, 2010).</p>
+			<p>The difficulty of searching through a massive amount of data in order to quickly make an informed decision is one of today’s most ubiquitous challenges. Many scientific and engineering models feature inherently discrete decision variables—from phrases in a corpus to objects in an image. Similarly, nearly all aspects of the machine learning pipeline involve discrete tasks, from data summarization and sketching to feature selection and model explanation. The study of how to make near-optimal decisions from a massive pool of possibilities is at the heart of combinatorial optimization.</p>
+<p>As computational methods pervade all aspects of science and engineering, it is of great importance to understand which discrete formulations can be solved efficiently and how to do so. Many of these problems are notoriously hard, and even those that are theoretically tractable may not scale to large instances. However, the problems of practical interest are often much more well-behaved and possess extra structures that allow them to be amenable to exact or approximate optimization techniques. Just as convexity has been a celebrated and well-studied condition under which continuous optimization is tractable, submodularity is a condition for which discrete objectives may be optimized. In a nutshell, submodularity captures the intuitive diminishing returns notion where the added value of including an element (e.g., image, sensor, etc ) to a context (dataset of images, sensor network, etc) decreases as the context in which it is considered increases.</p>
 
 			<div></div>
 			</ul>
@@ -239,7 +238,7 @@ Several algorithms for submodular optimization described in this survey are impl
 		
 		<div>
 			<center>
-		<img class="x-img x-img-thumbnail none" src="../../images/submodular.png"  style="max-width:70%;margin-right:5%;margin-top:1%" align="center">
+		<img class="x-img x-img-thumbnail none" src="../../images/submodular.jpg"  style="max-width:70%;margin-right:5%;margin-top:1%" align="center">
 			</center>
 		<br/>
 		</div>

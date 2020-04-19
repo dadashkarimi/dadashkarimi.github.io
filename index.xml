@@ -954,7 +954,7 @@ A simple, concrete example can be seen in recommender systems. Whether it is thr
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>/research/submodular_optimization.md/</guid>
-      <description>Submodularity is a property of set functions with deep theoretical consequences and far– reaching applications. At first glance it appears very similar to concavity, in other ways it resembles convexity. It appears in a wide variety of applications: in Computer Science it has recently been identified and utilized in domains such as viral marketing (Kempe et al., 2003), information gathering (Krause and Guestrin, 2007), image segmentation (Boykov and Jolly, 2001; Kohli et al.</description>
+      <description>The difficulty of searching through a massive amount of data in order to quickly make an informed decision is one of today’s most ubiquitous challenges. Many scientific and engineering models feature inherently discrete decision variables—from phrases in a corpus to objects in an image. Similarly, nearly all aspects of the machine learning pipeline involve discrete tasks, from data summarization and sketching to feature selection and model explanation. The study of how to make near-optimal decisions from a massive pool of possibilities is at the heart of combinatorial optimization.</description>
     </item>
     
     <item>

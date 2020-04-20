@@ -40,6 +40,15 @@ A simple, concrete example can be seen in recommender systems. Whether it is thr
     </item>
     
     <item>
+      <title>Non-convex Optimization</title>
+      <link>/research/non_convex.md/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/research/non_convex.md/</guid>
+      <description>Until recently, convex programs were seen as the defining boundary for tractability in continuous optimization. However, many problems of interest arising from machine learning and statistical modeling, such as training deep neural networks and learning latent variable models, are glaringly non-convex. While efficient algorithms are known for a few instances of non-convex problems, it remains a central challenge to discover general conditions under which a non-convex problem admits an efficient solution.</description>
+    </item>
+    
+    <item>
       <title>Online Learning</title>
       <link>/research/online_learning.md/</link>
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>

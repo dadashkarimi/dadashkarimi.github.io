@@ -57,7 +57,7 @@ Members of the Committee are:
       
       <guid>/news/karbasi-19a.md/</guid>
       <description>Amin Karbasi won NSF CAREER Award 2019: link
-ABSTRACT The difficulty of searching through a massive amount of data in order to quickly make an informed decision is one of today&amp;rsquo;s most ubiquitous challenges. Many scientific and engineering models feature data with inherently discrete characteristics, where discrete means that the data takes on a finite set of possible values. Examples of such data include phrases in text to objects in an image.</description>
+ABSTRACT: The difficulty of searching through a massive amount of data in order to quickly make an informed decision is one of today&amp;rsquo;s most ubiquitous challenges. Many scientific and engineering models feature data with inherently discrete characteristics, where discrete means that the data takes on a finite set of possible values. Examples of such data include phrases in text to objects in an image.</description>
     </item>
     
     <item>
@@ -66,7 +66,8 @@ ABSTRACT The difficulty of searching through a massive amount of data in order t
       <pubDate>Wed, 03 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>/news/mehraveh-19b.md/</guid>
-      <description>Facebook-Main Award for Mehraveh Salehi. Congratulations Mehraveh!</description>
+      <description>Facebook-Main Award for Mehraveh Salehi. Congratulations Mehraveh!
+Yale Department of Radiology &amp;amp; Biomedical Imaging: Congratulations to Mehraveh Salehi (Yale Institute for Network Science PhD candidate) who received the Young Scientist Award from the 20th International Conference on Medical Image Computing and Computer Assisted Intervention 2017 (MICCAI) on September 13th. Mehraveh is mentored by Todd Constable (Professor of Radiology &amp;amp; Biomedical Imaging) and Amin Karbasi (Assistant Professor of Electrical Engineering and Computer Science).</description>
     </item>
     
     <item>
@@ -75,7 +76,8 @@ ABSTRACT The difficulty of searching through a massive amount of data in order t
       <pubDate>Thu, 17 Jan 2019 00:00:00 +0000</pubDate>
       
       <guid>/news/karbasi-19b.md/</guid>
-      <description>Amin Karbasi won Amazon Research Award!</description>
+      <description>Amin Karbasi won Amazon Research Award! link
+The ARA program funds projects conducted primarily by PhD students or post docs, under the supervision of the faculty member awarded the funds. To encourage collaboration and the sharing of insights, each funded proposal team is assigned an appropriate Amazon research contact. We also invite ARA recipients to speak at Amazon offices worldwide about their work and to meet with our research groups face-to-face, and encourage ARA recipients to publish their research outcome and commit related code to open-source code repositories.</description>
     </item>
     
     <item>
@@ -95,7 +97,8 @@ In a collaboration between the labs of Amin Karbasi, assistant professor of elec
       <pubDate>Thu, 20 Dec 2018 00:00:00 +0000</pubDate>
       
       <guid>/news/karbasi-18a.md/</guid>
-      <description>Amin Karbasi won ONR Young Investigator Award 2019!</description>
+      <description>Amin Karbasi won ONR Young Investigator Award 2019
+Area: Robust and Interactive Information Gathering in Dynamic Environments Program Officer: Dr. Behzad Kamgar-Parsi, Machine Learning, Reasoning and Intelligence</description>
     </item>
     
     <item>
@@ -135,7 +138,7 @@ The YIP is open to scientists and engineers at research institutions across the 
       
       <guid>/news/nips-17.md/</guid>
       <description>We are organizing a workshop at NIPS 2017 on Discrete Structures in Machine Learning.
-Abstract Traditionally, machine learning has been focused on methods where objects reside in continuous domains. The goal of this workshop is to advance state-of-the-art methods in machine learning that involve discrete structures.
+Abstract: Traditionally, machine learning has been focused on methods where objects reside in continuous domains. The goal of this workshop is to advance state-of-the-art methods in machine learning that involve discrete structures.
 Models with ultimately discrete solutions play an important role in machine learning. At its core, statistical machine learning is concerned with making inferences from data, and when the underlying variables of the data are discrete, both the tasks of model inference as well as predictions using the inferred model are inherently discrete algorithmic problems.</description>
     </item>
     

@@ -875,15 +875,6 @@ Members of the Committee are:
     </item>
     
     <item>
-      <title>Continuous Optimization</title>
-      <link>/research/continuous_optimization.md/</link>
-      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/research/continuous_optimization.md/</guid>
-      <description>Continuous DR-submodular functions are an important subset of non-convex functions that can be minimized exactly Bach [2016], Staib and Jegelka [2017] and maximized approximately Bian et al. [2017a,b], Hassani et al. [2017], Mokhtari et al. [2018a], Hassani et al. [2019], Zhang et al. [2019b] This class of functions generalize the notion of diminishing returns, usually defined over discrete set functions, to the continuous domains. They have found numerous applications in machine learning including MAP inference in determinantal point processes (DPPs) Kulesza et al.</description>
-    </item>
-    
-    <item>
       <title>Interactive Decision Making</title>
       <link>/research/interactive_decision_making.md/</link>
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>

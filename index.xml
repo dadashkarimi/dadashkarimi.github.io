@@ -871,7 +871,7 @@ Members of the Committee are:
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>/research/computational_neuroscience_neurimaging.md/</guid>
-      <description>The goal of human brain mapping has long been to delineate the functional subunits in the brain. To do so, a sequence of preprocessing applies on human brain images. Before 2017, whole-brain parcellation based on a group of participants was a common approch to segment brain into multiple functional nodes. Our lab proposed an award winning approach for individualized parcellation which is more accurately represents a person&amp;rsquo;s brain. To construct the examplar-based individualized parcellation, we need to study all single voxels &amp;ndash;1mm cubes&amp;ndash; and assign each voxel to an appropriate cluster or node.</description>
+      <description>For the first time, we challenged neuroscience&amp;rsquo;s long-standing assumption that there is a single brain map that works for everyone across time. We looked at brain images acquired by functional Magnetic Resonance Imaging or fMRI, and tried to understand what brain regions talk to each other and how this conversation changes as we engage in different tasks, such as playing a game or watching a movie. We developed an artificial intelligence technology to automatically translate these brain images into brain maps, like the ones you can see here.</description>
     </item>
     
     <item>

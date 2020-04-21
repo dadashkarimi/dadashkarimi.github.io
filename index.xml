@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>Submodular Optimization</title>
+      <link>/research/submodular_optimization.md/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/research/submodular_optimization.md/</guid>
+      <description>The difficulty of searching through a massive amount of data in order to quickly make an informed decision is one of today’s most ubiquitous challenges. Many scientific and engineering models feature inherently discrete decision variables—from phrases in a corpus to objects in an image. Similarly, nearly all aspects of the machine learning pipeline involve discrete tasks, from data summarization and sketching to feature selection and model explanation. The study of how to make near-optimal decisions from a massive pool of possibilities is at the heart of combinatorial optimization.</description>
+    </item>
+    
+    <item>
       <title>Adaptivity in Adaptive Submodularity.</title>
       <link>/publications/2019/esfandiari-2019b/</link>
       <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
@@ -162,6 +171,15 @@
       
       <guid>/publications/2020/mingrui-2020a/</guid>
       <description>Abstract How can we efficiently mitigate the overhead of gradient communications in distributed optimization? This problem is at the heart of training scalable machine learning models and has been mainly studied in the unconstrained setting. In this paper, we propose Quantized-Frank-Wolfe (QFW), the first projection-free and communication-efficient algorithm for solving constrained optimization problems at scale. We consider both convex and non-convex objective functions, expressed as a finite-sum or more generally a stochastic optimization problem, and provide strong theoretical guarantees on the convergence rate of QFW.</description>
+    </item>
+    
+    <item>
+      <title>Statistical Learning Theory</title>
+      <link>/research/statistical_learning_theory.md/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/research/statistical_learning_theory.md/</guid>
+      <description>The goals of learning are understanding and prediction. Learning falls into many categories, including supervised learning, unsupervised learning, online learning, and reinforcement learning. From the perspective of statistical learning theory, supervised learning is best understood. Supervised learning involves learning from a training set of data. Every point in the training is an input-output pair, where the input maps to an output. The learning problem consists of inferring the function that maps between the input and the output, such that the learned function can be used to predict the output from future input.</description>
     </item>
     
     <item>
@@ -705,6 +723,15 @@
     </item>
     
     <item>
+      <title>Computational Neuroscience &amp; Neuroimaging</title>
+      <link>/research/computational_neuroscience_neurimaging.md/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/research/computational_neuroscience_neurimaging.md/</guid>
+      <description>For the first time, we challenged neuroscience&amp;rsquo;s long-standing assumption that there is a single brain map that works for everyone across time. We looked at brain images acquired by functional Magnetic Resonance Imaging or fMRI, and tried to understand what brain regions talk to each other and how this conversation changes as we engage in different tasks, such as playing a game or watching a movie. We developed an artificial intelligence technology to automatically translate these brain images into brain maps, like the ones you can see here.</description>
+    </item>
+    
+    <item>
       <title>Individualized functional networks reconfigure with cognitive state</title>
       <link>/publications/2020/mehraveh-2020a/</link>
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
@@ -840,6 +867,24 @@
     </item>
     
     <item>
+      <title>Online Learning</title>
+      <link>/research/online_learning.md/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/research/online_learning.md/</guid>
+      <description>Online learning is a well established learning paradigm which has both theoretical and practical appeals. The goal of online learning is to make a sequence of accurate predictions given knowledge of the cor- rect answer to previous prediction tasks and possibly additional avail- able information. Online learning has been studied in several research fields including game theory, information theory, and machine learning. It also became of great interest to practitioners due the recent emer- gence of large scale applications such as online advertisement placement and online web ranking.</description>
+    </item>
+    
+    <item>
+      <title>Non-convex Optimization</title>
+      <link>/research/non_convex.md/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/research/non_convex.md/</guid>
+      <description>Until recently, convex programs were seen as the defining boundary for tractability in continuous optimization. However, many problems of interest arising from machine learning and statistical modeling, such as training deep neural networks and learning latent variable models, are glaringly non-convex. While efficient algorithms are known for a few instances of non-convex problems, it remains a central challenge to discover general conditions under which a non-convex problem admits an efficient solution.</description>
+    </item>
+    
+    <item>
       <title>Marko Mitrovic Graduated!</title>
       <link>/news/marko-2020.md/</link>
       <pubDate>Fri, 10 Apr 2020 00:00:00 +0000</pubDate>
@@ -866,15 +911,6 @@ Members of the Committee are:
     </item>
     
     <item>
-      <title>Computational Neuroscience &amp; Neuroimaging</title>
-      <link>/research/computational_neuroscience_neurimaging.md/</link>
-      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/research/computational_neuroscience_neurimaging.md/</guid>
-      <description>For the first time, we challenged neuroscience&amp;rsquo;s long-standing assumption that there is a single brain map that works for everyone across time. We looked at brain images acquired by functional Magnetic Resonance Imaging or fMRI, and tried to understand what brain regions talk to each other and how this conversation changes as we engage in different tasks, such as playing a game or watching a movie. We developed an artificial intelligence technology to automatically translate these brain images into brain maps, like the ones you can see here.</description>
-    </item>
-    
-    <item>
       <title>Interactive Decision Making</title>
       <link>/research/interactive_decision_making.md/</link>
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
@@ -882,24 +918,6 @@ Members of the Committee are:
       <guid>/research/interactive_decision_making.md/</guid>
       <description>In computer science, and machine learning in particular, the primary purpose of many systems is to help humans make decisions. Simultaneously, many of these systems also stand to benefit from having a human in the loop, whether it is to reinforce good decisions, warn against bad decisions, or simply to provide expert advice in areas of uncertainty.
 A simple, concrete example can be seen in recommender systems. Whether it is through explicit feedback (such as rating a movie on Netflix) or implicit feedback (such as clicking/not clicking on an advertisement), the vast majority of successful, real-world recommender systems are constantly interacting with and adapting to each user.</description>
-    </item>
-    
-    <item>
-      <title>Non-convex Optimization</title>
-      <link>/research/non_convex.md/</link>
-      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/research/non_convex.md/</guid>
-      <description>Until recently, convex programs were seen as the defining boundary for tractability in continuous optimization. However, many problems of interest arising from machine learning and statistical modeling, such as training deep neural networks and learning latent variable models, are glaringly non-convex. While efficient algorithms are known for a few instances of non-convex problems, it remains a central challenge to discover general conditions under which a non-convex problem admits an efficient solution.</description>
-    </item>
-    
-    <item>
-      <title>Online Learning</title>
-      <link>/research/online_learning.md/</link>
-      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/research/online_learning.md/</guid>
-      <description>Online learning is a well established learning paradigm which has both theoretical and practical appeals. The goal of online learning is to make a sequence of accurate predictions given knowledge of the cor- rect answer to previous prediction tasks and possibly additional avail- able information. Online learning has been studied in several research fields including game theory, information theory, and machine learning. It also became of great interest to practitioners due the recent emer- gence of large scale applications such as online advertisement placement and online web ranking.</description>
     </item>
     
     <item>
@@ -930,15 +948,6 @@ A simple, concrete example can be seen in recommender systems. Whether it is thr
     </item>
     
     <item>
-      <title>Statistical Learning Theory</title>
-      <link>/research/statistical_learning_theory.md/</link>
-      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/research/statistical_learning_theory.md/</guid>
-      <description>The goals of learning are understanding and prediction. Learning falls into many categories, including supervised learning, unsupervised learning, online learning, and reinforcement learning. From the perspective of statistical learning theory, supervised learning is best understood. Supervised learning involves learning from a training set of data. Every point in the training is an input-output pair, where the input maps to an output. The learning problem consists of inferring the function that maps between the input and the output, such that the learned function can be used to predict the output from future input.</description>
-    </item>
-    
-    <item>
       <title>Stochastic Process</title>
       <link>/courses/stochastic.md/</link>
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
@@ -946,15 +955,6 @@ A simple, concrete example can be seen in recommender systems. Whether it is thr
       <guid>/courses/stochastic.md/</guid>
       <description>Course ID: S&amp;amp;DS 351, MATH 251, S&amp;amp;DS 551, ENAS 502 In this course we will go through the following topics:
  Review important notions of probability Expectation Convergence of random variables Law of large numbers Poisson Processes Renewal Processes Markov Chains and Random Walks Martingales If time permits, we will look at a few interesting applications of the above topics.  Textbook: We mainly use &amp;ldquo;Introduction to Stochastic Processes&amp;rdquo; by Erhan Cinlar</description>
-    </item>
-    
-    <item>
-      <title>Submodular Optimization</title>
-      <link>/research/submodular_optimization.md/</link>
-      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/research/submodular_optimization.md/</guid>
-      <description>The difficulty of searching through a massive amount of data in order to quickly make an informed decision is one of today’s most ubiquitous challenges. Many scientific and engineering models feature inherently discrete decision variables—from phrases in a corpus to objects in an image. Similarly, nearly all aspects of the machine learning pipeline involve discrete tasks, from data summarization and sketching to feature selection and model explanation. The study of how to make near-optimal decisions from a massive pool of possibilities is at the heart of combinatorial optimization.</description>
     </item>
     
     <item>

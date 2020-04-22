@@ -26,7 +26,7 @@
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>/research/statistical_learning_theory.md/</guid>
-      <description>The goals of learning are understanding and prediction. Learning falls into many categories, including supervised learning, unsupervised learning, online learning, and reinforcement learning. From the perspective of statistical learning theory, supervised learning is best understood. Supervised learning involves learning from a training set of data. Every point in the training is an input-output pair, where the input maps to an output. The learning problem consists of inferring the function that maps between the input and the output, such that the learned function can be used to predict the output from future input.</description>
+      <description>Statistical learning is an area of statistics initially demanded by enormous applications in agriculture and industry. However, its scope expanded after computer adventure and exhibition of big data as the goal is to interpret and understand the underlying structure of the data. Statistical learning is categorized into two main categories including supervised learning as we know about labels of data and we aim to predict an outcome measure; and unsupervised learning where we don’t know the labels and we want to interpret the data.</description>
     </item>
     
     <item>

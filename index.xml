@@ -6,7 +6,7 @@
     <description>Recent content on IID Group</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 10 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 21 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
@@ -882,6 +882,15 @@
       
       <guid>/research/non_convex.md/</guid>
       <description>Until recently, convex programs were seen as the defining boundary for tractability in continuous optimization. However, many problems of interest arising from machine learning and statistical modeling, such as training deep neural networks and learning latent variable models, are glaringly non-convex. While efficient algorithms are known for a few instances of non-convex problems, it remains a central challenge to discover general conditions under which a non-convex problem admits an efficient solution.</description>
+    </item>
+    
+    <item>
+      <title>Brain Initiative Trainee Award 2020</title>
+      <link>/news/dadashkarimi-20.md/</link>
+      <pubDate>Tue, 21 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/news/dadashkarimi-20.md/</guid>
+      <description>Javid Dadashkarimi won Brain Initiative Trainee Award for `A web-based toolkit for visualizing and interpreting complex connectomic results in BISWeb &amp;lsquo;. This award is given to students who had significant research impact that can create a dynamic understanding of brain function.</description>
     </item>
     
     <item>

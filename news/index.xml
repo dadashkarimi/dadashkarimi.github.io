@@ -111,6 +111,16 @@ Area: Robust and Interactive Information Gathering in Dynamic Environments Progr
     </item>
     
     <item>
+      <title>ISIT 2018 Tutorial on Submodularity</title>
+      <link>/news/isit-18a.md/</link>
+      <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/news/isit-18a.md/</guid>
+      <description>ISIT 2018 Tutorial on Submodularity in Information and Data Science. link
+Abstract: Submodularity is a structural property over functions that has received significant attention in the mathematics community, owing to their natural and wide ranging applicability. In particular, numerous challenging problems in information theory, machine learning, and artificial intelligence rely on optimization techniques for which submodularity is key to solving them efficiently.We will start by defining submodularity and polymatroidality — we will survey a surprisingly diverse set of functions that are submodular and operations that preserve submodularity.</description>
+    </item>
+    
+    <item>
       <title>CVPR 2018 Tutorial on Big Data Summarization</title>
       <link>/news/cvp4-18a.md/</link>
       <pubDate>Fri, 25 May 2018 00:00:00 +0000</pubDate>
@@ -221,16 +231,6 @@ IEEE Data Storage Best Student Paper Award for 2013
 Awardees: Amin Karbasi, Amir Hesam Salavati, Amin Shokrollahi and Lar R. Varshney
 Paper: “Noise-Enhanced Associative Memories,” Proceedings of Neural Information Processing Systems, pp. 1682–1690, 2013. NIPS Proceedings
 Abstract: Recent advances in associative memory design through structured pattern sets and graph-based inference algorithms have allowed reliable learning and recall of an exponential number of patterns.</description>
-    </item>
-    
-    <item>
-      <title>ISIT 2018 Tutorial on Submodularity</title>
-      <link>/news/isit-18a.md/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/news/isit-18a.md/</guid>
-      <description>ISIT 2018 Tutorial on Submodularity in Information and Data Science. link
-Abstract: Submodularity is a structural property over functions that has received significant attention in the mathematics community, owing to their natural and wide ranging applicability. In particular, numerous challenging problems in information theory, machine learning, and artificial intelligence rely on optimization techniques for which submodularity is key to solving them efficiently.We will start by defining submodularity and polymatroidality — we will survey a surprisingly diverse set of functions that are submodular and operations that preserve submodularity.</description>
     </item>
     
   </channel>

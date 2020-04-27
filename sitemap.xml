@@ -38,16 +38,6 @@
   </url>
   
   <url>
-    <loc>/publications/2018/mokhtari-18c/</loc>
-    <lastmod>2018-01-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/publications/2018/lin-18d/</loc>
-    <lastmod>2018-01-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/publications/2017/kazemi-17a/</loc>
     <lastmod>2017-01-03T00:00:00+00:00</lastmod>
   </url>
@@ -63,17 +53,7 @@
   </url>
   
   <url>
-    <loc>/publications/2010/parhizkar-11a/</loc>
-    <lastmod>2010-01-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/publications/2009/hormati-09a/</loc>
-    <lastmod>2009-01-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/publications/2009/cheraghchi-09a/</loc>
     <lastmod>2009-01-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -93,7 +73,7 @@
   </url>
   
   <url>
-    <loc>/research/statistical_learning_theory.md/</loc>
+    <loc>/research/trust.md/</loc>
     <lastmod>2020-01-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -188,17 +168,17 @@
   </url>
   
   <url>
+    <loc>/publications/2017/baharan-17a/</loc>
+    <lastmod>2017-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/publications/2017/marko-17a/</loc>
     <lastmod>2017-01-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/publications/2017/hassani-17a/</loc>
-    <lastmod>2017-01-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/publications/2017/baharan-17a/</loc>
     <lastmod>2017-01-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -373,13 +353,23 @@
   </url>
   
   <url>
-    <loc>/publications/2010/karbasi-11b/</loc>
+    <loc>/publications/2010/parhizkar-11a/</loc>
     <lastmod>2010-01-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/publications/2010/karbasi-11a/</loc>
+    <loc>/publications/2010/karbasi-10b/</loc>
     <lastmod>2010-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publications/2010/karbasi-10a/</loc>
+    <lastmod>2010-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publications/2009/cheraghchi-09a/</loc>
+    <lastmod>2009-01-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -460,6 +450,11 @@
   <url>
     <loc>/publications/2013/karbasi-13a/</loc>
     <lastmod>2013-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publications/2010/cheraghchi-10a/</loc>
+    <lastmod>2012-01-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -600,6 +595,11 @@
   <url>
     <loc>/news/karbasi-18a.md/</loc>
     <lastmod>2018-12-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/news/isit-18a.md/</loc>
+    <lastmod>2018-09-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -809,10 +809,6 @@
   
   <url>
     <loc>/people/kazemi.md/</loc>
-  </url>
-  
-  <url>
-    <loc>/news/isit-18a.md/</loc>
   </url>
   
   <url>

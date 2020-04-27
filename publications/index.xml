@@ -66,24 +66,6 @@
     </item>
     
     <item>
-      <title>Stochastic Conditional Gradient Methods: From Convex Minimization to Submodular Maximization</title>
-      <link>/publications/2018/mokhtari-18c/</link>
-      <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/publications/2018/mokhtari-18c/</guid>
-      <description>Abstract This paper considers stochastic optimization problems for a large class of objective functions, including convex and continuous submodular. Stochastic proximal gradient methods have been widely used to solve such problems; however, their applicability remains limited when the problem dimension is large and the projection onto a convex set is costly. Instead, stochastic conditional gradient methods are proposed as an alternative solution relying on (i) Approximating gradients via a simple averaging technique requiring a single stochastic gradient evaluation per iteration; (ii) Solving a linear program to compute the descent/ascent direction.</description>
-    </item>
-    
-    <item>
-      <title>Unconstrained Submodular Maximization with Constant Adaptive Complexity.</title>
-      <link>/publications/2018/lin-18d/</link>
-      <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/publications/2018/lin-18d/</guid>
-      <description>Abstract In this paper, we consider the unconstrained submodular maximization problem. We propose the first algorithm for this problem that achieves a tight (1/2−ε)-approximation guarantee using $(ε^{−1})$ adaptive rounds and a linear number of function evaluations. No previously known algorithm for this problem achieves an approximation ratio better than 1/3 using less than Ω(n) rounds of adaptivity, where n is the size of the ground set. Moreover, our algorithm easily extends to the maximization of a non-negative continuous DR-submodular function subject to a box constraint and achieves a tight (1/2−ε)-approximation guarantee for this problem while keeping the same adaptive and query complexities.</description>
-    </item>
-    
-    <item>
       <title>Deletion-Robust Submodular Maximization at Scale.</title>
       <link>/publications/2017/kazemi-17a/</link>
       <pubDate>Tue, 03 Jan 2017 00:00:00 +0000</pubDate>
@@ -111,30 +93,12 @@
     </item>
     
     <item>
-      <title>Calibration for Ultrasound Breast Tomography Using Matrix Completion</title>
-      <link>/publications/2010/parhizkar-11a/</link>
-      <pubDate>Sun, 03 Jan 2010 00:00:00 +0000</pubDate>
-      
-      <guid>/publications/2010/parhizkar-11a/</guid>
-      <description>Abstract We study the calibration process in circular ultrasound tomography devices where the sensor positions deviate from the circumference of a perfect circle. This problem arises in a variety of applications in signal processing ranging from breast imaging to sensor network localization. We introduce a novel method of calibration/localization based on the time-of-flight (ToF) measurements between sensors when the enclosed medium is homogeneous. In the presence of all the pairwise ToFs, one can easily estimate the sensor positions using multi-dimensional scaling (MDS) method.</description>
-    </item>
-    
-    <item>
       <title>An Estimation Theoretic Approach for Sparsity Pattern Recovery in the Noisy Setting</title>
       <link>/publications/2009/hormati-09a/</link>
       <pubDate>Sat, 03 Jan 2009 00:00:00 +0000</pubDate>
       
       <guid>/publications/2009/hormati-09a/</guid>
       <description>Abstract Compressed sensing deals with the reconstruction of sparse signals using a small number of linear measurements. One of the main challenges in compressed sensing is to find the support of a sparse signal. In the literature, several bounds on the scaling law of the number of measurements for successful support recovery have been derived where the main focus is on random Gaussian measurement matrices. In this paper, we investigate the noisy support recovery problem from an estimation theoretic point of view, where no specific assumption is made on the underlying measurement matrix.</description>
-    </item>
-    
-    <item>
-      <title>Compressed Sensing with Probabilistic Measurements: A Group Testing Solution</title>
-      <link>/publications/2009/cheraghchi-09a/</link>
-      <pubDate>Sat, 03 Jan 2009 00:00:00 +0000</pubDate>
-      
-      <guid>/publications/2009/cheraghchi-09a/</guid>
-      <description>Abstract Detection of defective members of large populations has been widely studied in the statistics community under the name &amp;ldquo;group testing&amp;rdquo;, a problem which dates back to World War II when it was suggested for syphilis screening. There the main interest is to identify a small number of infected people among a large population using collective samples. In viral epidemics, one way to acquire collective samples is by sending agents inside the population.</description>
     </item>
     
     <item>
@@ -210,7 +174,7 @@
     </item>
     
     <item>
-      <title>Submodular Maximization beyond Non-negativity: Guarantees, Fast Algorithms, and Applications.</title>
+      <title>Submodular Maximization beyond Non-negativity: Guarantees, Fast Algorithms, and Applications</title>
       <link>/publications/2019/harshaw-2019a/</link>
       <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
       
@@ -273,7 +237,7 @@
     </item>
     
     <item>
-      <title>Online Continuous Submodular Maximization.</title>
+      <title>Online Continuous Submodular Maximization</title>
       <link>/publications/2018/lin-18a/</link>
       <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
       
@@ -327,6 +291,15 @@
     </item>
     
     <item>
+      <title>Deletion-Robust Submodular Maximization: Data Summarization with &#34;the Right to be Forgotten&#34;</title>
+      <link>/publications/2017/baharan-17a/</link>
+      <pubDate>Tue, 03 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2017/baharan-17a/</guid>
+      <description>Abstract How can we summarize a dynamic data stream when elements selected for the summary can be deleted at any time? This is an important challenge in online services, where the users generating the data may decide to exercise their right to restrict the service provider from using (part of) their data due to privacy concerns. Motivated by this challenge, we introduce the dynamic deletion-robust submodular maximization problem. We develop the first resilient streaming algorithm, called ROBUST-STREAMING, with a constant factor approximation guarantee to the optimum solution.</description>
+    </item>
+    
+    <item>
       <title>Differentially Private Submodular Maximization: Data Summarization in Disguise.</title>
       <link>/publications/2017/marko-17a/</link>
       <pubDate>Tue, 03 Jan 2017 00:00:00 +0000</pubDate>
@@ -342,15 +315,6 @@
       
       <guid>/publications/2017/hassani-17a/</guid>
       <description>Abstract In this paper, we study the problem of maximizing continuous submodular functions that naturally arise in many learning applications such as those involving utility functions in active learning and sensing, matrix approximations and network inference. Despite the apparent lack of convexity in such functions, we prove that stochastic projected gradient methods can provide strong approximation guarantees for maximizing continuous submodular functions with convex constraints. More specifically, we prove that for monotone continuous DR-submodular functions, all fixed points of projected gradient ascent provide a factor 1/2 approximation to the global maxima.</description>
-    </item>
-    
-    <item>
-      <title>Greed Is Good: Near-Optimal Submodular Maximization via Greedy Optimization.</title>
-      <link>/publications/2017/baharan-17a/</link>
-      <pubDate>Tue, 03 Jan 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/publications/2017/baharan-17a/</guid>
-      <description>Abstract How can we summarize a dynamic data stream when elements selected for the summary can be deleted at any time? This is an important challenge in online services, where the users generating the data may decide to exercise their right to restrict the service provider from using (part of) their data due to privacy concerns. Motivated by this challenge, we introduce the dynamic deletion-robust submodular maximization problem. We develop the first resilient streaming algorithm, called ROBUST-STREAMING, with a constant factor approximation guarantee to the optimum solution.</description>
     </item>
     
     <item>
@@ -390,7 +354,7 @@
     </item>
     
     <item>
-      <title>Streaming Weak Submodularity: Interpreting Neural Networks on the Fly.</title>
+      <title>Streaming Weak Submodularity: Interpreting Neural Networks on the Fly</title>
       <link>/publications/2017/elenberg-17a/</link>
       <pubDate>Tue, 03 Jan 2017 00:00:00 +0000</pubDate>
       
@@ -516,7 +480,7 @@
     </item>
     
     <item>
-      <title>Tradeoffs for Space, Time, Data and Risk in Unsupervised Learning.</title>
+      <title>Tradeoffs for Space, Time, Data and Risk in Unsupervised Learning</title>
       <link>/publications/2015/lucic-15a/</link>
       <pubDate>Sat, 03 Jan 2015 00:00:00 +0000</pubDate>
       
@@ -633,7 +597,7 @@
     </item>
     
     <item>
-      <title>Calibration in circular ultrasound tomography devices.</title>
+      <title>Calibration in circular ultrasound tomography devices</title>
       <link>/publications/2011/parhizkar-11a/</link>
       <pubDate>Mon, 03 Jan 2011 00:00:00 +0000</pubDate>
       
@@ -660,21 +624,39 @@
     </item>
     
     <item>
-      <title>Distributed sensor network localization from local connectivity: performance analysis for the HOP-TERRAIN algorithm.</title>
-      <link>/publications/2010/karbasi-11b/</link>
+      <title>Calibration for Ultrasound Breast Tomography Using Matrix Completion</title>
+      <link>/publications/2010/parhizkar-11a/</link>
       <pubDate>Sun, 03 Jan 2010 00:00:00 +0000</pubDate>
       
-      <guid>/publications/2010/karbasi-11b/</guid>
+      <guid>/publications/2010/parhizkar-11a/</guid>
+      <description>Abstract We study the calibration process in circular ultrasound tomography devices where the sensor positions deviate from the circumference of a perfect circle. This problem arises in a variety of applications in signal processing ranging from breast imaging to sensor network localization. We introduce a novel method of calibration/localization based on the time-of-flight (ToF) measurements between sensors when the enclosed medium is homogeneous. In the presence of all the pairwise ToFs, one can easily estimate the sensor positions using multi-dimensional scaling (MDS) method.</description>
+    </item>
+    
+    <item>
+      <title>Distributed sensor network localization from local connectivity: performance analysis for the HOP-TERRAIN algorithm.</title>
+      <link>/publications/2010/karbasi-10b/</link>
+      <pubDate>Sun, 03 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2010/karbasi-10b/</guid>
       <description>Abstract This paper addresses the problem of determining the node locations in ad-hoc sensor networks when only connectivity information is available. In previous work, we showed that the localization algorithm MDS-MAP proposed by Y. Shang et al. is able to localize sensors up to a bounded error decreasing at a rate inversely proportional to the radio range r. The main limitation of MDS-MAP is the assumption that the available connectivity information is processed in a centralized way.</description>
     </item>
     
     <item>
       <title>From centralized to distributed sensor localization.</title>
-      <link>/publications/2010/karbasi-11a/</link>
+      <link>/publications/2010/karbasi-10a/</link>
       <pubDate>Sun, 03 Jan 2010 00:00:00 +0000</pubDate>
       
-      <guid>/publications/2010/karbasi-11a/</guid>
+      <guid>/publications/2010/karbasi-10a/</guid>
       <description>Abstract In this work we consider the problem of sensor network localization when only the connectivity information is available. More specifically, we compare the performance of the centralized algorithm MDS-MAP with its distributed version HOP-TERRAIN. We show that both algorithms are able to localize sensors up to a bounded error decreasing at a rate inversely proportional to the radio range r.</description>
+    </item>
+    
+    <item>
+      <title>Compressed Sensing with Probabilistic Measurements: A Group Testing Solution</title>
+      <link>/publications/2009/cheraghchi-09a/</link>
+      <pubDate>Sat, 03 Jan 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2009/cheraghchi-09a/</guid>
+      <description>Abstract Detection of defective members of large populations has been widely studied in the statistics community under the name &amp;ldquo;group testing&amp;rdquo;, a problem which dates back to World War II when it was suggested for syphilis screening. There the main interest is to identify a small number of infected people among a large population using collective samples. In viral epidemics, one way to acquire collective samples is by sending agents inside the population.</description>
     </item>
     
     <item>
@@ -786,7 +768,7 @@
     </item>
     
     <item>
-      <title>Noise Facilitation in Associative Memories of Exponential Capacity.</title>
+      <title>Noise Facilitation in Associative Memories of Exponential Capacity</title>
       <link>/publications/2014/karbasi-14a/</link>
       <pubDate>Fri, 03 Jan 2014 00:00:00 +0000</pubDate>
       
@@ -810,6 +792,15 @@
       
       <guid>/publications/2013/karbasi-13a/</guid>
       <description>Abstract We consider the problem of localizing wireless devices in an ad hoc network embedded in a d-dimensional Euclidean space. Obtaining a good estimate of where wireless devices are located is crucial in wireless network applications including environment monitoring, geographic routing, and topology control. When the positions of the devices are unknown and only local distance information is given, we need to infer the positions from these local distance measurements. This problem is particularly challenging when we only have access to measurements that have limited accuracy and are incomplete.</description>
+    </item>
+    
+    <item>
+      <title>Graph-Constrained Group Testing.</title>
+      <link>/publications/2010/cheraghchi-10a/</link>
+      <pubDate>Tue, 03 Jan 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2010/cheraghchi-10a/</guid>
+      <description>Abstract Nonadaptive group testing involves grouping arbitrary subsets of n items into different pools. Each pool is then tested and defective items are identified. A fundamental question involves minimizing the number of pools required to identify at most d defective items. Motivated by applications in network tomography, sensor networks and infection propagation, a variation of group testing problems on graphs is formulated. Unlike conventional group testing problems, each group here must conform to the constraints imposed by a graph.</description>
     </item>
     
     <item>

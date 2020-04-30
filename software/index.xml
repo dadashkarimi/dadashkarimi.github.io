@@ -17,7 +17,10 @@
       
       <guid>/software/software.md/</guid>
       <description>We highly believe in open and reproducible science. To this end, we try our best to publicly release our software and data sets.
- Paper Submodular Maximization beyond Non-negativity: Guarantees, Fast Algorithms, and Applications:  Code is released here   Paper: Streaming Weak Submodularity: Interpreting Neural Networks on the Fly  Code is released here.   Paper: Probabilistic Submodular Maximization in Sub-Linear Time  Code is released here   Paper: Differentially Submodular Maximization: Data Summarization in Disguise  Code is released here.</description>
+  Paper Submodular Maximization beyond Non-negativity: Guarantees, Fast Algorithms, and Applications:
+ Code is released here    Paper: Streaming Weak Submodularity: Interpreting Neural Networks on the Fly
+ Code is released here.    Paper: Probabilistic Submodular Maximization in Sub-Linear Time
+ Code is released here    Paper: Differentially Submodular Maximization: Data Summarization in Disguise</description>
     </item>
     
   </channel>

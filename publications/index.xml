@@ -6,7 +6,7 @@
     <description>Recent content in Publications on IID Group</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 03 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 03 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/publications/index.xml" rel="self" type="application/rss+xml" />
     
@@ -684,6 +684,15 @@
       
       <guid>/publications/2006/karbasi-06a/</guid>
       <description>Abstract This paper proposes a new DOA (direction of arrival) estimation method for an arbitrary triangular microphone arrangement. Using the phase rotation factors for the crosscorrelations between the adjacent-microphone signals, a general form of the integrated cross spectrum is derived. DOA estimation is reduced to a non-linear optimization problem of the general integrated cross spectrum. It is shown that a conventional DOA estimation for the equilateral triangular microphone arrangement is a special case of the proposed method.</description>
+    </item>
+    
+    <item>
+      <title>Stochastic Conditional Gradient Methods: From Convex Minimization to Submodular Maximization</title>
+      <link>/publications/2020/mokhtaric-20a/</link>
+      <pubDate>Sun, 03 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2020/mokhtaric-20a/</guid>
+      <description>Abstract This paper considers stochastic optimization problems for a large class of objective functions, including convex and continuous submodular. Stochastic proximal gradient methods have been widely used to solve such problems; however, their applicability remains limited when the problem dimension is large and the projection onto a convex set is costly. Instead, stochastic conditional gradient methods are proposed as an alternative solution relying on (i) Approximating gradients via a simple averaging technique requiring a single stochastic gradient evaluation per iteration; (ii) Solving a linear program to compute the descent/ascent direction.</description>
     </item>
     
     <item>

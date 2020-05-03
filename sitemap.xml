@@ -388,6 +388,11 @@
   </url>
   
   <url>
+    <loc>/publications/2020/mokhtaric-20a/</loc>
+    <lastmod>2020-05-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/research/computational_neuroscience_neurimaging.md/</loc>
     <lastmod>2020-01-03T00:00:00+00:00</lastmod>
   </url>
@@ -483,12 +488,17 @@
   </url>
   
   <url>
-    <loc>/news/dadashkarimi-20.md/</loc>
-    <lastmod>2020-04-21T00:00:00+00:00</lastmod>
+    <loc>/</loc>
+    <lastmod>2020-05-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/</loc>
+    <loc>/publications/</loc>
+    <lastmod>2020-05-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/news/dadashkarimi-20.md/</loc>
     <lastmod>2020-04-21T00:00:00+00:00</lastmod>
   </url>
   
@@ -538,11 +548,6 @@
   </url>
   
   <url>
-    <loc>/publications/</loc>
-    <lastmod>2020-01-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/research/</loc>
     <lastmod>2020-01-03T00:00:00+00:00</lastmod>
   </url>
@@ -584,16 +589,6 @@
   
   <url>
     <loc>/courses/fall-19.md/</loc>
-    <lastmod>2019-01-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/courses/network_sciences.md/</loc>
-    <lastmod>2019-01-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/courses/spring-19.md/</loc>
     <lastmod>2019-01-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -648,11 +643,6 @@
   </url>
   
   <url>
-    <loc>/courses/fall-18.md/</loc>
-    <lastmod>2018-01-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/news/karbasi-17a.md/</loc>
     <lastmod>2017-10-11T00:00:00+00:00</lastmod>
   </url>
@@ -703,12 +693,12 @@
   </url>
   
   <url>
-    <loc>/courses/spring-15.md/</loc>
-    <lastmod>2015-01-03T00:00:00+00:00</lastmod>
+    <loc>/courses/fall-15.md/</loc>
+    <lastmod>2015-07-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/courses/fall-15.md/</loc>
+    <loc>/courses/spring-15.md/</loc>
     <lastmod>2015-01-03T00:00:00+00:00</lastmod>
   </url>
   

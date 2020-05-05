@@ -913,7 +913,7 @@ Dissertation Title: Modern Challenges for Machine Learning Applications of Submo
 Date: Thursday, March 5, 2020 Time: 4:00 PM Location: Room 335, 3rd floor, 17 Hillhouse Avenue
 Advisor: Amin Karbasi
 Other committee members:
- Dan Spielman Dragomir Radev Yaron Singer (Harvard)  Abstract: In a nutshell, submodularity covers the class of all problems that exhibit some form of diminishing returns. From a theoretical perspective, this notion of diminishing returns is extremely useful as the resulting mathematical properties allow for provably efficient optimization.</description>
+ Dan Spielman Dragomir Radev Yaron Singer (Harvard)  Abstract :In a nutshell, submodularity covers the class of all problems that exhibit some form of diminishing returns. From a theoretical perspective, this notion of diminishing returns is extremely useful as the resulting mathematical properties allow for provably efficient optimization.</description>
     </item>
     
     <item>
@@ -1011,10 +1011,10 @@ ABSTRACT: The difficulty of searching through a massive amount of data in order 
     
     <item>
       <title>Ivy 3-Minute Thesis Competition Award</title>
-      <link>/news/mehraveh-19b.md/</link>
+      <link>/news/mehraveh-19c.md/</link>
       <pubDate>Wed, 03 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>/news/mehraveh-19b.md/</guid>
+      <guid>/news/mehraveh-19c.md/</guid>
       <description>On April 25, 2019, Columbia University and the United Nations hosted the first Ivy-wide 3-Minute Thesis Competition to celebrate the diverse scholarly work that PhD students are doing across the Ivy League community. Following opening remarks by Elliott Harris, UN Assistant Secretary-General and Chief Economist, fourteen PhD students from Brown University, Columbia University, Cornell University, Dartmouth College, Princeton University, the University of Pennsylvania and Yale gave presentations about their research in just 3 minutes.</description>
     </item>
     
@@ -1065,8 +1065,8 @@ Area: Robust and Interactive Information Gathering in Dynamic Environments.</des
       <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>/news/isit-18a.md/</guid>
-      <description>ISIT 2018 Tutorial on Submodularity in Information and Data Science. link
-Abstract: Submodularity is a structural property over functions that has received significant attention in the mathematics community, owing to their natural and wide ranging applicability. In particular, numerous challenging problems in information theory, machine learning, and artificial intelligence rely on optimization techniques for which submodularity is key to solving them efficiently.We will start by defining submodularity and polymatroidality — we will survey a surprisingly diverse set of functions that are submodular and operations that preserve submodularity.</description>
+      <description>ISIT 2018 Tutorial on Submodularity in Information and Data Science.
+Submodularity is a structural property over functions that has received significant attention in the mathematics community, owing to their natural and wide ranging applicability. In particular, numerous challenging problems in information theory, machine learning, and artificial intelligence rely on optimization techniques for which submodularity is key to solving them efficiently.We will start by defining submodularity and polymatroidality — we will survey a surprisingly diverse set of functions that are submodular and operations that preserve submodularity.</description>
     </item>
     
     <item>
@@ -1198,7 +1198,7 @@ One central component of the program will be ​formalizing basic questions in d
       <pubDate>Sat, 01 Jul 2017 00:00:00 +0000</pubDate>
       
       <guid>/news/azure-17.md/</guid>
-      <description>Amin Karbasi Received Microsoft Azure Research Award 2017. link</description>
+      <description>Amin Karbasi Received Microsoft Azure Research Award 2017</description>
     </item>
     
     <item>

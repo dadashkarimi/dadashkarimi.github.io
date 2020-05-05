@@ -13,7 +13,7 @@
   </url>
   
   <url>
-    <loc>/research/submodular_optimization.md/</loc>
+    <loc>/research/trust.md/</loc>
     <lastmod>2020-01-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -74,11 +74,6 @@
   
   <url>
     <loc>/publications/2020/mingrui-2020a/</loc>
-    <lastmod>2020-01-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/research/trust.md/</loc>
     <lastmod>2020-01-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -408,6 +403,11 @@
   </url>
   
   <url>
+    <loc>/research/non_convex.md/</loc>
+    <lastmod>2020-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/publications/2020/mehraveh-2020b/</loc>
     <lastmod>2020-01-03T00:00:00+00:00</lastmod>
   </url>
@@ -488,7 +488,7 @@
   </url>
   
   <url>
-    <loc>/research/non_convex.md/</loc>
+    <loc>/research/submodular_optimization.md/</loc>
     <lastmod>2020-01-03T00:00:00+00:00</lastmod>
   </url>
   

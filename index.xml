@@ -30,12 +30,12 @@
     </item>
     
     <item>
-      <title>Submodular Optimization</title>
-      <link>/research/submodular_optimization.md/</link>
+      <title>Trustworthy ML &amp; Robust Statistics</title>
+      <link>/research/trust.md/</link>
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>/research/submodular_optimization.md/</guid>
-      <description>The difficulty of searching through a massive amount of data in order to quickly make an informed decision is one of today’s most ubiquitous challenges. Many scientific and engineering models feature inherently discrete decision variables—from phrases in a corpus to objects in an image. Similarly, nearly all aspects of the machine learning pipeline involve discrete tasks, from data summarization and sketching to feature selection and model explanation. The study of how to make near-optimal decisions from a massive pool of possibilities is at the heart of combinatorial optimization.</description>
+      <guid>/research/trust.md/</guid>
+      <description>Statistical learning is an area of statistics initially demanded by enormous applications in agriculture and industry. However, its scope expanded after computer adventure and exhibition of big data as the goal was interpreting the underlying structure of the data. Statistical learning is categorized into two main groups including supervised learning where we know about labels of data &amp;ndash;and we aim to predict an outcome measure&amp;ndash; and unsupervised learning where we don’t know the labels and we want to interpret the data.</description>
     </item>
     
     <item>
@@ -144,15 +144,6 @@
       
       <guid>/publications/2020/mingrui-2020a/</guid>
       <description>Abstract How can we efficiently mitigate the overhead of gradient communications in distributed optimization? This problem is at the heart of training scalable machine learning models and has been mainly studied in the unconstrained setting. In this paper, we propose Quantized-Frank-Wolfe (QFW), the first projection-free and communication-efficient algorithm for solving constrained optimization problems at scale. We consider both convex and non-convex objective functions, expressed as a finite-sum or more generally a stochastic optimization problem, and provide strong theoretical guarantees on the convergence rate of QFW.</description>
-    </item>
-    
-    <item>
-      <title>Trustworthy ML &amp; Robust Statistics</title>
-      <link>/research/trust.md/</link>
-      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/research/trust.md/</guid>
-      <description>Statistical learning is an area of statistics initially demanded by enormous applications in agriculture and industry. However, its scope expanded after computer adventure and exhibition of big data as the goal was interpreting the underlying structure of the data. Statistical learning is categorized into two main groups including supervised learning where we know about labels of data &amp;ndash;and we aim to predict an outcome measure&amp;ndash; and unsupervised learning where we don’t know the labels and we want to interpret the data.</description>
     </item>
     
     <item>
@@ -741,6 +732,15 @@
     </item>
     
     <item>
+      <title>Non-convex Optimization</title>
+      <link>/research/non_convex.md/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/research/non_convex.md/</guid>
+      <description>Until recently, convex programs were seen as the defining boundary for tractability in continuous optimization. However, many problems of interest arising from machine learning and statistical modeling, such as training deep neural networks and learning latent variable models, are glaringly non-convex. While efficient algorithms are known for a few instances of non-convex problems, it remains a central challenge to discover general conditions under which a non-convex problem admits an efficient solution.</description>
+    </item>
+    
+    <item>
       <title>There is no single functional atlas even for a single individual: Functional parcel definitions change with task</title>
       <link>/publications/2020/mehraveh-2020b/</link>
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
@@ -885,12 +885,12 @@
     </item>
     
     <item>
-      <title>Non-convex Optimization</title>
-      <link>/research/non_convex.md/</link>
+      <title>Submodular Optimization</title>
+      <link>/research/submodular_optimization.md/</link>
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>/research/non_convex.md/</guid>
-      <description>Until recently, convex programs were seen as the defining boundary for tractability in continuous optimization. However, many problems of interest arising from machine learning and statistical modeling, such as training deep neural networks and learning latent variable models, are glaringly non-convex. While efficient algorithms are known for a few instances of non-convex problems, it remains a central challenge to discover general conditions under which a non-convex problem admits an efficient solution.</description>
+      <guid>/research/submodular_optimization.md/</guid>
+      <description>The difficulty of searching through a massive amount of data in order to quickly make an informed decision is one of today’s most ubiquitous challenges. Many scientific and engineering models feature inherently discrete decision variables—from phrases in a corpus to objects in an image. Similarly, nearly all aspects of the machine learning pipeline involve discrete tasks, from data summarization and sketching to feature selection and model explanation. The study of how to make near-optimal decisions from a massive pool of possibilities is at the heart of combinatorial optimization.</description>
     </item>
     
     <item>

@@ -44,7 +44,7 @@
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>/research/online_learning.md/</guid>
-      <description>Online learning is a well established learning paradigm which has both theoretical and practical appeals. The goal of online learning is to make a sequence of accurate predictions given knowledge of the cor- rect answer to previous prediction tasks and possibly additional avail- able information. Online learning has been studied in several research fields including game theory, information theory, and machine learning. It also became of great interest to practitioners due the recent emer- gence of large scale applications such as online advertisement placement and online web ranking.</description>
+      <description>In many practical applications, the environment is so complex that it may be infeasible to lay out a precise model and use the classical mathematical optimization methods. It is then necessary, and very often beneficial, to consider a robust approach, by considering optimization as a process that learns from experience as more aspects of the problem are being observed. This view of optimization as a process has become prominent in various fields and led to many successes in modeling and systems.</description>
     </item>
     
     <item>

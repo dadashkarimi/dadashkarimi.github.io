@@ -894,15 +894,6 @@
     </item>
     
     <item>
-      <title>Brain Initiative Trainee Award 2020</title>
-      <link>/news/dadashkarimi-20.md/</link>
-      <pubDate>Tue, 21 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/news/dadashkarimi-20.md/</guid>
-      <description>Javid Dadashkarimi won Brain Initiative Trainee Award for `A web-based toolkit for visualizing and interpreting complex connectomic results in BISWeb &amp;lsquo;. This award is given to students who had significant research impact that can create a dynamic understanding of brain function.</description>
-    </item>
-    
-    <item>
       <title> Modern Challenges for Machine Learning Applications of Submodularity: Privacy, Scalability, and Sequences</title>
       <link>/publications/thesis/marko-2020.md/</link>
       <pubDate>Fri, 10 Apr 2020 00:00:00 +0000</pubDate>
@@ -917,7 +908,7 @@ Other committee members:
     </item>
     
     <item>
-      <title>Marko Mitrovic Graduated!</title>
+      <title>Marko Mitrovic Graduated</title>
       <link>/news/marko-2020.md/</link>
       <pubDate>Fri, 10 Apr 2020 00:00:00 +0000</pubDate>
       
@@ -931,7 +922,7 @@ Other committee members:
     </item>
     
     <item>
-      <title>Lin Chen Graduated!</title>
+      <title>Lin Chen Graduated</title>
       <link>/news/lin-2020.md/</link>
       <pubDate>Tue, 10 Mar 2020 00:00:00 +0000</pubDate>
       
@@ -954,6 +945,15 @@ The title of the thesis is: Online Optimization: Convex and Submodular Functions
 Advisor: Amin Karbasi
 Members of the Committee are:
  Professor Negahban Professor Spielman  Abstract: In the first part, we study switching-constrained online convex optimization (OCO), where the player has a limited number of opportunities to change her action.</description>
+    </item>
+    
+    <item>
+      <title>Brain Initiative Trainee Award 2020</title>
+      <link>/news/dadashkarimi-20.md/</link>
+      <pubDate>Fri, 21 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/news/dadashkarimi-20.md/</guid>
+      <description>Javid Dadashkarimi won Brain Initiative Trainee Award for `A web-based toolkit for visualizing and interpreting complex connectomic results in BISWeb &amp;lsquo;. This award is given to students who had significant research impact that can create a dynamic understanding of brain function.</description>
     </item>
     
     <item>
@@ -1018,7 +1018,7 @@ Adviserr:
     </item>
     
     <item>
-      <title>Mehraveh Salehi Graduated!</title>
+      <title>Mehraveh Salehi Graduated</title>
       <link>/news/mehraveh-19.md/</link>
       <pubDate>Tue, 10 Sep 2019 00:00:00 +0000</pubDate>
       

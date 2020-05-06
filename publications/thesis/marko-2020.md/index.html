@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Inference, Information,  and Decision Systems Group">
+    <meta name="description" content="">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta property="og:site_name" content="IID Group">
+    <meta property="og:title" content="
+   Modern Challenges for Machine Learning Applications of Submodularity: Privacy, Scalability, and Sequences - IID Group
+">
+    <meta property="og:description" content="publication">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/publications/thesis/marko-2020.md/">
+    <meta property="og:image" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="/publications/thesis/marko-2020.md/">
+    <meta name="twitter:image" content="">
+
+    <base href="/publications/thesis/marko-2020.md/">
+    <title>
+   Modern Challenges for Machine Learning Applications of Submodularity: Privacy, Scalability, and Sequences - IID Group
+</title>
+
+    <link rel="canonical" href="/publications/thesis/marko-2020.md/">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    
+    <link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700">
+    <link rel="stylesheet" href="/css/normalize.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    
+      <link rel="alternate" href="/index.xml" type="application/rss+xml" title="IID Group">
+      <link href="/index.xml" rel="feed" type="application/rss+xml" title="IID Group" />
+    
+
+    <meta name="generator" content="Hugo 0.67.0" />
+  </head>
+
+  <body class="">
+    <main class="wrapper">
+      
+<link href="https://fonts.googleapis.com/css?family=Baloo+Chettan+2&display=swap" rel="stylesheet">
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.dropbtn {
+  background-color:  #00356B;
+  color: white;
+  padding: 8px;
+  font-size: 16px;
+  border: none;
+  border-radius:1px; 
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  padding:4px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 180px;
+  box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.2);
+  margin-left:0px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 0px;
+  text-decoration: none;
+  display: block;
+  margin-left:0px;
+  margin-right:2px;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+</style>
+</head>
+
+<nav class="navigation">
+  <section class="container">
+	  <span class="navigation-title" href="/">
+		  <img src="/images/logos/iid.png"/></a><span class="navigation-text">&nbsp;IID Group</span></span>
+    <input type="checkbox" id="menu-control"/>
+    <label class="menu-mobile  float-right " for="menu-control">
+      <span class="btn-mobile  float-right ">&#9776;</span>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item  align-center ">
+		
+              <a class="navigation-link" href="/">About</a>
+		
+            </li>
+          
+            <li class="navigation-item  align-center ">
+		
+              <a class="navigation-link" href="/people">People</a>
+		
+            </li>
+          
+            <li class="navigation-item  align-center ">
+		
+              <a class="navigation-link" href="/publications/">Publications</a>
+		
+            </li>
+          
+            <li class="navigation-item  align-center ">
+		
+              <a class="navigation-link" href="/research">Research</a>
+		
+            </li>
+          
+            <li class="navigation-item  align-center ">
+		
+              <a class="navigation-link" href="/courses">Teaching</a>
+		
+            </li>
+          
+            <li class="navigation-item  align-center ">
+		
+              <a class="navigation-link" href="/outreach/outreach.md">Outreach</a>
+		
+            </li>
+          
+            <li class="navigation-item  align-center ">
+		 
+		<ul class="dropdown">
+			<a class="dropbtn" style="line-height:5rem;" href="#">other</a>
+		        <ul class="dropdown-content">
+		  
+			    <li class="align-center">
+			      <a style="margin-left:-1rem;" href="/software/software.md">Software</a>
+			    </li>
+		  
+			    <li class="align-center">
+			      <a style="margin-left:-1rem;" href="/openings/openings.md">Openings</a>
+			    </li>
+		  
+			    <li class="align-center">
+			      <a style="margin-left:-1rem;" href="/contact/contact.md">Contact</a>
+			    </li>
+		  
+		    </ul>
+		</ul>
+
+		
+            </li>
+          
+        
+        
+      </ul>
+    </label>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  
+<section class="container page">
+	<article>
+		<header>
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+			<div></div>
+			<h1 >Title:&nbsp; Modern Challenges for Machine Learning Applications of Submodularity: Privacy, Scalability, and Sequences</h1>
+			<h1 >Authors:&nbsp;Marko Mitrovic and Amin Karbasi</h1>
+			
+			
+			<script type="text/javascript" async
+	   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full">
+MathJax.Hub.Config({
+	tex2jax: {
+		inlineMath: [['$','$']],
+		displayMath: [['$$','$$']],
+		processEscapes: true,
+		processEnvironments: true,
+		skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+		TeX: { extensions: ["AMSmath.js", "AMSsymbols.js"] }
+	}
+});
+MathJax.Hub.Queue(function() {
+	var all = MathJax.Hub.getAllJax(), i;
+	for(i = 0; i < all.length; i += 1) {
+		all[i].SourceElement().parentNode.className += ' has-jax';
+	}
+});
+			</script>
+			
+
+		</header>
+
+		<div  class="x-column x-sm x-1-6" style=""  >
+		</div>
+
+			<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+			<div>
+			
+
+			<p><img src="/images/news/marko-1.jpeg" alt="Marko 1" title="m-1"> <img src="/images/news/marko-2.jpeg" alt="Marko 2" title="m-2"> <img src="/images/news/marko-3.jpeg" alt="Marko3" title="m-3">
+<img src="/images/news/marko-4.jpeg" alt="Marko 4" title="m-4"></p>
+<p>Student: Marko Mitrovic</p>
+<p>Dissertation Title: Modern Challenges for Machine Learning Applications of Submodularity: Privacy, Scalability, and Sequences</p>
+<p>Date: Thursday, March 5, 2020
+Time: 4:00 PM
+Location: Room 335, 3rd floor, 17 Hillhouse Avenue</p>
+<p>Advisor: Amin Karbasi</p>
+<p>Other committee members:</p>
+<ol>
+<li>Dan Spielman</li>
+<li>Dragomir Radev</li>
+<li>Yaron Singer (Harvard)</li>
+</ol>
+<p>Abstract :In a nutshell, submodularity covers the class of all problems that exhibit some form of diminishing returns. From a theoretical perspective, this notion of diminishing returns is extremely useful as the resulting mathematical properties allow for provably efficient optimization. From a practical perspective, diminishing returns appear in a wide variety of important real-world machine learning problems including data summarization, recommender systems, neural network interpretability, and influence maximization in social networks.</p>
+<p>In this thesis, we will focus on three major challenges for modern machine learning applications of submodularity: privacy, scalability, and sequences:</p>
+<p>With the emergence of data privacy as one of the foremost controversies in today&rsquo;s society, it is imperative that each individual&rsquo;s personal information be protected. However, machine learning is a field that particularly relies on data. Without data, there is no learning. To tackle this challenge, we adapt the foundational algorithms of submodularity to the framework of differential privacy, which provides mathematically provable protection against information leaks.</p>
+<p>On the opposite end of the spectrum of data challenges, we have the problem of too much data. As we will see, many submodular algorithms run in linear time, but with the immense size of modern datasets, even linear time may be too slow. We present novel approaches to scalable submodularity with a specific focus on streaming and distributed frameworks.</p>
+<p>Lastly, the vast majority of work and research on submodularity has been focused on set functions where the order of the input and output is not important. While this is perfectly reasonable for many problems, there are also many other machine learning problems (such as recommender systems), where explicitly considering the order of data and solutions can lead to large gains. In this dissertation, we present vital advancements in the field of sequence submodularity.</p>
+
+			<div></div>
+
+			<script>
+				function resizeIframe(obj) {
+					obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+				}
+			</script>
+			<h2 style="font-size:2rem">Full Text: <a style="color:blue" href="/publications/thesis/marko-thesis.pdf">[PDF]</a></h2>
+			<iframe style = "width:100%;height:100rem;scrolling:no;border:0" src="/publications/thesis/marko-thesis.pdf"></iframe>
+			<div></div>
+			</ul>
+			</div>
+
+	</article>
+</section>
+
+
+
+
+
+
+
+
+      </div>
+      
+        <footer class="footer">
+  <section class="container">
+   <div></div>
+    
+      <div class="sns-shares sp-sns-shares">
+        
+          <a class="sns-share twitter-share" href="https://twitter.com/intent/tweet?original_referer=%2fpublications%2fthesis%2fmarko-2020.md%2f&ref_src=twsrc%5Etfw&text=%20Modern%20Challenges%20for%20Machine%20Learning%20Applications%20of%20Submodularity%3a%20Privacy%2c%20Scalability%2c%20and%20Sequences IID%20Group&tw_p=tweetbutton&url=%2fpublications%2fthesis%2fmarko-2020.md%2f"><i class="fab fa-twitter"></i></a>
+        
+        
+          <a class="fb btn sns-share fb-share" href="http://www.facebook.com/share.php?u=%2fpublications%2fthesis%2fmarko-2020.md%2f" onclick="window.open(this.href, 'FBwindow', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fab fa-facebook-f"></i></a>
+        
+        
+          <a class="sns-share line-share" href="https://social-plugins.line.me/lineit/share?url=%2fpublications%2fthesis%2fmarko-2020.md%2f"><i class="fab fa-line"></i></a>
+        
+        
+          <a class="sns-share linkedIn-share" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fpublications%2fthesis%2fmarko-2020.md%2f"><i class="fab fa-linkedin"></i></a>
+        
+      </div>
+    
+    
+    
+      <p>Yale University</p>
+    
+
+  </section>
+</footer>
+<style>
+#extreme
+{
+z-index: 1;
+visibility: hidden;
+position: absolute;
+z-index: 10000;
+}
+</style>
+<div id=”extreme”>
+    <script style="width:28px;height:28px" src="//t1.extreme-dm.com/f.js" id="eXF-karbasi-0" async defer></script>
+</div>
+<div class="fixed-bar">
+  <section class="container">
+    
+    <p id="privateTriggerText" style="color:white"><a style="color:white" href="https://usability.yale.edu/web-accessibility/accessibility-yale">Accessibility at Yale</a> &nbsp; Inference, Information, and Decision Group at Yale </p>
+    
+  </section>
+</div>
+
+      
+    </main>
+
+    
+
+  <script src="js/app.js"></script>
+  
+  <script>
+  (function($) {
+    $(function() {
+      $('#privateTrigger').on('click', function() {
+        $('.private').slideToggle();
+        $('#privateTriggerText').text("Thank You! Please share it if you like it→");
+      });
+    });
+   })(jQuery);
+  </script>
+  
+  </body>
+</html>

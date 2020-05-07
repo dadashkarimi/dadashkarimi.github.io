@@ -669,6 +669,15 @@
     </item>
     
     <item>
+      <title>Graph-Constrained Group Testing.</title>
+      <link>/publications/2010/cheraghchi-10a/</link>
+      <pubDate>Sun, 03 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2010/cheraghchi-10a/</guid>
+      <description>Abstract Nonadaptive group testing involves grouping arbitrary subsets of n items into different pools. Each pool is then tested and defective items are identified. A fundamental question involves minimizing the number of pools required to identify at most d defective items. Motivated by applications in network tomography, sensor networks and infection propagation, a variation of group testing problems on graphs is formulated. Unlike conventional group testing problems, each group here must conform to the constraints imposed by a graph.</description>
+    </item>
+    
+    <item>
       <title>Compressed Sensing with Probabilistic Measurements: A Group Testing Solution</title>
       <link>/publications/2009/cheraghchi-09a/</link>
       <pubDate>Sat, 03 Jan 2009 00:00:00 +0000</pubDate>
@@ -837,15 +846,6 @@
       
       <guid>/publications/2013/karbasi-13a/</guid>
       <description>Abstract We consider the problem of localizing wireless devices in an ad hoc network embedded in a d-dimensional Euclidean space. Obtaining a good estimate of where wireless devices are located is crucial in wireless network applications including environment monitoring, geographic routing, and topology control. When the positions of the devices are unknown and only local distance information is given, we need to infer the positions from these local distance measurements. This problem is particularly challenging when we only have access to measurements that have limited accuracy and are incomplete.</description>
-    </item>
-    
-    <item>
-      <title>Graph-Constrained Group Testing.</title>
-      <link>/publications/2010/cheraghchi-10a/</link>
-      <pubDate>Tue, 03 Jan 2012 00:00:00 +0000</pubDate>
-      
-      <guid>/publications/2010/cheraghchi-10a/</guid>
-      <description>Abstract Nonadaptive group testing involves grouping arbitrary subsets of n items into different pools. Each pool is then tested and defective items are identified. A fundamental question involves minimizing the number of pools required to identify at most d defective items. Motivated by applications in network tomography, sensor networks and infection propagation, a variation of group testing problems on graphs is formulated. Unlike conventional group testing problems, each group here must conform to the constraints imposed by a graph.</description>
     </item>
     
     <item>

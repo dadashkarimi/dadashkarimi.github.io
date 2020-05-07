@@ -719,7 +719,7 @@
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>/research/computational_neuroscience_neurimaging.md/</guid>
-      <description>For the first time, we challenged neuroscience&amp;rsquo;s long-standing assumption that there is a single brain map that works for everyone across time. We looked at brain images acquired by functional Magnetic Resonance Imaging or fMRI, and tried to understand what brain regions talk to each other and how this conversation changes as we engage in different tasks, such as playing a game or watching a movie. We developed an artificial intelligence technology to automatically translate these brain images into brain maps, like the ones you can see here.</description>
+      <description>The human brain is a complex network, consisting of functionally interconnected regions whose coordinated effort gives rise to different functions. Understanding what these regions are, how they interact, and how this interaction forms a wide range of behavior has long been an essential question for human neuroscience. Neuroimaging techniques have provided a unique opportunity to tackle this question in a data-driven way. Advances in neuroimaging techniques such as functional Magnetic Resonance Imaging (fMRI), have allowed us to approximately measure the neural activity in the brain.</description>
     </item>
     
     <item>

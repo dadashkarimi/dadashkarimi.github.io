@@ -1,7 +1,7 @@
 *,*:after,*:before{box-sizing:inherit}html{box-sizing:border-box;font-size:62.5%}body{display:flex;color:#323232;background-color:#fefefe;font-family:'Baloo Chettan 2', cursive;;font-size:1.6em;font-weight:400;letter-spacing:.0625em;line-height:1.8em}
 .yale img{src="yale-logo.jpg"}
 h3 {
-   width: 85%; 
+   width: 89%; 
    text-align: left; 
    border-bottom: 1px solid #848484; 
    line-height: 0.1em;

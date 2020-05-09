@@ -39,7 +39,7 @@
     </item>
     
     <item>
-      <title>Adaptivity in Adaptive Submodularity.</title>
+      <title>Adaptivity in Adaptive Submodularity</title>
       <link>/publications/2019/esfandiari-2019b/</link>
       <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
       
@@ -57,7 +57,7 @@
     </item>
     
     <item>
-      <title>Minimax Regret of Switching-Constrained Online Convex Optimization: No Phase Transition.</title>
+      <title>Minimax Regret of Switching-Constrained Online Convex Optimization: No Phase Transition</title>
       <link>/publications/2019/lin-2019d/</link>
       <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
       
@@ -66,7 +66,7 @@
     </item>
     
     <item>
-      <title>Stochastic Conditional Gradient&#43;&#43;.</title>
+      <title>Stochastic Conditional Gradient&#43;&#43;</title>
       <link>/publications/2019/hassani-2019a/</link>
       <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
       
@@ -75,7 +75,7 @@
     </item>
     
     <item>
-      <title>Eliminating Latent Discrimination: Train Then Mask.</title>
+      <title>Eliminating Latent Discrimination: Train Then Mask</title>
       <link>/publications/2018/ghili-18a/</link>
       <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
       
@@ -84,7 +84,7 @@
     </item>
     
     <item>
-      <title>Deletion-Robust Submodular Maximization at Scale.</title>
+      <title>Deletion-Robust Submodular Maximization at Scale</title>
       <link>/publications/2017/kazemi-17a/</link>
       <pubDate>Tue, 03 Jan 2017 00:00:00 +0000</pubDate>
       
@@ -129,7 +129,7 @@
     </item>
     
     <item>
-      <title>One Sample Stochastic Frank-Wolfe.</title>
+      <title>One Sample Stochastic Frank-Wolfe</title>
       <link>/publications/2020/mingrui-2020c/</link>
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
       
@@ -165,7 +165,7 @@
     </item>
     
     <item>
-      <title>Online Continuous Submodular Maximization: From Full-Information to Bandit Feedback.</title>
+      <title>Online Continuous Submodular Maximization: From Full-Information to Bandit Feedback</title>
       <link>/publications/2019/minguri-2019a/</link>
       <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
       
@@ -183,7 +183,7 @@
     </item>
     
     <item>
-      <title>Stochastic Continuous Greedy &#43;&#43;: When Upper and Lower Bounds Match.</title>
+      <title>Stochastic Continuous Greedy &#43;&#43;: When Upper and Lower Bounds Match</title>
       <link>/publications/2019/karbasi-2019a/</link>
       <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
       
@@ -237,7 +237,7 @@
     </item>
     
     <item>
-      <title>Decentralized Submodular Maximization: Bridging Discrete and Continuous Settings.</title>
+      <title>Decentralized Submodular Maximization: Bridging Discrete and Continuous Settings</title>
       <link>/publications/2018/mokhtari-18b/</link>
       <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
       
@@ -264,7 +264,7 @@
     </item>
     
     <item>
-      <title>Projection-Free Online Optimization with Stochastic Gradient: From Convexity to Submodularity.</title>
+      <title>Projection-Free Online Optimization with Stochastic Gradient: From Convexity to Submodularity</title>
       <link>/publications/2018/lin-18c/</link>
       <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
       
@@ -273,7 +273,7 @@
     </item>
     
     <item>
-      <title>Scalable Deletion-Robust Submodular Maximization: Data Summarization with Privacy and Fairness Constraints.</title>
+      <title>Scalable Deletion-Robust Submodular Maximization: Data Summarization with Privacy and Fairness Constraints</title>
       <link>/publications/2018/kazemi-2018b/</link>
       <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
       
@@ -318,7 +318,7 @@
     </item>
     
     <item>
-      <title>Differentially Private Submodular Maximization: Data Summarization in Disguise.</title>
+      <title>Differentially Private Submodular Maximization: Data Summarization in Disguise</title>
       <link>/publications/2017/marko-17a/</link>
       <pubDate>Tue, 03 Jan 2017 00:00:00 +0000</pubDate>
       
@@ -336,7 +336,7 @@
     </item>
     
     <item>
-      <title>Greed Is Good: Near-Optimal Submodular Maximization via Greedy Optimization.</title>
+      <title>Greed Is Good: Near-Optimal Submodular Maximization via Greedy Optimization</title>
       <link>/publications/2017/moran-17a/</link>
       <pubDate>Tue, 03 Jan 2017 00:00:00 +0000</pubDate>
       
@@ -345,7 +345,7 @@
     </item>
     
     <item>
-      <title>Interactive Submodular Bandit.</title>
+      <title>Interactive Submodular Bandit</title>
       <link>/publications/2017/lin-17b/</link>
       <pubDate>Tue, 03 Jan 2017 00:00:00 +0000</pubDate>
       
@@ -354,7 +354,7 @@
     </item>
     
     <item>
-      <title>Near-Optimal Active Learning of Halfspaces via Query Synthesis in the Noisy Setting.</title>
+      <title>Near-Optimal Active Learning of Halfspaces via Query Synthesis in the Noisy Setting</title>
       <link>/publications/2017/lin-17a/</link>
       <pubDate>Tue, 03 Jan 2017 00:00:00 +0000</pubDate>
       
@@ -363,7 +363,7 @@
     </item>
     
     <item>
-      <title>Probabilistic Submodular Maximization in Sub-Linear Time.</title>
+      <title>Probabilistic Submodular Maximization in Sub-Linear Time</title>
       <link>/publications/2017/stan-17a/</link>
       <pubDate>Tue, 03 Jan 2017 00:00:00 +0000</pubDate>
       
@@ -390,7 +390,7 @@
     </item>
     
     <item>
-      <title>Fast Constrained Submodular Maximization: Personalized Data Summarization.</title>
+      <title>Fast Constrained Submodular Maximization: Personalized Data Summarization</title>
       <link>/publications/2016/lin-16b/</link>
       <pubDate>Sun, 03 Jan 2016 00:00:00 +0000</pubDate>
       
@@ -399,7 +399,7 @@
     </item>
     
     <item>
-      <title>Learning network structures from firing patterns.</title>
+      <title>Learning network structures from firing patterns</title>
       <link>/publications/2016/amin-16a/</link>
       <pubDate>Sun, 03 Jan 2016 00:00:00 +0000</pubDate>
       
@@ -408,7 +408,7 @@
     </item>
     
     <item>
-      <title>Seeing the Unseen Network: Inferring Hidden Social Ties from Respondent-Driven Sampling.</title>
+      <title>Seeing the Unseen Network: Inferring Hidden Social Ties from Respondent-Driven Sampling</title>
       <link>/publications/2016/lin-16a/</link>
       <pubDate>Sun, 03 Jan 2016 00:00:00 +0000</pubDate>
       
@@ -426,7 +426,7 @@
     </item>
     
     <item>
-      <title>Asynchronous decoding of LDPC codes over BEC.</title>
+      <title>Asynchronous decoding of LDPC codes over BEC</title>
       <link>/publications/2015/haghighatshoar-15a/</link>
       <pubDate>Sat, 03 Jan 2015 00:00:00 +0000</pubDate>
       
@@ -453,7 +453,7 @@
     </item>
     
     <item>
-      <title>Lazier Than Lazy Greedy.</title>
+      <title>Lazier Than Lazy Greedy</title>
       <link>/publications/2015/baharan-15a/</link>
       <pubDate>Sat, 03 Jan 2015 00:00:00 +0000</pubDate>
       
@@ -462,7 +462,7 @@
     </item>
     
     <item>
-      <title>Non-Monotone Adaptive Submodular Maximization.</title>
+      <title>Non-Monotone Adaptive Submodular Maximization</title>
       <link>/publications/2015/gotovos-15a/</link>
       <pubDate>Sat, 03 Jan 2015 00:00:00 +0000</pubDate>
       
@@ -471,7 +471,7 @@
     </item>
     
     <item>
-      <title>Normalization Phenomena in Asynchronous Networks.</title>
+      <title>Normalization Phenomena in Asynchronous Networks</title>
       <link>/publications/2015/karbasi-15b/</link>
       <pubDate>Sat, 03 Jan 2015 00:00:00 +0000</pubDate>
       
@@ -516,7 +516,7 @@
     </item>
     
     <item>
-      <title>Near-Optimally Teaching the Crowd to Classify.</title>
+      <title>Near-Optimally Teaching the Crowd to Classify</title>
       <link>/publications/2014/singla-14a/</link>
       <pubDate>Fri, 03 Jan 2014 00:00:00 +0000</pubDate>
       
@@ -525,7 +525,7 @@
     </item>
     
     <item>
-      <title>Streaming submodular maximization: massive data summarization on the fly.</title>
+      <title>Streaming submodular maximization: massive data summarization on the fly</title>
       <link>/publications/2014/badandidiyuru-14a/</link>
       <pubDate>Fri, 03 Jan 2014 00:00:00 +0000</pubDate>
       
@@ -543,7 +543,7 @@
     </item>
     
     <item>
-      <title>Coupled neural associative memories.</title>
+      <title>Coupled neural associative memories</title>
       <link>/publications/2013/karbasi-13c/</link>
       <pubDate>Thu, 03 Jan 2013 00:00:00 +0000</pubDate>
       
@@ -552,7 +552,7 @@
     </item>
     
     <item>
-      <title>Distributed Submodular Maximization: Identifying Representative Elements in Massive Data.</title>
+      <title>Distributed Submodular Maximization: Identifying Representative Elements in Massive Data</title>
       <link>/publications/2013/baharan-13a/</link>
       <pubDate>Thu, 03 Jan 2013 00:00:00 +0000</pubDate>
       
@@ -561,7 +561,7 @@
     </item>
     
     <item>
-      <title>Iterative Learning and Denoising in Convolutional Neural Associative Memories.</title>
+      <title>Iterative Learning and Denoising in Convolutional Neural Associative Memories</title>
       <link>/publications/2013/karbasi-13b/</link>
       <pubDate>Thu, 03 Jan 2013 00:00:00 +0000</pubDate>
       
@@ -579,7 +579,7 @@
     </item>
     
     <item>
-      <title>Comparison-Based Learning with Rank Nets.</title>
+      <title>Comparison-Based Learning with Rank Nets</title>
       <link>/publications/2012/karbasi-12a/</link>
       <pubDate>Tue, 03 Jan 2012 00:00:00 +0000</pubDate>
       
@@ -597,7 +597,7 @@
     </item>
     
     <item>
-      <title>Multi-level error-resilient neural networks.</title>
+      <title>Multi-level error-resilient neural networks</title>
       <link>/publications/2012/salavati-12a/</link>
       <pubDate>Tue, 03 Jan 2012 00:00:00 +0000</pubDate>
       
@@ -633,7 +633,7 @@
     </item>
     
     <item>
-      <title>Content Search through Comparisons.</title>
+      <title>Content Search through Comparisons</title>
       <link>/publications/2011/karbasi-11a/</link>
       <pubDate>Mon, 03 Jan 2011 00:00:00 +0000</pubDate>
       
@@ -651,7 +651,7 @@
     </item>
     
     <item>
-      <title>Distributed sensor network localization from local connectivity: performance analysis for the HOP-TERRAIN algorithm.</title>
+      <title>Distributed sensor network localization from local connectivity: performance analysis for the HOP-TERRAIN algorithm</title>
       <link>/publications/2010/karbasi-10b/</link>
       <pubDate>Sun, 03 Jan 2010 00:00:00 +0000</pubDate>
       
@@ -660,7 +660,7 @@
     </item>
     
     <item>
-      <title>From centralized to distributed sensor localization.</title>
+      <title>From centralized to distributed sensor localization</title>
       <link>/publications/2010/karbasi-10a/</link>
       <pubDate>Sun, 03 Jan 2010 00:00:00 +0000</pubDate>
       
@@ -669,7 +669,7 @@
     </item>
     
     <item>
-      <title>Graph-Constrained Group Testing.</title>
+      <title>Graph-Constrained Group Testing</title>
       <link>/publications/2010/cheraghchi-10a/</link>
       <pubDate>Sun, 03 Jan 2010 00:00:00 +0000</pubDate>
       
@@ -687,7 +687,7 @@
     </item>
     
     <item>
-      <title>Support recovery in compressed sensing: An estimation theoretic approach.</title>
+      <title>Support recovery in compressed sensing: An estimation theoretic approach</title>
       <link>/publications/2009/karbasi-09a/</link>
       <pubDate>Sat, 03 Jan 2009 00:00:00 +0000</pubDate>
       
@@ -696,7 +696,7 @@
     </item>
     
     <item>
-      <title>A new DOA estimation method using a circular microphone array.</title>
+      <title>A new DOA estimation method using a circular microphone array</title>
       <link>/publications/2007/karbasi-07a/</link>
       <pubDate>Wed, 03 Jan 2007 00:00:00 +0000</pubDate>
       
@@ -705,7 +705,7 @@
     </item>
     
     <item>
-      <title>A DOA estimation method for an arbitrary triangular microphone arrangement.</title>
+      <title>A DOA estimation method for an arbitrary triangular microphone arrangement</title>
       <link>/publications/2006/karbasi-06a/</link>
       <pubDate>Tue, 03 Jan 2006 00:00:00 +0000</pubDate>
       
@@ -759,7 +759,7 @@
     </item>
     
     <item>
-      <title>An exemplar-based approach to individualized parcellation reveals the need for sex specific functional networks.</title>
+      <title>An exemplar-based approach to individualized parcellation reveals the need for sex specific functional networks</title>
       <link>/publications/2018/mehraveh-2018a/</link>
       <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
       
@@ -768,7 +768,7 @@
     </item>
     
     <item>
-      <title>Learning neural connectivity from firing activity: efficient algorithms with provable guarantees on topology.</title>
+      <title>Learning neural connectivity from firing activity: efficient algorithms with provable guarantees on topology</title>
       <link>/publications/2018/karbasi-2018a/</link>
       <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
       
@@ -786,7 +786,7 @@
     </item>
     
     <item>
-      <title>Fast Constrained Submodular Maximization: Personalized Data Summarization.</title>
+      <title>Fast Constrained Submodular Maximization: Personalized Data Summarization</title>
       <link>/publications/2016/baharan-16b/</link>
       <pubDate>Sun, 03 Jan 2016 00:00:00 +0000</pubDate>
       
@@ -795,7 +795,7 @@
     </item>
     
     <item>
-      <title>Fast Distributed Submodular Cover: Public-Private Data Summarization.</title>
+      <title>Fast Distributed Submodular Cover: Public-Private Data Summarization</title>
       <link>/publications/2016/baharan-16c/</link>
       <pubDate>Sun, 03 Jan 2016 00:00:00 +0000</pubDate>
       
@@ -804,7 +804,7 @@
     </item>
     
     <item>
-      <title>From Small-World Networks to Comparison-Based Search.</title>
+      <title>From Small-World Networks to Comparison-Based Search</title>
       <link>/publications/2015/karbasi-15a/</link>
       <pubDate>Sat, 03 Jan 2015 00:00:00 +0000</pubDate>
       
@@ -813,7 +813,7 @@
     </item>
     
     <item>
-      <title>Convolutional Neural Associative Memories: Massive Capacity with Noise Tolerance.</title>
+      <title>Convolutional Neural Associative Memories: Massive Capacity with Noise Tolerance</title>
       <link>/publications/2014/karbasi-14b/</link>
       <pubDate>Fri, 03 Jan 2014 00:00:00 +0000</pubDate>
       
@@ -831,7 +831,7 @@
     </item>
     
     <item>
-      <title>Calibration Using Matrix Completion With Application to Ultrasound Tomography.</title>
+      <title>Calibration Using Matrix Completion With Application to Ultrasound Tomography</title>
       <link>/publications/2013/parhizkar-13a/</link>
       <pubDate>Thu, 03 Jan 2013 00:00:00 +0000</pubDate>
       
@@ -849,7 +849,7 @@
     </item>
     
     <item>
-      <title>Graph-Constrained Group Testing.</title>
+      <title>Graph-Constrained Group Testing</title>
       <link>/publications/2012/cheraghchi-12a/</link>
       <pubDate>Tue, 03 Jan 2012 00:00:00 +0000</pubDate>
       
@@ -858,7 +858,7 @@
     </item>
     
     <item>
-      <title>Low-Rank Matrix Approximation Using Point-Wise Operators.</title>
+      <title>Low-Rank Matrix Approximation Using Point-Wise Operators</title>
       <link>/publications/2012/amini-12a/</link>
       <pubDate>Tue, 03 Jan 2012 00:00:00 +0000</pubDate>
       
@@ -867,7 +867,7 @@
     </item>
     
     <item>
-      <title>Group Testing With Probabilistic Tests: Theory, Design and Application.</title>
+      <title>Group Testing With Probabilistic Tests: Theory, Design and Application</title>
       <link>/publications/2011/cheraghchi-11a/</link>
       <pubDate>Mon, 03 Jan 2011 00:00:00 +0000</pubDate>
       

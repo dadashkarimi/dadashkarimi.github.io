@@ -885,6 +885,15 @@
     </item>
     
     <item>
+      <title>Allocating tasks to machines in computing clusters</title>
+      <link>/publications/2014/karbasi-14c/</link>
+      <pubDate>Fri, 03 Jan 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2014/karbasi-14c/</guid>
+      <description>Abstract Allocating tasks to machines in computing clusters is described. In an embodiment a set of tasks associated with a job are received at a scheduler. In an embodiment an index can be computed for each combination of tasks and processors and stored in a lookup table. In an example the index may be include an indication of the preference for the task to be processed on a particular processor, an indication of a waiting time for the task to be processed and an indication of how other tasks being processed in the computing cluster may be penalized by assigning a task to a particular processor.</description>
+    </item>
+    
+    <item>
       <title>Submodular Optimization</title>
       <link>/research/submodular_optimization.md/</link>
       <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>

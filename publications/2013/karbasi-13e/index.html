@@ -11,7 +11,7 @@
 
     <meta property="og:site_name" content="IID Group">
     <meta property="og:title" content="
-  Constrained Binary Identification Problem - IID Group
+  Graph-Based Information Processing: Scaling Laws and Applications - IID Group
 ">
     <meta property="og:description" content="publication">
     <meta property="og:type" content="website">
@@ -23,7 +23,7 @@
 
     <base href="/publications/2013/karbasi-13e/">
     <title>
-  Constrained Binary Identification Problem - IID Group
+  Graph-Based Information Processing: Scaling Laws and Applications - IID Group
 </title>
 
     <link rel="canonical" href="/publications/2013/karbasi-13e/">
@@ -186,8 +186,8 @@
 			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 			<div></div>
-			<h1 >Title:&nbsp;Constrained Binary Identification Problem</h1>
-			<h1 >Authors:&nbsp;Amin Karbasi, Morteza Zadimoghaddam</h1>
+			<h1 >Title:&nbsp;Graph-Based Information Processing: Scaling Laws and Applications</h1>
+			<h1 >Authors:&nbsp;Amin Karbasi, Martin Vetterli, and Rüdiger Urbanke</h1>
 			
 			
 			<script type="text/javascript" async
@@ -220,7 +220,48 @@ MathJax.Hub.Queue(function() {
 			<div>
 			
 			<h1 id="abstract">Abstract</h1>
-<p>We consider the problem of building a binary decision tree, to locate an object within a set by way of the least number of membership queries. This problem is equivalent to the &ldquo;20 questions game&rdquo; of information theory and is closely related to lossless source compression. If any query is admissible, Huffman coding is optimal with close to H[P] questions on average, the entropy of the prior distribution P over objects. However, in many realistic scenarios, there are constraints on which queries can be asked, and solving the problem optimally is NP-hard. We provide novel polynomial time approximation algorithms where constraints are defined in terms of &ldquo;graph&rdquo;, general &ldquo;cost&rdquo;, and &ldquo;submodular&rdquo; functions. In particular, we show that under graph constraints, there exists a constant approximation algorithm for locating the target in the set. We then extend our approach for scenarios where the constraints are defined in terms of general cost functions that depend only on the size of the query and provide an approximation algorithm that can find the target within O(log(log n)) gap from the cost of the optimum algorithm. Submodular functions come as a natural generalization of cost functions with decreasing marginals. Under submodular set constraints, we devise an approximation algorithm that can find the target within O(log n) gap from the cost of the optimum algorithm. The proposed algorithms are greedy in a sense that at each step they select a query that most evenly splits the set without violating the underlying constraints. These results can be applied to network tomography, active learning and interactive content search.</p>
+<p>We live in a world characterized by massive information transfer and real-time communication.
+The demand for efficient yet low-complexity algorithms is widespread across
+different fields, including machine learning, signal processing and communications. Most
+of the problems that we encounter across these disciplines involves a large number of
+modules interacting with each other. It is therefore natural to represent these interactions
+and the
+ow of information between the modules in terms of a graph. This leads to the
+study of graph-based information processing framework. This framework can be used to
+gain insight into the development of algorithms for a diverse set of applications.
+We investigate the behaviour of large-scale networks (ranging from wireless sensor
+networks to social networks) as a function of underlying parameters. In particular, we
+study the scaling laws and applications of graph-based information processing in sensor
+networks/arrays, sparsity pattern recovery and interactive content search.
+In the firrst part of this thesis, we explore location estimation from incomplete information,
+a problem that arises often in wireless sensor networks and ultrasound tomography
+devices. In such applications, the data gathered by the sensors is only useful if we can
+pinpoint their positions with reasonable accuracy. This problem is particularly challenging
+when we need to infer the positions based on basic information/interaction such as
+proximity or incomplete (and often noisy) pairwise distances.
+As the sensors deployed in a sensor network are often of low quality and unreliable,
+we need to devise a mechanism to single out those that do not work properly. In the
+second part, we frame the network tomography problem as a well-studied inverse problem
+in statistics, called group testing. Group testing involves detecting a small set of defective
+items in a large population by grouping a subset of items into different pools. The result
+of each pool is a binary output depending on whether the pool contains a defective
+item or not. Motivated by the network tomography application, we consider the general
+framework of group testing with graph constraints. As opposed to conventional group
+testing where any subset of items can be grouped, here a test is admissible if it induces a
+connected subgraph. Given this constraint, we are interested in bounding the number of
+pools required to identify the defective items. Once the positions of sensors are known and
+the defective sensors are identified, we investigate another important feature of networks,
+namely, navigability or how fast nodes can deliver a message from one end to another by
+means of local operations.
+In the final part, we consider navigating through a database of objects utilizing comparisons.
+Contrary to traditional databases, users do not submit queries that are subsequently
+matched to objects. Instead, at each step, the database presents two objects to
+the user, who then selects among the pair the object closest to the target that she has in
+mind. This process continues until, based on the user&rsquo;s answers, the database can identify
+the target she has in mind. The search through comparisons amounts to determining
+which pairs should be presented to the user in order to find the target object as quickly
+as possible. Interestingly, this problem has a natural connection with the navigability
+property studied in the second part, which enables us to develop efficient algorithms.</p>
 
 
 			<div></div>
@@ -230,8 +271,8 @@ MathJax.Hub.Queue(function() {
 					obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
 				}
 			</script>
-			<h2 style="font-size:2rem">Full Text: <a style="color:blue" href="https://drops.dagstuhl.de/opus/volltexte/2013/3964/pdf/52.pdf">[PDF]</a></h2>
-			<iframe style = "width:100%;height:100rem;scrolling:no;border:0" src="https://drops.dagstuhl.de/opus/volltexte/2013/3964/pdf/52.pdf"></iframe>
+			<h2 style="font-size:2rem">Full Text: <a style="color:blue" href="/files/amin_thesis.pdf">[PDF]</a></h2>
+			<iframe style = "width:100%;height:100rem;scrolling:no;border:0" src="/files/amin_thesis.pdf"></iframe>
 			<div></div>
 			</ul>
 			</div>
@@ -254,7 +295,7 @@ MathJax.Hub.Queue(function() {
     
       <div class="sns-shares sp-sns-shares">
         
-          <a class="sns-share twitter-share" href="https://twitter.com/intent/tweet?original_referer=%2fpublications%2f2013%2fkarbasi-13e%2f&ref_src=twsrc%5Etfw&text=Constrained%20Binary%20Identification%20Problem IID%20Group&tw_p=tweetbutton&url=%2fpublications%2f2013%2fkarbasi-13e%2f"><i class="fab fa-twitter"></i></a>
+          <a class="sns-share twitter-share" href="https://twitter.com/intent/tweet?original_referer=%2fpublications%2f2013%2fkarbasi-13e%2f&ref_src=twsrc%5Etfw&text=Graph-Based%20Information%20Processing%3a%20Scaling%20Laws%20and%20Applications IID%20Group&tw_p=tweetbutton&url=%2fpublications%2f2013%2fkarbasi-13e%2f"><i class="fab fa-twitter"></i></a>
         
         
           <a class="fb btn sns-share fb-share" href="http://www.facebook.com/share.php?u=%2fpublications%2f2013%2fkarbasi-13e%2f" onclick="window.open(this.href, 'FBwindow', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fab fa-facebook-f"></i></a>

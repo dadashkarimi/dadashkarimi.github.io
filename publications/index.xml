@@ -516,15 +516,6 @@
     </item>
     
     <item>
-      <title>Constrained Binary Identification Problem</title>
-      <link>/publications/2013/karbasi-13e/</link>
-      <pubDate>Thu, 03 Jan 2013 00:00:00 +0000</pubDate>
-      
-      <guid>/publications/2013/karbasi-13e/</guid>
-      <description>Abstract We consider the problem of building a binary decision tree, to locate an object within a set by way of the least number of membership queries. This problem is equivalent to the &amp;ldquo;20 questions game&amp;rdquo; of information theory and is closely related to lossless source compression. If any query is admissible, Huffman coding is optimal with close to H[P] questions on average, the entropy of the prior distribution P over objects.</description>
-    </item>
-    
-    <item>
       <title>Coupled neural associative memories</title>
       <link>/publications/2013/karbasi-13c/</link>
       <pubDate>Thu, 03 Jan 2013 00:00:00 +0000</pubDate>
@@ -846,6 +837,15 @@
       
       <guid>/publications/2014/karbasi-14c/</guid>
       <description>Abstract Allocating tasks to machines in computing clusters is described. In an embodiment a set of tasks associated with a job are received at a scheduler. In an embodiment an index can be computed for each combination of tasks and processors and stored in a lookup table. In an example the index may be include an indication of the preference for the task to be processed on a particular processor, an indication of a waiting time for the task to be processed and an indication of how other tasks being processed in the computing cluster may be penalized by assigning a task to a particular processor.</description>
+    </item>
+    
+    <item>
+      <title>Graph-Based Information Processing: Scaling Laws and Applications</title>
+      <link>/publications/2013/karbasi-13e/</link>
+      <pubDate>Thu, 03 Jan 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2013/karbasi-13e/</guid>
+      <description>Abstract We live in a world characterized by massive information transfer and real-time communication. The demand for efficient yet low-complexity algorithms is widespread across different fields, including machine learning, signal processing and communications. Most of the problems that we encounter across these disciplines involves a large number of modules interacting with each other. It is therefore natural to represent these interactions and the ow of information between the modules in terms of a graph.</description>
     </item>
     
     <item>

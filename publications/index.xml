@@ -849,6 +849,42 @@
     </item>
     
     <item>
+      <title>Hot or Not: Interactive Content Search Using Comparisons</title>
+      <link>/publications/2013/karbasi-13f/</link>
+      <pubDate>Thu, 03 Jan 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2013/karbasi-13f/</guid>
+      <description>Abstract In comparison-based active learning, a user searching for a target object navigates through a database in the following manner. The user is asked to select the object most similar to her target from small list of objects. A new object list is then presented to the user based on her earlier selection. This process is repeated until the target is included in the list presented, at which point the search terminates.</description>
+    </item>
+    
+    <item>
+      <title>Comparison-Based Learning with Rank Nets</title>
+      <link>/publications/2012/karbasi-12d/</link>
+      <pubDate>Tue, 03 Jan 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2012/karbasi-12d/</guid>
+      <description>Abstract We consider the problem of search through comparisons, where a user is presented with two candidate objects and reveals which is closer to her intended target. We study adap- tive strategies for finding the target, that require knowledge of rank relationships but not actual distances between objects. We propose a new strategy based on rank nets, and show that for target distributions with a bounded doubling constant, it finds the tar- get in a number of comparisons close to the entropy of the target distribution and, hence, of the optimum.</description>
+    </item>
+    
+    <item>
+      <title>Content Search Through Comparisons</title>
+      <link>/publications/2011/karbasi-11e/</link>
+      <pubDate>Mon, 03 Jan 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2011/karbasi-11e/</guid>
+      <description>Abstract We study the problem of navigating through a database of similar objects using comparisons under heterogeneous demand, a problem closely related to small-world network design. We show that, under heterogeneous demand, the small-world network design problem is NP-hard. Given the above negative result, we propose a novel mechanism for small-world network design and provide an upper bound on its performance under heterogeneous demand. The above mechanism has a natural equivalent in the context of content search through comparisons, again under heterogeneous demand; we use this to establish both upper and lower bounds on content search through comparisons.</description>
+    </item>
+    
+    <item>
+      <title>Greedy Scheduling for Distributed Computing Clusters</title>
+      <link>/publications/2011/karbasi-11d/</link>
+      <pubDate>Mon, 03 Jan 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2011/karbasi-11d/</guid>
+      <description>Abstract Allocating tasks to machines in computing clusters is described. In an embodiment a set of tasks associated with a job are received at a scheduler. In an embodiment an index can be computed for each combination of tasks and processors and stored in a lookup table. In an example the index may be include an indication of the preference for the task to be processed on a particular processor, an indication of a waiting time for the task to be processed and an indication of how other tasks being processed in the computing cluster may be penalized by assigning a task to a particular processor.</description>
+    </item>
+    
+    <item>
       <title> Modern Challenges for Machine Learning Applications of Submodularity: Privacy, Scalability, and Sequences</title>
       <link>/publications/thesis/marko-2020.md/</link>
       <pubDate>Fri, 10 Apr 2020 00:00:00 +0000</pubDate>

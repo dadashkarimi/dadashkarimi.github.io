@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hunalas on IID Group</title>
+    <link>/hunala/</link>
+    <description>Recent content in Hunalas on IID Group</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    
+	<atom:link href="/hunala/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hunala: A Personalized Risk Assessment Tool for Respiratory Illness</title>
+      <link>/hunala/hunala.md/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/hunala/hunala.md/</guid>
+      <description>Visit Hunala project to get informed your daily risk of getting infected. Hunala Gives a personalized daily assessment on your risk of contracting respiratory diseases, including COVID-19, updated daily. Helps you keep yourself and your community safe by keeping you informed about the spread of respiratory disease
+What Hunala Does Gives a personalized daily assessment on your risk of contracting respiratory diseases, including COVID-19, updated daily. Helps you keep yourself and your community safe by keeping you informed about the spread of respiratory disease.</description>
+    </item>
+    
+  </channel>
+</rss>

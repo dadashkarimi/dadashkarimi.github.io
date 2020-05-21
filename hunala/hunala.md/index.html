@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Inference, Information,  and Decision Systems Group">
+    <meta name="description" content="">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta property="og:site_name" content="IID Group">
+    <meta property="og:title" content="
+  Hunala: A Personalized Risk Assessment Tool for Respiratory Illness - IID Group
+">
+    <meta property="og:description" content="contact">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/hunala/hunala.md/">
+    <meta property="og:image" content="images/hunala.svg">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="/hunala/hunala.md/">
+    <meta name="twitter:image" content="images/hunala.svg">
+
+    <base href="/hunala/hunala.md/">
+    <title>
+  Hunala: A Personalized Risk Assessment Tool for Respiratory Illness - IID Group
+</title>
+
+    <link rel="canonical" href="/hunala/hunala.md/">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    
+    <link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700">
+    <link rel="stylesheet" href="/css/normalize.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    
+      <link rel="alternate" href="/index.xml" type="application/rss+xml" title="IID Group">
+      <link href="/index.xml" rel="feed" type="application/rss+xml" title="IID Group" />
+    
+
+    <meta name="generator" content="Hugo 0.67.0" />
+  </head>
+
+  <body class="">
+    <main class="wrapper">
+      
+<link href="https://fonts.googleapis.com/css?family=Baloo+Chettan+2&display=swap" rel="stylesheet">
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.dropbtn {
+  background-color:  #00356B;
+  color: white;
+  padding: 8px;
+  font-size: 16px;
+  border: none;
+  border-radius:1px; 
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  padding:4px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 180px;
+  box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.2);
+  margin-left:0px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 0px;
+  text-decoration: none;
+  display: block;
+  margin-left:0px;
+  margin-right:2px;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+</style>
+</head>
+
+<nav class="navigation">
+  <section class="container">
+	  <span class="navigation-title" href="/">
+		  <img src="/images/logos/iid.png"/></a><span class="navigation-text">&nbsp;IID Group</span></span>
+    <input type="checkbox" id="menu-control"/>
+    <label class="menu-mobile  float-right " for="menu-control">
+      <span class="btn-mobile  float-right ">&#9776;</span>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item  align-center ">
+		
+              <a class="navigation-link" href="/">About</a>
+		
+            </li>
+          
+            <li class="navigation-item  align-center ">
+		
+              <a class="navigation-link" href="/people">People</a>
+		
+            </li>
+          
+            <li class="navigation-item  align-center ">
+		
+              <a class="navigation-link" href="/publications/">Publications</a>
+		
+            </li>
+          
+            <li class="navigation-item  align-center ">
+		
+              <a class="navigation-link" href="/research">Research</a>
+		
+            </li>
+          
+            <li class="navigation-item  align-center ">
+		
+              <a class="navigation-link" href="/courses">Teaching</a>
+		
+            </li>
+          
+            <li class="navigation-item  align-center ">
+		
+              <a class="navigation-link" href="/hunala/hunala.md">Hunala</a>
+		
+            </li>
+          
+            <li class="navigation-item  align-center ">
+		
+              <a class="navigation-link" href="/outreach/outreach.md">Outreach</a>
+		
+            </li>
+          
+            <li class="navigation-item  align-center ">
+		 
+		<ul class="dropdown">
+			<a class="dropbtn" style="line-height:5rem;" href="#">other</a>
+		        <ul class="dropdown-content">
+		  
+			    <li class="align-center">
+			      <a style="margin-left:-1rem;" href="/software/software.md">Software</a>
+			    </li>
+		  
+			    <li class="align-center">
+			      <a style="margin-left:-1rem;" href="/openings/openings.md">Openings</a>
+			    </li>
+		  
+			    <li class="align-center">
+			      <a style="margin-left:-1rem;" href="/contact/contact.md">Contact</a>
+			    </li>
+		  
+		    </ul>
+		</ul>
+
+		
+            </li>
+          
+        
+        
+      </ul>
+    </label>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  
+<section class="container page">
+	<article>
+		<header>
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+			<div>
+			<h1 >&nbsp;Hunala: A Personalized Risk Assessment Tool for Respiratory Illness</h1>
+			
+			
+
+		</header>
+
+		<div  class="x-column x-sm x-1-6" style=""  >
+		</div>
+
+			<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+			<div>
+			
+			<p><img src="/images/hunala/theme.png" alt="math fest 1" title="outreach 1"></p>
+<p><a href="https://play.google.com/store/apps/details?id=edu.yale.fas.hunala"><img src="/images/hunala/google_play.png" alt="IMAGE ALT TEXT HERE"></a> <a href="https://apps.apple.com/us/app/hunala/id1506810393?ls=1"><img src="/images/hunala/apple_play.png" alt="math fest 2" title="outreach 1"></a></p>
+<p>Visit  <a href="https://hunala.yale.edu">Hunala project</a> to get informed your daily risk of getting infected. Hunala Gives a personalized daily assessment on your risk of contracting respiratory diseases, including COVID-19, updated daily. Helps you keep yourself and your community safe by keeping you informed about the spread of respiratory disease</p>
+<h2 id="what-hunala-does">What Hunala Does</h2>
+<p>Gives a personalized daily assessment on your risk of contracting respiratory diseases, including COVID-19, updated daily.
+Helps you keep yourself and your community safe by keeping you informed about the spread of respiratory disease.
+Helps you make proactive and intelligent decisions about your life by helping you understand how likely you are to get sick.
+How Hunala Works
+Hunala leverages cutting edge network science and machine learning (and uses both crowdsourced and public information) to determine your likelihood of contracting the flu or r respiratory illnesses.
+Using the information you provide about your location and your social interactions, Hunala maps the distribution of symptoms and can offer information you can decide how to with respect to avoiding illness. By updating information daily, you have a powerful tool for monitoring your risk of exposure.
+Hunala assesses what is happening where you live and in your extended social network, similar to apps that crowdsource information about traffic conditions.
+Hunala ensures your privacy and does not share your personal information with other users or with third parties.
+What You Will Need to Do
+Fill out a brief daily survey (which is just a couple of yes/no questions if nothing is happening, and otherwise takes about a minute) to self-report any symptoms you may have
+Tell Hunala where you live and who you spend time with (once, and thereafter updated as you wish)
+Tell Hunala other information related to your risk factors (once, and thereafter updated as you wish)
+The Science Behind Our Work
+Hunala relies on quite a number of methods from network science and machine learning to process data and develop forecasts. Some of these ideas are illustrated by the below links.</p>
+<p>Watch our TED talk: <a href="https://www.ted.com/talks/nicholas_christakis_how_social_networks_predict_epidemics?language=en">https://www.ted.com/talks/nicholas_christakis_how_social_networks_predict_epidemics?language=en</a>
+Read some published work on network sensor technology:</p>
+<p><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0012948">https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0012948</a>
+<a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0092413">https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0092413</a>
+Read some published work on machine learning and privacy:</p>
+<p><a href="http://iid.yale.edu/publications/2018/kazemi-2018b/">http://iid.yale.edu/publications/2018/kazemi-2018b/</a>
+<a href="http://iid.yale.edu/publications/2016/lin-16a/">http://iid.yale.edu/publications/2016/lin-16a/</a>
+Hunala’s network sensing technology was developed in the lab of Professor Nicholas A. Christakis, MD, PhD, and his Human Nature Lab team at Yale University. For more information, please visit <a href="http://humannaturelab.net">http://humannaturelab.net</a></p>
+<p>The development of the machine learning component of Hunala was spearheaded in the lab of Professor Amin Karbasi, PhD, and his Inference, Information, and Decision Systems Group at Yale University. For more information, please visit <a href="http://iid.yale.edu">http://iid.yale.edu</a></p>
+<h1 id="team">Team</h1>
+<ol>
+<li>Nicholas Christakis, MD, PhD, MPH</li>
+<li>Amin Karbasi, PhD</li>
+<li>Mark McKnight</li>
+<li>Wyatt Israel</li>
+<li>Jacob Derechin</li>
+<li>Shivkumar Vishnempet</li>
+</ol>
+<h1 id="press">Press</h1>
+<blockquote>
+<p>April 27, 2020, The Atlantic, “There’s No Simple Way to Reopen Universities How do you operate institutions designed to mix people and ideas without also mixing viruses?” <a href="https://www.theatlantic.com/ideas/archive/2020/04/colleges-are-weighing-costs-reopening-fall/610759/">[1]</a></p>
+</blockquote>
+<blockquote>
+<p>April 27, 2020, NPR Morning Edition ‘Health’ by Allison Aubry, “New Normal: How Will Things Change In Post Pandemic World” <a href="https://www.npr.org/2020/04/27/845322553/new-normal-how-will-things-change-in-post-pandemic-world">[2]</a></p>
+</blockquote>
+<blockquote>
+<p>April 22, 2020, The Atlantic, “Would You Sacrifice Your Privacy to Get Out of Quarantine?” <a href="https://www.theatlantic.com/politics/archive/2020/04/coronavirus-pandemic-privacy-civil-liberties-911/609172/">[3]</a></p>
+</blockquote>
+<h1 id="faqs">FAQs</h1>
+<h2 id="how-is-hunala-pronounced-and-where-did-the-name-come-from">How is Hunala pronounced, and where did the name come from?</h2>
+<p>We pronounce it who-NA-la.</p>
+<p>We tried dozens of names and then just used an acronym for our lab, the Human Nature Lab.</p>
+<h2 id="what-does-hunala-do-with-the-information-i-provide">What does Hunala do with the information I provide?</h2>
+<p>Hunala ensures your privacy and does not share your personal information with other users or with third parties. We will first ask you basic questions about who you are: for example, your age and any health conditions you might have. On a daily basis, we will ask you whether you have been experiencing any symptoms of a respiratory or other illness, and how you may have responded to that. We will combine that information with data available from USAFacts.org and the CDC on the number of infections in your area and will give you estimates of your risks of contracting a respiratory illness. We will ask you to connect your friends to the app to more accurately (and anonymously) calculate your risk. The more people who use the app, the more accurate the estimates become, similar to apps that track traffic conditions in an area.</p>
+<h2 id="why-do-i-need-to-select-friends-and-contacts">Why do I need to select friends and contacts?</h2>
+<p>Our contact with other people, and the people they in turn have contact with, directly affects our risk of exposure to viral illnesses. The Hunala team recognizes this, and Hunala uses this (anonymized) information to inform you about your own risks. We will ask you to connect your friends to the app to more accurately calculate everyone’s risk. The more people who use the app, the more accurate the estimates are, like traffic apps that grow in accuracy as more people in an area use them.</p>
+<p>The Hunala team uses principles of network science for the early detection of outbreaks of respiratory disease. To construct a scheme of the social network that extends around you, we will ask you to nominate a number of your friends and family members. We will only use the phone number of the people you nominate for identification. The app will request permission to temporarily display your contact list so you can more easily select these people. Those people will be invited to also use Hunala. We will not pester them to join, and we do not tell other users who suggested them.</p>
+<h2 id="how-is-my-risk-calculated">How is my risk calculated?</h2>
+<p>You will receive two risk calculations: individual risk and regional risk.</p>
+<p>The individual risk score is based on information about your health, your social behaviors, and your extended social network and what is happening in it (for instance, whether your contacts’ contacts reported respiratory symptoms in the recent past). The mathematical models and procedures we use for this may be frequently updated as more people use the app.</p>
+<p>Your regional risk is calculated by comparing the current number of COVID19 cases to a regionally tuned baseline condition where there is not a lot of “Influenza-Like Illness” (ILI). We look at historical data for respiratory illness in your region for this time of year, and compute a score based on how extreme the current COVID19 cases are compared to this baseline.</p>
+<p>The regional risk score is computed using data provided by USAFacts.</p>
+<p>The risk level the app provides is a statistical calculation. It does not replace the advice and risk assessment made by your health care provider. In addition, the risk determination does not decrease your responsibility to comply with recommendations or requirements imposed by the Centers for Disease Control (CDC) and other federal, state, and local authorities established to reduce the spread of disease.</p>
+<h2 id="how-is-my-data-being-used">How is my data being used?</h2>
+<p>Hunala provides you with information about the relative risk for you and your community of contracting an influenza-like illness, including COVID-19. Researchers will use the information collected to study how viruses spread.</p>
+<p>Your data will be used to:</p>
+<p>provide you with the app&rsquo;s services of helping you track your health;
+inform future research, subject to approval of the University ethics board;
+assist with public health surveillance and pandemic planning;
+assist with the examination or forecasting of other trends related to topics we might ask you about in the future;
+monitor and improve the functionality of the app and services provided;
+provide you with information about other projects we are developing that may be of interest to you.
+We carefully protect your privacy. We will remove any identifiers from the data prior to using or sharing the data with researchers, where possible. Identified data you provide or which we collect will never be sold or shared with advertisers without your explicit permission. Hunala ensures your privacy and does not share your personal information with other users or with third parties.</p>
+<p>If you have additional questions about how we use and share personal information, please see our Privacy Policy.</p>
+<h2 id="what-happens-if-one-of-my-contacts-self-reports-a-diagnosis-such-as-covid-19-do-i-get-notified">What happens if one of my contacts self-reports a diagnosis, such as COVID-19? Do I get notified?</h2>
+<p>You do not get notified about particular contacts. Likewise, we do not tell your friends who use Hunala any information about you as an individual. If someone in your network reports a diagnosis or other risk factors, your risk index will be adjusted accordingly.</p>
+<h2 id="why-do-you-need-my-geolocation-once-per-day">Why do you need my geolocation once per day?</h2>
+<p>Your physical location is important to your risk of contracting viral illnesses. This information will be used in our statistical calculations to provide your risk assessment</p>
+<h2 id="who-do-i-contact-with-questions">Who do I contact with questions?</h2>
+<p>Any questions may be sent to <a href="mailto:hunalaquestions@yale.edu">hunalaquestions@yale.edu</a></p>
+
+
+			<div></div>
+			</ul>
+			</div>
+
+	</article>
+</section>
+
+
+
+
+
+
+
+
+      </div>
+      
+        <footer class="footer">
+  <section class="container">
+   <div></div>
+    
+      <div class="sns-shares sp-sns-shares">
+        
+          <a class="sns-share twitter-share" href="https://twitter.com/intent/tweet?original_referer=%2fhunala%2fhunala.md%2f&ref_src=twsrc%5Etfw&text=Hunala%3a%20A%20Personalized%20Risk%20Assessment%20Tool%20for%20Respiratory%20Illness IID%20Group&tw_p=tweetbutton&url=%2fhunala%2fhunala.md%2f"><i class="fab fa-twitter"></i></a>
+        
+        
+          <a class="fb btn sns-share fb-share" href="http://www.facebook.com/share.php?u=%2fhunala%2fhunala.md%2f" onclick="window.open(this.href, 'FBwindow', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fab fa-facebook-f"></i></a>
+        
+        
+          <a class="sns-share line-share" href="https://social-plugins.line.me/lineit/share?url=%2fhunala%2fhunala.md%2f"><i class="fab fa-line"></i></a>
+        
+        
+          <a class="sns-share linkedIn-share" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fhunala%2fhunala.md%2f"><i class="fab fa-linkedin"></i></a>
+        
+      </div>
+    
+    
+    
+      <p>Yale University</p>
+    
+
+  </section>
+</footer>
+<style>
+#extreme
+{
+z-index: 1;
+visibility: hidden;
+position: absolute;
+z-index: 10000;
+}
+</style>
+<div id=”extreme”>
+    <script style="width:28px;height:28px" src="//t1.extreme-dm.com/f.js" id="eXF-karbasi-0" async defer></script>
+</div>
+<div class="fixed-bar">
+  <section class="container">
+    
+    <p id="privateTriggerText" style="color:white"><a style="color:white" href="https://usability.yale.edu/web-accessibility/accessibility-yale">Accessibility at Yale</a> &nbsp; Inference, Information, and Decision Group at Yale </p>
+    
+  </section>
+</div>
+
+      
+    </main>
+
+    
+
+  <script src="js/app.js"></script>
+  
+  <script>
+  (function($) {
+    $(function() {
+      $('#privateTrigger').on('click', function() {
+        $('.private').slideToggle();
+        $('#privateTriggerText').text("Thank You! Please share it if you like it→");
+      });
+    });
+   })(jQuery);
+  </script>
+  
+  </body>
+</html>

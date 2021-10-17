@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Publications on Javid Dadashkarimi</title>
+    <link>https://example.com/publications/</link>
+    <description>Recent content in Publications on Javid Dadashkarimi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 03 Dec 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://example.com/publications/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Safe Learning under Uncertain Objectives and Constraints</title>
+      <link>https://example.com/publications/2020/karbasi-2020/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2020/karbasi-2020/</guid>
+      <description>Abstract In this paper, we consider non-convex optimization problems under\textit {unknown} yet safety-critical constraints.</description>
+    </item>
+    
+    <item>
+      <title>Deletion-Robust Submodular Maximization at Scale.</title>
+      <link>https://example.com/publications/2017/kazemi-17a/</link>
+      <pubDate>Tue, 03 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2017/kazemi-17a/</guid>
+      <description>Abstract Can we efficiently extract useful information from a large user-generated dataset while protecting the privacy of the users and/or ensuring fairness in representation.</description>
+    </item>
+    
+    <item>
+      <title>Near-Optimal Active Learning of Halfspaces via Query Synthesis in the Noisy Setting</title>
+      <link>https://example.com/publications/2016/lin-16d/</link>
+      <pubDate>Sun, 03 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2016/lin-16d/</guid>
+      <description>Abstract In this paper, we consider the problem of actively learning a linear classifier through query synthesis where the learner can construct artificial queries in order to estimate the true decision boundaries.</description>
+    </item>
+    
+    <item>
+      <title>Adaptive Content Search Through Comparisons</title>
+      <link>https://example.com/publications/2011/karbasi-11c/</link>
+      <pubDate>Mon, 03 Jan 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2011/karbasi-11c/</guid>
+      <description>Abstract The problem of content search through comparisons has recently received considerable attention.</description>
+    </item>
+    
+    <item>
+      <title>Continuous Submodular Maximization: Beyond DR-Submodularity</title>
+      <link>https://example.com/publications/2020/karbasi-2020b/</link>
+      <pubDate>Tue, 03 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2020/karbasi-2020b/</guid>
+      <description>Abstract n this paper, we propose the first continuous optimization algorithms that achieve a constant factor approximation guarantee for the problem of monotone continuous submodular maximization subject to a linear constraint.</description>
+    </item>
+    
+    <item>
+      <title>Minimax Regret of Switching-Constrained Online Convex Optimization: No Phase Transition</title>
+      <link>https://example.com/publications/2020/lin-2019d/</link>
+      <pubDate>Tue, 03 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2020/lin-2019d/</guid>
+      <description>Abstract We study the problem of switching-constrained online convex optimization (OCO), where the player has a limited number of opportunities to change her action.</description>
+    </item>
+    
+    <item>
+      <title>Online MAP Inference of Determinantal Point Processes</title>
+      <link>https://example.com/publications/2020/bhaskara-2020/</link>
+      <pubDate>Tue, 03 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2020/bhaskara-2020/</guid>
+      <description>Abstract In this paper, we provide an efficient approximation algorithm for finding the most likelihood configuration (MAP) of size k for Determinantal Point Processes (DPP) in the online setting where the data points arrive in an arbitrary order and the algorithm cannot discard the selected elements from its local memory.</description>
+    </item>
+    
+    <item>
+      <title>Submodular Maximization Through Barrier Functions</title>
+      <link>https://example.com/publications/2020/karbasi-2020i/</link>
+      <pubDate>Tue, 03 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2020/karbasi-2020i/</guid>
+      <description>Abstract In this paper, we introduce a novel technique for constrained submodular maximization, inspired by barrier functions in continuous optimization.</description>
+    </item>
+    
+    <item>
+      <title>More data can expand the generalization gap between adversarially robust and standard models</title>
+      <link>https://example.com/publications/2020/karbasi-2020h/</link>
+      <pubDate>Sat, 03 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2020/karbasi-2020h/</guid>
+      <description>Abstract Despite remarkable success in practice, modern machine learning models have been found to be susceptible to adversarial attacks that make human-imperceptible perturbations to the data, but result in serious and potentially dangerous prediction errors.</description>
+    </item>
+    
+    <item>
+      <title>Streaming Submodular Maximization under a k-Set System Constraint. </title>
+      <link>https://example.com/publications/2020/haba-2020/</link>
+      <pubDate>Sat, 03 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2020/haba-2020/</guid>
+      <description>Abstract In this paper, we propose a novel framework that converts streaming algorithms for monotone submodular maximization into streaming algorithms for non-monotone submodular maximization.</description>
+    </item>
+    
+    <item>
+      <title>Black Box Submodular Maximization: Discrete and Continuous Settings</title>
+      <link>https://example.com/publications/2020/lin-2020a/</link>
+      <pubDate>Thu, 03 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2020/lin-2020a/</guid>
+      <description>Abstract In this paper, we consider the problem of black box continuous submodular maximization where we only have access to the function values and no information about the derivatives is provided.</description>
+    </item>
+    
+    <item>
+      <title>One Sample Stochastic Frank-Wolfe</title>
+      <link>https://example.com/publications/2020/mingrui-2020c/</link>
+      <pubDate>Thu, 03 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2020/mingrui-2020c/</guid>
+      <description>Abstract One of the beauties of the projected gradient descent method lies in its rather simple mechanism and yet stable behavior with inexact, stochastic gradients, which has led to its wide-spread use in many machine learning applications.</description>
+    </item>
+    
+    <item>
+      <title>Quantized frank-wolfe: Faster optimization, lower communication, and projection free</title>
+      <link>https://example.com/publications/2020/karbasi-2020f/</link>
+      <pubDate>Thu, 03 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2020/karbasi-2020f/</guid>
+      <description>Abstract How can we efficiently mitigate the overhead of gradient communications in distributed optimization?</description>
+    </item>
+    
+    <item>
+      <title>Gradient Methods for Submodular Maximization</title>
+      <link>https://example.com/publications/2017/hassani-17a/</link>
+      <pubDate>Fri, 03 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2017/hassani-17a/</guid>
+      <description>Abstract In this paper, we study the problem of maximizing continuous submodular functions that naturally arise in many learning applications such as those involving utility functions in active learning and sensing, matrix approximations and network inference.</description>
+    </item>
+    
+    <item>
+      <title>Interactive Submodular Bandit.</title>
+      <link>https://example.com/publications/2017/lin-17b/</link>
+      <pubDate>Fri, 03 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2017/lin-17b/</guid>
+      <description>Abstract In many machine learning applications, submodular functions have been used as a model for evaluating the utility or payoff of a set such as news items to recommend, sensors to deploy in a terrain, nodes to influence in a social network, to name a few.</description>
+    </item>
+    
+    <item>
+      <title>Streaming Weak Submodularity: Interpreting Neural Networks on the Fly.</title>
+      <link>https://example.com/publications/2017/elenberg-17a/</link>
+      <pubDate>Fri, 03 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2017/elenberg-17a/</guid>
+      <description>Abstract In many machine learning applications, it is important to explain the predictions of a black-box classifier.</description>
+    </item>
+    
+    <item>
+      <title>Differentially Private Submodular Maximization: Data Summarization in Disguise.</title>
+      <link>https://example.com/publications/2017/marko-17a/</link>
+      <pubDate>Tue, 03 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2017/marko-17a/</guid>
+      <description>Abstract Many data summarization applications are captured by the general framework of submodular maximization.</description>
+    </item>
+    
+    <item>
+      <title>Greed Is Good: Near-Optimal Submodular Maximization via Greedy Optimization.</title>
+      <link>https://example.com/publications/2017/baharan-17a/</link>
+      <pubDate>Tue, 03 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2017/baharan-17a/</guid>
+      <description>Abstract How can we summarize a dynamic data stream when elements selected for the summary can be deleted at any time?</description>
+    </item>
+    
+    <item>
+      <title>Probabilistic Submodular Maximization in Sub-Linear Time.</title>
+      <link>https://example.com/publications/2017/stan-17a/</link>
+      <pubDate>Tue, 03 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2017/stan-17a/</guid>
+      <description>Abstract In this paper, we consider optimizing submodular functions that are drawn from some unknown distribution.</description>
+    </item>
+    
+    <item>
+      <title>Near-Optimal Active Learning of Halfspaces via Query Synthesis in the Noisy Setting.</title>
+      <link>https://example.com/publications/2017/lin-17a/</link>
+      <pubDate>Thu, 03 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2017/lin-17a/</guid>
+      <description>Abstract In this paper, we consider the problem of actively learning a linear classifier through query synthesis where the learner can construct artificial queries in order to estimate the true decision boundaries.</description>
+    </item>
+    
+    <item>
+      <title>Greed Is Good: Near-Optimal Submodular Maximization via Greedy Optimization.</title>
+      <link>https://example.com/publications/2017/moran-17a/</link>
+      <pubDate>Mon, 03 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2017/moran-17a/</guid>
+      <description>Abstract It is known that greedy methods perform well for maximizing \textitmonotone submodular functions.</description>
+    </item>
+    
+    <item>
+      <title>A Submodular Approach to Create Individualized Parcellations of the Human Brain</title>
+      <link>https://example.com/publications/2017/mehraveh-17a/</link>
+      <pubDate>Sat, 03 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2017/mehraveh-17a/</guid>
+      <description>Abstract Recent studies on functional neuroimaging (e.g. fMRI) attempt to model the brain as a network.</description>
+    </item>
+    
+    <item>
+      <title>Estimating the Size of a Large Network and its Communities from a Random Sample</title>
+      <link>https://example.com/publications/2016/lin-16c/</link>
+      <pubDate>Thu, 03 Nov 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2016/lin-16c/</guid>
+      <description>Abstract Most real-world networks are too large to be measured or studied directly and there is substantial interest in estimating global network properties from smaller sub-samples.</description>
+    </item>
+    
+    <item>
+      <title>Fast Constrained Submodular Maximization: Personalized Data Summarization.</title>
+      <link>https://example.com/publications/2016/lin-16b/</link>
+      <pubDate>Mon, 03 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2016/lin-16b/</guid>
+      <description>Abstract Can we summarize multi-category data based on user preferences in a scalable manner?</description>
+    </item>
+    
+    <item>
+      <title>Seeing the Unseen Network: Inferring Hidden Social Ties from Respondent-Driven Sampling.</title>
+      <link>https://example.com/publications/2016/lin-16a/</link>
+      <pubDate>Wed, 03 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2016/lin-16a/</guid>
+      <description>Abstract Learning about the social structure of hidden and hard-to-reach populations — such as drug users and sex workers — is a major goal of epidemiological and public health research on risk behaviors and disease prevention.</description>
+    </item>
+    
+    <item>
+      <title>Submodular Variational Inference for Network Reconstruction</title>
+      <link>https://example.com/publications/2016/lin-16e/</link>
+      <pubDate>Sun, 03 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2016/lin-16e/</guid>
+      <description>Abstract In real-world and online social networks, individuals receive and transmit information in real time.</description>
+    </item>
+    
+    <item>
+      <title>Learning network structures from firing patterns.</title>
+      <link>https://example.com/publications/2016/amin-16a/</link>
+      <pubDate>Fri, 03 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2016/amin-16a/</guid>
+      <description>Abstract How can we decipher the hidden structure of a network based on limited observations?</description>
+    </item>
+    
+    <item>
+      <title>Distributed Submodular Cover: Succinctly Summarizing Massive Data. </title>
+      <link>https://example.com/publications/2015/baharan-15b/</link>
+      <pubDate>Tue, 03 Nov 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2015/baharan-15b/</guid>
+      <description>Abstract How can one find a subset, ideally as small as possible, that well represents a massive dataset?</description>
+    </item>
+    
+    <item>
+      <title>Lazier Than Lazy Greedy.</title>
+      <link>https://example.com/publications/2015/baharan-15a/</link>
+      <pubDate>Mon, 03 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2015/baharan-15a/</guid>
+      <description>Abstract Is it possible to maximize a monotone submodular function faster than the widely used lazy greedy algorithm (also known as accelerated greedy), both in theory and practice?</description>
+    </item>
+    
+    <item>
+      <title>Submodular Surrogates for Value of Information</title>
+      <link>https://example.com/publications/2015/chen-15a/</link>
+      <pubDate>Mon, 03 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2015/chen-15a/</guid>
+      <description>Abstract How should we gather information to make effective decisions? A classical answer to this fundamental problem is given by the decision-theoretic value of information.</description>
+    </item>
+    
+    <item>
+      <title>Tradeoffs for Space, Time, Data and Risk in Unsupervised Learning.</title>
+      <link>https://example.com/publications/2015/lucic-15a/</link>
+      <pubDate>Mon, 03 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2015/lucic-15a/</guid>
+      <description>Abstract Faced with massive data, is it possible to trade off (statistical) risk, and (computational) space and time?</description>
+    </item>
+    
+    <item>
+      <title>Fast Mixing for Discrete Point Processes</title>
+      <link>https://example.com/publications/2015/rebeschini-15a/</link>
+      <pubDate>Fri, 03 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2015/rebeschini-15a/</guid>
+      <description>Abstract We investigate the systematic mechanism for designing fast mixing Markov chain Monte Carlo algorithms to sample from discrete point processes under the Dobrushin uniqueness condition for Gibbs measures.</description>
+    </item>
+    
+    <item>
+      <title>Sequential Information Maximization: When is Greedy Near-optimal?</title>
+      <link>https://example.com/publications/2015/chen-15b/</link>
+      <pubDate>Wed, 03 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2015/chen-15b/</guid>
+      <description>Abstract Optimal information gathering is a central challenge in machine learning and science in general.</description>
+    </item>
+    
+    <item>
+      <title>Normalization Phenomena in Asynchronous Networks.</title>
+      <link>https://example.com/publications/2015/karbasi-15b/</link>
+      <pubDate>Sun, 03 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2015/karbasi-15b/</guid>
+      <description>Abstract In this work we study a diffusion process in a network that consists of two types of vertices: inhibitory vertices (those obstructing the diffusion) and excitatory vertices (those facilitating the diffusion).</description>
+    </item>
+    
+    <item>
+      <title>Asynchronous decoding of LDPC codes over BEC.</title>
+      <link>https://example.com/publications/2015/haghighatshoar-15a/</link>
+      <pubDate>Fri, 03 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2015/haghighatshoar-15a/</guid>
+      <description>Abstract LDPC codes are typically decoded by running a synchronous message passing algorithm over the corresponding bipartite factor graph (made of variable and check nodes).</description>
+    </item>
+    
+    <item>
+      <title>Non-Monotone Adaptive Submodular Maximization.</title>
+      <link>https://example.com/publications/2015/gotovos-15a/</link>
+      <pubDate>Tue, 03 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2015/gotovos-15a/</guid>
+      <description>Abstract A wide range of AI problems, such as sensor placement, active learning, and network influence maximization, require sequentially selecting elements from a large set with the goal of optimizing the utility of the selected subset.</description>
+    </item>
+    
+    <item>
+      <title>Comparison-Based Learning with Rank Nets</title>
+      <link>https://example.com/publications/2012/karbasi-12a/</link>
+      <pubDate>Wed, 03 Oct 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2012/karbasi-12a/</guid>
+      <description>Abstract We consider the problem of search through comparisons, where a user is presented with two candidate objects and reveals which is closer to her intended target.</description>
+    </item>
+    
+    <item>
+      <title>Multi-level error-resilient neural networks</title>
+      <link>https://example.com/publications/2012/salavati-12a/</link>
+      <pubDate>Thu, 03 May 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2012/salavati-12a/</guid>
+      <description>Abstract The problem of neural network association is to retrieve a previously memorized pattern from its noisy version using a network of neurons.</description>
+    </item>
+    
+    <item>
+      <title>Sequential group testing with graph constraints</title>
+      <link>https://example.com/publications/2012/karbasi-12c/</link>
+      <pubDate>Tue, 03 Apr 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2012/karbasi-12c/</guid>
+      <description>Abstract In conventional group testing, the goal is to detect a small subset of defecting items D in a large population N by grouping arbitrary subset of N into different pools.</description>
+    </item>
+    
+    <item>
+      <title>Hot or not: Interactive content search using comparisons</title>
+      <link>https://example.com/publications/2012/karbasi-12b/</link>
+      <pubDate>Sat, 03 Mar 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2012/karbasi-12b/</guid>
+      <description>Abstract In interactive content search through comparisons, a user searching for a target object in a database is asked to select the object most similar to her target from a small list of objects.</description>
+    </item>
+    
+    <item>
+      <title>Calibration in circular ultrasound tomography devices.</title>
+      <link>https://example.com/publications/2011/parhizkar-11a/</link>
+      <pubDate>Sun, 03 Jul 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2011/parhizkar-11a/</guid>
+      <description>Abstract We consider the position calibration problem in circular tomography devices, where sensors deviate from a perfect circle.</description>
+    </item>
+    
+    <item>
+      <title>Compression with graphical constraints: An interactive browser</title>
+      <link>https://example.com/publications/2011/karbasi-11b/</link>
+      <pubDate>Thu, 03 Feb 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2011/karbasi-11b/</guid>
+      <description>Abstract We study the problem of searching for a given element in a set of objects using a membership oracle.</description>
+    </item>
+    
+    <item>
+      <title>Individualized functional networks reconfigure with cognitive state</title>
+      <link>https://example.com/publications/2020/mehraveh-2020a/</link>
+      <pubDate>Thu, 03 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2020/mehraveh-2020a/</guid>
+      <description>Abstract There is extensive evidence that functional organization of the human brain varies dynamically as the brain switches between task demands, or cognitive states.</description>
+    </item>
+    
+    <item>
+      <title>Stochastic Conditional Gradient Methods: From Convex Minimization to Submodular Maximization</title>
+      <link>https://example.com/publications/2020/mokhtaric-20a/</link>
+      <pubDate>Thu, 03 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2020/mokhtaric-20a/</guid>
+      <description>Abstract This paper considers stochastic optimization problems for a large class of objective functions, including convex and continuous submodular.</description>
+    </item>
+    
+    <item>
+      <title>Stochastic Conditional Gradient&#43;&#43;</title>
+      <link>https://example.com/publications/2020/hassani-2019a/</link>
+      <pubDate>Thu, 03 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2020/hassani-2019a/</guid>
+      <description>Abstract In this paper, we consider the general non-oblivious stochastic optimization where the underlying stochasticity may change during the optimization procedure and depends on the point at which the function is evaluated.</description>
+    </item>
+    
+    <item>
+      <title>Submodularity in Action: From Machine Learning to Signal Processing Applications</title>
+      <link>https://example.com/publications/2020/karbasi-2020d/</link>
+      <pubDate>Thu, 03 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2020/karbasi-2020d/</guid>
+      <description>Abstract Submodularity is a discrete domain functional prop- erty that can be interpreted as mimicking the role of the well- known convexity/concavity properties in the continuous domain.</description>
+    </item>
+    
+    <item>
+      <title>There is no single functional atlas even for a single individual: Functional parcel definitions change with task</title>
+      <link>https://example.com/publications/2020/mehraveh-2020b/</link>
+      <pubDate>Thu, 03 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2020/mehraveh-2020b/</guid>
+      <description>Abstract The goal of human brain mapping has long been to delineate the functional subunits in the brain and elucidate the functional role of each of these brain regions.</description>
+    </item>
+    
+    <item>
+      <title>Distributed Submodular Maximization</title>
+      <link>https://example.com/publications/2016/baharan-16a/</link>
+      <pubDate>Sat, 03 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2016/baharan-16a/</guid>
+      <description>Abstract Many large-scale machine learning problems–clustering, non-parametric learning, kernel machines, etc.</description>
+    </item>
+    
+    <item>
+      <title>Fast Distributed Submodular Cover: Public-Private Data Summarization.</title>
+      <link>https://example.com/publications/2016/baharan-16c/</link>
+      <pubDate>Thu, 03 Nov 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2016/baharan-16c/</guid>
+      <description>Abstract In this paper, we introduce the public-private framework of data summarization motivated by privacy concerns in personalized recommender systems and online social services.</description>
+    </item>
+    
+    <item>
+      <title>Fast Constrained Submodular Maximization: Personalized Data Summarization.</title>
+      <link>https://example.com/publications/2016/baharan-16b/</link>
+      <pubDate>Mon, 03 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2016/baharan-16b/</guid>
+      <description>Abstract Can we summarize multi-category data based on user preferences in a scalable manner?</description>
+    </item>
+    
+    <item>
+      <title>From Small-World Networks to Comparison-Based Search.</title>
+      <link>https://example.com/publications/2015/karbasi-15a/</link>
+      <pubDate>Thu, 03 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2015/karbasi-15a/</guid>
+      <description>Abstract The problem of content search through comparisons has recently received considerable attention.</description>
+    </item>
+    
+    <item>
+      <title>Graph-Constrained Group Testing</title>
+      <link>https://example.com/publications/2012/cheraghchi-12a/</link>
+      <pubDate>Mon, 03 Dec 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2012/cheraghchi-12a/</guid>
+      <description>Abstract Nonadaptive group testing involves grouping arbitrary subsets of n items into different pools.</description>
+    </item>
+    
+    <item>
+      <title>Low-Rank Matrix Approximation Using Point-Wise Operators</title>
+      <link>https://example.com/publications/2012/amini-12a/</link>
+      <pubDate>Mon, 03 Dec 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2012/amini-12a/</guid>
+      <description>Abstract The problem of extracting low-dimensional structure from high-dimensional data arises in many applications such as machine learning, statistical pattern recognition, wireless sensor networks, and data compression.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://example.com/publications/2011/karbasi-11a/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/publications/2011/karbasi-11a/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

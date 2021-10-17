@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.67.0" />
+
+  <title>Minimax Regret of Switching-Constrained Online Convex Optimization: No Phase Transition &middot; Javid Dadashkarimi</title>
+
+  <meta name="description" content="publication" />
+
+  
+
+<meta itemprop="name" content="Minimax Regret of Switching-Constrained Online Convex Optimization: No Phase Transition">
+<meta itemprop="description" content="publication">
+<meta itemprop="datePublished" content="2020-11-03T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-11-03T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="261">
+
+
+
+<meta itemprop="keywords" content="" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Minimax Regret of Switching-Constrained Online Convex Optimization: No Phase Transition"/>
+<meta name="twitter:description" content="publication"/>
+
+
+<meta property="og:title" content="Minimax Regret of Switching-Constrained Online Convex Optimization: No Phase Transition" />
+<meta property="og:description" content="publication" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/publications/2020/lin-2019d/" />
+<meta property="article:published_time" content="2020-11-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-11-03T00:00:00+00:00" />
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "Author Name",
+      "image": {
+        "@type":"ImageObject",
+        
+        "url": "https://example.com/images/javid_dadashkarimi.jpeg"
+        
+      },
+      "description": "My Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "Javid Dadashkarimi",
+      "description": "My Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/publications/2020/lin-2019d/#webpage",
+      "url": "https://example.com/publications/2020/lin-2019d/",
+      "name": "Minimax Regret of Switching-Constrained Online Convex Optimization: No Phase Transition",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "datePublished": "2020-11-03T00:00:00+00:00",
+      "dateModified": "2020-11-03T00:00:00+00:00",
+      "description": "publication",
+      "inLanguage": "en",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/publications/2020/lin-2019d/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://example.com/publications/2020/lin-2019d/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://example.com/publications/2020/lin-2019d/#webpage"
+      },
+      "headline": "Minimax Regret of Switching-Constrained Online Convex Optimization: No Phase Transition",
+      "datePublished": "2020-11-03T00:00:00+00:00",
+      "dateModified": "2020-11-03T00:00:00+00:00",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "keywords": [
+      ],
+      "articleSection": [
+      ],
+      "inLanguage": "en",
+      "author": {
+        "@type": "Person",
+        "name": "Lin Chen, Qian Yu, Hannah Lawrence, Amin Karbasi"
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://example.com/publications/2020/lin-2019d/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+        
+        <div class="author-image">
+          <a href="https://example.com">
+            <img src="/images/javid_dadashkarimi.jpeg" class="img-circle img-headshot center" alt="Profile Picture">
+          </a>
+        </div>
+        
+      
+
+      <h1>Javid Dadashkarimi</h1>
+
+      
+      <p class="lead">My Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/javid-dadashkarimi-0b26b3199/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/dadashkarimi" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/JDadashkarimi" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">Minimax Regret of Switching-Constrained Online Convex Optimization: No Phase Transition</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2020-11-03T00:00:00Z">Nov 3, 2020</time> <span class="readtime">&middot; 2 min read</span>
+  </div>
+
+  <div>
+  <h1 id="abstract">Abstract</h1>
+<p>We study the problem of switching-constrained online convex optimization (OCO), where the player has a limited number of opportunities to change her action. While the discrete analog of this online learning task has been studied extensively, previous work in the continuous setting has neither established the minimax rate nor algorithmically achieved it. We here show that T-round switching-constrained OCO with fewer than K switches has a minimax regret of $Θ(\frac{T}{\sqrt{K}})$. In particular, it is at least $Θ(\frac{T}{\sqrt{2K}})$ for one dimension and at least $Θ(\frac{T}{\sqrt{K}})$ for higher dimensions. The lower bound in higher dimensions is attained by an orthogonal subspace argument. The minimax analysis in one dimension is more involved. To establish the one-dimensional result, we introduce the fugal game relaxation, whose minimax regret lower bounds that of switching-constrained OCO. We show that the minimax regret of the fugal game is at least T2K√ and thereby establish the minimax lower bound in one dimension. We next show that a mini-batching algorithm provides an $O(\frac{T}{\sqrt{K}})$ upper bound, and therefore we conclude that the minimax regret of switching-constrained OCO is $Θ(\frac{T}{\sqrt{K}})$ for any K. This is in sharp contrast to its discrete counterpart, the switching-constrained prediction-from-experts problem, which exhibits a phase transition in minimax regret between the low-switching and high-switching regimes. In the case of bandit feedback, we first determine a novel linear (in T) minimax regret for bandit linear optimization against the strongly adaptive adversary of OCO, implying that a slightly weaker adversary is appropriate. We also establish the minimax regret of switching-constrained bandit convex optimization in dimension n&gt;2 to be $Θ(\frac{T}{\sqrt{K}})$.</p>
+
+  </div>
+
+  
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://example.com/publications/2020/lin-2019d/"
+     data-text="Minimax Regret of Switching-Constrained Online Convex Optimization: No Phase Transition"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://example.com/publications/2020/lin-2019d/"
+     data-text="Minimax Regret of Switching-Constrained Online Convex Optimization: No Phase Transition"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://example.com/publications/2020/lin-2019d/"
+     data-text="Minimax Regret of Switching-Constrained Online Convex Optimization: No Phase Transition"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://example.com/publications/2020/lin-2019d/"
+     data-text="Minimax Regret of Switching-Constrained Online Convex Optimization: No Phase Transition"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://example.com/publications/2020/lin-2019d/"
+     data-text="Minimax Regret of Switching-Constrained Online Convex Optimization: No Phase Transition"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; Author Name 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

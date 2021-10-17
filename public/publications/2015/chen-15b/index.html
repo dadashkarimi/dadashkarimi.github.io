@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.67.0" />
+
+  <title>Sequential Information Maximization: When is Greedy Near-optimal? &middot; Javid Dadashkarimi</title>
+
+  <meta name="description" content="publication" />
+
+  
+
+<meta itemprop="name" content="Sequential Information Maximization: When is Greedy Near-optimal?">
+<meta itemprop="description" content="publication">
+<meta itemprop="datePublished" content="2015-06-03T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2015-06-03T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="162">
+
+
+
+<meta itemprop="keywords" content="" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Sequential Information Maximization: When is Greedy Near-optimal?"/>
+<meta name="twitter:description" content="publication"/>
+
+
+<meta property="og:title" content="Sequential Information Maximization: When is Greedy Near-optimal?" />
+<meta property="og:description" content="publication" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/publications/2015/chen-15b/" />
+<meta property="article:published_time" content="2015-06-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2015-06-03T00:00:00+00:00" />
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "Author Name",
+      "image": {
+        "@type":"ImageObject",
+        
+        "url": "https://example.com/images/javid_dadashkarimi.jpeg"
+        
+      },
+      "description": "My Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "Javid Dadashkarimi",
+      "description": "My Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/publications/2015/chen-15b/#webpage",
+      "url": "https://example.com/publications/2015/chen-15b/",
+      "name": "Sequential Information Maximization: When is Greedy Near-optimal?",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "datePublished": "2015-06-03T00:00:00+00:00",
+      "dateModified": "2015-06-03T00:00:00+00:00",
+      "description": "publication",
+      "inLanguage": "en",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/publications/2015/chen-15b/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://example.com/publications/2015/chen-15b/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://example.com/publications/2015/chen-15b/#webpage"
+      },
+      "headline": "Sequential Information Maximization: When is Greedy Near-optimal?",
+      "datePublished": "2015-06-03T00:00:00+00:00",
+      "dateModified": "2015-06-03T00:00:00+00:00",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "keywords": [
+      ],
+      "articleSection": [
+      ],
+      "inLanguage": "en",
+      "author": {
+        "@type": "Person",
+        "name": "Yuxin Chen, S. Hamed Hassani, Amin Karbasi, Andreas Krause"
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://example.com/publications/2015/chen-15b/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+        
+        <div class="author-image">
+          <a href="https://example.com">
+            <img src="/images/javid_dadashkarimi.jpeg" class="img-circle img-headshot center" alt="Profile Picture">
+          </a>
+        </div>
+        
+      
+
+      <h1>Javid Dadashkarimi</h1>
+
+      
+      <p class="lead">My Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/javid-dadashkarimi-0b26b3199/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/dadashkarimi" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/JDadashkarimi" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">Sequential Information Maximization: When is Greedy Near-optimal?</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2015-06-03T00:00:00Z">Jun 3, 2015</time> <span class="readtime">&middot; 1 min read</span>
+  </div>
+
+  <div>
+  <h2 id="abstract">Abstract</h2>
+<p>Optimal information gathering is a central challenge in machine learning and science in general. A common objective that quantifies the usefulness of observations is Shannon’s mutual information, defined w.r.t. a probabilistic model. Greedily selecting observations that maximize the mutual information is the method of choice in numerous applications, ranging from Bayesian experimental design to automated diagnosis, to active learning in Bayesian models. Despite its importance and widespread use in applications, little is known about the theoretical properties of sequential information maximization, in particular under noisy observations. In this paper, we analyze the widely used greedy policy for this task, and identify problem instances where it provides provably near-maximal utility, even in the challenging setting of persistent noise. Our results depend on a natural separability condition associated with a channel injecting noise into the observations. We also identify examples where this separability parameter is necessary in the bound: if it is too small, then the greedy policy fails to select informative tests.</p>
+
+  </div>
+
+  
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://example.com/publications/2015/chen-15b/"
+     data-text="Sequential Information Maximization: When is Greedy Near-optimal?"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://example.com/publications/2015/chen-15b/"
+     data-text="Sequential Information Maximization: When is Greedy Near-optimal?"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://example.com/publications/2015/chen-15b/"
+     data-text="Sequential Information Maximization: When is Greedy Near-optimal?"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://example.com/publications/2015/chen-15b/"
+     data-text="Sequential Information Maximization: When is Greedy Near-optimal?"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://example.com/publications/2015/chen-15b/"
+     data-text="Sequential Information Maximization: When is Greedy Near-optimal?"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; Author Name 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

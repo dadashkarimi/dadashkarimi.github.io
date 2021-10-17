@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.67.0" />
+
+  <title>Submodularity in Action: From Machine Learning to Signal Processing Applications &middot; Javid Dadashkarimi</title>
+
+  <meta name="description" content="publication" />
+
+  
+
+<meta itemprop="name" content="Submodularity in Action: From Machine Learning to Signal Processing Applications">
+<meta itemprop="description" content="publication">
+<meta itemprop="datePublished" content="2020-12-03T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-12-03T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="221">
+
+
+
+<meta itemprop="keywords" content="" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Submodularity in Action: From Machine Learning to Signal Processing Applications"/>
+<meta name="twitter:description" content="publication"/>
+
+
+<meta property="og:title" content="Submodularity in Action: From Machine Learning to Signal Processing Applications" />
+<meta property="og:description" content="publication" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/publications/2020/karbasi-2020d/" />
+<meta property="article:published_time" content="2020-12-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-12-03T00:00:00+00:00" />
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://example.com#author",
+      "name": "Author Name",
+      "image": {
+        "@type":"ImageObject",
+        
+        "url": "https://example.com/images/javid_dadashkarimi.jpeg"
+        
+      },
+      "description": "My Blog"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com#website",
+      "url": "https://example.com",
+      "name": "Javid Dadashkarimi",
+      "description": "My Blog",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://example.com/publications/2020/karbasi-2020d/#webpage",
+      "url": "https://example.com/publications/2020/karbasi-2020d/",
+      "name": "Submodularity in Action: From Machine Learning to Signal Processing Applications",
+      "isPartOf": {
+        "@id": "https://example.com#website"
+      },
+      "about": {
+         "@id": "https://example.com#author"
+      },
+      "datePublished": "2020-12-03T00:00:00+00:00",
+      "dateModified": "2020-12-03T00:00:00+00:00",
+      "description": "publication",
+      "inLanguage": "en",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://example.com/publications/2020/karbasi-2020d/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://example.com/publications/2020/karbasi-2020d/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://example.com/publications/2020/karbasi-2020d/#webpage"
+      },
+      "headline": "Submodularity in Action: From Machine Learning to Signal Processing Applications",
+      "datePublished": "2020-12-03T00:00:00+00:00",
+      "dateModified": "2020-12-03T00:00:00+00:00",
+      "publisher": {
+        "@id": "https://example.com#author"
+      },
+      "keywords": [
+      ],
+      "articleSection": [
+      ],
+      "inLanguage": "en",
+      "author": {
+        "@type": "Person",
+        "name": "Ehsan Tohidi, Rouhollah Amiri, Mario Coutino, David Gesbert, Geert Leus, Amin Karbasi"
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://example.com/publications/2020/karbasi-2020d/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+        
+        <div class="author-image">
+          <a href="https://example.com">
+            <img src="/images/javid_dadashkarimi.jpeg" class="img-circle img-headshot center" alt="Profile Picture">
+          </a>
+        </div>
+        
+      
+
+      <h1>Javid Dadashkarimi</h1>
+
+      
+      <p class="lead">My Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://example.com">Home</a>
+        </li>
+        <li>
+          <a href="/posts/">Posts</a>
+        </li><li>
+          <a href="/about/">About</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/javid-dadashkarimi-0b26b3199/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/dadashkarimi" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/JDadashkarimi" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">Submodularity in Action: From Machine Learning to Signal Processing Applications</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2020-12-03T00:00:00Z">Dec 3, 2020</time> <span class="readtime">&middot; 2 min read</span>
+  </div>
+
+  <div>
+  <h1 id="abstract">Abstract</h1>
+<p>Submodularity is a discrete domain functional prop- erty that can be interpreted as mimicking the role of the well- known convexity/concavity properties in the continuous domain. Submodular functions exhibit strong structure that lead to efficient optimization algorithms with provable near-optimality guarantees. These characteristics, namely, efficiency and provable performance bounds, are of particular interest for signal process- ing (SP) and machine learning (ML) practitioners as a variety of discrete optimization problems are encountered in a wide range of applications. Conventionally, two general approaches exist to solve discrete problems: (i) relaxation into the continuous domain to obtain an approximate solution, or (ii) development of a tailored algorithm that applies directly in the discrete domain. In both approaches, worst-case performance guarantees are often hard to establish. Furthermore, they are often complex, thus not practical for large-scale problems. In this paper, we show how certain scenarios lend themselves to exploiting submodularity so as to construct scalable solutions with provable worst-case performance guarantees. We introduce a variety of submodular- friendly applications, and elucidate the relation of submodularity to convexity and concavity which enables efficient optimization. With a mixture of theory and practice, we present different flavors of submodularity accompanying illustrative real-world case studies from modern SP and ML. In all cases, optimization algorithms are presented, along with hints on how optimality guarantees can be established.</p>
+
+  </div>
+
+  
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://example.com/publications/2020/karbasi-2020d/"
+     data-text="Submodularity in Action: From Machine Learning to Signal Processing Applications"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://example.com/publications/2020/karbasi-2020d/"
+     data-text="Submodularity in Action: From Machine Learning to Signal Processing Applications"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://example.com/publications/2020/karbasi-2020d/"
+     data-text="Submodularity in Action: From Machine Learning to Signal Processing Applications"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://example.com/publications/2020/karbasi-2020d/"
+     data-text="Submodularity in Action: From Machine Learning to Signal Processing Applications"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://example.com/publications/2020/karbasi-2020d/"
+     data-text="Submodularity in Action: From Machine Learning to Signal Processing Applications"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+</div>
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; Author Name 2021
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Researches on Javid Dadashkarimi</title>
+    <link>https://example.com/research/</link>
+    <description>Recent content in Researches on Javid Dadashkarimi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 03 Jan 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://example.com/research/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Trustworthy ML &amp; Robust Statistics</title>
+      <link>https://example.com/research/trust.md/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/research/trust.md/</guid>
+      <description>As machine learning systems are pervasively deployed in many scientific fields with increasingly sensitive tasks, it has become paramount to develop algorithms that are robust against the numerous sources of uncertainty inherent in those applications including noise in the data, malicious exploitation of vulnerabilities, outliers, variability of the true objective, privacy, and fairness.</description>
+    </item>
+    
+    <item>
+      <title>Computational Neuroscience</title>
+      <link>https://example.com/research/computational_neuroscience_neurimaging.md/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/research/computational_neuroscience_neurimaging.md/</guid>
+      <description>The human brain is a complex network, consisting of functionally interconnected regions whose coordinated effort gives rise to different functions.</description>
+    </item>
+    
+    <item>
+      <title>Non-convex Optimization</title>
+      <link>https://example.com/research/non_convex.md/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/research/non_convex.md/</guid>
+      <description>Until recently, convex programs were seen as the defining boundary for tractability in continuous optimization.</description>
+    </item>
+    
+    <item>
+      <title>Online Learning</title>
+      <link>https://example.com/research/online_learning.md/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/research/online_learning.md/</guid>
+      <description>In many practical applications, the environment is so complex that it may be infeasible to lay out a precise model and use the classical mathematical optimization methods.</description>
+    </item>
+    
+    <item>
+      <title>Submodular Optimization</title>
+      <link>https://example.com/research/submodular_optimization.md/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/research/submodular_optimization.md/</guid>
+      <description>The difficulty of searching through a massive amount of data in order to quickly make an informed decision is one of today’s most ubiquitous challenges.</description>
+    </item>
+    
+    <item>
+      <title>Interactive Decision Making</title>
+      <link>https://example.com/research/interactive_decision_making.md/</link>
+      <pubDate>Fri, 03 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/research/interactive_decision_making.md/</guid>
+      <description>In computer science, and machine learning in particular, the primary purpose of many systems is to help humans make decisions.</description>
+    </item>
+    
+  </channel>
+</rss>

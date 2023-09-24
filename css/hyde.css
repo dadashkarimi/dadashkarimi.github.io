@@ -1,0 +1,640 @@
+/*
+ *  __                  __
+ * /\ \                /\ \
+ * \ \ \___   __  __   \_\ \     __
+ *  \ \  _ `\/\ \/\ \  /'_` \  /'__`\
+ *   \ \ \ \ \ \ \_\ \/\ \_\ \/\  __/
+ *    \ \_\ \_\/`____ \ \___,_\ \____\
+ *     \/_/\/_/`/___/> \/__,_ /\/____/
+ *                /\___/
+ *                \/__/
+ *
+ * Designed, built, and released under MIT license by @mdo. Learn more at
+ * https://github.com/poole/hyde.
+ */
+
+
+/*
+ * Contents
+ *
+ * Global resets
+ * Sidebar
+ * Container
+ * Reverse layout
+ * Themes
+ */
+
+
+/*
+ * Global resets
+ *
+ * Update the foundational and global aspects of the page.
+ */
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Sofia&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Georama&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Georama&display=swap');
+
+@font-face {
+	font-family: 'IranNastaliq';
+	src: url('fonts/IranNastaliq.eot');
+	src: url('fonts/IranNastaliq.eot?#iefix') format('embedded-opentype'),
+	url('fonts/IranNastaliq.woff2') format('woff2'),
+	url('fonts/IranNastaliq.woff') format('woff'),
+	url('fonts/IranNastaliq.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+html {
+  font-family: verdana, arial, 'sans serif', 'QuickSand','Open Sans', 'Roboto', Helvetica, Arial, sans-serif;
+
+}
+@media (min-width: 48em) {
+  html {
+    font-size: 16px;
+  }
+}
+@media (min-width: 58em) {
+  html {
+    font-size: 17px;
+  }
+}
+
+
+/*
+ * Sidebar
+ *
+ * Flexible banner for housing site name, intro, and "footer" content. Starts
+ * out above content in mobile and later moves to the side with wider viewports.
+ */
+
+
+/*p,li
+{
+font-size: 75%;
+}*/
+
+/*table
+{
+font-size: 95%;
+}
+*/
+p,table,li,h1,h2,h3
+{
+font-family: verdana, arial, 'sans serif'; 
+}
+
+body
+{
+#ffffff;
+font-size: 90%;
+}
+
+.main {
+  margin-left: 200px; /* Same as the width of the sidebar */
+  padding: 0px 10px;
+}
+
+.logo{
+  margin-bottom: 20rem;
+}
+
+.research{
+  max-width:60%;
+}
+.affiliation small{
+  margin-top: 1rem;
+}
+
+@media (max-width: 1468px) {
+    .affiliation {
+        display: none;
+    }
+}
+
+
+
+
+
+.gallery{
+border: none;
+cellpadding: 0;
+   border-collapse: collapse;
+   flex-flow: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.galler td{
+  border-color: white;
+}
+
+
+.affiliation{
+
+    /*width: 40%;*/
+/*  padding-left: 35px;
+  margin-left: 15px;*/
+  margin-right: 12%;
+  float: right;
+  font-style: italic;
+  text-align: center;
+}
+
+
+h1,h2,h3,hr
+{
+color: black;
+font-family: Helvetica Neue;
+}
+
+a.content:link {COLOR: seashell;}
+a.content:visited {COLOR: seashell;}
+a.content:active {COLOR: seashell;}
+a.content:hover {COLOR: papayawhip;}
+
+@font-face {
+    font-family: grInter;
+    font-style: normal;
+    font-weight: 100;
+    font-display: swap;
+    src: url(extension-inter-thin.woff2) format("woff2"), url(extension-inter-thin.woff) format("woff")
+}
+
+@font-face {
+    font-family: grInter;
+    font-style: italic;
+    font-weight: 100;
+    font-display: swap;
+    src: url(extension-inter-thinitalic.woff2) format("woff2"), url(extension-inter-thinitalic.woff) format("woff")
+}
+
+@font-face {
+    font-family: grInter;
+    font-style: normal;
+    font-weight: 200;
+    font-display: swap;
+    src: url(extension-inter-extralight.woff2) format("woff2"), url(extension-inter-extralight.woff) format("woff")
+}
+
+@font-face {
+    font-family: grInter;
+    font-style: italic;
+    font-weight: 200;
+    font-display: swap;
+    src: url(extension-inter-extralightitalic.woff2) format("woff2"), url(extension-inter-extralightitalic.woff) format("woff")
+}
+
+@font-face {
+    font-family: grInter;
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url(extension-inter-light.woff2) format("woff2"), url(extension-inter-light.woff) format("woff")
+}
+
+@font-face {
+    font-family: grInter;
+    font-style: italic;
+    font-weight: 300;
+    font-display: swap;
+    src: url(extension-inter-lightitalic.woff2) format("woff2"), url(extension-inter-lightitalic.woff) format("woff")
+}
+
+@font-face {
+    font-family: grInter;
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(extension-inter-regular.woff2) format("woff2"), url(extension-inter-regular.woff) format("woff")
+}
+
+@font-face {
+    font-family: grInter;
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url(extension-inter-italic.woff2) format("woff2"), url(extension-inter-italic.woff) format("woff")
+}
+
+@font-face {
+    font-family: grInter;
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url(extension-inter-medium.woff2) format("woff2"), url(extension-inter-medium.woff) format("woff")
+}
+
+@font-face {
+    font-family: grInter;
+    font-style: italic;
+    font-weight: 500;
+    font-display: swap;
+    src: url(extension-inter-mediumitalic.woff2) format("woff2"), url(extension-inter-mediumitalic.woff) format("woff")
+}
+
+@font-face {
+    font-family: grInter;
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url(extension-inter-semibold.woff2) format("woff2"), url(extension-inter-semibold.woff) format("woff")
+}
+
+@font-face {
+    font-family: grInter;
+    font-style: italic;
+    font-weight: 600;
+    font-display: swap;
+    src: url(extension-inter-semibolditalic.woff2) format("woff2"), url(extension-inter-semibolditalic.woff) format("woff")
+}
+
+@font-face {
+    font-family: grInter;
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(extension-inter-bold.woff2) format("woff2"), url(extension-inter-bold.woff) format("woff")
+}
+
+@font-face {
+    font-family: grInter;
+    font-style: italic;
+    font-weight: 700;
+    font-display: swap;
+    src: url(extension-inter-bolditalic.woff2) format("woff2"), url(extension-inter-bolditalic.woff) format("woff")
+}
+
+@font-face {
+    font-family: grInter;
+    font-style: normal;
+    font-weight: 800;
+    font-display: swap;
+    src: url(extension-inter-extrabold.woff2) format("woff2"), url(extension-inter-extrabold.woff) format("woff")
+}
+
+@font-face {
+    font-family: grInter;
+    font-style: italic;
+    font-weight: 800;
+    font-display: swap;
+    src: url(extension-inter-extrabolditalic.woff2) format("woff2"), url(extension-inter-extrabolditalic.woff) format("woff")
+}
+
+@font-face {
+    font-family: grInter;
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src: url(extension-inter-black.woff2) format("woff2"), url(extension-inter-black.woff) format("woff")
+}
+
+@font-face {
+    font-family: grInter;
+    font-style: italic;
+    font-weight: 900;
+    font-display: swap;
+    src: url(extension-inter-blackitalic.woff2) format("woff2"), url(extension-inter-blackitalic.woff) format("woff")
+}
+
+
+
+
+.sidebar {
+  text-align: center;
+  padding: 3rem 8rem;
+  color: rgba(255,255,255,.5);
+  background-color: #202020;
+}
+
+.sidebar h1{
+  font-family: 'verdana';
+  font-size: 160%;
+}
+	
+
+
+@media (min-width: 48em) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 13rem;
+  }
+
+  footer {
+    margin-left: 19rem !important;
+    margin-right: 1rem !important;
+  }
+}
+
+/* Sidebar links */
+/*.sidebar a {
+  color: black;
+}*/
+
+/* About section */
+/*.sidebar-about h1 {
+  color: #fff;
+  margin-top: 0;
+  font-size: 1.1rem;
+  font-weight: 400;
+}*/
+
+/* Sidebar nav */
+.sidebar-nav {
+  padding-left: 0;
+  list-style: none;
+}
+.sidebar-nav-item {
+  display: block;
+}
+a.sidebar-nav-item:hover,
+a.sidebar-nav-item:focus {
+  text-decoration: underline;
+}
+.sidebar-nav-item.active {
+  font-weight: bold;
+}
+
+/* Container
+ *
+ * Align the contents of the site above the proper threshold with some margin-fu
+ * with a 25%-wide `.sidebar`.
+ */
+
+.content {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  min-height: 50%;
+}
+
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+footer {
+  font-size: .7rem;
+  text-align: center;
+  height: 40px;
+  padding: 1rem 0;
+  margin: 0 1rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+img{
+	max-width:85%;
+}
+
+@media (min-width: 48em) {
+  .content {
+    max-width: 40rem;
+    margin-left: 23rem;
+    margin-right: 2rem;
+    margin-bottom: -40px;
+    min-height: 100%;
+  }
+}
+
+.img-circle {
+  border-radius: 0%;
+}
+
+.affiliation .img-headshot{
+  max-width:80px;
+  margin-top: 2rem;
+  /*margin-right: 10rem;*/
+}
+
+.img-headshot {
+  border: 0px solid #fff;
+  max-width:180px;
+  margin-top:10%;
+  margin-bottom:0%;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sidebar {
+  background-color: white;
+  color: black;
+}
+
+.sidebar a,
+.sidebar-about h1 {
+  color: black;
+}
+
+footer a,
+.content a,
+.related-posts li a:hover {
+  color: blue;
+}
+
+.read-more-link {
+  margin-top: 1rem;
+}
+
+.read-more-link a {
+  padding: 8px 16px;
+  border: 1px solid;
+  border-color: blue;
+  border-radius: 4px;
+}
+
+.read-more-link a:hover {
+  text-decoration: none;
+  color: #fff;
+  background-color: blue;
+}
+
+.pull-right {
+  float: right;
+}
+
+ul.posts {
+  list-style: none;
+  padding: 0 1rem;
+}
+
+.social-icons,
+.sidebar nav {
+  margin-top: 1rem;
+}
+
+ul.posts li,
+.sidebar nav li {
+  font-size: 1.2rem;
+  padding: 0.25rem 0;
+}
+
+.social-icons a {
+  font-size: 1.5rem;
+  padding: 0.2rem;
+}
+
+@media (min-width: 58rem) {
+  .social-icons a {
+    font-size: 1.2rem;
+  }
+
+  ul.posts li,
+  .sidebar nav li {
+    font-size: inherit;
+    padding: 0;
+  }
+}
+
+.social-icons a,
+.social-icons a:hover,
+.social-icons a:focus {
+  text-decoration: none !important;
+}
+
+.pagination {
+  justify-content: center;
+  display: flex;
+  margin: 1em 0 2rem 0;
+  padding: 0;
+}
+
+.pagination ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.pagination li {
+  display: block;
+  float: left;
+  margin-left: -1px;
+}
+
+.pagination li a {
+  display: block;
+  margin-bottom: 0.25em;
+  padding: 0.5em 1em;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  color: blue;
+  border: 1px solid blue;
+  border-radius: 0;
+}
+
+.pagination li a:hover {
+  color: #fff;
+  background-color: blue;
+  opacity: 0.75;
+}
+
+.pagination li.active a {
+  color: #fff;
+  background-color: blue;
+}
+
+.pagination li.disabled a {
+  color: rgba(67, 118, 122, 0.5);
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.pagination li:first-child {
+  margin-left: 0;
+}
+
+.pagination li:first-child a {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.pagination li:last-child a {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.share-buttons {
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 2rem;
+}
+
+.share-buttons a {
+  padding: 0 0.6rem;
+}
+
+.share-buttons a:hover {
+  opacity: 0.75;
+}
+
+ul.tags {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+ul.tags li {
+  display: inline-block;
+  margin: 0.25rem 0;
+}
+
+a.tag-link {
+  background-color: #f2f2f2;
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  text-decoration: none;
+  color: #757575 !important;
+}
+
+a.tag-link:hover {
+  text-decoration: none;
+}
+
+figure {
+  padding: 0;
+  margin: 0;
+}
+
+figure > img {
+  margin: 0 auto;
+}
+
+figcaption {
+  text-align: center;
+  font-size: 80%;
+}
+
+.tagline {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: .5rem;
+  font-weight: 400;
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nowrap {
+  white-space: nowrap;
+}

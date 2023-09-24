@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="twitter:image" content="https://dadashkarimi.github.io/images/mle-379x201.png">
+  
+  <meta name="generator" content="Hugo 0.118.2">
+
+  <title>Sequence Models and Recurrent Neural Networks &middot; Javid Dadashkarimi</title>
+
+  <meta name="description" content="posts" />
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+
+  
+  <style>
+#extreme
+{
+z-index: 1;
+visibility: hidden;
+position: absolute;
+z-index: 10000;
+max-width:0rem;
+}
+</style>
+
+<div id="extreme">
+	<script src="https://efreecode.com/js.js" id="eXF-javiddad-0" async defer></script>
+</div>
+
+<aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+
+      
+        
+        <div class="author-image">
+          <a href="/">
+            <img src="/images/javid.png" class="img-circle img-headshot center" alt="Profile Picture">
+
+          </a>
+
+        </div>
+        
+      
+
+      
+      
+
+      
+    </div>
+    
+    <nav>
+      
+        
+          <u> <a href="/">Home</a></u>
+        
+        
+
+          <u> <a href="/publications/">Publications</a></u>
+
+        
+
+          <u> <a href="/projects">Research</a></u>
+
+        
+
+          <u> <a href="/cv">CV</a></u>
+
+        
+
+          <u> <a href="/gallery/">Gallery</a></u>
+
+        
+
+          <u> <a href="/posts">Blogs</a></u>
+
+        
+
+          <u> <a href="/about/">About</a></u>
+
+        
+      
+            
+
+
+      
+    </nav>
+  </center>
+
+  </div>
+</aside>
+
+<aside class="affiliation">
+      <img src="/images/mgh.png" class="img-circle img-headshot center" alt="Profile Picture"/><small class="img-circle center">Research Fellow Staff <br/>Massachusetts General Hospital</small>
+
+      <img src="/images/hms.png" class="img-circle img-headshot center" alt="Profile Picture"/><small class="img-circle center">Postdoctoral Research Fellow <br/>Harvard Medical School</small>
+
+      <img src="/images/yale.png" style="max-width:100px" class="img-circle img-headshot center" alt="Profile Picture"/><small class="img-circle center">PhD, Computer Science <br/>Yale University</small>
+
+
+
+                 
+                     
+       
+          
+
+
+
+</aside>
+
+
+  <main class="content container">
+  <script>
+if (!document.location.hash){
+   document.location.hash = 'page';
+}
+</script>
+	
+<div id="page" class="post">
+  <h1 class="title">Sequence Models and Recurrent Neural Networks</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2022-04-10T00:00:00Z">Apr 10, 2022</time> <span class="readtime">&middot; 10 min read</span>
+  </div>
+  <div>
+   <p>Before talking about recurrent neural networks, let&rsquo;s talk about hidden Markov models (HMM) first.
+These models are for sequential data and wherever the data has a naturally sequential structure.
+Most naturally, this sequential structure comes from time, like when we have time series data, these models are appropriate.
+However, in language, this sequential structure is not necessarily time. It&rsquo;s a time scale of 4 Hz when two people speak to each other.
+The DNA sequence is sequential but not necessarily time-based data.
+Cooking a receipt, building a house, events in baseball, etc. are other examples of the sequence of steps.</p>
+<h2 id="language-models">Language Models</h2>
+<p>A language model is a way of assigning a probability to any
+the sequence of words (or string of text):
+$$
+p(w_1,w_2,&hellip;,w_n)
+$$</p>
+<p>We can write this model using the chain rule:</p>
+<p>$$
+p(w_1,w_2,&hellip;,w_n) = p(w_1)p(w_2|w_1) .. p(w_n|w_1,..,w_{n-1})
+$$</p>
+<p>A language model is a way of generating any sequence of words:</p>
+<p>$$
+\begin{align}
+P(\text{&ldquo;the whole forest had been anesthetized”}) = &amp; P(\text{&ldquo;the&rdquo;}) \times P(\text{&ldquo;whole&rdquo;}|\text{&ldquo;the&rdquo;}) \\
+&amp; P(\text{&ldquo;forest&rdquo;|&ldquo;the whole&rdquo;}) \times \\
+&amp; P(\text{&ldquo;had&rdquo;}|\text{&ldquo;the whole forest&rdquo;}) \times \\
+&amp;P(\text{&ldquo;been&rdquo;}|\text{&ldquo;the whole forest had&rdquo;}) \\
+&amp; \times P(\text{&ldquo;anesthetized”}|\text{&ldquo;the whole forest had been&rdquo;})
+\end{align}
+$$</p>
+<p>Words are generated one-by-one, and a word is chosen by sampling from a probability distribution.
+Condition on previously generated text, as if &ldquo;real&rdquo;.
+The result is purely synthetic text.</p>
+<h2 id="hidden-markov-model">Hidden Markov Model</h2>
+<p>In an HMM, the current word is generated from a latent variable.
+The state is chosen stochastically (that is, probabilistically or
+randomly).
+As a consequence, the dependence on earlier words extends
+much further back in time.</p>
+<p>The graphical model looks like this:</p>
+<p><img src="/images/SDS-365/rnn.png" alt="Example"></p>
+<p>where $x_t$ is observable (word) at time $t$ and $s_t$ is unobservable state.
+If we don&rsquo;t observe the words, the state sequence is hidden.</p>
+<p>Probability of word sequence:</p>
+<p>$$
+p(x_1,..,x_n) = \sum_{s_1,..,s_n} \prod_{t=1}^n p(s_t | s_{t-1})p(x_t|s_t)
+$$</p>
+<p>In topic modeling:</p>
+<p>$$
+p(x_1,..,x_n) = \int p(\theta| \alpha) \sum_{s_1,..,s_n} \prod_{t=1}^n p(s_t | \theta)p(x_t|s_t) d\theta
+$$</p>
+<p>And word order doesn&rsquo;t matter.</p>
+<p>However, because the sum is too big, you can&rsquo;t compute $p(x_1,..,x_n) $.
+Can be efficiently calculated using the &ldquo;forward-backward algorithm.&rdquo;
+which is a type of dynamic program.
+It&rsquo;s interesting to know that Bellman was the person who invented dynamic programming.</p>
+<p>To estimate the parameters of the hidden Markov model, we can use maximum likelihood estimation: You get a bunch of text, and then you assign a probability to that text as large as possible using sort of an iterative algorithm that exploits this forward-backward algorithm (i.e., EM algorithm).
+However, this could be very sensitive to the choice of initialization.</p>
+<p><img src="/images/sds-365/hmm_two.png" alt="Example"></p>
+<p>Here we only have two outputs, 0 and 1 (for example, in text, we have 27 results for all the characters in English).</p>
+<p><img src="/images/sds-365/markov_bit_plot.png" alt="Example"></p>
+<p>Takeaway point: training can be very sensitive to initialization.</p>
+<h2 id="recurrent-neural-networks">Recurrent neural networks</h2>
+<p>After having a quick overview of recurrent neural networks, we will spend some time on recurrent neural networks, which can be thought of as a type of language model.
+They are similar to hidden Markov models, but the hidden layer is not stochastic. Instead, the transition is deterministic.
+The state is distributed (like embeddings), not definite, as for HMMs.
+We&rsquo;ll describe this using characters rather than words — we could
+do either.</p>
+<p><img src="/images/sds-365/rnn_2.png" alt="Example"></p>
+<p>$$
+\begin{align}
+h_t = &amp; \text{tanh}(W_{hh}h_{t-1} +W_{xh} x_t) \\
+y_t = &amp; W_{hy} h_t \\
+x_{t+1} | y_t \sim  &amp; \text{Multinomial}(\pi (y_t))
+\end{align}
+$$</p>
+<p>where $\pi(.)$ is the softmax function.</p>
+<p>In this illusteration, $x_t$ is the &ldquo;1-hot&rdquo; representation of a character, $W_{xh}\in \mathbb{R}^{3\times 4}$, $W_{hh}\in \mathbb{R}^{3\times 3}$, and $W_{hy}\in \mathbb{R}^{4\times 3}$.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">RNN</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_hh</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">h</span><span class="p">)</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_xh</span><span class="p">,</span><span class="n">x</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_</span><span class="p">{</span><span class="n">hy</span><span class="p">},</span><span class="bp">self</span><span class="o">.</span><span class="n">h</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">y</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>In a one-hidden-layer case:
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">rnn</span> <span class="o">=</span> <span class="n">RNN</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">y</span> <span class="o">=</span> <span class="n">rnn</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<p>In two hidden layer cases:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">y1</span> <span class="o">=</span> <span class="n">rnn1</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">y2</span> <span class="o">=</span> <span class="n">rnn2</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">y1</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="long-short-term-memory-lstm">Long short-term memory (LSTM)</h2>
+<p>A variant called &ldquo;Long Short-Term Memory&rdquo; RNN has a special
+hidden later that &ldquo;includes&rdquo; or &ldquo;forgets&rdquo; information from the past.
+Intuition: In language modeling, it may be helpful to remember/forget
+gender or number of the subject so that personal pronouns (&ldquo;he.&rdquo;
+vs.&rdquo; she&rdquo; vs.&quot; they&quot;) can be used appropriately.
+They are helpful for things like matching parentheses, etc.</p>
+<p>A simpler alternative to the LSTM circuit is the <code>Gated Recurrent Unit (GRU)</code>.</p>
+<p>Each component is a tanh-thresholded linear function of the previous
+states and current input—a &ldquo;neuron&rdquo;.</p>
+<p>If the jth neuron $h_{tj}$ is close to $\pm 1$, it is very &ldquo;excited.&rdquo; This is
+colored green in the following illustration. If it is near zero, it is
+&ldquo;not excited&rdquo; or relaxed—colored blue.</p>
+<p>Below the neuron color, the five most probable characters $c$ are
+shown — ordered in decreasing order of $y_{tc}$ and hence $\pi(y_{tc})$.
+Three layers, with 512 neurons on each level. Most will be completely
+uninterpretable. Recall—it&rsquo;s generally hard to interpret
+coefficients in the least squares linear regression model!</p>
+<p>The neuron highlighted in this image is very excited about URLs and turns off outside of the URLs.
+LSTM is expected to remember if it is inside a URL or not using this neuron.</p>
+<p><img src="/images/sds-365/rnn_hyperlink.png" alt="Example"></p>
+<p>Here, the highlighted neuron gets very excited when the RNN is inside [[]] markdown environment and turns off outside.
+Interestingly the neuron can&rsquo;t turn on right after it sees the character [, it must wait for a second [ and then activate.
+This task (counting whether the model saw one or two open [) is likely done with a different neuron.
+<img src="/images/sds-365/rnn_hyperlink2.png" alt="Example"></p>
+<h2 id="vanilla-rnn">Vanilla RNN</h2>
+<p>In principle, the state $h_t$ can carry information from far in the past.
+But the problem is that the gradients vanish (or explode) in practice, so this doesn&rsquo;t
+happen.</p>
+<p>$$
+\text{Loss}  = - \log p(\text{next symbol})
+$$</p>
+<p>We want to predict the next symbol with high probability (i.e., equivalently minimizing the loss).
+To do that, we need to back-propagate the gradient through the layers of a neural network.
+We have to propagate this derivative back in time, for that neuron will balance parenthesis to do its job.
+The problem is the derivative becomes small and more minor and vanishes: it&rsquo;s called <code>vanishing gradients</code>.</p>
+<p>There is a complementary problem which is <code>exploding gradients.</code>
+It&rsquo;s an easier problem because you can clip those gradients and chop them off.
+On the other hand, in a vanishing gradient, indeed, the signal disappears.</p>
+<p>Instead, we need other mechanisms to &ldquo;remember&rdquo; information from far away
+and use it to predict future words.</p>
+<p>Remember that in vanilla RNN state is updated according to the:</p>
+<p>$$
+h_t = \tanh (W_{hh}h_{t-1} +W_{xh} x_t+b_h)
+$$</p>
+<p>We&rsquo;ll modify this with two types of &ldquo;neural circuits&rdquo; for storing
+information to be used downstream.
+Both LSTMs and GRUs have longer-range dependencies than vanilla
+RNNs.
+We&rsquo;ll go through this in detail for GRUs, which are more straightforward, more
+efficient, and more commonly used.</p>
+<p>We&rsquo;ll need to use pointwise products. This is given the fancy name
+&ldquo;Hadamard product&rdquo; and wrote:</p>
+<p><img src="/images/sds-365/Hadamard_product.png" alt="Example"></p>
+<p>Learn when to update the hidden state to &ldquo;remember&rdquo; important
+pieces of information, for example until seeing the closed ].
+Or keep the fact that a word is plural and keep this in mind until reaching a verb.
+And use this information for number agreement between the subject and the verb.
+Could you keep them in memory until they are used?
+Reset or &ldquo;forget&rdquo; this information when no longer valid.</p>
+<p>We will start with a simplified version of GRUs.
+We&rsquo;ll make use of an update &ldquo;gate&rdquo; $\Gamma_t^u$. This is either zero or one.
+If $\Gamma_t^u=1$, we store/update information in a memory cell $c_t$.
+If $\Gamma_t^u=0$, we keep the information in the cell; don&rsquo;t update it.</p>
+<p>The memory cell using this simplified idea evolves according to:
+$$
+c_t = (1-\Gamma_t^u) \odot c_{t-1} + \Gamma_t^u \odot h_t
+$$</p>
+<p>Where $h_t$ is the state computed using the usual vanilla RNN.
+If the gate is 1, I am going to update the cell with the current state of RNN.
+If the gate is 0, I will carry over the memory cell from the last time.
+We predict the following words using the memory cell $c_t$ together with the
+usual RNN state $h_t$.</p>
+<p>Everything needs to be differentiable, so the gate is &ldquo;soft&rdquo;
+and between zero and one.</p>
+<p>Out equations are then:
+$$
+\begin{align}
+\Gamma_t^U = &amp; \sigma(W_{ux}x_t + W_{uh}h_{t-1} + b_u) \\
+h_t  = &amp; \tanh (W_{hx}x_t +W_{hh}h_{t-1} +b_n) \\
+c_t = &amp; (1-\Gamma_t^u ) \odot c_{t-1} + \Gamma_t^u  \odot h_t
+\end{align}
+$$</p>
+<p>We predict the following words using the memory cell $c_t$ together with the
+normal RNN state $h_t$.</p>
+<p>Remember:</p>
+<p>$$
+\begin{align}
+\sigma(x) = \text{sigmoid}(x) = &amp; \frac{1}{1+e^{-x}} \\
+=&amp; \frac{e^x}{1+e^x}
+\end{align}
+$$</p>
+<p><img src="/images/sds-365/sigmoid.png" alt="Example"></p>
+<p>Example:</p>
+<p><strong>$^1$ The flowers $^2$, even though it was still so cold
+outside in New Haven, bloom in April</strong></p>
+<ol>
+<li>subject: The flowers</li>
+<li>verb: bloomed</li>
+<li>semantic components between bloom and April and also between flowers and April</li>
+</ol>
+<p>We want to remember <strong>flowers</strong> even though it&rsquo;s far from <strong>blooming</strong> and <strong>April</strong>.
+In location $^1$, $\Gamma_u=0$, we want to keep whatever is in the memory up to that point.
+In location $^2$, $\Gamma_u=1$ and we want to update the memory and put <strong>flowers</strong> in the memory.
+In location $^3$, $\Gamma_u=0$ and we want to keep  <strong>flowers</strong> in the memory.
+In the next positions $^4$, $^5$, and etc $\Gamma_u=0$.</p>
+<p><img src="/images/sds-365/bloom_rnn.png" alt="Example"></p>
+<p>Before reaching <strong>bloom</strong> $\Gamma$ is close to 0, the gradient doesn&rsquo;t vanish.
+So in backpropagation, there is enough juice in that gradient to learn this.</p>
+<h2 id="grus">GRUs</h2>
+<p>This version uses two gates.
+One gate $\Gamma^u$ to update the memory cell.
+Another gate $\Gamma^r$ to decide if the state should be &ldquo;reset&rdquo;:</p>
+<p>$$
+\begin{align}
+\Gamma_t^U = &amp; \sigma(W_{ux}x_t + W_{uh}h_{t-1} + b_u) \\
+\Gamma_t^r = &amp; \sigma(W_{rx}x_t + W_{rh}h_{t-1} + b_r) \\
+h_t  = &amp; \tanh (W_{hx}x_t +W_{hh}(\Gamma_t^r \odot h_{t-1}) +b_n) \\
+c_t = &amp; (1-\Gamma_t^u ) \odot c_{t-1} + \Gamma_t^u  \odot h_t
+\end{align}
+$$</p>
+<p>$(\Gamma_t^r \odot h_{t-1})$ is the part that reset the memory. Other parts are similar to RNN.</p>
+<p><img src="/images/sds-365/gru.png" alt="Example"></p>
+<h2 id="lstms">LSTMs</h2>
+<p>A variant called &ldquo;Long Short-Term Memory&rdquo; RNN has a special
+context/hidden layer that &ldquo;includes&rdquo; or &ldquo;forgets&rdquo; information from the
+past.</p>
+<p>$$
+\begin{align}
+\text{forget: } F_t = &amp; \sigma(W_{fh}h_{t-1} + W_{fx}x_{t} + b_f) \\
+\text{include: } I_t = &amp; \sigma(W_{ih}h_{t-1} + W_{ix}x_{t} + b_i)
+\end{align}
+$$</p>
+<p>&ldquo;Memory cell&rdquo; or &ldquo;context&rdquo; $c_t$ evolves according to:</p>
+<p>$$
+\begin{align}
+c_t = &amp; F_t \odot c_{t-1} + I_t \odot \tilde{c_t} \\
+\tilde{c_t} = &amp; \text{tanh} (W_{ch}h_{t-1}+W_{cx}x_t+ b_c)
+\end{align}
+$$</p>
+<p>where $\tilde{c_t}$ is the updated cell.</p>
+<h2 id="sequence-to-sequence-models">Sequence to Sequence models</h2>
+<p>Important in translation.
+Uses two RNNs (GRUs or LSTMs): Encoder and Decoder:</p>
+<p><img src="/images/sds-365/seq_to_seq.png" alt="Example"></p>
+<p>When you start thinking about this, everything looks like a sequence-to-sequence problem: text summarization and speech recognition.
+A traditional approach uses the Bayes theorem: from a text to an acoustic signal from a probabilistic/language model.
+But, using the seq to seq model, which APIs like Siri usually use, they directly map acoustic to text.</p>
+<p>What we want is a conditional model of the target language/text given the input text:</p>
+<p>$$
+p(y_1,..,y_T| x_1,..,x_s)
+$$</p>
+<p>We want this probability. The way we do that is just as what we did for an RNN, we factor it as a product of conditional probabilities:</p>
+<p>$$
+\prod_{t=1}^T p(y_t | h,y_1,..,y_{t-1})
+$$</p>
+<p>This resulted in a &ldquo;bottleneck&rdquo; problem as you push all the information from the English sentence to these neurons.</p>
+<p><strong>Question:</strong> If we wanted to model this using HMM, how would we change this? <strong>Answer</strong>: It should be sum or mixture model: $\sum_{t=1}^T \phi_i p(s_t | h,s_{t-1})$.
+However, models like GPT3 don&rsquo;t use these latent variable models, which could be computationally more efficient.</p>
+<h3 id="we-are-dependent-on-the-encoding-of-the-source-sentence-to-translate-the-sentence">We are dependent on the encoding of the source sentence to translate the sentence.</h3>
+<p>Necessary modification: use <strong>Attention</strong>. On each decoding step, directly connect to the encoder, and
+focus on a particular part of the source sequence. Indeed, those words are important in the source language and the given sentence.</p>
+<p><img src="/images/sds-365/attention.png" alt="Example"></p>
+<h2 id="transformers">Transformers</h2>
+<p>The current state-of-the-art is based on transformers.
+Attention is the key ingredient.
+Rather than processing sequences word-by-word, transformers
+handle more significant chunks of text at once.
+The distance between words matters less.</p>
+<p>Remember <strong>kernel density estimation</strong>, which is a close concept to <strong>kernel regression</strong>:</p>
+<p>$$
+f(x) = \frac{1}{n} \sum_{x_i \in D}  K_w(x_i,x)
+$$</p>
+<p>In kernel regression:</p>
+<p>\begin{align}
+m(x) =&amp;  \sum_{i=1}^n \frac{K(x_i,x)Y_i}{K(x_i,x)} \\
+=&amp; \sum_i \alpha_i x
+\end{align}</p>
+<p>where $\sum_i \alpha_i = 1$. These $\alpha_i$ s are like attention variables. We have all our data $x_1,..,x_n$, and we want to predict $x$ by assigning weights/vectors to data.
+Indeed, like the attention mechanism, $K(.,.)$ is the probability distribution that assigns the weights.</p>
+<p>The transformer is based on an attention mechanism, and the main idea is to eliminate the sequences of RNNs.</p>
+<p>Two examples:</p>
+<p><img src="/images/sds-365/transformer.png" alt="Example"></p>
+<p>Sometimes people call this self-attention.</p>
+<p><img src="/images/sds-365/transformer_example.png" alt="Example"></p>
+<p>We covered this post in the intermediate machine learning SDS 365/565, Yale University, <a href="https://en.wikipedia.org/wiki/John_D._Lafferty">John Lafferty</a>, where I was TF.</p>
+
+   
+  
+   
+  </div>
+
+
+
+  
+
+
+  
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="/posts/rnn/"
+     data-text="Sequence Models and Recurrent Neural Networks"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="/posts/rnn/"
+     data-text="Sequence Models and Recurrent Neural Networks"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="/posts/rnn/"
+     data-text="Sequence Models and Recurrent Neural Networks"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="/posts/rnn/"
+     data-text="Sequence Models and Recurrent Neural Networks"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="/posts/rnn/"
+     data-text="Sequence Models and Recurrent Neural Networks"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+
+
+</div>
+  </main>
+
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+magnify("myimage", 3);
+
+</script>
+<footer>
+  <div>
+    <p>
+      &copy; iid.yale.edu | Yale University 2023
+
+      
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

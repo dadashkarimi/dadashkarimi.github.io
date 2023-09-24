@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Javid Dadashkarimi</title>
+    <link>/posts/</link>
+    <description>Recent content in Posts on Javid Dadashkarimi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 10 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sequence Models and Recurrent Neural Networks</title>
+      <link>/posts/rnn/</link>
+      <pubDate>Sun, 10 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/rnn/</guid>
+      <description>Before talking about recurrent neural networks, let&amp;rsquo;s talk about hidden Markov models (HMM) first.</description>
+    </item>
+    
+    <item>
+      <title>Reinforcement Learning</title>
+      <link>/posts/rl/</link>
+      <pubDate>Fri, 01 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/rl/</guid>
+      <description>Reinforcement Learning is the third category of big topics in machine learning after supervised learning and unsupervised learning.</description>
+    </item>
+    
+    <item>
+      <title>Sparsity and Graphs</title>
+      <link>/posts/graphs/</link>
+      <pubDate>Mon, 28 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/graphs/</guid>
+      <description>Graphs allow us to encode structural assumptions about data. Graphs are the natural language for describing all kinds of problems and data.</description>
+    </item>
+    
+    <item>
+      <title>Variational Inference and VAE</title>
+      <link>/posts/variational_inference_vae/</link>
+      <pubDate>Fri, 11 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/variational_inference_vae/</guid>
+      <description>In the previous post, we talked about approximation inference. We want to compute $p(\theta,z|x)$, but it&amp;rsquo;s too complicated.</description>
+    </item>
+    
+    <item>
+      <title>Approximation Inference</title>
+      <link>/posts/approx-inf/</link>
+      <pubDate>Mon, 07 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/approx-inf/</guid>
+      <description>In the previous post, we talked about Gibbs sampling and posterior inference.</description>
+    </item>
+    
+    <item>
+      <title>Gibbs Sampling</title>
+      <link>/posts/gibbs/</link>
+      <pubDate>Wed, 02 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/gibbs/</guid>
+      <description>Review: In the previous post, we talked about the Dirichlet process and Dirichlet process mixture, as the Dirichlet process is for CDF estimation and the Dirichlet process mixture is for density estimation (i.</description>
+    </item>
+    
+    <item>
+      <title>Dirichlet Processes</title>
+      <link>/posts/dirichlet/</link>
+      <pubDate>Fri, 25 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/dirichlet/</guid>
+      <description>Review: In the previous post, we talked about Bayesian Inference and Gaussian processes.</description>
+    </item>
+    
+    <item>
+      <title>Gaussian Processes</title>
+      <link>/posts/bayes/</link>
+      <pubDate>Sat, 19 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/bayes/</guid>
+      <description>Bayesian Inference The parameter $\theta$ in Bayesian Inference is viewed as a random variable.</description>
+    </item>
+    
+    <item>
+      <title>Neural Tangent Kernels</title>
+      <link>/posts/ntk/</link>
+      <pubDate>Sat, 19 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/ntk/</guid>
+      <description>Let&amp;rsquo;s start with a simple regression method. Let&amp;rsquo;s assume that we have a dataset of $n$ points ${(x_i,y_i)}_{i=1}^n$ where $y_i \in \mathbb{R}$ and $x_i \in \mathbb{R}^d$:</description>
+    </item>
+    
+    <item>
+      <title>Representer Theorem</title>
+      <link>/posts/representer/</link>
+      <pubDate>Thu, 10 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/representer/</guid>
+      <description>In the previous post, we talked about Mercer&amp;rsquo;s theorem and defined a mercer kernel as $\int f(x) f(y) k(x,y) dx dy \geq 0$ for any function $f$.</description>
+    </item>
+    
+    <item>
+      <title>Mercer&#39;s Theorem</title>
+      <link>/posts/mercer-2022/</link>
+      <pubDate>Sun, 16 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/mercer-2022/</guid>
+      <description>Given data points $(X_1,Y_1)$ , $(X_2,Y_2)$ , .. , and $(X_n,Y_n)$ where we want to predict $Y$ via design matrix $X$.</description>
+    </item>
+    
+    <item>
+      <title>Sparsity Meets Convexity</title>
+      <link>/posts/sparsity-2022/</link>
+      <pubDate>Sun, 16 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/sparsity-2022/</guid>
+      <description>Here we will talk about basic concepts of regression in sparse data.</description>
+    </item>
+    
+    <item>
+      <title>Expectation Maximization</title>
+      <link>/posts/em-2021/</link>
+      <pubDate>Mon, 06 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/em-2021/</guid>
+      <description>We discussed the EM algorithm on Gaussian Mixture models in the previous post.</description>
+    </item>
+    
+    <item>
+      <title>How to Manage 100k&#43; Experiments on Brain Imaging Datasets</title>
+      <link>/posts/bigdata-experiments-2021/</link>
+      <pubDate>Sun, 05 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/bigdata-experiments-2021/</guid>
+      <description>Ph.D. students studying machine learning on the human brain must conduct massive experiments on brain imaging datasets.</description>
+    </item>
+    
+    <item>
+      <title>Mixture Models and EM</title>
+      <link>/posts/mixture-2021/</link>
+      <pubDate>Fri, 03 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/mixture-2021/</guid>
+      <description>How to model data with a probability distribution? For example, if data looks like a circle or symmetric, we may model it with a Gaussian distribution:</description>
+    </item>
+    
+    <item>
+      <title>Posterior Inference</title>
+      <link>/posts/inference-2021/</link>
+      <pubDate>Fri, 26 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/inference-2021/</guid>
+      <description>Bayesian Inference what can we do with posterior distribution $p(\theta|x)$ that we can not do with point estimate: For example we can estimate by $\theta_{\text{MAP}} = \arg \max_{\theta} p(\theta|x)$</description>
+    </item>
+    
+    <item>
+      <title>Empirical Risk Minimization</title>
+      <link>/posts/erm-2021/</link>
+      <pubDate>Tue, 16 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/erm-2021/</guid>
+      <description>Empirical Risk Minimization: Given $(x_1,y_1), .., (x_n,y_n) \in X \times y$ and we want to predict $f(x)=y$.</description>
+    </item>
+    
+    <item>
+      <title>Maximum Likelihood and Maximum A Posteriori Estimation</title>
+      <link>/posts/mle-2021/</link>
+      <pubDate>Tue, 09 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/mle-2021/</guid>
+      <description>Maximum Likelihood Estimation: Suppose that we have a probabilistic model of generating random data $x \in \mathcal{X}$ derived from function $P_{\theta}(x)$ that is parametrized by $\theta$.</description>
+    </item>
+    
+    <item>
+      <title>Write your first stochastic function in Python</title>
+      <link>/posts/vae-2021/</link>
+      <pubDate>Mon, 01 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/vae-2021/</guid>
+      <description>Let&amp;rsquo;s estimate how many ice creams insomnia cookies in New Haven will sell this Fall.</description>
+    </item>
+    
+    <item>
+      <title>Learning Optimal Transport from Samples</title>
+      <link>/posts/ot-convex/</link>
+      <pubDate>Thu, 28 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/ot-convex/</guid>
+      <description>Searching for optimal transport encourages a mapping that minimizes the total cost of transporting mass from $\alpha$ to $\beta$, as initially formulated by Monge (1781).</description>
+    </item>
+    
+    <item>
+      <title>Let&#39;s touch base on kernel methods</title>
+      <link>/posts/kernel-2021/</link>
+      <pubDate>Wed, 20 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/kernel-2021/</guid>
+      <description>Empirical risk minimization with linear model $f(x) = w.x$ given data points is a traditional way of learning coefficients $w$.</description>
+    </item>
+    
+    <item>
+      <title>Optimal Transport and Brain Imaging</title>
+      <link>/posts/ot-2021/</link>
+      <pubDate>Sun, 17 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/ot-2021/</guid>
+      <description>Fuctional connectomes, derived from functional magnetic resonance imaging (fMRI) is widely used to study functional organization of human brain.</description>
+    </item>
+    
+  </channel>
+</rss>

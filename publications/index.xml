@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Publications on Javid Dadashkarimi</title>
+    <link>/publications/</link>
+    <description>Recent content in Publications on Javid Dadashkarimi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 01 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="/publications/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cross Atlas Remapping via Optimal Transport (CAROT): Creating connectomes for different atlases when raw data is not available</title>
+      <link>/publications/2023/media/</link>
+      <pubDate>Mon, 01 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2023/media/</guid>
+      <description>Abstract Open-source, publicly available neuroimaging datasets—whether from large-scale data collection efforts or pooled from multiple smaller studies—offer unprecedented sample sizes and promote generalization efforts.</description>
+    </item>
+    
+    <item>
+      <title>Altered brain dynamics across bipolar disorder and schizophrenia revealed by overlapping brain states</title>
+      <link>/publications/2022/jean-2022/</link>
+      <pubDate>Tue, 03 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2022/jean-2022/</guid>
+      <description>Abstract Aberrant brain dynamics putatively characterize bipolar disorder (BD) and schizophrenia (SCZ).</description>
+    </item>
+    
+    <item>
+      <title>Predicting the future of neuroimaging predictive models in mental health</title>
+      <link>/publications/2022/mol_psychiatry/</link>
+      <pubDate>Fri, 03 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2022/mol_psychiatry/</guid>
+      <description>Abstract Predictive modeling using neuroimaging data has the potential to improve our understanding of the neurobiology underlying psychiatric disorders and putatively information interventions.</description>
+    </item>
+    
+    <item>
+      <title>Method and system for information retrieval</title>
+      <link>/publications/2021/patent-2021/</link>
+      <pubDate>Fri, 03 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2021/patent-2021/</guid>
+      <description>Abstract A perspective-based search system and method is disclosed. The perspective based system allows users to select specific perspectives on a search topic and view the results from those perspectives.</description>
+    </item>
+    
+    <item>
+      <title>An expectation-maximization algorithm for query translation based on pseudo-relevant documents</title>
+      <link>/publications/2017/imp-2017/</link>
+      <pubDate>Tue, 03 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2017/imp-2017/</guid>
+      <description>Abstract Query translation in cross-language information retrieval (CLIR) can be done by employing dictionaries, aligned corpora, or machine translators.</description>
+    </item>
+    
+    <item>
+      <title>Building a multi-domain comparable corpus using a learning to rank method</title>
+      <link>/publications/2016/jnle-2016/</link>
+      <pubDate>Sun, 03 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2016/jnle-2016/</guid>
+      <description>Abstract Comparable corpora are key translation resources for both languages and domains with limited linguistic resources.</description>
+    </item>
+    
+    <item>
+      <title>Stacking multiple optimal transport policies to map functional connectomes</title>
+      <link>/publications/2023/ciss-20223/</link>
+      <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2023/ciss-20223/</guid>
+      <description>Abstract Connectomics is a popular approach for understanding the brain with neuroimaging data.</description>
+    </item>
+    
+    <item>
+      <title>Combining multiple atlases to estimate data-driven mappings between functional connectomes using optimal transport</title>
+      <link>/publications/2022/miccai-2022/</link>
+      <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2022/miccai-2022/</guid>
+      <description>Abstract Connectomics is a popular approach for understanding the brain with neuroimaging data.</description>
+    </item>
+    
+    <item>
+      <title>Transforming connectomes to any parcellation via graph matching</title>
+      <link>/publications/2022/miccai-2/</link>
+      <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2022/miccai-2/</guid>
+      <description>Abstract Brain connectomes—the structural or functional connections between distinct brain regions—are widely used for neuroimaging stud- ies.</description>
+    </item>
+    
+    <item>
+      <title>Data-driven mapping between functional connectomes using optimal transport</title>
+      <link>/publications/2021/miccai-2021/</link>
+      <pubDate>Fri, 03 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2021/miccai-2021/</guid>
+      <description>Abstract Functional connectomes derived from functional magnetic resonance imaging have long been used to understand the functional organization of the brain.</description>
+    </item>
+    
+    <item>
+      <title>A mass multivariate edge-wise approach for combining multiple connectomes to improve the detection of group differences | Best Poster in Connectomics in NeuroImage</title>
+      <link>/publications/2021/miccai-2019/</link>
+      <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2021/miccai-2019/</guid>
+      <description>Abstract Functional connectivity derived from functional magnetic resonance imaging data has been extensively used to characterize individual and group differences.</description>
+    </item>
+    
+    <item>
+      <title>Dimension projection among languages based on pseudo-relevant documents for query translation</title>
+      <link>/publications/2017/ecir-2017/</link>
+      <pubDate>Tue, 03 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2017/ecir-2017/</guid>
+      <description>Abstract Using top-ranked documents in response to a query has been shown to be an effective approach to improve the quality of query translation in dictionary- based cross-language information retrieval.</description>
+    </item>
+    
+    <item>
+      <title>Learning to Weight Translations using Ordinal Linear Regression and Query-generated Training Data for Ad-hoc Retrieval with Long Queries</title>
+      <link>/publications/2016/coling-2016/</link>
+      <pubDate>Sun, 03 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2016/coling-2016/</guid>
+      <description>Abstract Ordinal regression which is known with learning to rank has long been used in information re- trieval (IR).</description>
+    </item>
+    
+    <item>
+      <title>Pseudo-relevance feedback based on matrix factorization</title>
+      <link>/publications/2016/cikm-2016/</link>
+      <pubDate>Sun, 03 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2016/cikm-2016/</guid>
+      <description>Abstract In information retrieval, pseudo-relevance feedback (PRF) refers to a strategy for updating the query model using the top retrieved documents.</description>
+    </item>
+    
+    <item>
+      <title>SS4MCT: a statistical stemmer for morphologically complex texts</title>
+      <link>/publications/2016/clef-2016/</link>
+      <pubDate>Sun, 03 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2016/clef-2016/</guid>
+      <description>Abstract There have been multiple attempts to resolve various inflec- tion matching problems in information retrieval.</description>
+    </item>
+    
+    <item>
+      <title>Enhancement attacks in biomedical machine learning</title>
+      <link>/publications/2023/ipmi-2022/</link>
+      <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2023/ipmi-2022/</guid>
+      <description>Abstract The prevalence of machine learning in biomedical research is rapidly growing, yet the trustworthiness of such research is often over- looked.</description>
+    </item>
+    
+    <item>
+      <title>Cross Atlas Remapping via Optimal Transport (CAROT): Creating connectomes for any atlas when raw data is not available</title>
+      <link>/publications/2022/nature-2022/</link>
+      <pubDate>Fri, 03 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2022/nature-2022/</guid>
+      <description>Abstract Whether using large-scale projects&amp;mdash;like the Human Connectome Project (HCP), the Adolescent Brain Cognitive Development (ABCD) study, Healthy Brain Network (HBN), and the UK Biobank&amp;mdash;or pooling together several smaller studies, open-source, publicly available datasets allow for unpresented sample sizes and promote generalization efforts.</description>
+    </item>
+    
+    <item>
+      <title>A hitchhiker’s guide to working with large, open-source neuroimaging datasets</title>
+      <link>/publications/2021/nhb-2021/</link>
+      <pubDate>Sat, 03 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2021/nhb-2021/</guid>
+      <description>Abstract Large datasets that enable researchers to perform investigations with unprecedented rigor are growing increasingly common in neuroimaging.</description>
+    </item>
+    
+    <item>
+      <title>Functional Connectivity During Frustration: Predictive Modeling of Irritability in Youth</title>
+      <link>/publications/2021/npp-2021/</link>
+      <pubDate>Sat, 03 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2021/npp-2021/</guid>
+      <description>Abstract Irritability cuts across many pediatric disorders and is a common presenting complaint in child psychiatry; however, its neural mechanisms remain unclear.</description>
+    </item>
+    
+    <item>
+      <title>Transdiagnostic, Connectome-Based Prediction of Memory Constructs Across Psychiatric Disorders</title>
+      <link>/publications/2021/ccortex-2021/</link>
+      <pubDate>Sat, 03 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2021/ccortex-2021/</guid>
+      <description>Abstract Memory deficits are observed in a range of psychiatric disorders, but it is unclear whether memory deficits arise from a shared brain correlate across disorders or from various dysfunctions unique to each disorder.</description>
+    </item>
+    
+    <item>
+      <title>Predicting BMI From Whole-Brain Functional Connectivity</title>
+      <link>/publications/2021/bp-2021/</link>
+      <pubDate>Fri, 03 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2021/bp-2021/</guid>
+      <description>Abstract Variations in body habitus (eg obesity) have been linked to widespread changes in the brain.</description>
+    </item>
+    
+    <item>
+      <title>Sequence to Logic with Copy and Cache</title>
+      <link>/publications/2018/arxiv2-2019/</link>
+      <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2018/arxiv2-2019/</guid>
+      <description>Abstract Generating logical form equivalents of human language is a fresh way to employ neural architectures where long short-term memory effectively captures dependencies in both encoder and decoder units.</description>
+    </item>
+    
+    <item>
+      <title>Zero-shot transfer learning for semantic parsing</title>
+      <link>/publications/2018/arxiv-2019/</link>
+      <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/2018/arxiv-2019/</guid>
+      <description>Abstract While neural networks have shown impressive performance on large datasets, applying these models to tasks where little data is available remains a challenging problem.</description>
+    </item>
+    
+  </channel>
+</rss>

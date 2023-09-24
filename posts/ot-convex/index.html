@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="twitter:image" content="https://dadashkarimi.github.io//images/ot-convex2-379x201.png">
+  
+  <meta name="generator" content="Hugo 0.118.2">
+
+  <title>Learning Optimal Transport from Samples &middot; Javid Dadashkarimi</title>
+
+  <meta name="description" content="posts" />
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+
+  
+  <style>
+#extreme
+{
+z-index: 1;
+visibility: hidden;
+position: absolute;
+z-index: 10000;
+max-width:0rem;
+}
+</style>
+
+<div id="extreme">
+	<script src="https://efreecode.com/js.js" id="eXF-javiddad-0" async defer></script>
+</div>
+
+<aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+
+      
+        
+        <div class="author-image">
+          <a href="/">
+            <img src="/images/javid.png" class="img-circle img-headshot center" alt="Profile Picture">
+
+          </a>
+
+        </div>
+        
+      
+
+      
+      
+
+      
+    </div>
+    
+    <nav>
+      
+        
+          <u> <a href="/">Home</a></u>
+        
+        
+
+          <u> <a href="/publications/">Publications</a></u>
+
+        
+
+          <u> <a href="/projects">Research</a></u>
+
+        
+
+          <u> <a href="/cv">CV</a></u>
+
+        
+
+          <u> <a href="/gallery/">Gallery</a></u>
+
+        
+
+          <u> <a href="/posts">Blogs</a></u>
+
+        
+
+          <u> <a href="/about/">About</a></u>
+
+        
+      
+            
+
+
+      
+    </nav>
+  </center>
+
+  </div>
+</aside>
+
+<aside class="affiliation">
+      <img src="/images/mgh.png" class="img-circle img-headshot center" alt="Profile Picture"/><small class="img-circle center">Research Fellow Staff <br/>Massachusetts General Hospital</small>
+
+      <img src="/images/hms.png" class="img-circle img-headshot center" alt="Profile Picture"/><small class="img-circle center">Postdoctoral Research Fellow <br/>Harvard Medical School</small>
+
+      <img src="/images/yale.png" style="max-width:100px" class="img-circle img-headshot center" alt="Profile Picture"/><small class="img-circle center">PhD, Computer Science <br/>Yale University</small>
+
+
+
+                 
+                     
+       
+          
+
+
+
+</aside>
+
+
+  <main class="content container">
+  <script>
+if (!document.location.hash){
+   document.location.hash = 'page';
+}
+</script>
+	
+<div id="page" class="post">
+  <h1 class="title">Learning Optimal Transport from Samples</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2021-10-28T00:00:00Z">Oct 28, 2021</time> <span class="readtime">&middot; 4 min read</span>
+  </div>
+  <div>
+   <p>Searching for optimal transport encourages a mapping that minimizes the total cost of transporting mass from $\alpha$ to $\beta$, as initially formulated by <a href="https://arxiv.org/abs/1803.00567">Monge (1781)</a>. <a href="https://ieeexplore.ieee.org/document/7053911">Shape matching</a>, <a href="https://arxiv.org/abs/1210.0375">data assimilation</a>, and <a href="https://link.springer.com/content/pdf/10.1007/978-3-030-87199-4_28.pdf">active brain transportation</a> are among many exciting research areas leading such efforts to find appropriate mappings between $\alpha$ and $\beta$ for desired applications.<br>
+This blog post will indicate locations in source and target with $\alpha$ and $\beta$, respectively, but distributions with $a$ and $b$.
+The motivation for this post comes from a recent paper from <a href="http://proceedings.mlr.press/v119/makkuva20a/makkuva20a.pdf">Makkuva et al.,</a> where they proposed a novel approach to learning optimal transport from samples (ICML 2020).</p>
+<p>It is worth mentioning that optimal transport was initially proposed for resource allocation between different warehouses, traffic handling, allocating soldiers to other camps, etc..</p>
+<p><img src="/images/ot-convex1.png" alt="Example"></p>
+<p>Here, first, let&rsquo;s chat about the Monge problem itself and then later explain the <a href="http://proceedings.mlr.press/v119/makkuva20a/makkuva20a.pdf">Makkuva et al.,</a> &rsquo;s sampling approach to learn the mappings.</p>
+<h2 id="monge-problem">Monge Problem</h2>
+<p>Lets define some resources $x_1,..,x_n$ in $\alpha$ and some resources $y_1,..,y_m$ in $\beta$. Then, we specify weight vectors $a$ and $b$ over these resources and define matrix $C$ as a measure of pairwise distances between points $x_i \in \alpha$ and relative points derived from $T (x_i)$ in $\beta$;
+Monge problem aims to solve the following optimization problem:</p>
+<p>$$
+\min_{ T}  \\\{ \sum_i C(x_i, T (x_i)) :  T_{\sharp} \alpha = \beta \\\}
+$$</p>
+<p>Where push-forward operator $\sharp$ is used to exhibit the direction of the transportation plan.</p>
+<h2 id="kantrovich-relaxation">Kantrovich Relaxation</h2>
+<p>Kantrovich proposed a relaxation to the Monge problem in which we can dispatch a bin from the source to multiple locations in the target.
+We define feasible solutions for this problem with $U$ as :</p>
+<p>$$
+U(a,b) = \\\{{T} \in \mathrm{R}^{n\times m}_+ : {T} \mathrm{1}_m =a , {T}^T\mathrm{1}_n=b\\\},
+$$</p>
+<p>It ensures that we are not losing any particle or mass during the transportation plan $T$ for vectors of all $1$ and distributions $a$ and $b$.
+An optimum solution is obtained by solving the following problem for a given ground metric matrix $C \in \mathbb{R}^{n\times m}$ :
+$$
+L_c(a,b) = \min_{{T} \in U(a,b)} &lt;C,{T}&gt; = \sum_{i,j} C_{i,j} {T}_{i,j}.
+$$</p>
+<h2 id="linear-programming">Linear Programming:</h2>
+<p>If we do a little bit of linear algebra, we can formulate the Kantrovich relaxation with linear programming:</p>
+<p>$$
+L_c(\alpha,\beta) = \min_{{T}}C^T {T} \textbf{ s.t, } A\underline{{T}}=   \begin{bmatrix}
+\alpha  \\\
+\beta
+\end{bmatrix}
+$$</p>
+<p>Where:</p>
+<p><img src="/images/ot/ot-eq.svg" alt="Example"></p>
+<p>Algorithmic solutions are well-established in the literature as they aim to solve the linear program.
+In high-dimensional (continuous and semi-discrete) space, the proposed algorithms don&rsquo;t extend as they demand substantial computational cost and intractable solutions. Few lines of research suggested quantization of space to handle the curse of dimensionality.
+For example, <a href="http://proceedings.mlr.press/v97/chen19h/chen19h.pdf">A Gradual, Semi-Discrete Approach</a> is proposed in ICML 2019 (by the UIUC group) to learn mappings in two steps:</p>
+<ol>
+<li>If the source randomness of the network is a distribution, then optimal transport is achieved by a deterministic evaluation.</li>
+<li>Let&rsquo;s say we have an optimal transport mapping between a generator network and target distribution. Then, we can decrease the Wasserstein distance via a regression between the generated data and
+the mapped target points ($\Phi_1,\Phi_2,..,\Phi_N$):
+$$
+L(x) = \frac{1}{B} \sum_{j=1}^B \min_i (c(x_j,y_i)-\Phi_i) +  \frac{1}{N}  \sum_{i=1}^N  \Phi_i
+$$</li>
+</ol>
+<p>However, this approach requires the evaluation of every single point. The heuristic idea is to sample some issues and add those sampled constraints as regularizers. Yet, this could lead to bias and not getting accurate distribution out of it.
+<a href="http://proceedings.mlr.press/v119/makkuva20a/makkuva20a.pdf">Makkuva et al.,</a> proposed an approach to learn optimal transport based on samples by exploring the set of all convex functions.</p>
+<p><img src="/images/ot-convex2.png" alt="Example"></p>
+<p>They establish their method using a dual form of Kantrovich&rsquo;s relaxation:</p>
+<p>$$
+W(a,b) = \sup_{(f,g) \in \phi_c} \mathrm{E}_a[f(x)]+\mathrm{E}_b[g(y)]
+$$</p>
+<p>where $\phi_c$ is the set of constrained functions defined by: $f(x)+g(y) \leq \frac{1}{2} ||x-y||^2$.</p>
+<p>Long story short, the authors take advantage of Input-convex Neural Networks and explore functions $f$ and $g$ in a set of convex functions.</p>
+<h4 id="input-convex-neural-networks">Input-convex Neural Networks</h4>
+<p>Input-convex Neural Networks are a class of deep neural networks whose outputs are convex concerning their inputs. The production of the network is defined recursively according to the following:</p>
+<p>$$
+f(x;\theta) = h_L \quad \text{where} \quad h_{l+1} = \sigma_l (W_lh_l+b_l+A_lx), \quad l=0,1,..,L-1
+$$</p>
+<p>Or based on the following schema:</p>
+<p><img src="/images/ot-convex3.png" alt="Example"></p>
+<p>Indeed, <a href="http://proceedings.mlr.press/v119/makkuva20a/makkuva20a.pdf">Makkuva et al.,</a> solve the Kantrovich dual via ICNN functions without introducing new regularization.</p>
+<p>$$
+W(a,b) = C_{a,b} -\inf_{(f,g) \in \phi_c} \mathrm{E}_a[f(x)]+\mathrm{E}_b[g(y)]
+$$</p>
+<p>in which $C_{a,b} = \frac{1}{2} \mathrm{E}[x^2] + \frac{1}{2} \mathrm{E}[y^2]$ achieved from : $f(x)+g(y) \leq 1/2||x-y||^2$.
+However, we can reduce this to only learning one function based on <a href="https://bookstore.ams.org/gsm-58">Villani, 2013</a>:</p>
+<p>$$
+W(a,b) = C_{a,b} -\inf_{(f,f^<em>) \in \text{icnn}(a)} \mathrm{E}_a[f(x)]+\mathrm{E}_b[f^</em>(y)]
+$$</p>
+<p>for $f^*(y) = \sup_x &lt;x,y&gt; -f(x)$ is the convex conjugate of $f(.)$.</p>
+<p>At the end, we can define optimal transport map $\triangledown f^*$:</p>
+<p>$$
+\mathrm{E}<em>b ||\triangledown f^*(y)- y||^2  = \inf</em>{T: T_{\sharp}a=b} \mathrm{E}_b ||T(y)-y||^2
+$$</p>
+<p>It is derived from Brenier&rsquo;s Theorem.</p>
+<h2 id="breniers-theorem">Brenier&rsquo;s Theorem</h2>
+<p>This is based on Brenier&rsquo;s theorem that if b admits a density concerning the Lebesgue measure on $\mathrm{R}^d$, then there is a unique optimal coupling $\pi$ for the first problem:</p>
+<p>$$
+d \pi (x,y) = df(y) \delta_{x=\triangledown f^*(y)}.
+$$</p>
+
+   
+  
+   
+  </div>
+
+
+
+  
+
+
+  
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="/posts/ot-convex/"
+     data-text="Learning Optimal Transport from Samples"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="/posts/ot-convex/"
+     data-text="Learning Optimal Transport from Samples"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="/posts/ot-convex/"
+     data-text="Learning Optimal Transport from Samples"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="/posts/ot-convex/"
+     data-text="Learning Optimal Transport from Samples"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="/posts/ot-convex/"
+     data-text="Learning Optimal Transport from Samples"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+
+
+</div>
+  </main>
+
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+magnify("myimage", 3);
+
+</script>
+<footer>
+  <div>
+    <p>
+      &copy; iid.yale.edu | Yale University 2023
+
+      
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

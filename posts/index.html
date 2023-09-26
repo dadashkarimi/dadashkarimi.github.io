@@ -156,15 +156,39 @@ if (!document.location.hash){
 document.addEventListener("DOMContentLoaded", function() {
     
 
-		let pendingImages = [];
+
+let pendingImages = [];
+let timeoutID = null;
+
+function loadRandomImage() {
+    if (pendingImages.length > 0) {
+        let randomIndex = Math.floor(Math.random() * pendingImages.length);
+        let randomImage = pendingImages[randomIndex];
+        
+        
+        randomImage.src = randomImage.dataset.src;
+        
+        
+        pendingImages.splice(randomIndex, 1);
+
+        
+        timeoutID = setTimeout(loadRandomImage, 1500); 
+    } else {
+        timeoutID = null; 
+    }
+}
 
 let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
     entries.forEach(function(entry) {
         let lazyImage = entry.target;
 
         if (entry.isIntersecting) {
-            
             pendingImages.push(lazyImage);
+
+            
+            if (!timeoutID) {
+                loadRandomImage();
+            }
         }
     });
 }, {
@@ -175,20 +199,6 @@ let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
 document.querySelectorAll('.lazy').forEach(function(lazyImage) {
     lazyImageObserver.observe(lazyImage);
 });
-
-
-setInterval(function() {
-    if (pendingImages.length > 0) {
-        let randomIndex = Math.floor(Math.random() * pendingImages.length);
-        let randomImage = pendingImages[randomIndex];
-        
-        
-        randomImage.src = randomImage.dataset.src;
-        
-        
-        pendingImages.splice(randomIndex, 1);
-    }
-}, 50000); 
 
 
 

@@ -1,0 +1,254 @@
+<head>
+  <style>
+    img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+    }
+  </style>
+</head>
+
+<div id="page" class="post">
+  <h1 class="title">Representer Theorem</h1>
+
+
+  <div class="post-date">
+    <time datetime="2022-02-10T00:00:00Z">Feb 10, 2022</time> <span class="readtime">&middot; 5 min read</span>
+  </div>
+  <div>
+   <p>In the previous post, we talked about Mercer&rsquo;s theorem and defined a mercer kernel as $\int f(x) f(y) k(x,y) dx dy \geq 0$ for any function $f$.
+We call a matrix $M$ positive semi-definite if $f^TMf\geq 0$ for any $f\in \mathbb{R}^n$.
+Then eigenvalues must be non-negative or:</p>
+<p>$$
+\lambda_1 \geq \lambda_2 \geq .. \geq \lambda_n \geq 0
+$$</p>
+<h3 id="reminder-eigenvectors-and-eigenfunctions">Reminder: Eigenvectors and eigenfunctions</h3>
+<p>The eigenvector of a matrix $M$ is obtained by:
+$$
+Mv_j = \lambda v_j
+$$</p>
+<p>Similarly, we can define eigenfunction when $M$ is limited in function space:</p>
+<p>$$
+Kf = \lambda_j f
+$$</p>
+<p>Where by definition:</p>
+<p>$$
+(Kf)(x)= \int K(x,y) f_j(y)dy
+$$</p>
+<p>Let&rsquo;s suppose that $K$ has this magical property:</p>
+<p>$$
+\int K(x-y) f(y) dy
+$$</p>
+<p>Then there is a name for this integral: <code>convolution</code>. We are taking a kernel and then convolving that kernel concerning function $f$.</p>
+<h2 id="hilbert-space">Hilbert Space</h2>
+<p>We define Hilbert&rsquo;s space of functions and then determine the inner product and norm in that space of functions.
+$$
+{ \sum \alpha_j K(x_j,.) =f(.) }
+$$</p>
+<h3 id="reminder">Reminder</h3>
+<p>In kernel density estimation, we define kernels centered at data points $x_i$: $1/hK(\frac{x_i-.}{h})$.
+But, in Hilbert space, there are no data points yet (i.e., $x_i$), and we instead have parameter $x_j$.
+Furthermore, those $\alpha_j$ are arbitrary and could be either positive or negative. On the other hand, in kernel density estimation, those $\alpha_j$ are uniformly distributed like $1/n$.</p>
+<p>Now let&rsquo;s define norms and inter products in this space:</p>
+<p>$$
+||f||_K = &lt;f,f&gt;_K
+$$</p>
+<p>Let&rsquo;s define functions:</p>
+<p>$$
+\begin{aligned}
+f(.) = \sum_j \alpha_j K(x_j,.) \\
+g(.) = \sum_i \beta_i K(x_i,.)
+\end{aligned}
+$$</p>
+<p>Then inner product is defined:
+$$
+&lt;f,g&gt; = \sum_{i,j} \alpha_j \beta_i K(x_j,y_i)
+$$</p>
+<p>Then we can define the norm:</p>
+<p>$$
+||f||_K^2 = \sum \alpha_i \alpha_j K(x_i,x_j)
+$$</p>
+<p>(note: the dimension of this space is infinite).</p>
+<h3 id="is-fg-well-defined">Is $&lt;f,g&gt;$ well defined?</h3>
+<p>If we define the same function in two different ways, we will have a problem.
+If we have another representation for $f$ and another one for $g$, does the inteproduct change?
+If it does, we will have a problem.</p>
+<p>$$
+\sum_{i,j} \alpha_j \beta_i K(x_j,x_i)
+$$</p>
+<p>Remember that kernel space has the reproducing property:</p>
+<p>$$
+&lt;K(x_i,.),f&gt; = f(x)
+$$</p>
+<p>Then:</p>
+<p>$$
+\begin{aligned}
+&amp; \sum_{i,j} \alpha_j \beta_i &lt;K(x_j,.),K(x_i,.)&gt; \\
+&amp;= \sum_j \beta_j &lt;K(x_i,.),\sum_i \beta_i K(y_i,.)&gt;_K \\
+&amp;= \sum_j \beta_j &lt;K(x_j,.),g(.)&gt;_K \\
+&amp;= \sum_j \beta_j g(x_j)
+\end{aligned}
+$$</p>
+<p>which doesn&rsquo;t depend on $\beta_i$ and $y_i$. Then it doesn&rsquo;t depend on how I represent $g$. Then this is well defined.
+This property does a lot of stuff work with the Mercer kernel.
+In kernel trick, you can take an algorithm and then Kernelize it.</p>
+<h2 id="representer-theorem-makes-regression-over-rkhs-works">Representer Theorem: Makes regression over RKHS works</h2>
+<p>What presenter theorem says the following is <strong>infinite dimensional regression</strong>:</p>
+<p>$$
+\begin{aligned}
+\hat{f}=\arg \min ||y-f(x)||^2+\lambda||f||_K^2 \\
+\end{aligned}
+$$</p>
+<p>This is basically minimizing $\sum (y_i-f(x_i))^2$ over training data. Then representer theorem also says that the following is a <strong>finite dimensional</strong> optimization:</p>
+<p>$$
+\hat{f} = \sum_i^{n} \alpha_i K(x_i,.) \quad \text{for some  } \alpha_i \in \mathbb{R}^n
+$$</p>
+<p>By solving this:</p>
+<p>$$
+\hat{\alpha} = \arg \min_{\alpha in \mathbb{R}^n} || Y -K \alpha ||^2 + \alpha^TK\alpha
+$$</p>
+<p>where $K  =[K(x_i,x_j)]_{n\times n} $</p>
+<h3 id="why-is-this-true">Why is this true?</h3>
+<p>Let&rsquo;s define:</p>
+<p>$$
+V = \text{span } \Big(K(x_1,.), K(x_2,.), ..,K(x_n,.)\Big)
+$$</p>
+<p>Let&rsquo;s define reproducing kernel Hilbert space:</p>
+<p>$$
+\mathcal{H}_K = V \oplus V^{\perp}
+$$</p>
+<p>is <strong>infinite dimmensional</strong>. $ V^{\perp}$ is the set of functions that are orthogonal to each one of $K(x_1,.), K(x_2,.), .., K(x_n,.)$.</p>
+<p>$$
+\begin{aligned}
+f \in \mathcal{H} : f = &amp;  v+g \\
+&amp; v \in V \\
+&amp; g \in V^{\perp}
+\end{aligned}
+$$</p>
+<p>Then we can write:</p>
+<p>$$
+\begin{aligned}
+f(x_i) = &amp; &lt;K(x_i,.),f&gt; \\
+= &amp; &lt;K(x_i,.),v+g&gt; \\
+= &amp; &lt;K(x_i,.),v&gt; + &lt;K(x_i,.),g&gt;
+\end{aligned}
+$$</p>
+<p>By definition, $g$ is perpendicular to all of these functions. Then:</p>
+<p>$$
+&lt;K(x_i,.),g&gt;=0
+$$</p>
+<h3 id="remark-when-i-take-a-datapoint-x_i-and-evaluate-it-on-f-it-doesnt-depend-on-what-is-on-orthogonal-complement-g">Remark: When I take a datapoint $x_i$ and evaluate it on $f$, it doesn&rsquo;t depend on what is on orthogonal complement $g$.</h3>
+<p>Now let&rsquo;s do the same thing for the norm:</p>
+<p>$$
+\begin{aligned}
+||f||_K^2 = &amp; ||v||_K^2 + ||g||_K^2 \\
+=&amp; \sum \alpha^T K \alpha
+\end{aligned}
+$$</p>
+<p>We showed that squared error doesn&rsquo;t depend on $g$. Now it&rsquo;s time for the penalty part.
+To minimize squared error, we can always mess with $\alpha$.
+But I can always reduce the penalty by taking $g$ small and more petite for a given squared error.
+Then minimizer has always $g=0$</p>
+<h3 id="remark-we-showed-that-arg-min-y-fx2lambdaf_k2-is-finite-dimmensional-ridge-regression">Remark: We showed that $\arg \min ||y-f(x)||^2+\lambda||f||_K^2$ is finite dimmensional ridge regression.</h3>
+<p>Now let&rsquo;s get back to matrices.
+Let&rsquo;s define $M$ is symmetric and positive definite matrix (i.e., $\lambda_j$s are real and $\lambda_j\geq 0$):</p>
+<p>$$
+M = U^T \Lambda U
+$$</p>
+<p>where $U$ is a orthogonal matrix and $\Lambda$ is a diagonal matrix.</p>
+<p>$$
+\Lambda = \begin{bmatrix}
+\lambda_1 &amp; .. &amp;  \\
+\vdots &amp;\ddots&amp; \vdots \\
+&amp; .. &amp;\lambda_n
+\end{bmatrix}
+$$</p>
+<p>Then we can write:
+$$
+\begin{aligned}
+M =&amp; U^T \Lambda^{1/2} \Lambda^{1/2} U \\
+=&amp; (\sqrt{\Lambda} U)^T(\sqrt{\Lambda} U) \\
+= &amp; \Phi^T \Phi
+\end{aligned}
+$$</p>
+<p>factors $\Phi \in \mathbb{R}^n$.</p>
+<h2 id="feature-representation-for-mercer-kernels">Feature representation for Mercer kernels</h2>
+<p>These factors are critical in machine learning because we can take them as features.
+For example, feature vector $\Phi_i \in \mathbb{R}^n$ for $i-$th data point.
+Indeed, features are dual forms for kernels.
+For example, we can take $X$ and make $G=XX^T$. We can show that it&rsquo;s a Mercer&rsquo;s kernel because it&rsquo;s positive and semi-definite.
+If I take Eigen functions of k:</p>
+<p>$$
+K \Phi_j = \lambda_j \Phi_j, \quad \lambda_j \geq 0
+$$</p>
+<p>Then we can define feature mapping:</p>
+<p>$$
+X \rightarrow \Phi(x) : (\sqrt{\lambda} \Phi_1,\sqrt{\lambda_2}\Phi_2,..) \quad \text{infinite dimmensional}
+$$</p>
+<p>Indeed, Mercer&rsquo;s kernel gives you another way of manipulating features.</p>
+<p>We covered this post in the intermediate machine learning SDS 365/565, Yale University, <a href="https://en.wikipedia.org/wiki/John_D._Lafferty">John Lafferty</a>, where I was TF.</p>
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+</div>
+  </main>
+
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+magnify("myimage", 3);
+
+</script>
+<footer>
+  <div>
+    <p>
+      &copy; iid.yale.edu | Yale University 2023
+
+
+
+
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="../../js/jquery.min.js"></script>
+  <script src="../../js/soho.js"></script>
+
+  <script src="https://dadashkarimi.github.io/js/blog.js"></script>
+
+
+</body>
+</html>

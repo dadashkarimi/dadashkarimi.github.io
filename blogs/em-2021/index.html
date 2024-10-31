@@ -1,0 +1,279 @@
+<head>
+  <style>
+    img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+    }
+  </style>
+</head>
+
+<div id="page" class="post">
+  <h1 class="title">Expectation Maximization</h1>
+
+
+  <div class="post-date">
+    <time datetime="2021-12-06T00:00:00Z">Dec 6, 2021</time> <span class="readtime">&middot; 5 min read</span>
+  </div>
+  <div>
+   <p>We discussed the EM algorithm on Gaussian Mixture models in the previous <a href="../mixture-2021.html">post</a>.
+In a Gaussian mixture model, the goal is to maximize the likelihood function
+with respect to the parameters (comprising the means and covariances of the
+components and the mixing coefficients).</p>
+<ol>
+<li>Initialize the means $\mu_k$, covariances $\Sigma_k$ and mixing coefficients $\pi_k$ , and
+evaluate the initial value of the log likelihood.</li>
+<li><strong>E step</strong>: Evaluate the responsibilities using the current parameter values.</li>
+</ol>
+<p>$$
+\begin{aligned}
+\gamma(z_k)  = &amp; p(z_k=1|x) \\\
+= &amp; \frac{p(z_k=1).p(x|z_k=1)}{\sum_{i=1}^Kp(z_j=1).p(x|z_j=1)} \\\
+=&amp; \frac{\pi_k.\text{Normal}(x|\mu_k,\Sigma_k)}{\sum_{i=1}^K\pi_j.\text{Normal}(x|\mu_j,\Sigma_j)}
+\end{aligned}
+$$</p>
+<ol start="3">
+<li>
+<p><strong>M step</strong>: Re-estimate the parameters using the current responsibilities. Where we saw that to find a minimizer, set the gradient to $0$:
+$$
+\begin{aligned}
+\mu_k = \frac{1}{N_k} \sum_{n=1}^N \gamma(z_{nk})x_n
+\end{aligned}
+$$
+which is weighted average data points where $N_k = \sum_{n=1}^N \gamma (z_{nk})$ is efficient number of data points assigned to cluster $k$.</p>
+</li>
+<li>
+<p>Similarly, if we fix $\mu,\pi$ we can optimize over $\Sigma$:</p>
+</li>
+</ol>
+<p>$$
+\begin{aligned}
+\Sigma_k = \frac{1}{N_k} \sum_{n=1}^N \gamma(z_{nk})(x_n-\mu_k)(x_n-\mu_k)^T
+\end{aligned}
+$$</p>
+<ol start="5">
+<li>If we fix $\mu,\Sigma$ we can then optimize over $\pi$:</li>
+</ol>
+<p>$$
+\pi_k = \frac{N_k}{N}
+$$</p>
+<ol start="6">
+<li>Evaluate the log-likelihood and check for convergence of either the parameters or the log-likelihood. If
+the convergence criterion is not satisfied, return to step 2:
+$$
+p(X|\mu,\Sigma,\pi) = \sum_{n=1}^N \ln \left\{ \sum_{k=1}^K \pi_k . \text{Normal}(x_n|\mu_k,\Sigma_k) \right\}
+$$</li>
+</ol>
+<p>Now, let&rsquo;s talk about a few basic concepts:</p>
+<h2 id="mixture-models-latent-variable-model">Mixture models (latent variable model)</h2>
+<p>Suppose we have a probabilistic model:
+$$
+p(x,z| \theta)
+$$</p>
+<p>Where:</p>
+<ol>
+<li>$x$: observed data</li>
+<li>$z$: hidden/latent variable $z\in \{ 1,..,K\}$ and $p(z=k)=\pi_k$ and $p(x|z) = \text{Normal}(\mu_k,\Sigma_k)$</li>
+<li>$\theta$: parameter</li>
+</ol>
+<p>Marginal on $x$ is defined as:
+$$
+p(x|\theta) = \sum_z p(x,z|\theta)
+$$</p>
+<p>Direct optimization of $p(x|\theta)$ is often tricky, but we can optimize complete data likelihood $p(x,z|\theta)$.
+We use <strong>EM</strong> algorithm to approximate $\max_{\theta} p(x|\theta)$ by repeating two steps:</p>
+<ol>
+<li><strong>E step</strong> (Expectation step)</li>
+<li>** M step** (Maximization step)</li>
+</ol>
+<p>Which are easier to implement.</p>
+<p><strong>Review:</strong>  a function $f: \mathbb{R} \rightarrow \mathbb{R}$ is convex if $f&rsquo;&rsquo;(x)\geq 0$ for all $x \in \mathbb{R}$.</p>
+<p><img src="../../images/convex.JPG" alt="Example"></p>
+<p>Equivalently we can say:</p>
+<p>$$
+f(\frac{x+y}{2}) \leq \frac{f(x)+f(y)}{2}
+$$</p>
+<p>We can write this down with the following equation (i.e., the previous one holds for $n=1$ and $\lambda_1=\lambda_2=\frac{1}{2}$):</p>
+<p>$$
+f(\sum_{i=1}^n \lambda_i x_i) \leq \sum_{i=1}^n \lambda_i f(x_i)
+$$</p>
+<p>for all $x_1,..,x_n \in \mathbb{R}$ and $\lambda_1,..,\lambda_n \geq 0$ and $\sum_{i=1}^n \lambda_i = 1$.</p>
+<p>Based on <strong>Jensen&rsquo;s inequality</strong> for all random variable $x$ (i.e., in our example the distribution of $x$ is $\sum_{i=1}^n \lambda_i \delta_{x_i}$):</p>
+<p>$$
+f(\mathbb{E}[x]) \leq \mathbb{E}[f(x)]
+$$</p>
+<h2 id="mle-for-theta">MLE for $\theta$</h2>
+<p>Let&rsquo;s say we want to find $\max_{\theta} \log p(x|\theta)$. Log-likelihood has summation inside logarithm:
+$$
+L(\theta) = \log p(x|\theta) = \log \sum_{z} p(x,z| \theta)
+$$</p>
+<p><strong>Idea:</strong> is to introduce an auxiliary distribution $q(z)$ over $z$ (i.e., $q(z) &gt; 0 , \sum_z q(z)=1$). Then we can lower bound the log-likelihood:</p>
+<p>$$
+\begin{aligned}
+\log p(x| \theta) = &amp; \log \sum_z p(x,z| \theta) \\
+=&amp; \log \sum_z \frac{q(z)}{q(z)} p(x,z| \theta) \\
+= &amp;  \log \sum_z q(z) \frac{p(x,z|\theta)}{q(z)} \\
+= &amp; \log \mathbb{E}_{z\sim q} \left[ \frac{p(x,z| \theta)}{q(z)}\right]
+\end{aligned}
+$$</p>
+<p>Then we can say:</p>
+<p>$$
+\log p(x|\theta) \geq \mathbb{E}_{z\sim q} \left[ \log \frac{p(x,z| \theta)}{q(z)}\right]
+$$</p>
+<p>which is derived from the <strong>Jensen&rsquo;s inequality</strong> for:</p>
+<p>$$
+f(x) = -\log x
+$$</p>
+<p>Which is not linear. This function is convex because:
+$$
+\begin{aligned}
+f&rsquo;(x) = - \frac{1}{x} \\
+f&rsquo;&rsquo;(x) = \frac{1}{x^2}
+\end{aligned}
+$$</p>
+<p>Then by <strong>Jensen&rsquo;s inequality</strong> for any random variable $Y$:
+$$
+\begin{aligned}
+f(\mathbb{E}[Y]) \leq &amp; \mathbb{E}[f(Y)] \\
+-\log  \mathbb{E}[Y] \leq &amp; \mathbb{E}[-\log Y] \\
+\mathbb{E}[\log Y] \leq &amp; \log \mathbb{E}[Y]
+\end{aligned}
+$$</p>
+<p>For example if we take $Y=\frac{p(x,z|\theta)}{q(z)}$ with $z\sim q$, we can say:</p>
+<p>$$
+\mathbb{E}[\log \frac{p(x,z|\theta)}{q(z)}] \leq  \log \mathbb{E}_q[\frac{p(x,z|\theta)}{q(z)}]
+$$</p>
+<p>Therefore, for any distribution, we have a lower bound:
+$$
+\log p(x|\theta) \geq \text{ELBO}(x,q|\theta)
+$$</p>
+<p>where <strong>ELBO</strong> (evidence lower bound ) is
+$$
+\text{ELBO}(x,q|\theta) = \sum_z q(z) \log \frac{p(x,z|\theta)}{q(z)}
+$$</p>
+<p>So the question is, what is the best distribution $q$? When do we have equality in <strong>Jensen&rsquo;s inequality</strong> ?
+In general, inequality:
+$$
+f(\mathbb{E}[x]) \leq \mathbb{E}[f(x)]
+$$</p>
+<p>becomes equality (i.e., $f(\mathbb{E}[x]) = \mathbb{E}[f(x)]$) if:</p>
+<ol>
+<li>$f(x)$ is linear</li>
+<li>$Y$ is a constant random variable.</li>
+</ol>
+<p>As discussed earlier, the function $f(x)= -\log x$ is not linear. Then, it has to be a constant:</p>
+<p>$$
+Y = \frac{p(x,z|\theta)}{q(z)}
+$$</p>
+<p>which means $q(z) \propto p(x,z|\theta)$ over $z$. Since $q(z)$ is a distribution, $\sum_z q(z) =1$. Then, we must have the following:</p>
+<p>$$
+q(z) = \frac{p(x,z|\theta)}{\sum_{z&rsquo;}p(x,z&rsquo;|\theta)} = \frac{p(x,z|\theta)}{p(x|\theta)} = p(z|x,\theta)
+$$</p>
+<p><strong>E step</strong>: $q(z) = p(z|x,\theta)$ then we have equality in bound:
+$$
+\log p(x|\theta) = \text{ELBO}(x,q|\theta)
+$$</p>
+<p>when $q(z) = p(z|x,\theta^{\text{old}})$ then:
+$$
+\begin{aligned}
+\text{ELBO}(x,q|\theta)= &amp; \sum_z q(z) \log \frac{p(x,z|\theta)}{q(z)} \\
+= &amp; \sum_z p(z|x,\theta^{\text{old}}) \log p(x,z|\theta) - \sum_z q(z) \log q(z) \\
+= &amp; Q(\theta,\theta^{\text{old}}) + \text{Entropy}(q) \\
+= &amp; Q(\theta,\theta^{\text{old}}) + c
+\end{aligned}
+$$</p>
+<p>then we can update $\theta$ by:</p>
+<p><strong>M Step</strong>:
+$$
+\theta^{\text{new}} = \arg \max_{\theta} Q(\theta,\theta^{\text{old}})
+$$</p>
+<p>where $Q(\theta,\theta^{\text{old}}) = \sum_z p(z| x,\theta^{\text{old}}) \log p(x,z|\theta)$.</p>
+<p>EM algorithm converges to local maxima because each step improves log-likelihood:
+$$
+\log p(x|\theta^{\text{new}}) \geq \log p(x|\theta^{\text{old}})
+$$</p>
+<p>Because:</p>
+<p>$$
+\begin{aligned}
+\log p(x|\theta^{\text{new}}) \geq &amp; \text{ELBO} (x,q| \theta^{\text{new}}),(\text{i.e., } q = p(z| x,\theta^{\text{old}}))  \\
+\geq &amp; \text{ELBO}(x,q|\theta^{\text{old}}), (\text{bc }\theta^{\text{new}}  = \arg \max_{\theta} Q(\theta,\theta^{\text{old}})) \\
+=&amp; \log p(x|\theta^{\text{old}})
+\end{aligned}
+$$</p>
+<p>As you see, EM is an iterative method to maximize $\log p(x|\theta)$ and may converge to local maxima. We may need to run multiple times.</p>
+<p>We also have the following decomposition:</p>
+<p>$$
+\text{ELBO}(x,q|\theta) = \mathcal{L}(q,\theta) = \log p(x|\theta) - \text{KL}(q || p(z|x,\theta)
+$$</p>
+<p>where $\text{KL}(q || p(z|x,\theta)) = \sum_z q(z)\log \frac{q(z)}{p(z|x,\theta)}$.</p>
+<ol>
+<li>Since $\text{KL} \geq 0 $ then $\text{ELBO}(x,q|\theta)\leq \log p(x|\theta)$.</li>
+<li>$\text{ELBO}(x,q|\theta) = \log p(x|\theta)$ if $\text{KL}(q || p(z|x,\theta)$ if and only if $q(z) = p(z|x,\theta)$</li>
+</ol>
+<p>In general, for any distribution $q(z),p(z)$ the <strong>Kullback-Leible divergence</strong> of $q$ with respect to $p$ is :</p>
+<p>$$
+\text{KL}(p || q) = \sum_z q(z) \log \frac{q(z)}{p(z)}
+$$</p>
+<p>These are some graphs that you can find in the Bishop book illustrating <strong>E-step</strong>:
+<img src="../../images/e-step.JPG" alt="Example"></p>
+<p>and <strong>M-step</strong>:
+<img src="../../images/m-step.JPG" alt="Example"></p>
+<p>and the decomposition:</p>
+<p><img src="../../images/kl-docm.JPG" alt="Example"></p>
+<p>Properties:</p>
+<ol>
+<li>$\text{KL}(p || q) \geq 0 \quad \forall p,q$</li>
+<li>$\text{KL}(p || q) = 0 \iff p=q$</li>
+<li>$\text{KL}(p || q) \neq \text{KL}(q || p)$</li>
+</ol>
+<p>We covered this post in the introduction to machine learning CPCS 481/581, Yale University, <a href="http://www.cs.yale.edu/homes/wibisono/">Andre Wibisono</a> where I (joint with <a href="http://iid.yale.edu/people/siddhart.md/">Siddharth Mitra</a>) was TF.</p>
+
+
+
+
+  </div>
+
+
+
+
+
+</div>
+  </main>
+
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+magnify("myimage", 3);
+
+</script>
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="../../js/jquery.min.js"></script>
+  <script src="../../js/soho.js"></script>
+
+  <script src="https://dadashkarimi.github.io/js/blog.js"></script>
+
+
+</body>
+</html>

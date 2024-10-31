@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+<meta charset="utf-8">
+<title>
+    Keypress is bananas &ndash; Monica Dinculescu
+  </title>
+<meta name="author" content="Monica Dinculescu" />
+<meta name="description" content="Monica Dinculescu's blog" />
+<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+<link rel="alternate" type="application/rss+xml" href="../../atom.xml" />
+<link rel="stylesheet" href="../../css/base.css" type="text/css" media="screen, projection" />
+<link rel="shortcut icon" type="image/x-icon" href="../../images/favicon.png" />
+<link rel="icon" type="image/png" href="../../images/favicon.png">
+<link rel="manifest" href="../../manifest.json">
+
+<link rel="manifest" href="https://meowni.ca/posts/keypress-is-bananas/manifest.json">
+
+<meta name="theme-color" content="#7BE4D5">
+
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="Monica's blog">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Monica's blog">
+
+<link rel="apple-touch-icon" sizes="192x192" href="https://meowni.ca/posts/keypress-is-bananas/icons/icon-192x192.png">
+
+<meta name="msapplication-TileImage" content="images/manifest/icon-192x192.png">
+<meta name="msapplication-TileColor" content="#7BE4D5">
+<meta name="msapplication-tap-highlight" content="no">
+
+<meta name="twitter:card" content="Monica Dinculescu's blog">
+<meta name="twitter:site" content="@notwaldorf">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="my-app">
+<meta property="og:image" content="icons/icon-192x192.png" />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-47334320-2']);
+    _gaq.push(['_setDomainName', 'meowni.ca']);
+    _gaq.push(['_trackPageview']);
+    (function () {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</head>
+
+<body>
+<nav>
+<ul>
+<li id="home_link" class="og"><a href="../../index.html">🏠</a></li>
+<li><a href="../../is.html">about</a></li>
+<li><a href="../../works.html">hire me</a></li>
+<li><a href="https://meownica.studio" target="_blank" rel="noreferrer">art</a></li>
+<li><a href="../../reads.html">reading</a></li>
+<li><a href="../../writes.html">writing</a></li>
+<li><a href="../../makes.html">projects</a></li>
+<li><a href="../../talks.html">talks</a></li>
+</ul>
+</nav>
+<div class="splash short">
+<div class="splash-wrapper">
+<div>
+<section class="byline">
+June 2, 2015
+</section>
+<div>
+<h1><a href="index.html">Keypress is bananas</a></h1>
+</div>
+</div>
+</div>
+</div>
+<section class="content">
+<p>The <code class="language-plaintext highlighter-rouge">keypress</code> event works maddeningly differently in Chrome/Safari and Firefox, and this is the story of how I spent two hours discovering that, so that hopefully you don’t have to.</p>
+<h2 id="keypress-what">Keypress what?</h2>
+<p>A <code class="language-plaintext highlighter-rouge">keypress</code> event is one of the events you get when you mash on the keyboard. It’s special because according to the <a href="https://developer.mozilla.org/en-US/docs/Web/Events/keypress">spec</a>, you should only get a <code class="language-plaintext highlighter-rouge">keypress</code> event for keystrokes that produce printable characters. So you’ll get it for things like letters and symbols, but not for <code class="language-plaintext highlighter-rouge">backspace</code> and <code class="language-plaintext highlighter-rouge">left arrow</code>.</p>
+<p>It’s a great event to have if you want to write some as-you-type validation on an input, and you want to be able to dismiss the non-printable characters (which will still generate key events, but are uninteresting to the validation bit).</p>
+<p>Chrome, Safari and IE10 agree with this interpretation, which is great news.</p>
+<p>To be contrarian, Firefox (38; I don’t know about Aurora) <em>always</em> sends a <code class="language-plaintext highlighter-rouge">keypress</code> event for anything you type. It’s basically a <code class="language-plaintext highlighter-rouge">keydown</code> event from what I see. Now you have to get rid of control characters yourself and you get write code that doesn’t make sense on the other platforms! Yay! (not yay)</p>
+<p>I call shenanigans.</p>
+<h2 id="mind-your-keycodes-and-charcodes">Mind your keyCodes and charCodes</h2>
+<p>From looking at the <a href="https://developer.mozilla.org/en-US/docs/Web/Events/keypress">spec</a>, we expect a <code class="language-plaintext highlighter-rouge">keypress</code> event to have:</p>
+<ul>
+<li><code class="language-plaintext highlighter-rouge">keyCode</code>, a number code that represents the key you’ve pressed. For example, <code class="language-plaintext highlighter-rouge">q</code> is <code class="language-plaintext highlighter-rouge">113</code>. This is allegedly deprecated, but don’t worry, both Firefox and Chrome implement it, but differently.</li>
+<li><code class="language-plaintext highlighter-rouge">charCode</code>, the unicode number of the key. This code only exists for <code class="language-plaintext highlighter-rouge">keypress</code>. Like before, it’s deprecated, but like before, it’s implemented by both browsers. Differently.</li>
+<li><code class="language-plaintext highlighter-rouge">key</code>, the value of the key represented by the event. According to that spec, this one is unimplemented. Worry not, Firefox implements it just fine (Chrome doesn’t). It is the hero we deserve, but not the one we get right now.</li>
+</ul>
+<h2>😭</h2>
+<p>What you get out of this is spectacularly annoying. I wrote some <a href="http://output.jsbin.com/tuboguyido/1/">code</a> that basically prints out what the <code class="language-plaintext highlighter-rouge">keypress</code> event looks like, and found:</p>
+<ul>
+<li>As promised, in Chrome/Safari/IE10, we only get the <code class="language-plaintext highlighter-rouge">keypress</code> event for printable things. The event always has the same values for <code class="language-plaintext highlighter-rouge">keyCode</code> and <code class="language-plaintext highlighter-rouge">charCode</code>, and doesn’t have a <code class="language-plaintext highlighter-rouge">key</code>.</li>
+</ul>
+<p><img src="../../images/keypress/chrome.gif" alt="Chrome keypress events" /></p>
+<ul>
+<li>In Firefox, you get the <code class="language-plaintext highlighter-rouge">keypress</code> event for ALL the things, BUT:
+<ul>
+<li>for printable characters, <code class="language-plaintext highlighter-rouge">keyCode = 0</code>, and <code class="language-plaintext highlighter-rouge">charCode</code> has a sane value.</li>
+<li>for control characters, <code class="language-plaintext highlighter-rouge">charCode = 0</code>, and <code class="language-plaintext highlighter-rouge">keyCode</code> has a sane value.</li>
+<li>this is super because if you’ve been testing on the other browsers and have been using <code class="language-plaintext highlighter-rouge">String.fromCharCode()</code>, you’re going to get hilariously bad results if you use the wrong code. Like how <code class="language-plaintext highlighter-rouge">arrow left</code> could actually be <code class="language-plaintext highlighter-rouge">%</code>.</li>
+<li>see how <code class="language-plaintext highlighter-rouge">key</code> is kind of nice though? One day, at a browser near you.</li>
+</ul>
+</li>
+</ul>
+<p><img src="../../images/keypress/firefox.gif" alt="Chrome keypress events" /></p>
+<p>There, now you know. And knowing is half the battle.</p>
+<h2 id="ps">P.S.</h2>
+<p>If you read this in the future and the future doesn’t work like I said it does, either I was wrong (highly likely), or someone fixed something. Let me know and I can make updates.</p>
+<div class="prev-next">
+<a href="../chromium-owners.html">&laquo; Why Chromium has code owners</a>
+<a href="../styling-the-dome/index.html">Styling the Shadow DOM or: a metaphor gone too far &raquo;</a>
+</div>
+</section>
+<div class="footer">
+<div class="thanks">
+<span>Thanks for reading! <span class="og" style="color: var(--red)">❤︎</span></span>
+<a href="https://twitter.com/share" class="twitter-share-button" data-via="notwaldorf" title="Tweet at me!" aria-label="Tweet at me!">Tweet</a>
+</div>
+</div>
+<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
+</body>
+<script>
+  'use strict';
+
+  // Load the pygments stylesheet so that it's not render blocking.
+  var head = document.head;
+  var link = document.createElement('link');
+  link.type = 'text/css';
+  link.rel = 'stylesheet';
+  link.href = '/css/pygments.css'
+  head.appendChild(link);
+</script>
+</html>

@@ -1,0 +1,731 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+<title>👻</title>
+<script>
+    function fitImage(img, delta) {
+      delta = delta || 100;
+      img.height = window.innerHeight - delta;
+    }
+    function fitIframe(iframe) {
+      iframe.width = window.innerWidth - 100;
+      iframe.height = window.innerHeight - 100;
+    }
+  </script>
+<script src="emoji-web-components-art-talk/bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+<link rel="import" href="emoji-web-components-art-talk/bower_components/literally/a-presentation.html">
+<link rel="import" href="emoji-web-components-art-talk/bower_components/literally/a-slide.html">
+<link rel="import" href="emoji-web-components-art-talk/bower_components/emoji-rain/emoji-rain.html">
+<link rel="stylesheet" href="emoji-web-components-art-talk/bower_components/literally/sample-theme.css">
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,700italic,700,400italic,100,100italic" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+<link href="emoji-web-components-art-talk/style.css" rel="stylesheet">
+</head>
+<body unresolved>
+<a-presentation id="presentation">
+
+<a-slide class="coral-background" style="line-height: 0.9">
+<div class="title text-mustard">+ emoji</div>
+<div class="title text-cyan">+ web components</div>
+<div class="title">= art</div>
+</a-slide>
+<a-slide class="coral-background" align-center>
+<div class="title">@notwaldorf</div>
+</a-slide>
+<a-slide class="coral-background" align-center>
+<video controls style="height:90vh;">
+<source src="emoji-web-components-art-talk/images/elements.mp4" type="video/mp4">
+</video>
+</a-slide>
+<a-slide class="coral-background" align-center>
+<emoji-rain drops="400" active style="position:absolute; z-index:2; top:0" id="rain"></emoji-rain>
+
+<div class="title" style="font-size:110px;">✨✨e<span class="text-cyan">m</span>o<span class="text-mustard">j</span>i<span class="text-cyan">n</span>e<span class="text-mustard">e</span>r✨✨</div>
+
+</a-slide>
+<a-slide class="dark-grey" align-center>
+<div class="frame-title"><span class="text-og">@punchesbears</span></div>
+<iframe src="https://twitter.com/i/videos/tweet/760315448202190848" frameBorder="0" onload="fitIframe(this)"></iframe>
+</a-slide>
+<a-slide class="coral-background" align-center>
+<div class="title">right?</div>
+</a-slide>
+
+<a-slide class="theme-green" align-center>
+<div class="title">back to the art</div>
+</a-slide>
+<a-slide class="theme-green" align-center>
+<div class="title">art is hard</div>
+</a-slide>
+<a-slide class="dark-grey" align-center>
+<div class="frame-title">Renoir: <span class="text-og">Bal du moulin de la Galette</span></div>
+<img src="http://totallyhistory.com/wp-content/uploads/2011/11/Bal-du-moulin-de-la-Galette.jpg" onload="fitImage(this)">
+</a-slide>
+<a-slide class="grey" align-center>
+<img src="emoji-web-components-art-talk/images/colour-by-numbers/pizza1.png" onload="fitImage(this,0)">
+</a-slide>
+<a-slide class="grey" align-center>
+<img src="emoji-web-components-art-talk/images/colour-by-numbers/pizza2.png" onload="fitImage(this,0)">
+</a-slide>
+<a-slide class="theme-green" align-right>
+<div class="title">art is fun</div>
+</a-slide>
+<a-slide class="theme-green" align-right>
+<div class="title"><span class="text-mustard">sharing</span> art is fun</div>
+</a-slide>
+
+<a-slide class="dark-grey" align-center>
+<div class="frame-title">jenn schiffer: <span class="text-og">make8bitart.com</span></div>
+<iframe src="https://make8bitart.com/" frameBorder="0" onload="fitIframe(this)"></iframe>
+</a-slide>
+<a-slide class="dark-grey" align-center>
+<div class="frame-title">jenn schiffer: <span class="text-og">selfie</span></div>
+<img src="http://jennmoney.biz/art/pixels/haircut3.png" onload="fitImage(this)"></iframe>
+</a-slide>
+<a-slide class="dark-grey" align-center>
+<div class="frame-title">jenn schiffer: <span class="text-og">var t;</span></div>
+<iframe src="https://vart.institute/magritte/demo.html" frameBorder="0" onload="fitIframe(this)"></iframe>
+</a-slide>
+<a-slide class="dark-grey" align-center>
+<div class="frame-title">mu-an chiou: <span class="text-og">megamoji</span></div>
+<iframe src="https://megamoji.muan.co/" frameBorder="0" onload="fitIframe(this)"></iframe>
+</a-slide>
+<a-slide class="dark-grey" align-center>
+<div class="frame-title">megamoji cat <span class="text-og">(by yours truly)</span></div>
+<img src="emoji-web-components-art-talk/images/megacat.png" onload="fitImage(this)"></iframe>
+</a-slide>
+<a-slide class="dark-grey" align-center>
+<div class="frame-title">muster</div>
+<iframe src="muster/index.html#6&23" frameBorder="0" onload="fitIframe(this)" allowtransparency="true" style="background: #FFFFFF;"></iframe>
+</a-slide>
+<a-slide class="theme-green" align-left>
+<div class="title">give people better<br><span class="text-mustard">brushes</span></div>
+</a-slide>
+<a-slide class="theme-green" align-left>
+<div class="title">give the web better<br><span class="text-mustard">brushes</span></div>
+</a-slide>
+<a-slide class="theme-green" align-left>
+<div class="title">do better than divs</div>
+</a-slide>
+
+<a-slide class="theme-green">
+<div class="horizontal">
+<div style="width: 30vw" class="invisible">
+<div class="pretitle">&lt;header&gt;</div>
+<div class="pretitle">&lt;nav&gt;</div>
+<div class="pretitle">&lt;article&gt;</div>
+</div>
+<div class="title">the web has<br><span class="text-mustard">semantics</span></div>
+</div>
+</a-slide>
+<a-slide class="theme-green">
+<div class="horizontal">
+<div style="width: 30vw">
+<div class="pretitle">&lt;header&gt;</div>
+<div class="pretitle">&lt;nav&gt;</div>
+<div class="pretitle">&lt;article&gt;</div>
+</div>
+<div class="title">the web has<br><span class="text-mustard">semantics</span></div>
+</div>
+</a-slide>
+<a-slide class="theme-green">
+<div class="horizontal">
+<div style="width: 30vw" class="invisible">
+<div class="pretitle">&lt;input&gt;</div>
+<div class="pretitle">&lt;video&gt;</div>
+<div class="pretitle">&lt;summary&gt;</div>
+</div>
+<div class="title">the web has<br><span class="text-mustard">encapsulation</span></div>
+</div>
+</a-slide>
+<a-slide class="theme-green">
+<div class="horizontal">
+<div style="width: 30vw">
+<div class="pretitle">&lt;input&gt;</div>
+<div class="pretitle">&lt;video&gt;</div>
+<div class="pretitle">&lt;summary&gt;</div>
+</div>
+<div class="title">the web has<br><span class="text-mustard">encapsulation</span></div>
+</div>
+</a-slide>
+<a-slide style="background:#242424;" align-center>
+<img src="emoji-web-components-art-talk/images/native-sd/input1.png">
+</a-slide>
+<a-slide style="background:#242424;" align-center>
+<img src="emoji-web-components-art-talk/images/native-sd/input2.png">
+</a-slide>
+<a-slide style="background:#242424;" align-center>
+<img src="emoji-web-components-art-talk/images/native-sd/video.png">
+</a-slide>
+<a-slide class="theme-green">
+<div class="horizontal">
+<div style="width: 30vw">
+<div class="pretitle">&lt;input&gt;</div>
+<div class="pretitle">&lt;video&gt;</div>
+<div class="pretitle">&lt;summary&gt;</div>
+</div>
+<div class="title">the web has<br><span class="text-mustard">encapsulation</span></div>
+</div>
+</a-slide>
+<a-slide class="theme-green">
+<div class="horizontal">
+<div style="width: 30vw">
+<div class="pretitle">&nbsp;</div>
+<div class="pretitle">lol no</div>
+<div class="pretitle">&nbsp;</div>
+</div>
+<div class="title">the web has<br><span class="text-mustard">&lt;emoji-brush&gt;</span></div>
+</div>
+</a-slide>
+<a-slide class="theme-green">
+<div class="title">= web components</div>
+<div class="title text-mustard">+ encapsulation</div>
+<div class="title text-mustard">+ semantics</div>
+</a-slide>
+<a-slide class="dark-grey" full-width>
+<div class="code-snippet bigger">
+<pre>
+      <span class="keyword">&lt;a-presentation&gt;</span>
+        <span class="keyword">&lt;a-slide&gt;</span>
+          <span class="keyword">&lt;h1</span> <span class="attr">class=</span><span class="value">&quot;title&quot;</span><span class="keyword">&gt;</span>awesome!<span class="keyword">&lt;/h1&gt;</span>
+        <span class="keyword">&lt;/a-slide&gt;</span>
+      <span class="keyword">&lt;/a-presentation&gt;</span>
+        </pre>
+</div>
+</a-slide>
+<a-slide>
+<h1 class="title">awesome!</h1>
+</a-slide>
+<a-slide class="theme-red">
+<div class="title">polymer 101</div>
+</a-slide>
+
+<a-slide class="dark-grey" full-width>
+<div class="code-snippet smaller">
+<pre>
+        <span class="keyword">&lt;dom-module</span> <span class="attr">id=</span><span class="value">&quot;a-slide&quot;</span><span class="keyword">&gt;</span>
+          <span class="keyword invisible">&lt;style&gt;...&lt;/style&gt;</span>
+
+          <span class="invisible"><span class="keyword">&lt;template&gt;</span>
+            <span class="keyword">&lt;div</span> <span class="attr">class=</span><span class="value">&quot;content-wrapper&quot;</span><span class="keyword">&gt;</span>
+              <span class="keyword">&lt;content</span> <span class="attr">select=</span><span class="value">.title</span><span class="keyword">&gt;&lt;/content&gt;</span>
+            <span class="keyword">&lt;/div&gt;</span>
+          <span class="keyword">&lt;/template&gt;</span></span>
+
+          <span class="invisible"><span class="keyword">&lt;script&gt;</span>
+            <span class="attr text-og">Polymer</span><span>({</span>
+              <span class="attr">is</span><span class="keyword">:</span> <span class="value">&#39;a-slide&#39;</span>
+            <span>});</span>
+          <span class="keyword">&lt;/script&gt;</span></span>
+        <span class="keyword">&lt;/dom-module&gt;</span>
+    </pre></div>
+</pre>
+</div>
+</a-slide>
+<a-slide class="dark-grey" full-width>
+<div class="code-snippet smaller">
+<pre>
+        <span class="keyword">&lt;dom-module</span> <span class="attr">id=</span><span class="value">&quot;a-slide&quot;</span><span class="keyword">&gt;</span>
+          <span class="keyword">&lt;style&gt;...&lt;/style&gt;</span>
+
+          <span class="invisible"><span class="keyword">&lt;template&gt;</span>
+            <span class="keyword">&lt;div</span> <span class="attr">class=</span><span class="value">&quot;content-wrapper&quot;</span><span class="keyword">&gt;</span>
+              <span class="keyword">&lt;content</span> <span class="attr">select=</span><span class="value">.title</span><span class="keyword">&gt;&lt;/content&gt;</span>
+            <span class="keyword">&lt;/div&gt;</span>
+          <span class="keyword">&lt;/template&gt;</span></span>
+
+          <span class="invisible"><span class="keyword">&lt;script&gt;</span>
+            <span class="attr text-og">Polymer</span><span>({</span>
+              <span class="attr">is</span><span class="keyword">:</span> <span class="value">&#39;a-slide&#39;</span>
+            <span>});</span>
+          <span class="keyword">&lt;/script&gt;</span></span>
+        <span class="keyword">&lt;/dom-module&gt;</span>
+    </pre></div>
+</pre>
+</div>
+</a-slide>
+<a-slide class="dark-grey" full-width>
+<div class="code-snippet smaller">
+<pre>
+        <span class="keyword">&lt;dom-module</span> <span class="attr">id=</span><span class="value">&quot;a-slide&quot;</span><span class="keyword">&gt;</span>
+          <span class="keyword">&lt;style&gt;...&lt;/style&gt;</span>
+
+          <span class="keyword">&lt;template&gt;</span>
+            <span class="keyword">&lt;div</span> <span class="attr">class=</span><span class="value">&quot;content-wrapper&quot;</span><span class="keyword">&gt;</span>
+              <span class="keyword">&lt;content</span> <span class="attr">select=</span><span class="value">".title"</span><span class="keyword">&gt;&lt;/content&gt;</span>
+            <span class="keyword">&lt;/div&gt;</span>
+          <span class="keyword">&lt;/template&gt;</span>
+
+          <span class="invisible"><span class="keyword">&lt;script&gt;</span>
+            <span class="attr text-og">Polymer</span><span>({</span>
+              <span class="attr">is</span><span class="keyword">:</span> <span class="value">&#39;a-slide&#39;</span>
+            <span>});</span>
+          <span class="keyword">&lt;/script&gt;</span></span>
+        <span class="keyword">&lt;/dom-module&gt;</span>
+    </pre></div>
+</pre>
+</div>
+</a-slide>
+<a-slide class="dark-grey" full-width>
+<div class="code-snippet smaller">
+<pre>
+        <span class="keyword">&lt;dom-module</span> <span class="attr">id=</span><span class="value">&quot;a-slide&quot;</span><span class="keyword">&gt;</span>
+          <span class="keyword">&lt;style&gt;...&lt;/style&gt;</span>
+
+          <span class="keyword">&lt;template&gt;</span>
+            <span class="keyword">&lt;div</span> <span class="attr">class=</span><span class="value">&quot;content-wrapper&quot;</span><span class="keyword">&gt;</span>
+              <span class="keyword">&lt;content</span> <span class="attr">select=</span><span class="value">".title"</span><span class="keyword">&gt;&lt;/content&gt;</span>
+            <span class="keyword">&lt;/div&gt;</span>
+          <span class="keyword">&lt;/template&gt;</span>
+
+          <span class="keyword">&lt;script&gt;</span>
+            <span class="attr text-og">Polymer</span><span>({</span>
+              <span class="attr">is</span><span class="keyword">:</span> <span class="value">&#39;a-slide&#39;</span>
+            <span>});</span>
+          <span class="keyword">&lt;/script&gt;</span>
+        <span class="keyword">&lt;/dom-module&gt;</span>
+    </pre></div>
+</pre>
+</div>
+</a-slide>
+
+<a-slide class="dark-grey" full-width>
+<div class="code-snippet smaller">
+<pre>
+          <span class="keyword">&lt;script&gt;</span>
+            <span class="keyword text-og">Polymer</span><span>({</span>
+              <span class="keyword">is</span><span class="keyword">:</span> <span class="value">&#39;a-presentation&#39;</span><span>,</span>
+
+              <span class="invisible"><span class="keyword">properties</span><span class="keyword">:</span> <span>{</span>
+                <span class="attr text-og">currentSlide</span><span class="keyword">:</span> <span>{</span>
+                  <span class="keyword">type</span><span class="keyword">:</span> <span class="value text-og">Number,</span>
+                  <span class="keyword">value</span><span class="keyword">:</span> <span class="value">0</span><span>,</span>
+                  <span class="keyword">notify</span><span class="keyword">:</span> <span class="value">true</span>
+                <span>}</span>
+              <span>},</span></span>
+
+              <span class="invisible"><span class="keyword">attached</span><span class="keyword">:</span> <span class="value">function</span><span>()</span> <span>{...},</span></span>
+              <span class="invisible"><span class="keyword">next</span><span class="keyword">:</span> <span class="value">function</span><span>()</span> <span>{...},</span>
+              <span class="keyword">previous</span><span class="keyword">:</span> <span class="value">function</span><span>()</span> <span>{...}</span></span>
+            <span>});</span>
+          <span class="keyword">&lt;/script&gt;</span>
+        </pre>
+</div>
+</a-slide>
+<a-slide class="dark-grey" full-width>
+<div class="code-snippet smaller">
+<pre>
+          <span class="keyword">&lt;script&gt;</span>
+            <span class="keyword text-og">Polymer</span><span>({</span>
+              <span class="keyword">is</span><span class="keyword">:</span> <span class="value">&#39;a-presentation&#39;</span><span>,</span>
+
+              <span class="keyword">properties</span><span class="keyword">:</span> <span>{</span>
+                <span class="attr text-og">currentSlide</span><span class="keyword">:</span> <span>{</span>
+                  <span class="keyword">type</span><span class="keyword">:</span> <span class="value text-og">Number,</span>
+                  <span class="keyword">value</span><span class="keyword">:</span> <span class="value">0</span><span>,</span>
+                  <span class="keyword">notify</span><span class="keyword">:</span> <span class="value">true</span>
+                <span>}</span>
+              <span>},</span>
+
+              <span class="invisible"><span class="keyword">attached</span><span class="keyword">:</span> <span class="value">function</span><span>()</span> <span>{...},</span></span>
+              <span class="invisible"><span class="keyword">next</span><span class="keyword">:</span> <span class="value">function</span><span>()</span> <span>{...},</span>
+              <span class="keyword">previous</span><span class="keyword">:</span> <span class="value">function</span><span>()</span> <span>{...}</span></span>
+            <span>});</span>
+          <span class="keyword">&lt;/script&gt;</span>
+        </pre>
+</div>
+</a-slide>
+<a-slide class="dark-grey" full-width>
+<div class="code-snippet smaller">
+<pre>
+          <span class="keyword">&lt;script&gt;</span>
+            <span class="keyword text-og">Polymer</span><span>({</span>
+              <span class="keyword">is</span><span class="keyword">:</span> <span class="value">&#39;a-presentation&#39;</span><span>,</span>
+
+              <span class="keyword">properties</span><span class="keyword">:</span> <span>{</span>
+                <span class="attr text-og">currentSlide</span><span class="keyword">:</span> <span>{</span>
+                  <span class="keyword">type</span><span class="keyword">:</span> <span class="value text-og">Number,</span>
+                  <span class="keyword">value</span><span class="keyword">:</span> <span class="value">0</span><span>,</span>
+                  <span class="keyword">notify</span><span class="keyword">:</span> <span class="value">true</span>
+                <span>}</span>
+              <span>},</span>
+
+              <span class="keyword">attached</span><span class="keyword">:</span> <span class="value">function</span><span>()</span> <span>{...},</span>
+              <span class="invisible"><span class="keyword">next</span><span class="keyword">:</span> <span class="value">function</span><span>()</span> <span>{...},</span>
+              <span class="keyword">previous</span><span class="keyword">:</span> <span class="value">function</span><span>()</span> <span>{...}</span></span>
+            <span>});</span>
+          <span class="keyword">&lt;/script&gt;</span>
+        </pre>
+</div>
+</a-slide>
+<a-slide class="dark-grey" full-width>
+<div class="code-snippet smaller">
+<pre>
+          <span class="keyword">&lt;script&gt;</span>
+            <span class="keyword text-og">Polymer</span><span>({</span>
+              <span class="keyword">is</span><span class="keyword">:</span> <span class="value">&#39;a-presentation&#39;</span><span>,</span>
+
+              <span class="keyword">properties</span><span class="keyword">:</span> <span>{</span>
+                <span class="attr text-og">currentSlide</span><span class="keyword">:</span> <span>{</span>
+                  <span class="keyword">type</span><span class="keyword">:</span> <span class="value text-og">Number,</span>
+                  <span class="keyword">value</span><span class="keyword">:</span> <span class="value">0</span><span>,</span>
+                  <span class="keyword">notify</span><span class="keyword">:</span> <span class="value">true</span>
+                <span>}</span>
+              <span>},</span>
+
+              <span class="keyword">attached</span><span class="keyword">:</span> <span class="value">function</span><span>()</span> <span>{...},</span>
+              <span class="keyword">next</span><span class="keyword">:</span> <span class="value">function</span><span>()</span> <span>{...},</span>
+              <span class="keyword">previous</span><span class="keyword">:</span> <span class="value">function</span><span>()</span> <span>{...}</span>
+            <span>});</span>
+          <span class="keyword">&lt;/script&gt;</span>
+        </pre>
+</div>
+</a-slide>
+<a-slide class="theme-red" align-center>
+<div class="title">ok so back to the art</div>
+</a-slide>
+<a-slide class="theme-red">
+<div class="title">make <span class="text-yellow">art</span> with<br><span class="text-yellow">brushes</span></div>
+</a-slide>
+<a-slide class="theme-red">
+<div class="title">make <span class="text-yellow">apps</span> with<br><span class="text-yellow">components</span></div>
+</a-slide>
+
+<a-slide class="dark-grey" align-center>
+<iframe src="emojillate.html" frameBorder="0" onload="fitIframe(this)"></iframe>
+</a-slide>
+<a-slide class="dark-grey" align-center>
+<img src="emoji-web-components-art-talk/images/app-sections/emojillate1.png" onload="fitImage(this)">
+</a-slide>
+<a-slide class="dark-grey" align-center>
+<img src="emoji-web-components-art-talk/images/app-sections/emojillate2.png" onload="fitImage(this)">
+</a-slide>
+<a-slide class="dark-grey" align-center>
+<img src="emoji-web-components-art-talk/images/app-sections/emojillate3.png" onload="fitImage(this)">
+</a-slide>
+<a-slide class="dark-grey" align-center>
+<img src="emoji-web-components-art-talk/images/app-sections/emojillate4.png" onload="fitImage(this)">
+</a-slide>
+<a-slide class="dark-grey" align-center>
+<img src="emoji-web-components-art-talk/images/app-sections/emojillate5.png" onload="fitImage(this)">
+</a-slide>
+
+<a-slide class="theme-red" align-center>
+<div class="horizontal">
+<div class="pretitle invisible" style="text-align:center; padding-right:2vw"><img src="emoji-web-components-art-talk/images/app-diagram/file.svg" height="150"><br>input</div>
+<div class="pretitle opaque invisible" style="padding:0;line-height:150px">⇢</div>
+<div class="pretitle" style="text-align:center; padding:0"><img src="emoji-web-components-art-talk/images/app-diagram/emojillator.svg" height="150"><br>&lt;emoji-llate&gt;</div>
+<div class="pretitle invisible opaque" style="padding:0;line-height:150px">⇠</div>
+<div class="pretitle invisible" style="text-align:center; padding-left:2vw"><img src="emoji-web-components-art-talk/images/app-diagram/settings.svg" height="150"><br>config</div>
+</div>
+</a-slide>
+<a-slide class="theme-red" align-center>
+<div class="horizontal">
+<div class="pretitle" style="text-align:center; padding-right:2vw"><img src="emoji-web-components-art-talk/images/app-diagram/file.svg" height="150"><br>input</div>
+<div class="pretitle opaque" style="padding:0;line-height:150px">⇢</div>
+<div class="pretitle" style="text-align:center; padding:0"><img src="emoji-web-components-art-talk/images/app-diagram/emojillator.svg" height="150"><br>&lt;emoji-llate&gt;</div>
+<div class="pretitle invisible opaque" style="padding:0;line-height:150px">⇠</div>
+<div class="pretitle invisible" style="text-align:center; padding-left:2vw"><img src="emoji-web-components-art-talk/images/app-diagram/settings.svg" height="150"><br>config</div>
+</div>
+</a-slide>
+<a-slide class="theme-red" align-center>
+<div class="horizontal">
+<div class="pretitle" style="text-align:center; padding-right:2vw"><img src="emoji-web-components-art-talk/images/app-diagram/file.svg" height="150"><br>input</div>
+<div class="pretitle opaque" style="padding:0;line-height:150px">⇢</div>
+<div class="pretitle" style="text-align:center; padding:0"><img src="emoji-web-components-art-talk/images/app-diagram/emojillator.svg" height="150"><br>&lt;emoji-llate&gt;</div>
+<div class="pretitle opaque" style="padding:0;line-height:150px">⇠</div>
+<div class="pretitle" style="text-align:center; padding-left:2vw"><img src="emoji-web-components-art-talk/images/app-diagram/settings.svg" height="150"><br>config</div>
+</div>
+</a-slide>
+<a-slide class="theme-red" align-center>
+<div class="title">data is bindable!</div>
+</a-slide>
+<a-slide class="dark-grey" full-width>
+<div class="code-snippet">
+<pre>
+    <span class="invisible"><span class="keyword">&lt;input</span> <span class="attr">type=</span><span class="value">&quot;file&quot;</span> <span class="attr">value=</span><span class="value text-og">&quot;{{someFile}}&quot;</span><span class="keyword">&gt;</span></span>
+
+    <span class="keyword">&lt;emoji-llate&gt;</span>
+    <span class="keyword">&lt;/emoji-llate&gt;</span>
+
+    <span class="invisible"><span class="keyword">&lt;paper-slider</span> <span class="attr">value=</span><span class="value text-og">&quot;{{someResolution}}&quot;</span><span class="keyword">&gt;</span><span class="keyword">&lt;/paper-slider&gt;</span></span>
+        </pre>
+</div>
+</a-slide>
+<a-slide class="dark-grey" full-width>
+<div class="code-snippet">
+<pre>
+    <span class="invisible"><span class="keyword">&lt;input</span> <span class="attr">type=</span><span class="value">&quot;file&quot;</span> <span class="attr">value=</span><span class="value text-og">&quot;{{someFile}}&quot;</span><span class="keyword">&gt;</span></span>
+
+    <span class="keyword">&lt;emoji-llate</span>
+        <span class="attr">file</span><span class="value invisible text-og">&quot;{{someFile}}&quot;</span>
+        <span class="attr">resolution</span><span class="value invisible text-og">&quot;{{someResolution}}&quot;</span><span class="keyword invisible">&gt;</span>
+    <span class="keyword">&lt;/emoji-llate&gt;</span>
+
+    <span class="invisible"><span class="keyword">&lt;paper-slider</span> <span class="attr">value=</span><span class="value text-og">&quot;{{someResolution}}&quot;</span><span class="keyword">&gt;</span><span class="keyword">&lt;/paper-slider&gt;</span></span>
+        </pre>
+</div>
+</a-slide>
+<a-slide class="dark-grey" full-width>
+<div class="code-snippet">
+<pre>
+    <span class="keyword">&lt;input</span> <span class="attr">type=</span><span class="value">&quot;file&quot;</span> <span class="attr invisible">value</span><span class="value text-og invisible">=&quot;{{someFile}}&quot;</span><span class="keyword">&gt;</span></span>
+
+    <span class="keyword">&lt;emoji-llate</span>
+        <span class="attr">file</span><span class="value text-og invisible">=&quot;{{someFile}}&quot;</span>
+        <span class="attr">resolution</span><span class="value text-og invisible">=&quot;{{someResolution}}&quot;</span><span class="keyword">&gt;</span>
+    <span class="keyword">&lt;/emoji-llate&gt;</span>
+
+    <span class="invisible"><span class="keyword">&lt;paper-slider</span> <span class="attr">value=</span><span class="value text-og">&quot;{{someResolution}}&quot;</span><span class="keyword">&gt;</span><span class="keyword">&lt;/paper-slider&gt;</span></span>
+        </pre>
+</div>
+</a-slide>
+<a-slide class="dark-grey" full-width>
+<div class="code-snippet">
+<pre>
+    <span class="keyword">&lt;input</span> <span class="attr">type=</span><span class="value">&quot;file&quot;</span> <span class="attr">value=</span><span class="value text-og">&quot;{{someFile}}&quot;</span><span class="keyword">&gt;</span>
+
+    <span class="keyword">&lt;emoji-llate</span>
+        <span class="attr">file=</span><span class="value text-og">&quot;{{someFile}}&quot;</span>
+        <span class="attr">resolution</span><span class="value text-og invisible">=&quot;{{someResolution}}&quot;</span><span class="keyword">&gt;</span>
+    <span class="keyword">&lt;/emoji-llate&gt;</span>
+
+    <span class="invisible"><span class="keyword">&lt;paper-slider</span> <span class="attr">value=</span><span class="value text-og">&quot;{{someResolution}}&quot;</span><span class="keyword">&gt;</span><span class="keyword">&lt;/paper-slider&gt;</span></span>
+        </pre>
+</div>
+</a-slide>
+<a-slide class="dark-grey" full-width>
+<div class="code-snippet">
+<pre>
+    <span class="keyword">&lt;input</span> <span class="attr">type=</span><span class="value">&quot;file&quot;</span> <span class="attr">value=</span><span class="value hilite text-og">&quot;{{someFile}}&quot;</span><span class="keyword">&gt;</span>
+
+    <span class="keyword">&lt;emoji-llate</span>
+        <span class="attr">file=</span><span class="value hilite text-og">&quot;{{someFile}}&quot;</span>
+        <span class="attr">resolution</span><span class="value text-og invisible">=&quot;{{someResolution}}&quot;</span><span class="keyword">&gt;</span>
+    <span class="keyword">&lt;/emoji-llate&gt;</span>
+
+    <span class="invisible"><span class="keyword">&lt;paper-slider</span> <span class="attr">value=</span><span class="value text-og">&quot;{{someResolution}}&quot;</span><span class="keyword">&gt;</span><span class="keyword">&lt;/paper-slider&gt;</span></span>
+        </pre>
+</div>
+</a-slide>
+<a-slide class="dark-grey" full-width>
+<div class="code-snippet">
+<pre>
+    <span class="keyword">&lt;input</span> <span class="attr">type=</span><span class="value">&quot;file&quot;</span> <span class="attr">value=</span><span class="value text-og">&quot;{{someFile}}&quot;</span><span class="keyword">&gt;</span>
+
+    <span class="keyword">&lt;emoji-llate</span>
+        <span class="attr">file=</span><span class="value text-og">&quot;{{someFile}}&quot;</span>
+        <span class="attr">resolution=</span><span class="value hilite text-og">&quot;{{someResolution}}&quot;</span><span class="keyword">&gt;</span>
+    <span class="keyword">&lt;/emoji-llate&gt;</span>
+
+    <span class="keyword">&lt;paper-slider</span> <span class="attr">value=</span><span class="value hilite text-og">&quot;{{someResolution}}&quot;</span><span class="keyword">&gt;</span><span class="keyword">&lt;/paper-slider&gt;</span>
+        </pre>
+</div>
+</a-slide>
+<a-slide class="dark-grey" full-width>
+<div class="code-snippet">
+<pre>
+    <span class="keyword">&lt;input</span> <span class="attr">type=</span><span class="value">&quot;file&quot;</span> <span class="attr">value=</span><span class="value text-og">&quot;{{someFile}}&quot;</span><span class="keyword">&gt;</span>
+
+    <span class="keyword">&lt;emoji-llate</span>
+        <span class="attr">file=</span><span class="value text-og">&quot;{{someFile}}&quot;</span>
+        <span class="attr">resolution=</span><span class="value text-og">&quot;{{someResolution}}&quot;</span><span class="keyword">&gt;</span>
+        <span class="attr">hide-background=</span><span class="value hilite text-og">&quot;{{shouldHide}}&quot;</span><span class="keyword">&gt;</span>
+    <span class="keyword">&lt;/emoji-llate&gt;</span>
+
+    <span class="keyword">&lt;paper-slider</span> <span class="attr">value=</span><span class="value text-og">&quot;{{someResolution}}&quot;</span><span class="keyword">&gt;</span><span class="keyword">&lt;/paper-slider&gt;</span>
+    <span class="keyword">&lt;paper-checkbox</span> <span class="attr">checked=</span><span class="value hilite text-og">&quot;{{shouldHide}}&quot;</span><span class="keyword">&gt;</span><span class="keyword">&lt;/paper-checkbox&gt;</span>
+        </pre>
+</div>
+</a-slide>
+<a-slide class="dark-grey" full-width>
+<div class="code-snippet" style="font-size: calc(10px + 1vw);">
+<pre>
+          <span class="keyword">&lt;html&gt;</span>
+          <span class="keyword">&lt;head&gt;</span>
+            <span class="keyword">&lt;script </span><span class="attr">src=</span><span class="value">&quot;bower_components/webcomponentsjs/webcomponents-lite.js&quot;</span><span class="keyword">&gt;&lt;/script&gt;</span>
+            <span class="keyword">&lt;link</span> <span class="attr">rel=</span><span class="value">&quot;import&quot;</span> <span class="attr">href=</span><span class="value">&quot;bower_components/paper-checkbox/paper-checkbox.html&quot;</span><span class="keyword">&gt;</span>
+            <span class="keyword">&lt;link</span> <span class="attr">rel=</span><span class="value">&quot;import&quot;</span> <span class="attr">href=</span><span class="value">&quot;bower_components/paper-slider/paper-slider.html&quot;</span><span class="keyword">&gt;</span>
+            <span class="keyword">&lt;link</span> <span class="attr">rel=</span><span class="value">&quot;import&quot;</span> <span class="attr">href=</span><span class="value">&quot;emoji-llate.html&quot;</span><span class="keyword">&gt;</span>
+          <span class="keyword">&lt;/head&gt;</span>
+          <span class="keyword">&lt;body</span> <span class="attr">unresolved</span><span class="keyword">&gt;</span>
+            <span class="keyword">&lt;template</span> <span class="attr">is=</span><span class="value">&quot;dom-bind&quot;</span> <span class="attr">id=</span><span class="value">&quot;t&quot;</span><span class="keyword">&gt;</span>
+              <span class="keyword">&lt;input</span> <span class="attr">type=</span><span class="value">&quot;file&quot;</span> <span class="attr">id=</span><span class="value">&quot;loader&quot;</span> <span class="attr">on-change=</span><span class="value">&quot;munge&quot;</span><span class="keyword">&gt;</span>
+              <span class="keyword">&lt;paper</span><span class="attr">-slider</span> <span class="attr">value=</span><span class="value">&quot;{{_value}}&quot;</span> <span class="attr">pin</span> <span class="attr">snaps</span> <span class="attr">step=</span><span class="value">5</span> <span class="attr">min=</span><span class="value">5</span> <span class="attr">max=</span><span class="value">80</span><span class="keyword">&lt;/paper-slider&gt;</span>
+              <span class="keyword">&lt;paper</span><span class="attr">-checkbox</span> <span class="attr">checked=</span><span class="value">&quot;{{_noBackground}}&quot;</span><span class="keyword">&gt;</span>hide background</span><span class="keyword">&lt;/paper-checkbox&gt;</span>
+
+              <span class="keyword">&lt;emoji-late</span> <span class="attr">id=</span><span class="value">&quot;go&quot;</span> <span class="attr">resolution=</span><span class="value">&quot;{{_value}}&quot;</span> <span class="attr">no-background=</span><span class="value">&quot;{{_noBackground}}&quot;</span><span class="keyword">&gt;</span>
+                <span class="keyword">&lt;div</span> <span class="attr">class=</span><span class="value">&quot;output&quot;</span><span class="keyword">&gt;&lt;/div&gt;</span>
+              <span class="keyword">&lt;/emoji-late&gt;</span>
+            <span class="keyword">&lt;/template&gt;</span>
+          <span class="keyword">&lt;/body&gt;</span>
+          <span class="keyword">&lt;script&gt;</span>
+            <span class="attr">t</span><span style="color: #f8f8f2">.</span><span class="attr">_value</span> <span class="keyword">=</span> <span style="color: #ae81ff">60</span><span style="color: #f8f8f2">;</span>
+            <span class="attr">t</span><span style="color: #f8f8f2">.</span><span class="attr">_noBackground</span> <span class="keyword">=</span> <span style="color: #66d9ef">false</span><span style="color: #f8f8f2">;</span>
+
+            <span class="attr">t</span><span style="color: #f8f8f2">.</span><span class="attr">munge</span> <span class="keyword">=</span> <span style="color: #66d9ef">function</span><span style="color: #f8f8f2">(</span><span class="attr">e</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+              <span class="attr">go</span><span style="color: #f8f8f2">.</span><span class="attr">file</span> <span class="keyword">=</span> <span class="attr">e</span><span style="color: #f8f8f2">.</span><span class="attr">target</span><span style="color: #f8f8f2">.</span><span class="attr">files</span><span style="color: #f8f8f2">[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">];</span>
+            <span style="color: #f8f8f2">}</span>
+          <span class="keyword">&lt;/script&gt;</span>
+          <span class="keyword">&lt;/html&gt;</span>
+          </pre></div>
+</pre>
+</div>
+</a-slide>
+<a-slide class="theme-yellow" align-center>
+<div class="title text-white">ok so back to the art</div>
+</a-slide>
+<a-slide class="theme-yellow">
+<div class="title text-magenta">= emojillator</div>
+<div class="title">+ pixellator</div>
+<div class="title">+ emoji</div>
+</a-slide>
+
+<a-slide class="theme-yellow">
+<div class="title">canvas <span class="text-magenta">vs</span> span </div>
+</a-slide>
+<a-slide class="theme-yellow">
+<div class="title">spans are copy pastable</div>
+</a-slide>
+<a-slide class="theme-yellow" align-center>
+<img src="emoji-web-components-art-talk/images/voltron.png" onload="fitImage(this)">
+</a-slide>
+<a-slide class="theme-yellow" align-center>
+<b><div class="title">👌</div></b>
+</a-slide>
+<a-slide class="theme-yellow">
+<div class="title">how <span class="text-magenta">2</span> emojillate</div>
+</a-slide>
+<a-slide class="theme-yellow" align-center>
+<div class="image-title">1. render file in a (hidden) &lt;img&gt;</div>
+<img src="emoji-web-components-art-talk/images/pixellating/load.png" onload="fitImage(this, 200)">
+</a-slide>
+<a-slide class="theme-yellow" align-center>
+<div class="image-title">2. find the width/height ratio</div>
+<img src="emoji-web-components-art-talk/images/pixellating/image-size.png" onload="fitImage(this, 200)">
+</a-slide>
+<a-slide class="theme-yellow" align-center>
+<div class="image-title">3. resize our (hidden) canvas</div>
+<img src="emoji-web-components-art-talk/images/pixellating/canvas.png" onload="fitImage(this, 200)">
+</a-slide>
+<a-slide class="theme-yellow" align-center>
+<div class="image-title">4. pixellate it! (still hidden)</div>
+
+<img src="emoji-web-components-art-talk/images/pixellating/pixellate.png" onload="fitImage(this, 200)">
+</a-slide>
+<a-slide class="theme-yellow" align-center>
+<div class="image-title">4. pixellate it! (still hidden)</div>
+<img src="emoji-web-components-art-talk/images/pixellating/pixellate_2.png" onload="fitImage(this, 200)">
+</a-slide>
+<a-slide class="theme-yellow" align-center>
+<div class="image-title">4. pixellate it! (still hidden)</div>
+<img src="emoji-web-components-art-talk/images/pixellating/pixellate_3.png" onload="fitImage(this, 200)">
+</a-slide>
+<a-slide class="theme-yellow" align-center>
+<div class="image-title">4. pixellate it! (still hidden)</div>
+<img src="emoji-web-components-art-talk/images/pixellating/pixellate_4.png" onload="fitImage(this, 200)">
+</a-slide>
+<a-slide class="theme-yellow" align-center>
+<div class="image-title">4. pixellate it! (still hidden)</div>
+<img src="emoji-web-components-art-talk/images/pixellating/pixellate_5.png" onload="fitImage(this, 200)">
+</a-slide>
+<a-slide class="theme-yellow" align-center>
+<div class="image-title">5. add pixel &lt;divs&gt; somewhere visible</div>
+<img src="emoji-web-components-art-talk/images/pixellating/add-emoji.png" onload="fitImage(this, 200)">
+</a-slide>
+<a-slide class="theme-yellow" align-center>
+<div class="image-title">annnnnd it's emojillated!</div>
+<img src="emoji-web-components-art-talk/images/pixellating/done.png" onload="fitImage(this, 200)">
+</a-slide>
+<a-slide class="theme-yellow" align-center>
+<div class="image-title">p.s. it's text!!</div>
+<img src="emoji-web-components-art-talk/images/pixellating/selection.png" onload="fitImage(this, 200)">
+</a-slide>
+<a-slide class="theme-yellow" align-center>
+<div class="image-title">so we can make a gist</div>
+<p style="font-size:12px; background-color:#fce056;">
+👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸<br>
+👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸<br>
+👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸<br>
+👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👪🚚😹👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸<br>
+👸👸👸👸👸👸👸👸👸👸👸👸🙌🐥🚧🍶🌔🍶🚧🐥🐥👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸<br>
+👸👸👸👸👸👸👸👸👸👸👸😹😹📈🌁⬜⬜⬜⬜🌁🚓📣👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸🌕🌛🐥🐥🐥🐥🐥🐥🐥👸👸👸👸👸👸👸👸👸👸👸👸<br>
+👸👸👸👸👸👸👸👸👸👸🙈⛅⬜⬜⬜⬜⬜⬜⬜⬜⬜📜🚚👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸🙌👢🚚😤😤😤😤😤😤🌕👑🐥👸👸👸👸👸👸👸👸👸👸<br>
+👸👸👸👸👸👸👸👸👸🚚🔳⬜⬜⬜⬜⬜⬜⬜👸⬜⬜⬜⬜🚚👸👸👸👸👸👸👸👸👸👸👸👸👸😢🙌😤⬜⬜⬜⬜⬜⬜⬜⬜👸🐺💂👸👸👸👸👸👸👸👸👸<br>
+👸👸👸👸👸👸👸👸😥🙌⬜⬜⬜⬜⬜⬜⬜⬜👸👸⬜⬜⬜🔏🐺👸👸👸👸👸👸👸👸👸👸👸😢🙌👸⬜⬜⬜⬜⬜⬜⬜⬜⬜👸👸📣💇👸👸👸👸👸👸👸👸<br>
+👸👸👸👸👸👸👸👸🌛📜⬜⬜⬜⬜⬜👸⬜⬜⬜⬜⬜⬜⬜⬜🔊😤👸👸👸👸👸👸👸👸👸👪🐴😤⬜⬜⬜👸👸👸👸👸👸👸👸👸👸👑👪👸👸👸👸👸👸👸<br>
+👸👸👸👸👸👸👸😓🚧⬜⬜👸⬜⬜⬜⬜⬜⬜⬜⬜⬜👸⬜⬜👟😤👸👸👸👸👸👸👸👸😥💂🚚⬜⬜⬜👸👸👸👸👸👸👸👸👸👸👸🌛📣👸👸👸👸👸👸👸<br>
+👸👸👸👸👸👸👸🌛😹⬜⬜👸⬜⬜⬜⬜⬜⬜⬜⬜👸👸👸⬜📠👑👸👸👸👸👸👸👸👸🌛👑👸⬜⬜👸👸👸👸👸👸👸👸👸👸👸👸👸😤🚚👸👸👸👸👸👸<br>
+👸👸👸👸👸👸👸🌛🌕⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜🚧😤👸👸👸👸👸👸👸🌛📣👸⬜⬜👸👸👸👸👸👸👸👸👸👸👸👸😥🌛🚚👸👸👸👸👸👸<br>
+👸👸👸👸👸👸👸🌛🌕⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜📜🚧👪👸👸👸👸👸👸👸👸📣😹👸👸👸👸👸👸👸👸👸👸👸👸👸👸🌛🐻👸👸👸👸👸👸👸<br>
+👸👸👸👸👸👸👸🌛🚚⬜⬜👸👸👸⬜⬜⬜⬜⬜⬜👸👸👸⬜🍨😹👸👸👸👸👸👸👸👸👸👸🍶👪👸👸👸👸👸👸👸👸👸👸👸👸😓🐎😤👸👸👸👸👸👸👸<br>
+👸👸👸👸👸👸👸👸🌛⬜⬜👸👸⬜⬜⬜⬜⬜⬜⬜⬜👸⬜⬜👟😤👸👸👸👸👸👸👸👸👸👸🌛📣👸👸👸👸👸👸👸👸👸👸👸👸🌛🐻👸👸👸👸👸👸👸👸<br>
+👸👸👸👸👸👸👸👸🌛📜⬜⬜⬜⬜⬜👸⬜⬜👸⬜⬜⬜⬜⬜🙏😤👸👸👸👸👸👸👸👸👸👸👸📣📣👸👸👸👸👸👸👸👸👸😥🌛🙌👸👸👸👸👸👸👸👸👸<br>
+👸👸👸👸👸👸👸👸👸🚚⬜⬜⬜⬜👸👸⬜⬜👸👸⬜⬜⬜⛅😹👸👸👸👸👸👸👸👸👸👸👸👸👸😥👑🌛🐻😤👸👸😓🐻🌛🐎👋👸👸👸👸👸👸👸👸👸👸<br>
+👸👸👸👸👸👸👸👸👸🌛🔍⬜⬜⬜👸👸⬜⬜👸👸⬜⬜🎂😹👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸😓😹🍦⭐🚧⭐🙌😓😓👸👸👸👸👸👸👸👸👸👸👸<br>
+👸👸👸👸👸👸👸👸👸👸📣🔊⬜⬜⬜⬜⬜⬜⬜⬜⬜🎂👳👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👪😓😥🈚👸👸👸👸👸👸👸👸👸👸👸👸👸👸<br>
+👸👸👸👸👸👸👸👸👸👸👸😓🚚🔏🍚⬜⬜⬜🎂📱📢😹👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸<br>
+👸👸👸👸👸👸👸👸👸👸👸👸👸😥🍶🍦🌛🌛🍦😹😥👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸<br>
+👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸😓😥😥👪👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸<br>
+👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸<br>
+👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸👸<br>
+</p>
+</a-slide>
+<a-slide class="theme-yellow" align-center>
+<div class="image-title">and spam slack</div>
+<img src="emoji-web-components-art-talk/images/pixellating/slack.png" onload="fitImage(this, 200)">
+</a-slide>
+
+<a-slide class="theme-yellow" align-center>
+<b><div class="title">🎉🎉🎉</div></b>
+</a-slide>
+<a-slide class="theme-yellow" align-left>
+<div class="title">give the web<br><span class="text-magenta">better brushes</span></div>
+</a-slide>
+<a-slide class="dark-grey" align-center>
+<div class="frame-title"><span class="text-og">Chris Joel: emoji word art</span></div>
+<iframe src="data-pipe-elements/index.html" frameBorder="0" onload="fitIframe(this)"></iframe>
+</a-slide>
+<a-slide class="dark-grey" align-center>
+<div class="frame-title"><span class="text-og">Chris Joel: meatscope.camera</span></div>
+<a href="https://meatscope.camera/" target="_blank">
+<img src="emoji-web-components-art-talk/images/meatscope.png" onload="fitImage(this)"></a>
+</a-slide>
+<a-slide class="theme-yellow" align-left>
+<b><div class="title">help people <span class="text-magenta">make</span> art</div></b>
+</a-slide>
+<a-slide class="theme-yellow" align-left>
+<b><div class="title">help people <span class="text-magenta">share</span> art</div></b>
+</a-slide>
+<a-slide class="coral-background" align-center>
+<div class="title">@notwaldorf <span style="font-weight:normal">✌︎</span></div>
+<div class="pretitle">thanks!</div>
+<div class="credits">Image credits: Oliviu Stoian, Ismael Ruiz, and Sergey Demushkin from the Noun Project.
+Chelsea LaSalle from the goodness of her heart.</div>
+</a-slide>
+</a-presentation>
+
+</body>
+<script>
+var cleared = false;
+
+presentation.addEventListener('current-slide-changed', function(event) {
+  if (cleared)
+    return;
+
+  var currentSlide = presentation.$.pages.selectedItem;
+  if (!currentSlide)
+    return;
+
+  var rain = currentSlide.querySelector('emoji-rain');
+  if (rain) {
+    rain.stop();
+    rain.parentNode.removeChild(rain);
+    cleared = true;
+  }
+});
+</script>
+</html>

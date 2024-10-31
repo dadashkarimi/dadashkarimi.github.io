@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+<meta charset="utf-8">
+<title>
+    About &ndash; Javid Dadashkarimi
+</title>
+<meta name="author" content="Javid Dadashkarimi" />
+<meta name="description" content="Javid Dadashkarimi's blog" />
+<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+<link rel="alternate" type="application/rss+xml" href="atom.xml" />
+<link rel="stylesheet" href="css/base.css" type="text/css" media="screen, projection" />
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#7BE4D5">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="Monica's blog">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Monica's blog">
+<link rel="apple-touch-icon" sizes="192x192" href="icons/icon-192x192.png">
+<meta name="msapplication-TileImage" content="images/manifest/icon-192x192.png">
+<meta name="msapplication-TileColor" content="#7BE4D5">
+<meta name="msapplication-tap-highlight" content="no">
+<meta name="twitter:card" content="Javid Dadashkarimi's blog">
+<meta name="twitter:site" content="@notwaldorf">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="my-app">
+<meta property="og:image" content="icons/icon-192x192.png" />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+#extreme
+    {
+    z-index: 1;
+    visibility: hidden;
+    position: absolute;
+    z-index: 10000;
+    max-width:0rem;
+    }
+</style>
+
+
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-47334320-2']);
+    _gaq.push(['_setDomainName', 'meowni.ca']);
+    _gaq.push(['_trackPageview']);
+    (function () {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<script>
+  function toggleReview(el) {
+    const tr = el.parentElement.parentElement;
+    const nextTr = tr.nextElementSibling;
+    nextTr.classList.toggle('show');
+  }
+  function hideReview(el) {
+    const tr = el.parentElement.parentElement;
+    tr.classList.remove('show');
+  }
+  function copyReview(el) {
+    const tr = el.parentElement.parentElement;
+    const copyText = tr.querySelector('div').textContent;
+    navigator.clipboard.writeText(copyText);
+  }
+</script>
+
+<body>
+
+<nav>
+<ul>
+<li id="home_link" class="og"><a href="index.html">🏠</a></li>
+<li><a href="works.html">Hire me</a></li>
+<li><a href="reads.html">Reading</a></li>
+<li><a href="blogs.html">Posts</a></li>
+<li><a href="pubs.html">Publications</a></li>
+<li><a href="talks.html">Talks</a></li>
+</ul>
+</nav>
+<div class="splash">
+<div class="splash-wrapper">
+<div class="splash-copy">
+<h1>Javid <br>Dadashkarimi</h1>
+<p>I'm a <b>Machine Learning Engineer</b> specializing in tools for clinical applications. I offer advisory expertise on challenges in <b>medical image analysis</b> and <b>deep learning</b>, with a focus on overcoming data scarcity and leveraging <b>synthetic data</b> solutions.</p>
+</div>
+<div id="birbs">
+<canvas></canvas>
+<div class="birbs-legend">
+<b>click this art</b> to regenerate it
+<button>[<b>?</b>]</button>
+<div class="birbs-note">I whipped up this little piece of art that changes every time you click on it.
+  You’ll stumble upon mesmerizing patterns that bring to mind the stunning intricacies of stained glass and the enchanting aura of ancient doors and catholic church windows.
+</div>
+</div>
+</div>
+</div>
+
+<div class="dots"></div>
+</div>
+<section class="content">
+<p>With a passion for AI-driven solutions in medical imaging, I focus on developing cutting-edge tools that elevate diagnostic precision and advance patient care. My research has been featured in leading journals and conferences, including <i>Nature</i>, <i>Molecular Psychiatry</i>, MICCAI, and COLING. In addition to medical imaging, I bring expertise in natural language processing, particularly in machine translation and information retrieval, where I also hold a patent. You can explore my personal projects on <a href="https://github.com/dadashkarimi">GitHub</a>.
+  I am currently available for freelance opportunities in prototyping, consulting, and technical advisory roles. For collaboration inquiries, feel free to <a href="mailto:javiddadashkarimi@gmail.com">reach out</a> – let’s connect!</p>
+<p>Also here is my updated <a  href="slides/CV_JDadashkarimi.pdf">CV</a>,<a  href="https://www.linkedin.com/in/javid-dadashkarimi-0b26b3199/">Linkedin</a> profile, academic <a  href="https://x.com/JDadashkarimi/">X</a> page, and the most recent anonymous
+  <a href="https://extremetracking.com/open?login=javiddad" rel="me" title="Visitors" target="_blank">Visitors</a>!</p>
+  <div id="extreme">
+  	<script src="https://efreecode.com/js.js" id="eXF-javiddad-0" async defer></script>
+  </div>
+
+<hr>
+
+
+<style>
+  p {
+    font-size: var(--font-size-s);
+  }
+  .content .listing.table li > a {
+    flex-shrink: 0;
+    flex-grow: 0;
+    width: 40%;
+  }
+  .content .listing.table li > div {
+    flex-grow: 1;
+    text-transform: none;
+    letter-spacing: 0;
+    margin-left: var(--spacing-xs);
+  }
+  .content .listing.table li > div:before {
+    content: '→ ';
+    font-weight:bold;
+  }
+  @media screen and (max-width:600px) {
+    .content .listing.table li {
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      margin-bottom: var(--spacing-m);
+    }
+    .content .listing.table li > div {
+      margin-left: 0;
+    }
+    .content .listing.table li > a {
+      width: 100% !important;
+      flex-shrink: 0;
+    }
+  }
+</style>
+
+<style>
+table {
+  display: grid;
+  border-collapse: collapse;
+  gap: 4px;
+  max-width: 100%;
+  overflow: scroll;
+}
+table.small {
+  grid-template-columns: 1fr 8fr;
+}
+table.all {
+  grid-template-columns: 2.5fr 2fr 1fr 0.7fr 0.7fr;
+}
+
+thead,
+tbody,
+tr {
+  display: contents;
+}
+
+th,
+td {
+  font-size: 14px;
+}
+td.small {
+  font-size: 14px;
+}
+td.center {
+  text-align: center;
+}
+th {
+  border-bottom: 3px solid black;
+  text-align: left;
+  font-size: 16px;
+}
+table.all td {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+td a:link, td a:visited {
+  color: black;
+  text-decoration-color: var(--red);
+  text-decoration-thickness: .125em;
+}
+tr.full {
+  display: none;
+}
+tr.full.show {
+  display: contents;
+}
+tr.full td {
+  grid-column: 1 / -1;
+  padding: 20px 40px;
+  border-left: 3px solid #ddd;
+  font-size: 16px;
+  line-height: 1.5;
+}
+button {
+  background: transparent;
+  font-family: inherit;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-bottom: 2px solid var(--red);
+  color: black;
+}
+tr.full td button {
+  margin-right: 24px;
+}
+@media screen and (max-width:600px) {
+  table.all {
+    grid-template-columns: 1fr 1fr 0.5fr 0.7fr 0.7fr;
+  }
+  tr.full td {
+    max-width: 80%;
+    padding: 16px;
+  }
+}
+
+</style>
+<script>
+  function toggleReview(el) {
+    const tr = el.parentElement.parentElement;
+    const nextTr = tr.nextElementSibling;
+    nextTr.classList.toggle('show');
+  }
+  function hideReview(el) {
+    const tr = el.parentElement.parentElement;
+    tr.classList.remove('show');
+  }
+  function copyReview(el) {
+    const tr = el.parentElement.parentElement;
+    const copyText = tr.querySelector('div').textContent;
+    navigator.clipboard.writeText(copyText);
+  }
+</script>
+
+<p>Acronyms Explained</p>
+<table class="small">
+<tbody>
+<tr>
+<td>DL</td>
+<td>Deep Learning
+</td>
+</tr>
+<tr>
+<td>MRI</td>
+<td>Magnetic Resonance Imaging
+</td>
+</tr>
+
+<tr>
+<td>ECG</td>
+<td>Electrocardiography
+</td>
+</tr>
+<tr>
+<td>AF</td>
+<td>Atrial Fibrillation</td>
+</tr>
+<tr>
+<td>CLIR</td>
+<td>Cross Lingual Information Retrieval</td>
+</tr>
+<tr>
+<td>YINS</td>
+<td>Yale Institute of Network Sciences</td>
+</tr>
+</tbody>
+</table>
+
+
+<style>
+table {
+  display: grid;
+  border-collapse: collapse;
+  gap: 4px;
+  max-width: 100%;
+  overflow: scroll;
+}
+table.small {
+  grid-template-columns: 1fr 8fr;
+}
+table.all {
+  grid-template-columns: 1.5fr 1fr 0.7fr 1.5fr 0.7fr;
+}
+
+thead,
+tbody,
+tr {
+  display: contents;
+}
+
+th,
+td {
+  font-size: 14px;
+}
+td.small {
+  font-size: 14px;
+}
+td.center {
+  text-align: center;
+}
+th {
+  border-bottom: 3px solid black;
+  text-align: left;
+  font-size: 16px;
+}
+table.all td {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+td a:link, td a:visited {
+  color: black;
+  text-decoration-color: var(--red);
+  text-decoration-thickness: .125em;
+}
+tr.full {
+  display: none;
+}
+tr.full.show {
+  display: contents;
+}
+tr.full td {
+  grid-column: 1 / -1;
+  padding: 20px 40px;
+  border-left: 3px solid #ddd;
+  font-size: 16px;
+  line-height: 1.5;
+}
+button {
+  background: transparent;
+  font-family: inherit;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-bottom: 2px solid var(--red);
+  color: black;
+}
+tr.full td button {
+  margin-right: 24px;
+}
+@media screen and (max-width:600px) {
+  table.all {
+    grid-template-columns: 0.8fr 0.5fr 0.5fr 1.9fr 0.5fr;
+  }
+  tr.full td {
+    max-width: 80%;
+    padding: 16px;
+  }
+}
+
+</style>
+
+<h2>Projects</h2>
+<p>I build a variety of small, innovative projects that aim to solve specific problems or explore new ideas. Some of my projects are:</p>
+
+
+<table class="all">
+<thead>
+<tr>
+<th>Title</th>
+<th>Institution</th>
+<th>Date</th>
+<th>Topic</th>
+<th>Info</th>
+</tr>
+</thead>
+<tbody>
+
+  <tr>
+      <td><a href="https://github.com/dadashkarimi/cascade" target="_blank">
+          Cascade U-Nets
+      </a></td>
+      <td>MGH/Harvard</td>
+      <td class="small">2024/10/27</td>
+      <td class="left stars">
+          DL for Segmentation
+      </td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td>
+          <div>
+            <div class="project-description">
+              <div class="project-content">
+                  <p>This project implements a <strong>hybrid 3D, multi-scale model for fetal brain extraction</strong> from MRI scans using a <em>cascade of U-Net architectures</em>.
+                    Using a Breadth-Fine Search (BFS) and Deep-Focused Sliding Window (DFS) approach, our framework achieves precise segmentation results in full-uterus stack-of-slices scans, even with limited training data and annotations.</p>
+
+                  <p>Our method employs a cascade of four models—<strong>A, B, C, and D</strong>—trained to focus on 3D patches of decreasing sizes from a synthesized set of training images augmented with random geometric shapes.
+                    At inference, we pool sliding-window predictions across multiple sizes to detect and refine the region of interest (ROI) that most likely contains the fetal brain. Subsequently, we derive an accurate brain mask through voxel-wise majority voting.</p>
+
+                  <h3>Pipeline Overview</h3>
+                  <p>In the <strong>BFS</strong> stage, Models A and D generate probability maps \( P_A \) and \( P_D \) across the full input volume \( I \), producing a coarse brain mask from the largest connected components across maps. We then perform a bounding box fit on this mask to extract the 3D ROI \( R \subset I \).</p>
+
+                  <div class="figure">
+                      <img src="figs/bfs-dfs.png" alt="BFS-DFS Pipeline" style="width:100%;">
+                      <p class="caption">Figure 1: BFS-DFS Pipeline for fetal brain segmentation.</p>
+                  </div>
+
+                  <p>In the <strong>DFS</strong> stage, Models B, C, and D progressively refine \( R \) through sliding-window passes, each stage narrowing the ROI and updating a binary mask \( S_{final} \) via majority voting across maps \( S_B, S_C, \) and \( S_D \), leading to an optimized fetal brain mask with minimized false positives.</p>
+                  <h3>Label Maps</h3>
+                  <p>
+                  Training involves generating synthetic shapes around the brain label maps, which represent human-annotated segmentations of the fetal brain.
+                   To create synthetic images from these label maps, we utilized the following parameters, indicating the standard deviation for each parameter:
+                  </p>
+
+                  <div class="figure">
+                      <img src="figs/bfs-dfs-tab1.png" alt="Parameter Table" style="width:100%;">
+                      <p class="caption">Table 1: Model parameters and sliding window configurations.</p>
+                  </div>
+
+                  Here are two examples illusterating this augmentation where labels 1 to 7 point to brain structures and others belong to the background:</p>
+
+                  <div class="figure">
+                      <img src="figs/bfs-dfs-examples.png" alt="Synthetic Shapes Example" style="width:100%;">
+                      <p class="caption">Figure 2: Example of synthetic shapes surrounding the brain label map to simulate diverse training conditions.</p>
+                  </div>
+                <h3>Training Data</h3>
+                Here are two examples of training data derived from the label maps: one for Model A, which is approapriate for the largest patches in the image, and another for Model D, which targets the smallest patches.
+
+                  <div class="figure">
+                      <img src="figs/bfs-dfs-examples2.png" alt="Synthetic Shapes Example" style="width:50%;">
+                      <p class="caption">Figure 2: Example of synthetic images derived from the label maps for model \( A \) and model \( D \).</p>
+                  </div>
+                  <h3>Key Advantages:</h3>
+                  <ul>
+                      <li><strong>False Positive Reduction:</strong> BFS and DFS steps progressively refine the region of interest, minimizing false positives.</li>
+                      <li><strong>Adaptability to Sparse Data:</strong> Trained on synthetic data, the model performs well even with limited annotations.</li>
+                      <li><strong>Precision Across Variability:</strong> Multi-scale sliding windows capture diverse head orientations and anatomy for accurate segmentation.</li>
+                      <li><strong>High Accuracy:</strong> Outperforms existing methods, improving Dice scores by up to 5% on second-trimester and EPI scans.</li>
+                        <li><strong>Reliable Localization:</strong> The initial localization process ensures accurate brain segmentation, allowing for finer navigation within the womb and reducing the risk of segmenting non-relevant areas.</li>
+                      </ul>
+
+
+
+                  <p>This repository is an invaluable resource for medical imaging problems, particularly for body organ segmentation.
+                    It provides a robust tool for addressing challenges related to limited training data and sparse annotations.</p>
+                  <div class="project-buttons">
+                      <a href="https://github.com/dadashkarimi/cascade" target="_blank" class="btn-secondary">View on GitHub</a>
+                  </div>
+                </div>
+
+
+           </div>
+          <br/>
+          <button onclick="hideReview(this)">close ⌃</button>
+      </td>
+  </tr>
+
+  <tr>
+      <td><a href="https://github.com/dadashkarimi/cascade" target="_blank">
+          ECG2AF
+      </a></td>
+      <td>Broad Institute</td>
+      <td class="small">2024/10/29</td>
+      <td>
+          AI for AF Prediction
+      </td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td>
+          <div>
+            <div class="project-description">
+              <section class="content">
+                <section class="content">
+                  <h1>ECG2AF Model Web Application</h1>
+
+                  <p>This application demonstrates our ECG2AF tool, a clinical AI model designed to predict the risk of developing atrial fibrillation (AF) from ECG data.</p>
+                  <p> We have shut down the online demo temporarily but to run this app locally, place <code>app.py</code>, <code>ecg_model.py</code>, and the required folders inside the <code>app/</code> directory.
+                  Ensure that <code>Dockerfile</code> and <code>requirements.txt</code> are in the parent directory.</p>
+
+                  <p>I developed this project using editors like <code>vim</code> and <code>VS Code</code>, and also Copilot for some function autocompletion.
+                    The app was (will be) deployed on an <code>EC2</code> instance (Linux <code>t2.medium</code>), with an attached 32 GB <code>gp3</code> volume for additional storage.
+                    Additionally, We’ve set the Nginx file upload limit to 500 MB to accommodate larger files.</p>
+
+                  <h2>Background</h2>
+                  <p>AI is widely used in clinical applications to improve risk stratification and intervention.
+                     This project focuses on cardiovascular disease, aiming to predict AF risk based on ECG data.</p>
+
+                  <h2>Objective</h2>
+                  <p>Our objective is to allow users to:</p>
+                  <ul>
+                    <li>Upload an ECG file (<code>.hd5</code> format)</li>
+                    <li>Process the uploaded ECG using a pre-trained ECG2AF model</li>
+                    <li>Display the prediction results, including four output values</li>
+                  </ul>
+
+                  <h2>How It Works</h2>
+                  <ol>
+                    <li><b>Upload your file(s)</b> in <code>.hd5</code> format by dragging and dropping it into the upload area.
+                      <img src="https://github.com/dadashkarimi/ecg2af/blob/main/fig/uploads2.png?raw=true" alt="Upload ECG File" style="width:80%; display:block; margin:auto;"/>
+</li>
+                    <li><b>Process with ECG2AF:</b> The model processes the file in real-time.</li>
+                    <li><b>View Predictions:</b> The app displays four predictions for each ECG file, including AF risk and demographic estimations.
+                      You’ll also see charts for better interpretation.
+                      <img src="https://github.com/dadashkarimi/ecg2af/blob/main/fig/results-table.png?raw=true" alt="Example Results" style="width:80%; display:block; margin:auto;"/>
+                    </li>
+                  </ol>
+
+
+                  <h3>Prediction Outputs</h3>
+                  <ul>
+                    <li><b>AF Risk:</b> Estimated risk for developing atrial fibrillation.</li>
+                    <li><b>Sex Prediction (Male/Female):</b> Probability-based estimate of biological sex.</li>
+                    <li><b>Age Prediction:</b> Estimated age based on ECG data.</li>
+                    <li><b>AF In Read (Yes/No):</b> Classification for AF presence in the read.</li>
+                  </ul>
+
+                  <h2>Scalability Considerations</h2>
+                  <ul>
+                    <li><b>Batch Processing:</b> Process multiple ECG files simultaneously.</li>
+                    <li><b>Database and Caching:</b> Store previously uploaded files separately for each user.</li>
+                    <li><b>Cloud Deployment and Load Balancing:</b> AWS’s Elastic Load Balancer (ELB) is used for additional scaling.</li>
+                  </ul>
+
+                  <h2>Visualization and Results</h2>
+                  <p>The charts in the application are created using <a href="https://www.chartjs.org/">Chart.js</a>. Each chart presents predictions related to the uploaded .hd5 files, including AF risk, sex prediction, and age prediction values.</p>
+
+                  <img src="https://github.com/dadashkarimi/ecg2af/blob/main/fig/results-chart.png?raw=true" alt="Example Results" style="width:80%; display:block; margin:auto;"/>
+
+                  <h2>Adding Nginx to Flask with Docker</h2>
+                  <p>Nginx acts as a reverse proxy for our Flask app in Docker, handling HTTP requests on port <code>80</code> and forwarding them to Flask on port 5000.</p>
+
+                  <h3>Benefits of Using Nginx</h3>
+                  <ul>
+                    <li><b>Security:</b> Nginx hides the Flask server from direct internet exposure.</li>
+                    <li><b>Load Balancing:</b> Manages traffic efficiently and scales easily.</li>
+                    <li><b>Static File Handling:</b> Serves static files faster, reducing Flask's load.</li>
+                    <li><b>Production-Ready:</b> Handles multiple users reliably, unlike Flask's dev server.</li>
+                  </ul>
+
+                  <p>If you have any questions, feel free to <a href="mailto:javiddadashkarimi@gmail.com">email me</a>.</p>
+                </section>
+
+
+          </div>
+          <div class="project-buttons">
+              <a href="https://github.com/dadashkarimi/ecg2af" target="_blank" class="btn-secondary">View on GitHub</a>
+          </div>
+        </div>
+
+
+        </div>
+        <br/>
+        <button onclick="hideReview(this)">close ⌃</button>
+      </section>
+      </section>
+        </td>
+  </tr>
+  <tr>
+      <td><a href="https://github.com/dadashkarimi/seq2sql" target="_blank">
+          SEQ2SQL
+      </a></td>
+      <td>YINS/YALE</td>
+      <td class="small">2024/10/29</td>
+      <td>
+        Sequence to SQL
+      </td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td>
+          <div>
+            <div class="project-description">
+              <section class="content">
+                <style>
+                  body {
+                      font-family: Arial, sans-serif;
+                      margin: 20px;
+                      line-height: 1.6;
+                  }
+                  h1, h2 {
+                      color: #333;
+                  }
+                  code {
+                      background-color: #f4f4f4;
+                      padding: 2px 4px;
+                      border-radius: 4px;
+                  }
+                  pre {
+                      background-color: #f4f4f4;
+                      padding: 10px;
+                      border-radius: 4px;
+                      overflow-x: auto;
+                  }
+              </style>
+
+              <h2>What’s the Scoop?</h2>
+              <p>This project is all about turning natural language questions into SQL commands. We’ve got a model that uses LSTM and GRU units to make sense of your questions and turn them into SQL.
+                 Think of it as chatting with your database!</p>
+
+              <h2>Datasets We Played With</h2>
+              <p>We trained on some cool datasets:</p>
+              <ul>
+                  <li><strong>ATIS</strong>: Questions about flights.</li>
+                  <li><strong>GEO880</strong>: Geographic info with 880 examples.</li>
+                  <li><strong>Overnight</strong>: Covers 11 fun domains like sports and restaurants.</li>
+                  <li><strong>Toy</strong>: A small dataset with 600 examples.</li>
+                  <li><strong>WikiSQL</strong>: A solid 1,000 examples for generating SQL queries.</li>
+              </ul>
+
+              <h2>Query Examples</h2>
+              <p>Check out some killer examples:</p>
+              <div class="example-container">
+                  <div class="example">
+                      <strong>What’s the description of a CH-47D Chinook?</strong>
+                      <pre><code>SELECT col1 FROM table_1_10006830_1 WHERE col0='CH-47D Chinook';</code></pre>
+                  </div>
+                  <div class="example">
+                      <strong>What’s the max gross weight of the Robinson R-22?</strong>
+                      <pre><code>SELECT col2 FROM table_1_10006830_1 WHERE col0='Robinson R-22';</code></pre>
+                  </div>
+                  <div class="example">
+                      <strong>What school did player number 6 come from?</strong>
+                      <pre><code>SELECT col5 FROM table_1_10015132_1 WHERE col1='6';</code></pre>
+                  </div>
+              </div>
+
+
+              <h2>How It Works</h2>
+<p>So, how does it all come together? The model learns to associate pairs of natural language questions with their corresponding SQL commands, determining the best SQL query based on the input question.
+  I accomplished this during my first year of grad school at Yale! I’m thrilled to see that my repository has received <b>93 stars</b> and <b>23 forks</b> on <a href="https://github.com/dadashkarimi/seq2sql" target="_blank" class="btn-secondary">GitHub</a> so far.</p>
+
+
+                  <p>If you have any questions, feel free to <a href="mailto:javiddadashkarimi@gmail.com">email me</a>.</p>
+                </section>
+
+
+          </div>
+          <div class="project-buttons">
+              <a href="https://github.com/dadashkarimi/seq2sql" target="_blank" class="btn-secondary">View on GitHub</a>
+          </div>
+        </div>
+
+
+        </div>
+        <br/>
+        <button onclick="hideReview(this)">close ⌃</button>
+      </section>
+      </section>
+        </td>
+  </tr>
+  <tr>
+      <td><a href="https://github.com/dadashkarimi/EM4QT" target="_blank">
+          EM4QT
+      </a></td>
+      <td>University of Tehran</td>
+      <td class="small">2016/10/29</td>
+      <td>CLIR
+      </td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td>
+          <div>
+            <div class="project-description">
+              <section class="content">
+
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                        margin: 20px;
+                        line-height: 1.6;
+                    }
+                    h1, h2 {
+                        color: #333;
+                    }
+                    code {
+                        background-color: #f4f4f4;
+                        padding: 2px 4px;
+                        border-radius: 4px;
+                    }
+                    pre {
+                        background-color: #f4f4f4;
+                        padding: 10px;
+                        border-radius: 4px;
+                        overflow-x: auto;
+                        text-align: left; /* Align code to the left */
+                        white-space: pre; /* Maintain whitespace */
+                    }
+                </style>
+
+
+
+                <h1>Dictionary-based Query Translation in CLIR</h1>
+
+                <p>So, what’s the deal with this project? It’s all about improving the query language model by using top-ranked documents in a cross-lingual information retrieval (CLIR) setting.
+                   We use the Information derived from both source and target language documents, pulling them based on user queries.</p>
+                <img src="https://pbs.twimg.com/media/DtDTF_MWkAAJBAa.jpg:large" alt="EM4QT" style="width:70%;"/>
+
+                <h2>Query Translation Idea</h2>
+                <p>The main idea behind EM4QT is to grab relevant documents in both languages.
+                  When someone asks a question in their native language, we kick things off by retrieving a set of documents that match that query.
+                  This gives us our initial batch of source language documents.</p>
+                <p>However, at the same time, we whip up an initial guess of translation candidates using a bilingual dictionary.
+
+                <p>Once we have both sets of documents, we fine-tune our translation candidates based on the top retrieved documents. This back-and-forth process makes sure we consider the most relevant and contextually appropriate translations, boosting the accuracy of our cross-lingual information retrieval.</p>
+
+                <h2>Expectation-Maximization Algorithm</h2>
+                <p>The EM algorithm is all about upping the translation quality by leveraging those top-retrieved documents in both languages. It boils down to two main steps:</p>
+                <ul>
+                    <li><strong>E-Step:</strong> We estimate the translation confidence probabilities using the documents we’ve retrieved.</li>
+                    <li><strong>M-Step:</strong> Next, we maximize the likelihood of these probabilities, refining the translation model as we go.</li>
+                </ul>
+
+                <p>This iterative refinement keeps going until we reach convergence, resulting in a more accurate translation distribution that enhances the overall quality of our cross-lingual retrieval.
+
+                The full detail of the algorithm is published at <a href="https://www.sciencedirect.com/science/article/abs/pii/S0306457316306379">IP&M Journal</a>.
+If you have any questions, feel free to <a href="mailto:javiddadashkarimi@gmail.com">email me</a>.</p>
+                </section>
+
+
+          </div>
+          <div class="project-buttons">
+              <a href="https://github.com/dadashkarimi/seq2sql" target="_blank" class="btn-secondary">View on GitHub</a>
+          </div>
+        </div>
+
+
+        </div>
+        <br/>
+        <button onclick="hideReview(this)">close ⌃</button>
+      </section>
+      </section>
+        </td>
+  </tr>
+
+</tbody>
+</table>
+
+
+</section>
+<script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/birds.js"></script>
+</body>
+<script>
+  'use strict';
+
+  // Load the pygments stylesheet so that it's not render blocking.
+  var head = document.head;
+  var link = document.createElement('link');
+  link.type = 'text/css';
+  link.rel = 'stylesheet';
+  link.href = '/css/pygments.css'
+  head.appendChild(link);
+</script>
+
+</html>

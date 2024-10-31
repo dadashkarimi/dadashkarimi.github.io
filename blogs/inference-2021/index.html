@@ -1,0 +1,206 @@
+<head>
+  <style>
+    img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+    }
+  </style>
+</head>
+
+	<div id="page" class="post">
+  <h1 class="title">Posterior Inference</h1>
+
+
+  <div class="post-date">
+    <time datetime="2021-11-26T00:00:00Z">Nov 26, 2021</time> <span class="readtime">&middot; 3 min read</span>
+  </div>
+  <div>
+   <p><strong>Bayesian Inference</strong>  what can we do with posterior distribution $p(\theta|x)$ that we can not do with point estimate: For example we can estimate by $\theta_{\text{MAP}} = \arg \max_{\theta} p(\theta|x)$</p>
+<p><strong>1-Quantify Uncertainty</strong>  Posterior variance typically decreases as $1/n$ when we see $n$ data points.</p>
+<p><strong>2-Posterior Mean</strong> $\theta_{\text{Mean}} = E_{P(\theta|x)}[\theta] = \int_{\mathcal{\theta}}\theta.p(\theta|x) d\theta$. Recall that if $\theta \sim p(\theta)$ and $x|\theta \sim p(x|\theta)$ we can define joint probability with $p(\theta,x) = p(\theta).p(x|\theta)$.
+Indeed, the posterior mean minimizes the mean square loss:
+$$
+\theta_{\text{Mean}} = \arg \min_{\theta(x)} E[||\theta(x)-\theta||^2]
+$$</p>
+<p><strong>3-Posterior Median</strong> In a one dimensional space $\theta_{\text{Median}} = \theta^<em>$ subject to $F(\theta^</em>)=\int_{-\inf}^{\theta^*}p(\theta|x)d\theta=\frac{1}{2}$. In other words, posterior median minimizes the following loss:
+$$
+\theta_{\text{Median}} = \arg \min_{\theta(x)} E[|\theta(x)-\theta|]
+$$</p>
+<p><strong>Conjugate Prior</strong> We say a prior distribution $p(\theta) \in F$ is a conjugate prior for a likelihood function $p(x|\theta)$ if the posterior is in the same family: $p(\theta|x) \in F$.</p>
+<h3 id="examples">Examples</h3>
+<p><strong>Beta-Bernoulli model</strong> Lets say $\theta \in [0,1]$ and $\theta \sim \text{Beta}(\alpha,\beta): p(\theta) \propto \theta^{\alpha-1}(1-\theta)^{\beta-1}$. $x \in {0,1}$ and $x|\theta \sim \text{Bernoulli}(\theta): p(x|\theta) = \theta^x (1-\theta)^{1-x}$. Therefore the posterior distribution equals:</p>
+<p>$$
+\begin{align}
+\begin{aligned}
+\theta| x \sim \text{Beta}(\alpha&rsquo;,\beta&rsquo;) : p(\theta|x) \propto \theta^{\alpha+x-1}(1-\theta)^{\beta-x} \\\
+\alpha&rsquo; = \alpha+x \\\
+\beta&rsquo; = \beta+1-x \\\
+\end{aligned}
+\end{align}
+$$</p>
+<p><strong>Dirichlet-Multinomial</strong>:
+$$
+\begin{align}
+\begin{aligned}
+\theta \in \Delta_k  = {p=(p_1,..,p_k)}: p_i \geq 0, \sum_{i=1}^k = 1 \\\
+x \in { 1,2,..,k}
+\end{aligned}
+\end{align}
+$$</p>
+<p><strong>Gaussian-Gaussian</strong>
+$$
+\begin{align}
+\begin{aligned}
+\theta \in R^d , \theta \sim \text{Normal}(\mu,\sigma) \\\
+x \in R^d , x|\theta \sim \text{Normal}(\theta,\epsilon I )
+\end{aligned}
+\end{align}
+$$</p>
+<h3 id="bayesian-linear-regression">Bayesian Linear Regression</h3>
+<p>Recall <strong>ridge regression</strong>: $y=w.x$:
+$$
+\begin{align}
+\begin{aligned}
+w^<em><em>{\text{ridge}} = &amp; \arg \min</em>{w\in R^d} \frac{1}{2} \sum_{i=1}^n (y_i-w.x_i)^2+\frac{\lambda}{2}||w||<em>2^2\\\
+= &amp; \arg\min</em>{w\in R^d} \frac{1}{2}||y-X^Tw||_2^2 + \frac{\lambda}{2} ||w||_2^2
+\end{aligned}
+\end{align}
+$$
+where $X=(x_1,..,x_n) \in R^{d\times n}$. Remember that the solution for this problem was $w^</em>_{\text{ridge}} = (XX^T+\lambda I )^{-1}Xy$</p>
+<p>Recall <strong>probabilistic model</strong>: prior is $w \sim \text{Normal}(0,\frac{\sigma^2}{\lambda}I) \in R^d$. Likelihood is $y | x,w \sim \text{Normal}(x.w,\sigma^2) \in R$. This is analogous to $y_i = w.x_i+\epsilon_i$ for $\epsilon_i \in \text{Normal}(0,1)$.
+Then $p(w) \propto \exp(-\frac{\lambda ||w||^2}{2\sigma^2})$. Therefore prediction for datapoint $x_i$ is $p(y_i| x_i,w) \propto \exp(-\frac{(y_i-w.x_i)^2}{2\sigma^2}) \forall i=1,..,n$.
+Let $y=(y_1,..,y_n)$ and $x=(x_1,..,x_n)$.
+$$
+\begin{align}
+\begin{aligned}
+p(y|x,w) = &amp; p(y_1| x_1,w) .. p(y_n| x_n,w)\\\
+\propto &amp;\prod_{i=1}^n \exp (-\frac{(y_i-w.x_i)^2}{2\sigma^2}) \\\
+= &amp; \exp (-\frac{1}{2\sigma^2}\sum_{i=1}^n (y_i-w.x_i)^2) \\\
+= &amp; \exp (-\frac{1}{2\sigma^2} ||y-x^Tw||^2_2)
+\end{aligned}
+\end{align}
+$$</p>
+<p>Then posterior is:
+$$
+\begin{align}
+\begin{aligned}
+p(w|y,x) \propto &amp; p(w).p(y| x,w)\\\
+\propto &amp; \exp(-\frac{\lambda}{2\sigma^2}||w||^2).\exp(-\frac{1}{2\sigma^2}||y-x^Tw||^2_2) \\\
+=&amp; \exp(-\frac{1}{2\sigma^2}(||y-x^Tw||^2+\lambda ||w||^2))
+\end{aligned}
+\end{align}
+$$</p>
+<p>recall that $(||y-x^Tw||^2+\lambda ||w||^2)$ is objective function in ridge regression. So the minimizer is $w^*_{\text{ridge}}$.
+Therefore $p(w|y,x) = \text{Normal}(\mu,\sigma)$ for some $\mu \in R^d$ and $\Sigma &gt;0$. What is $\mu$ and $\Sigma$?</p>
+<p>$\mu= \text{mean} p(w|y,x) = \text{mean Gaussian} = \text{mode Gaussian} = w^*_{\text{ridge}}$. In other words:
+$$
+\begin{align}
+\begin{aligned}
+\mu = (xx^T+\lambda I )^{-1}xy\\\
+\Sigma = \sigma^2(xx^T+\lambda I)^{-1}
+\end{aligned}
+\end{align}
+$$</p>
+<p>So the posterior in Bayesian Linear Regression is:</p>
+<p>$$
+\begin{align}
+\begin{aligned}
+w \sim \text{Normal}(0,\frac{\sigma^2}{\lambda}I)\\\
+w | y,x \sim \text{Normal}((xx^T+\lambda I)^{-1}xy,\sigma^2(xx^T+\lambda I)^{-1})
+\end{aligned}
+\end{align}
+$$</p>
+<p>Recall that $x=(x_1,..,x_n)$ and $xx^T=(x_1,..,x_n)(x_1,..,x_n)^T=\sum_{i=1}^{n}x_ix_i^T$.
+For $d=1$ $xx^T=x_1^2+..x_n^2$ and variance is $\frac{\sigma^2}{x_1^2+..x_n^2+\lambda}=O(\frac{1}{n})$. Here are some examples of posterior predictive distribution:</p>
+<p><img src="../../images/posterior.png" alt="Example"></p>
+<p>We covered this post in the introduction to machine learning CPCS 481/581, Yale University, <a href="http://www.cs.yale.edu/homes/wibisono/">Andre Wibisono</a> where I (joint with <a href="http://iid.yale.edu/people/siddhart.md/">Siddharth Mitra</a>) was TF.</p>
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="index.html#"
+     title="Share on Twitter"
+     data-url="/posts/inference-2021/"
+     data-text="Posterior Inference"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="index.html#"
+     title="Share on LinkedIn"
+     data-url="/posts/inference-2021/"
+     data-text="Posterior Inference"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="index.html#"
+     title="Share on Facebook"
+     data-url="/posts/inference-2021/"
+     data-text="Posterior Inference"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="index.html#"
+     title="Share on Telegram"
+     data-url="/posts/inference-2021/"
+     data-text="Posterior Inference"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="index.html#"
+     title="Share on Pinterest"
+     data-url="/posts/inference-2021/"
+     data-text="Posterior Inference"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+
+
+
+</div>
+  </main>
+
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+magnify("myimage", 3);
+
+</script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="../../js/jquery.min.js"></script>
+  <script src="../../js/soho.js"></script>
+
+  <script src="https://dadashkarimi.github.io/js/blog.js"></script>
+
+
+</body>
+</html>

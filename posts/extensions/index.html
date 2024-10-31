@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+<meta charset="utf-8">
+<title>
+    Chrome extensions for quick site redesigns &ndash; Monica Dinculescu
+  </title>
+<meta name="author" content="Monica Dinculescu" />
+<meta name="description" content="Monica Dinculescu's blog" />
+<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+<link rel="alternate" type="application/rss+xml" href="../../atom.xml" />
+<link rel="stylesheet" href="../../css/base.css" type="text/css" media="screen, projection" />
+<link rel="shortcut icon" type="image/x-icon" href="../../images/favicon.png" />
+<link rel="icon" type="image/png" href="../../images/favicon.png">
+<link rel="manifest" href="../../manifest.json">
+
+<link rel="manifest" href="https://meowni.ca/posts/extensions/manifest.json">
+
+<meta name="theme-color" content="#7BE4D5">
+
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="Monica's blog">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Monica's blog">
+
+<link rel="apple-touch-icon" sizes="192x192" href="https://meowni.ca/posts/extensions/icons/icon-192x192.png">
+
+<meta name="msapplication-TileImage" content="images/manifest/icon-192x192.png">
+<meta name="msapplication-TileColor" content="#7BE4D5">
+<meta name="msapplication-tap-highlight" content="no">
+
+<meta name="twitter:card" content="Monica Dinculescu's blog">
+<meta name="twitter:site" content="@notwaldorf">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="my-app">
+<meta property="og:image" content="icons/icon-192x192.png" />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-47334320-2']);
+    _gaq.push(['_setDomainName', 'meowni.ca']);
+    _gaq.push(['_trackPageview']);
+    (function () {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</head>
+
+<body>
+<nav>
+<ul>
+<li id="home_link" class="og"><a href="../../index.html">🏠</a></li>
+<li><a href="../../is.html">about</a></li>
+<li><a href="../../works.html">hire me</a></li>
+<li><a href="https://meownica.studio" target="_blank" rel="noreferrer">art</a></li>
+<li><a href="../../reads.html">reading</a></li>
+<li><a href="../../writes.html">writing</a></li>
+<li><a href="../../makes.html">projects</a></li>
+<li><a href="../../talks.html">talks</a></li>
+</ul>
+</nav>
+<div class="splash short">
+<div class="splash-wrapper">
+<div>
+<section class="byline">
+September 20, 2017
+</section>
+<div>
+<h1><a href="index.html">Chrome extensions for quick site redesigns</a></h1>
+</div>
+</div>
+</div>
+</div>
+<section class="content">
+<p>There’s this thing I hate about the modern web which is that sites are rarely
+one giant html file filled with goodies. You can’t just “run a site” locally.
+You need an <code class="language-plaintext highlighter-rouge">npm</code> or a <code class="language-plaintext highlighter-rouge">gulp</code> step or a <code class="language-plaintext highlighter-rouge">docker</code> if you’re lucky. And probably
+a local server, but not the one you have installed. Which, I mean,
+makes sense, because modern web sites are big and powerful and have complicated
+front-ends and <em>do</em> more things than a giant html file would. But
+it also kind of sucks because the build ceremonial sacrifices can be a bit overwhelming.
+Maybe you just want to see what the links would look like if they didn’t have
+underlines. Maybe you want to change the fonts. Maybe you’re never even
+going to ship these changes, you just want to get a feel for them.</p>
+<p>Boy, have I got an idea for you: Chrome extensions. Hear me out. A Chrome extension
+is a bit of code that runs on a specific page (or set of pages). It can be anything
+you want. In particular, it can be a CSS stylesheet.</p>
+<p>Then, re-theming a site is just a matter of installing this Chrome extension. If
+you want to share it with people, you can just zip it up and send it around.
+It’s obviously not production ready, but it’s amaaaaazing for prototyping.</p>
+<p>I made a <a href="https://glitch.com/edit/#!/chrome-css-extension">glitch</a> project
+that gets you started with writing a Chrome extension that injects a CSS stylesheet.
+There’s only one thing you need to know: this stylesheet is a <em>User Agent</em>
+stylesheet, which means it has the lowest specificity. So some of its styles
+won’t get applied unless you slap some <code class="language-plaintext highlighter-rouge">!important</code>s on it (or have extra
+specific selectors). Or, if you have an ID, you can do my favourite CSS hack ever
+that I learnt from <a href="https://twitter.com/dassurma">Surma</a> and will take to the grave:</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">#foo#foo</span> <span class="p">{</span>
+  <span class="c">/* this is a really winner #foo selector */</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<hr/>
+<p>That’s it! If you want to see an example of such an extension in the wild, I made <a href="https://github.com/notwaldorf/picasso">picasso</a>,
+which is just a pretty Google Calendar theme. Originally it was just a local
+extension I kept on my machine, but eventually I published it because I
+realized other people may want to give their calendar a bubble bath. Anyway, happy retheming!</p>
+<div class="prev-next">
+<a href="../shadow-dom/index.html">&laquo; Shadow DOM: fast and encapsulated styles</a>
+<a href="../part-theme-explainer/index.html">::part and ::theme, an ::explainer &raquo;</a>
+</div>
+</section>
+<div class="footer">
+<div class="thanks">
+<span>Thanks for reading! <span class="og" style="color: var(--red)">❤︎</span></span>
+<a href="https://twitter.com/share" class="twitter-share-button" data-via="notwaldorf" title="Tweet at me!" aria-label="Tweet at me!">Tweet</a>
+</div>
+</div>
+<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
+</body>
+<script>
+  'use strict';
+
+  // Load the pygments stylesheet so that it's not render blocking.
+  var head = document.head;
+  var link = document.createElement('link');
+  link.type = 'text/css';
+  link.rel = 'stylesheet';
+  link.href = '/css/pygments.css'
+  head.appendChild(link);
+</script>
+</html>

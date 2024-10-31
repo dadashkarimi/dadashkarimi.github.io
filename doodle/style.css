@@ -1,0 +1,220 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  -webkit-font-smoothing: antialiased;
+  background: white;
+  font-family: sans-serif;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  /* This page should never scroll, and the bounce scroll on iOS resets the animations */
+  position: fixed;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/*
+ * Basic copy styles
+ */
+.preamble {
+  max-width: 600px;
+  margin: 0 auto;
+  padding-top: 10px;
+  align-items: center;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #263238;
+}
+
+.app-title {
+  color: #E91E63;
+  font-family: 'Pacifico', cursive;
+  font-weight: 100;
+  font-size: 24px;
+  margin: 0 10px;
+}
+
+@media (max-width: 350px) {
+  h1 {
+    font-size: 50px;
+  }
+  .preamble input[type="range"] {
+    width: 60px;
+  }
+}
+
+a:link, a:visited {
+  color: #E91E63;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/*
+ * The preamble at the top.
+ */
+.horizontal {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;;
+  align-items: center;
+}
+
+.preamble-text {
+  margin: 10px 0;
+  text-align: center;
+}
+
+#topSection {
+  box-sizing: border-box;
+}
+#container, #colorsContainer {
+  box-sizing: border-box;
+}
+
+#colorsContainer {
+  flex: auto;
+}
+
+#colorsContainer div {
+  display: inline-block;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+#colorsContainer div.active {
+  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.4);
+  transform: scale(1.6);
+}
+
+#container {
+  transition-duration: 10s;
+  -webkit-transition-duration: 10s;
+  /* Is this real life */
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
+  line-height: 0;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.box {
+  box-sizing: border-box;
+  display: inline-block;
+  background-color: #f9f9f9;
+  transition: background-color ease-out;
+  -webkit-transition: background-color ease-out;
+  -webkit-transition-duration: inherit;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none /*only to disable context menu on long press*/
+}
+.box:hover, .box.active {
+  transition: background-color 0s ease-in;
+  -webkit-transition: background-color 0s ease-in;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none /*only to disable context menu on long press*/
+}
+
+.box.black:hover, .box.black.active          { background-color: #000000; }
+.box.red:hover, .box.red.active            { background-color: #f44336; }
+.box.pink:hover, .box.pink.active           { background-color: #E91E63; }
+.box.purple:hover, .box.purple.active         { background-color: #9C27B0; }
+.box.deeppurple:hover, .box.deeppurple.active     { background-color: #673AB7; }
+.box.indigo:hover, .box.indigo.active         { background-color: #3F51B5; }
+.box.blue:hover, .box.blue.active           { background-color: #2196F3; }
+.box.lightblue:hover, .box.lightblue.active      { background-color: #03A9F4; }
+.box.cyan:hover, .box.cyan.active           { background-color: #00BCD4; }
+.box.teal:hover, .box.teal.active           { background-color: #009688; }
+.box.green:hover, .box.green.active          { background-color: #4CAF50; }
+.box.lightgreen:hover, .box.lightgreen.active     { background-color: #8BC34A; }
+.box.lime:hover, .box.lime.active           { background-color: #CDDC39; }
+.box.yellow:hover, .box.yellow.active         { background-color: #FFEB3B; }
+.box.amber:hover, .box.amber.active          { background-color: #FFC107; }
+.box.orange:hover ,.box.orange:focus, .box.orange.active         { background-color: #FF9800; }
+.box.deeporange:hover, .box.deeporange.active     { background-color: #FF5722; }
+.box.brown:hover, .box.brown.active          { background-color: #795548; }
+.box.grey:hover, .box.grey.active           { background-color: #9E9E9E; }
+
+/* If there's anything shittier than styling input type=ranges, I want
+ * to see it. */
+input[type="range"] {
+  -webkit-appearance: none;
+  background-color: #E91E63;
+  height: 2px;
+  border-radius: 2px;
+  margin: 0 auto;
+  vertical-align: middle;
+  width: 100px;
+}
+input[type="range"]::-moz-range-track {
+  height: 2px;
+  background-color: #E91E63;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background-color: #E91E63;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+input[type="range"]::-moz-range-thumb {
+  background-color: #E91E63;
+  width: 17px;
+  height: 17px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+input[type="range"]::-webkit-slider-thumb:focus {
+  transform: scale(1.4);
+}
+input[type="range"]::-moz-range-thumb:focus {
+  transform: scale(1.4);
+}
+
+.slider-wrapper {
+  min-width: 100px;
+}
+.slider-value {
+  display: inline-block;
+  font-weight: bold;
+}
+
+button {
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  color: #E91E63;
+  cursor: pointer;
+  fill: #E91E63;
+  stroke: transparent;
+  box-sizing: border-box;
+  vertical-align: super;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  flex-shrink: 1;
+  width: 6vw;
+}
+@media (max-width: 600px) {
+  button {
+    width: 7.5vw;
+  }
+}

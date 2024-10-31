@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+<meta charset="utf-8">
+<title>
+    Books &ndash; Monica Dinculescu
+  </title>
+<meta name="author" content="Monica Dinculescu" />
+<meta name="description" content="Monica Dinculescu's blog" />
+<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+<link rel="alternate" type="application/rss+xml" href="atom.xml" />
+<link rel="stylesheet" href="css/base.css" type="text/css" media="screen, projection" />
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="manifest" href="manifest.json">
+
+<link rel="manifest" href="https://meowni.ca/reads/manifest.json">
+
+<meta name="theme-color" content="#7BE4D5">
+
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="Monica's blog">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Monica's blog">
+
+<link rel="apple-touch-icon" sizes="192x192" href="https://meowni.ca/reads/icons/icon-192x192.png">
+
+<meta name="msapplication-TileImage" content="images/manifest/icon-192x192.png">
+<meta name="msapplication-TileColor" content="#7BE4D5">
+<meta name="msapplication-tap-highlight" content="no">
+
+<meta name="twitter:card" content="Monica Dinculescu's blog">
+<meta name="twitter:site" content="@notwaldorf">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="my-app">
+<meta property="og:image" content="icons/icon-192x192.png" />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-47334320-2']);
+    _gaq.push(['_setDomainName', 'meowni.ca']);
+    _gaq.push(['_trackPageview']);
+    (function () {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</head>
+
+<body>
+<nav>
+<ul>
+<li id="home_link" class="og"><a href="index.html">🏠</a></li>
+<li><a href="works.html">Hire me</a></li>
+<li><a href="reads.html">Reading</a></li>
+<li><a href="blogs.html">Posts</a></li>
+<li><a href="pubs.html">Publications</a></li>
+<li><a href="talks.html">Talks</a></li>
+</ul>
+</nav>
+<div class="splash">
+<div class="splash-wrapper">
+<div class="splash-copy">
+<h1>Book reviews</h1>
+<p></p>
+</div>
+<div id="birbs">
+<canvas></canvas>
+<div class="birbs-legend">
+<b>click this art</b> to regenerate it
+<button>[<b>?</b>]</button>
+<div class="birbs-note">I whipped up this little piece of art that changes every time you click on it.
+  You’ll stumble upon mesmerizing patterns that bring to mind the stunning intricacies of stained glass and the enchanting aura of ancient doors and catholic church windows.
+</div>
+
+</div>
+</div>
+</div>
+<div class="dots"></div>
+</div>
+<section class="content">
+<p>I am an avid book reader, and I usually read these books on the subway, like the Red Line between Harvard Square and MGH Station, as well as in coffee shops like Coffee Nero or Mr. Crepe in Boston.
+  I try to be fair in my reviews and not deduct stars just because I didn’t enjoy a book.</p>
+
+<style>
+table {
+  display: grid;
+  border-collapse: collapse;
+  gap: 4px;
+  max-width: 100%;
+  overflow: scroll;
+}
+table.small {
+  grid-template-columns: 1fr 8fr;
+}
+table.all {
+  grid-template-columns: 2.5fr 2fr 1fr 0.7fr 0.7fr;
+}
+
+thead,
+tbody,
+tr {
+  display: contents;
+}
+
+th,
+td {
+  font-size: 14px;
+}
+td.small {
+  font-size: 14px;
+}
+td.center {
+  text-align: center;
+}
+th {
+  border-bottom: 3px solid black;
+  text-align: left;
+  font-size: 16px;
+}
+table.all td {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+td a:link, td a:visited {
+  color: black;
+  text-decoration-color: var(--red);
+  text-decoration-thickness: .125em;
+}
+tr.full {
+  display: none;
+}
+tr.full.show {
+  display: contents;
+}
+tr.full td {
+  grid-column: 1 / -1;
+  padding: 20px 40px;
+  border-left: 3px solid #ddd;
+  font-size: 16px;
+  line-height: 1.5;
+}
+button {
+  background: transparent;
+  font-family: inherit;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-bottom: 2px solid var(--red);
+  color: black;
+}
+tr.full td button {
+  margin-right: 24px;
+}
+@media screen and (max-width:600px) {
+  table.all {
+    grid-template-columns: 1fr 1fr 0.5fr 0.7fr 0.7fr;
+  }
+  tr.full td {
+    max-width: 80%;
+    padding: 16px;
+  }
+}
+
+</style>
+<script>
+  function toggleReview(el) {
+    const tr = el.parentElement.parentElement;
+    const nextTr = tr.nextElementSibling;
+    nextTr.classList.toggle('show');
+  }
+  function hideReview(el) {
+    const tr = el.parentElement.parentElement;
+    tr.classList.remove('show');
+  }
+  function copyReview(el) {
+    const tr = el.parentElement.parentElement;
+    const copyText = tr.querySelector('div').textContent;
+    navigator.clipboard.writeText(copyText);
+  }
+</script>
+<p>Ratings explained:</p>
+<table class="small">
+<tbody>
+<tr>
+<td>5 / 5</td>
+<td>Loved it a lot, would reread</td>
+</tr>
+<tr>
+<td>4 / 5</td>
+<td>I liked it, but I probably won't reread it again</td>
+</tr>
+<tr>
+<td>3 / 5</td>
+<td>It was fine. It wasn't amazing but it was a fun read and I don't regret reading it</td>
+</tr>
+<tr>
+<td>2 / 5</td>
+<td>I didn't like this *at all* and I'll probably say it was badly written</td>
+</tr>
+<tr>
+<td>1 / 5</td>
+<td>This book literally pissed me off</td>
+</tr>
+<tr>
+<td>n / a</td>
+<td>I didn't feel comfortable rating this book because it was either about facts, or I didn't finish it (which doesn't necessarily mean I didn't love it; I'm looking at you John Banville.)
+</td>
+</tr>
+</tbody>
+
+</table>
+<p><br/></p>
+<table class="all">
+<thead>
+<tr>
+<th>Title</th>
+<th>Author</th>
+<th>Read</th>
+<th>Rating</th>
+<th>Review</th>
+</tr>
+</thead>
+<tbody>
+
+  <tr>
+      <td>
+          Sleep Tight
+      </td>
+      <td>J.H. Markert</td>
+      <td class="small">2024/10/27</td>
+      <td class="center stars">
+          <b>4.5</b> / 5
+      </td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td>
+          <div>
+              This book gripped me from start to finish. The atmosphere is dark, chilling, and relentless, making every page feel like a descent into madness. The author skillfully weaves tension with an eerie sense of dread that creeps into every corner of the story. Father Silence is one of the most terrifying villains I’ve come across, and the twists keep coming, making it impossible to put down. The way the author plays with memory and trauma adds so much depth to the characters, especially Tess. Definitely a must-read for horror fans looking for a story that stays with you.
+          </div>
+          <br/>
+          <button onclick="hideReview(this)">close ⌃</button>
+          <button onclick="copyReview(this)">copy to clipboard</button>
+      </td>
+  </tr>
+  <tr>
+      <td>
+          The Deep History of Ourselves
+      </td>
+      <td>Joseph LeDoux</td>
+      <td class="small">2023/03/26</td>
+      <td class="center stars">
+          <b>4.6</b> / 5
+      </td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td>
+          <div>
+              LeDoux delivers an awe-inspiring journey through four billion years of evolution to explore how consciousness emerged. The book's depth is remarkable, balancing scientific rigor with fascinating storytelling. From the cellular to the cerebral, each chapter brings clarity to complex ideas, connecting ancient survival mechanisms with modern human behavior. LeDoux’s perspective on consciousness as a product of evolution offers profound insights, though the detail-heavy approach may feel dense at times. For anyone curious about the deep roots of human awareness, this is an enlightening and thought-provoking read. I used some of the figures in the book during my PhD defene at Yale University.
+          </div>
+          <br/>
+          <button onclick="hideReview(this)">close ⌃</button>
+          <button onclick="copyReview(this)">copy to clipboard</button>
+      </td>
+  </tr>
+  <tr>
+      <td>
+          fMRI
+      </td>
+      <td>Peter Bandettini</td>
+      <td class="small">2023/01/16</td>
+      <td class="center stars">
+          <b>4</b> / 5
+      </td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td>
+          <div>
+              Bandettini presents an engaging and accessible account of the history and breakthroughs in fMRI. The book distills complex scientific progress into a concise and approachable narrative, ideal for both newcomers and those with a background in neuroimaging. His personal insights add depth to the technical journey, reflecting on the field's early days to the advances shaping our understanding today. It’s a brief read, but one that resonates, reminding us of the fascinating evolution behind one of neuroscience's most influential tools.
+          </div>
+          <br/>
+          <button onclick="hideReview(this)">close ⌃</button>
+          <button onclick="copyReview(this)">copy to clipboard</button>
+      </td>
+  </tr>
+  <tr>
+      <td>
+          Causal Inference
+      </td>
+      <td>Paul R. Rosenbaum</td>
+      <td class="small">2022/12/24</td>
+      <td class="center stars">
+          <b>4.1</b> / 5
+      </td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td>
+          <div>
+              Rosenbaum’s <b>Causal Inference</b> is a rigorous and enlightening exploration of causal analysis, blending mathematical precision with practical application. His explanations on topics like matching, instrumental variables, and sensitivity analysis are both comprehensive and accessible, making complex concepts understandable even to non-specialists. The book is dense with valuable insights and provides a strong foundation in causal reasoning, especially for those in social sciences and epidemiology. Highly recommended for anyone delving into the challenges of establishing causation in observational data.
+          </div>
+          <br/>
+          <button onclick="hideReview(this)">close ⌃</button>
+          <button onclick="copyReview(this)">copy to clipboard</button>
+      </td>
+  </tr>
+
+</tbody>
+</table>
+</section>
+<script src="js/birds.js"></script>
+</body>
+<script>
+  'use strict';
+
+  // Load the pygments stylesheet so that it's not render blocking.
+  var head = document.head;
+  var link = document.createElement('link');
+  link.type = 'text/css';
+  link.rel = 'stylesheet';
+  link.href = '/css/pygments.css'
+  head.appendChild(link);
+</script>
+</html>

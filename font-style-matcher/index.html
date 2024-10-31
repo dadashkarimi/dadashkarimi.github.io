@@ -1,0 +1,155 @@
+<html>
+<head>
+<title>Font style matcher</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+<meta name="theme-color" content="#fff200">
+<link rel="manifest" href="manifest.json">
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="font-style-matcher">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="font-style-matcher">
+
+<link rel="apple-touch-icon" href="https://meowni.ca/font-style-matcher/images/icon-48x48.png">
+<link rel="apple-touch-icon" sizes="72x72" href="images/icon-72x72.png">
+<link rel="apple-touch-icon" sizes="96x96" href="images/icon-96x96.png">
+<link rel="apple-touch-icon" sizes="144x144" href="images/icon-144x144.png">
+<link rel="apple-touch-icon" sizes="192x192" href="images/icon-192x192.png">
+
+<meta name="msapplication-TileColor" content="#fff200">
+<meta name="msapplication-TileImage" content="./images/icon-144x144.png">
+<link rel="stylesheet" type="text/css" href="style.css">
+<script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/font-style-matcher/sw.js', {scope: '/font-style-matcher/'}).then(_ => {
+        console.log('service worker is cool 🐳');
+      }).catch(e => {
+        console.error('service worker is not so cool 🔥', e);
+        throw e;
+      });
+    }
+  </script>
+</head>
+<body>
+<div class="container">
+<h1>Font style matcher</h1>
+<p>
+If you're using a web font, you're bound to see a flash of unstyled text (or FOUC),
+between the initial render of your websafe font and the webfont that you've chosen.
+This usually results in a jarring shift in layout, due to
+sizing discrepancies between the two fonts. To minimize this
+discrepancy, you can try to match the fallback font and the intended webfont’s
+x-heights and widths <a href="http://helenvholmes.com/writing/type-is-your-right">[1]</a>.
+This tool helps you do <b><i>exactly</i></b> that.
+</p>
+<br>
+<div class="columns">
+<div>
+<div class="input-field" title="Type a different font family, like 'Arial', and tab away from the input to see a preview of it.">
+<input value="Georgia" placeholder="Fallback font name" id="fallbackName" data-target="fallback">
+<label>Fallback font</label>
+</div>
+<br>
+<div class="input-field">
+<input type="range" value="16" min="5" max="50" step="1" id="fallbackSize" data-target="fallback">
+<label>Font size: <span id="fallbackSizeDisplay">16px</span></label>
+</div>
+<div class="input-field">
+<input type="range" value="1.6" min="0" max="5" step="0.05" id="fallbackLineHeight" data-target="fallback">
+<label>Line height: <span id="fallbackLineHeightDisplay">1</span></label>
+</div>
+<div class="input-field">
+<input type="range" value="300" min="100" max="900" step="100" id="fallbackWeight" data-target="fallback">
+<label>Font weight: <span id="fallbackWeightDisplay">300</span></label>
+</div>
+<div class="input-field">
+<input type="range" value="0" min="-2" max="2" step="0.05" id="fallbackSpacing" data-target="fallback">
+<label>Letter spacing: <span id="fallbackSpacingDisplay">0px</span></label>
+</div>
+<div class="input-field">
+<input type="range" value="0" min="-2" max="2" step="0.05" id="fallbackWordSpacing" data-target="fallback">
+<label>Word spacing: <span id="fallbackWordSpacingDisplay">0px</span></label>
+</div>
+<button class="actionButton clipboardButton" id="fallbackClipboardButton" data-clipboard-text>
+<svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></g></svg>
+<span>Copy CSS to clipboard</span>
+</button>
+<p id="fallback">The fox jumped over the lazy dog, the scoundrel.</p>
+</div>
+<div>
+<div class="input-field" title="Type a different font family, like 'Arial', and tab away from the input to see a preview of it.">
+<input value="Merriweather" placeholder="Web font name" class="with-checkbox" id="webfontName" list="families" data-target="webfont">
+<datalist id="families"></datalist>
+<label for="webfontName">Web font</label>
+<input id="downloadFont" type="checkbox" checked>
+<span class="text">Download from Google Fonts</span>, or:
+<div>
+<button class="actionButton" id="uploadFontBtn">
+<svg viewBox="0 0 24 24"><path d="M5 4v2h14V4H5zm0 10h4v6h6v-6h4l-7-7-7 7z"></svg>
+<span>Upload font</span>
+</button>
+<input type="file" accept=".ttf,.otf,.woff,.woff2,.svg" class="uploadFont" id="uploadFont">
+</div>
+</div>
+<br>
+<div class="input-field">
+<input type="range" value="16" min="5" max="50" step="1" id="webfontSize" data-target="webfont">
+<label>Font size: <span id="webfontSizeDisplay">16px</span></label>
+</div>
+<div class="input-field">
+<input type="range" value="1.6" min="0" max="5" step="0.05" id="webfontLineHeight" data-target="webfont">
+<label>Line height: <span id="webfontLineHeightDisplay">1</span></label>
+</div>
+<div class="input-field">
+<input type="range" value="300" min="100" max="900" step="100" id="webfontWeight" data-target="webfont">
+<label>Font weight: <span id="webfontWeightDisplay">300</span></label>
+</div>
+<div class="input-field">
+<input type="range" value="0" min="-2" max="2" step="0.05" id="webfontSpacing" data-target="webfont">
+<label>Letter spacing: <span id="webfontSpacingDisplay">0px</span></label>
+</div>
+<div class="input-field">
+<input type="range" value="0" min="-2" max="2" step="0.05" id="webfontWordSpacing" data-target="webfont">
+<label>Word spacing: <span id="webfontWordSpacingDisplay">0px</span></label>
+</div>
+<button class="actionButton clipboardButton" id="webfontClipboardButton" data-clipboard-text>
+<svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></g></svg>
+<span>Copy CSS to clipboard</span>
+</button>
+<p id="webfont">The fox jumped over the lazy dog, the scoundrel.</p>
+</div>
+</div>
+<h2>Overlapped</h2>
+<p>In the default example, Merriweather is taller and wider than Georgia, so if you
+bump Georgia's <b>font size</b> up to 18px, and its <b>letter spacing</b> to 0.1px
+you'll get a pretty close match!</p>
+<p>
+<label><input type="checkbox" id="useColours">Use different colours for each font</label><br>
+<label><input type="checkbox" id="simulateFout">See layout shift due to FOUC</label>
+</p>
+<br>
+<div class="output">
+<div id="fallbackOutput">The fox jumped over the lazy dog, the scoundrel.
+<br><br>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</div>
+<div id="webfontOutput" contenteditable="true" class="overlap-font">The fox jumped over the lazy dog, the scoundrel.
+<br><br>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</div>
+</div>
+<footer>
+made with ✨ by <a href="https://twitter.com/notwaldorf">monica</a>. inspired
+by <a href="https://twitter.com/helenvholmes">helen's</a> blog <a href="http://helenvholmes.com/writing/type-is-your-right">post</a>.
+find this on <a href="https://github.com/notwaldorf/font-style-matcher">github</a>
+</footer>
+</div>
+<div class="dropAlert" id="dropAlert">Drop it!</div>
+</body>
+<script src="https://cdn.jsdelivr.net/clipboard.js/1.5.16/clipboard.min.js"></script>
+<script src="app.js"></script>
+</html>

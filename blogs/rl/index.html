@@ -1,0 +1,703 @@
+
+<!DOCTYPE html>
+<head>
+  <style>
+    img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+    }
+  </style>
+</head>
+
+<div id="page" class="post">
+  <h1 class="title">Reinforcement Learning</h1>
+
+
+  <div class="post-date">
+    <time datetime="2022-04-01T00:00:00Z">Apr 1, 2022</time> <span class="readtime">&middot; 15 min read</span>
+  </div>
+  <div>
+   <p>Reinforcement Learning is the third category of big topics in machine learning after supervised learning and unsupervised learning.
+When you think of Reinforcement Learning you might relate many concepts to that:</p>
+<ol>
+<li>Playing chess, backgammon, and etc.</li>
+<li>Learning to walk or ride a bike</li>
+<li>A robot vacuum cleaning up the house</li>
+<li>Drug discovery, personalized health, energy management</li>
+</ol>
+<p>In RL the environment is in state $s$ at a given time and the agent takes action $a$. The environment transitions to state $s&rsquo; = \text{next}(s, a)$. The agent receives reward $r = \text{reward}(s; a)$.
+This is said to be a <code>Markov decision process</code>. It’s “Markov” because
+the next state only depends on the current state and the action
+selected. It’s a “decision process” because the agent is making
+choices of actions in a sequential manner.</p>
+<p>RL is inherently sequential.
+Agent can’t act too greedily; needs to be strategic.
+The aim of RL is to learn to make optimal decisions from experience.</p>
+<h2 id="formulation">Formulation</h2>
+<ol>
+<li>The environment is in state $s$ at a given time.</li>
+<li>The agent takes action $a$.</li>
+<li>The environment transitions to state $s&rsquo; = \text{next}(s; a)$</li>
+<li>The agent receives reward $r = \text{reward}(s; a)$</li>
+</ol>
+<p>RL is inherently sequential</p>
+<p><img src="../../images/sds-365/rl.png" alt="Example"></p>
+<h2 id="principles">Principles</h2>
+<p><code>Policy</code>: A mapping from states to actions. An algorithm/rule to make
+decisions at each time step, designed to maximize the long term
+reward.</p>
+<p><code>Reward signal</code>: The sequence of rewards received at each time step.
+An abstraction of “pleasure” (positive reward) and “pain” (negative
+reward) in animal behavior.</p>
+<p><code>Value function</code>: A mapping from states to total reward. The total
+reward the agent can expect to accumulate in the future, starting from
+that state.</p>
+<p>Rewards are short term. Values are predictions of future rewards.</p>
+<p><code>Model</code>: Used for planning to mimic the behavior of the environment,
+to predict rewards and next states. A <code>model-free</code> approach directly estimates a value function, without
+modeling the environment. Analogous to distinction between generative and discriminative
+classification models.
+In generative model we model the environment which involves the states in that environment.</p>
+<ol>
+<li><strong>Discriminative model</strong>: we put the label for data points given the input</li>
+<li><strong>Generative model</strong>: we have a model of input for a given class. We predict input for that class. This could be a basis for predicting classes in future.</li>
+</ol>
+<p>model-free is easier and less ambitious.</p>
+<h2 id="taxi-problem">Taxi Problem</h2>
+<p>A taxicab drives around the environment, picking up and delivering a
+passenger at four locations.</p>
+<p><img src="../../images/sds-365/rl_taxi.png" alt="Example"></p>
+<p>Four designated locations: R(ed), G(reen), Y(ellow), and B(lue).
+Taxi starts off at random square and passenger is at random
+location.
+Taxi drives to passenger’s location, picks up the passenger,
+drives to passenger’s destination, drops off passenger.
+Once the passenger is dropped off, the episode ends.</p>
+<ol>
+<li>25 taxi positions.</li>
+<li>5 possible locations of passenger: At waiting location or in taxi.</li>
+<li>4 possible destination locations.</li>
+<li>Total number of states: $25 \times 5 \times 4 = 500$.</li>
+</ol>
+<p>Passenger location coded as integers:</p>
+<ol start="0">
+<li>R(ed)</li>
+<li>G(reen)</li>
+<li>Y(ellow)</li>
+<li>B(lue)</li>
+<li>in taxi</li>
+</ol>
+<p>Destinations coded as:</p>
+<ol start="0">
+<li>R(ed)</li>
+<li>G(reen)</li>
+<li>Y(ellow)</li>
+<li>B(lue)</li>
+</ol>
+<h2 id="taxi-problem-state-space">Taxi problem: State space</h2>
+<p>Agent actions coded as:</p>
+<ol start="0">
+<li>move south</li>
+<li>move north</li>
+<li>move east</li>
+<li>move west</li>
+<li>pickup passenger</li>
+<li>drop off passenger</li>
+</ol>
+<p>Rewards:</p>
+<ol>
+<li>Default reward per step: -1</li>
+<li>Reward for delivering passenger: +20</li>
+<li>Illegal “pickup” or “drop-off”: -10</li>
+</ol>
+<p>We can encode the state as a tuple:</p>
+<p>state = (taxi row, taxi column, passenger location, destination)</p>
+<h2 id="q-learning">Q-Learning</h2>
+<p>Maintains a “quality” variable $Q(s; a)$ for taking action $a$ in state $s$. This is a measure of the cumulative rewards obtained by the algorithm
+when it takes action $a$ in state $s$.</p>
+<p>There is a tradeoff between short-term and long-term reward. Quality should not be assessed purely based on the reward the
+action has in the current time step.</p>
+<h2 id="q-learning-update">Q-Learning Update</h2>
+<p>$$
+\begin{align}
+Q(s,q) \leftarrow Q(s,q) + \alpha (\text{reward}(s,a)+\gamma \max_{a&rsquo;} Q(\text{next}(s,a),a&rsquo;)-Q(s,a))
+\end{align}
+$$</p>
+<p>This is like gradient ascent.
+If you choose $\alpha$ big, you will learn quickly (but not too big).
+You can be conservative by choosing it very small, but you will make slow progress.
+When $\gamma=0$ we are greedy and we want to maximize the short term rewards.
+As $\gamma$ gets larger we are putting more emphasize on long term rewards.</p>
+<p>Sometimes, there is another parameter named $\epsilon$ to choose random actions (i.e., to explore).
+But, with probability $1-\epsilon$ you wanna choose the action that maximize your reward (i.e., Exploration vs exploitation).</p>
+<p>When action $a$ is taken in state $s$, reward $\text{reward}(s; a)$ is given. Then, the algorithm moves to a new state $\text{next}(s; a)$.</p>
+<p>Cumulative future reward of this action is $\max_{a&rsquo;} Q(\text{next}(s,a),a&rsquo;)-Q(s,a))$.
+Future rewards discounted by factor $\gamma &lt; 1$.
+Trades off short-term against long-term rewards.</p>
+<p>You can start $Q$ with arbitrary initialization. And the algorithm will keep running until a terminal state which could be the state where the passenger will be dropped off.
+After this step, there is no expected reward for that episode (i.e., it&rsquo;s $0$). Indeed, you initialize them to $0$ and basically they are known quantity for that game.</p>
+<h2 id="example-exploring-randomly">Example: Exploring randomly</h2>
+<p>There is a default per-step reward of -1,
+and a reward of +20 for delivering the passenger.
+Carrying out a &ldquo;pickup&rdquo; or &ldquo;drop-off&rdquo; action illegally has
+a reward of -10.</p>
+<p>In the ascii art graphics, the following color schemes are used:</p>
+<ol>
+<li>blue: passenger</li>
+<li>magenta: destination</li>
+<li>yellow: empty taxi</li>
+<li>green: full taxi
+other letters (R, G, Y and B): locations for passengers and destinations</li>
+</ol>
+<p><img src="../../images/sds-365/taxi_random.png" alt="Example"></p>
+<p>Now, suppose we fix the passenger location and taxi locations. The possible positions for the passenger are corners, sides, or the taxi itself.
+Therefore we have $5\times 5$ grid points.</p>
+<h3 id="example-1">Example 1:</h3>
+<p>The question is, if the passenger is waiting?</p>
+<p><img src="../../images/sds-365/taxi_value.png" alt="Example"></p>
+<p><strong>answer</strong>: The passenger is in location B.</p>
+<h3 id="example-2">Example 2:</h3>
+<p>How about this example?
+<strong>answer</strong>: Yes, the passenger is in the taxi and wants to go to top left in the grid.</p>
+<p><img src="../../images/sds-365/taxi_value_2.png" alt="Example"></p>
+<h2 id="bellman-equation">Bellman Equation</h2>
+<p>The optimal value function is the largest expected discounted long
+term reward starting from that state.</p>
+<h3 id="bellman-equation-deterministic-case">Bellman Equation (deterministic case)</h3>
+<p>The optimality condition for the value function $v_*$ is:</p>
+<p>$$
+v_* = \max_a \Big\{ \text{reward}(s,a) + \gamma v_*(\text{next}(s,a)) \Big\}
+$$</p>
+<p>You can&rsquo;t solve this equation directly. You have to solve it by iteration using gradient descent.</p>
+<p>The Q function is a detailed version of $v$ function.
+It&rsquo;s the value of taking action $a$ when being at state $s$.
+The optimality condition for the Q-function is:</p>
+<p>$$
+Q_*(s,a) = \text{reward}(s,a) + \gamma \max_{a&rsquo;} Q_*(\text{next}(s,a),a&rsquo;)
+$$</p>
+<p>Then $v_*(s) =\max_{a&rsquo;} Q_*(s,a&rsquo;)$.</p>
+<p>And Q-learning algorithm is trying to solve this fixed point equation. And that&rsquo;s where this comes from:</p>
+<p>$$
+\begin{align}
+Q(s,q) \leftarrow Q(s,q) + \alpha (\text{reward}(s,a)+\gamma \max_{a&rsquo;} Q(\text{next}(s,a),a&rsquo;)-Q(s,a))
+\end{align}
+$$</p>
+<p><code>If we know $Q_*$, we know $v_*$</code>:
+$$
+\begin{align}
+v_*(s) =&amp; \max_{a&rsquo;} Q_*(s,a&rsquo;) \\
+=&amp;  \max_a \Big \{ \text{reward}(s,a) + \gamma \max_{a&rsquo;} Q_*(\text{next}(s,a),a&rsquo;) \Big \} \\
+=&amp;  \max_a \Big \{ \text{reward}(s,a) + \gamma \max_{a&rsquo;} v_*(\text{next}(s,a)) \Big \}
+\end{align}
+$$</p>
+<p>which is the Bellman equation.</p>
+<h3 id="bellman-equation-random-environments">Bellman Equation (random environments)</h3>
+<p>The optimality condition for the value function $v_*$ is:</p>
+<p>$$
+\begin{align}
+v_* = &amp; \max_a \sum_{s&rsquo;,r} p(s&rsquo;,r|s,a) \Big \{ r+\gamma v_*(s&rsquo;)\Big\} \\
+=&amp; \max_a E\Big[R_{t+1} +\gamma v_*(S_{t+1}) | S_t = s, A_t=a \Big]
+\end{align}
+$$</p>
+<h3 id="value-function-optimality">Value function optimality</h3>
+<p>$$
+\begin{align}
+v_* = \max_a E\Big[R_{t+1} +\gamma v_*(S_{t+1}) | S_t = s, A_t=a \Big]
+\end{align}
+$$
+It&rsquo;s the largest expected long-term reward.</p>
+<h3 id="q-function-optimality">Q function optimality</h3>
+<p>The optimality condition for the Q function is:</p>
+<p>$$
+\begin{align}
+Q_*(s,a) = &amp; \max_a \sum_{s&rsquo;,r} p(s&rsquo;,r|s,a) \Big \{ r+\gamma \max_{a&rsquo;}Q_*(s&rsquo;,a&rsquo;)\Big\} \\
+=&amp; \max_a E\Big[R_{t+1} +\gamma Q_*(S_{t+1},a&rsquo;) | S_t = s, A_t=a \Big]
+\end{align}
+$$</p>
+<h2 id="some-comments-on-q-learning">Some Comments on Q-learning</h2>
+<p>Q-learning is an example of temporal difference (TD) learning.
+It&rsquo;s an implicit policy and there is not explicit policy.
+It&rsquo;s just a simple exploration policy with probability $\epsilon$ and exploitation with probability $1-\epsilon$.
+It is an “off-policy” approach that is practical if the space of
+actions is small.
+Value iteration is analogous approach for learning the value
+function for a given policy $\pi$, $a$ (possibly random) choice of action
+for each state.</p>
+<p>Direct implementation of Q-learning only possible for small state
+and action spaces. For example in the taxi driver example we can create a table of 500 state-action entries.
+For large state spaces we need to map states to “features”.
+Deep RL uses a multilayer neural network to learn these features
+and the Q-function.</p>
+<p>$$
+\begin{align}
+Q_*(s,a;\theta) = E\Big[R_{t+1} +\gamma Q_*(S_{t+1},a&rsquo;;\theta) | S_t = s, A_t=a \Big]
+\end{align}
+$$</p>
+<p>the parameter $\theta$ are the weights in a neural network.
+We can&rsquo;t put the Q function in a table because it&rsquo;s huge.
+The state $S_{t+1}$ is the input to the network.
+Each possible action $a$ is assigned a value by the network.</p>
+<p><code>How do we solve this implicit equation for the network parameters?</code>.</p>
+<p>Let $y_t$ be a sample from this conditional distribution:</p>
+<p>$$
+y_t = R_{t+1} + \gamma \max_{a&rsquo;} Q(S_{t+1},a&rsquo;;\theta_{\text{current}})
+$$</p>
+<p>Adjust the parameters $\theta$ to make the squared error small (SGD):</p>
+<p>$$
+(y_t-Q(s,a;\theta))^2
+$$</p>
+<p>How?</p>
+<p>$$
+\theta \leftarrow \theta + \eta (y_t-Q(s,a;\theta))\bigtriangledown_{\theta} Q(s,a;\theta)
+$$</p>
+<p>This is the framework for the space invader game.
+It should be multiple frames for the game to appropriately capture states over time.</p>
+<p>Images cropped to $84\times 84$ pixels; 128 color palette; input
+sequence of 4 frames; reward is score.
+3-layer convolutional neural network, ReLU non linearity, final
+layer fully connected, 256 neurons.
+Q-learning carried out over mini batches of playing sequences
+that are “remembered and replayed”.</p>
+<p><img src="../../images/sds-365/q_nn.png" alt="Example"></p>
+<p>Recall from Bellman equation that $y_t$ is an expectation.
+Learning takes place when expectations are violated. The receipt of
+the reward itself does not cause changes.
+Like dopamine in your brain.</p>
+<h2 id="simple-dqn-example">Simple DQN example</h2>
+<p>Recall that in supervised learning loss function is $L(\hat{Y},Y)$ where we can program it directly.
+Often RL loss functions are built up dynamically.
+Automatic differentiation allows us to handle this which is one of the biggest achievements in 20th century.
+It&rsquo;s even bigger than impact of GPUs in deep learning (i.e., According to John Lafferty&rsquo;s speech in University of Texas at Austin).
+TensorFlow supports automatic differentiation by recording relevant
+operations executed inside the context of a “tape”.</p>
+<p>It then uses the record to compute the numerical values of gradients
+using “reverse mode differentiation”.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="hl"><span class="lnt">1
+</span></span><span class="hl"><span class="lnt">2
+</span></span><span class="hl"><span class="lnt">3
+</span></span><span class="hl"><span class="lnt">4
+</span></span><span class="hl"><span class="lnt">5
+</span></span><span class="hl"><span class="lnt">6
+</span></span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line hl"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line hl"><span class="cl"><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+</span></span><span class="line hl"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Vriable</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span>
+</span></span><span class="line hl"><span class="cl"><span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="n">tape</span><span class="p">:</span>
+</span></span><span class="line hl"><span class="cl">	<span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+</span></span><span class="line hl"><span class="cl"><span class="n">dy_x</span> <span class="o">=</span> <span class="n">tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>and then the gradient will be computed numerically.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="hl"><span class="lnt">7
+</span></span><span class="hl"><span class="lnt">8
+</span></span><span class="hl"><span class="lnt">9
+</span></span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">w</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">b</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">(</span><span class="n">persistent</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">  <span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">@</span> <span class="n">w</span> <span class="o">+</span> <span class="n">b</span>
+</span></span><span class="line hl"><span class="cl">  <span class="n">loss</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line hl"><span class="cl">
+</span></span><span class="line hl"><span class="cl"><span class="p">[</span><span class="n">dl_dw</span><span class="p">,</span> <span class="n">dl_db</span><span class="p">]</span> <span class="o">=</span> <span class="n">tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">loss</span><span class="p">,</span> <span class="p">[</span><span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">])</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="automatic-differentiation-parameter-updates">Automatic differentiation: Parameter updates</h2>
+<p>Here is an example of automatic differentiation.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="hl"><span class="lnt"> 7
+</span></span><span class="hl"><span class="lnt"> 8
+</span></span><span class="hl"><span class="lnt"> 9
+</span></span><span class="hl"><span class="lnt">10
+</span></span><span class="hl"><span class="lnt">11
+</span></span><span class="hl"><span class="lnt">12
+</span></span><span class="hl"><span class="lnt">13
+</span></span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">opt</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Compute the gradients for a list of variables.</span>
+</span></span><span class="line"><span class="cl"><span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">  <span class="n">loss</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">call_loss_function</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">vars</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">list_of_variables</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="n">grads</span> <span class="o">=</span> <span class="n">tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">loss</span><span class="p">,</span> <span class="nb">vars</span><span class="p">)</span>
+</span></span><span class="line hl"><span class="cl">
+</span></span><span class="line hl"><span class="cl"><span class="c1"># Process the gradients, for example cap them, etc.</span>
+</span></span><span class="line hl"><span class="cl"><span class="c1"># capped_grads = [MyCapper(g) for g in grads]</span>
+</span></span><span class="line hl"><span class="cl"><span class="n">processed_grads</span> <span class="o">=</span> <span class="p">[</span><span class="n">process_gradient</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">grads</span><span class="p">]</span>
+</span></span><span class="line hl"><span class="cl">
+</span></span><span class="line hl"><span class="cl"><span class="c1"># Ask the optimizer to apply the processed gradients.</span>
+</span></span><span class="line hl"><span class="cl"><span class="n">opt</span><span class="o">.</span><span class="n">apply_gradients</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">processed_grads</span><span class="p">,</span> <span class="n">var_list</span><span class="p">))</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="multi-armed-bandits">Multi-armed bandits</h2>
+<p>You have a set of k-slot machines (e.g., $k=5$).
+The assumption is that, one of the slot machines is gonna give you big payoff and the other slot machines are gonna pay you lower payoffs.
+The simplest abstraction of this problem: every time you pull an arm it&rsquo;s independent from the other times you pull the arm.
+So it&rsquo;s not the case that you long pull an arm the more you get paid.
+However, there are many different versions of this.</p>
+<p>Arm $k$ has the expected payoff $\mu_k$ with variance $\sigma^2_k$ on each pull.
+Each time step, pull an arm and observe the resulting reward.
+Played often enough, can estimate mean reward of each arm.
+The question is, what is the best policy?
+Indeed, this is <code>exploration-exploitation tradeoff</code>.
+We’ll treat this as an RL problem and hit it with a big hammer:
+Deep Q-learning.</p>
+<p>The policy here is very simple: keep playing the machines! Once you found that machine which gives the highest payoff, just keep playing with that one.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="hl"><span class="lnt"> 7
+</span></span><span class="hl"><span class="lnt"> 8
+</span></span><span class="hl"><span class="lnt"> 9
+</span></span><span class="hl"><span class="lnt">10
+</span></span><span class="hl"><span class="lnt">11
+</span></span><span class="hl"><span class="lnt">12
+</span></span><span class="hl"><span class="lnt">13
+</span></span><span class="hl"><span class="lnt">14
+</span></span><span class="hl"><span class="lnt">15
+</span></span><span class="hl"><span class="lnt">16
+</span></span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_reward</span><span class="p">(</span><span class="n">bandit</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;Generate reward for selected bandit&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">reward</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="n">mean</span><span class="o">=</span><span class="n">bandit</span><span class="p">,</span> <span class="n">stddev</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">dtypes</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">reward</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line hl"><span class="cl"><span class="k">def</span> <span class="nf">construct_q_network</span><span class="p">(</span><span class="n">state_dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">action_dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+</span></span><span class="line hl"><span class="cl">    <span class="s2">&#34;&#34;&#34;Construct the Q-network with q-values per action as output&#34;&#34;&#34;</span>
+</span></span><span class="line hl"><span class="cl">    <span class="n">inputs</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">state_dim</span><span class="p">,))</span>  <span class="c1"># input dimension</span>
+</span></span><span class="line hl"><span class="cl">    <span class="n">hidden1</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&#34;relu&#34;</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+</span></span><span class="line hl"><span class="cl">    <span class="n">hidden2</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&#34;relu&#34;</span><span class="p">)(</span><span class="n">hidden1</span><span class="p">)</span>
+</span></span><span class="line hl"><span class="cl">    <span class="n">hidden3</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&#34;relu&#34;</span><span class="p">)(</span><span class="n">hidden2</span><span class="p">)</span>
+</span></span><span class="line hl"><span class="cl">    <span class="n">q_values</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">action_dim</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&#34;linear&#34;</span><span class="p">)(</span><span class="n">hidden3</span><span class="p">)</span>
+</span></span><span class="line hl"><span class="cl">    <span class="n">deep_q_network</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="p">[</span><span class="n">q_values</span><span class="p">])</span>
+</span></span><span class="line hl"><span class="cl">    <span class="k">return</span> <span class="n">deep_q_network</span>
+</span></span><span class="line hl"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">mean_squared_error_loss</span><span class="p">(</span><span class="n">q_value</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">reward</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;Compute mean squared error loss&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">loss</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">q_value</span> <span class="o">-</span> <span class="n">reward</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">loss</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>We are using <code>tf.random.normal</code> as we want to use auto gradient later.
+The code <code> q_values = layers.Dense(action_dim, activation=&quot;linear&quot;)(hidden3)</code> is estimating q-values for each of the bandits.</p>
+<p>Here is the main algorithm.
+As you see, the states are just constant.
+We have 5 bandits which each indicate a mean.
+<code>action_dim=5</code> since we have 5 actions.
+Then we construct the 4 layer neural network.
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="hl"><span class="lnt"> 7
+</span></span><span class="hl"><span class="lnt"> 8
+</span></span><span class="hl"><span class="lnt"> 9
+</span></span><span class="hl"><span class="lnt">10
+</span></span><span class="hl"><span class="lnt">11
+</span></span><span class="hl"><span class="lnt">12
+</span></span><span class="hl"><span class="lnt">13
+</span></span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">state</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([[</span><span class="mi">1</span><span class="p">]])</span>
+</span></span><span class="line"><span class="cl"><span class="n">bandits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">state_dim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">action_dim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">bandits</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">exploration_rate</span> <span class="o">=</span> <span class="mf">0.01</span>
+</span></span><span class="line"><span class="cl"><span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.01</span>
+</span></span><span class="line hl"><span class="cl"><span class="n">num_episodes</span> <span class="o">=</span> <span class="mi">10000</span>
+</span></span><span class="line hl"><span class="cl">
+</span></span><span class="line hl"><span class="cl"><span class="c1"># Construct Q-network</span>
+</span></span><span class="line hl"><span class="cl"><span class="n">q_network</span> <span class="o">=</span> <span class="n">construct_q_network</span><span class="p">(</span><span class="n">state_dim</span><span class="p">,</span> <span class="n">action_dim</span><span class="p">)</span>
+</span></span><span class="line hl"><span class="cl">
+</span></span><span class="line hl"><span class="cl"><span class="c1"># Define optimizer</span>
+</span></span><span class="line hl"><span class="cl"><span class="n">opt</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="hl"><span class="lnt"> 7
+</span></span><span class="hl"><span class="lnt"> 8
+</span></span><span class="hl"><span class="lnt"> 9
+</span></span><span class="hl"><span class="lnt">10
+</span></span><span class="hl"><span class="lnt">11
+</span></span><span class="hl"><span class="lnt">12
+</span></span><span class="hl"><span class="lnt">13
+</span></span><span class="hl"><span class="lnt">14
+</span></span><span class="hl"><span class="lnt">15
+</span></span><span class="hl"><span class="lnt">16
+</span></span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_episodes</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Obtain Q-values from network</span>
+</span></span><span class="line"><span class="cl">        <span class="n">q_values</span> <span class="o">=</span> <span class="n">q_network</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">epsilon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span>
+</span></span><span class="line hl"><span class="cl">        <span class="k">if</span> <span class="n">epsilon</span> <span class="o">&lt;=</span> <span class="n">exploration_rate</span><span class="p">:</span>
+</span></span><span class="line hl"><span class="cl">            <span class="c1"># Select random action</span>
+</span></span><span class="line hl"><span class="cl">            <span class="n">action</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bandits</span><span class="p">))</span>
+</span></span><span class="line hl"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line hl"><span class="cl">            <span class="c1"># Select action with highest q-value</span>
+</span></span><span class="line hl"><span class="cl">            <span class="n">action</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">q_values</span><span class="p">)</span>
+</span></span><span class="line hl"><span class="cl">
+</span></span><span class="line hl"><span class="cl">        <span class="c1"># Obtain reward from bandit</span>
+</span></span><span class="line hl"><span class="cl">        <span class="n">reward</span> <span class="o">=</span> <span class="n">get_reward</span><span class="p">(</span><span class="n">bandits</span><span class="p">[</span><span class="n">action</span><span class="p">])</span>
+</span></span><span class="line hl"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># Obtain Q-value</span>
+</span></span><span class="line"><span class="cl">        <span class="n">q_value</span> <span class="o">=</span> <span class="n">q_values</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">action</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># Compute loss value</span>
+</span></span><span class="line"><span class="cl">        <span class="n">loss_value</span> <span class="o">=</span> <span class="n">mean_squared_error_loss</span><span class="p">(</span><span class="n">q_value</span><span class="p">,</span> <span class="n">reward</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># Compute gradients</span>
+</span></span><span class="line"><span class="cl">        <span class="n">grads</span> <span class="o">=</span> <span class="n">tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">loss_value</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">q_network</span><span class="o">.</span><span class="n">trainable_variables</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># Apply gradients to update network weights</span>
+</span></span><span class="line"><span class="cl">        <span class="n">opt</span><span class="o">.</span><span class="n">apply_gradients</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">grads</span><span class="p">,</span> <span class="n">q_network</span><span class="o">.</span><span class="n">trainable_variables</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># Print console output</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">======episode&#34;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s2">&#34;======&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Q-values&#34;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&#34;</span><span class="si">%.3f</span><span class="s2">&#34;</span> <span class="o">%</span> <span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">q_values</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Deviation&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="p">[</span><span class="s2">&#34;</span><span class="si">%.1f%%</span><span class="s2">&#34;</span> <span class="o">%</span> <span class="nb">float</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">q_values</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">bandits</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">/</span> <span class="n">bandits</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">q_values</span><span class="p">[</span><span class="mi">0</span><span class="p">]))])</span>
+</span></span><span class="line"><span class="cl">            <span class="n">plot</span><span class="p">(</span><span class="n">q_values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">bandits</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Overall, we can catogorize reinforcement learning algorithms as follows:</p>
+<p><img src="../../images/sds-365/rl_algorithms.png" alt="Example"></p>
+<h2 id="policy-iteration">Policy iteration</h2>
+<ol start="0">
+<li>Initialize policy arbitrarily</li>
+<li>Compute values for current policy (policy evaluation)</li>
+<li>Update policy to match values (policy improvement)</li>
+<li>Go to 1.</li>
+</ol>
+<p><img src="../../images/sds-365/val_pol_iter.png" alt="Example"></p>
+<p>We evaluate a policy $\pi(s)$ by calculating the state value function $V(s)$:</p>
+<p>$$
+V(S) = \sum_{s&rsquo;,r&rsquo;} p(s&rsquo;,r&rsquo;|s,\pi(s))[\text{reward}(s,a) + \gamma V(s&rsquo;)]
+$$
+Then, we calculate the improved policy by using one-step look-ahead to replace the initial policy $\pi(s)$:</p>
+<p>$$
+\pi(S) = \arg\max_a  \sum_{s&rsquo;,r&rsquo;} p(s&rsquo;,r&rsquo;|s,\pi(s))[\text{reward}(s,a) + \gamma V(s&rsquo;)]
+$$</p>
+<p>As for vanilla Q-learning, this only works for small state spaces.
+A “tabular” method, computes all values $V(s)$ and actions $\pi(s)$.</p>
+<h2 id="value-iteration">Value Iteration</h2>
+<p>In value iteration, we compute the optimal state value function by iteratively updating the estimate $V(S)$.
+We start with a random value function $V(s)$. At each step, we update it:</p>
+<p>$$
+V(S) = \max_a \sum_{s&rsquo;,r&rsquo;} p(s&rsquo;,r&rsquo;|s,\pi(s))[\text{reward}(s,a) + \gamma V(s&rsquo;)]
+$$</p>
+<h2 id="policy-gradient-methods">Policy gradient methods</h2>
+<p>Parameterize the policy—$\pi(s)$—and use features of states.
+Perform gradient ascent over those parameters.
+Well-suited to deep learning approaches.
+<strong>Why use an on-policy method?</strong> May be possible to estimate a
+good policy without accurately estimating the value function.</p>
+<p>Here we are going to look at (state, reward, action).</p>
+<p>$$
+\tau: S,a_0 \rightarrow (S_1,r_1;a_1) \rightarrow (S_2,r_2;a_2) \rightarrow .. \rightarrow (S_t,r_t;a_t) \rightarrow S_{t+1} (\text{episode is over})
+$$</p>
+<p>randomness is in environemnt and the sequence of actions.
+This is one reason we need automatic diffentiation because the loss function is not explicit.</p>
+<p>$$
+\text{Reward}(\tau) = \sum_{t=1}^t r_t
+$$</p>
+<p>this could be one example of the reward associated with this sequence.
+$r_t$ is also a random variable.</p>
+<p>What we want is to maximize expected reward:</p>
+<p>$$
+J(\theta) = E_{\theta}(R(\tau))
+$$</p>
+<p>and $\theta$ indicates the parameters of my policy:
+$$
+\sum_a \pi_{\theta} (a|s) = 1
+$$</p>
+<p>We wanna do gradient ascent on it (i.e., maximize the reward):
+$$
+\begin{align}
+\theta \leftarrow &amp; \theta + \eta \triangledown_{\theta} J(\theta) \\
+\leftarrow &amp; \theta + \eta \triangledown_{\theta} E_{\theta}(R(\tau))
+\end{align}
+$$</p>
+<p>there is a couple of tricks and observation to compute this gradient.
+$$
+\begin{align}
+\triangledown_{\theta} J(\theta)= &amp; \triangledown_{\theta} \int R(\tau) p(\tau | \theta) d\tau \\
+=&amp;  \int R(\tau) \triangledown_{\theta} p(\tau | \theta) d\tau \\
+=&amp; \int R(\tau) \frac{\triangledown_{\theta} p(\tau | \theta)}{p(\tau | \theta)} p(\tau | \theta) d\tau \\
+= &amp; E_{\theta}\Big[R(\tau) \triangledown \log p(\tau | \theta)\Big] \\
+=&amp; \frac{1}{N} \sum_{i=1}^N R(\tau^i) \triangledown \log p(\tau^i | \theta) \\
+=&amp; \frac{1}{N} \sum_{i=1}^N R(\tau^i) \sum_{t=0}^T \triangledown \log \pi_{\theta}(a_t^i | s_t^i)
+\end{align}
+$$</p>
+<p>We can compute this by sampling: generate sequences according to our policy that gives us the interplay with respect to the environment and lets us try out our actions.
+It&rsquo;s like we ride bike while we fall off and we asjust our policy and we get back to bike and ride again.
+Here riding the bike $N$ times before we adjust our policy.</p>
+<p>$$
+\theta \leftarrow \theta + \alpha \triangledown_{\theta} \widehat{J(\theta)}
+$$</p>
+<p>we can also compute this using automatic differentiation.</p>
+<p>Using Markov property, calculate $E_{\theta}(R(\tau))$:</p>
+<p>$$
+\begin{align}
+E_{\theta}(R(\tau)) = &amp; \int p(\tau | \theta) R(\tau) d\tau
+p(\tau | \theta) = &amp; \prod_{t=0}^T \pi_{\theta}(a_t|s_t) p(s_{t+1},r_{t+1}|s_r,a_t)
+\end{align}
+$$</p>
+<p>It follows that:
+$$
+\begin{align}
+\triangledown_{\theta}p(\tau | \theta) = \sum_{t=0}^T \triangledown_{\theta} \log \pi_{\theta}(a_t|s_t) = \sum_{t=0}^T \frac{\triangledown_{\theta}\pi_{\theta}(a_t|s_t)}{\pi_{\theta}(a_t|s_t)}
+\end{align}
+$$</p>
+<h2 id="actor-critic-approaches-idea">Actor-critic approaches: Idea</h2>
+<p>Estimate policy and value function together.
+Actor: policy used to select actions.
+Critic: value function used to criticize actor.
+Error signal from the critic drives all learning.
+It&rsquo;s an an on-policy approach that means that we are estimating policy directly.</p>
+<p>After each selected action, critic evaluates new state. Have things gone better or worse than expected?
+If we are better that means that it was a good action.
+The error signal is used to update actor and value function.</p>
+<p>Error signal is:</p>
+<p>$$
+\delta_t = r_{t+1} + \gamma V(S_{t+1}) - V(S_t)
+$$</p>
+<p>$$
+\begin{align}
+\delta_t &gt; 0 : \text{ action was better than expected} \\
+\delta_t &lt; 0 : \text{ action was worse than expected}
+\end{align}
+$$</p>
+<p>It&rsquo;s very similar to temporal diffence learning which is popular in neuroscience.
+Then value function is updated as:</p>
+<p>$$
+V(S_t) \leftarrow V(S_t) + \alpha \delta_t
+$$</p>
+<p>Used to update parameters of policy.
+If $\delta_t$ is positive (negative), action $a_t$ should
+become more (less) probable in state $s_t$.</p>
+<p>For example, with:</p>
+<p>$$
+\pi_{\theta}(a|s) = \text{Softmax} \{ f_{\theta}(s,a_1),..,f_{\theta}(s,a_D)\}
+$$</p>
+<p>parameters $\theta$ adjusted so $f_{\theta}(s_t,a_t)$ increases (decreases).</p>
+<p>$$
+f_{\theta}(s_t,a_t) \leftarrow f_{\theta}(s_t,a_t) + \beta \delta_t
+$$</p>
+<p>We covered this post in the intermediate machine learning SDS 365/565, Yale University, <a href="https://en.wikipedia.org/wiki/John_D._Lafferty">John Lafferty</a> where I was TF.</p>
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+  </main>
+
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+magnify("myimage", 3);
+
+</script>
+
+
+
+
+</body>
+</html>

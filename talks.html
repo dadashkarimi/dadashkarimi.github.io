@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+<meta charset="utf-8">
+<title>
+    Talks &ndash; Monica Dinculescu
+  </title>
+<meta name="author" content="Monica Dinculescu" />
+<meta name="description" content="Monica Dinculescu's blog" />
+<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+<link rel="alternate" type="application/rss+xml" href="atom.xml" />
+<link rel="stylesheet" href="css/base.css" type="text/css" media="screen, projection" />
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="manifest" href="manifest.json">
+
+<link rel="manifest" href="https://meowni.ca/talks/manifest.json">
+
+<meta name="theme-color" content="#7BE4D5">
+
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="Monica's blog">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Monica's blog">
+
+<link rel="apple-touch-icon" sizes="192x192" href="https://meowni.ca/talks/icons/icon-192x192.png">
+
+<meta name="msapplication-TileImage" content="images/manifest/icon-192x192.png">
+<meta name="msapplication-TileColor" content="#7BE4D5">
+<meta name="msapplication-tap-highlight" content="no">
+
+<meta name="twitter:card" content="Monica Dinculescu's blog">
+<meta name="twitter:site" content="@notwaldorf">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="my-app">
+<meta property="og:image" content="icons/icon-192x192.png" />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-47334320-2']);
+    _gaq.push(['_setDomainName', 'meowni.ca']);
+    _gaq.push(['_trackPageview']);
+    (function () {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</head>
+
+<body>
+<nav>
+<ul>
+<li id="home_link" class="og"><a href="index.html">🏠</a></li>
+<li><a href="works.html">Hire me</a></li>
+<li><a href="reads.html">Reading</a></li>
+<li><a href="blogs.html">Posts</a></li>
+<li><a href="pubs.html">Publications</a></li>
+<li><a href="talks.html">Talks</a></li>
+</ul>
+</nav>
+<div class="splash">
+<div class="splash-wrapper">
+<div class="splash-copy">
+<h1>Talks</h1>
+<p></p>
+</div>
+<div id="birbs">
+<canvas></canvas>
+<div class="birbs-legend">
+<b>click this art</b> to regenerate it
+<button>[<b>?</b>]</button>
+<div class="birbs-note">I whipped up this little piece of art that changes every time you click on it.
+  You’ll stumble upon mesmerizing patterns that bring to mind the stunning intricacies of stained glass and the enchanting aura of ancient doors and catholic church windows.
+</div>
+</div>
+</div>
+</div>
+<div class="dots"></div>
+</div>
+<section class="content">
+  <style>
+    .content .all {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    .content .all th, .content .all td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    .content .all th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+    .content .all td a {
+      color: #0073e6;
+      text-decoration: none;
+    }
+  </style>
+  <section class="content">
+  <style>
+    p {
+      font-size: var(--font-size-s);
+    }
+    .content .listing.table li > a {
+      flex-shrink: 0;
+      flex-grow: 0;
+      width: 40%;
+    }
+    .content .listing.table li > div {
+      flex-grow: 1;
+      text-transform: none;
+      letter-spacing: 0;
+      margin-left: var(--spacing-xs);
+    }
+    .content .listing.table li > div:before {
+      content: '→ ';
+      font-weight:bold;
+    }
+    @media screen and (max-width:600px) {
+      .content .listing.table li {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        margin-bottom: var(--spacing-m);
+      }
+      .content .listing.table li > div {
+        margin-left: 0;
+      }
+      .content .listing.table li > a {
+        width: 100% !important;
+        flex-shrink: 0;
+      }
+    }
+  </style>
+
+  <style>
+  table {
+    display: grid;
+    border-collapse: collapse;
+    gap: 4px;
+    max-width: 100%;
+    overflow: scroll;
+  }
+  table.small {
+    grid-template-columns: 1fr 8fr;
+  }
+  table.all {
+    grid-template-columns: 2.5fr 1.2fr 1.2fr 1.1fr 0.8fr;
+  }
+
+  thead,
+  tbody,
+  tr {
+    display: contents;
+  }
+
+  th,
+  td {
+    font-size: 14px;
+  }
+  td.small {
+    font-size: 14px;
+  }
+  td.center {
+    text-align: center;
+  }
+  th {
+    border-bottom: 3px solid black;
+    text-align: left;
+    font-size: 16px;
+  }
+  table.all td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  td a:link, td a:visited {
+    color: black;
+    text-decoration-color: var(--red);
+    text-decoration-thickness: .125em;
+  }
+  tr.full {
+    display: none;
+  }
+  tr.full.show {
+    display: contents;
+  }
+  tr.full td {
+    grid-column: 1 / -1;
+    padding: 20px 40px;
+    border-left: 3px solid #ddd;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  button {
+    background: transparent;
+    font-family: inherit;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-bottom: 2px solid var(--red);
+    color: black;
+  }
+  tr.full td button {
+    margin-right: 24px;
+  }
+  @media screen and (max-width:600px) {
+    table.all {
+      grid-template-columns: 1fr 1fr 0.5fr 0.7fr 0.7fr;
+    }
+    tr.full td {
+      max-width: 80%;
+      padding: 16px;
+    }
+  }
+
+  </style>
+  <script>
+    function toggleReview(el) {
+      const tr = el.parentElement.parentElement;
+      const nextTr = tr.nextElementSibling;
+      nextTr.classList.toggle('show');
+    }
+    function hideReview(el) {
+      const tr = el.parentElement.parentElement;
+      tr.classList.remove('show');
+    }
+    function copyReview(el) {
+      const tr = el.parentElement.parentElement;
+      const copyText = tr.querySelector('div').textContent;
+      navigator.clipboard.writeText(copyText);
+    }
+  </script>
+<section class="content">
+  <p>Here are some of the talks I've given.</p>
+</section>
+<p>Acronyms Explained</p>
+  <table class="small">
+  <tbody>
+  <tr>
+  <td>MGH</td>
+  <td>Massachusetts General Hospital
+  </td>
+  </tr>
+  <tr>
+  <td>MIT</td>
+  <td>Massachusetts Institute of Technology
+  </td>
+  </tr>
+  <tr>
+  <td>CISS</td>
+  <td>Annual Conference on Information Sciences and Systems
+  </td>
+  </tr>
+  <tr>
+  <td>Martinos</td>
+  <td>Athinoula A. Martinos Center for Biomedical Imaging
+  </td>
+  </tr>
+  <tr>
+  <td>JHU</td>
+  <td>Johns Hopkins University
+  </td>
+  </tr>
+
+  </tbody>
+  </table>
+
+  <table class="all">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Location</th>
+        <th>Date</th>
+        <th>Host</th>
+        <th>Link</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Machine Learning Tools in Computational Neuroimaging: From Connectomes to FIT</td>
+        <td>MGH</td>
+        <td>Nov, 2024</td>
+        <td>Susan Gabrieli</td>
+        <td>coming soon</td>
+      </tr>
+      <tr>
+        <td>Machine Learning Tools in Computational Neuroimaging: From Connectomes to FIT</td>
+        <td>Martinos/MGH</td>
+        <td>Oct, 2024</td>
+        <td>Julie Price</td>
+        <td><a href="slides/supergroup_martinox.pptx">slides</a>, <a href="https://www.youtube.com/watch?v=0z68WAkjVNc">video</a></td>
+      </tr>
+      <tr>
+        <td>Data-driven Methods for Functional Connectomes using Optimal Transport</td>
+        <td>CS/Yale</td>
+        <td>July, 2023</td>
+        <td>PhD Defense</td>
+        <td><a href="slides/phd.pdf">slides</a></td>
+      </tr>
+      <tr>
+        <td>Stacking multiple optimal transport policies to map functional connectomes</td>
+        <td>CISS/JHU</td>
+        <td>March, 2023</td>
+        <td>JHU</td>
+        <td><a href="slides/CISS_2023_March.pdf">slides</a></td>
+      </tr>
+      <tr>
+        <td>Cross Atlas Remapping via Optimal Transport (CAROT)</td>
+        <td>McGovern/MIT</td>
+        <td>Feb,2023</td>
+        <td>Ev Fedorenko</td>
+        <td><a href="slides/MIT_2023_March.pdf">slides</a></td>
+      </tr>
+      <tr>
+        <td>Cross Atlas Remapping via Optimal Transport (CAROT)</td>
+        <td>MGH/Harvard</td>
+        <td>March, 2023</td>
+        <td>Bruce Fischl</td>
+        <td><a href="slides/Harvard_2023_March.pdf">slides</a></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+<script src="js/birds.js"></script>
+</body>
+<script>
+  'use strict';
+
+  // Load the pygments stylesheet so that it's not render blocking.
+  var head = document.head;
+  var link = document.createElement('link');
+  link.type = 'text/css';
+  link.rel = 'stylesheet';
+  link.href = '/css/pygments.css'
+  head.appendChild(link);
+</script>
+</html>

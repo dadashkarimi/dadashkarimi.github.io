@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+<meta charset="utf-8">
+<title>
+    When pull requests get tricky &ndash; Monica Dinculescu
+  </title>
+<meta name="author" content="Monica Dinculescu" />
+<meta name="description" content="Monica Dinculescu's blog" />
+<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+<link rel="alternate" type="application/rss+xml" href="../../atom.xml" />
+<link rel="stylesheet" href="../../css/base.css" type="text/css" media="screen, projection" />
+<link rel="shortcut icon" type="image/x-icon" href="../../images/favicon.png" />
+<link rel="icon" type="image/png" href="../../images/favicon.png">
+<link rel="manifest" href="../../manifest.json">
+
+<link rel="manifest" href="https://meowni.ca/posts/tricky-pull-requests/manifest.json">
+
+<meta name="theme-color" content="#7BE4D5">
+
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="Monica's blog">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Monica's blog">
+
+<link rel="apple-touch-icon" sizes="192x192" href="https://meowni.ca/posts/tricky-pull-requests/icons/icon-192x192.png">
+
+<meta name="msapplication-TileImage" content="images/manifest/icon-192x192.png">
+<meta name="msapplication-TileColor" content="#7BE4D5">
+<meta name="msapplication-tap-highlight" content="no">
+
+<meta name="twitter:card" content="Monica Dinculescu's blog">
+<meta name="twitter:site" content="@notwaldorf">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="my-app">
+<meta property="og:image" content="icons/icon-192x192.png" />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-47334320-2']);
+    _gaq.push(['_setDomainName', 'meowni.ca']);
+    _gaq.push(['_trackPageview']);
+    (function () {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</head>
+
+<body>
+<nav>
+<ul>
+<li id="home_link" class="og"><a href="../../index.html">🏠</a></li>
+<li><a href="../../is.html">about</a></li>
+<li><a href="../../works.html">hire me</a></li>
+<li><a href="https://meownica.studio" target="_blank" rel="noreferrer">art</a></li>
+<li><a href="../../reads.html">reading</a></li>
+<li><a href="../../writes.html">writing</a></li>
+<li><a href="../../makes.html">projects</a></li>
+<li><a href="../../talks.html">talks</a></li>
+</ul>
+</nav>
+<div class="splash short">
+<div class="splash-wrapper">
+<div>
+<section class="byline">
+February 25, 2014
+</section>
+<div>
+<h1><a href="index.html">When pull requests get tricky</a></h1>
+</div>
+</div>
+</div>
+</div>
+<section class="content">
+<p>Imagine this: you have forked a repo a long time ago and have since been in a happily committed relationship with the master branch, modifying files and committing from the hip.</p>
+<p>In case you have doubts about the likelihood of this scenario, we’re talking about my <code class="language-plaintext highlighter-rouge">notwaldorf.github.com</code> blog branch, which I forked from <code class="language-plaintext highlighter-rouge">holman/left</code>. All my changes are on the master branch so that GitHub can do its magic gh-pages trick and just Make Things Work™. This could also happen for repos you’ve forked and mucked around with, but never thought you’d ever contribute to.</p>
+<p>Because you’re a good open sorcerer, you might, at some point, want to send a pull request to fix a thing in the original repo. If you’re anything like I am, you are now in a bit of a terrible situation because your fork’s tip of tree has advanced and diverged quite a bit from the upstream repo, so any pull requests you send out will be polluted with code that doesn’t belong in them.</p>
+<p>At this point, you probably have some regrets. Let’s not dwell on them. Here’s the set of steps that will help you navigate this minefield you find yourself in. They’re not special; I just couldn’t find them all in one place, and wanted a summary for the future. <a href="https://twitter.com/kmrhb">Kamal</a> figured most of this out, because he is a git wizard, while I am, most definitely, not.</p>
+<h2 id="set-up-your-upstream">Set up your upstream</h2>
+<p>If <code class="language-plaintext highlighter-rouge">git remote</code> doesn’t show you a branch called <code class="language-plaintext highlighter-rouge">upstream</code>, you need to add one:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote add upstream https://github.com/user/repo_you_forked.git
+</code></pre></div></div>
+<h2 id="set-up-a-clean-branch-for-your-fix">Set up a clean branch for your fix</h2>
+<p>Step into your tardis and branch from when you were last in sync with the upstream. In my case, this was when I initially created my fork.
+A dull perusing of <code class="language-plaintext highlighter-rouge">git log</code> or <code class="language-plaintext highlighter-rouge">git reflog</code> should point you to the right sha. Then,</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout -b pr_branch
+git reset --hard sha_from_the_past
+</code></pre></div></div>
+<h2 id="get-your-changes-in">Get your changes in</h2>
+<p>Here you have two options. If your changes are tiny, or you know exactly what they are, you can just manually reapply them. And by that I mean copy paste the changes into the right files, like a barbarian. For the record, this is my preferred approach. I am a barbarian. I live in the git stone age.</p>
+<p>Alternatively, you can go the fancy route with</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout -p master file_to_modify
+</code></pre></div></div>
+<p>This will look at the diff between master (which is in the future), and your working copy (we are in the past) and let you pick and choose individual hunks. Having taken a moment and appreciated how amazing this last sentence was, you can:</p>
+<ul>
+<li>hit <em>s</em> to split the hunks into smaller hunks</li>
+<li>hit <em>y</em> or <em>n</em> to pick or skip a hunk.</li>
+</ul>
+<p>If you’ve touched any files, it would be a good time to do your familiar <code class="language-plaintext highlighter-rouge">git add/git commit</code> dance.</p>
+<h2 id="merge-the-upstream-changes-in">Merge the upstream changes in</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git fetch upstream  # You won't see any changes in git log. Don't panic yet.
+git merge upstream/master  # Some wild upstream changes appear in git log.
+</code></pre></div></div>
+<h2 id="--t-t-t-test-your-cha-an-ges--">♫ ♪ T-t-t-test your cha-an-ges ♫ ♪</h2>
+<h2 id="upload-your-branch">Upload your branch</h2>
+<p>This is the last step. If you want, you can rename your branch before uploading it. I usually do, because my original branch names tend to be silly. After this, you can go and look at your branch in GitHub and be delighted with the progress you’ve made. Time to send out that pull request!</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push origin pr_branch:possibly_new_branch_name
+</code></pre></div></div>
+<p><br/>
+Hope this helped!</p>
+<div class="prev-next">
+<a href="../ruby-eh/index.html">&laquo; Ruby for Canadians: an instruction manual</a>
+<a href="../cat-dns-slides/index.html">Cat-DNS: now a presentation with slides &raquo;</a>
+</div>
+</section>
+<div class="footer">
+<div class="thanks">
+<span>Thanks for reading! <span class="og" style="color: var(--red)">❤︎</span></span>
+<a href="https://twitter.com/share" class="twitter-share-button" data-via="notwaldorf" title="Tweet at me!" aria-label="Tweet at me!">Tweet</a>
+</div>
+</div>
+<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
+</body>
+<script>
+  'use strict';
+
+  // Load the pygments stylesheet so that it's not render blocking.
+  var head = document.head;
+  var link = document.createElement('link');
+  link.type = 'text/css';
+  link.rel = 'stylesheet';
+  link.href = '/css/pygments.css'
+  head.appendChild(link);
+</script>
+</html>

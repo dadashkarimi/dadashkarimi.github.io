@@ -1,0 +1,310 @@
+<head>
+  <style>
+    img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+    }
+  </style>
+</head>
+
+<div id="page" class="post">
+  <h1 class="title">How to Manage 100k&#43; Experiments on Brain Imaging Datasets</h1>
+
+
+  <div class="post-date">
+    <time datetime="2021-12-05T00:00:00Z">Dec 5, 2021</time> <span class="readtime">&middot; 8 min read</span>
+  </div>
+  <div>
+   <p>Ph.D. students studying machine learning on the human brain must conduct massive experiments on brain imaging datasets.
+When they deal with big datasets, some students get overwhelmed with many experiments and need help managing them because sometimes they need a clear plan for developing scripts, saving results, and visualizing experiments.</p>
+<p>To encourage these students to adopt similar ideas in their papers, we will discuss one brain imaging study that required us to perform at least <strong>100k</strong> experiments and immense visualizations. To prevent writing duplicate codes and to quickly recover a portion of your experiments when an error or typo in your preprocessing is discovered. Our first paper on this was published in <a href="../../publications/2021/nhb-2021/index.html#page">Nature Human Behavior</a>, and the optimal transport example was presented in <a href="https://link.springer.com/chapter/10.1007/978-3-030-87199-4_28">MICCAI 2021</a>.</p>
+<h2 id="experiment-1-data-driven-mappings-and-optimal-transport">Experiment 1: Data-driven mappings and Optimal Transport</h2>
+<p>This research aims to transform a dataset that has been preprocessed in various brain atlases. As a result, evaluating a machine learning model trained on another atlas is impracticable. Our strategy is to identify a data-driven mapping and then apply it to our dataset to estimate images that could be derived from the missing atlas.</p>
+<p>For example, each of the graphs below represents a mapping between a source (x-axis) atlas and a target (y-axis). Each plot is the result of training on a random portion of the human connectome project (HCP) and will later be tested on the subjects who were left out to assess their qualities. Furthermore, for each person, we have eight different types of data correlating to other tasks and one resting scan (i.e., nine sets of visualizations in total).</p>
+<p><img src="../../images/ot/all_shen_relational_heatpam.png" alt="Example"></p>
+<!-- raw HTML omitted -->
+<p><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="hl"><span class="lnt"> 8
+</span></span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">sinkhorn</span><span class="p">(</span><span class="n">source</span><span class="p">,</span><span class="n">target</span><span class="p">,</span><span class="n">train_index</span><span class="p">,</span><span class="n">task</span><span class="p">,</span><span class="n">frame_size</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">n</span> <span class="o">=</span><span class="n">all_data</span><span class="p">[(</span><span class="n">source</span><span class="p">,</span><span class="n">task</span><span class="p">)]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">num_time_points</span> <span class="o">=</span><span class="n">all_data</span><span class="p">[(</span><span class="n">source</span><span class="p">,</span><span class="n">task</span><span class="p">)]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">p1</span> <span class="o">=</span><span class="n">all_data</span><span class="p">[(</span><span class="n">source</span><span class="p">,</span><span class="n">task</span><span class="p">)]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">p2</span> <span class="o">=</span><span class="n">all_data</span><span class="p">[(</span><span class="n">target</span><span class="p">,</span><span class="n">task</span><span class="p">)]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">G</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_time_points</span><span class="p">,</span><span class="n">p1</span><span class="p">,</span><span class="n">p2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line hl"><span class="cl">    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">num_time_points</span><span class="p">,</span><span class="n">frame_size</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">     <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">The</span> <span class="n">code</span> <span class="n">to</span> <span class="n">learn</span> <span class="n">optimal</span> <span class="n">transport</span><span class="o">--&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">G</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+Surprisingly, the Sinkhorn function will almost always be used in the upcoming analyses we will discuss shortly.
+So, let&rsquo;s define our first rule:</p>
+<p><strong>Rule 1:</strong> Do not write a script unless a function for your code has been defined.</p>
+<p>It was time to determine which brain regions were accountable for the highest transportation based on the policies we had learned. We used different atlases and visualized the nodes based on the coordinates of each one.</p>
+<p><img src="../../images/ot/surface_all__shen_rest1.png" alt="Example"></p>
+<p>Except for the surface plots, all our plots are in <strong>R</strong>. However, in both cases, we never plotted each graph individually to be merged later in Adobe Illustrator. 
+For example, in <strong>R</strong>, we defined a function named <em>my_plot&lt;-function(c_data, source, target, task)</em> to save all possible eight plots into a list called <em>my_plots &lt;- list()</em>.
+This is to avoid situations when we change the plot, caption, or color and have to start over. We saved a lot of time by putting ourselves under this discipline.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">Cairo</span><span class="o">::</span><span class="nf">Cairo</span><span class="p">(</span><span class="m">40</span><span class="p">,</span><span class="m">10</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">file</span> <span class="o">=</span> <span class="s">&#34;../figs/boxplot.png&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">type</span> <span class="o">=</span> <span class="s">&#34;png&#34;</span><span class="p">,</span><span class="n">bg</span> <span class="o">=</span> <span class="s">&#34;white&#34;</span><span class="p">,</span> <span class="n">dpi</span> <span class="o">=</span> <span class="m">300</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="s">&#34;cm&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">ggarrange</span><span class="p">(</span><span class="n">plotlist</span> <span class="o">=</span> <span class="n">my_plots</span><span class="p">,</span><span class="n">nrow</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="n">ncol</span><span class="o">=</span><span class="m">6</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">dev.off</span><span class="p">()</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>It&rsquo;s time to define our second rule:</p>
+<p><strong>Rule 2:</strong> As far as possible, combine your visuals into a single script. Don&rsquo;t create images with similar styles that will be connected, aligned, or captioned later.</p>
+<h2 id="experiment-2-simplex-and-intrinsic-evaluations">Experiment 2: Simplex and Intrinsic Evaluations</h2>
+<p>In this set of experiments, we&rsquo;ll run optimal transport over a simulation dataset and three target atlases to see how our algorithm works. To do this, we need to run the Sinkhorn function three times with different arguments each time.</p>
+<p><img src="../../images/ot/simplex_all.png" alt="Example"></p>
+<p>This is the python function we used for this experiment. A simple function that calls the previous Sinkhorn function.
+Luckily, we avoided writing duplicate code three times.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">simplex_ot</span><span class="p">(</span><span class="n">target</span><span class="p">,</span><span class="n">train_index</span><span class="p">,</span><span class="n">test_index</span><span class="p">,</span><span class="n">task</span><span class="p">,</span><span class="n">n_iters</span><span class="p">,</span><span class="n">alpha</span><span class="p">,</span><span class="n">beta</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">some</span> <span class="n">code</span> <span class="n">to</span> <span class="n">calculate</span> <span class="n">left</span> <span class="n">out</span> <span class="n">local</span> <span class="n">atlas</span> <span class="o">--&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">G1</span> <span class="o">=</span>  <span class="n">stinkhorn</span><span class="p">(</span><span class="n">local_atlases</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">target</span><span class="p">,</span><span class="n">train_index</span><span class="p">,</span><span class="n">task</span><span class="p">,</span><span class="n">num_time_points</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">G2</span> <span class="o">=</span>  <span class="n">stinkhorn</span><span class="p">(</span><span class="n">local_atlases</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">target</span><span class="p">,</span><span class="n">train_index</span><span class="p">,</span><span class="n">task</span><span class="p">,</span><span class="n">num_time_points</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">G3</span> <span class="o">=</span>  <span class="n">stinkhorn</span><span class="p">(</span><span class="n">local_atlases</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">target</span><span class="p">,</span><span class="n">train_index</span><span class="p">,</span><span class="n">task</span><span class="p">,</span><span class="n">num_time_points</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">some</span> <span class="n">code</span> <span class="n">to</span> <span class="n">calculate</span> <span class="n">correlations</span> <span class="o">--&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">G1</span><span class="p">,</span> <span class="n">G2</span><span class="p">,</span> <span class="n">G3</span><span class="p">,</span> <span class="n">score</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="experiment-3-downstream-analysis-all-in-one-plot">Experiment 3: Downstream Analysis: All in one plot</h2>
+<p>Now, it&rsquo;s time to plot a lot of experiments in a big way. For all pairs of atlases, including one and all-way OT, to get there.
+Let&rsquo;s say we need one plot for a specific task that shows how well it predicts IQ when optimal transport is used on all other atlases.
+We&rsquo;ll need eight different plots to do this for all of our other tasks.
+We decided to use dot plots where the y-axis is the source, and the x-axis is the performance for the given task and the target. This way, we can see how well we did overall.</p>
+<p><img src="../../images/ot/shen_all_dotplot.png" alt="Example"></p>
+<p>In this graph, the red line is the best value we got from preprocessing, and the radius of each dot shows the standard deviation for 100 exams.
+These graphs show the results of experiments that took place throughout $8 \times 8 \times 100 $ trials.
+We may need to do the same in our supplementary material for all the $8$ targets.
+But, it will only take a few seconds if you have defined proper functions.</p>
+<p>How can you save the results that will be used for visualization? To answer this question, let&rsquo;s first talk about your scripts. We suggest you add as many arguments as possible to keep your hands flexible. We don&rsquo;t recommend preliminary solutions like introducing these variables within your primary function and changing them on demand.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-s&#39;</span><span class="p">,</span><span class="s1">&#39;--source&#39;</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span><span class="n">help</span><span class="o">=</span><span class="s2">&#34;source atlas&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-s1&#39;</span><span class="p">,</span><span class="s1">&#39;--source1&#39;</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span><span class="n">help</span><span class="o">=</span><span class="s2">&#34;source atlas 1&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-s2&#39;</span><span class="p">,</span><span class="s1">&#39;--source2&#39;</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span><span class="n">help</span><span class="o">=</span><span class="s2">&#34;source atlas 2&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-t&#39;</span><span class="p">,</span><span class="s1">&#39;--target&#39;</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span><span class="n">help</span><span class="o">=</span><span class="s2">&#34;target atlas&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-task&#39;</span><span class="p">,</span><span class="s1">&#39;--task&#39;</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="s2">&#34;all&#34;</span><span class="p">,</span><span class="n">help</span><span class="o">=</span><span class="s2">&#34;task&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-c&#39;</span><span class="p">,</span><span class="s1">&#39;--cost&#39;</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="s2">&#34;functional&#34;</span><span class="p">,</span><span class="n">help</span><span class="o">=</span><span class="s2">&#34;cost matrix&#34;</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Here&rsquo;s an example of a bash script that uses the Shen atlas as the source, Craddock as the target, and working memory as the specified task.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">python</span> <span class="n">hcp_atlas_to_atlas</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">s</span> <span class="n">then</span> <span class="o">-</span><span class="n">t</span> <span class="n">Craddock</span> <span class="o">-</span><span class="n">task</span> <span class="n">wm</span> </span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p><strong>Rule 3:</strong> Make sure your scripts have arguments: set default values for them, say what types they are, and call your functions through a <strong>primary</strong> function via appropriate statements.</p>
+<h2 id="experiment-4-dataset-simulation">Experiment 4: Dataset simulation</h2>
+<p>In this case, we were asked to run another set of experiments to simulate a dataset that had only been preprocessed on a few atlases. Suppose we want to remove k atlases one by one and see if our algorithm can them or not.</p>
+<p><img src="../../images/ot/atlas_sample_all.png" alt="Example"></p>
+<p>We may need to define a new function named all_way_ot:
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">all_way_ot</span><span class="p">(</span><span class="n">target</span><span class="p">,</span><span class="n">task</span><span class="p">,</span><span class="n">n_iters</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">  <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">code</span> <span class="n">to</span> <span class="n">sample</span> <span class="n">n</span><span class="o">-</span><span class="n">k</span> <span class="n">atlas</span> <span class="o">--&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">G</span> <span class="o">=</span>  <span class="n">sinkhorn_n</span><span class="p">(</span><span class="n">target</span><span class="p">,</span><span class="n">train_index</span><span class="p">,</span><span class="n">local_atlases</span><span class="p">,</span><span class="n">task</span><span class="p">,</span><span class="n">num_time_points</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">code</span> <span class="n">to</span> <span class="n">apply</span> <span class="n">optimal</span> <span class="n">transport</span> <span class="o">--&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">results</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<p>Now, you have two options to implement <strong>sinkhorn_n</strong>: To make it work, you could either call the original sinkhorn several times and merge the results, or you could make a function like Sinkhorn that takes into account $n-k$ brain mappings. Here, we&rsquo;ll let you figure out which is the best choice for your case.</p>
+<h2 id="experiment-5-parameter-sensitivity">Experiment 5: Parameter Sensitivity</h2>
+<p>So far, we&rsquo;ve done an excellent job setting up the functions we need for our experiments.
+Now, we want to see how our algorithm reacts to changes in the free parameters we can choose from.
+There is a pentagon plot that we will use to look at the sensitivity of the frame size and training size. If you have a wider frame size, there are fewer transportation plans, and there could be more robust policies when there are more training plans.
+We will use the same visualization principles (i.e., <strong>Rule 2</strong>) and modularized coding (i.e., <strong>Rule 1,3</strong>).</p>
+<p><img src="../../images/ot/all_shen_pentagon.png" alt="Example"></p>
+<p>But, we start to notice that there is a new problem.
+How to save new results and transmit them to visualization units?</p>
+<p>Using the correct naming conventions is very important to us. For example, the panda data frame that shows your results (source, target, and task) is an excellent way to keep track of them. You can quickly load them into your visualizations.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;orig&#39;</span><span class="p">,</span><span class="s1">&#39;ot&#39;</span><span class="p">,</span><span class="s1">&#39;pearson&#39;</span><span class="p">,</span><span class="s1">&#39;mse&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">source</span><span class="o">+</span><span class="s2">&#34;_&#34;</span><span class="o">+</span><span class="n">target</span><span class="o">+</span><span class="s2">&#34;_&#34;</span><span class="o">+</span><span class="n">task</span><span class="o">+</span><span class="s2">&#34;_iq.csv&#34;</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>It&rsquo;s also good to have naming conventions so that you can run your scripts again and again on different CPUs.
+In our example, we have defined a function named <strong>shuffle_list(atlases)</strong> that every time we run our script, it&rsquo;s more likely that a new combination of arguments will be called as we skip a variety that is already existing by <code>os.path.exists(filename)</code>.</p>
+<p><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="hl"><span class="lnt">37
+</span></span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">  <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">some</span> <span class="n">code</span> <span class="n">to</span> <span class="n">load</span> <span class="n">arguments</span>  <span class="o">--&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">For</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">atlases</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">      <span class="n">For</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">atlases</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">          <span class="n">For</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">              <span class="k">if</span><span class="p">(</span><span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">s</span><span class="o">+</span><span class="s2">&#34;_&#34;</span><span class="o">+</span><span class="n">t</span><span class="o">+</span><span class="s2">&#34;_&#34;</span><span class="o">+</span><span class="n">task</span><span class="o">+</span><span class="s2">&#34;_iq.csv&#34;</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">                  <span class="n">atlas_ot</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">train_index</span><span class="p">,</span><span class="n">test_index</span><span class="p">,</span><span class="n">task</span><span class="p">,</span><span class="n">num_iters</span><span class="p">)</span>
+</span></span><span class="line hl"><span class="cl">              <span class="k">elif</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">save_model</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">                  <span class="n">atlas_ot</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">train_index</span><span class="p">,</span><span class="n">test_index</span><span class="p">,</span><span class="n">task</span><span class="p">,</span><span class="n">num_iters</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">              <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                  <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;file exists!&#34;</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+We have two more rules left. Let&rsquo;s define the first one:</p>
+<p><strong>Rule 4:</strong> Use naming conventions that inform enough about your experiment. These will be loaded into your visualization units with the relative arguments in the file names.</p>
+<p>In our project, we found a mistake when processing <strong>dosenbach</strong> and <strong>power</strong> atlases. <strong>Rule 4</strong> helped us get all the results and plots back in less than five days. Do you know what our strategy was here? We only removed the files that include <strong>dosenbach</strong> and <strong>power</strong> as names and called the bash scripts we already had for these two cases. Given $20$ processing units and around $65$ Gbs of memory, we reached the scripts repeatedly.</p>
+<p><strong>Rule 5:</strong> Once you notice a mistake in the first steps, delete the files linked to your fault and call your script from scratch. If you have followed the previous rules, none of your central units, such as your visualization, will be affected.</p>
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="index.html#"
+     title="Share on Twitter"
+     data-url="/posts/bigdata-experiments-2021/"
+     data-text="How to Manage 100k&#43; Experiments on Brain Imaging Datasets"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="index.html#"
+     title="Share on LinkedIn"
+     data-url="/posts/bigdata-experiments-2021/"
+     data-text="How to Manage 100k&#43; Experiments on Brain Imaging Datasets"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="index.html#"
+     title="Share on Facebook"
+     data-url="/posts/bigdata-experiments-2021/"
+     data-text="How to Manage 100k&#43; Experiments on Brain Imaging Datasets"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="index.html#"
+     title="Share on Telegram"
+     data-url="/posts/bigdata-experiments-2021/"
+     data-text="How to Manage 100k&#43; Experiments on Brain Imaging Datasets"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="index.html#"
+     title="Share on Pinterest"
+     data-url="/posts/bigdata-experiments-2021/"
+     data-text="How to Manage 100k&#43; Experiments on Brain Imaging Datasets"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+
+
+
+</div>
+  </main>
+
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+magnify("myimage", 3);
+
+</script>
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="../../js/jquery.min.js"></script>
+  <script src="../../js/soho.js"></script>
+
+  <script src="https://dadashkarimi.github.io/js/blog.js"></script>
+
+
+</body>
+</html>

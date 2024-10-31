@@ -1,0 +1,353 @@
+<div id="page" class="post">
+  <h1 class="title">Approximation Inference</h1>
+
+  <head>
+    <style>
+      img {
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+      }
+    </style>
+  </head>
+
+  <div class="post-date">
+    <time datetime="2022-03-07T00:00:00Z">Mar 7, 2022</time> <span class="readtime">&middot; 5 min read</span>
+  </div>
+  <div>
+   <p>In the previous post, we talked about Gibbs sampling and posterior inference.
+However, computing Bayesian posteriors can be impractical.
+Two approaches:</p>
+<ol>
+<li>Simulation</li>
+<li>Variational Inference</li>
+</ol>
+<p>Simulation is an unbiased and &ldquo;right&rdquo; way to do it.</p>
+<p>The template for the generative model is:</p>
+<ol>
+<li>Choose $Z$</li>
+<li>Given $z$, generative (sample) X</li>
+</ol>
+<p>We often want to invert this by posterior inference:</p>
+<ol>
+<li>Given $X$</li>
+<li>What is $Z$ that generated it?</li>
+</ol>
+<p>If we have a random vector $Z\sim p(Z|x)$, we might want to compute the following:</p>
+<ol>
+<li>marginal probabilities $P(Z_i=z|x)$</li>
+<li>marginal means $\mathbb{E}(Z_i=z|x)$</li>
+<li>most probable assignments $z^*= \arg\max_z P(\{Z_i=z_i\}|x)$. This could be called a maximum apposteriori (MAP) problem.</li>
+<li>maximum marginals $z_i^* = \arg\max_{z_i} P(Z_i=z_i|x)$</li>
+<li>joint probability $P(Z|x)$</li>
+<li>joint mean $P(Z|x)$</li>
+</ol>
+<p>We can only solve these problems in a reasonable amount of time.
+We have to approximate in some way.</p>
+<h2 id="wrap-up-gibbs-sampling">Wrap up Gibbs sampling</h2>
+<p>Before continuing with simulation and variational methods, let&rsquo;s finish derivations for Gibbs sampling.</p>
+<p>$$
+\begin{aligned}
+F \sim \text{DP}(\alpha,F_0) \\
+\theta_1,\theta_2,..,\theta_n | F \sim F \\
+X_i | \theta_i \sim f(x|\theta_i), i=1,2,..,n
+\end{aligned}
+$$</p>
+<p>Last time we talked about one way of CRP that we have $\theta_i^*$:</p>
+<p><img src="../../images/sds-365/crp_5.png" alt="Example"></p>
+<p>Today, we consider the case that we <strong>don&rsquo;t</strong> have $\theta_i^*$.
+$Z_1,Z_2,..,Z_n$ and $\theta_1,\theta_2,..,\theta_n$.
+$Z_i$ will be which table the customer is sitting at (i.e., clustering of the data).
+In the previous example, $Z_1=1$ and $Z_2=2$.
+We don&rsquo;t need those $\theta$.</p>
+<p>In the Gibbs sampler, we iterate over $i$ from $1$ to $n$.
+We reassign $i$ to some table.</p>
+<p>What is that, probabilistically?</p>
+<ol>
+<li>we compute this $P(z_i|Z_{-i})$</li>
+<li>we sample $z_i$ from this distribution.</li>
+</ol>
+<p>Now, let&rsquo;s compute:
+$$
+P(Z_1=j|Z_2,Z_3,Z_4,Z_5)
+$$</p>
+<p>There are $3$ different possibilities:
+$$
+\begin{align}
+j=1,w_1: &amp; \frac{1}{4+\alpha} p(x_1|x_5)
+\end{align}
+$$</p>
+<h2 id="example">EXample:</h2>
+<p>Assume $p(x|\theta)$ is a Normal distribution $\text{Normal}(\theta,\sigma^2)$.
+$$
+F_0 = \text{Normal}(\mu_0,\tau_0^2)
+$$</p>
+<p>The posterior:
+$$
+\begin{align}
+\text{Normal}(\bar{\theta_n},\bar{\tau_n}^2) \\
+\bar{\theta_n} =  w_n \bar{X_n}+(1-w_n)\mu_0
+\end{align}
+$$</p>
+<p>Where:</p>
+<p>$$
+\begin{align}
+w_n = \frac{1}{1+\frac{\sigma^2/n}{\bar{\tau_n}^2}} \\
+\frac{1}{\tau_n^2} = \frac{1}{\sigma^2_n} + \frac{1}{\tau_0^2}
+\end{align}
+$$</p>
+<p>Therefore:</p>
+<p>$$
+p(x_1|x_5) = \text{Normal}(w_1x_5+(1-w_1)\mu_0,\tau_1^2+\sigma^2)
+$$</p>
+<p>where $w_1$ and $\tau_1$ can be easily derived from $w_n$ and $\tau_n$ for $n=1$.</p>
+<p>Similarly:</p>
+<p>$$
+\begin{align}
+j=2,w_2: &amp; \frac{3}{4+\alpha} p(x_1|x_2,x_3,x_4) \\
+=&amp;w_3\frac{x_1+x_2+x_3}{3} + (1-w_3)\mu_0  <br>
+\end{align}
+$$</p>
+<p>**why $w_3$
+<strong>Answer:</strong> because there are three data points.</p>
+<p>And similarly, for variance and table 3.</p>
+<p>How about the new table?</p>
+<p>$$
+\begin{align}
+j=\text{new table}, w_0: &amp; \frac{\alpha}{4+\alpha} p(x_1|F_0)
+\end{align}
+$$</p>
+<p>where $ p(x_1|F_0) = \text{Normal}(\mu_0,\tau_0^2+\sigma^2)$</p>
+<p>Now we have $3$ numbers which are not necessarily sum up to one.
+We can normalize them. That gives me weights in a $ 3-sided die.</p>
+<p>If the die comes up $w_2$, I move the customer to table $2$.
+If it&rsquo;s in the new table, I will move to that table, and if it&rsquo;s in table 1, I will leave her in table 1.
+All this is one step in Gibbs sampler.
+Then I take another data point $x_2$ and repeat.</p>
+<p>The predictive density for new point $x$ given this clustering.</p>
+<p><img src="../../images/sds-365/crp_6.png" alt="Example"></p>
+<p>$$
+\begin{aligned}
+\text{table 1: } &amp;\frac{1}{5+\alpha}p(x|x_5) + \text{table 3: }\frac{1}{5+\alpha}p(x|x_1)\\
++\text{table 2: }&amp;\frac{3}{5+\alpha}p(x|x_2,x_4,x_5)+\text{new table: }\frac{\alpha}{5+\alpha}p(x|F_0)
+\end{aligned}
+$$</p>
+<h2 id="gibbs-sampling-for-the-dpm">Gibbs sampling for the DPM</h2>
+<p>For each point $x_i$:</p>
+<ol>
+<li>
+<p>For every non-empty cluster $j$, compute:
+$$
+w_j = \frac{n_{j,-i}}{n-1+\alpha} p(x_i|x_{i&rsquo;} \text{ in cluster j for } i&rsquo;\neq i)
+$$</p>
+</li>
+<li>
+<p>For the empty cluster, compute:</p>
+</li>
+</ol>
+<p>$$
+w_0 = \frac{\alpha}{n-1+\alpha}p(x_i|F_0)
+$$</p>
+<ol start="3">
+<li>Normalize $w_j\leftarrow w_j/\sum_kw_k$</li>
+<li>Reassign $x_i$ to cluster $j$ with probability $w_j$, possibly starting a new cluster</li>
+</ol>
+<p>For each clustering $c^{(b)}$, get a predictive density:</p>
+<p>$$
+p(x|c_{1:n}^{(b)},x_{1:n}) = \sum_j \frac{n_j^{(b)}}{n+\alpha} p(x|x_i \text{in cluster }c_j^{(b)}) + \frac{\alpha}{n+\alpha} p(x|F_0)
+$$</p>
+<p>The posterior <strong>mean</strong> is approximated as:</p>
+<p>$$
+p(x_{n+1}|x_{1:n}) = \frac{1}{B}\sum_{b=1}^B p(x_{n+1}|c_{1:n}^{(b)},x_{1:n})
+$$</p>
+<h2 id="variational-methods">Variational methods</h2>
+<p>Variational methods are fundamentally different. Gibbs sampling is a stochastic approximation, while variational methods give us a deterministic approximation.
+Variational methods use numerical convergence. Yet, in Gibbs sampling, it was a distributional notion of convergence.</p>
+<h3 id="ising-model">Ising model</h3>
+<p>We have a graph with edges $E$ and vertices $V$.
+Each node $i$ has a random variable $Z_i$ that can be up $z_i=1$ or down $Z_i=0$:</p>
+<p>$$
+P_{\beta}(Z_1,..,Z_n) \propto \exp\Big( \sum_{s\in V}\beta_s Z_s+ \sum_{(s,t)\in E}\beta_{st}z_sz_t \Big)
+$$</p>
+<p>You can think of these atoms as politicians and $Z_i$ as votes.
+For example, politicians are heavily connected to members of their party and weakly connected with those outside their party.</p>
+<p>I can&rsquo;t compute mean posterior, marginal probability, or anything else.
+I need either stochastic approximation or variational approximation.</p>
+<h3 id="gibbs-sampler--stochastic-approximation">Gibbs sampler  (stochastic approximation)</h3>
+<ol>
+<li>Choose vertex $s\in V$ at random</li>
+<li>Sample $u\sim \text{Uniform}(0,1)$ and update:</li>
+</ol>
+<p>$$
+Z_s =
+\begin{cases}
+1 &amp; u \leq (1+\exp(-\beta_s-\sum_{t\in N(s)}\beta_{st}z_t))^{-1}\\
+0 &amp; \text{ otherwise }
+\end{cases}
+$$</p>
+<p>where $\beta_{st}$ denotes strength of influence node $s$ has on node $t$.
+This is precisely like Logistic regression.</p>
+<ol start="3">
+<li>Iterate</li>
+</ol>
+<h3 id="mean-field-variational-algorithm-deterministic-approximation">Mean field variational algorithm (deterministic approximation)</h3>
+<ol>
+<li>Choose vertex $s\in V$ at random</li>
+<li>Update:</li>
+</ol>
+<p>$$
+\mu_s =
+(1+\exp(-\beta_s-\sum_{t\in N(s)}\beta_{st}z_t))^{-1}
+$$
+3. Iterate</p>
+<h2 id="deterministic-vs-stochastic-approximation">Deterministic vs. stochastic approximation</h2>
+<ol>
+<li>The $z_i$ variables are random</li>
+<li>The $\mu_i$ variables are deterministic</li>
+<li>The Gibbs sampler convergence is in the distribution</li>
+<li>The mean field convergence is numerical</li>
+<li>The Gibbs sampler approximates the full distribution</li>
+<li>The mean field algorithm approximates the mean of each node</li>
+</ol>
+<h2 id="example-2-a-finite-mixture-model">Example 2: A finite mixture model</h2>
+<p>Fix two distributions $F_0$ and $F_1$:
+$$
+\begin{align}
+\theta \sim \text{Beta}(\alpha,\beta) \\
+X| \theta \sim \theta F_1 +(1-\theta)F_0
+\end{align}
+$$</p>
+<p>the likelihood for the data $x_1,..,x_n$ is:
+$$
+p(x_{1:n}) =\int_0^1 \text{Beta}(\theta|\alpha,\beta) \prod_{i=1}^n(\theta f_1(x_i)+(1-\theta)f_0(x_i))d\theta
+$$</p>
+<p><strong>Goal:</strong> to approximate the posterior $p(\theta|x_{1:n})$</p>
+<h3 id="gibbs-sampler-stochastic-approximation">Gibbs sampler (Stochastic approximation)</h3>
+<ol>
+<li>sample $Z_i| \theta,x_{1:n}$</li>
+<li>sample $\theta| z_{1:n},x_{1:n}$</li>
+</ol>
+<p><strong>first step:</strong> independently sample $u_i\sim \text{Uniform}(0,1)$ and:</p>
+<p>$$
+Z_i =
+\begin{cases}
+1 &amp; u_i \leq \frac{\theta f_1(x_i)}{\theta f_1(x_i)+(1-\theta)f_0(x_i)}\\
+0 &amp; \text{ otherwise }
+\end{cases}
+$$</p>
+<p><strong>second step:</strong></p>
+<p>$$
+\theta \sim \text{Beta}\Big( \sum_{i=1}^n z_i +\alpha,n- \sum_{i=1}^n z_i +\beta \Big)
+$$</p>
+<p>Posterior $p(\theta|x_{1:n})$ is approximated as a mixture of Beta distributions, number of components is $n + 1$.
+We can also not have $\theta$ like collapsed Gibbs sampler.</p>
+<h3 id="variational-inference-deterministic-approximation">Variational Inference (deterministic approximation)</h3>
+<p>Iterate the following steps for variational parameters $q_{1:n}$ and $(\gamma_1,\gamma_2)$</p>
+<ol>
+<li>
+<p>Holding $q_i$ fixed, set $\gamma=(\gamma_1,\gamma_2)$ to
+$$
+\gamma_1 = \alpha + \sum_{i=1}^n q_i , \gamma_2 = \beta+n-\sum_{i=1}^n q_i
+$$</p>
+</li>
+<li>
+<p>Holding $\gamma_1$ and $\gamma_2$ fixed, set $q_i$ to:
+$$
+q_i = \frac{f_1(x_i)\exp \psi(\gamma_1)}{f_1(x_i)\exp \psi(\gamma_1)+f_0(x_i)\exp \psi(\gamma_2)}
+$$</p>
+</li>
+</ol>
+<p>After convergence, the approximate posterior distribution over $\theta$ is:</p>
+<p>$$
+\hat{p}(\theta| x_{1:n}) = \text{Beta}(\theta|\gamma_1,\gamma_2)
+$$</p>
+<p>We covered this post in the intermediate machine learning SDS 365/565, Yale University, <a href="https://en.wikipedia.org/wiki/John_D._Lafferty">John Lafferty</a>, where I was TF.</p>
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="index.html#"
+     title="Share on Twitter"
+     data-url="/posts/approx-inf/"
+     data-text="Approximation Inference"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="index.html#"
+     title="Share on LinkedIn"
+     data-url="/posts/approx-inf/"
+     data-text="Approximation Inference"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="index.html#"
+     title="Share on Facebook"
+     data-url="/posts/approx-inf/"
+     data-text="Approximation Inference"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="index.html#"
+     title="Share on Telegram"
+     data-url="/posts/approx-inf/"
+     data-text="Approximation Inference"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="index.html#"
+     title="Share on Pinterest"
+     data-url="/posts/approx-inf/"
+     data-text="Approximation Inference"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+
+
+
+</div>
+  </main>
+
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+magnify("myimage", 3);
+
+</script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="../../js/jquery.min.js"></script>
+  <script src="../../js/soho.js"></script>
+
+  <script src="https://dadashkarimi.github.io/js/blog.js"></script>
+
+
+</body>
+</html>

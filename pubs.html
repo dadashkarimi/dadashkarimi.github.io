@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+<meta charset="utf-8">
+<title>
+    Publications &ndash; Javid Dadashkarimi
+  </title>
+<meta name="author" content="Monica Dinculescu" />
+<meta name="description" content="Monica Dinculescu's blog" />
+<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+<link rel="alternate" type="application/rss+xml" href="atom.xml" />
+<link rel="stylesheet" href="css/base.css" type="text/css" media="screen, projection" />
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="manifest" href="manifest.json">
+
+<link rel="manifest" href="https://meowni.ca/makes/manifest.json">
+
+<meta name="theme-color" content="#7BE4D5">
+
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="Monica's blog">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Monica's blog">
+
+<link rel="apple-touch-icon" sizes="192x192" href="https://meowni.ca/makes/icons/icon-192x192.png">
+
+<meta name="msapplication-TileImage" content="images/manifest/icon-192x192.png">
+<meta name="msapplication-TileColor" content="#7BE4D5">
+<meta name="msapplication-tap-highlight" content="no">
+
+<meta name="twitter:card" content="Monica Dinculescu's blog">
+<meta name="twitter:site" content="@notwaldorf">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="my-app">
+<meta property="og:image" content="icons/icon-192x192.png" />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-47334320-2']);
+    _gaq.push(['_setDomainName', 'meowni.ca']);
+    _gaq.push(['_trackPageview']);
+    (function () {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</head>
+
+<body>
+<nav>
+<ul>
+<li id="home_link" class="og"><a href="index.html">🏠</a></li>
+<li><a href="works.html">Hire me</a></li>
+<li><a href="reads.html">Reading</a></li>
+<li><a href="blogs.html">Posts</a></li>
+<li><a href="pubs.html">Publications</a></li>
+<li><a href="talks.html">Talks</a></li>
+</nav>
+<div class="splash">
+<div class="splash-wrapper">
+<div class="splash-copy">
+<h1>Publications</h1>
+<p></p>
+</div>
+<div id="birbs">
+<canvas></canvas>
+<div class="birbs-legend">
+<b>click this art</b> to regenerate it
+<button>[<b>?</b>]</button>
+<div class="birbs-note">I whipped up this little piece of art that changes every time you click on it.
+  You’ll stumble upon mesmerizing patterns that bring to mind the stunning intricacies of stained glass and the enchanting aura of ancient doors and catholic church windows.
+</div>
+</div>
+</div>
+</div>
+<div class="dots"></div>
+</div>
+<section class="content">
+<style>
+  p {
+    font-size: var(--font-size-s);
+  }
+  .content .listing.table li > a {
+    flex-shrink: 0;
+    flex-grow: 0;
+    width: 40%;
+  }
+  .content .listing.table li > div {
+    flex-grow: 1;
+    text-transform: none;
+    letter-spacing: 0;
+    margin-left: var(--spacing-xs);
+  }
+  .content .listing.table li > div:before {
+    content: '→ ';
+    font-weight:bold;
+  }
+  @media screen and (max-width:600px) {
+    .content .listing.table li {
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      margin-bottom: var(--spacing-m);
+    }
+    .content .listing.table li > div {
+      margin-left: 0;
+    }
+    .content .listing.table li > a {
+      width: 100% !important;
+      flex-shrink: 0;
+    }
+  }
+</style>
+
+<style>
+table {
+  display: grid;
+  border-collapse: collapse;
+  gap: 4px;
+  max-width: 100%;
+  overflow: scroll;
+}
+table.small {
+  grid-template-columns: 1fr 8fr;
+}
+table.all {
+  grid-template-columns: 2.5fr 2fr 1fr 0.7fr 0.7fr;
+}
+
+thead,
+tbody,
+tr {
+  display: contents;
+}
+
+th,
+td {
+  font-size: 14px;
+}
+td.small {
+  font-size: 14px;
+}
+td.center {
+  text-align: center;
+}
+th {
+  border-bottom: 3px solid black;
+  text-align: left;
+  font-size: 16px;
+}
+table.all td {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+td a:link, td a:visited {
+  color: black;
+  text-decoration-color: var(--red);
+  text-decoration-thickness: .125em;
+}
+tr.full {
+  display: none;
+}
+tr.full.show {
+  display: contents;
+}
+tr.full td {
+  grid-column: 1 / -1;
+  padding: 20px 40px;
+  border-left: 3px solid #ddd;
+  font-size: 16px;
+  line-height: 1.5;
+}
+button {
+  background: transparent;
+  font-family: inherit;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-bottom: 2px solid var(--red);
+  color: black;
+}
+tr.full td button {
+  margin-right: 24px;
+}
+@media screen and (max-width:600px) {
+  table.all {
+    grid-template-columns: 1fr 1fr 0.5fr 0.7fr 0.7fr;
+  }
+  tr.full td {
+    max-width: 80%;
+    padding: 16px;
+  }
+}
+
+</style>
+<script>
+  function toggleReview(el) {
+    const tr = el.parentElement.parentElement;
+    const nextTr = tr.nextElementSibling;
+    nextTr.classList.toggle('show');
+  }
+  function hideReview(el) {
+    const tr = el.parentElement.parentElement;
+    tr.classList.remove('show');
+  }
+  function copyReview(el) {
+    const tr = el.parentElement.parentElement;
+    const copyText = tr.querySelector('div').textContent;
+    navigator.clipboard.writeText(copyText);
+  }
+</script>
+<section class="content">
+<p> I am grateful for the opportunity to collaborate with these exceptional scientists and colleagues on my publications: <i>Amin Karbasi</i>,
+  <i>Margaret L Westwater</i>, <i>Xenophon Papademetris</i>, <i>Qinghao Liang</i>, <i>Matthew Rosenblatt</i>, <i>Stephanie Noble</i>, <i>Maya Foster</i>, <i>Raimundo Rodriguez</i>, <i>Brendan Adkinson</i>, <i>Jean Ye</i>, <i>Huili Sun</i>, <i>Chris Camp</i>, <i>Michael Farruggia</i>, <i>Link Tejavibulya</i>, <i>Wei Dai</i>, <i>Rongtao Jiang</i>, <i>Angeliki Pollatou</i>, <i>Dustin Scheinost</i>, <i>Heshaam Faili</i>,
+  <i>Shayan A. Tabrizi</i>, <i>Hamed Zamani</i>, <i>Azadeh Shakery</i>, and <i>W Bruce Croft</i>.</p>
+
+<p> Additional collaborators include <i>Valeria Pena Trujillo</i>, <i>Camilo Jaimes</i>, <i>Lilla Zöllei</i>, <i>Malte Hoffmann</i>, <i>Corey Horien</i>, <i>Abigail S Greene</i>, <i>Kangjoo Lee</i>, <i>Daniel S Barron</i>, <i>Siyuan Gao</i>, <i>David O’Connor</i>, <i>Mehraveh Salehi</i>, <i>Xilin Shen</i>, <i>Evelyn MR Lake</i>, <i>R Todd Constable</i>, and <i>Bruce Fischl</i>.
+</p>
+</section>
+
+
+
+
+<p>Acronyms Explained</p>
+<table class="small">
+<tbody>
+<tr>
+<td>MICCAI</td>
+<td>International Conference on Medical Image Computing and Computer-Assisted Intervention
+</td>
+</tr>
+<tr>
+<td>ISBI</td>
+<td>IEEE International Symposium on Biomedical Imaging
+</td>
+</tr>
+<tr>
+<td>GRAIL</td>
+<td>Workshop on GRaphs in biomedicAl Image anaLysis</td>
+</tr>
+<tr>
+<td>NPP</td>
+<td>Nature Neuropsychopharmacology
+</td>
+</tr>
+<tr>
+<td>CIKM</td>
+<td>Conference on Information and Knowledge Management </td>
+</tr>
+<tr>
+<td>COLING</td>
+<td>International Conference on Computational Linguistics</td>
+</tr>
+<tr>
+<td>ECIR</td>
+<td>European Conference on Information Retrieval</td>
+</tr>
+<tr>
+<td>CLEF</td>
+<td>Conference and Labs of the Evaluation Forum</td>
+</tr>
+</tbody>
+</table>
+
+<hr>
+
+
+<h2>Patents</h2>
+
+<table class="all">
+<thead>
+<tr>
+<th>Title</th>
+<th>Author</th>
+<th>Year</th>
+<th>Patent</th>
+<th>Abstract</th>
+</tr>
+</thead>
+<tbody>
+
+  <tr>
+      <td>Method and system for information retrieval</td>
+      <td>Shayan Aliakbar Tabrizi, Azadeh Shakery, Mohammad Ali Tavallaei, <b>Javid Dadashkarimi</b></td>
+      <td class="small">2020</td>
+      <td>US Patent</td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td colspan="4">
+          <div>
+            A perspective-based search system and method is disclosed. The perspective based system allows users to select specific perspectives on a search topic and view the results from those perspectives. In addition, perspective-based searching allows users to more easily infer their own search intents with greater clarity, and without complex or multiple que ries.
+              <a href="https://patentimages.storage.googleapis.com/64/34/17/19d553787def30/US10540399.pdf">link</a>
+          </div>
+          <br/>
+          <button onclick="hideReview(this)">close ⌃</button>
+          <button onclick="copyReview(this)">copy to clipboard</button>
+      </td>
+  </tr>
+</tbody>
+</table>
+<hr>
+
+<h2>Journals</h2>
+
+<table class="all">
+<thead>
+<tr>
+<th>Title</th>
+<th>Author</th>
+<th>Year</th>
+<th>Journal</th>
+<th>Abstract</th>
+</tr>
+</thead>
+<tbody>
+  <tr>
+      <td>Brain-phenotype predictions of language and executive function can survive across diverse real-world data: Dataset shifts in developmental populations</td>
+      <td>Brendan D. Adkinson, Matthew Rosenblatt, <b>Javid Dadashkarimi</b>, Link Tejavibulya, Rongtao Jiang, Stephanie Noble, Dustin Scheinost</td>
+      <td class="small">2024</td>
+      <td>Developmental Cognitive Neuroscience</td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+
+  </tr>
+  <tr class="full">
+      <td colspan="4">
+          <div>
+Predictive modeling potentially increases the reproducibility and generalizability of neuroimaging brain-phenotype associations. Yet, the evaluation of a model in another dataset is underutilized. Among studies that undertake external validation, there is a notable lack of attention to generalization across dataset-specific idiosyncrasies (i.e., dataset shifts). Research settings, by design, remove the between-site variations that real-world and, eventually, clinical applications demand. Here, we rigorously test the ability of a range of predictive models to generalize across three diverse, unharmonized developmental samples: the Philadelphia Neurodevelopmental Cohort (n=1291), the Healthy Brain Network (n=1110), and the Human Connectome Project in Development (n=428). These datasets have high inter-dataset heterogeneity, encompassing substantial variations in age distribution, sex, racial and ethnic minority representation, recruitment geography, clinical symptom burdens, fMRI tasks, sequences, and behavioral measures. Through advanced methodological approaches, we demonstrate that reproducible and generalizable brain-behavior associations can be realized across diverse dataset features. Results indicate the potential of functional connectome-based predictive models to be robust despite substantial inter-dataset variability. Notably, for the HCPD and HBN datasets, the best predictions were not from training and testing in the same dataset (i.e., cross-validation) but across datasets. This result suggests that training on diverse data may improve prediction in specific cases. Overall, this work provides a critical foundation for future work evaluating the generalizability of brain-phenotype associations in real-world scenarios and clinical settings.
+<a href="https://www.sciencedirect.com/science/article/pii/S1878929324001257"> link</a>.
+          </div>
+          <br/>
+          <button onclick="hideReview(this)">close ⌃</button>
+          <button onclick="copyReview(this)">copy to clipboard</button>
+      </td>
+  </tr>
+
+  <tr>
+      <td>Connectome-based prediction of craving in gambling disorder and cocaine use disorder</td>
+      <td>Stephanie Antons, Sarah W. Yip, Cheryl M. Lacadie, <b>Javid Dadashkarimi</b>, Dustin Scheinost, Matthias Brand, Marc N. Potenza</td>
+      <td class="small">2023</td>
+      <td> Journal of Behavioral Addictions</td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td colspan="4">
+          <div>
+            Craving is a central feature of substance use disorders and disorders due to addictive behaviors. Considerable research has investigated neural mechanisms involved in the development and processing of craving. Recently, connectome-based predictive modeling, a data-driven method, has been used in four studies aiming to predict craving related to substance use, addictive behaviors, and food. Studies differed in methods, samples, and conceptualizations of craving. Within the commentary we aim to compare, contrast and consolidate findings across studies by considering conceptual and methodological features of the studies. We derive a theoretical model on the functional connectivity-craving relationships across studies.
+            <a href="https://akjournals.com/view/journals/2006/13/3/article-p695.xml">link</a>
+          </div>
+          <br/>
+          <button onclick="hideReview(this)">close ⌃</button>
+          <button onclick="copyReview(this)">copy to clipboard</button>
+      </td>
+  </tr>
+
+  <tr>
+      <td>Cross Atlas Remapping via Optimal Transport (CAROT): Creating connectomes for any atlas when raw data is not available</td>
+      <td><b>Javid Dadashkarimi</b> et al.</td>
+      <td class="small">2023</td>
+      <td>MEDIA</td>
+
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td colspan="4">
+          <div>
+Open-source, publicly available neuroimaging datasets – whether from large-scale data collection efforts or pooled from multiple smaller studies – offer unprecedented sample sizes and promote generalization efforts. Releasing data can democratize science, increase the replicability of findings, and lead to discoveries. Partly due to patient privacy, computational, and data storage concerns, researchers typically release preprocessed data with the voxelwise time series parcellated into a map of predefined regions, known as an atlas. However, releasing preprocessed data also limits the choices available to the end-user. This is especially true for connectomics, as connectomes created from different atlases are not directly comparable. Since there exist several atlases with no gold standards, it is unrealistic to have processed, open-source data available from all atlases. Together, these limitations directly inhibit the potential benefits of open-source neuroimaging data. To address these limitations, we introduce Cross Atlas Remapping via Optimal Transport (CAROT) to find a mapping between two atlases. This approach allows data processed from one atlas to be directly transformed into a connectome based on another atlas without the need for raw data access. To validate CAROT, we compare reconstructed connectomes against their original counterparts (i.e., connectomes generated directly from an atlas), demonstrate the utility of transformed connectomes in downstream analyses, and show how a connectome-based predictive model can generalize to publicly available data that was processed with different atlases. Overall, CAROT can reconstruct connectomes from an extensive set of atlases – without needing the raw data – allowing already processed connectomes to be easily reused in a wide range of analyses while eliminating redundant processing efforts.
+    <a href="https://www.sciencedirect.com/science/article/abs/pii/S136184152300124X">link</a>
+        </div>
+          <br/>
+          <button onclick="hideReview(this)">close ⌃</button>
+          <button onclick="copyReview(this)">copy to clipboard</button>
+      </td>
+  </tr>
+  <tr>
+      <td>Predicting the Future of Neuroimaging Predictive Models in Mental Health</td>
+      <td>Link Tejavibulya, Link Tejavibulya, Max Rolison, Siyuan Gao, Qinghao Liang, Hannah Peterson, <b>Javid Dadashkarimi</b> et al.</td>
+      <td class="small">2022</td>
+      <td>Molecular Psychiatry</td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td colspan="4">
+          <div>
+Predictive modeling using neuroimaging data has the potential to improve our understanding of the neurobiology underlying psychiatric disorders and putatively information interventions. Accordingly, there is a plethora of literature reviewing published studies, the mathematics underlying machine learning, and the best practices for using these approaches. As our knowledge of mental health and machine learning continue to evolve, we instead aim to look forward and “predict” topics that we believe will be important in current and future studies. Some of the most discussed topics in machine learning, such as bias and fairness, the handling of dirty data, and interpretable models, may be less familiar to the broader community using neuroimaging-based predictive modeling in psychiatry. In a similar vein, transdiagnostic research and targeting brain-based features for psychiatric intervention are modern topics in psychiatry that predictive models are well-suited to tackle. In this work, we target an audience who is a researcher familiar with the fundamental procedures of machine learning and who wishes to increase their knowledge of ongoing topics in the field. We aim to accelerate the utility and applications of neuroimaging-based predictive models for psychiatric research by highlighting and considering these topics. Furthermore, though not a focus, these ideas generalize to neuroimaging-based predictive modeling in other clinical neurosciences and predictive modeling with different data types (e.g., digital health data).
+              <a href="https://www.nature.com/articles/s41380-022-01635-2">link</a>
+          </div>
+          <br/>
+          <button onclick="hideReview(this)">close ⌃</button>
+          <button onclick="copyReview(this)">copy to clipboard</button>
+      </td>
+  </tr>
+
+  <!-- Publication 2 -->
+  <tr>
+      <td>Transdiagnostic, Connectome-Based Prediction of Memory Constructs Across Psychiatric Disorders</td>
+      <td>Daniel S Barron, Siyuan Gao, <b> Javid Dadashkarimi</b> et al.</td>
+      <td class="small">2021</td>
+      <td>Cerebral Cortex</td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td colspan="4">
+          <div>
+Memory deficits are observed in a range of psychiatric disorders, but it is unclear whether memory deficits arise from a shared brain correlate across disorders or from various dysfunctions unique to each disorder. Connectome-based predictive modeling is a computational method that captures individual differences in functional connectomes associated with behavioral phenotypes such as memory. We used publicly available task-based functional MRI data from patients with schizophrenia (n = 33), bipolar disorder (n = 34), attention deficit hyper-activity disorder (n = 32), and healthy controls (n = 73) to model the macroscale brain networks associated with working, short- and long-term memory. First, we use 10-fold and leave-group-out analyses to demonstrate that the same macroscale brain networks subserve memory across diagnostic groups and that individual differences in memory performance are related to individual differences within networks distributed throughout the brain, including the subcortex, default mode network, limbic network, and cerebellum. Next, we show that diagnostic groups are associated with significant differences in whole-brain functional connectivity that are distinct from the predictive models of memory. Finally, we show that models trained on the transdiagnostic sample generalize to novel, healthy participants (n = 515) from the Human Connectome Project. These results suggest that despite significant differences in whole-brain patterns of functional connectivity between diagnostic groups, the core macroscale brain networks that subserve memory are shared.
+              <a href="https://pubmed.ncbi.nlm.nih.gov/33345271/">link</a>
+          </div>
+          <br/>
+          <button onclick="hideReview(this)">close ⌃</button>
+          <button onclick="copyReview(this)">copy to clipboard</button>
+      </td>
+  </tr>
+
+  <!-- Publication 3 -->
+  <tr>
+      <td>A Hitchhiker’s Guide to Working with Large, Open-Source Neuroimaging Datasets</td>
+      <td>Corey Horien, Stephanie Noble, Abigail S Greene, Kangjoo Lee, Daniel S Barron, Siyuan Gao, David O’Connor, Mehraveh Salehi, <b>Javid Dadashkarimi</b>, Xilin Shen, Evelyn MR Lake, R Todd Constable, Dustin Scheinost</td>
+      <td class="small">2021</td>
+      <td>Nature Human Behavior</td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td colspan="4">
+          <div>
+            Large datasets that enable researchers to perform investigations with unprecedented rigor are growing increasingly common in neuroimaging. Due to the simultaneous increasing popularity of open science, these state-of-the-art datasets are more accessible than ever to researchers around the world. While analysis of these samples has pushed the field forward, they pose a new set of challenges that might cause difficulties for novice users. Here we offer practical tips for working with large datasets from the end-user’s perspective. We cover all aspects of the data lifecycle: from what to consider when downloading and storing the data to tips on how to become acquainted with a dataset one did not collect and what to share when communicating results. This manuscript serves as a practical guide one can use when working with large neuroimaging datasets, thus dissolving barriers to scientific discovery.
+              <a href="https://www.nature.com/articles/s41562-020-01005-4">link</a>
+          </div>
+          <br/>
+          <button onclick="hideReview(this)">close ⌃</button>
+          <button onclick="copyReview(this)">copy to clipboard</button>
+      </td>
+  </tr>
+
+  <!-- Publication 4 -->
+  <tr>
+      <td>Functional Connectivity During Frustration: A Preliminary Study of Predictive Modeling of Irritability in Youth</td>
+      <td>Dustin Scheinost, <b>Javid Dadashkarimi</b> et al.</td>
+      <td class="small">2021</td>
+      <td>Nature NPP</td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td colspan="4">
+          <div>
+            Irritability cuts across many pediatric disorders and is a common presenting complaint in child psychiatry; however, its neural mechanisms remain unclear. One core pathophysiological deficit of irritability is aberrant responses to frustrative nonreward. Here, we conducted a preliminary fMRI study to examine the ability of functional connectivity during frustrative nonreward to predict irritability in a transdiagnostic sample. This study included 69 youths (mean age = 14.55 years) with varying levels of irritability across diagnostic groups: disruptive mood dysregulation disorder (n = 20), attention-deficit/hyperactivity disorder (n = 14), anxiety disorder (n = 12), and controls (n = 23). During fMRI, participants completed a frustrating cognitive flexibility task. Frustration was evoked by manipulating task difficulty such that, on trials requiring cognitive flexibility, “frustration” blocks had a 50% error rate and some rigged feedback, while “nonfrustration” blocks had a 10% error rate. Frustration and nonfrustration blocks were randomly interspersed. Child and parent reports of the affective reactivity index were used as dimensional measures of irritability. Connectome-based predictive modeling, a machine learning approach, with tenfold cross-validation was conducted to identify networks predicting irritability. Connectivity during frustration (but not nonfrustration) blocks predicted child-reported irritability (ρ = 0.24, root mean square error = 2.02, p = 0.03, permutation testing, 1000 iterations, one-tailed). Results were adjusted for age, sex, medications, motion, ADHD, and anxiety symptoms. The predictive networks of irritability were primarily within motor-sensory networks; among motor-sensory, subcortical, and salience networks; and between these networks and frontoparietal and medial frontal networks. This study provides preliminary evidence that individual differences in irritability may be associated with functional connectivity during frustration, a phenotype-relevant state.
+              <a href="https://www.nature.com/articles/s41386-020-00954-8">link</a>
+          </div>
+          <br/>
+          <button onclick="hideReview(this)">close ⌃</button>
+          <button onclick="copyReview(this)">copy to clipboard</button>
+      </td>
+  </tr>
+
+  <!-- Publication 5 -->
+  <tr>
+      <td>An Expectation-Maximization Algorithm for Query Translation Based on Pseudo-Relevant Documents</td>
+      <td><b>Javid Dadashkarimi </b>, Hamed Zamani et al.</td>
+      <td class="small">2016</td>
+      <td>Information Processing & Management</td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td colspan="4">
+          <div>
+            Query translation in cross-language information retrieval (CLIR) can be done by employing dictionaries, aligned corpora, or machine translators. Scarcity of aligned corpora for various domains in many language pairs intensifies the importance of dictionary-based CLIR which motivates us to use only a bilingual dictionary and two independent collections in source and target languages for query translation. We exploit pseudo-relevant documents for a given query in the source language and pseudo-relevant documents for a translation of the query in the target language with a proposed expectation-maximization algorithm for improving query translation. The proposed method (called EM4QT) assumes that each target term either is translated from the source pseudo-relevant documents or has come from a noisy collection. Since EM4QT does not directly consider term coherency, which is defined as fluency of the target translation, we investigate a crucial question: can EM4QT be improved using either coherency-based methods or token-to-token translation ones? To address this question, we combine different translation models via simple linear interpolation and a proposed divergence minimization method. Evaluations over four CLEF collections in Persian, French, Spanish, and German indicate that EM4QT significantly outperforms competitive baselines in all the collections. Our experiments also reveal that since EM4QT indirectly considers term coherency, combining the method with coherency-based models cannot significantly improve the retrieval performance. On the other hand, investigating the query-by-query results supports the view that EM4QT usually gives a relatively high weight to one translation and its combination with the proposed token-to-token translation model, which is obtained by running EM4QT for each query term separately, soothes the effect and reaches better results for many queries. Comparing the method with a competitive word-embedding baseline reveals the superiority of the proposed model.
+              <a href="https://www.sciencedirect.com/science/article/abs/pii/S0306457316306379">link</a>
+          </div>
+          <br/>
+          <button onclick="hideReview(this)">close ⌃</button>
+          <button onclick="copyReview(this)">copy to clipboard</button>
+      </td>
+  </tr>
+</tbody>
+</table>
+
+<hr>
+
+<h2>Proceedings</h2>
+<table class="all">
+<thead>
+<tr>
+<th>Title</th>
+<th>Author</th>
+<th>Year</th>
+<th>Journal</th>
+<th>Abstract</th>
+</tr>
+</thead>
+<tbody>
+  <tr>
+      <td>Search Wide, Focus Deep: Automated Fetal Brain Extraction With Sparse Training Data</td>
+      <td><b>Javid Dadashkarimi</b> . . . , Lilla Zollei, Malte Hoffmann</td>
+      <td class="small">2024</td>
+      <td>arxiv</td>
+
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td colspan="4">
+          <div>
+          Automated fetal brain extraction from full-uterus MRI is a
+          challenging task due to variable head sizes, orientations, complex
+          anatomy, and prevalent artifacts. While deep-learning
+          (DL) models trained on synthetic images have been successful
+          in adult brain extraction, adapting these networks for fetal
+          MRI is difficult due to the sparsity of labeled data, leading
+          to increased false-positive predictions. To address this
+          challenge, we propose a test-time strategy that reduces false
+          positives in networks trained on sparse, synthetic labels. The
+          approach uses a breadth-fine search (BFS) to identify a subvolume
+          likely to contain the fetal brain, followed by a deepfocused
+          sliding window (DFS) search to refine the extraction,
+          pooling predictions to minimize false positives. We train
+          models at different window sizes using synthetic images derived
+          from a small number of fetal brain label maps, augmented
+          with random geometric shapes. Each model is trained
+          on diverse head positions and scales, including cases with
+          partial or no brain tissue. Our framework matches state-ofthe-
+          art brain extraction methods on clinical HASTE scans
+          of third-trimester fetuses, and exceeds them by up to 5% in
+          terms of Dice in the second trimester as well as EPI scans
+          across both trimesters. Our results demonstrate the utility of
+          a sliding-window approach and combining predictions from
+          several models trained on synthetic images, for improving
+          brain-extraction accuracy by progressively refining regions of
+          interest and minimizing the risk of missing brain mask slices
+          or misidentifying other tissues as brain.
+
+          </div>
+          <br/>
+          <button onclick="hideReview(this)">close ⌃</button>
+          <button onclick="copyReview(this)">copy to clipboard</button>
+      </td>
+  </tr>
+  <tr>
+      <td>Enhancement attacks in biomedical machine learning</td>
+      <td>Matthew Rosenblatt, <b>Javid Dadashkarimi</b>, Dustin Scheinost</td>
+      <td class="small">2022</td>
+      <td>Workshop on Clinical Image-Based Procedures</td>
+
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td colspan="4">
+          <div>
+            The prevalence of machine learning in biomedical research is rapidly growing, yet the trustworthiness of such research is often overlooked. While some previous works have investigated the ability of adversarial attacks to degrade model performance in medical imaging, the ability to falsely improve performance via recently-developed “enhancement attacks” may be a greater threat to biomedical machine learning. In the spirit of developing attacks to better understand trustworthiness, we developed two techniques to drastically enhance prediction performance of classifiers with minimal changes to features: 1) general enhancement of prediction performance, and 2) enhancement of a particular method over another. Our enhancement framework falsely improved classifiers’ accuracy from 50% to almost 100% while maintaining high feature similarities between original and enhanced data (Pearson’s r′s > 0.99). Similarly, the method-specific enhancement framework was effective in falsely improving the performance of one method over another. For example, a simple neural network outperformed logistic regression by 17% on our enhanced dataset, although no performance differences were present in the original dataset. Crucially, the original and enhanced data were still similar (r = 0.99). Our results demonstrate the feasibility of minor data manipulations to achieve any desired prediction performance, which presents an interesting ethical challenge for the future of biomedical machine learning. These findings emphasize the need for more robust data provenance tracking and other precautionary measures to ensure the integrity of biomedical machine learning research. Code is available at https://github.com/mattrosenblatt7/enhancement_EPIMI.
+            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9882585/">Link</a>
+          </div>
+          <br/>
+          <button onclick="hideReview(this)">close ⌃</button>
+          <button onclick="copyReview(this)">copy to clipboard</button>
+      </td>
+  </tr>
+  <tr>
+      <td>Connectome-based prediction of craving in gambling disorder and cocaine use disorder</td>
+      <td>Stephanie Antons, . . . , <b>Javid Dadashkarimi</b>Dustin Scheinost, Matthias Brand, Marc N Potenza</td>
+      <td class="small">2024</td>
+      <td>Workshop on
+Clinical Image-Based Procedures</td>
+
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td colspan="4">
+          <div>
+ Craving, involving intense and urgent desires to engage in specific behaviours, is a feature of addictions. Multiple studies implicate regions of salience/limbic networks and basal ganglia, fronto-parietal, medial frontal regions in craving in addictions. However, prior studies have not identified common neural networks that reliably predict craving across substance and behavioural addictions.
+<a href="https://pubmed.ncbi.nlm.nih.gov/37190759/">Link</a>
+          </div>
+          <br/>
+          <button onclick="hideReview(this)">close ⌃</button>
+          <button onclick="copyReview(this)">copy to clipboard</button>
+      </td>
+  </tr>
+  <tr>
+      <td>Combining multiple atlases to estimate data-driven mappings between functional connectomes using optimal transport</td>
+      <td><b>Javid Dadashkarimi</b>, Amin Karbasi, Dustin Scheinost</td>
+      <td class="small">2022</td>
+      <td>MICCAI</td>
+
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td colspan="4">
+          <div>
+            Connectomics is a popular approach for understanding the
+            brain with neuroimaging data. Yet, a connectome generated from one
+            atlas is different in size, topology, and scale compared to a connectome
+            generated from another atlas. These differences hinder interpreting, generalizing, and combining connectomes and downstream results from different atlases. Recently, it was proposed that a mapping between atlases
+            can be estimated such that connectomes from one atlas (i.e., source
+            atlas) can be reconstructed into a connectome from a different atlas
+            (i.e., target atlas) without re-processing the data. This approach used
+            optimal transport to estimate the mapping between one source atlas
+            and one target atlas. Yet, restricting the optimal transport problem to
+            only a single source atlases ignores additional information when multiple source atlases are available, which is likely. Here, we propose a novel
+            optimal transport based solution to combine information from multiple source atlases to better estimate connectomes for the target atlas.
+            Reconstructed connectomes based on multiple source atlases are more
+            similar to their “gold-standard” counterparts and better at predicting
+            IQ than reconstructed connectomes based on a single source mapping.
+            Importantly, these results hold for a wide-range of different atlases. Overall, our approach promises to increase the generalization of connectomebased results across different atlases.
+
+<a href="https://par.nsf.gov/servlets/purl/10410112">Link</a>
+          </div>
+          <br/>
+          <button onclick="hideReview(this)">close ⌃</button>
+          <button onclick="copyReview(this)">copy to clipboard</button>
+      </td>
+  </tr>
+  <tr>
+      <td>Transforming connectomes to any parcellation via graph matching</td>
+      <td>Qinghao Liang, <b>Javid Dadashkarimi</b>, Wei Dai, Amin Karbasi, Joseph Chang, Harrison H. Zhou, Dustin Scheinost</td>
+      <td class="small">2022</td>
+      <td>GRAIL Workshop at MICCAI</td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td colspan="4">
+          <div>
+Brain connectomes—the structural or functional connections between distinct brain regions—are widely used for neuroimaging studies. However, different ways of brain parcellation are proposed and used by different research groups without any consensus of their superiority. The variety of choices in brain parcellation makes data sharing and result comparison between studies difficult. Here, we propose a framework for transforming connectomes from one parcellation to another to address this problem. The optimal transport between nodes of two parcellations is learned in a data-driven way using graph matching methods. Spectral embedding is applied to the source connectomes to obtain node embeddings. These node embeddings are then transformed into the target space using the optimal transport. The target connectomes are estimated using the transformed node embeddings. We test the effectiveness of the proposed framework by learning the optimal transport based on data from the Human Connectome Project Young Adult, and applying it to structural connectomes data from the Lifespan Human Connectome Project Development. The efficacy of our approach is validated by comparing the estimated connectomes against their counterparts (connectomes generated directly from the target parcellation) and testing the pre-trained predictive models on estimated connectomes. We show that the estimated connectomes are highly correlated with the actual data, and predictive models for age achieve high accuracies. Overall, our proposed framework holds great promises in facilitating the generalization of connectome-based models across different parcellations.
+<a href="https://link.springer.com/chapter/10.1007/978-3-031-21083-9_12">Link</a>
+          </div>
+          <br/>
+          <button onclick="hideReview(this)">close ⌃</button>
+          <button onclick="copyReview(this)">copy to clipboard</button>
+      </td>
+  </tr>
+
+  <tr>
+      <td>Data-driven mapping between functional connectomes using optimal transport</td>
+      <td><b>Javid Dadashkarimi</b>, Amin Karbasi, Dustin Scheinost</td>
+      <td class="small">2021</td>
+      <td>MICCAI</td>
+
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td colspan="4">
+          <div>
+Functional connectomes derived from functional magnetic resonance imaging have long been used to understand the functional organization of the brain. Nevertheless, a connectome is intrinsically linked to the atlas used to create it. In other words, a connectome generated from one atlas is different in scale and resolution compared to a connectome generated from another atlas. Being able to map connectomes and derived results between different atlases without additional pre-processing is a crucial step in improving interpretation and generalization between studies that use different atlases. Here, we use optimal transport, a powerful mathematical technique, to find an optimum mapping between two atlases. This mapping is then used to transform time series from one atlas to another in order to reconstruct a connectome. We validate our approach by comparing transformed connectomes against their “gold-standard” counterparts (i.e., connectomes generated directly from an atlas) and demonstrate the utility of transformed connectomes by applying these connectomes to predictive models based on a different atlas. We show that these transformed connectomes are significantly similar to their “gold-standard” counterparts and maintain individual differences in brain-behavior associations, demonstrating both the validity of our approach and its utility in downstream analyses. Overall, our approach is a promising avenue to increase the generalization of connectome-based results across different atlases.
+<a href="https://link.springer.com/chapter/10.1007/978-3-030-87199-4_28">Link</a>
+          </div>
+          <br/>
+          <button onclick="hideReview(this)">close ⌃</button>
+          <button onclick="copyReview(this)">copy to clipboard</button>
+      </td>
+  </tr>
+  <tr>
+      <td>A mass multivariate edge-wise approach for combining multiple connectomes to improve the detection of group differences</td>
+      <td><b>Javid Dadashkarimi</b>, Siyuan Gao, Erin Yeagle, Stephanie Noble, Dustin Scheinost</td>
+      <td class="small">2019</td>
+      <td>Connectomics Workshop at MICCAI</td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td colspan="4">
+          <div>
+              Functional connectivity derived from functional magnetic resonance imaging data has been extensively used to characterize individual and group differences. While these connectomes have traditionally been constructed using resting-state data, recent work has highlighted the importance of combining multiple task connectomes, particularly for identifying individual differences. Yet, these methods have not yet been extended to investigate differences at the group level. Here, we propose a mass multivariate edge-wise approach to improve the detection of group differences by combining connectomes from multiple sources. For each edge, the magnitude of connection strength from each of multiple connectomes are included in statistical hypothesis testing. We evaluate the proposed approach by estimating sex differences in two large, publicly available datasets: the Human Connectome Project and Philadelphia Neurodevelopmental Cohort. Results indicate the proposed mass multivariate edge-wise analysis offers improved detection of group differences compared to univariate analysis, and support the utility of combining multiple connectomes to improve detection of group differences.
+<a href="https://link.springer.com/chapter/10.1007/978-3-030-32391-2_7">Link</a>
+          </div>
+          <br/>
+          <button onclick="hideReview(this)">close ⌃</button>
+          <button onclick="copyReview(this)">copy to clipboard</button>
+      </td>
+  </tr>
+
+  <tr>
+      <td>Dimension projection among languages based on pseudo-relevant documents for query translation</td>
+      <td><b>Javid Dadashkarimi</b>, Mahsa S. Shahshahani, Amirhossein Tebbifakhr, Heshaam Faili, Azadeh Shakery</td>
+      <td>2016</td>
+      <td>ECIR</td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td colspan="4">
+          <div>
+            Using top-ranked documents retrieved in response to a query of a user has been shown to be an effective approach to improve the quality of query translation in dictionary-based cross-language information retrieval. In this paper, we propose a new method for dictionary-based query translation based on dimension projection of embedded vectors from the pseudo-relevant documents in the source language to their equivalents in the target language. To this end, first we learn low-dimensional vectors of the words in the pseudo-relevant collections separately and then aim to find a query-dependent transformation matrix between the vectors of translation pairs appeared in the collections. At the next step, the representation of each query term is projected to the target language and then, after using a softmax function, a translation model is built. Finally, the model is used for query translation. Our experiments on four CLEF collections in French, Spanish, German, and Italian demonstrate that the proposed method outperforms competitive baselines including a word embedding baseline based on bilingual shuffling. The proposed method reaches up to 87% performance of machine translation (MT) in short queries and considerable improvements in verbose queries.
+            <a href="https://link.springer.com/chapter/10.1007/978-3-319-56608-5_39">Link</a>
+          </div>
+          <br/>
+          <button onclick="hideReview(this)">close ⌃</button>
+          <button onclick="copyReview(this)">copy to clipboard</button>
+      </td>
+  </tr>
+  <tr>
+      <td>Pseudo-relevance feedback based on matrix factorization</td>
+      <td>Hamed Zamani, <b>Javid Dadashkarimi</b>, . . . , W Bruce Croft</td>
+      <td>2016</td>
+      <td>CIKM</td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td colspan="4">
+          <div>
+In information retrieval, pseudo-relevance feedback (PRF) refers to a strategy for updating the query model using the top retrieved documents. PRF has been proven to be highly effective in improving the retrieval performance. In this paper, we look at the PRF task as a recommendation problem: the goal is to recommend a number of terms for a given query along with weights, such that the final weights of terms in the updated query model better reflect the terms' contributions in the query. To do so, we propose RFMF, a PRF framework based on matrix factorization which is a state-of-the-art technique in collaborative recommender systems. Our purpose is to predict the weight of terms that have not appeared in the query and matrix factorization techniques are used to predict these weights. In RFMF, we first create a matrix whose elements are computed using a weight function that shows how much a term discriminates the query or the top retrieved documents from the collection. Then, we re-estimate the created matrix using a matrix factorization technique. Finally, the query model is updated using the re-estimated matrix. RFMF is a general framework that can be employed with any retrieval model. In this paper, we implement this framework for two widely used document retrieval frameworks: language modeling and the vector space model. Extensive experiments over several TREC collections demonstrate that the RFMF framework significantly outperforms competitive baselines. These results indicate the potential of using other recommendation techniques in this task.
+<a href="https://dl.acm.org/doi/abs/10.1145/2983323.2983844">Link</a>
+          </div>
+          <br/>
+          <button onclick="hideReview(this)">close ⌃</button>
+          <button onclick="copyReview(this)">copy to clipboard</button>
+      </td>
+  </tr>
+</tbody>
+</table>
+<hr>
+
+
+</section>
+<script src="js/birds.js"></script>
+</body>
+<script>
+  'use strict';
+
+  // Load the pygments stylesheet so that it's not render blocking.
+  var head = document.head;
+  var link = document.createElement('link');
+  link.type = 'text/css';
+  link.rel = 'stylesheet';
+  link.href = '/css/pygments.css'
+  head.appendChild(link);
+</script>
+</html>

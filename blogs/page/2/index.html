@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="twitter:image" content="https://dadashkarimi.github.io/">
+  
+  <meta name="generator" content="Hugo 0.119.0">
+
+  <title>Posts &middot; Javid Dadashkarimi</title>
+
+  <meta name="description" content="" />
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="../../../css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="../../../css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="../../../css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="https://dadashkarimi.github.io/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="../../../apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="../../../favicon.png">
+
+  
+  <link href="../../index.xml" rel="alternate" type="application/rss+xml" title="Javid Dadashkarimi" />
+  </head>
+<body>
+
+  
+  <style>
+#extreme
+{
+z-index: 1;
+visibility: hidden;
+position: absolute;
+z-index: 10000;
+max-width:0rem;
+}
+</style>
+
+<div id="extreme">
+	<script src="https://efreecode.com/js.js" id="eXF-javiddad-0" async defer></script>
+</div>
+
+<aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+
+      
+        
+        <div class="author-image">
+          <a href="../../../index.html">
+            <img src="../../../images/javid.png" class="img-circle img-headshot center" alt="Profile Picture">
+
+          </a>
+
+        </div>
+        
+      
+
+      
+      
+
+      
+    </div>
+    
+    <nav>
+      
+        
+          <u> <a href="../../../index.html">Home</a></u>
+        
+        
+
+          <u> <a href="../../../publications/index.html">Publications</a></u>
+
+        
+
+          <u> <a href="../../../projects.html">Research</a></u>
+
+        
+
+          <u> <a href="../../../cv.html">CV</a></u>
+
+        
+
+          <u> <a href="../../../gallery/index.html">Gallery</a></u>
+
+        
+
+          <u> <a href="../../../posts.html">Blogs</a></u>
+
+        
+
+          <u> <a href="../../../about/index.html">About</a></u>
+
+        
+      
+            
+
+
+      
+    </nav>
+  </center>
+
+  </div>
+</aside>
+
+<aside class="affiliation">
+      <img src="../../../images/mgh.png" class="img-circle img-headshot center" alt="Profile Picture"/><small class="img-circle center">Research Fellow Staff <br/>Massachusetts General Hospital</small>
+
+      <img src="../../../images/hms.png" class="img-circle img-headshot center" alt="Profile Picture"/><small class="img-circle center">Postdoctoral Research Fellow <br/>Harvard Medical School</small>
+
+      <img src="../../../images/yale.png" style="max-width:100px" class="img-circle img-headshot center" alt="Profile Picture"/><small class="img-circle center">PhD, Computer Science <br/>Yale University</small>
+
+
+
+                 
+                     
+       
+          
+
+
+
+</aside>
+
+
+  <main class="content container">
+  <script>
+if (!document.location.hash){
+   document.location.hash = 'page';
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    
+
+
+let pendingImages = [];
+let timeoutID = null;
+
+function loadRandomImage() {
+    if (pendingImages.length > 0) {
+        let randomIndex = Math.floor(Math.random() * pendingImages.length);
+        let randomImage = pendingImages[randomIndex];
+        
+        
+        randomImage.src = randomImage.dataset.src;
+        
+        
+        pendingImages.splice(randomIndex, 1);
+
+        
+        timeoutID = setTimeout(loadRandomImage, 1500); 
+    } else {
+        timeoutID = null; 
+    }
+}
+
+let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+    entries.forEach(function(entry) {
+        let lazyImage = entry.target;
+
+        if (entry.isIntersecting) {
+            pendingImages.push(lazyImage);
+
+            
+            if (!timeoutID) {
+                loadRandomImage();
+            }
+        }
+    });
+}, {
+    rootMargin: '0px',
+    threshold: 0.1
+});
+
+document.querySelectorAll('.lazy').forEach(function(lazyImage) {
+    lazyImageObserver.observe(lazyImage);
+});
+
+
+
+
+    let lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
+
+    if ("IntersectionObserver" in window) {
+        let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    let lazyImage = entry.target;
+                    lazyImage.src = lazyImage.dataset.src;
+                    lazyImage.classList.remove("lazy");
+                    lazyImageObserver.unobserve(lazyImage);
+                }
+            });
+        });
+
+        lazyImages.forEach(function(lazyImage) {
+            lazyImageObserver.observe(lazyImage);
+        });
+    } else {
+        
+        lazyImages.forEach(function(lazyImage) {
+            lazyImage.src = lazyImage.dataset.src;
+            lazyImage.classList.remove("lazy");
+        });
+    }
+});
+
+</script>
+	
+<ul id="page" class="posts">
+	
+  
+  
+
+
+  
+  
+ 
+ 
+ 
+ 	<ol>
+ 		<ol><br/></ol>
+	 
+	 </ol>
+
+
+
+
+	
+
+				
+
+				<article class="post">
+
+					<h1 class="post-title">
+						<a href="../../mercer-2022/index.html">Mercer&#39;s Theorem</a>
+					</h1>
+					<div class="post-date">
+						<time datetime="2022-01-16T00:00:00Z">Jan 16, 2022</time> &middot; 7 min read
+					</div>
+					<center>
+						<img class="x-img x-img-thumbnail none" src="../../../images/sds365.png"  style="max-width:40%;margin-right:5%;margin-top:2%" align="left">
+					</center>
+					<div>
+						Given data points $(X_1,Y_1)$ , $(X_2,Y_2)$ , .. , and $(X_n,Y_n)$ where we want to predict $Y$ via design matrix $X$.
+					</div>
+
+					<div class="read-more-link">
+						<a href="../../mercer-2022/index.html">Read More</a>
+					</div>
+					<br/>
+				</article>
+
+				<article class="post">
+
+					<h1 class="post-title">
+						<a href="../../sparsity-2022/index.html">Sparsity Meets Convexity</a>
+					</h1>
+					<div class="post-date">
+						<time datetime="2022-01-16T00:00:00Z">Jan 16, 2022</time> &middot; 7 min read
+					</div>
+					<center>
+						<img class="x-img x-img-thumbnail none" src="../../../images/sds365.png"  style="max-width:40%;margin-right:5%;margin-top:2%" align="left">
+					</center>
+					<div>
+						Here we will talk about basic concepts of regression in sparse data.
+					</div>
+
+					<div class="read-more-link">
+						<a href="../../sparsity-2022/index.html">Read More</a>
+					</div>
+					<br/>
+				</article>
+
+				<article class="post">
+
+					<h1 class="post-title">
+						<a href="../../em-2021/index.html">Expectation Maximization</a>
+					</h1>
+					<div class="post-date">
+						<time datetime="2021-12-06T00:00:00Z">Dec 6, 2021</time> &middot; 5 min read
+					</div>
+					<center>
+						<img class="x-img x-img-thumbnail none" src="../../../images/mle.png"  style="max-width:40%;margin-right:5%;margin-top:2%" align="left">
+					</center>
+					<div>
+						We discussed the EM algorithm on Gaussian Mixture models in the previous post.
+					</div>
+
+					<div class="read-more-link">
+						<a href="../../em-2021/index.html">Read More</a>
+					</div>
+					<br/>
+				</article>
+
+				<article class="post">
+
+					<h1 class="post-title">
+						<a href="../../bigdata-experiments-2021/index.html">How to Manage 100k&#43; Experiments on Brain Imaging Datasets</a>
+					</h1>
+					<div class="post-date">
+						<time datetime="2021-12-05T00:00:00Z">Dec 5, 2021</time> &middot; 8 min read
+					</div>
+					<center>
+						<img class="x-img x-img-thumbnail none" src="../../../images/bigdataThumbnail.png"  style="max-width:40%;margin-right:5%;margin-top:2%" align="left">
+					</center>
+					<div>
+						Ph.D. students studying machine learning on the human brain must conduct massive experiments on brain imaging datasets.
+					</div>
+
+					<div class="read-more-link">
+						<a href="../../bigdata-experiments-2021/index.html">Read More</a>
+					</div>
+					<br/>
+				</article>
+
+				<article class="post">
+
+					<h1 class="post-title">
+						<a href="../../mixture-2021.html">Mixture Models and EM</a>
+					</h1>
+					<div class="post-date">
+						<time datetime="2021-12-03T00:00:00Z">Dec 3, 2021</time> &middot; 4 min read
+					</div>
+					<center>
+						<img class="x-img x-img-thumbnail none" src="../../../images/mle-379x201.png"  style="max-width:40%;margin-right:5%;margin-top:2%" align="left">
+					</center>
+					<div>
+						How to model data with a probability distribution? For example, if data looks like a circle or symmetric, we may model it with a Gaussian distribution:
+					</div>
+
+					<div class="read-more-link">
+						<a href="../../mixture-2021.html">Read More</a>
+					</div>
+					<br/>
+				</article>
+
+				<article class="post">
+
+					<h1 class="post-title">
+						<a href="../../inference-2021/index.html">Posterior Inference</a>
+					</h1>
+					<div class="post-date">
+						<time datetime="2021-11-26T00:00:00Z">Nov 26, 2021</time> &middot; 3 min read
+					</div>
+					<center>
+						<img class="x-img x-img-thumbnail none" src="../../../images/mle.png"  style="max-width:40%;margin-right:5%;margin-top:2%" align="left">
+					</center>
+					<div>
+						Bayesian Inference what can we do with posterior distribution $p(\theta|x)$ that we can not do with point estimate: For example we can estimate by $\theta_{\text{MAP}} = \arg \max_{\theta} p(\theta|x)$
+					</div>
+
+					<div class="read-more-link">
+						<a href="../../inference-2021/index.html">Read More</a>
+					</div>
+					<br/>
+				</article>
+
+				<article class="post">
+
+					<h1 class="post-title">
+						<a href="../../erm-2021/index.html">Empirical Risk Minimization</a>
+					</h1>
+					<div class="post-date">
+						<time datetime="2021-11-16T00:00:00Z">Nov 16, 2021</time> &middot; 3 min read
+					</div>
+					<center>
+						<img class="x-img x-img-thumbnail none" src="../../../images/mle.png"  style="max-width:40%;margin-right:5%;margin-top:2%" align="left">
+					</center>
+					<div>
+						Empirical Risk Minimization: Given $(x_1,y_1), .., (x_n,y_n) \in X \times y$ and we want to predict $f(x)=y$.
+					</div>
+
+					<div class="read-more-link">
+						<a href="../../erm-2021/index.html">Read More</a>
+					</div>
+					<br/>
+				</article>
+
+				<article class="post">
+
+					<h1 class="post-title">
+						<a href="../../mle-2021/index.html">Maximum Likelihood and Maximum A Posteriori Estimation</a>
+					</h1>
+					<div class="post-date">
+						<time datetime="2021-11-09T00:00:00Z">Nov 9, 2021</time> &middot; 7 min read
+					</div>
+					<center>
+						<img class="x-img x-img-thumbnail none" src="../../../images/mle.png"  style="max-width:40%;margin-right:5%;margin-top:2%" align="left">
+					</center>
+					<div>
+						Maximum Likelihood Estimation: Suppose that we have a probabilistic model of generating random data $x \in \mathcal{X}$ derived from function $P_{\theta}(x)$ that is parametrized by $\theta$.
+					</div>
+
+					<div class="read-more-link">
+						<a href="../../mle-2021/index.html">Read More</a>
+					</div>
+					<br/>
+				</article>
+
+				<article class="post">
+
+					<h1 class="post-title">
+						<a href="../../vae-2021/index.html">Write your first stochastic function in Python</a>
+					</h1>
+					<div class="post-date">
+						<time datetime="2021-11-01T00:00:00Z">Nov 1, 2021</time> &middot; 5 min read
+					</div>
+					<center>
+						<img class="x-img x-img-thumbnail none" src="../../../images/vae.png"  style="max-width:40%;margin-right:5%;margin-top:2%" align="left">
+					</center>
+					<div>
+						Let&rsquo;s estimate how many ice creams insomnia cookies in New Haven will sell this Fall.
+					</div>
+
+					<div class="read-more-link">
+						<a href="../../vae-2021/index.html">Read More</a>
+					</div>
+					<br/>
+				</article>
+
+				<article class="post">
+
+					<h1 class="post-title">
+						<a href="../../ot-convex/index.html">Learning Optimal Transport from Samples</a>
+					</h1>
+					<div class="post-date">
+						<time datetime="2021-10-28T00:00:00Z">Oct 28, 2021</time> &middot; 4 min read
+					</div>
+					<center>
+						<img class="x-img x-img-thumbnail none" src="../../../images/ot/thumbnail.png"  style="max-width:40%;margin-right:5%;margin-top:2%" align="left">
+					</center>
+					<div>
+						Searching for optimal transport encourages a mapping that minimizes the total cost of transporting mass from $\alpha$ to $\beta$, as initially formulated by Monge (1781).
+					</div>
+
+					<div class="read-more-link">
+						<a href="../../ot-convex/index.html">Read More</a>
+					</div>
+					<br/>
+				</article>
+					
+    <ul class="pagination pagination-default">
+      <li class="page-item">
+        <a href="../../../posts.html" aria-label="First" class="page-link" role="button"><span aria-hidden="true">&laquo;&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="../../../posts.html" aria-label="Previous" class="page-link" role="button"><span aria-hidden="true">&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="../../../posts.html" aria-label="Page 1" class="page-link" role="button">1</a>
+      </li>
+      <li class="page-item active">
+        <a aria-current="page" aria-label="Page 2" class="page-link" role="button">2</a>
+      </li>
+      <li class="page-item">
+        <a href="../3/index.html" aria-label="Page 3" class="page-link" role="button">3</a>
+      </li>
+      <li class="page-item">
+        <a href="../3/index.html" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="../3/index.html" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      </li>
+    </ul>
+
+
+
+<section class="container list">
+
+	
+	
+	
+	
+	
+	
+</section>
+
+ 
+  </main>
+
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+magnify("myimage", 3);
+
+</script>
+<footer>
+  <div>
+    <p>
+      &copy; iid.yale.edu | Yale University 2023
+
+      
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="../../../js/jquery.min.js"></script>
+  <script src="../../../js/soho.js"></script>
+
+  <script src="https://dadashkarimi.github.io/js/blog.js"></script>
+
+  
+</body>
+</html>

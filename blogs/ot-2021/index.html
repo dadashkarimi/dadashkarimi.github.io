@@ -1,0 +1,82 @@
+<head>
+  <style>
+    img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+    }
+  </style>
+</head>
+
+<div id="page" class="post">
+  <h1 class="title">Optimal Transport and Brain Imaging</h1>
+
+
+  <div class="post-date">
+    <time datetime="2021-10-17T00:00:00Z">Oct 17, 2021</time> <span class="readtime">&middot; 2 min read</span>
+  </div>
+  <div>
+   <p>Fuctional connectomes, derived from functional magnetic resonance imaging (fMRI) is widely used to study functional organization of human brain.  Individuals spend limited amount of time under scanner while resting (i.e., resting scan connectomes) or performing specific tasks (i.e., task-based connectomes). Removing head motions, skull stripping, registering to a common space,  deriving time series out of a given atlas are typical things a researcher needs to do before any further analysis. Yet, traditionally different institutes and schools develop their own atlas or keep using a well-known set of brain mappings for their studies. Constructing conectomes that are derived differently in terms of geometry leads to a inconsistent pool of data that makes downstream analysis impossible unless we run all the preprocessing steps together using a same atlas. In MICCAI 2021 I, Amin Karbasi, and Dustin Scheinost proposed a new data-deriven algorithm based on optimal transport to generate time series data of individuals without having further preprocessing steps involved.</p>
+<p><img src="../../images/scanner-bio.jpg" alt="Example"></p>
+<p>The main idea is pretty simple; optimal transport is defined over probability distributions with different supports and possibily located on different geometry.
+Suppose there are $m$ sources $x_1, \ldots, x_m $ for a commodity, with $a(x_i)$ units of supply at $x_i$ and $n$ sinks $y_1, \ldots, y_n$ for the commodity, with the demand $b(y_j)$ at $y_j$. If $a(x_i,\ y_j)$ is the unit cost of shipment from $x_i$ to $y_j$, find a flow that satisfies demand from supplies and minimizes the flow cost.</p>
+<p>Similarly, we define a transportation problem between $\mu$ which are activity level of $n$ regions in brain based on a source atlas, and $\nu$ with $m$ values for target. Once we have an optimum mapping between $\mu$ and $\nu$ based on a given cost matrix $M$, transportaion comes for free. Therefore, we use some training data between these two atlases to find out the mapping and then use it as a universal plan to obtain $\nu$ for the individuals that we don&rsquo;t have relative values in target. This process repeatedly happens in different time frames to construct final time series data. Using this algorithm, people don&rsquo;t need to run all the preprocessing steps to obtain time series data in target. This method particularly shines when raw data are not available for various reasons including privacy or storage limits.</p>
+
+
+	<center>
+		<img class="x-img x-img-thumbnail none" src="../../images/miccai-2021.png"  style="max-width:90%;margin-right:5%;margin-top:2%" align="left">
+	</center>
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+  </main>
+
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+magnify("myimage", 3);
+
+</script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="../../js/jquery.min.js"></script>
+  <script src="../../js/soho.js"></script>
+
+  <script src="https://dadashkarimi.github.io/js/blog.js"></script>
+
+
+</body>
+</html>

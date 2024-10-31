@@ -1,0 +1,263 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<script src="../js/emoji-map.js"></script>
+<dom-module id="emoji-llate">
+<template>
+<style>
+      :host {
+        display: inline-block;
+      }
+
+      :host ::slotted(span) {
+        word-wrap: break-word;
+      }
+    </style>
+<canvas id="canvas" width="400" height="400" hidden></canvas>
+<img id="image" on-load="_onImageLoaded" hidden>
+<slot id="content"></slot>
+<canvas id="palette" height="22" width="22" hidden>
+</template>
+<script>
+    class Emojillate extends Polymer.Element {
+      static get is() { return 'emoji-llate'; }
+
+      static get properties() {
+        return {
+          /*
+           * Image file to emojillate.
+           */
+          file: {
+            type: Object,
+            observer: '_fileChanged'
+          },
+
+          /*
+           * Resolution (i.e number of pixels per width of image) at which to emojillate.
+           */
+          resolution: {
+            type: Number,
+            observer: '_resolutionChanged'
+          },
+
+          /*
+           * Set this to true to hide the image background on the emojillated image.
+           */
+          noBackground: {
+            type: Boolean,
+            value: false,
+            observer: '_noBackgroundChanged'
+          },
+
+          /*
+           * The one emoji representing the entire image. Obtained by calculating
+           * the average color of the entire original image, and finding the closest
+           * emoji to that.
+           */
+          tldr: {
+            type: String
+          },
+        }
+      }
+
+      _fileChanged(file) {
+        if (!this._reader) {
+          this._reader = new FileReader();
+          this._reader.onload = this._loadFile.bind(this);
+        }
+        this._reader.readAsDataURL(file);
+      }
+
+      _resolutionChanged() {
+        this._onImageLoaded();
+      }
+
+      _noBackgroundChanged(noBackground) {
+        var container = this.$.content.assignedNodes()[1];
+        var pixels = container.querySelectorAll('.pixel');
+        for (var i = 0; i < pixels.length; i++) {
+          pixels[i].style.background = noBackground ? 'white' : pixels[i].dataset.background;
+        }
+      }
+
+      _loadFile(event) {
+        this.$.image.src = event.target.result;
+      }
+
+      _onImageLoaded() {
+        var imageRatio = this.$.image.height / this.$.image.width;
+
+        var pixelsPerWidth = this.resolution;
+        var pixelsPerHeight = Math.floor(pixelsPerWidth * imageRatio);
+
+        // Adjust the canvas to fit the shape of the image.
+        this.$.canvas.width = window.innerWidth > 600 ? 600 : window.innerWidth - 40;
+        this.$.canvas.height = Math.ceil(this.$.canvas.width * imageRatio);
+
+        this._displayPixelatedImage(pixelsPerWidth, pixelsPerHeight);
+      }
+
+      _displayPixelatedImage(pixelsPerWidth, pixelsPerHeight) {
+        // Oopsies?
+        if (!this.$.canvas.width || !this.$.canvas.height) {
+          return;
+        }
+
+        var imageData = this._getPixellatedImageData(pixelsPerWidth, pixelsPerHeight);
+        var colors = this._getPixelColors(this.$.canvas, imageData, pixelsPerWidth, pixelsPerHeight);
+
+        // I don't love this.
+        var container = this.$.content.assignedNodes()[1];
+
+        // Remove the previous render and redisplay the new image.
+        while (container.firstChild) {
+          container.removeChild(container.firstChild);
+        }
+        container.style.width = this.$.canvas.width +'px';
+        container.style.height = this.$.canvas.height +'px';
+
+        var fragment = document.createDocumentFragment();
+
+        var pixelWidth = this.$.canvas.width / pixelsPerWidth;
+        var pixelHeight = this.$.canvas.height / pixelsPerHeight
+
+        var pixelArrayForMode = [];
+        var modelPixel = this._createModelPixel(pixelWidth, pixelHeight);
+
+        for (var i = 0; i < colors.length; i++) {
+          var pixel = this._drawPixel(modelPixel.cloneNode(), colors[i]);
+
+          fragment.appendChild(pixel);
+          pixelArrayForMode.push(pixel.textContent);
+
+          // Add a <br> at the end of every row so that we can copy paste this
+          // as a grid.
+          if (i % pixelsPerWidth === (pixelsPerWidth - 1)) {
+            fragment.appendChild(document.createElement('br'));
+          }
+        }
+        container.appendChild(fragment);
+
+        this.tldr = this._getTldr(pixelArrayForMode);
+      }
+
+      _getPixellatedImageData(pixelsPerWidth, pixelsPerHeight) {
+        // Set up the canvas pixellation.
+        if (!this._ctx) {
+          this._ctx = this.$.canvas.getContext('2d');
+
+          // From https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/imageSmoothingEnabled
+          this._ctx.mozImageSmoothingEnabled = false;
+          this._ctx.msImageSmoothingEnabled = false;
+          this._ctx.imageSmoothingEnabled = false;
+        }
+        // Draw the image super tiny and then scale it from the tiny size
+        // to the actual canvas size, which pixellates it.
+        this._ctx.drawImage(this.$.image, 0, 0, pixelsPerWidth, pixelsPerHeight);
+        this._ctx.drawImage(this.$.canvas,
+                     0, 0, pixelsPerWidth, pixelsPerHeight,          /* source */
+                     0, 0, this.$.canvas.width, this.$.canvas.height /* dest */);
+
+        return this._ctx.getImageData(0, 0, this.$.canvas.width, this.$.canvas.height);
+      }
+
+      _getPixelColors(canvas, imageData, pixelsPerWidth, pixelsPerHeight) {
+        var colors = [];
+        var widthRatio = canvas.width / pixelsPerWidth;
+        var heightRatio = canvas.height / pixelsPerHeight;
+
+        // How many original pixels we have in a "drawn" final pixel.
+        for (var j = 0; j < pixelsPerHeight; j++) {
+          for (var i = 0; i < pixelsPerWidth; i++) {
+            var x = Math.round(widthRatio * i + 1) * 4;
+            var y = Math.round(heightRatio * j + 1) * canvas.width * 4;
+
+            var pixel = [imageData.data[y + x], imageData.data[y + x + 1], imageData.data[y + x + 2], imageData.data[y + x + 3]];
+
+            colors.push(pixel);
+          }
+        }
+        return colors;
+      }
+
+      _createModelPixel(size) {
+        var pixel = document.createElement('span');
+        pixel.className = 'pixel';
+        pixel.style.display = 'inline-block';
+        pixel.style.width = pixel.style.height = size + 'px';
+        pixel.style.fontSize = size - 2 + 'px';
+        return pixel;
+      }
+
+      _drawPixel(pixel, rgba) {
+        var backgroundColor = 'rgba(' + rgba[0] + ',' + rgba[1] + ',' + rgba[2] + ',' + rgba[3] + ')';
+
+        if (this.noBackground) {
+          backgroundColor = 'white';  
+        }
+
+        pixel.dataset.background = pixel.style.backgroundColor = backgroundColor;
+        pixel.textContent = this._getClosestEmoji(rgba);
+        return pixel;
+      }
+
+      _getClosestEmoji(rgba) {
+        if (!this._closestEmoji)
+          this._closestEmoji = [];
+
+        // this function is slooow, so we cache the results in hopes that we will be able to reuse them
+        if (this._closestEmoji[rgba]) {
+          return this._closestEmoji[rgba];
+        }
+
+        var minDistance = 10000000;
+        var emoji = null;
+
+        window.emojiColorMap.forEach(function getDistance(item) {
+          // This is a bit of a lie. Try to convert to Lab, where distances have meanings.
+          var distance =
+                  3 * Math.abs(item.color[0] - rgba[0]) +
+                  4 * Math.abs(item.color[1] - rgba[1]) +
+                  3 * Math.abs(item.color[2] - rgba[2]);
+          if (distance <= minDistance) {
+            minDistance = distance;
+            emoji = item.emoji;
+          }
+        });
+
+        this._closestEmoji[rgba] = emoji;
+
+        return emoji;
+      }
+
+      // This may be literally the slowest way to do this.
+      _getTldr(array) {
+        var emojiMap = {};
+
+        for(var i = 0; i < array.length; i++) {
+          var el = array[i];
+          if (emojiMap[el] == null)
+            emojiMap[el] = 1;
+          else
+            emojiMap[el]++;
+        }
+
+        var sortedEmoji = Object.keys(emojiMap).sort(function(a,b){return emojiMap[b]-emojiMap[a]});
+
+        var s = '';
+        // Some images don't have 3 pixels, so do what you can. Also ugh
+        // do this less awful when you're not on a bus, future monica.
+        if (sortedEmoji[0])
+          s += sortedEmoji[0];
+
+        if (sortedEmoji[1])
+          s += sortedEmoji[1];
+
+        if (sortedEmoji[2])
+          s += sortedEmoji[2];
+
+        return s;
+      }
+    }
+
+    customElements.define('emoji-llate', Emojillate);
+  </script>
+</dom-module>

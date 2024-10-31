@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+<meta charset="utf-8">
+<title>
+    Cat-DNS: a DNS server that resolves everything to cats &ndash; Monica Dinculescu
+  </title>
+<meta name="author" content="Monica Dinculescu" />
+<meta name="description" content="Monica Dinculescu's blog" />
+<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+<link rel="alternate" type="application/rss+xml" href="../../atom.xml" />
+<link rel="stylesheet" href="../../css/base.css" type="text/css" media="screen, projection" />
+<link rel="shortcut icon" type="image/x-icon" href="../../images/favicon.png" />
+<link rel="icon" type="image/png" href="../../images/favicon.png">
+<link rel="manifest" href="../../manifest.json">
+
+<link rel="manifest" href="https://meowni.ca/posts/go-cat-dns-go/manifest.json">
+
+<meta name="theme-color" content="#7BE4D5">
+
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="Monica's blog">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Monica's blog">
+
+<link rel="apple-touch-icon" sizes="192x192" href="https://meowni.ca/posts/go-cat-dns-go/icons/icon-192x192.png">
+
+<meta name="msapplication-TileImage" content="images/manifest/icon-192x192.png">
+<meta name="msapplication-TileColor" content="#7BE4D5">
+<meta name="msapplication-tap-highlight" content="no">
+
+<meta name="twitter:card" content="Monica Dinculescu's blog">
+<meta name="twitter:site" content="@notwaldorf">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="my-app">
+<meta property="og:image" content="icons/icon-192x192.png" />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-47334320-2']);
+    _gaq.push(['_setDomainName', 'meowni.ca']);
+    _gaq.push(['_trackPageview']);
+    (function () {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</head>
+
+<body>
+<nav>
+<ul>
+<li id="home_link" class="og"><a href="../../index.html">🏠</a></li>
+<li><a href="../../is.html">about</a></li>
+<li><a href="../../works.html">hire me</a></li>
+<li><a href="https://meownica.studio" target="_blank" rel="noreferrer">art</a></li>
+<li><a href="../../reads.html">reading</a></li>
+<li><a href="../../writes.html">writing</a></li>
+<li><a href="../../makes.html">projects</a></li>
+<li><a href="../../talks.html">talks</a></li>
+</ul>
+</nav>
+<div class="splash short">
+<div class="splash-wrapper">
+<div>
+<section class="byline">
+February 18, 2014
+</section>
+<div>
+<h1><a href="index.html">Cat-DNS: a DNS server that resolves everything to cats</a></h1>
+</div>
+</div>
+</div>
+</div>
+<section class="content">
+<p>The internet needs more cats. DNS servers are the authority on all things internet. Therefore, the best DNS server is the one that resolves everything to cats. Guess what kind of DNS server this is (Hint: it’s the cat kind).</p>
+<h2 id="making-it-go">Making it go</h2>
+<p>First, get the <a href="https://github.com/notwaldorf/cat-dns">code</a>, and the npm packages you need (the instructions are with the code). To run, start the server as a privileged process. This is because to be a DNS server, you need to be a UDP server on port 53. This is a small numbered port, which means it needs superpowers. This is how your run it:</p>
+<p><code>
+sudo node cat-dns.js
+</code></p>
+<p>You also need to somehow set your DNS server to be localhost. On a Mac, I do this by creating a new (wi-fi) interface (called Cats), in my Network preferences, and setting its DNS server to <code class="language-plaintext highlighter-rouge">127.0.0.1</code>. You could do this on your normal interface, but this makes switching back and forth easier.</p>
+<h2 id="warnings">Warnings</h2>
+<p>While you’re playing with this, pretty much nothing on your computer that requires the internet works. Except for your browser. And then that’s mostly cats. So being able to deactivate this easily is kind of key (I know. You might think “Why would I ever want to deactivate cats?”, but trust me on this one). I also recommend killing all the things that need to call the mothership (google hangouts, twitter feeds, dropbox, iMessage), because they will not like your sassy cat answers, and will slow everything down.</p>
+<h2 id="you-are-ready">You are ready</h2>
+<p>Go in your browser to <code class="language-plaintext highlighter-rouge">www.google.com</code> and wait a bit. You should see a cat. Go to a different website. Another cat. Congratulations. Your internet is now all cats.</p>
+<h2 id="wait-what">Wait, what?</h2>
+<p>Do not panic. While I recommend you don’t look at the source because it’s gross, if you do look at the source, you’ll notice all it does is resolve any hostname to <code class="language-plaintext highlighter-rouge">54.197.244.191</code>, which is a magical place on the internet that has cats. My friend <a href="https://github.com/cpatulea/cats">@eigma</a> made it, and is hosting it, so please try not to kill all the cat bandwith at once. You could also resolve everything to localhost, and serve your own for now cats on an http server on port 80. But then you’d have to store your own cats locally, and that is animal cruelty. Thankfully, for now, while that magical static IP exists, you don’t have to.
+That’s it, that’s all.</p>
+<h2 id="i-need-to-know-more">I NEED TO KNOW MORE</h2>
+<p>Here’s the little <a href="http://notwaldorf.github.io/posts/oops-cat-dns/">summary</a> I wrote originally about how DNS servers work. Basically, cat-dns ends up doing this:</p>
+<ul>
+<li>gruesomely parse the query from the client. I used <a href="http://www.zytrax.com/books/dns/ch15/">this</a> as a reference on what each of the fields in the message sections are, because the spec itself is very dry. This was the worst part, because the message sections are sequences of bits that don’t add up to bytes on any sane boundary, so you have to work with bit arrays, which is nobody’s idea of fun. Anyway, a spec is a spec.</li>
+<li>assemble the DNS answer. The answer is mostly the same for each query – the only thing that changes is the content of the query (i.e. the hostname you requested). And you copy that from the query, so it’s not a big deal.</li>
+<li>always returns <code class="language-plaintext highlighter-rouge">54.197.244.191</code> as the resolved IP, unless you’re requesting <code class="language-plaintext highlighter-rouge">imgur.com</code>. Then it gives you an actual IP for imgur that I got from <code class="language-plaintext highlighter-rouge">nslookup</code>. Imgur stores our cats, so we need to be able to get to them. :)</li>
+</ul>
+<div class="prev-next">
+<a href="../dear-sir-or-madam/index.html">&laquo; Dear sir or madam: the bookmarklet you didn't know you needed</a>
+<a href="../ruby-eh/index.html">Ruby for Canadians: an instruction manual &raquo;</a>
+</div>
+</section>
+<div class="footer">
+<div class="thanks">
+<span>Thanks for reading! <span class="og" style="color: var(--red)">❤︎</span></span>
+<a href="https://twitter.com/share" class="twitter-share-button" data-via="notwaldorf" title="Tweet at me!" aria-label="Tweet at me!">Tweet</a>
+</div>
+</div>
+<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
+</body>
+<script>
+  'use strict';
+
+  // Load the pygments stylesheet so that it's not render blocking.
+  var head = document.head;
+  var link = document.createElement('link');
+  link.type = 'text/css';
+  link.rel = 'stylesheet';
+  link.href = '/css/pygments.css'
+  head.appendChild(link);
+</script>
+</html>

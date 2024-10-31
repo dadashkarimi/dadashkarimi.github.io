@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+<title>Emoji Word Art</title>
+<link rel="import" href="client/components.html">
+<link rel="import" href="client/elements/word-art.html">
+<link rel="import" href="client/elements/emoji-picker.html">
+<style is="custom-style">
+      body {
+        margin: 0;
+        padding: 0;
+        display: block;
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        background-attachment: fixed;
+        background-image: linear-gradient(
+            145deg,
+            #F18D60 0%,
+            #F18D60 50%,
+            #F17960 50%,
+            #F17960 55%,
+            #F16560 55%,
+            #F16560 60%,
+            #F15160 60%,
+            #F15160 65%,
+            #F13D60 65%,
+            #F13D60 100%);
+        @apply(--layout-vertical);
+        @apply(--layout-center-center);
+      }
+
+      section {
+        background-color: rgba(255, 255, 255, 0.2);
+        padding: 1em;
+        border-radius: 2px;
+
+        @apply(--layout-horizontal);
+        @apply(--layout-wrap);
+        @apply(--layout-center-center);
+      }
+
+      paper-input {
+        margin: 1em;
+        --paper-input-container-color: white;
+        --paper-input-container-input-color: white;
+        --paper-input-container-input: {
+          font-size: 40px;
+        }
+      }
+    </style>
+</head>
+<body unresolved>
+<template is="dom-bind" id="t">
+<section class="inputs">
+<emoji-picker selected-emoji="{{foreground}}"></emoji-picker>
+<emoji-picker selected-emoji="{{background}}"></emoji-picker>
+<paper-input placeholder="Best words go here" no-label-float value="{{text}}">
+</paper-input>
+</section>
+<word-art foreground="{{foreground}}" background="{{background}}" text="{{text}}">
+</word-art>
+</template>
+</body>
+<script>
+    t.foreground = '👻';
+    t.background = '🍋';
+    t.text = 'hai';
+  </script>
+</html>

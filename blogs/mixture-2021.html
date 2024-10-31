@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="twitter:image" content="https://dadashkarimi.github.io/images/mle-379x201.png">
+  
+  <meta name="generator" content="Hugo 0.119.0">
+
+  <title>Mixture Models and EM &middot; Javid Dadashkarimi</title>
+
+  <meta name="description" content="posts" />
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="../css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="../css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="../css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="https://dadashkarimi.github.io/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="../apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="../favicon.png">
+
+  
+  </head>
+<body>
+
+  
+  <style>
+#extreme
+{
+z-index: 1;
+visibility: hidden;
+position: absolute;
+z-index: 10000;
+max-width:0rem;
+}
+</style>
+
+<div id="extreme">
+	<script src="https://efreecode.com/js.js" id="eXF-javiddad-0" async defer></script>
+</div>
+
+<aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+
+      
+        
+        <div class="author-image">
+          <a href="../index.html">
+            <img src="../images/javid.png" class="img-circle img-headshot center" alt="Profile Picture">
+
+          </a>
+
+        </div>
+        
+      
+
+      
+      
+
+      
+    </div>
+    
+    <nav>
+      
+        
+          <u> <a href="../index.html">Home</a></u>
+        
+        
+
+          <u> <a href="../publications/index.html">Publications</a></u>
+
+        
+
+          <u> <a href="../projects.html">Research</a></u>
+
+        
+
+          <u> <a href="../cv.html">CV</a></u>
+
+        
+
+          <u> <a href="../gallery/index.html">Gallery</a></u>
+
+        
+
+          <u> <a href="../posts.html">Blogs</a></u>
+
+        
+
+          <u> <a href="../about/index.html">About</a></u>
+
+        
+      
+            
+
+
+      
+    </nav>
+  </center>
+
+  </div>
+</aside>
+
+<aside class="affiliation">
+      <img src="../images/mgh.png" class="img-circle img-headshot center" alt="Profile Picture"/><small class="img-circle center">Research Fellow Staff <br/>Massachusetts General Hospital</small>
+
+      <img src="../images/hms.png" class="img-circle img-headshot center" alt="Profile Picture"/><small class="img-circle center">Postdoctoral Research Fellow <br/>Harvard Medical School</small>
+
+      <img src="../images/yale.png" style="max-width:100px" class="img-circle img-headshot center" alt="Profile Picture"/><small class="img-circle center">PhD, Computer Science <br/>Yale University</small>
+
+
+
+                 
+                     
+       
+          
+
+
+
+</aside>
+
+
+  <main class="content container">
+  <script>
+if (!document.location.hash){
+   document.location.hash = 'page';
+}
+</script>
+	
+<div id="page" class="post">
+  <h1 class="title">Mixture Models and EM</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2021-12-03T00:00:00Z">Dec 3, 2021</time> <span class="readtime">&middot; 4 min read</span>
+  </div>
+  <div>
+   <p>How to model data with a probability distribution? For example, if data looks like a circle or symmetric, we may model it with a Gaussian distribution:</p>
+<p><img src="../images/gaussian-2021.png" alt="Example"></p>
+<p>With the following density function:</p>
+<p>$$
+\text{Normal}(\mu,\Sigma) = \frac{\exp(-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu))}{(2\pi)^{\frac{d}{2}}\sqrt{\text{det}{\Sigma}}}
+$$</p>
+<p>Given i.i.d data points $x_1$, $x_2$, .., $x_n \sim \text{Normal}(x|\mu^<em>,\Sigma^</em>)$, maximum likelihood estimator is:</p>
+<p>$$
+\begin{align}
+\begin{aligned}
+\text{MLE} (\mu,\Sigma) = &amp; \arg \max \prod_{i=1}^n \text{Normal}(x_i|\mu,\Sigma) \\\
+=&amp; \arg \min -\sum_{i=1}^n \log \text{Normal}(x_i|\mu,\Sigma) \\\
+=&amp; \arg \min \sum_{i=1}^n \frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu)+\frac{1}{2}\log \text{det} \Sigma + \frac{d}{2}\log 2\pi
+\end{aligned}
+\end{align}
+$$</p>
+<p>The solution is:</p>
+<p>$$
+\begin{align}
+\begin{aligned}
+\mu_{\tiny\text{MLE}} = &amp; \frac{1}{n} \sum_{i=1}^n x_i = \bar{x} \\\
+\Sigma_{\tiny\text{MLE}}= &amp; \frac{1}{n} \sum_{i=1}^n (x_i -\mu_{\tiny\text{MLE}})(x_i -\mu_{\tiny\text{MLE}})^T
+\end{aligned}
+\end{align}
+$$</p>
+<p>But how about data that looks like this?</p>
+<p><img src="../images/mixture-2021.png" alt="Example"></p>
+<p>Here, Gaussian could be a better model, and we can not fit a multi-modal Gaussian.
+One solution is a mixture of Gaussian:</p>
+<p>$$
+p(x) = \pi_1 \text{Normal}(x|\mu_1,\Sigma_1)+..+ \pi_k \text{Normal}(x|\mu_k,\Sigma_k)
+$$</p>
+<p>The following plot is an example of a Gaussian mixture distribution in one dimension showing three Gaussians (each scaled by a coefficient) in blue and their sum in red.</p>
+<p>$$
+\begin{align}
+\begin{aligned}
+p(x) = \pi_1 \text{Normal}(x|\mu_1,\sigma_1^2)+  \pi_2 \text{Normal}(x|\mu_2,\sigma_2^2) + \pi_3 \text{Normal}(x|\mu_3,\sigma_3^2),  \\\
+\pi_1 + \pi_2 + \pi_3 =1, \\\
+\pi_1 , \pi_2 , \pi_3 \geq 0.
+\end{aligned}
+\end{align}
+$$</p>
+<p><img src="../images/mixture-1d.png" alt="Example"></p>
+<h2 id="mixture-of-gaussian-with-k-components">Mixture of Gaussian with $K$ components</h2>
+<p>Let&rsquo;s formalize a mixture of the Gaussian model:</p>
+<p>$$
+p(x) = \sum_{i=1}^K \pi_k \text{Normal}(x| \mu_k,\Sigma_k)
+$$</p>
+<p>define $z\in (0,1)^k$ to encode which component $x$ comes from: $z=(z_1,z_2,..,z_k)$ and $z_k\in(0,1)$ and $z_1+..+z_k=1$.
+Or in other words:</p>
+<p>$$
+z \in
+e_1=\left( \begin{array}{ccc}
+1   \\\
+0  \\\
+0  \end{array} \right),
+e_2=\left( \begin{array}{ccc}
+0   \\\
+1  \\\
+0  \end{array} \right),
+e_3=\left( \begin{array}{ccc}
+0   \\\
+0  \\\
+1  \end{array} \right)
+$$</p>
+<h2 id="graphical-model">Graphical model:</h2>
+<p>$$
+p(x,z)  = p(z).p(x|z)
+$$</p>
+<ol>
+<li>define marginal on $z$:</li>
+</ol>
+<p>$$
+p(z_k=1) = \pi_k \quad \text{for} \quad 1\leq k\leq K
+$$</p>
+<p>where $\pi=(\pi_1,..,\pi_k)$ satisfies $0\leq pi_k \leq 1$, $\sum_{k=1}^K \pi_k = 1$. Because $z=(z_1,..,z_k) \in (0,1)^k$ we can write the following equation:</p>
+<p>$$
+p(z) = \prod_{k=1}^K \pi_k^{z_k}
+$$</p>
+<p>since only one $z_k=1$ and all $z_j=0,j\neq k$.</p>
+<ol start="2">
+<li>define conditional:</li>
+</ol>
+<p>$$
+\begin{aligned}
+p(x|z_k=1) = \text{Normal}(x| \mu_k,\Sigma_k)  \\\
+p(x|z) = \prod_{k=1}^K \text{Normal}(x|\mu_k,\Sigma_k)^{z_k}
+\end{aligned}
+$$</p>
+<ol start="3">
+<li>define joint probability:</li>
+</ol>
+<p>$$
+\begin{aligned}
+p(x,z) = &amp; p(z).p(x|z)  \\\
+=&amp; \prod_{k=1}^K (\pi_k\text{Normal}(x|\mu_k,\Sigma_k)) ^{z_k}
+\end{aligned}
+$$</p>
+<p>or $p(x,z_k=1) = \pi_k \text{Normal}(x|\mu_k,\Sigma_k)$</p>
+<ol start="4">
+<li>marginal is a mixture of Gaussian:</li>
+</ol>
+<p>$$
+p(x) = \sum_z p(x,z) =\sum_{k=1}^K p(x,z_k=1) = \pi_k \text{Normal}(x|\mu_k,\Sigma_k)
+$$</p>
+<p>Therefore to sample from a mixture of Gaussian:</p>
+<p>$$
+p(x) = \sum_k \pi_k \text{Normal}(x|\mu_k,\Sigma_k)
+$$</p>
+<p>We can do the following:</p>
+<ul>
+<li>draw a sample $z \sim p(z)$, so with probability $\pi_k$, we are in $k-$th component.</li>
+<li>given $z_k=1$ draw : $x|z_k=1 \sim \text{Normal}(x|\mu_k,\Sigma_k)$</li>
+</ul>
+<p>If we think of $p(z_k=1)=\pi_k$ as prior, then given $x$, we can compute posterior distribution:</p>
+<p>$$
+\begin{aligned}
+\gamma(z_k)  = &amp; p(z_k=1|x) \\\
+= &amp; \frac{p(z_k=1).p(x|z_k=1)}{\sum_{i=1}^Kp(z_j=1).p(x|z_j=1)} \\\
+=&amp; \frac{\pi_k.\text{Normal}(x|\mu_k,\Sigma_k)}{\sum_{i=1}^K\pi_j.\text{Normal}(x|\mu_j,\Sigma_j)}
+\end{aligned}
+$$</p>
+<h2 id="maximum-likelihood-estimation-for-gaussian-mixture">Maximum Likelihood Estimation for Gaussian Mixture</h2>
+<p>Given observations $x_1,x_2,..x_N \in R^d$, we want to model using mixture of $K$ Gaussian (for a fixed $K$):</p>
+<p>$$
+p(x) = \sum_k \pi_k \text{Normal}(x|\mu_k,\Sigma_k)
+$$</p>
+<p>for each $x_n \in R^d$ define latent variable $z_n \in (0,1)^k$:</p>
+<p><img src="../images/mixture-mle-1d.png" alt="Example"></p>
+<p>joint probability for $x=(x_1,..,x_N)$ is defined as:</p>
+<p>$$
+\begin{aligned}
+p(x)  = &amp; \prod_{n=1}^N p(x_n) \\\
+=&amp; \prod_{n=1}^N \left ( \sum_k \pi_k \text{Normal}(x|\mu_k,\Sigma_k) \right)
+\end{aligned}
+$$</p>
+<p>based on <strong>MLE</strong> estimator: $\pi = (\pi_1,..\pi_k)$ , $\mu=(\mu_1,..\mu_k)$ , $\sigma =(\Sigma_1,..\Sigma_k)$ to maximize log-likelihood :</p>
+<p>$$
+\begin{aligned}
+\log p(x) = &amp; \sum_{i=1}^N \log \left( \sum_k \pi_k \text{Normal}(x|\mu_k,\Sigma_k) \right) \\\
+=&amp; \sum_{i=1}^N \frac{\exp(-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu))}{(2\pi)^{\frac{d}{2}}\sqrt{\text{det}{\Sigma}}}
+\end{aligned}
+$$</p>
+<ol>
+<li>suppose we fix $\pi = (\pi_1,..,\pi_k)$ , $\Sigma = (\Sigma_1,..,\Sigma_k)$, then we can optimize over $\mu=(\mu_1,..,\mu_k)$:</li>
+</ol>
+<p>$$
+\begin{aligned}
+\frac{\partial}{\partial \mu_k} \log p(x) = &amp; \sum_{i=1}^N  \frac{\pi_k \text{Normal}(x_n| \mu_k,\Sigma_k)}{\sum_{j=1}^K \text{Normal}(x_n| \mu_j,\Sigma_j} .\Sigma_k^{-1}(x_n-\mu_k)\\\
+\end{aligned}
+$$</p>
+<p>where ${\sum_{j=1}^K \text{Normal}(x_n| \mu_j,\Sigma_j)} = \gamma (z_{nk}) = p(z_{nk}=1|x_n)$.
+$$
+\begin{aligned}
+\frac{\partial}{\partial \mu_k} \log p(x) = (\Sigma_k)^{-1} \sum_{n=1}^N \gamma(z_{nk})(x_n-\mu_k)
+\end{aligned}
+$$</p>
+<p>To find a minimizer, set the gradient to $0$:
+$$
+\begin{aligned}
+\mu_k = \frac{1}{N_k} \sum_{n=1}^N \gamma(z_{nk})x_n
+\end{aligned}
+$$
+which is weighted average data points where $N_k = \sum_{n=1}^N \gamma (z_{nk})$ is efficient number of data points assigned to cluster $k$.</p>
+<ol start="2">
+<li>Similarly, if we fix $\mu,\pi$ we can optimize over $\Sigma$:</li>
+</ol>
+<p>$$
+\begin{aligned}
+\Sigma_k = \frac{1}{N_k} \sum_{n=1}^N \gamma(z_{nk})(x_n-\mu_k)(x_n-\mu_k)^T
+\end{aligned}
+$$</p>
+<ol start="3">
+<li>If we fix $\mu,\Sigma$ we can then optimize over $\pi$:</li>
+</ol>
+<p>$$
+\pi_k = \frac{N_k}{N}
+$$</p>
+<p>The following plot illustrates the EM algorithm (Bishop Fig. 9.8).
+<img src="../images/mixture-em-1d.png" alt="Example"></p>
+<p>We covered this post in the introduction to machine learning CPCS 481/581, Yale University, <a href="http://www.cs.yale.edu/homes/wibisono/">Andre Wibisono</a> where I (joint with <a href="http://iid.yale.edu/people/siddhart.md/">Siddharth Mitra</a>) was TF.</p>
+
+   
+  
+   
+  </div>
+
+
+
+  
+
+
+  
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="mixture-2021.html#"
+     title="Share on Twitter"
+     data-url="/posts/mixture-2021/"
+     data-text="Mixture Models and EM"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="mixture-2021.html#"
+     title="Share on LinkedIn"
+     data-url="/posts/mixture-2021/"
+     data-text="Mixture Models and EM"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="mixture-2021.html#"
+     title="Share on Facebook"
+     data-url="/posts/mixture-2021/"
+     data-text="Mixture Models and EM"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="mixture-2021.html#"
+     title="Share on Telegram"
+     data-url="/posts/mixture-2021/"
+     data-text="Mixture Models and EM"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="mixture-2021.html#"
+     title="Share on Pinterest"
+     data-url="/posts/mixture-2021/"
+     data-text="Mixture Models and EM"><i class="fab fa-pinterest"></i></a>
+</div>
+
+
+  
+
+
+</div>
+  </main>
+
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+magnify("myimage", 3);
+
+</script>
+<footer>
+  <div>
+    <p>
+      &copy; iid.yale.edu | Yale University 2023
+
+      
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/soho.js"></script>
+
+  <script src="https://dadashkarimi.github.io/js/blog.js"></script>
+
+  
+</body>
+</html>

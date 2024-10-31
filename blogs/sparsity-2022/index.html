@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <style>
+    img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+    }
+  </style>
+</head>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="twitter:image" content="https://dadashkarimi.github.io//images/mle-379x201.png">
+
+  <meta name="generator" content="Hugo 0.119.0">
+
+  <title>Sparsity Meets Convexity &middot; Javid Dadashkarimi</title>
+
+  <meta name="description" content="posts" />
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="../../css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="../../css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="../../css/hyde.css">
+
+
+
+
+  <link type="text/css" rel="stylesheet" href="https://dadashkarimi.github.io/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="../../apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="../../favicon.png">
+
+
+  </head>
+<body>
+
+
+  <style>
+#extreme
+{
+z-index: 1;
+visibility: hidden;
+position: absolute;
+z-index: 10000;
+max-width:0rem;
+}
+</style>
+
+
+<div id="page" class="post">
+  <h1 class="title">Sparsity Meets Convexity</h1>
+
+
+  <div class="post-date">
+    <time datetime="2022-01-16T00:00:00Z">Jan 16, 2022</time> <span class="readtime">&middot; 7 min read</span>
+  </div>
+  <div>
+   <p>Here we will talk about basic concepts of regression in sparse data. First of all, let&rsquo;s define some notations: $D = {(X_1,Y_1), .., (X_n,Y_n)}$ is called training data for pairs of observations $(X_i,Y_i)$. Then $Y_i \in \mathbb{R}$ is the response and $X_i\in \mathbb{R}^p$ is the covariate vector. Sometimes people call the covariate vector the feature vector as well.</p>
+<p>The question in a regression problem is that, given a new pair $(X,Y)$ what is our model&rsquo;s prediction for $X$?</p>
+<h1 id="regression">Regression</h1>
+<p>Let $\hat{Y}$ be a prediction of $Y$.
+Then, the <code>prediction error</code> or <code>risk</code> is defined as:</p>
+<p>$$
+R = \mathbb{E}(Y-\hat{Y})^2
+$$</p>
+<p>The best preictor is regression function:</p>
+<p>$$
+m(x) = \mathbb{E}(Y|X=x) = \int yp(y|x) dy
+$$</p>
+<p>But, the true regression function $m(x)$ is unknown and we have to estimate $m(x)$:</p>
+<p>$$
+\text{prediction risk} = R(\hat{m}) = \mathbb{E}(Y-\hat{m}(X))^2
+$$</p>
+<p>We need to minimize that risk for a given pair $(X,Y)$. We can alway decompose that risk into two terms:</p>
+<p>$$
+R(\hat{m}) = \int \text{bias}^2(x) p(x) dx + \int \text{var}(x)p(x) + \sigma^2
+$$</p>
+<p>where:</p>
+<p>$$
+\begin{aligned}
+\text{bias}(x) = \mathbb{E}[\hat{m}(x)] \\\
+\text{var}(x) = \text{Variance}(\hat{m}(x)) \\\
+\sigma^2 = \mathbb{E}[Y-m(x)]^2
+\end{aligned}
+$$</p>
+<p>Therefore, prediction risks = $\text{Bias}^2$ + Variance. Methods with low bias tend to have high variance and methods with low variance will have high bias.
+For example, if you alwasy predict $m(x) = 0$, your models have $0$ variance but will be terribly biased.
+Thus, we need to have a balance beween these two.</p>
+<h2 id="bias-variance-tradeoff">Bias-Variance Tradeoff</h2>
+<p>Generally, we need to tradeoff approximation error against estimation error:
+$$
+R(\hat{f}) - R^* = R(\hat{f}) - \inf_{f\in F} R(f) + \inf_{f\in F} R(f)-R^*
+$$</p>
+<p>where $R^*$ is the smallest possible risk and $\inf_{f\in F} R(f)$ is smallest possible risk using class of estimators $F$.
+Approximation error is a generalization of squared bias and Estimation error is a generalization of variance.</p>
+<p>We don&rsquo;t assume that the true regression function is linear but best linear predictor is:</p>
+<p>$$
+m(x) = \beta+0 +\beta_1X_1 + &hellip; + \beta_pX_p
+$$</p>
+<p>We can also define $X_1=1$ then the predictor will turn into a more convinient form:</p>
+<p>$$
+m(x) = \beta_1X_1 + &hellip; + \beta_pX_p = \beta^T X
+$$</p>
+<p>where $\beta = (\beta_1,..,\beta_p)$ and $X=(X_1,..,X_p)$.
+For now, let&rsquo;s assume that $p$ is small. To find a minimizer we need to minimize the training error:</p>
+<p>$$
+\text{training error} = \frac{1}{n}\sum_{i=1}^n (Y_i-\beta^TX_i)^2
+$$</p>
+<p>the minimizer $\hat{b}=(\hat{\beta}_1,..,\hat{\beta}_p)$ is called least squares estimator.
+The least squares estimator is:</p>
+<p>$$
+\hat{\beta} = (X^TX)^{-1}X^TY
+$$</p>
+<p>where:</p>
+<p>$$
+X_{n\times p}=\left( \begin{array}{ccc}
+X_{11} &amp; X_{12} &amp; .. &amp; X_{1p}  \\\
+\vdots &amp; &amp; &amp; \vdots \\\
+X_{n1} &amp; X_{n2}&amp; ..&amp;X_{np} \end{array} \right)
+$$</p>
+<p>and</p>
+<p>$Y=(Y_1,..,Y_n)^T$</p>
+<p>Then, when we observe a new $X$, we predict $Y$ to be:</p>
+<p>$$
+\hat{Y} = \hat{m}(X) = \hat{\beta}^TX
+$$</p>
+<h3 id="proof">Proof:</h3>
+<p>$$
+\begin{align}
+S = &amp;(Y-\hat{Y})^2 \\
+=&amp; (Y-E[\hat{y}]+E[\hat{y}]-\hat{Y})^2\\
+=&amp; (Y-E[\hat{y}])^2+E[\hat{y}]-\hat{Y})^2 + 2(Y-E[\hat{y}])(E[\hat{y}]-\hat{Y})
+\end{align}
+$$</p>
+<p>then:</p>
+<p>$$
+\begin{align}
+E[S] = &amp; E[(Y-\hat{Y})^2] \\
+=&amp; (Y-E[\hat{y}])^2 + E[E[\hat{y}]-\hat{Y})^2] \\
+= &amp; \text{[Bias]}^2 + \text{Variance}
+\end{align}
+$$</p>
+<p>If you do a bit of calculus:</p>
+<p>$$
+\begin{align}
+E[2(Y-E[\hat{y}])(E[\hat{y}]-\hat{Y})] = &amp; 2 (y-E[\hat{y}])(E[\hat{y}]-E[\hat{y}]) \\
+=&amp; 0
+\end{align}
+$$</p>
+<h2 id="example-1">Example 1:</h2>
+<p>For example, in a HIV resistance dataset, we want to predict $Y$ exhibiting resistence according to $X_j$ which is amino acid in position $j$ of the virus using linear regression.</p>
+<p>$$
+Y=\beta+0 +\beta_1X_1 + &hellip; + \beta_{100}X_{100} + \epsilon
+$$</p>
+<p>Here is $\hat{\beta}$ and marginal regression coefficients.
+<img src="../../images/sds-365/sparse-1.png" alt="Example"></p>
+<p>Furthermore, $\hat{Y}_i - Y_i$ and a sparse regression &ndash; comming up soon &ndash; are as follows:</p>
+<p><img src="../../images/sds-365/sparse-2.png" alt="Example"></p>
+<h2 id="high-dimensional-linear-regression">High Dimensional Linear Regression</h2>
+<p>Now, let&rsquo;s say $p$ is too large or even is larger than data points. Then the least squares estimator is not defined since $X^TX$ is not invertible.The variance of the least squares prediction is huge. Therefore, we need to increase the bias so that we can decrease the variance.</p>
+<h3 id="ridge-regression">Ridge Regression</h3>
+<p>In ridge regression, we minimize the penalized training error:</p>
+<p>$$
+\hat{\beta} = \arg \min_{\beta} \frac{1}{n} \sum_{i=1}^n (Y_i-\beta^T X_i)^2 + \frac{\lambda}{n} ||\beta||_2^2
+$$</p>
+<p>where $||\beta||_2 =\sqrt{\sum_j\beta_j^2}$. There is a closed form soloution for this:</p>
+<p>$$
+\hat{\beta} = (X^TX+\lambda I )^{-1} X^TY
+$$</p>
+<p>the parameter $\lambda$ controls the bias-variance trade-off. When $\lambda=0$ the soloution is the least squres while when it is $\infty$ then $\hat{\beta}=0$.
+We can choose $\lambda$ by minimizing prediction risk $\hat{R}(\lambda)$.
+To estimate prediction risk, do <code>not</code> use training error:
+$$
+R_{\text{training}} = \frac{1}{n} \sum_{i=1}^n (Y_i-\hat{Y}_i)^2 , \hat{Y}_i=X_i^T\hat{\beta}
+$$</p>
+<p>since it is biased: $\mathbb{E}[R_{\text{training}}]&lt; R(\hat{\beta})$.
+Instead, we use leave-one out cross-validation:</p>
+<p>$$
+\begin{align}
+\hat{R}(\lambda) = &amp; \frac{1}{n} \sum_{i=1}^n (Y_i-\hat{Y_{-i}})^2  \\\
+= &amp; \frac{1}{n} \sum_{i=1}^n\frac{(Y_i-\hat{Y_i})^2}{(1-H_{ii})^2} \\\
+\approx &amp; \frac{R_{\text{training}}}{(1-\frac{p_{\lambda}}{n})^2} \\\
+\approx &amp; R_{\text{training}} + \frac{2p_{\lambda}\hat{\sigma}^2}{n}
+\end{align}
+$$</p>
+<p>where:</p>
+<p>$$
+\begin{align}
+H = X(X^TX+\lambda I)^{-1} X^T \\\
+p_{\lambda} =\text{trace}(H) = H_{11} + H_{22} + .. + H_{nn}
+\end{align}
+$$</p>
+<p>Ridge regression will find some values for all predictors while only a small fraction of them are relevant.
+Do we really want to try all comination of predictors (model selection)? Then the bias is the error due to omitting important variables. The
+variance is the error due to having to estimate many parameters.</p>
+<p><img src="../../images/sds-365/sparse-3.png" alt="Example"></p>
+<p>If there are $p$ variables then there are $2^p$ models.
+In other words, this problem is NP-hard and was a major bottleneck in statistics for many years.</p>
+<p>We can breakdown our problem into two ideas:</p>
+<ol>
+<li>Sparsity: Only a few number of predictors are needed to predict.</li>
+<li>Convexity: Replace model search with something easier.</li>
+</ol>
+<p>We measure (lack of) sparsity of $\beta = (\beta_1,..,\beta_p)$ with the q-norm:</p>
+<p>$$
+\begin{aligned}
+\beta_q = &amp; (|\beta_1|^q+..+|\beta_p|^q)^{1/q} \\
+= &amp; (\sum_j |\beta_j|^q)^{1/q}
+\end{aligned}
+$$</p>
+<p>Let&rsquo;s take a look at the following example. Which values of q measure (lack of) sparsity?</p>
+<p><img src="../../images/sds-365/sparse-4.png" alt="Example"></p>
+<h3 id="lesson-1to-capture-sparsity-we-need-to-use-q-leq-1">Lesson 1:To capture sparsity we need to use $q \leq 1$.</h3>
+<p>Thus, we estimate $\beta = (\beta_1, ..,\beta_p)$ by minimizing:</p>
+<p>$$
+\sum_{i=1}^n (Y_i - (\beta_0+\beta_1X_{i1}+..+\beta_pX_{ip}))^2
+$$</p>
+<p>subject to the constraint that  $\beta$ is sparse i.e. $||\beta||_q \leq $  small.</p>
+<p>If we use $q = 0$ this is same as searching through all $2^p$ models.
+What does the ${\beta: ||\beta||_q \leq \text{small}}$ look like?</p>
+<p>The set of $||\beta_q|| \leq 1$ when $p=2$:</p>
+<p><img src="../../images/sds-365/sparse-5.png" alt="Example"></p>
+<h3 id="lesson-2to-capture-convexity-we-need-to-use-q-geq-1">Lesson 2:To capture convexity we need to use $q \geq 1$.</h3>
+<h2 id="sparsity-meets-convexity">Sparsity meets convexity</h2>
+<p>We need these sets to have a nice shape (convex). If so, the
+minimization is no longer NP-hard. In fact, it is easy:</p>
+<ol>
+<li>Sensitivity to sparsity: $q\leq 1$</li>
+<li>Convexity (niceness): $q\geq 1$</li>
+</ol>
+<p>This means &ndash; according to lessons 1 and 2 &ndash; we should use $q = 1$.</p>
+<h2 id="lasso-regression">Lasso regression:</h2>
+<p>$$
+\hat{\beta} = \arg \min  \frac{1}{2n} \sum_{i=1}^n(Y_i - \beta^TX_i)^2 + \lambda ||\beta||_1
+$$</p>
+<p>where $||\beta||_1 = \sum_j |\beta_j|$.</p>
+<p>The results is a vector $\hat{\beta}_1,..,\hat{\beta}_p$ and they are mostly $0$.
+Magically, we have done model selection without searching (thanks to
+sparsity plus convexity).</p>
+<p>The following figure explains that why most of the coefficients are $0$:</p>
+<p><img src="../../images/sds-365/sparse-6.gif" alt="Example"></p>
+<p>Marriage of sparsity and convexity was one of biggest developments
+in statistics and machine learning in last 10-20 years.</p>
+<p>$\hat{\beta}(\lambda)$ is called the lasso estimator. Then define:</p>
+<p>$$
+\hat{S}(\lambda) = {j: \hat{\beta}(\lambda) \neq 0}
+$$</p>
+<p>After you find $\hat{S}(\lambda)$, you should re-fit the model by doing least
+squares on the sub-model $\hat{S}(\lambda)$.</p>
+<h3 id="how-to-choose-lambda">How to choose $\lambda$:</h3>
+<p>Choose $\lambda$ by minimizing risk estimation:</p>
+<p>$$
+\begin{aligned}
+\hat{R}(\lambda) = &amp; \frac{1}{n} \sum_{i=1}^n(Y_i - Y_{-i})^2 \\
+= &amp; \frac{1}{n} \sum_{i=1}^n \frac{(Y_i - Y_{-i})^2}{(1-H_{ii})^2} \\
+\approx &amp;\frac{1}{n} \frac{RSS}{(1-\frac{s}{n})^2}
+\end{aligned}
+$$</p>
+<p>where $H$ is the hat matrix and $s = \sharp \{j:\beta_j \neq 0\}$.
+Then, $\hat{Y} = X^T\hat{\beta}$.</p>
+<h3 id="minimize-loss-via-coordinate-descent">Minimize loss via coordinate descent</h3>
+<p>To minimize $ \frac{1}{2n} \sum_{i=1}^n(Y_i - \beta^TX_i)^2 + \lambda ||\beta||_1$
+using coordinate descent do the following steps:</p>
+<ol>
+<li>set $\hat{\beta} = (0,..,0)$ then iterate the following</li>
+<li>for $j=1,..,p$:</li>
+<li>set $R_i = Y_i - \sum_{s\neq j} \hat{\beta_s} X_{si}$</li>
+<li>set $\hat{\beta}_j$ to be least squares fit of $R_i$s on X_j</li>
+<li>set $\hat{\beta_j} = Soft_{\lambda_j}(\hat{\beta_j} )$ where $\lambda_j = \frac{\lambda}{\frac{1}{n}\sum_i X_{ij}^2}$</li>
+</ol>
+<p>Where $Soft$ is soft thresholding function:</p>
+<p><img src="../../images/sds-365/sparse-7.png" alt="Example"></p>
+<p>Then use least squares $\hat{\beta}$ on selected subset $S$.</p>
+<p>We covered this post in the intermediate machine learning SDS 365/565, Yale University, <a href="https://en.wikipedia.org/wiki/John_D._Lafferty">John Lafferty</a> where I was TF.</p>
+
+
+
+
+  </div>
+
+
+
+
+
+</div>
+  </main>
+
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+magnify("myimage", 3);
+
+</script>
+<footer>
+  <div>
+    <p>
+      &copy; iid.yale.edu | Yale University 2023
+
+
+
+
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="../../js/jquery.min.js"></script>
+  <script src="../../js/soho.js"></script>
+
+  <script src="https://dadashkarimi.github.io/js/blog.js"></script>
+
+
+</body>
+</html>

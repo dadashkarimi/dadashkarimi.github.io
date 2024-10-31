@@ -1,0 +1,175 @@
+<head>
+  <style>
+    img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+    }
+  </style>
+</head>
+
+<div id="page" class="post">
+  <h1 class="title">Empirical Risk Minimization</h1>
+
+
+  <div class="post-date">
+    <time datetime="2021-11-16T00:00:00Z">Nov 16, 2021</time> <span class="readtime">&middot; 3 min read</span>
+  </div>
+  <div>
+   <p><strong>Empirical Risk Minimization</strong>: Given $(x_1,y_1), .., (x_n,y_n) \in X \times y$ and we want to predict $f(x)=y$. Choose hypothesis class $\mathcal{F}={f_{\theta}: \theta \in \mathcal{\theta}}$.
+Choose:
+$$
+\theta^* = \arg \min_{\theta \in \mathcal{\theta}} \sum_{i=1}^n \text{Loss}(f_{\theta}(x_i,y_i))
+$$</p>
+<p>Let&rsquo;s review maximum likelihood estimation in this context. Maximum likelihood estimation is a probabilistic model defined by $y|x,\theta \sim P_{\theta}(y|x) = p(y| x,\theta)$. Our observations are $(x_1,y_1),..,(x_n,y_n) \in X \times y$.</p>
+<p>$$
+\begin{align}
+\begin{aligned}
+\theta_{\text{MLE}} = &amp; \arg \max_{\theta} P_{\theta} (y_1|x_1)..P_{\theta} (y_n|x_n)\\\
+=&amp;\arg \max_{\theta} \sum_{i=1}^{n}\log P_{\theta} (y_i|x_i) \\\
+=&amp;\arg \min_{\theta} \sum_{i=1}^{n}-\log P_{\theta} (y_i|x_i)
+\end{aligned}
+\end{align}
+$$</p>
+<p>and we know that $\text{Loss}f_{\theta}(x_i,y_i)=-\log P_{\theta} (y_i|x_i) $. In other words $\text{MLE} \equiv \text{ERM}$.</p>
+<h2 id="regularized-erm-as-map">Regularized ERM as MAP</h2>
+<p>Regularized ERM is defined as:</p>
+<p>$$
+\theta^* = \arg \min_{\theta\in \mathcal{\theta}} \sum_{i=1}^n \text{Loss}f_{\theta}(x_i,y_i) + \lambda \text{Reg}(\theta)
+$$</p>
+<p><strong>MAP:</strong> Prior $\theta \sim \pi(\theta)$ and $y|\theta,x \sim p(y|x,\theta)$. Then we can define MAP with the following:</p>
+<p>$$
+\begin{align}
+\begin{aligned}
+\theta_{\text{MAP}} = &amp; \arg \max_{\theta} P_{\theta} (y_1|x_1,\theta)..
+P_{\theta} (y_n|x_n) \pi(\theta)\\\
+=&amp;\arg \max_{\theta} \sum_{i=1}^{n}\log P_{\theta} (y_i|x_i,\theta) + \log \pi(\theta) \\\
+=&amp;\arg \min_{\theta} \sum_{i=1}^{n}-\log P_{\theta} (y_i|x_i) - \log \pi (\theta)
+\end{aligned}
+\end{align}
+$$</p>
+<p>where $\text{Loss}f_{\theta}(y_i|x_i,\theta)=-\log P_{\theta} (y_i|x_i,\theta) $. In other words, $\text{MAP} \equiv \text{ Regularized } \text{ERM}$ with $\log$ loss and regularizer is given by log prior.</p>
+<h2 id="example">Example:</h2>
+<p><strong>Regression:</strong>  We know that $y = \theta.x$</p>
+<p><strong>Gaussian Model:</strong> observe $y = \theta.x + \epsilon$ where $\epsilon \sim \text{Normal}(0,\sigma^2)$. Recall that one dimensional Gaussian $\text{Normal}(\mu,\sigma^2)$ has density:</p>
+<p>$$
+\begin{align}
+\begin{aligned}
+\text{Normal}(y|\mu,\sigma^2) = \frac{1}{\sqrt(2\pi \sigma^2)} e ^{-\frac{(y-\mu)^2}{2\sigma^2}} \\\
+\mu = \text{mean} = E[Y] \in \mathbb{R} \\\
+\sigma^2 = \text{variance} = E[(y-\mu)^2] &gt; 0
+\end{aligned}
+\end{align}
+$$</p>
+<p>In this case, probabilistic model is $p(y| x,\theta) = \text{Normal}(y| \theta.x,\sigma^2)$ where $\mu = \theta.x$. For ERM, the loss is:
+\begin{align}
+\begin{aligned}
+\text{Loss}(\theta,x,y) = -\log p(y|x,\theta)
+= \frac{(y-\theta.x)^2}{2\sigma^2} + \frac{1}{2} \log (2\pi \sigma^2)
+\end{aligned}
+\end{align}</p>
+<h3 id="quadratic-regularizer">Quadratic regularizer:</h3>
+<p>Assume our regularizer is $C(\theta) = \frac{1}{2}||\theta||^2$. Assume a Gaussian prior on $\theta \sim \text{Normal}(\mu,\Sigma)$ where $\Sigma = \Sigma^T \in
+R^{d\times d}$ with the following density:</p>
+<p>$$
+\text{Normal}(\theta| \mu,\Sigma) = \frac{1}{\text{det}(2\pi \Sigma)} e^{-\frac{(\theta-\mu)^T\Sigma^{-1}(\theta-\mu)}{2}}
+$$</p>
+<p>where $\text{det}(2\pi \Sigma)=(2\pi)^d \text{det}(\Sigma)$. Then we can re-write the regularized function as:
+\begin{align}
+\begin{aligned}
+C(\theta) =&amp; -\log \text{Normal}(\theta|\mu,\Sigma) \\\
+=&amp; \frac{(\theta-\mu)^T\Sigma^{-1}(\theta-\mu)}{2} + \frac{1}{2}\log \text{det}(2\pi \Sigma) \\\
+=&amp; \frac{(\theta-\mu)^T\Sigma^{-1}(\theta-\mu)}{2}+ \frac{1}{2}\log \text{det}(\Sigma) +  \frac{d}{2}\log \text{det}(2\pi)<br>
+\end{aligned}
+\end{align}</p>
+<p>where $\frac{d}{2}\log \text{det}(2\pi) $ is a constant. If we assume $\mu=0$ and $\Sigma=I$:
+$$
+C(\theta) = \frac{1}{2} ||\theta||^2_2 + \text{c}
+$$</p>
+<h3 id="ridge-regression-with-quadratic-regularizer">Ridge regression with Quadratic Regularizer:</h3>
+<p>This comes from the Gaussian-Gaussian model:</p>
+<p>\begin{align}
+\begin{aligned}
+\theta \sim \text{Normal}(\mu,\Sigma ) \\\
+y| x,\theta \sim \text{Normal}(x.\theta,\Sigma^2)
+\end{aligned}
+\end{align}</p>
+<p>where $y=x.\theta+\epsilon$ and $\epsilon \sim \text{Normal}(0,\sigma^2)$.</p>
+<p><strong>L1 regularizer</strong>: $C(\theta) = ||\theta||<em>1=\sum</em>{i=1}^d |\theta_i|$</p>
+<p><strong>Laplace distribution</strong>: In one dimension: $p(\theta|\mu,b) = \frac{1}{2b}e^{-\frac{|\theta-\mu|}{b}} $
+Laplace has a heavier tail than Gaussian.</p>
+<p>In d-dimension:
+$p(\theta|\mu,b) = \frac{1}{(2b)^d}e^{-\frac{||\theta-\mu||<em>1}{b}} = \prod</em>{i=1}^d p(\theta_i| \mu_i,b)
+$ which corresponds to L1 regularizer:
+\begin{align}
+\begin{aligned}
+C(\theta) =&amp; -\log p(\theta | \mu,b) \\\
+=&amp; \frac{1}{b}||\theta-\mu||_1 + d \log (2b)
+\end{aligned}
+\end{align}</p>
+<p><strong>Lasso regression:</strong> Quadratic loss and L1 regularization which comes from:
+\begin{align}
+\begin{aligned}
+\theta \sim \text{Lap}(\mu,b ) \\\
+y| x,\theta \sim \text{Normal}(x.\theta,\sigma^2) (\text{ MAP estimation})
+\end{aligned}
+\end{align}</p>
+<p>We covered this post in the introduction to machine learning CPCS 481/581, Yale University, <a href="http://www.cs.yale.edu/homes/wibisono/">Andre Wibisono</a> where I (joint with <a href="http://iid.yale.edu/people/siddhart.md/">Siddharth Mitra</a>) was TF.</p>
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+  </main>
+
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+magnify("myimage", 3);
+
+</script>
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="../../js/jquery.min.js"></script>
+  <script src="../../js/soho.js"></script>
+
+  <script src="https://dadashkarimi.github.io/js/blog.js"></script>
+
+
+</body>
+</html>

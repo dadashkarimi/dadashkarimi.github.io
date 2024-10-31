@@ -1,0 +1,276 @@
+<head>
+  <style>
+    img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+    }
+  </style>
+</head>
+
+	<div id="page" class="post">
+  <h1 class="title">Variational Inference and VAE</h1>
+
+
+  <div class="post-date">
+    <time datetime="2022-03-11T00:00:00Z">Mar 11, 2022</time> <span class="readtime">&middot; 6 min read</span>
+  </div>
+  <div>
+   <p>In the previous post, we talked about approximation inference.
+We want to compute $p(\theta,z|x)$, but it&rsquo;s too complicated.
+One strategy is to approximate as $q(\theta,z)$ that has an excellent form where $q$ is a function of variational parameters optimized for each $x$.
+$q$ is a function of variational parameters optimized for each $x$.
+Maximize a lower bound on $p(x)$ to choose $q$.</p>
+<p>Remember the Bayes&rsquo; rule:</p>
+<p>$$
+p(\theta | x) = \frac{p(\theta)p(x|\theta)}{p(x)}
+$$</p>
+<p>$p(x)$ is called evidence.
+Remember, in the Gaussian process, regression, etc., we played with some parameters and chose subjectively.
+The other approach is empirical Bayes to choose those parameters to maximize the evidence.
+This is a standard way of choosing the parameters.
+We are bound $p(x)$ in terms of $q_x(z,\theta)$. The indicator $x$ means we are doing this for each $x$.
+So we are gonna get a lower bound on $p(x)$ or lower bound on $\log p(x)$:</p>
+<p>$$
+\begin{aligned}
+\log p(x) = &amp; \log \sum_{\alpha} w_{\alpha} \frac{p(x)}{w_{\alpha}} \\
+\geq &amp; \sum_{\alpha} w_{\alpha} \log \frac{p(x)}{w_{\alpha}}
+\end{aligned}
+$$</p>
+<p>A logarithm is concave.</p>
+<p><img src="../../images/sds-365/concave.png" alt="Example"></p>
+<p>In our typical example, $\theta$ is continuous, and $z$ is discrete.</p>
+<p>Altogether, the evidence lower bound (ELBO) is the following lower bound on $\log p(x)$:</p>
+<p>$$
+\begin{aligned}
+\log p(x) = &amp; \int \sum_z  q(z,\theta) \log p(x) d \theta \\
+=&amp; \sum_z  \int  q(z,\theta) \log \Big ( \frac{ p(x,z,\theta)q(z,\theta)}{p(z,\theta|x)q(z,\theta)}\Big) d \theta \\
+=&amp; \sum_z  \int  q(z,\theta) \log \Big ( \frac{ p(x,z,\theta)}{q(z,\theta)}\Big) d \theta + \sum_z  \int  q(z,\theta) \log \Big ( \frac{q(z,\theta)}{p(z,\theta|x)}\Big) d \theta \\
+\geq &amp; \sum_z  \int  q(z,\theta) \log \Big ( \frac{ p(x,z,\theta)}{q(z,\theta)}\Big) d \theta \\
+= &amp; H(q) + \mathbb{E}_q(\log p(x,z,\theta))
+\end{aligned}
+$$</p>
+<p>We used the fact that</p>
+<p>$$
+\sum_z  \int  q(z,\theta) \log \Big ( \frac{q(z,\theta)}{p(z,\theta|x)}\Big) d \theta
+$$</p>
+<p>Is non-negative. This term is called KL-divergence.
+$ H(q) $ is entropy and $\mathbb{E}_q(\log p(x,z,\theta))$ is cross-entropy.
+We will maximize the sum of these two concerning parameters of $q$.</p>
+<h2 id="example-1">Example 1:</h2>
+<p>Let&rsquo;s say we have a binary random variable with mean $\mu$.
+$$
+H(\mu) = -\mu \log \mu -(1-\mu) \log (1-\mu)
+$$</p>
+<p>It&rsquo;s maximized when there is the most significant uncertainty or uniformity in the parameter $\theta$ or $\mu$.
+This prevents overfitting and helps our inference not to be very special.</p>
+<p><img src="../../images/sds-365/entropy.png" alt="Example"></p>
+<p>The second term $\mathbb{E}_q(\log p(x,z,\theta))$ is trying to align $q$ and $p$ while keeping the entropy large that&rsquo;s going to spread out the $q$ distribution.
+This is a general receipt, and we have yet to discuss how you should choose $q$.
+If we choose $q$ to be true posterior, we will get a good lower bound, but I can&rsquo;t compute with it.
+I want some $q$ that is easy to compute and flexible enough to give us a good lower bound.</p>
+<h2 id="example-2-a-finite-mixture-model">Example 2: A finite mixture model</h2>
+<p>Fix two distributions $F_0$ and $F_1$:
+$$
+\begin{align}
+\theta \sim \text{Beta}(\alpha,\beta) \\
+X| \theta \sim \theta F_1 +(1-\theta)F_0
+\end{align}
+$$</p>
+<p>the likelihood for the data $x_1,..,x_n$ is:
+$$
+p(x_{1:n}) =\int_0^1 \text{Beta}(\theta|\alpha,\beta) \prod_{i=1}^n(\theta f_1(x_i)+(1-\theta)f_0(x_i))d\theta
+$$</p>
+<p>We aim to approximate the posterior $p(\theta|x_{1:n})$ using a variational algorithm.
+Our <strong>variational approximation</strong> is:</p>
+<p>$$
+q(z,\theta) = q(\theta| \gamma_1,\gamma_2) \prod_{i=1}^n q_i^{z_i} (1-q_i)^{1-z_i}
+$$</p>
+<p>where $q(\theta| \gamma_1,\gamma_2)$ is a $\text{Beta}(\gamma_1,\gamma_2)$ distribution and $0 \leq q_i \leq 1$ are $n$ free parameters.
+As we talked about earlier we need to maximize the following:
+$$ \text{ELBO: }H(q)+\mathbb{E}_q \log p$$.</p>
+<p>First, we have:
+$$
+\log p(x,\theta,z) = \log p(\theta|\alpha,\beta) + \sum_{i=1}^n \{ \log (\theta^{z_i}f_1(x_i))+ \log (\theta^{1-z_i}f_0(x_i))\}
+$$</p>
+<p>Next, we use identities such as:</p>
+<p>$$
+\mathbb{E}_q \log \theta = \psi(\gamma_1) - \psi(\gamma_1+\gamma_2)
+$$</p>
+<p>for the digamma function $\psi(.)$.</p>
+<p>Overall, how many parameters do we have here? $n+2$: one for each data point and two $\gamma$s which are parameterizing the Beta distribution.</p>
+<h2 id="variational-inference">Variational Inference</h2>
+<p>Iterate the following steps for variational parameters $q_{1:n}$ and $(\gamma_1, \gamma_2)$:</p>
+<ol>
+<li>
+<p>Holding $q_i$ fixed, set $\gamma = (\gamma_1,\gamma_2)$ to:
+$$
+\gamma_1 = \alpha +\sum_{i=1}^n  q_i , \gamma_2 = \beta + n - \sum_{i=1}^n q_i
+$$</p>
+</li>
+<li>
+<p>Holding $\gamma_1$ and $\gamma_2$ fixed, set $q_i$ to:</p>
+</li>
+</ol>
+<p>$$
+q_i = \frac{f_1(x_i)\exp \psi(\gamma_1)}{f_1(x_i)\exp \psi(\gamma_1) + f_0(x_i)\exp \psi(\gamma_2) }
+$$</p>
+<p>After convergence, the approximate posterior distribution over $\theta$ is:
+$$
+\hat{p}(\theta| x_{1:n}) = \text{Beta}(\theta|\gamma_1,\gamma_2)
+$$</p>
+<p>very similar to Gibbs sampler where $\sum_{i=1}^n  q_i$ is expected number of heads.
+Note that it&rsquo;s <strong>not</strong> a single Beta distribution. It&rsquo;s <strong>mixture</strong> of Beta distributions.</p>
+<p>This is very close to the topic model.
+$$
+\begin{align}
+\theta \sim \text{Dirichlet}(\alpha_1,..\alpha_k) \\
+X|\theta \sim \theta_1 F_1 + &hellip;+ \theta_k F_k
+\end{align}
+$$</p>
+<p>The likelihood for a single data point $x$ is:</p>
+<p>$$
+p(x) = \int \text{Dirichlet}(\theta|\alpha_1,..,\alpha_k) \Big( \sum_{j=1}^k \theta_jf_j(x)\Big) d\theta
+$$</p>
+<p>after convergence we will pull out $q_i$s and $\gamma_1$ and $\gamma_2$.</p>
+<h2 id="variational-autoencoders">Variational autoencoders</h2>
+<p>Variational autoencoders are generative models that are trained
+using variational inference.
+The &ldquo;decoder&rdquo; is a neural net generated from a latent variable. The &ldquo;encoder&rdquo; approximates the posterior distribution with
+another neural network trained using variational inference.</p>
+<p>We will use multivariate Gaussian for our variational distribution.
+VAE aims to parametrize mean and variance using a second set of neural networks.</p>
+<p>$$
+\begin{align}
+z\sim &amp; \text{Normal}(0,I_K) \\
+x | Z = &amp; G(Z)
+\end{align}
+$$</p>
+<p>Where $I_K$ is the identity covariance matrix.</p>
+<p>$G(z)$ is the generator network or decoder.</p>
+<p>For example, use a 2-layer network:</p>
+<p>$$
+G(Z) = A_2 \text{ReLU}(A_1z+b_1) + b_2
+$$</p>
+<p>Let&rsquo;s say $K=100$, and $X$ is in the $1000$ dimension, and we don&rsquo;t have ReLU.
+Then $I_K$ will be rank deficient, and the data will be in $100$ dimensional subspace in $10,000$ dimensions but Gaussian in that subspace.
+This is useless to us since we will not get anything like images if we do that.
+So we need a non-linearity.</p>
+<p>As $G(.)$ is nonlinear, the posterior distribution $p(z|x)$ is intractable.
+<strong>Solution:</strong> we will use variational inference:</p>
+<p>$$
+q(z|x) = \text{Normal}(\mu(x),\sigma^2(x)I_K)
+$$</p>
+<p>where now $\mu_j(x)$ and $\sigma^2_j(x)$ are the variational parameters for $j=1,2,..,k$.
+Then we can compute ELBO.</p>
+<p>But we are going to do it differently. We will have another (<strong>encoder</strong>) neural network:</p>
+<p>$$
+\mu(x) = B_2 \text{ReLU}(B_1(x)+d_1)+ d_2
+$$</p>
+<p>and similarly for $\log \sigma^2(x)$.</p>
+<p>And then, we are going to train the second neural network using ELBO.
+And this second neural network is going to give me my variational approximation.</p>
+<p><img src="../../images/sds-365/vae.png" alt="Example"></p>
+<p><strong>How to train?</strong></p>
+<ol>
+<li>Decoder network $z\mapsto x$, weights $A,b$.</li>
+<li>Encoder network: $x\mapsto \mu(x)$, $\log \sigma^2(x)$, weights $B,d$</li>
+<li>Train both networks simultaneously to maximize the ELBO</li>
+</ol>
+<ul>
+<li>Decoder trained with $\mathbb{E}_q \log p(x,Z_s)$ over weights $A,b$</li>
+<li>Encoder trained with $H(q)+\mathbb{E}_q \log p(x,Z_s)$ over weights $B,d$</li>
+</ul>
+<h2 id="law-of-large-numbers">Law of large numbers</h2>
+<p>How can we estimate these gigantic probabilities?
+<strong>Solution:</strong> just sample from it many and many times.</p>
+<p>Now, approximate $\mathbb{E}_q \log p(x,Z_s)$ by sampling:</p>
+<p>$$
+\mathbb{E}_q \log p(x,Z_s)  \approx  \frac{1}{N} \sum_s \log p(x,Z_s)
+$$</p>
+<p><strong>Problem</strong>: The parameters of the recognition network have
+disappeared!</p>
+<p><strong>Solution</strong>:
+Reparameterize the samples by $Z_i = \mu(x)+\sigma(x)\epsilon_i$ where $\epsilon_i = \text{Normal}(0,I_K)$.</p>
+<h2 id="simple-example">Simple Example</h2>
+<p>Suppose $x|z\sim \text{Normal}(G(z),I)$ where generator network is:
+$$
+G(z)=\text{ReLU}(Az+b)
+$$</p>
+<p>then $-\log p(x|z)$ is:</p>
+<p>$$
+\frac{1}{2} ||x-\text{ReLU}(Az+b)||^2
+$$</p>
+<p>Suppose the approximate posterior is:</p>
+<p>$$
+q(z|x) = \text{Normal}(\mu(x),\sigma^2(x)I_K)
+$$</p>
+<p>where encoder network is $\mu(x)=\text{ReLU}(Bx+d)$.
+Then,</p>
+<p>$$
+-\mathbb{E}_q \log p(x|Z) =   \frac{1}{N} \sum_s ||x-\text{ReLU}(AZ_s+b)||^2
+$$</p>
+<p>$$
+=  \frac{1}{N} \sum_{s=1}^N \frac{1}{2}||x-\text{ReLU}(A(\text{ReLU}(Bx+d))+\epsilon_s \sigma(x)+b)||^2
+$$</p>
+<p>We covered this post in the intermediate machine learning SDS 365/565, Yale University, <a href="https://en.wikipedia.org/wiki/John_D._Lafferty">John Lafferty</a>, where I was TF.</p>
+
+
+
+
+  </div>
+
+
+
+
+
+</div>
+  </main>
+
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+magnify("myimage", 3);
+
+</script>
+<footer>
+  <div>
+    <p>
+      &copy; iid.yale.edu | Yale University 2023
+
+
+
+
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="../../js/jquery.min.js"></script>
+  <script src="../../js/soho.js"></script>
+
+  <script src="https://dadashkarimi.github.io/js/blog.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,281 @@
+<head>
+  <style>
+    img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+    }
+  </style>
+</head>
+
+
+<div id="page" class="post">
+  <h1 class="title">Dirichlet Processes</h1>
+
+
+  <div class="post-date">
+    <time datetime="2022-02-25T00:00:00Z">Feb 25, 2022</time> <span class="readtime">&middot; 6 min read</span>
+  </div>
+  <div>
+   <h2 id="review">Review:</h2>
+<p>In the previous post, we talked about Bayesian Inference and Gaussian processes.
+We showed that there are methods to obtain posterior:</p>
+<p><img src="../../images/sds-365/bayes_table.png" alt="Example"></p>
+<h3 id="bayesian-inference">Bayesian Inference</h3>
+<p>Usually, the following steps are taken:</p>
+<ol>
+<li>Choose a generative model $p(x|\theta)$ for the data</li>
+<li>Choose a prior distribution $\pi(\theta)$</li>
+<li>After observing data points $\{x_1,x_2,..,x_n\}$ calculate posterior distribution $p(\theta | x_1, ..,x_n)$</li>
+</ol>
+<p>Gaussian and Dirichlet processes are infinite versions of Gaussian and Dirichlet distributions.</p>
+<h3 id="gaussian-processes">Gaussian Processes</h3>
+<p>We also explained that stochastic process is a Gaussian process $m$ if for every finite set $X_1,X_2,..,X_N$, $m(x_1),m(x_2), .., m(x_N)$ is normally distributed.</p>
+<p>We also discussed regression, whose Bayesian version are Gaussian processes (i.e., $Y_i = m(X_i)+\epsilon_i$ for $i=1,..,n$).</p>
+<p>In the kernel smoothing setting, we also talked about the fact that the frequentist kernel estimator for $m$ is:</p>
+<p>$$
+\hat{m}(x)= \frac{\sum_{i=1}^nY_iK(\frac{x-x_i}{h})}{\sum_{i=1}^n K(\frac{x-x_i}{h})}
+$$</p>
+<p>where $K$ is a kernel and $h$ is bandwidth.</p>
+<p>In the Bayesian method, we need to define a prior distribution over $m$ before we see any data.
+And then calculate the posterior distribution.
+We also talk about this magical property of Gaussian: if our data is usually distributed, our conditional and so posterior is also Gaussian.</p>
+<p>We also showed that the conditional is Gaussian with some variance, that is, the shaded area in the following plot:</p>
+<p><img src="../../images/sds-365/conditional_gaussian.jpg" alt="Example"></p>
+<p>It&rsquo;s a standard assumption that you put prior $0$ before seeing the data.
+We also showed that we couldn&rsquo;t write down prior over function $m$, but we can take samples to evaluate them via $m$ and define covariance matrix $K$.
+Then the prior will look like this:
+$$
+\pi(m) = (2\pi)^{-n/2}|K|^{-1/2} \exp \Big( -\frac{1}{2} m^T K^{-1}m\Big)
+$$</p>
+<p>In eigenvalue terminology:
+Let $v$ is eigenvector of $K$ with eigenvalue $\lambda$ then:</p>
+<p>$$
+\frac{1}{\lambda} = v^T K^{-1}v
+$$</p>
+<h2 id="recall-smaller-eigenvalues-are-associated-with-wiggly-functions-and-larger-eigenvalues-are-associated-with-smooth-functions">Recall: smaller eigenvalues are associated with wiggly functions, and larger eigenvalues are associated with smooth functions.</h2>
+<p>Before we see any data point, the gaussian process favors regression functions that tend to be smooth.</p>
+<h2 id="dirichlet-processes">Dirichlet Processes</h2>
+<p>The Dirichlet process is analogous to the Gaussian processes (infinite dimensional Gaussian vs. infinite dimensional Dirichlet).
+Gaussian processes are tools for regression functions.
+Dirichlet processes are tools for densities.
+Every partition of sample space has a Dirichlet distribution.
+DPs finesse the problem of choosing the number of components in a mixture model.</p>
+<p>A random distribution $F$ is distributed according to a Dirichlet process $\text{DP}(\alpha,F_0)$ for every partition $A_1,..,A_n$ of the sample space, the
+random vector $F(A_1),..,F(A_n)$ has a Dirichlet distribution:</p>
+<p>$$
+\text{Dir}(\alpha F_0(A_1), \alpha F_0(A_2),..,\alpha F_0(A_n) )
+$$</p>
+<p>where $F$ is the amount of mass that $F$ puts on set $A_j$.</p>
+<h3 id="what-is-a-dp">What is a DP?</h3>
+<p>As a particular case, if the sample is the actual line, we can take the partition to be:</p>
+<p>$$
+\begin{align}
+A_1 =&amp; \{z: z\leq x\} \\
+A_2 =&amp; \{z: z &gt; x\}
+\end{align}
+$$</p>
+<p>And then:</p>
+<p>$$
+F(x) \sim \text{Beta}\Big(\alpha F_0(x),\alpha(1-F_0(x))\Big)
+$$</p>
+<h3 id="example-dont-need-to-specify-the-number-of-topics-in-a-topic-model">Example: don&rsquo;t need to specify the number of topics in a topic model.</h3>
+<h2 id="starting-point-cumulative-density-function-cdf">Starting point: cumulative density function (CDF)</h2>
+<p>The empirical distribution of a data set is the probability distribution that places probability mass $\frac{1}{n}$ on each data point $x_1$, $x_2$, .., $x_n$.
+The empirical CDF is the function:</p>
+<p>$$
+\hat{F}(x) = \frac{1}{n}\sum_{i=1}^n \mathbb{1} (x_i\leq x)
+$$</p>
+<p><img src="../../images/sds-365/ecdf.png" alt="Example">
+A frequentist $95\%$ confidence band is given by:</p>
+<p>$$
+\hat{F}(x) \pm \sqrt{\frac{1}{2n}\log \frac{2}{0.05}}
+$$</p>
+<h2 id="kde">KDE</h2>
+<p>The frequentist estimator for density function is the kernel density estimator:</p>
+<p>$$
+\hat{f}(x) = \frac{1}{nh} \sum_{i=1}^n K\Big(\frac{X_i-x}{h}\Big)
+$$</p>
+<p><img src="../../images/sds-365/kde.png" alt="Example"></p>
+<p>Both the empirical CDF and kernel density estimate involve the data.
+In the Bayesian approach, we want to construct a prior distribution over these objects before seeing any data.</p>
+<h2 id="solution-use-synthetic-or-imaginary-data">Solution: Use synthetic or &ldquo;imaginary&rdquo; data</h2>
+<p>We are going to synthesize data and then:</p>
+<ol>
+<li>Step function on these data (<strong>Dirichlet Process</strong>). Each sample from a Dirichlet process prior has a random collection of weights assigned to an arbitrary data selection.</li>
+<li>Sum up Gaussian bumps (<strong>Dirichlet Process Mixture</strong>).  Each sample from a Dirichlet process mixture has a random collection of weights assigned to a random selection of model parameters.</li>
+</ol>
+<p><img src="../../images/sds-365/dp.jpg" alt="Example"></p>
+<p>How to make imaginary data?</p>
+<h2 id="stick-breaking-process">Stick-breaking process</h2>
+<p>At each step, break off a fraction:</p>
+<p>$$
+V\sim \text{Beta}(1,\alpha)
+$$</p>
+<ol>
+<li>What&rsquo;s the mean of $\text{Beta}(1,\alpha)$?
+Yes, it&rsquo;s $\mu = \frac{1}{1+\alpha}$</li>
+<li>How much stick is left? Yes, $1-V_1$. Next step? $(1-V_1)V_2$</li>
+<li>And we can continue breaking off with another $\text{Beta}(1,\alpha)$?</li>
+<li>This will not change! $F_0$. and we can sample as many times as we want.</li>
+</ol>
+<p>At each step, sample:</p>
+<p>$$
+X \sim F_0
+$$</p>
+<p>To draw a single random distribution $F$ from $DP(\alpha,F_0)$:</p>
+<ol>
+<li>Draw $s_1,s_2,..$ independently from $F_0$</li>
+<li>Draw $V_1,V_2,.. \sim \text{Beta}(1,\alpha)$ and set $w_j=V_j\prod_{i=1}^{j-1}(1-V_i)$. (These are stick lengths)</li>
+<li>Let $F$ be the discrete distribution that puts mass $w_j$ at $s_j$</li>
+</ol>
+<p>This method was discovered 20 years after proposing the Dirichlet process prior.
+As the mean equals $1/(1+\alpha)$, larger $\alpha$ means the first stick is enormous, and the weights get smaller.
+Weights always sum to 1.
+On the other hand, if $\alpha$ is small, almost all weights are small and only a couple, let&rsquo;s say, are big.</p>
+<p>Suppose we draw data $F$ removed from a Dirichlet process and then sample data from $F$:</p>
+<p>$$
+\begin{align}
+F \sim DP(\alpha,F_0) \\
+X_1, X_2, .., X_n | F \sim F
+\end{align}
+$$</p>
+<p>If we sample from $F$, again and again, those data points with high weights have more chance to be selected.
+So we will have <strong>repeats</strong> and clusters.
+This will be captured by the Chinese Restaurant Process (CRP).
+CRP will allow us to circumvent sampling $F$.</p>
+<h2 id="chinese-restaurant-mnemonic">Chinese Restaurant Mnemonic</h2>
+<p>A customer comes into the restaurant and either:</p>
+<ol>
+<li>Sits at an empty table, with probability proportional to $\alpha$, or</li>
+<li>Sits at the occupied table, with probability proportional to the number of customers already seated.</li>
+</ol>
+<p><img src="../../images/sds-365/crp.png" alt="Example"></p>
+<ol>
+<li>Draw $X_1 \sim F_0$</li>
+<li>For $i=2,..,n$: draw</li>
+</ol>
+<p>$$
+X_i | X_1,..,X_{i-1} =
+\begin{cases}
+X\sim F_{i-1} &amp; \text{with probability } \frac{i-1}{i+\alpha-1} \\
+X\sim F_{0}  &amp; \text{with probability } \frac{\alpha}{i+\alpha-1}
+\end{cases}
+$$</p>
+<p>where $F_{i-1}$ is the empirical distribution of $X_1,..,X_{i-1}$.
+This helps us a sample from the marginal distribution over $X$ without explicitly drawing a distribution $F$ from $DP$.</p>
+<p>Let $X_1^*,X_2^*,..$ denote unique values of $X_1,X_2,.., X_n$.
+Define cluster assignment variables  $c_1,..,C_n$ where $c_i=j$ means that $X_i$ takes the value $X_j^*$.
+Let $n_j = |\{i: c_j=j\}|$. Then:</p>
+<p>$$
+X_n =
+\begin{cases}
+X_j^* &amp; \text{with probability } \frac{n_j}{n+\alpha-1} \\
+X\sim F_{0}  &amp; \text{with probability } \frac{\alpha}{n+\alpha-1}
+\end{cases}
+$$</p>
+<h2 id="the-posterior-distribution">The posterior distribution</h2>
+<p>Let $X_1,..X_n\sim F$ and let $F$ have prior $\pi=\text{Dir}(\alpha,F_0)$.
+Then the posterior $\pi$ for $F$ given $X_1,..,X_n$ is:</p>
+<p>$$
+\text{Dir}(\alpha+n,\hat{F_n})
+$$</p>
+<p>Where:</p>
+<p>$$
+\hat{F_n} = \frac{n}{n+\alpha}F_n+\frac{\alpha}{n+\alpha}F_0
+$$</p>
+<p>Here $F_n$ is the empirical distribution of $X_1,.., X_n$.
+Also, $F_n$ is like the maximum likelihood estimator (MLE).
+So the posterior distribution is a mixture of MLE and prior distribution.</p>
+<h2 id="dirichlet-process-mixture">Dirichlet Process Mixture</h2>
+<p>A Dirichlet Process Mixture is a distribution over mixture models.
+DPMs are Bayesian versions of kernel density estimation.
+Subject to the curse of dimensionality.
+In stick breaking, we replace $X_i$ by $\theta_i$.
+In CRP, we return $X_i^*$ by $\theta_i^*$.</p>
+<h2 id="nonparametric-bayesian-mixture-model">Nonparametric Bayesian mixture model</h2>
+<p>$$
+\begin{align}
+F\sim &amp; \text{DP}(\alpha,F_0) \\
+\theta_1,..,\theta_n | F \sim &amp; F \\
+X_i | \theta_i \sim&amp; f(x|\theta_i), i=1,..,n
+\end{align}
+$$</p>
+<h3 id="stick-breaking-process-for-dpm">Stick breaking process for DPM</h3>
+<ol>
+<li>Draw $\theta_1,\theta_2,..$ independently from $F_0$</li>
+<li>Draw $V_1,V_2,..\sim \text{Beta}(1,\alpha)$ and set $w_j=V_j\prod_{i=1}^{j-1} (1-V_i)$</li>
+<li>Let $f$ be the (infinite) mixture model:</li>
+</ol>
+<p>$$
+f(x) = \sum_{j=1}^{\infty} w_j f(x|\theta_j)
+$$</p>
+<h2 id="chinese-restaurant-processes-for-a-dpm">Chinese restaurant processes for a DPM</h2>
+<ol>
+<li>Draw $\theta_1\sim F_0$</li>
+<li>For $i=2,..,n$: draw</li>
+</ol>
+<p>$$
+\theta_i | \theta_1,..,\theta_{i-1} =
+\begin{cases}
+\theta\sim F_{i-1} &amp; \text{with probability } \frac{i-1}{i+\alpha-1} \\
+\theta\sim F_{0}  &amp; \text{with probability } \frac{\alpha}{i+\alpha-1}
+\end{cases}
+$$</p>
+<p>where $F_{i-1}$ is the empirical distribution of $\theta_1,..,\theta_{i-1}$.</p>
+<p>We covered this post in the intermediate machine learning SDS 365/565, Yale University, <a href="https://en.wikipedia.org/wiki/John_D._Lafferty">John Lafferty</a>, where I was TF.</p>
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+</div>
+  </main>
+
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+magnify("myimage", 3);
+
+</script>
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="../../js/jquery.min.js"></script>
+  <script src="../../js/soho.js"></script>
+
+  <script src="https://dadashkarimi.github.io/js/blog.js"></script>
+
+
+</body>
+</html>

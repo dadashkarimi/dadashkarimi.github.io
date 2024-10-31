@@ -1,0 +1,44 @@
+<p>This project implements a <strong>hybrid 3D, multi-scale model for fetal brain extraction</strong> from MRI scans using a <em>cascade of U-Net architectures</em>. Leveraging a Breadth-Fine Search (BFS) and Deep-Focused Sliding Window (DFS) approach, our framework achieves precise segmentation results in full-uterus stack-of-slices scans, even with limited training data and annotations.</p>
+
+<p>Our method employs a cascade of four models—<strong>A, B, C, and D</strong>—trained to focus on 3D patches of decreasing sizes from a synthesized set of training images augmented with random geometric shapes. At inference, we pool sliding-window predictions across multiple sizes to detect and refine the region of interest (ROI) that most likely contains the fetal brain. Subsequently, we derive an accurate brain mask through voxel-wise majority voting.</p>
+
+<h3>Pipeline Overview</h3>
+<p>In the <strong>Breadth-Fine Search</strong> stage, Models A and D generate probability maps \( P_A \) and \( P_D \) across the full input volume \( I \), producing a coarse brain mask from the largest connected components across maps. We then perform a bounding box fit on this mask to extract the 3D ROI \( R \subset I \).</p>
+
+<div class="figure">
+    <img src="figs/bfs-dfs.png" alt="BFS-DFS Pipeline" style="width:100%;">
+    <p class="caption">Figure 1: BFS-DFS Pipeline for fetal brain segmentation.</p>
+</div>
+
+<p>In the <strong>Deep-Focused Sliding Window</strong> stage, Models B, C, and D progressively refine \( R \) through sliding-window passes, each stage narrowing the ROI and updating a binary mask \( S_{final} \) via majority voting across maps \( S_B, S_C, \) and \( S_D \), leading to an optimized fetal brain mask with minimized false positives.</p>
+
+<div class="figure">
+    <img src="figs/bfs-dfs-tab1.png" alt="Parameter Table" style="width:100%;">
+    <p class="caption">Table 1: Model parameters and sliding window configurations.</p>
+</div>
+
+<p>Training includes generating synthetic shapes surrounding the brain label map to enhance the model's performance. This augmentation technique is illustrated below:</p>
+
+<div class="figure">
+    <img src="figs/bfs-dfs-examples.png" alt="Synthetic Shapes Example" style="width:100%;">
+    <p class="caption">Figure 2: Example of synthetic shapes surrounding the brain label map to simulate diverse training conditions.</p>
+</div>
+
+<p>Key advantages of this model include:</p>
+<ul>
+    <li><strong>Improved detection:</strong> Efficiently identifies brain regions in low-contrast MRI scans.</li>
+    <li><strong>Adaptability:</strong> Performs well on scans with sparse or limited annotations.</li>
+    <li><strong>Precision across resolutions:</strong> High and low-resolution sliding windows systematically refine segmentation.</li>
+</ul>
+
+<div class="figure">
+    <img src="figs/bfs-dfs-alg1.png" alt="Algorithm 1" style="width:100%;">
+    <p class="caption">Algorithm 1: Steps for the Breadth-Fine Search and Deep-Focused Sliding Window approach.</p>
+</div>
+
+<p>This repository is an invaluable resource for medical imaging professionals, offering a robust approach for fetal brain segmentation in challenging MRI scenarios.</p>
+
+<div class="project-buttons">
+    <a href="https://github.com/dadashkarimi/cascade" target="_blank" class="btn-secondary">View on GitHub</a>
+</div>
+</div>

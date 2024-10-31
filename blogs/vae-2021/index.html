@@ -1,0 +1,266 @@
+<head>
+  <style>
+    img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+    }
+  </style>
+</head>
+
+<div id="page" class="post">
+  <h1 class="title">Write your first stochastic function in Python</h1>
+
+
+  <div class="post-date">
+    <time datetime="2021-11-01T00:00:00Z">Nov 1, 2021</time> <span class="readtime">&middot; 5 min read</span>
+  </div>
+  <div>
+   <p>Let&rsquo;s estimate how many ice creams insomnia cookies in New Haven will sell this Fall. Several variables impact our forecasting, including weather and temperature. This blog post will review some essential functionalities and tutorials that <a href="https://pyro.ai/">pyro. Ai</a> provides and then writes our first stochastic function for this problem.</p>
+<p>Let&rsquo;s get back to our example; a simple stochastic function that describes weather could be $\text{Bernoulli}(\alpha)$. Our prior belief on how likely a day to be cloudy is $\frac{3}{10}$, and we want to generate a sample using <code>torch</code>&rsquo;s internal distribution library as follows:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"> <span class="n">cloudy</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">distributions</span><span class="o">.</span><span class="n">Bernoulli</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"> <span class="n">cloudy</span> <span class="o">=</span> <span class="s1">&#39;cloudy&#39;</span> <span class="k">if</span> <span class="n">cloudy</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="o">==</span> <span class="mf">1.0</span> <span class="k">else</span> <span class="s1">&#39;sunny&#39;</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Therefore, the variable <code>cloudy</code> is either <code>$1$</code> or <code>$0$</code>.To sample <code>temperature,</code> let&rsquo;s define other variables that depend on it. According to our experience during college at <a href="https://www.yale.edu">Yale</a>, New Haven on cloudy days is around $55^o$ Fahrenheit, and on sunny days it is $75^o$ Fahrenheit. We believe these numbers can increase/decrease up to $10$ and $15$ standard deviations concerning means:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"> <span class="n">mean_temp</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;cloudy&#39;</span><span class="p">:</span> <span class="mf">55.0</span><span class="p">,</span> <span class="s1">&#39;sunny&#39;</span><span class="p">:</span> <span class="mf">75.0</span><span class="p">}[</span><span class="n">cloudy</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">scale_temp</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;cloudy&#39;</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">,</span> <span class="s1">&#39;sunny&#39;</span><span class="p">:</span> <span class="mf">15.0</span><span class="p">}[</span><span class="n">cloudy</span><span class="p">]</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Now, we can define our stochastic function to forecast temperature with the following:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">temp</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">distributions</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="n">mean_temp</span><span class="p">,</span> <span class="n">scale_temp</span><span class="p">)</span><span class="o">.</span><span class="n">rsample</span><span class="p">()</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p><code>pyro</code> helps use the basic functionality of <code>pytorhch</code>&rsquo;s huge pool of libraries and enables us to infer possible hidden variables. Let&rsquo;s wrap up all the code we wrote so far in <code>pyro</code>:
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="hl"><span class="lnt">13
+</span></span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pyro.distributions</span> <span class="k">as</span> <span class="nn">dist</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">weather</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cloudy</span> <span class="o">=</span> <span class="n">pyro</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="s1">&#39;cloudy&#39;</span><span class="p">,</span> <span class="n">dist</span><span class="o">.</span><span class="n">Bernoulli</span><span class="p">(</span><span class="mf">0.3</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cloudy</span> <span class="o">=</span> <span class="s1">&#39;cloudy&#39;</span> <span class="k">if</span> <span class="n">cloudy</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="o">==</span> <span class="mf">1.0</span> <span class="k">else</span> <span class="s1">&#39;sunny&#39;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">mean_temp</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;cloudy&#39;</span><span class="p">:</span> <span class="mf">55.0</span><span class="p">,</span> <span class="s1">&#39;sunny&#39;</span><span class="p">:</span> <span class="mf">75.0</span><span class="p">}[</span><span class="n">cloudy</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="n">scale_temp</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;cloudy&#39;</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">,</span> <span class="s1">&#39;sunny&#39;</span><span class="p">:</span> <span class="mf">15.0</span><span class="p">}[</span><span class="n">cloudy</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="n">temp</span> <span class="o">=</span> <span class="n">pyro</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="s1">&#39;temp&#39;</span><span class="p">,</span> <span class="n">dist</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="n">mean_temp</span><span class="p">,</span> <span class="n">scale_temp</span><span class="p">))</span>
+</span></span><span class="line hl"><span class="cl">  <span class="k">return</span> <span class="n">cloudy</span><span class="p">,</span> <span class="n">temp</span><span class="o">.</span><span class="n">item</span><span class="p">()</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<p>As you see, it&rsquo;s similar to what we wrote in <code>PyTorch</code>. A sample output could be (&lsquo;cloudy,&rsquo; 64.544) (&lsquo;sunny&rsquo;, 94.375) (&lsquo;sunny&rsquo;, 72.518). Building off of this model is self-explanatory:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">ice_cream_sales</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cloudy</span><span class="p">,</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">weather</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="n">cloudy</span> <span class="o">==</span> <span class="s1">&#39;sunny&#39;</span> <span class="ow">and</span> <span class="n">temp</span> <span class="o">&gt;</span> <span class="mi">80</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">exp_sales</span> <span class="o">=</span> <span class="mi">200</span>
+</span></span><span class="line"><span class="cl">  <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">exp_sales</span> <span class="o">=</span> <span class="mi">50</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">pyro</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="s1">&#39;ice_cream&#39;</span><span class="p">,</span><span class="n">dist</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="n">exp_sales</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>We expect to sell more ice creams in sunny and warm temperatures.</p>
+<h3 id="introduction-to-inference">Introduction to Inference</h3>
+<p>Here, we will give a simple example of inference functions in statistics and introduce <code>pyro</code> basics to work. Then, I will include the <code>model</code> and <code>guide</code> functions to discuss and shed light on all aspects of variational inference.</p>
+<h3 id="example-1-weight-measurement">Example 1: Weight Measurement</h3>
+<p>We have a remarkable ability to guess how much an object weighs by only watching them. We believe in our knowledge of some characteristics and materials of the thing rather than supernatural power.
+But, our scale could be more reliable, and we get slightly different values every time. We want to measure again and again to compensate for this error:</p>
+<p>$$
+\text{weight} | \text{guess} \sim \text{Normal}(\mu,\sigma)$$</p>
+<p>$$\text{measurement} | \text{guess,weight} \sim \text{Normal}(\text{weight},0.75)
+$$</p>
+<p>We can define a simple stochastic function for this phenomenon by sampling via a normal distribution and appropriate mean (the scale which is also dependent on our guess) and standard deviations:
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">scale</span><span class="p">(</span><span class="n">guess</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">  <span class="n">weight</span> <span class="o">=</span> <span class="n">pyro</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="s2">&#34;weight&#34;</span><span class="p">,</span> <span class="n">dist</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="n">guess</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">pyro</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="s2">&#34;measurement&#34;</span><span class="p">,</span> <span class="n">dist</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">))</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<p>And <code>pyro</code> is going to help us to infer the latent variable <strong>weight</strong>:</p>
+<p>$$
+(\text{weight} |\text{guess}, \text{measurement}=9.5) \propto f(x)
+$$</p>
+<p>and also provides notation <code>obs=.</code> for conditions and observations:
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">scale_obs</span><span class="p">(</span><span class="n">guess</span><span class="p">):</span> <span class="c1"># equivalent to conditioned_scale above</span>
+</span></span><span class="line"><span class="cl">  <span class="n">weight</span> <span class="o">=</span> <span class="n">pyro</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="s2">&#34;weight&#34;</span><span class="p">,</span> <span class="n">dist</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="n">guess</span><span class="p">,</span> <span class="mf">1.</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># here we condition on measurement == 9.5</span>
+</span></span><span class="line"><span class="cl">  <span class="n">obs_</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">9.5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">pyro</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="s2">&#34;measurement&#34;</span><span class="p">,</span><span class="n">dist</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span><span class="mf">0.75</span><span class="p">),</span><span class="n">obs</span><span class="o">=</span><span class="n">obs_</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<p>It behaves exactly analogous to:
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">conditioned_scale</span><span class="o">=</span><span class="n">pyro</span><span class="o">.</span><span class="n">condition</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">&#34;measurement&#34;</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">9.5</span><span class="p">)})(</span><span class="n">guess</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<p>The code means we want to sample according to a normal distribution conditioned on our initial guess and measurement=$9.5$.
+However, it can sometimes be more straightforward to infer the hidden variable than here. Sometimes, integration over the measurements is intractable (i.e., $p(z|x) = \frac{p(x,z)}{\int dz p(x,z)}$). We will approximate the posterior using a similar function to our <code>model</code>, named <code>guide</code>. Input variables for these functions are always the same. The <code>model</code> has data and our observations, but <code>guide</code> doesn&rsquo;t and is the ultimate distribution we want to learn.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="hl"><span class="lnt">37
+</span></span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="hl"><span class="lnt">44
+</span></span><span class="hl"><span class="lnt">45
+</span></span><span class="hl"><span class="lnt">46
+</span></span><span class="lnt">47
+</span><span class="lnt">48
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">guess</span> <span class="o">=</span> <span class="mf">8.5</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">scale_parametrized_guide</span><span class="p">(</span><span class="n">guess</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">  <span class="n">a</span> <span class="o">=</span> <span class="n">pyro</span><span class="o">.</span><span class="n">param</span><span class="p">(</span><span class="s2">&#34;a&#34;</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">guess</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="n">b</span> <span class="o">=</span> <span class="n">pyro</span><span class="o">.</span><span class="n">param</span><span class="p">(</span><span class="s2">&#34;b&#34;</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">1.</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">pyro</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="s2">&#34;weight&#34;</span><span class="p">,</span> <span class="n">dist</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">b</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line hl"><span class="cl"><span class="n">pyro</span><span class="o">.</span><span class="n">clear_param_store</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">svi</span> <span class="o">=</span> <span class="n">pyro</span><span class="o">.</span><span class="n">infer</span><span class="o">.</span><span class="n">SVI</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">conditioned_scale</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">           <span class="n">guide</span><span class="o">=</span><span class="n">scale_parametrized_guide</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">           <span class="n">optim</span><span class="o">=</span><span class="n">pyro</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">({</span><span class="s2">&#34;lr&#34;</span><span class="p">:</span> <span class="mf">0.003</span><span class="p">}),</span>
+</span></span><span class="line"><span class="cl">           <span class="n">loss</span><span class="o">=</span><span class="n">pyro</span><span class="o">.</span><span class="n">infer</span><span class="o">.</span><span class="n">Trace_ELBO</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">losses</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+</span></span><span class="line hl"><span class="cl"><span class="n">num_steps</span> <span class="o">=</span> <span class="mi">2500</span>
+</span></span><span class="line hl"><span class="cl"><span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_steps</span><span class="p">):</span>
+</span></span><span class="line hl"><span class="cl">  <span class="n">losses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">svi</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">guess</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pyro</span><span class="o">.</span><span class="n">param</span><span class="p">(</span><span class="s2">&#34;a&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">  <span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pyro</span><span class="o">.</span><span class="n">param</span><span class="p">(</span><span class="s2">&#34;b&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">())</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Once we run this code for enough iterations, we can say that we approximated our hidden parameters $a$ and $b$, which are necessary to approximate our posterior. Sample outputs could be (a=9.206, b=0.605).</p>
+<h3 id="example-2-fair-two-sided-coin">Example 2: Fair Two-sided Coin</h3>
+<p>To be completed ..</p>
+<h3 id="example-3-topic-modeling">Example 3: Topic Modeling</h3>
+<p>Topic modeling is a powerful technique to assign appropriate distributions to words and documents. David Blei (Columbia University, JMLR 2003) proposed Dirichlet distribution prior to generating words within a document and offered variational inference to obtain the hyperparameters.
+However, people used Markov Chain Monte Carlo (MCMC), specifically Gibbs Sampling, to approximate the parameters.
+While MCMC approximates the exact solution, it is prolonged.
+Akash Srivastava et al. (from the University of Edinburgh, ICLR 2017) introduced variational autoencoders as a novel approach for topic models.
+AutoEncoder captures non-linearity where other methods like PCA don&rsquo;t.
+Yet, it needs to have regularity and may lead to overfitting.
+In other words, it doesn&rsquo;t capture the structure of your data.
+Variational AE also captures the structure of your data by guiding your model to generate reliable samples.
+You can quickly learn variational AE using a graphical processing unit (GPU) over millions of documents.</p>
+<p><img src="../../images/vae.png" alt="Example"></p>
+<p>Using the same principles, we learned that we could write advanced posterior inference models like topic modeling for&rsquo; model&rsquo; and&rsquo; guide.&rsquo; Implementing a topic modeling algorithm using <code>model</code> and <code>guide</code> is here: <a href="https://pyro.ai/examples/prodlda.html">code</a>.</p>
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+magnify("myimage", 3);
+
+</script>
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="../../js/jquery.min.js"></script>
+  <script src="../../js/soho.js"></script>
+
+  <script src="https://dadashkarimi.github.io/js/blog.js"></script>
+
+
+</body>
+</html>

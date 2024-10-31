@@ -1,0 +1,75 @@
+<html>
+<head>
+<meta content="meowto" name="title" />
+<title>meowto</title>
+<link href="https://fonts.googleapis.com/css?family=Changa+One" rel="stylesheet" type="text/css">
+<meta content="width=460" name="viewport">
+<meta content="text/html; charset=utf-8" http-equiv="content-type" />
+<link rel="stylesheet" href="style.css" media="screen" />
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="container">
+<div id="setup-box" class="box" hidden>
+<h1>Setup up meowto links:</h1>
+<p><b>TL; DR: </b> Add a custom search engine with the url
+<a href="index.html%3F%25s.html">http://meowni.ca/meowto/?%s</a>
+</p>
+<ul>
+<li><span class="meow">chrome</span>
+set it up in chrome://settings/searchEngines</li>
+<li><span class="meow">firefox</span>
+<a href="http://www-archive.mozilla.org/docs/end-user/keywords.html" target="_blank">
+add a custom keyword</a></li>
+<li><span class="meow">safari</span>
+i don't know yet. send me a <a href="https://github.com/notwaldorf/meowto">pull request</a> if you do!</li>
+</ul>
+</div>
+<div id="list-box" class="box" hidden>
+<h1>Your aliases:</h1>
+<div id="no-items" hidden>You have no aliases. Add some?</p>
+<p><span class="code">meowto add &lt;<b>alias</b>&gt; -> &lt;<b>some-url.com</b>&gt;</span></p>
+<br>
+</div>
+<ul id="list"></ul>
+<p>To use an alias, type <span class="code">meowto &lt;<b>alias</b>&gt;</span></p>
+<p>Need <a href="index.html">help</a>?</p>
+</div>
+<div id="error-box" class="box" hidden>
+<h1>Oops! That wasn't a valid command :( </h1>
+</div>
+<div id="help-box" class="box" hidden>
+<h1>Things you can do:</h1>
+<p>If you have a custom search engine set up as <span class="code">meowto</span>, type
+any of these in your browser's search bar:</p>
+<ul>
+<li><span class="code">meowto setup</span></li>
+<li><span class="code">meowto help</span></li>
+<li><span class="code">meowto list</span></li>
+<li><span class="code">meowto &lt;<b>alias</b>&gt;</span></li>
+<li><span class="code">meowto add &lt;<b>alias</b>&gt; -> &lt;<b>some-url.com</b>&gt;</span></li>
+<li><span class="code">meowto nuke &lt;<b>alias</b>&gt;</span></li>
+</ul>
+<br>
+<p>If you don't, use <span class="code">http://meowni.ca/meowto/?</span> instead</p>
+<ul>
+<li><span class="code">http://meowni.ca/meowto/?setup</span></li>
+<li><span class="code">http://meowni.ca/meowto/?help</span></li>
+<li><span class="code">http://meowni.ca/meowto/? list</span></li>
+<li><span class="code">http://meowni.ca/meowto/?&lt;<b>alias</b>&gt;</span></li>
+<li><span class="code">http://meowni.ca/meowto/?add &lt;<b>alias</b>&gt; -> &lt;<b>some-url.com</b>&gt;</span></li>
+<li><span class="code">http://meowni.ca/meowto/?nuke &lt;<b>alias</b>&gt;</span></li>
+</ul>
+</div>
+<div id="add-box" class="box" hidden>
+<h1>Oops, this alias does not exist. Add one?</h1>
+<p><span class="code">meowto add &lt;<b>alias</b>&gt; -> &lt;<b>some-url.com</b>&gt;</span></p>
+<p>Need <a href="index.html">help</a>?</p>
+</div>
+<div id="footer">
+<p class="meow">made with <span class="red">❤︎</span> by <a href="https://twitter.com/notwaldorf">monica</a>.
+find this on <a href="https://github.com/notwaldorf/meowto">github</a></p>
+</div>
+</body>
+<script src="meowto.js" type="text/javascript"></script>
+</html>

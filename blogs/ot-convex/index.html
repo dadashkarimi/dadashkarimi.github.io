@@ -1,0 +1,118 @@
+<head>
+  <style>
+    img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+    }
+  </style>
+</head>
+
+<div id="page" class="post">
+  <h1 class="title">Learning Optimal Transport from Samples</h1>
+
+  <div class="post-date">
+    <time datetime="2021-10-28T00:00:00Z">Oct 28, 2021</time> <span class="readtime">&middot; 4 min read</span>
+  </div>
+  <div>
+    <p>The study of optimal transport aims to create a mapping that minimizes the total cost of moving mass from $\alpha$ to $\beta$, as originally formulated by <a href="https://arxiv.org/abs/1803.00567">Monge (1781)</a>. Applications like <a href="https://ieeexplore.ieee.org/document/7053911">shape matching</a>, <a href="https://arxiv.org/abs/1210.0375">data assimilation</a>, and <a href="https://link.springer.com/content/pdf/10.1007/978-3-030-87199-4_28.pdf">active brain transportation</a> are among the exciting research areas advancing these methods to find suitable mappings between $\alpha$ and $\beta$ for specific purposes.<br>
+    This post refers to locations in the source and target as $\alpha$ and $\beta$, respectively, and uses $a$ and $b$ for distributions.
+    The motivation for this post is drawn from a recent paper by <a href="http://proceedings.mlr.press/v119/makkuva20a/makkuva20a.pdf">Makkuva et al.,</a> which introduces a novel approach to learning optimal transport from samples (ICML 2020).</p>
+
+    <p>It is noteworthy that optimal transport was initially proposed for tasks such as resource allocation among warehouses, traffic management, and distributing soldiers to different camps.</p>
+
+    <p><img src="../../images/ot-convex1.png" alt="Example"></p>
+
+    <p>We’ll first discuss the Monge problem itself and then describe the <a href="http://proceedings.mlr.press/v119/makkuva20a/makkuva20a.pdf">sampling approach of Makkuva et al.</a> to learn mappings.</p>
+
+    <h2 id="monge-problem">Monge Problem</h2>
+    <p>Let’s define resources $x_1,..,x_n$ in $\alpha$ and resources $y_1,..,y_m$ in $\beta$. We assign weight vectors $a$ and $b$ to these resources and define matrix $C$ as a measure of the pairwise distances between points $x_i \in \alpha$ and relative points derived from $T (x_i)$ in $\beta$.
+    The Monge problem seeks to solve the following optimization problem:</p>
+
+    <p>$$
+    \min_{ T} \{ \sum_i C(x_i, T (x_i)) :  T_{\sharp} \alpha = \beta \}
+    $$</p>
+
+    <p>where the push-forward operator $\sharp$ represents the direction of the transportation plan.</p>
+
+    <h2 id="kantrovich-relaxation">Kantrovich Relaxation</h2>
+    <p>Kantrovich proposed a relaxation of the Monge problem, allowing a source bin to be distributed to multiple locations in the target. Feasible solutions for this problem are defined by $U$ as follows:</p>
+
+    <p>$$
+    U(a,b) = \{T \in \mathrm{R}^{n\times m}_+ : T \mathrm{1}_m = a , T^T \mathrm{1}_n = b\},
+    $$</p>
+
+    <p>This ensures no particle or mass is lost during the transportation plan $T$ for vectors of all 1s and distributions $a$ and $b$. An optimal solution is obtained by solving the following problem for a given ground metric matrix $C \in \mathbb{R}^{n\times m}$:
+    $$
+    L_c(a,b) = \min_{T \in U(a,b)} \langle C, T \rangle = \sum_{i,j} C_{i,j} T_{i,j}.
+    $$</p>
+
+    <h2 id="linear-programming">Linear Programming</h2>
+    <p>With some linear algebra, we can formulate the Kantrovich relaxation as a linear programming problem:</p>
+
+    <p>$$
+    L_c(\alpha, \beta) = \min_{T} C^T T \text{ s.t., } A \underline{T} = \begin{bmatrix} \alpha \\ \beta \end{bmatrix}
+    $$</p>
+
+    <p>where:</p>
+
+    <p><img src="../../images/ot/ot-eq.svg" alt="Example"></p>
+
+    <p>Algorithmic solutions for this linear program are well-established. In high-dimensional spaces, however, the proposed algorithms become computationally prohibitive. Some research has suggested quantizing space to handle the curse of dimensionality. For instance, a <a href="http://proceedings.mlr.press/v97/chen19h/chen19h.pdf">semi-discrete approach</a> was proposed at ICML 2019 by the UIUC group.</p>
+
+    <ol>
+      <li>If the source randomness of the network is a distribution, optimal transport can be achieved via deterministic evaluation.</li>
+      <li>For optimal transport mapping between a generator network and target distribution, the Wasserstein distance can be minimized through regression between generated data and mapped target points ($\Phi_1, \Phi_2,..,\Phi_N$):
+      $$
+      L(x) = \frac{1}{B} \sum_{j=1}^B \min_i (c(x_j,y_i)-\Phi_i) +  \frac{1}{N}  \sum_{i=1}^N  \Phi_i
+      $$</li>
+    </ol>
+
+    <p>This approach requires evaluating each point, and heuristic methods sample issues and use those as regularizers, potentially leading to biases. <a href="http://proceedings.mlr.press/v119/makkuva20a/makkuva20a.pdf">Makkuva et al.</a> proposed learning optimal transport from samples by exploring convex function sets.</p>
+
+    <p><img src="../../images/ot-convex2.png" alt="Example"></p>
+
+    <p>Their method utilizes a dual form of Kantrovich’s relaxation:</p>
+
+    <p>$$
+    W(a,b) = \sup_{(f,g) \in \phi_c} \mathrm{E}_a[f(x)] + \mathrm{E}_b[g(y)]
+    $$</p>
+
+    <p>where $\phi_c$ represents a set of constrained functions with $f(x) + g(y) \leq \frac{1}{2} ||x-y||^2$.</p>
+
+    <h4 id="input-convex-neural-networks">Input-Convex Neural Networks</h4>
+    <p>Input-convex neural networks (ICNNs) are a class of neural networks where outputs are convex with respect to inputs, defined recursively by:</p>
+
+    <p>$$
+    f(x;\theta) = h_L \quad \text{where} \quad h_{l+1} = \sigma_l (W_l h_l + b_l + A_l x), \quad l = 0,1,..,L-1
+    $$</p>
+
+    <p>Based on this architecture, <a href="http://proceedings.mlr.press/v119/makkuva20a/makkuva20a.pdf">Makkuva et al.</a> solve the Kantrovich dual problem using ICNNs, minimizing the need for new regularization.</p>
+
+    <p>$$
+    W(a,b) = C_{a,b} - \inf_{(f,g) \in \phi_c} \mathrm{E}_a[f(x)] + \mathrm{E}_b[g(y)]
+    $$</p>
+
+    <p>where $C_{a,b} = \frac{1}{2} \mathrm{E}[x^2] + \frac{1}{2} \mathrm{E}[y^2]$, based on $f(x) + g(y) \leq \frac{1}{2} ||x-y||^2$.</p>
+
+    <p>Ultimately, we can define the optimal transport map $\triangledown f^*$ by Brenier’s theorem:</p>
+
+    <p>$$
+    \mathrm{E}_b ||\triangledown f^*(y)- y||^2 = \inf_{T: T_{\sharp} a = b} \mathrm{E}_b ||T(y) - y||^2
+    $$</p>
+
+    <h2 id="breniers-theorem">Brenier’s Theorem</h2>
+    <p>Brenier’s theorem states that if $b$ admits a density with respect to the Lebesgue measure on $\mathrm{R}^d$, then there exists a unique optimal coupling $\pi$ for the Monge problem:</p>
+
+    <p>$$
+    d \pi (x,y) = df(y) \delta_{x = \triangledown f^*(y)}.
+    $$</p>
+
+  </div>
+
+  <div class="share-buttons">
+    <a class="twitter-share-button" href="index.html#" title="Share on Twitter" data-url="/posts/ot-convex/" data-text="Learning Optimal Transport from Samples"><i class="fab fa-twitter"></i></a>
+    <!-- other social media links -->
+  </div>
+
+</div>

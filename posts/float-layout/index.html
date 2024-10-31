@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+<meta charset="utf-8">
+<title>
+    How browsers position floats &ndash; Monica Dinculescu
+  </title>
+<meta name="author" content="Monica Dinculescu" />
+<meta name="description" content="Monica Dinculescu's blog" />
+<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+<link rel="alternate" type="application/rss+xml" href="../../atom.xml" />
+<link rel="stylesheet" href="../../css/base.css" type="text/css" media="screen, projection" />
+<link rel="shortcut icon" type="image/x-icon" href="../../images/favicon.png" />
+<link rel="icon" type="image/png" href="../../images/favicon.png">
+<link rel="manifest" href="../../manifest.json">
+
+<link rel="manifest" href="https://meowni.ca/posts/float-layout/manifest.json">
+
+<meta name="theme-color" content="#7BE4D5">
+
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="Monica's blog">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Monica's blog">
+
+<link rel="apple-touch-icon" sizes="192x192" href="https://meowni.ca/posts/float-layout/icons/icon-192x192.png">
+
+<meta name="msapplication-TileImage" content="images/manifest/icon-192x192.png">
+<meta name="msapplication-TileColor" content="#7BE4D5">
+<meta name="msapplication-tap-highlight" content="no">
+
+<meta name="twitter:card" content="Monica Dinculescu's blog">
+<meta name="twitter:site" content="@notwaldorf">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="my-app">
+<meta property="og:image" content="icons/icon-192x192.png" />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-47334320-2']);
+    _gaq.push(['_setDomainName', 'meowni.ca']);
+    _gaq.push(['_trackPageview']);
+    (function () {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</head>
+
+<body>
+<nav>
+<ul>
+<li id="home_link" class="og"><a href="../../index.html">🏠</a></li>
+<li><a href="../../is.html">about</a></li>
+<li><a href="../../works.html">hire me</a></li>
+<li><a href="https://meownica.studio" target="_blank" rel="noreferrer">art</a></li>
+<li><a href="../../reads.html">reading</a></li>
+<li><a href="../../writes.html">writing</a></li>
+<li><a href="../../makes.html">projects</a></li>
+<li><a href="../../talks.html">talks</a></li>
+</ul>
+</nav>
+<div class="splash short">
+<div class="splash-wrapper">
+<div>
+<section class="byline">
+April 11, 2018
+</section>
+<div>
+<h1><a href="index.html">How browsers position floats</a></h1>
+</div>
+</div>
+</div>
+</div>
+<section class="content">
+<style>
+  iframe {
+    height: 800px;
+    width: 100%;
+    margin: 0 auto;
+    border: 5px solid #E0F7FA;
+    border-radius: 3px;
+  }
+</style>
+<p>When you have a <code class="language-plaintext highlighter-rouge">float</code> CSS property on a box (with a value different than <code class="language-plaintext highlighter-rouge">none</code>), this box
+must be laid out according to the <strong>float positioning algorithm</strong>. Loosely, it says:</p>
+<ul>
+<li>if the box has <code class="language-plaintext highlighter-rouge">float:left</code>, the box is positioned at the beginning of the line box</li>
+<li>if the box has <code class="language-plaintext highlighter-rouge">float:right</code>, the box is positioned at the end of the line box</li>
+<li>text (and more generally anything within the normal, non-floaty flow) is laid out along the edges of the floating boxes</li>
+<li>the <code class="language-plaintext highlighter-rouge">clear</code> property changes the floating behaviour.</li>
+</ul>
+<p>Anyway, in general you’ll have a better time if you use a flexbox or CSS grid instead of floats, because floats are quirky and have strange edge cases, but if you were ever curious
+about how the algorithm would choose where to position different floats, here’s a demo
+(which you can also play with directly on <a href="https://float-layout.glitch.me">glitch</a>):</p>
+<iframe src="https://float-layout.glitch.me/demo.html" frameborder="0"></iframe>
+<div class="prev-next">
+<a href="../rl-with-otters/index.html">&laquo; An intro to Reinforcement Learning (with otters)</a>
+<a href="../hello-tensorflow/index.html">Hello tensorflow &raquo;</a>
+</div>
+</section>
+<div class="footer">
+<div class="thanks">
+<span>Thanks for reading! <span class="og" style="color: var(--red)">❤︎</span></span>
+<a href="https://twitter.com/share" class="twitter-share-button" data-via="notwaldorf" title="Tweet at me!" aria-label="Tweet at me!">Tweet</a>
+</div>
+</div>
+<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
+</body>
+<script>
+  'use strict';
+
+  // Load the pygments stylesheet so that it's not render blocking.
+  var head = document.head;
+  var link = document.createElement('link');
+  link.type = 'text/css';
+  link.rel = 'stylesheet';
+  link.href = '/css/pygments.css'
+  head.appendChild(link);
+</script>
+</html>

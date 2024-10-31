@@ -1,0 +1,307 @@
+<head>
+  <style>
+    img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+    }
+  </style>
+</head>
+<div id="page" class="post">
+  <h1 class="title">Maximum Likelihood and Maximum A Posteriori Estimation</h1>
+
+
+  <div class="post-date">
+    <time datetime="2021-11-09T00:00:00Z">Nov 9, 2021</time> <span class="readtime">&middot; 7 min read</span>
+  </div>
+  <div>
+   <p><a href="https://en.wikipedia.org/wiki/Maximum_likelihood_estimation">Maximum Likelihood Estimation:</a>
+Suppose that we have a probabilistic model of generating random data $x \in \mathcal{X}$ derived from function $P_{\theta}(x)$ that is parametrized by $\theta$. How can we estimate $\theta$?
+$$
+P_{\theta}(x) : \mathcal{X} \rightarrow R, \quad \int_xP_{\theta}(x) dx = 1
+$$</p>
+<p>Let&rsquo;s say we have seen some independent samples $x_1, x_2,.. x_n \sim P_{\theta^<em>}$. By definition:
+$$
+P_{\theta^</em>} (x_1,x_2,..,x_n) = P_{\theta^<em>}(x_1) P_{\theta^</em>}(x_2)..P_{\theta^*}(x_n)
+$$</p>
+<h3 id="can-we-estimate-theta">Can we estimate $\theta^*$?</h3>
+<p>So, how can we estimate the hidden variable $ heta $ from which our probability distributions are derived?</p>
+<h3 id="example-1--bernoulli-distribution">Example 1:  Bernoulli distribution</h3>
+<p>In this example, our family is a class of random variables with possible values drawn from $\mathcal{X} \in {0,1}$ analogous to tossing a two-sided coin. We can derive the probability of each outcome via the following functions:</p>
+<p>$$
+P(X=1) = p \text{ and } P(X=0) = 1-p
+$$</p>
+<p>It is a Bernoulli distribution parameterized by:</p>
+<p>$$
+\text{Bernoulli} (x|\theta) = \begin{cases}
+\theta &amp; \text{if $x=1$} \\\
+1-\theta &amp; \text{otherwise}
+\end{cases}
+$$
+Where we can rewrite this with</p>
+<p>$$
+\text{Bernoulli} (x|\theta) = \theta^x(1-\theta)^{1-x} \text{ for } x \in {0,1}
+$$</p>
+<h3 id="example-2--categorical-distribution-over-x">Example 2:  Categorical distribution over $x$</h3>
+<p>We define random variable $x \in \mathcal{X}:{1,2,..,M}$ has probability distribution:
+$$
+P(x=i) = \theta_i
+$$</p>
+<p>for some combination of $\theta_1,..,\theta_M &gt; 0$  where  $\theta_1+\theta_2+..+\theta_M=1$. In general, the family of probability distributions with the following characteristics is called simplex:
+$$
+\Delta :{\theta=(\theta_1,\theta_2,..,\theta_M) \in R ^M: \theta_i \geq 0, \theta_1+\theta_2+..+\theta_M = 1}
+$$
+We call $\mathcal{X}$ <strong>Categorical Distribution</strong> over $x$:
+$$
+\text{Cat}(x=i|\theta) = \theta_i
+$$</p>
+<h3 id="example-3--gaussian-distribution">Example 3:  Gaussian distribution</h3>
+<p>This family of probability distributions with mean $\mu$ and variance $\sigma^2$ is called Gaussian and has the following density function:
+$$
+P_{\theta}(x) = \text{Normal}(x|\mu,\sigma^2) = \frac{1}{\sqrt{2\pi \sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+$$
+Where:
+$$
+\mu = E_{P_{\theta}}[x]\\\
+\sigma^2 = \text{Var}<em>{P</em>{\theta}(x)} = E_{P_{\theta}}[(x-\mu)^2]
+$$
+and
+$$
+\int_{-\infty}^{\infty} P_{\theta}(x) dx = 1
+$$</p>
+<p>In simple terms, maximum likelihood estimation is a technique that will help us to estimate our parameters $\hat{\theta}_{\text{MLE}}$ in a way that maximizes <strong>likelihood</strong> of generating the data:</p>
+<p>$$
+\begin{align}
+\begin{aligned}
+\theta_{\text{MLE}} = &amp; \arg \max_{\theta} P_{\theta} (x_1,x_2,..,x_n)\\\
+=&amp;\arg \max_{\theta} P_{\theta} (x_1)P_{\theta}(x_2)..P_{\theta}(x_n) \\\
+=&amp;\arg \min_{\theta} \sum_{i=1}^{n}-\log P_{\theta} (x_i)
+\end{aligned}
+\end{align}
+$$</p>
+<p>Which is the Empirical Risk Minimization for the following loss function:</p>
+<p>$$
+\mathcal{L}(\theta;x) = -\log P_{\theta} (x).
+$$</p>
+<p>There are some nice properties that MLE has:</p>
+<ol>
+<li>
+<p><em><strong>Consistency</strong></em>:
+Given $x_1,.., x_n \sim P_{\theta^<em>}$ are iid data points. If $n \rightarrow \infty$, then $\theta_{\text{MLE}} \rightarrow \theta^</em>$</p>
+</li>
+<li>
+<p><em><strong>Invariance</strong></em>:
+If we want to estimate MLE of $g = G(\theta)$ of $\theta$, intuitively we want to use $\hat{g} = G(\hat{\theta}_{\text{MLE}})$. Then $\hat{g}$ is the MLE of $g=G(\theta)$.</p>
+</li>
+</ol>
+<h2 id="examples-of-mle">Examples of MLE</h2>
+<h3 id="1-coin-toss">1. Coin Toss</h3>
+<p>We toss a fair coin multiple times. A simple sequence of outcomes could be H H H T T T H T T H T T. How to estimate the probability of the coin landing H?
+A very simple and intuitive answer could be $\frac{5}{5+7} = \frac{5}{12}$.
+This very natural answer tends out to be MLE of the Bernoulli model:$\text{Bernoulli} (x|\theta) = \theta^x(1-\theta)^{1-x} \text{ for } x \in {0,1}$.</p>
+<p>In this example, MLE is:
+$$
+\begin{align}
+\begin{aligned}
+\theta_{\text{MLE}} = &amp; \arg \min_{\theta} - \sum_{i=1}^n \log \text{Bernoulli}(x_i| \theta) \\\
+= &amp; \arg \min_{\theta} - \sum_{i=1}^n (x_i \log (\theta) + (1- x_i)\log (1-\theta)) \\\
+= &amp; \arg \min_{\theta} - [(\sum_{i=1}^n x_i) \log (\theta) + (n-\sum_{i=1}^n x_i)\log (1-\theta)] \\\
+= &amp; \frac{1}{n} \sum_{i=1}^n x_i
+\end{aligned}
+\end{align}
+$$
+You can obtain the last statement by deriving $- [(\sum_{i=1}^n x_i) \log (\theta) + (n-\sum_{i=1}^n x_i)\log (1-\theta)]$ with respect to $\theta$.</p>
+<h3 id="2-binary-logistic-regression">2. Binary Logistic Regression</h3>
+<p>In this case, our data points consist of
+$(x,y) \in R^d , (0,1)$ and the parameters are defined by $\theta = (w,b)$. Our model here is $P(y|x,\theta) = \text{Bernoulli}(y| \sigma(w.x+b))$ where $\sigma (z) = \frac{1}{1+e^{-z}}$ is the sigmoid function.</p>
+<p>$$
+\begin{align}
+\begin{aligned}
+P(y=1 | x,\theta) = &amp; \sigma(w.x+b) \\\
+=&amp; \frac{1}{1+e^{-(w.x+b)}}
+\end{aligned}
+\end{align}
+$$</p>
+<ul>
+<li>MLE in <em><strong>Bernoulli</strong></em> model is Logistic Regression</li>
+</ul>
+<p>$$
+\begin{align}
+\begin{aligned}
+\theta_{\text{MLE}} = &amp; \arg \max_{\theta} P(y| x,\theta)\\\\
+= &amp; \arg \min_{\theta} - \sum_{i=1}^n\log P(y_i|x_i,\theta) \\\\
+= &amp; \arg \min_{\theta} \sum_{i=1}^n\log (1+e^{-(w.x+b)})
+\end{aligned}
+\end{align}
+$$</p>
+<p>where $\log (1+e^{-(w.x+b)})$ is the logistic loss function.</p>
+<h3 id="3-linear-regression-as-mle-in-gaussian-model">3. Linear Regression as MLE in Gaussian Model</h3>
+<p>In this case, our data points consist of $(x,y) \in R^d , R$, and the parameters are defined by $\theta = (w,\sigma^2)$. Gaussian model is:</p>
+<p>$$
+y| x, \theta \sim \text{Normal}(w.x,\sigma^2)
+$$
+Suppose that our variance $\sigma^2$ is fixed. Then the parameter here $\theta=w$ :</p>
+<p>\begin{align}
+\begin{aligned}
+\theta_{\text{MLE}} = &amp; \arg \max_{\theta} P(y| x,\theta)\\\\
+= &amp; \arg \min_{\theta} - \sum_{i=1}^n\log P(y_i|x_i,\theta) \\\\
+= &amp; \arg \min_{w} \sum_{i=1}^n\log \text{Normal}(y_i| w.x_i,\sigma^2)\\\\
+=&amp; \arg \min_{w}-\sum_{i=1}^n\log(\frac{1}{\sqrt{2\pi \sigma^2}} e^{-\frac{(y_i-w.x_i)^2}{2\sigma^2}})\\\\
+=&amp; \arg \min_{w} \sum_{i=1}^n \frac{1}{2\sigma^2} (y_i-w.x_i)^2 + c
+\end{aligned}
+\end{align}</p>
+<blockquote>
+<p>$\sum_{i=1}^n \frac{1}{2\sigma^2} (y_i-w.x_i)^2$ is quadratic objective function in least square. Therefore, least square regression is MLE in the gaussian model and vice versa.</p>
+</blockquote>
+<p><a href="https://en.wikipedia.org/wiki/Maximum_a_posteriori_estimation">Maximum A Posterior Estimation (MAP):</a>
+Let&rsquo;s say parameter $\theta$ has a prior distribution $\theta \sim P(\theta)$. Data points $x$ is generated by a family of probabilistic model $x \sim P(x|\theta)$:</p>
+<p><img src="../../images/map.jpg" alt="Example"></p>
+<p>This graphical model describes the following steps:</p>
+<ol>
+<li>Draw $\theta \sim P(\theta)$</li>
+<li>Draw $x|\theta \sim P(x|\theta)$</li>
+</ol>
+<p>Then joint distribution is defined: $P(x,\theta) = P(\theta).P(x|\theta)$. We only want to infer the value of $\theta$ given observation $x$. We can take advantage of Bayes Rule.</p>
+<h3 id="bayes-rule">Bayes Rule:</h3>
+<p>$$
+P(\theta| x) = \frac{P(\theta,x)}{P(x)} = \frac{P(\theta)P(x|\theta)}{P(x)}
+$$</p>
+<p>Let&rsquo;s fix the following terminologies:</p>
+<ol>
+<li><strong>Posterior:</strong> $P(\theta| x)$</li>
+<li><strong>Prior</strong>: $P(\theta)$</li>
+<li><strong>Likelihood:</strong> $P(x|\theta)$</li>
+<li><strong>Marginal:</strong> $P(x)$</li>
+</ol>
+<p>Suppose that we observed $x_1,x_2,..x_n | \theta \sim P(x|\theta)$ independantly.</p>
+<p><img src="../../images/map2.jpg" alt="Example"></p>
+<p>joint distribution: $P(\theta,x_1,x_2,..x_n) = P(\theta).P(x_1|\theta).. P(x_n|\theta)$.</p>
+<h3 id="bayes-rule-1">Bayes Rule:</h3>
+<p>$$
+P(\theta| x_1,x_2,..x_n)  = \frac{P(\theta).P(x_1|\theta).. P(x_n|\theta)}{P(x_1, ..,x_n)}
+$$</p>
+<p>However, the marginal distribution is not always easy to compute: $P(x) = \int_{\theta} P(x,\theta) d\theta = \int_{\theta} P(\theta). P(x|\theta) d\theta  $. This integral could be intractable in the high dimensional space of $\theta$. Therefore, often we only approximate posterior up to the normalizing constant:</p>
+<p>$$
+P(\theta | x) \propto P(\theta). P(x|\theta)
+$$</p>
+<p>subject to $\int_{\theta}P(\theta | x)d\theta=1$. Now MAP will help us by:</p>
+<p>$$
+\begin{align}
+\begin{aligned}
+\theta_{\text{MAP}} = &amp; \arg \max_{\theta \in \mathcal{\Theta}} P(\theta|x) \\\\
+=&amp; \arg \max_{\theta \in \mathcal{\Theta}} P(\theta).P(x|\theta)
+\end{aligned}
+\end{align}
+$$</p>
+<h3 id="example-1-mle-as-map-with-uniform-prior">Example 1: MLE as MAP with Uniform Prior</h3>
+<p>Suppose prior $P(\theta)$ is uniform on $\mathcal{\Theta}$ (e.g., $P(\theta)=\frac{1}{b-a}$ for $\theta \in \mathcal{\Theta}$ ). We can say that $P(\theta)\propto 1$ and now:
+$$
+\begin{align}
+\begin{aligned}
+\theta_{\text{MAP}} = &amp; \arg \max_{\theta \in \mathcal{\Theta}} P(\theta|x) \\\\
+=&amp; \arg \max_{\theta \in \mathcal{\Theta}} 1.P(x|\theta) \\\\
+=&amp; \theta_{\text{MLE}}
+\end{aligned}
+\end{align}
+$$</p>
+<h3 id="example-2-beta-bernoulli-model">Example 2: Beta-Bernoulli model</h3>
+<p>As we talked about earlier:
+$$
+\text{Bernoulli} (x|\theta) = \begin{cases}
+\theta &amp; \text{if $x=1$} \\\\
+1-\theta &amp; \text{otherwise}
+\end{cases}
+$$</p>
+<p>also recall that given $y_1,y_2,..y_n \in {0,1}$ MLE estimator is $\theta_{\text{MLE}} = \frac{y_1+y_2+..+y_n}{n}$:</p>
+<p>$$
+P(y| y_1,y_2,..,y_n) \approx P(y|\theta_{\text{MLE}}) \begin{cases}
+\theta_{\text{MLE}} &amp; \text{if $y=1$} \\\\
+1-\theta_{\text{MLE}} &amp; \text{otherwise}
+\end{cases}
+$$</p>
+<p>However, this method is prone to overfitting: For example, $y_1=..=y_n=1$ then $\theta_{\text{MLE}}=1$ and the model will always predict $y=1$.</p>
+<h3 id="how-to-fix-this-with-map">How to fix this with MAP?</h3>
+<ol>
+<li>Put prior on $\theta$, compute $\theta_{\text{MAP}}$.</li>
+<li>What prior on $\theta \in [0,1]$? Use Beta distribution, which is conjugate prior to Bernoulli:</li>
+</ol>
+<p>$$
+P(\theta | \alpha, \beta ) = \frac{\theta^{\alpha-1}(1-\theta)^{\beta-1}}{B(\alpha,\beta)} \propto {\theta^{\alpha-1}(1-\theta)^{\beta-1}}
+$$</p>
+<p>Where:</p>
+<p>$$
+B(\alpha,\beta) = \int_0^1 \theta^{\alpha-1}(1-\theta)^{\beta-1}  = \frac{\Gamma \left( \alpha \right) \Gamma \left( \beta \right)}{\Gamma \left( \alpha + \beta \right)}
+$$</p>
+<p>is the normalizing constant and $\Gamma \left( x \right)$ is the gamma function (i.e., $\Gamma \left( n \right)=(n-1)!$).
+Then, MAP estimation for the Bernoulli model with Beta distribution:</p>
+<ol>
+<li>Suppose $\theta$ comes from $\text{Beta}(\theta|\alpha, \beta) = P(\theta)$ is <strong>prior</strong></li>
+<li>Suppose we observe $y_1,y_2,..,y_n | \theta \sim \text{Bernoulli}(y|\theta)$ is <strong>likelihood</strong></li>
+<li><strong>Posterior</strong> distribution of $\theta$ is still a Beta distribution:
+-$$
+\begin{align}
+\begin{aligned}
+P(\theta|y_1,y_2,..)\propto &amp;  P(\theta).P(y_1|\theta)..P(y_n|\theta) \\\\
+\propto &amp; \theta^{\alpha-1}(1-\theta)^{\beta-1}\prod_{i=1}^{n} {\theta^{y_i}(1-\theta)^{1-y_i}} \\\\
+= &amp; \theta^{\alpha-1+\sum_{i=1}^ny_i}.(1-\theta)^{\beta-1+\sum_{i=1}^n(1-y_i)} \\\\
+=&amp; \text{Beta}(\alpha-1+\sum_{i=1}^ny_i,\beta-1+\sum_{i=1}^n(1-y_i))
+\end{aligned}
+\end{align}
+$$</li>
+</ol>
+<p>We covered this post in the introduction to machine learning CPCS 481/581, Yale University, <a href="http://www.cs.yale.edu/homes/wibisono/">Andre Wibisono</a> where I (joint with <a href="http://iid.yale.edu/people/siddhart.md/">Siddharth Mitra</a>) was TF.</p>
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+  </main>
+
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+magnify("myimage", 3);
+
+</script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="../../js/jquery.min.js"></script>
+  <script src="../../js/soho.js"></script>
+
+  <script src="https://dadashkarimi.github.io/js/blog.js"></script>
+
+
+</body>
+</html>

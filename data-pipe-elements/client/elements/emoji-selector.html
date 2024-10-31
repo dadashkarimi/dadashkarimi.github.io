@@ -1,0 +1,212 @@
+<base href="">
+<dom-module id="emoji-selector">
+<template>
+<style>
+      :host {
+        display: block;
+        position: relative;
+        background-color: var(--emoji-selector-background, --paper-teal-500);
+        overflow: hidden;
+
+        @apply(--paper-font-common-base);
+
+        --paper-input-container-focus-color: var(--emoji-selector-background, --paper-teal-500);
+        --paper-input-container-color: var(--emoji-selector-color, --paper-teal-100);
+        --paper-input-container-input-color: var(--emoji-selector-highlight, --paper-teal-50);
+      }
+
+      iron-icon {
+        color: #fff;
+      }
+
+      #categories {
+        display: block;
+        @apply(--layout-horizontal);
+        transition: transform 0.3s;
+      }
+
+      .navigation {
+        padding: 0 16px;
+        background-color: var(--emoji-selector-foreground, --paper-teal-700);
+      }
+
+      .emoji-category {
+        flex-basis: 100%;
+        flex-shrink: 0;
+        box-sizing: border-box;
+        padding: 16px;
+        @apply(--layout-horizontal);
+        @apply(--layout-wrap);
+        align-items: flex-start;
+        align-content: flex-start;
+        justify-content: center;
+      }
+
+      .emoji {
+        flex: 0;
+        font-size: 26px;
+        padding: 4px;
+        line-height: 26px;
+        max-height: 24px;
+        cursor: pointer;
+        border-radius: 2px;
+        transition: background-color 0.3s;
+      }
+
+      .emoji:hover {
+        background-color: var(--emoji-selector-highlight, --paper-teal-50);
+      }
+    </style>
+<iron-ajax url="emojilib/emojis.json" last-response="{{emojilib}}" auto></iron-ajax>
+<section class="navigation">
+<paper-input label="Filter" id="search" value="{{filter}}"></paper-input>
+<paper-tabs selected="{{category}}" id="tabs" tabindex="0">
+<paper-tab><iron-icon icon="social:mood"></iron-icon></paper-tab>
+<paper-tab><iron-icon icon="maps:local-florist"></iron-icon></paper-tab>
+<paper-tab><iron-icon icon="maps:local-pizza"></iron-icon></paper-tab>
+<paper-tab><iron-icon icon="social:cake"></iron-icon></paper-tab>
+<paper-tab><iron-icon icon="maps:directions-walk"></iron-icon></paper-tab>
+<paper-tab><iron-icon icon="account-balance"></iron-icon></paper-tab>
+<paper-tab><iron-icon icon="flag"></iron-icon></paper-tab>
+</paper-tabs>
+</section>
+<section id="categories">
+<template is="dom-repeat" items="[[emojiCategories]]" as="emojiCategory">
+<section class="emoji-category">
+<template is="dom-repeat" items="[[emojiCategory.emoji]]" as="emoji">
+<span class="emoji" on-tap="select">[[emoji.char]]</span>
+</template>
+</section>
+</template>
+<section class="emoji-category search-results">
+<template is="dom-repeat" items="[[filteredEmoji(filter, emojiSearch)]]" as="emoji">
+<span class="emoji" on-tap="select">[[emoji.char]]</span>
+</template>
+</section>
+</section>
+</template>
+<script>
+    Polymer({
+      is: 'emoji-selector',
+
+      properties: {
+        category: {
+          type: Number,
+          value: 0
+        },
+
+        emojiCategories: {
+          type: Array,
+          readOnly: true
+        },
+
+        emojiSearch: {
+          type: Array,
+          readOnly: true
+        }
+      },
+
+      observers: [
+        'updateEmojiData(emojilib)',
+        'transformCategories(category)',
+        'setFilter(filter)',
+        'clearFilter(category)'
+      ],
+
+      listeners: {
+        'iron-select': 'onIronSelect'
+      },
+
+      updateEmojiData(emojilib) {
+        let emojiCategories = {};
+        let emojiSearch = {};
+
+        Object.keys(emojilib).forEach(function(emojiName) {
+          let emoji = emojilib[emojiName];
+          let categoryName = emoji.category;
+
+          if (emojiName === 'keys' || categoryName === '_custom') {
+            return;
+          }
+
+          let category = emojiCategories[categoryName] || {
+            name: categoryName,
+            emoji: []
+          };
+
+          category.emoji.push(emoji);
+
+          emojiCategories[categoryName] = category;
+
+          emoji.keywords = emoji.keywords || [];
+          emoji.keywords.push(emojiName);
+          emoji.keywords.forEach(function(keyword) {
+            emojiSearch[keyword] = emojiSearch[keyword] || {
+              keyword: keyword,
+              emoji: []
+            };
+            emojiSearch[keyword].emoji.push(emoji);
+          });
+        });
+
+        this._setEmojiCategories([
+          emojiCategories.people,
+          emojiCategories.nature,
+          emojiCategories.foodanddrink,
+          emojiCategories.celebration,
+          emojiCategories.activity,
+          emojiCategories.travelandplaces,
+          emojiCategories.flags
+        ]);
+
+        this._setEmojiSearch(Object.keys(emojiSearch).map(function(keyword) {
+          return emojiSearch[keyword];
+        }));
+      },
+
+      transformCategories(category) {
+        this.translate3d(-category * 100 + '%', 0, 0, this.$.categories);
+      },
+
+      setFilter(filter) {
+        if (filter) {
+          this.category = 7;
+        } else if (this.category === 7 || this.category == null) {
+          this.category = 0;
+        }
+      },
+
+      clearFilter(category) {
+        if (category && category !== 7) {
+          this.filter = '';
+        }
+      },
+
+      filteredEmoji(filter, emojiSearch) {
+        if (!filter) {
+          return [];
+        }
+
+        let groups = this.emojiSearch.filter(function(group) {
+          if (group.keyword.indexOf(filter) > -1) {
+            return true;
+          }
+        }).map(function(group) {
+          return group.emoji;
+        });
+
+        return Array.prototype.concat.apply([], groups);
+      },
+
+      select(event) {
+        this.fire('iron-select', { emoji: event.target.textContent });
+      },
+
+      onIronSelect(event) {
+        if (event.target !== this) {
+          event.stopImmediatePropagation();
+        }
+      }
+    });
+  </script>
+</dom-module>

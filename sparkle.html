@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>sparkle</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link href="https://fonts.googleapis.com/css?family=Lato:400" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet" type="text/css">
+<link href="sparkle/style.css" rel="stylesheet" type="text/css">
+<script src="sparkle/sparkle.js"></script>
+</head>
+<body>
+<div class="title">✨sparkle ✨</div>
+<div class="content">
+<div class="horizontal wrap">
+<div class="file">
+<label for="loader">Upload an image</label>
+<input type="file" id="loader" />
+<div id="filename" class="text truncate"></div>
+</div>
+<div class="numbers">
+<div class="horizontal">
+<button class="minus" tabindex="0" id="resolutionMinus">–</button>
+<input class="counter" type="text" value="30" tabindex="-1" id="resolution">
+<button class="plus" tabindex="0" id="resolutionPlus">+</button>
+</div>
+<div class="text">resolution</div>
+</div>
+<div class="numbers">
+<div class="horizontal">
+<button class="minus" tabindex="0" id="widthMinus">–</button>
+<input class="counter" type="text" value="400" tabindex="-1" id="width">
+<button class="plus" tabindex="0" id="widthPlus">+</button>
+</div>
+<div class="text">width (px)</div>
+</div>
+<button id="reset" tabindex="0">reset</button>
+<button id="sparkle" tabindex="0">sparkle</button>
+</div>
+<div class="container" id="container"></div>
+</div>
+<div class="footer">
+<p>made with <span style="color:#23C8B9">❤︎</span> by <a href="https://twitter.com/notwaldorf">monica</a>.
+find this on <a href="https://github.com/notwaldorf/sparkle">github</a></p>
+</div>
+<canvas id="canvas" width="400" height="400" hidden></canvas>
+</body>
+</html>

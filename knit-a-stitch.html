@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>knit-a-stitch</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="eescription" content="Draw a pattern, get the knitting instructions.">
+<link rel="stylesheet" href="knit-a-stitch/style.css">
+<link rel="manifest" href="knit-a-stitch/manifest.json">
+<meta name="theme-color" content="#fff">
+<link rel="shortcut icon" href="knit-a-stitch/images/favicon.ico">
+
+
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="knit-a-stitch">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="knit-a-stitch">
+
+<link rel="apple-touch-icon" sizes="192x192" href="https://meowni.ca/knit-a-stitch/images/manifest/icon-192x192.png">
+
+<meta name="msapplication-TileImage" content="./images/manifest/icon-192x192.png">
+<meta name="msapplication-TileColor" content="#E91E63">
+<meta name="msapplication-tap-highlight" content="no">
+</head>
+<body>
+<header>
+<img src="knit-a-stitch/images/logo.png" alt="knit-a-stitch">
+<div>Draw a pattern, get the knitting instructions. <br>For tips on
+what that means, read <a href="https://blog.tincanknits.com/2014/06/06/how-to-read-a-knitting-chart/">this</a>!</div>
+<hr>
+</header>
+<div class="settings">
+<div>
+<label for="rows">Grid (cols x rows)</label>
+<input id="colsInput" class="short" type="number" value="16"> x
+<input id="rowsInput" class="short" type="number" value="8">
+</div>
+<div>
+<label>Stitch</label>
+<div class="select">
+<span>▼</span>
+<select id="stitchSelect">
+<option value="✖️">✖️ (knit)</option>
+<option value="➖">➖ (purl)</option>
+<option value="🔘">🔘 (yo)</option>
+<option value="／">／ (k2tog)</option>
+<option value="＼">＼ (ssk)</option>
+</select>
+</label>
+</div>
+</div>
+<div>
+
+<label>&nbsp;</label>
+<button onclick="getPattern()">Get pattern</button>
+<button onclick="reset()">Clear all</button>
+</div>
+</div>
+<div class="container" id="container"></div>
+<hr hidden id="thatHR">
+<div><a hidden id="patternLink" target="_blank" rel="noopener">Link to pattern</a></div>
+<p hidden id="errorMessage"></p>
+<div id="patternOutput"></div>
+<hr>
+<footer>
+made for <span>🎄</span> by <a href="https://twitter.com/notwaldorf">monica</a>.
+inspired by <a href="https://twitter.com/kosamari">mariko's</a>
+<a href="https://kosamari.github.io/sweaterify/">sweaterify</a> and
+<a style="white-space: nowrap" href="https://twitter.com/muanchiou">mu-an's</a> <a href="http://megamoji.muan.co/">megamoji.</a>
+
+</footer>
+<script src="knit-a-stitch/knit.js"></script>
+
+</html>

@@ -1,0 +1,810 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>Monica Dinculescu - weaknotes</title>
+ <link href="https://meowni.ca/weaknotes.xml" rel="self"/>
+ <link href="https://meowni.ca/"/>
+ <updated>2024-09-27T03:48:40+00:00</updated>
+ <id>https://meowni.ca</id>
+ <author>
+   <name>Monica Dinculescu</name>
+ </author>
+
+ 
+ <entry>
+   <title>Week 1</title>
+   <link href="https://meowni.ca/posts/week-1"/>
+   <updated>2021-01-04T00:00:00+00:00</updated>
+   <id>https://meowni.ca/posts/week-1</id>
+   <content type="html">&lt;p&gt;I’ve been thinking for a while about setting this up, and this week seems
+as good as any. Both &lt;a href=&quot;https://alicebartlett.co.uk/blog/weaknotes&quot;&gt;Alice&lt;/a&gt; and &lt;a href=&quot;https://fberriman.com/blog/&quot;&gt;Frances&lt;/a&gt;
+have weekly updates that are a joy to read. &lt;a href=&quot;https://livelaugh.blog/about&quot;&gt;Jenn&lt;/a&gt; has a live laugh blog. Maybe this is the year of long form tweets?&lt;/p&gt;
+
+&lt;p&gt;I haven’t touched my site in like 6+ months so when I tried to run jekyll locally
+it obviously didn’t work, so what you’re reading took like 40 commits on GitHub.&lt;/p&gt;
+
+&lt;p&gt;In work news, I’m coming back to Magenta after 6 months of being a fellow with the Trevor project. I lead a team that worked on classifying suicidal ideation for
+one of their projects. The work was super interesting (though often sad), and in
+a shocking development i really enjoyed being a team lead. I think that even though I’m
+really good at writing actual code, I’m also good at herding cats and holding
+a lot of statuses and details in my head. I was worried at the beginning of the
+fellowship that TLs don’t write any code and I would suddenly become a meeting chair,
+and even though I &lt;em&gt;did&lt;/em&gt; have a ton of meetings, I also wrote a ton of code.
+I know it’s weird to hear a woman assert things she’s good at it. This is also
+a new thing I’m trying out. My notes, my rules!&lt;/p&gt;
+
+&lt;p&gt;In personal news, I’ve gotten really into broth-as-a-savoury-afternoon tea. I used to make a lot of miso (and drink it out of a cup; this part is key), but to add some
+variety in my life, this week I started boiling a bunch of vegetables during meetings
+and making my own broth. Anything for variety in the apocalypse, amirite.&lt;/p&gt;
+
+&lt;p&gt;Goldie moved in to my Animal Crossing island.&lt;/p&gt;
+
+&lt;p&gt;I am exclusively watching serial killer shows right now (Des, I’ll be gone in the dark, Ripper)
+which isn’t exactly off brand but might be a little TOO on brand, you know? That’s what
+I get for finishing Bridgerton in 2 days.&lt;/p&gt;
+
+&lt;p&gt;For my birthday in November my mum got me some new books of piano sheet music, so
+I’ve started playing some piano again. Before I moved to America, I used to play every day and be actually good at it, but much like with everything else I got really burnt
+out by the stress of “being good at a hobby” and started hating it. I think enough
+time has passed that I can give it a try again, and maybe I won’t be so intense this time.
+I’m currently trying to nail Bach’s Menuet in G. &lt;a href=&quot;https://twitter.com/pcastr/status/1346654481451245569&quot;&gt;Here&lt;/a&gt; is my coworker playing around with it.&lt;/p&gt;
+
+&lt;p&gt;A lot of you JINXED this year like the jinxers you are because shit was looking
+good on Tuesday, and lo and behold by Wednesday the world was on fire again and I
+was sad and just watched the news in horror.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Week 2</title>
+   <link href="https://meowni.ca/posts/week-2"/>
+   <updated>2021-01-11T00:00:00+00:00</updated>
+   <id>https://meowni.ca/posts/week-2</id>
+   <content type="html">&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Still into soups: I made a bomb cream of broccoli. I also bought a new
+&lt;a href=&quot;https://www.orringtonfarms.com/product/orrington-farms-natural-vegan-chicken-flavored-base/&quot;&gt;vegan broth base&lt;/a&gt; to fuck with because buying the
+cartons of broth is like buying bottled water aka: bad and wasteful.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;My dog’s skin is turning grey. I know this sounds funny but it’s like, a thing. There could be a number of reasons for this, but the most likely one is that she’s an inbred dumbass and allergic to something in her food, like chicken. Or she could be dying. In any case, she’s now on Fancy Food™️ which makes her insufferable. Related: pet nutrition is absolutely bonkers.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;If you’re trying to gauge what level of pandemic mental breakdown I’m at, I dyed
+my hair pastel pink in the bathroom last week (Manic Panic blessing my life since 2001),
+and this week I “rescued” a very sad looking croton from the grocery shop. I got
+emotional that it was ugly and unloved and nobody else was going to care for it
+because people only buy pretty plants, so I HAD to adopt it. I paid 3$ for this
+privilege of bringing a plant with broken leaves into my house.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;New season of drag race! I know this will be very polarizing, but I kind of love
+how insane Utica is. I also love Gottmik (and that Ru has finally pivoted to saying
+“and may the best drag queen win”) and Tamisha. Still don’t understand the pork chop
+gimmick, and I haven’t eaten a pork chop in like a year and a half so it makes me hungry.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I had some really good meetings at work with super creative and inspiring
+people, and it’s spilling into my personal life: I have 2 (TWO) ideas
+for generative art projects, and 0 (ZERO) motivation to actually do them. I also
+haven’t finished the Bach Menuet I started last week. What do I do instead with my
+evenings you ask? Watch every single Trixie Mattel video on YouTube because that’s the journey I’m on.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Week 3</title>
+   <link href="https://meowni.ca/posts/week-3"/>
+   <updated>2021-01-18T00:00:00+00:00</updated>
+   <id>https://meowni.ca/posts/week-3</id>
+   <content type="html">&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Monday was off which ruined any routine I had formed. I barely got used
+to waking up on Mondays to go to work and then bam, 2 weeks in, a Monday off. I had
+dreams all week about working part time, probably because my brain is clinging
+desperately to this hope of not having to ever wake up on Mondays.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I got 3 &lt;a href=&quot;https://twitter.com/notwaldorf/status/1351609102330327043?s=20&quot;&gt;aquatic snails&lt;/a&gt; in a small little aquarium. They live next to my laptop so I can look at
+them during the boring meetings, and they don’t seem to have any worries. Tentative names: Shelly, Shelmet, Tickle me Shelmo. They’re super active around noon, and I’m learning that whatever number of
+tentacles I thought a snail had, it’s incorrect. I am obsessed with them.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;We had an absolutely awful ER adventure with our dog. On Saturday night she was
+really ill all of a sudden: she couldn’t stand without falling over,
+couldn’t stop throwing up, and her nose was super hot (this is how you can
+check if a dog has a fever!). Since she’s golden retriever and therefore a
+trash vacuum, we were almost positive she ate a poisonous mushroom, or
+some coffee beans or chocolate or something bad like that. Imagine our shock when
+the ER did a tox screen and it came back positive for….MDMA. Best guess right now is
+that someone at the airbnb next door (who hosts a lot of dubious frat boys)
+threw something in our fenced-in yard. In any case,
+dogs shouldn’t be on hard drugs, and she had a pretty rough rave of IV fluids and ice packs all night. Now I’m too freaked out to let her outside in the yard and have some empathy
+towards the mothers who want to lock their childrens in the bedrooms and
+never leave them out of their sight. What a shitty thing to do to a dog, man.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I am reading &lt;a href=&quot;https://gretchenmcculloch.com/book/&quot;&gt;“Because Internet”&lt;/a&gt; by my second favourite linguist, Gretchen McCulloch.
+My favourite linguist is Jane Solomon; she also wrote a book, &lt;a href=&quot;https://www.amazon.com/Dictionary-Difficult-Words-perplexing-words/dp/1786038110&quot;&gt;“The Dictionary of Difficult Words”&lt;/a&gt;, and 7 year old me would’ve thought it was the absolutely best ever.
+If you have a smart ass 7 year old, buy it for them.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I see some progress in my watercolours. Do’s: layer blobs of colours, but only
+after the previous one has completely dried. Dont’s: No aggressive blending or
+gradients that aren’t just “this colour bled into this other one”.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Week 4</title>
+   <link href="https://meowni.ca/posts/week-4"/>
+   <updated>2021-01-25T00:00:00+00:00</updated>
+   <id>https://meowni.ca/posts/week-4</id>
+   <content type="html">&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Tahoe (where we currently live during this pannie-d) got a ton of snow this week, so I’ve been in winter mode. Went skiing on Friday, went snowshoeing on Sunday. My calves are on fire. Skiing is pretty safe; everyone is wearing masks, they’ve closed all the
+lodges, and tbh nobody should be within 6 feet of me skiing on a good day.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I can tell when I accidentally overdo it with the hobbies (which is every time I get excited about a new hobby) because I rapidly swing in the other
+direction. I painted nothing this week, and I spent all weekend watching the entire season of Bling Empire in one day instead.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I knitted most of a
+&lt;a href=&quot;https://www.ravelry.com/patterns/library/quick-ombre-hat&quot;&gt;hat&lt;/a&gt;
+and then unravelled it all because it had accumulated too many mistakes. It’s a really fun
+knit so I’m not too bothered.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I spent a lot of evenings frantically working on a visualization about plastic waste (new hobby alert) that nobody asked for. It started as “lemme do a quick thing to get better at d3 and
+at asking questions about the data” and it’s now a good 8+ hours of work in. Sure wish I would’ve half assed it, because now it’s not done and I don’t really want to finish it.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Still reading &lt;a href=&quot;https://gretchenmcculloch.com/book/&quot;&gt;“Because Internet”&lt;/a&gt;; also started
+&lt;a href=&quot;https://www.amazon.com/Travelling-Cat-Chronicles-Hiro-Arikawa/dp/0451491335&quot;&gt;The Travelling Cat Chronicles&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I am really &lt;a href=&quot;https://twitter.com/notwaldorf/status/1354298108083990528?s=20&quot;&gt;irritated and confused&lt;/a&gt; by this Hangouts/Chat situation. I am on an iPhone, and
+want to send &lt;a href=&quot;https://fberriman.com/&quot;&gt;Frances&lt;/a&gt; stupid links, hot takes and photos. We can’t use our respective
+phone’s Messages app (because hers is over SMS which shits the bed on photos, and mine is Apple proprietary). We
+were using Hangouts, but it’s deprecated, and wanted to use Chat, but it’s …
+enterprise only and peons can’t start new conversations? Also Whatsapp is evil and
+Signal spams all my contacts when I install it. What the fuck, I just want to talk
+to non-Apple friends in 2021.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;February is a perfect calendar &lt;a href=&quot;https://twitter.com/standupmaths/status/1356212992669589504?s=20&quot;&gt;rectangle&lt;/a&gt; and that is satisfying.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Are week notes the new LiveJournal but without comments? Discuss.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Week 6</title>
+   <link href="https://meowni.ca/posts/week-6"/>
+   <updated>2021-02-08T00:00:00+00:00</updated>
+   <id>https://meowni.ca/posts/week-6</id>
+   <content type="html">&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;I skipped week 5 because all I did in the panna cotta was watch 3 seasons of
+“how to get away with murder”. It’s a terrible show and I’m not ashamed of it.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;What is up with that star codex thing? I can’t believe there was a cult of
+assholes in tech I didn’t know about. I’m obviously not surprised they existed,
+there’s an asshole under every rock in tech; I’m just surprised I didn’t know
+about it. I’m a person in the know! I have an invite to Dispo!&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I watched the #freebritney documentary and I think that a) the concept of a conservatorship for a grown ass 40 year old woman is fucked and b) her dad being
+a mysoginistic asshole is 80% of the reason she’s on one. Nobody
+put Kanye in a corner when he was going bonkers; we let him run for
+president and bought his shitty 20 minute long album to make fun of it and talked about how he prolly needs to take his meds but oh well,
+famous people amirite. But if a woman goes a bit bonkers and in the process
+shaves her head (we all know women aren’t allowed to shave their heads), then suddenly she needs to be in a legal monetary prison for life? Rich people waste their
+money ALL the time, why is she the different one? Makes you think.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I also think it’s the cherry on the cake that because her dad is “managing” her
+estate she is essentially paying both for her lawyers to try to help her,
+and for the opposing lawyers to try to screw her.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I’ve been working on a lot of generative art. This is good, because I’m making
+things and I want to open a store so people can put my things on their walls,
+but bad because when I make art and keep looking at it I end up violently hating it, and that spirals out of control into a “everything I do is basic and derivative” mood which tbh makes me feel like shit. I had a nice chat with @mrmrs who is 100x more talented than me but feels similarly about his art sometimes, so I felt very seen.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;We drove to Arizona this weekend. We are still doing nothing but now it’s
+nothing around cactuses and the desert. I’ve been trying to find ways to get myself
+to move more, and I read in Alice’s notes that she tried out geocaching, so I installed an app last night! I thought there would be like a geocache per state, but there’s millions. There are 2 geocaches within a 2 mile walk! If there’s no week 7 notes it’s
+either because nothing happened or because I died trying to get to this cache. The halting
+problem is a hell of a thing.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Week 7</title>
+   <link href="https://meowni.ca/posts/week-7"/>
+   <updated>2021-02-15T00:00:00+00:00</updated>
+   <id>https://meowni.ca/posts/week-7</id>
+   <content type="html">&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;I got deep into geocaching, friends. I found 3 caches in Arizona! I didn’t sign any of them
+because I kept forgetting to bring a pen, so now nobody will know I was there.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Geocaching is mad in the US. We drove back from Arizona (flying? in this economy??), and there were
+HUNDREDS along the highway. First, who are these people that stop on the side of the highway to hide a cache? 
+Second, who are these people who stop on the side of the highway to go look for a cache? Were you raised by
+wolves? Highways are dangerous yo, don’t just stop on the shoulder unless your car is on fire.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I am filled with fury about cryptoart. FILLED. I follow someone on Instagram who has raised money for the 
+national park service, and loves Joshua Tree, and a lot of her art is of nature, and she’s been minting like
+3 NFTs a week. &lt;a href=&quot;https://joanielemercier.com/the-problem-of-cryptoart/&quot;&gt;Joanie Lemercier&lt;/a&gt; wrote how 10 seconds of
+cryptoart used more energy than their studio in 2 years. TWO YEARS. Imagine being an artist that is
+minting cryptoart in the same week that Texas residents are bankrupt because they couldn’t pay their
+$17,000 heating bill in the winter because the Texas utilities companies are messed up and unregulated and
+can fuck with prices when supply is low. FILLED WITH FURY.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Related: I think part of the problem is that we’re not making people build those absurd rigs to mine crypto
+anymore.In uni one of my friends built one of those babies to mine doge at home, and he could heat up his
+house in the winter from it! Now you just sign up for a service that mines in a data center and heats up the
+desert somewhere.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Also related: I 100% empathize with artists that selling art is hard and it’s impossible to make a living,
+but as with everything, crypto isn’t gonna solve anything. Unless you have a weird perpetuity clause in your
+NFT (is that a thing? I don’t know. I make it a point to know as little as possible about crypto because I already
+have heartburn from regular life things and don’t need more), the only people making money from cryptoart are the people who
+could already sell regular art for a shit ton of money. Otherwise nobody is going to pay any real money
+for your anonymous neon animated block, crypto or not.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I tweeted about this AND I now wrote about it and I am still filled with fury. Sorry to the 2 people
+who read these notes and also read this on Twitter. Nobody better email me about this; I cannot be convinced to not hate crypto, and I will just mute you with high prejudice and no guilt.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Honestly now that I am typing out these notes I’m also filled with fury about everything that’s
+going on with Google and Research, so I don’t think I’ve done anything other than be angry all week. lol what 
+a time to be alive.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;In the spare rage free seconds I’ve had left, I have been hard at work at getting meownica studio up and running. I have a special &lt;a href=&quot;https://www.instagram.com/meownica.studio/&quot;&gt;instagram&lt;/a&gt; account. I took the &lt;a href=&quot;https://www.meownica.studio/&quot;&gt;actual store&lt;/a&gt; out of maintenance mode. I enlisted my photographer friend &lt;a href=&quot;https://www.ashleybatz.com/&quot;&gt;Ashley&lt;/a&gt; (she is enormously talented, please hire her) to take photos so that I can update the store with real life product photos. This week is the week, I feel it.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Also &lt;a href=&quot;https://github.com/mattdesl/canvas-sketch&quot;&gt;canvas-sketch&lt;/a&gt; is dope and it does dope things (like use units that make sense)&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Week 8</title>
+   <link href="https://meowni.ca/posts/week-8"/>
+   <updated>2021-02-27T00:00:00+00:00</updated>
+   <id>https://meowni.ca/posts/week-8</id>
+   <content type="html">&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;This week was entirely consumed by the fact that I opened an &lt;a href=&quot;https://meownica.studio&quot;&gt;online store&lt;/a&gt; to sell generative “art” prints. Art is in quotations here because I have a deeply unhealthy relationship with calling anything I do art, or myself an artist, but we don’t have time to for a therapy session right now.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;It went really great. I sold out of 2 kinds of prints! People who weren’t just my friends put it orders! My first customer ever was Mariko, which is absurd because she should’ve gotten a free print without even asking based on the kilograms of gacha she’s brought me from Japan, but of course she was also the first one to see the tweet about the store because that’s just the
+kind of friend she is.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;(this paragraph is really niche and boring, skip it). Every once in a while I use a software that blows my fucking mind. E-commerce is generally NOT this experience btw, because it’s all integrations that are 90% magic and 10% wonky af. Like, my store is a BigCartel store (big fan!), but the site itself is a bit flaky so sometimes Things Will Happen™ (like pages won’t redirect, the theme editor will just panic, javascript is a prison). Stripe was like 95% magic and 5% “the oauth flow didn’t redirect well For Reasons™ so I had to do it twice”. I don’t even know who was at fault there. Anyway, PirateShip is a thing that prints USPS labels and it was 120% magic. People wrote their addresses in their orders in my store; I clicked a single button on the PirateShip site, which imported those addresses, made shipping labels, made customs forms for the international orders, formatted all the labels for my label printer to print AND emailed all the customers their tracking numbers. And charged me 0 extra dollars. PirateShip, I don’t know how you make your money but you are an absolute gem and I love you. The post office gentleman even commented on how together my shit was.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Frances and I had a FitBit active minutes challenge and I WON by like 32 minutes (aka extremely close). Zach was also
+in some Apple Fitness challenge with a friend, so we had several “can we walk to the dog park, I need the points” moments.
+The dog had the best week.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I am trying to get as good at painting on my iPad as I am in real life (which honestly, is not bad. I am a good technical
+artist, I’m just basic and derivative, ya know?). I took some skillshare classes, and I installed a paperfeel screen protector
+thing that really helped. The shinyness is so offputting for drawing.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I finished “Dept. of Speculation” by Jenny Offill. I really enjoyed it. I write book reviews on &lt;a href=&quot;https://www.goodreads.com/user/show/27136484-monica&quot;&gt;my goodreads&lt;/a&gt; if you’re looking for a book to read.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I’m watching a lot of Below Deck (like, all the past seasons). I don’t know what this will do to my personality, but given that
+it’s been almost a year of hanging out with pretty much just my pets and Zach, it probably won’t be an improvement.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Spotted: a very fuzzy bee smelling the flowers (mostly Nasturtiums it turns out) from the bee-friendly seeds I planted 
+last year. You know you love me, xoxo garden girl.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Week 10</title>
+   <link href="https://meowni.ca/posts/week-10"/>
+   <updated>2021-03-08T00:00:00+00:00</updated>
+   <id>https://meowni.ca/posts/week-10</id>
+   <content type="html">&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;I took the whole week off because I was very tired of life. It’s the year anniversary of the last
+time the world was normal and it’s bringing me down. Between covid and immigration
+delays it’s looking very 50/50 on whether I can attend my closest cousin’s wedding this fall in Romania,
+and I’m beyond gutted at the thought of missing it. All I can do about it is wait, and that’s making the pandemic fatigue worse by a thousand.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I made two &lt;a href=&quot;https://meownica.studio/&quot;&gt;prints&lt;/a&gt; of Barnsley ferns. They looked cool
+in the end, but they were a bit of a struggle. Barsnley ferns are these super popular fractals
+that (spoilers) look like ferns, but honestly, fractals in general are not my favourite. These
+ones come out of 4 equations and 6 parameters which sounds like would open a whole world of 
+possibilities, but it turns out most combinations of values produce absolute trash. Which is fine,
+but that’s not my style of generative art. Instead, I spent all my random numbers in trying to
+paint the ferns like &lt;a href=&quot;https://www.meownica.studio/product/ferns-single-edition&quot;&gt;furry brush strokes&lt;/a&gt; and &lt;a href=&quot;https://www.meownica.studio/product/ode-to-barnsley-single-edition&quot;&gt;letters&lt;/a&gt; I don’t think anyone other than me appreciates that 😅.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I got deep into linocuts. I’ve been trying to figure out how to make the things that come out of a computer also come out of my hands, and hand prints can definitely be that thing. Doing the linocut itself is my favourite kind of relaxing; it keeps my hands busy with stabbing squishy things (also see: that time
+i picked up felting in meetings). I can’t believe I haven’t tried it before. Also, Frances says that the linocuts I’ve been doing look a lot like the kind of carving I used to do with my pottery, which is great news because that means I have a *~style~*.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;As usual, I am undeservedly lucky: one of my cousins, &lt;a href=&quot;https://ralu.ca/&quot;&gt;Raluca Iancu&lt;/a&gt; is an enormously
+talented printmaker and professor of printmaking, so I got to text her with questions. I don’t think
+everyone who starts up with a hobby can text a professional in that area and be like “hello I bought 10$
+tools and some linoleum, please hold my feelings with your 10+ years of domain expertise”.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Zach and I have been babysitting our friends’ smol puppy. Her name is Penny and she is SO CUTE. The cat
+feels infinitely betrayed.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I am reading “Wow, no thank you” by Samantha Irby because she is hilarious and hates people almost
+as much as I do. I just finished season 4 of Below Deck and I think I need to take a break because
+I got way too invested in the romantic life of Ben the chef.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I am looking for a chill, weekly “draw this” prompt from instagram. If you’re reading this and you
+know one that you’ve used or you like, please let me know!&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Week 11</title>
+   <link href="https://meowni.ca/posts/week-11"/>
+   <updated>2021-03-15T00:00:00+00:00</updated>
+   <id>https://meowni.ca/posts/week-11</id>
+   <content type="html">&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;It’s been another week of people being shit, innit? I know I should be 
+used to this by now, but it never ceases to amaze me the capability people have for violence
+and evil, and the capability the patriarchy has to excuse it. “Dude had a bad day”? For real real?
+If that excuse has legs then you’d expect every uterus-holding person to do at LEAST a murder
+per year. And yet it’s always white dudes who haven’t ever thrown up from cramps or had to deal with birth control hormones that feel they’re 
+entitled to attention or sex or whatever and go on these racist murder sprees. And they’re 
+going to continue to as long as the media excuses them as “bad days”, or gives them a platform by 
+encouraging racism and xenophobia. If you’re a Fox news anchor who’s ever said the
+words “china virus” in the last year…these murders are on you pal. I see you, and I deeply hope you don’t have a good night of sleep for the rest of your life.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I took all this anger and donated to Red Canary Song and also pointlessly stabbed linoleum with it. The goal is to carve things a computer generates, 
+but at the moment that’s a bit too hard for me (I make the computer generate a lot of lines and uhhh that’s a lot of cutting), so I’ve been carving some non-generative stuff. They’re all a bit surrealist, because that is extremely my shit, but I don’t really know what to do with them.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I also don’t understand my audience. For example, I made this &lt;a href=&quot;https://meownica.bigcartel.com/product/the-internet-and-plants&quot;&gt;computer plant&lt;/a&gt;. I thought it was meh, so I wasn’t gonna put it up in the store, but after tweeting about it, it ended up selling out in a nanosecond. I made this March Madness &lt;a href=&quot;https://meownica.bigcartel.com/product/basketball-buzzers-beets&quot;&gt;basketball beet&lt;/a&gt; that’s 
+like…actually well carved and in two colours and cute and nobody cared. The same happened with the generative stuff – the &lt;a href=&quot;https://meownica.bigcartel.com/product/smoke-1&quot;&gt;chaos attractors&lt;/a&gt; I thought were deeply boring sold out instantly, the &lt;a href=&quot;https://meownica.bigcartel.com/product/flight-3&quot;&gt;wings in flight&lt;/a&gt; that 
+I absolutely adore are a no-op. I don’t get it, y’all.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I am back on my procedural bullshit. &lt;a href=&quot;https://twitter.com/mrmrs_&quot;&gt;Adam&lt;/a&gt; has been telling me about
+the Mentalist for months now, and holy shit: he was right. A++ procedural murders, be back in 7 seasons.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Every year I say I’m going to do a March Madness bracket where I ignore the chalk and just pick it on names and mascots, and every year I think the chalk knows best so I don’t and get busted on like day 1. I see you Oral Roberts toothpastes and Loyola wolf boys, I should’ve kept you going to the final 4 like I wanted to, eh?&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Related: defensive fouls in basketball are absolutely bullshit.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Zach and I are rewatching all of the Marvel movies in story chronological order. This means that I went on
+several really productive 4 am YouTube holes of watching Avengers bloopers, every recorded interview with Robert Downey Jr, and that whole Ally McBeal season he was on. Imagine if I could put that kind of energy in watching videos about quantum mechanics or something. Instead, I can tell you that he met his wife when filming Gothika, that Tom Hiddleston couldn’t stop laughing during that one scene in Avengers 1 when Hulk smashes him into the Stark tower apartment floor, and that Mark Ruffalo is scared of needles so he doesn’t have the Avengers tattoo everyone else got. WHY AM I THIS WAY.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Week 12</title>
+   <link href="https://meowni.ca/posts/week-12"/>
+   <updated>2021-03-22T00:00:00+00:00</updated>
+   <id>https://meowni.ca/posts/week-12</id>
+   <content type="html">&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Trying something really revolutionary this week which is “doing nothing”. Bear with me here. I mean: listening to an audio book and NOT also cleaning the house. Just sitting, listening to that book and doing nothing. WASTING THAT TIME. In this economy??? Yes. Do I dislike the idea? Also yes.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Related: I switched to the Samantha Irby (Wow, no thank you) audiobook because a) she narrates it and her voice is great and b) after 365+ days in the panini, a voice that isn’t my husband’s is a welcomed blessing.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I shipped out 10 linocut prints and (hyperbole) it was the most stressful thing I’ve done. Hand prints
+are beautiful because they’re so textured and imperfect and really truly awful because they’re so textured and imperfect. I basically printed 10 extras so I’d have something to pick from, and ended up hating all of them. I hope that’s just my brain, and the people who they went to end up liking them.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;California is opening up vaccines to all humans after April 15, and I have a vaccine appointment for April 22. It’s been so long since this started that I’ve lost all hope. I assume something horrible will happen like they’ll change their minds or I’ll show up and they’ll be like ha ha no vaccines for legal aliens or people whose names start with the letter M or they’ll run out or I’ll sleep through the appointment or or or. Welcome to my brain, it is a literal prison.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;All week I did many linocuts and no JavaScripts, so next week I’m making a rule to either only carve
+generated things, or only generate things. In the carving pipeline: a generated bookcase, a generated tree ring. In the coding pipeline: a techno landscape (maybe???) for my friend Daniel, some posters for a conference my friend Jana is organizing. Neither of them read this and that’s for the best.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I &lt;a href=&quot;https://www.instagram.com/p/CMm6WeKHgVM/&quot;&gt;bought an art&lt;/a&gt; from an artist on Instagram! I don’t usually like very abstract art, but this one is so bright and happy and I think will look great in our very white-walls apartment. It’s coming from Malta, a country about which I know very little about (capital: Valetta, location: off the tip of the Italian boot, anything else: no)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Big week to be a boat, eh?&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Week 13</title>
+   <link href="https://meowni.ca/posts/week-13"/>
+   <updated>2021-03-29T00:00:00+00:00</updated>
+   <id>https://meowni.ca/posts/week-13</id>
+   <content type="html">&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.nintendo.com/games/detail/calico-switch/&quot;&gt;Calico&lt;/a&gt; came out and I finished it in 2 days! It’s an adorably cute game about running a pet cafe in a fantastical little world. It’s honestly the kind of game I would make. It has an incredible cooking activity interaction, which I can only describe as “shit, this game engine has physics and collision detection, let’s use it for something!”. It’s great. (spoilers if you don’t want to play it: the interaction is “you turn into a smol person and throw the cooking ingredients that are now bigger than you at a giant bowl”. it’s wonderful.)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I am now playing Fenyx Rising on the Switch because it looked like a Zelda Breath of the Wild clone and can confirm: it’s basically BOTW minus cooking plus quality of life improvements (swords don’t break! more looting and outfits!) and sassy greek gods. Don’t know how the Ubisoft lawyers managed to sweep that under the rug, but I for one welcome the 50+ hours of gameplay ahead of me.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I tried to make a Queen of Puddings desert because I saw it on celebrity bakeoff and like Dizzee Rascal (self proclaimed literal first time baker) managed to follow the recipe and do it so I felt overconfident. My custard didn’t set; I would’ve come last in the technical challenge. Also, it was WAY too sweet in my opinion, but at least that part wasn’t my fault.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I also made my own homemade kaya! I discovered kaya when I was in Singapore 2 years ago, and it was life changing. A kaya toast set is probably my favourite breakfast concept, and I missed having it since I ran out of the Ya Kun kaya I bought on that trip. Worry no more: I am back on that bullshit.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I am doing a 2 week &lt;a href=&quot;https://www.chloeting.com/program/2020/two-weeks-shred-challenge.html&quot;&gt;Chloe Ting program&lt;/a&gt;, which means I have exercised every day this week. This is a huge record that I am very proud of, because I think exercising is the most boring and awful activity in the universe. I hated every minute of it, but by Sunday the minutes SEEM to at least pass faster? I dunno fam, it’s not great.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I’ve started cross stitching while watching the Mentalist. It feels…oddly relaxing? I have no idea what I’m going to do with the result of cross stitching though, hang it in a bathroom somewhere? Is it too early to go down the pensioner aesthetic route?&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The linocut print of generated-with-javascript tree ring is almost done! I’ve been making some test prints, and they’re cute! I think I’m going to write a blog post about the process because I am very happy with it!&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I think summer is coming. Better get that SPF out.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Week 14</title>
+   <link href="https://meowni.ca/posts/week-14"/>
+   <updated>2021-04-05T00:00:00+00:00</updated>
+   <id>https://meowni.ca/posts/week-14</id>
+   <content type="html">&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Let’s not bury the lede: I quit my job. After 8 years of working there, Google feels like a very different 
+company than the one I joined, one that aligns less and less with my values, and it was time to move on.
+It sucks, because my immediate team was a group of wonderful people who do great work; I will miss them,
+and the work I did, greatly. I haven’t had a vacation longer than 2 weeks since I was 18-ish, because I worked every summer and was too much of a naive workaholic to think I should take more than 1 week between jobs, so I am giving myself 6 months before I start something new this time around. It’s stressful to not have a plan, and I am bad at relaxing, but I have full confidence I can learn to overachieve at this as well.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Didn’t I tell y’all I was worried SOMETHING was going to happen and I wasn’t going to get my vaccine? Here I am, 3 hours before my J+J stabbie stabby, reading about how my appointment is cancelled because it has an incredibly rare clotting side effect. One that is 10000 more rare than the usual clots women get threatened with for taking birth control and that absolutely nobody blinks an eye at anymore. This feels a lot like fabricated concern; we already don’t care about women getting blood clots. 1 in over 6 million? Fam, that’s better odds than getting in a car or not getting e-coli from Chipotle. Stop this.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I’ve become very bad at telling stories, which is 100% a result of the panini and not being forced to socialize with people. I’ve noticed several times in recent weeks where I’m telling a story and can see the life leaving from people’s eyes. I am bored of what I am saying as I am saying it. I am not ready to move to the midwest yet; I must fix this.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://twitter.com/Danez_Smif/status/1381449712428060672?s=20&quot;&gt;This&lt;/a&gt; is a very good tweet. Abolish the police already. Stop giving guns to insecure people who think a uniform gives them the right to kill others because of the colour of their skin. Stop giving guns to incompetent people who apparently aren’t trained enough to tell the difference between a gun and a taser, but are confident they have a right to use either. Stop giving guns to people.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I am working on 2 linocuts. I should probably start working on more generative stuff, since JavaScript is my bread and butter and should somehow prove to my future employers I still got it. Or something. I am a deflated balloon after finding out my vaccine was cancelled and writing about yet another dead black man above so I don’t really know how to end this update on a good note.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Week 15</title>
+   <link href="https://meowni.ca/posts/week-15"/>
+   <updated>2021-04-12T00:00:00+00:00</updated>
+   <id>https://meowni.ca/posts/week-15</id>
+   <content type="html">&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;First week of being funemployed! It was very weird. By Wednesday I had lost track of what 
+day it was, and I kept thinking it was a Saturday. By Friday I was overwhelmed with capitalism
+guilt and thinking that I HAD to do something to “stay productive”. What a fake idea y’all; it hadn’t
+even been a full week of vacation!&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I got vaccinated!!! I had no side effects other than a very sore arm, which is strange because
+my immune system is the golden retriever of immune systems and doesn’t miss a free opportunity
+to throw a fever on something.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Games update: Played “Cozy Grove” (comes on many platforms. I played it on my phone but 
+it’s also on the switch. It’a cute Animal Crossing like island game with daily tasks), and “Dear Reader” 
+(I played it on my iPhone. It’s a very cute literary game where you “read” a book by unscrambling
+text puzzles in sentences. I’m super curious about how they summarize the book, because it feels very well done. I “read” Flatland like that, and you totally get the gist of the whole story while obviously
+not reading the whole book. Pretty neat)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I was on a &lt;a href=&quot;https://theworkitem.com/blog/creativity-monica-dinculescu/&quot;&gt;podcast&lt;/a&gt;, and it was proper 
+fun. Dan is a really nice and thoughtful interviewer. I was joking with him that I’ve been a bit 
+traumatized by podcasts since this weird show I was on a while back about Web Components, where the
+hosts wanted to just produce drama and stir shit; I think they even opened up with something like “this
+could be the Jerry Springer of JavaScript” and I was like……am I the pregnant 16 year old without
+a baby daddy in this story because I think I should be offended. Anyway. This podcast wasn’t anything
+like that, and I thoroughly loved being on it.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Also my hair looked great.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I got to the Big Reveal on the Mentalist and I gotta say: it was very good. Unsual for a procedural show
+to have like a very strong arc, but this was a thing that was 5 seasons in the making and it was great. Unfortunately this means I am reaching the end of this show and I don’t have a next procedural lined up!!!&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Dog has an ear infection and it’s incredibly gross. Golden Retrievers have a lot of ear.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I think the trick to “exercising” is just living in yoga pants and sports bras. I am 100% more likely to
+exercise if I’m already dressed for it, because the thought of changing into yoga pants from whatever potato sack outfit I’m wearing just to go exercise seems daunting. Is this a life hack? Also, what is wrong with my brain that changing into different clothes seems like an unmeasurable amount of effort?&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Actually don’t answer that.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Week 17</title>
+   <link href="https://meowni.ca/posts/week-17"/>
+   <updated>2021-04-26T00:00:00+00:00</updated>
+   <id>https://meowni.ca/posts/week-17</id>
+   <content type="html">&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;I’ve been skipping weeks because a) literally nothing happens and b) I don’t have a good
+system to update these notes. They’re a markdown file on a GitHub repo, and I kind of 
+need a computer to edit it, but I also kind of don’t open my computer that much these days?
+I also keep forgetting which day is Monday. Room for improvement.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I wrote a &lt;a href=&quot;https://meowni.ca/posts/tree-rings/&quot;&gt;blog post&lt;/a&gt; about how I generated some
+tree rings in JavaScript and then carved them as a linocut. It doesn’t actually contain any
+JavaScript, but it does have a lot of pretty images.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The last normal thing I did before the panini started was go to Japantown and stock
+up on apocalypse supplies (snackos, mucho ramen, milk tea powder, korean face things). 
+The first normal thing I did with my 1 vaccine shot was go to Japantown and restock 
+all the things. This wasn’t on purpose, but I am pleased with the serendipity. It is cherry blossom season, so it was very pretty, HOWEVER, some racist asshole vandalized two of the oldest cherry trees there in January. Literally chopped down all of the branches, one at a time. What the actual fuck.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;If you’re against plastic (why aren’t you?) and use deodorants, Dove has started selling &lt;a href=&quot;https://www.dove.com/us/en/deodorants/refillable-deodorant.html&quot;&gt;refillable&lt;/a&gt; ones. I got mine from Target. The refill itself 
+still comes in plastic, but overall it’s far less plastic than the obnoxious amount the normal ones have. I’m excited about this not because this deodorant is particularly amazing, but because Dove is a HUGE brand, and 
+having mainstream brands start looking into more reusable, less-plastic products is a small but exciting progress.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Speaking of waste, Zach bought &lt;s&gt;us&lt;/s&gt; me the most amazing thing: a &lt;a href=&quot;https://www.vitamix.com/us/en_us/shop/foodcycler-fc-50&quot;&gt;foodcycler&lt;/a&gt;!!! We’ve been composting for years, but I’ve recently started getting lazier about putting the compost back in the freezer when I’m done with it, so our idiot dog has been stealing a lot of compost (which is full of bad things for her like coffee grounds, onion peels, literally half a spaghetti squash rind she ate and threw up for 8 hours). This foodcycler thing takes the compost and dehydrates it and grinds it and in 4 hours is done and gives you back fertilizer at like a tenth of the original volume. We’ve had it for a week and it’s honestly THE MOST innovation I’ve seen in my kitchen.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Week 18</title>
+   <link href="https://meowni.ca/posts/week-18"/>
+   <updated>2021-05-03T00:00:00+00:00</updated>
+   <id>https://meowni.ca/posts/week-18</id>
+   <content type="html">&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Ya look at that? It’s May already. My dog’s is turning 2 on the 14th, does anyone have any
+good dog cake recipes or should I just give her an almost-empty jar of peanut butter with the same
+success rate?&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I got my second fouchie outchie! (#teampfizer). I wouldn’t say it bodied me the next day,
+but I felt uncomfortable enough to sit in bed and read not one but TWO Bridgerton novels. I’ve 
+now read 1-4 and I think I’m done for a while.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Speaking of books, I’m finishing up On Earth We’re Briefly Gorgeous (Ocean Vuong; reads like poetry
+but isn’t. Review next time), and I’m about to start up The Vanishing Half (Brit Bennett; very 2021 book cover). I also finished a book in Romanian, translated from Russian: Zuleiha opens her eyes (Guzel Yakhina. Really beautiful, much more hopeful and uplifting than the Russian literature I’m used to.)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;After 15+ years of living in North America, I think I am “into” oatmeal. Oatmeal isn’t a Romanian thing
+at all – oats are for horses, cream of wheat is for babies, adults don’t eat either. Current
+approach: 1. overnight oats (in water, cashew milk makes them too…intense and I don’t give money
+to the meat industry for cow milk) + either apple sauce (that I make because I keep forgetting to eat apples), or frozen fruit.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Other food shit I’m obsessed with right now: ingesting industrial quantities of watermelon, these
+&lt;a href=&quot;https://gimmedelicious.com/keto-peanut-butter-cookies/&quot;&gt;keto peanut butter cookies&lt;/a&gt; (I don’t eat keto,
+but pb cookies with no-guilt-sugar are delicius), cashew milk.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Arts: I am deeply struggling with a 3 layer linocut. I’ve carved it like 3+ times, and no matter how I do it I can’t line up all the 3 layers well. I think it’s time to give up on it and make it into a digital print. Also, I’ve been working on L-systems, which make pretty trees. Should I write a blog post about that when it’s done?&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Week 20</title>
+   <link href="https://meowni.ca/posts/week-20"/>
+   <updated>2021-05-17T00:00:00+00:00</updated>
+   <id>https://meowni.ca/posts/week-20</id>
+   <content type="html">&lt;ul&gt;
+  &lt;li&gt;normalcy resumes chez nous. I know this isn’t true everywhere, so if you’re in a place of lockdown: I am sorry for how annoying these updates will be. I was a good girl and bunkered down for over a year, and now I’ve got antibodies in spades and taking advantage of it.&lt;/li&gt;
+  &lt;li&gt;first trip of the after times: Monterey! I’d never been, because prior to last year we didn’t have a car, and renting a car for a 2 hour trip always felt daunting. However, now we have a car, and San Francisco is full of lovely things just a drive away.&lt;/li&gt;
+  &lt;li&gt;aquarium is still on pandemic rules so I didn’t get to see any 🦦🦦🦦. Next time!&lt;/li&gt;
+  &lt;li&gt;left Hopper at a dog boarding place for half a day so that we could have brunch in Carmel “without the kids”. First, paying for eggs I didn’t cook was an incredible experience and I almost cried (this is a theme this month, every time I do something that was pedestrian and normal in the before times I get overwhelmed with emotion). Second, Hopper a) fooled the humans into somehow trusting she’s not a vacuum cleaner and promptly ate another dog’s lunch and b) was a squirelly weirdo and mostly wanted to hang out around humans and not the other dogs, which is 60% her personality and 40% something she picked up in the apocalypse.&lt;/li&gt;
+  &lt;li&gt;had an &lt;em&gt;indoor&lt;/em&gt; fancy dinner with fellow vaccinated friends, to celebrate our new superpowers, and the place had white Russian ice cream floats for desert and can I just say: yes.&lt;/li&gt;
+  &lt;li&gt;EUROVISION. Incredible showings from Iceland and Ukraine, and an absolute shit bouquet when it came to voting. Collusion has been a Eurovision classic since the dawn of time, but this year it was enraging. France, really? Discount Edith Piaf? What a travesty. Special mention however to the international conspiracy of letting the UK go to the final only to award them 0 points across the board. A masterpiece; well done everyone.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Week 21</title>
+   <link href="https://meowni.ca/posts/week-21"/>
+   <updated>2021-05-25T00:00:00+00:00</updated>
+   <id>https://meowni.ca/posts/week-21</id>
+   <content type="html">&lt;ul&gt;
+  &lt;li&gt;Chopped off 10 inches of my hair and I feel unstoppable. I always &lt;em&gt;think&lt;/em&gt; I can deal with mermaid hair when the reality is I cba to brush it and it keeps getting longer and drier until I’m ready to take the kitchen scissors to it. I resisted that impulse and got a professional to cut it. Am I finally an adult?&lt;/li&gt;
+  &lt;li&gt;I am writing this update FROM A PLANE. Yes, a real plane. My brother-in-law’s family is moving into a new house and we’re going to celebrate. Also I haven’t seen their kids in a year and a half, which is 50% of one of them’s lives. She talks now! What!&lt;/li&gt;
+  &lt;li&gt;Update: the inner life of 3 year olds is outstanding. We are just guests in their world.&lt;/li&gt;
+  &lt;li&gt;Books: I finished the Vanishing Half and it was Very Good. I mostly avoided reading it because it has the most 2020 book style cover I’ve ever seen, but it was quite good despite that. Some weeks back I also finished On earth We’re Briefly Gorgeous and it was a bit of a miss for me. I like everything it was about (love a good immigrant memoir) but I didn’t enjoy the writing, which made the actual reading time a bit of a slog. I’m now reading The Lies of Locke Lamora because TikTok told me about it.&lt;/li&gt;
+  &lt;li&gt;Jake did &lt;a href=&quot;https://twitter.com/jaffathecake/status/1398519620764581888?s=20&quot;&gt;a lot of walking&lt;/a&gt; for cancer (he’s against). He walked 100km in a row, in something like over 24h. As part of it he also did an hourly ama (or at least until he became a delirious shell of a man), and Frances and I (henceforth known as the &lt;a href=&quot;https://twitter.com/jaffathecake/status/1398765439770107904?s=20&quot;&gt;chuckle sisters&lt;/a&gt;) covered 6 shifts. It was good fun and I’m enormously proud of him.&lt;/li&gt;
+  &lt;li&gt;One of the best things about having a FitBit smart watch instead of an Apple one is that I can make my own faces really easily (in JavaScript!!!). I wanted something that looked very clean on the main screen but also had the option for a stats heavy second screen, and I could never find quite the right one so I made my own. Putting this work experience to good use!&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Week 22: a week of sports</title>
+   <link href="https://meowni.ca/posts/week-22"/>
+   <updated>2021-05-31T00:00:00+00:00</updated>
+   <id>https://meowni.ca/posts/week-22</id>
+   <content type="html">&lt;ul&gt;
+  &lt;li&gt;Trying out titles because I have enough weeks that even I can’t tell them apart and I lived through them.&lt;/li&gt;
+  &lt;li&gt;Sports!!! We went to the Nations League ⚽️ semis and finals in Denver. If you don’t know this about me, I am a bit of a football (soccer) hooligan. Zach and I go to games, we sit in suporter sections, we chant. We went to France for the Women’s World Cup, because sports is a great excuse to travel, and the US women’s team is rad af. On top of that, a weird goal of mine is to be one of the drummers doing the chant drum beats, so I was super happy I got to &lt;a href=&quot;https://www.instagram.com/p/CP9CDo_pBOw/&quot;&gt;drum a couple of chants&lt;/a&gt; at both games! I even got a gnarly workplace injury blister this time! I think the next big international game is in Vegas, and this might be the one where I try to bring my very own snare drum? Stay tuned.&lt;/li&gt;
+  &lt;li&gt;Colorado in general has given up on masks for the fully vaccinated, which is still so very strange to me. I ate indoors. I walked into a store without a mask on. I hugged friends I haven’t seen in a year. I hugged new friends I met in a bar.&lt;/li&gt;
+  &lt;li&gt;We had 2 free days in between the semis and the final, so we went to Boulder! I hadn’t been before and I LOVED it. It’s so cute and chill. I would definitely be happy living there for a couple of years.&lt;/li&gt;
+  &lt;li&gt;Books: I finished The Lies of Locke Lamora. It was an enjoyable story of thievery and shenanigans. I’m reading Midnight Library now and I am a bit worried because Laura (with who I usually agree on books) said she thought it was badly written, and I am a bit of a writing snob (eg I genuinely loved the writing style of The Starless Sea and a lot of people find that book unbearable).&lt;/li&gt;
+  &lt;li&gt;I have updated my LinkedIn for the first time in over a decade. What a weird place that site is.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Week 24: vroom vroom</title>
+   <link href="https://meowni.ca/posts/week-24"/>
+   <updated>2021-06-14T00:00:00+00:00</updated>
+   <id>https://meowni.ca/posts/week-24</id>
+   <content type="html">&lt;ul&gt;
+  &lt;li&gt;Weird flex: been making cheese fondue for lunch because I make the rules here.&lt;/li&gt;
+  &lt;li&gt;One of the (many) amazing things about being a Canadian living in California is that &lt;em&gt;this&lt;/em&gt; state (unlike, say, no-rules-nevada) doesn’t recognize non-US driving licenses. This means that after almost 20 years of 
+getting my first driver’s license I had to do the whole circus show (written test, road test, 
+being treated like a teenager, etc) to be able to drive here. This week I finally bit the bullet
+and a) drove daily which is wild and b) did my road test (passed with flying colours, I know you’re
+wondering). Side effect: I don’t have to use my Quebec license when I get IDed in bars and go through through the whole apology that my birthday is in fact in french. Bouncers love that.&lt;/li&gt;
+  &lt;li&gt;Speaking of, I’ve misplaced my Quebec licence and that’s very irritating.&lt;/li&gt;
+  &lt;li&gt;Euro 2020 is on! As per, my heart team is the Netherlands and they’re
+doing surprisingly well! They’ve been #blessed with a pretty easy group (rip group F) and I am not 
+looking that gift horse in the mouth.&lt;/li&gt;
+  &lt;li&gt;It’s a month that ends in y so I’m trying to redo my site. Inspos: I really like how clean &lt;a href=&quot;https://thefox.is/about&quot;&gt;Karolina’s&lt;/a&gt; is; I’m low key of obsessed with this &lt;a href=&quot;http://yearinreview.creativedestructionlab.com/#&quot;&gt;absurd cursor&lt;/a&gt; from CDL.&lt;/li&gt;
+  &lt;li&gt;There’s a bear in Tahoe that I’m 100% convinced is just trolling our dog. He spent a whole day casually
+pacing up and down next to our house, which sends Hopper into a fit of barking hysteria.&lt;/li&gt;
+  &lt;li&gt;Books: I finished Midnight Library and really didn’t like it, and Convenience Store Woman and it reminded me a lot of absurd theatre plays. I’m starting Klara and the Sun now.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Week 25: I redid my website</title>
+   <link href="https://meowni.ca/posts/week-25"/>
+   <updated>2021-06-21T00:00:00+00:00</updated>
+   <id>https://meowni.ca/posts/week-25</id>
+   <content type="html">&lt;ul&gt;
+  &lt;li&gt;It’s true, I did. I also wrote &lt;a href=&quot;https://meowni.ca/posts/redesign/&quot;&gt;a blog post&lt;/a&gt; about it because
+tbh I did a good job on it, and it’s a good read.&lt;/li&gt;
+  &lt;li&gt;As two ladies of leisure, Frances and I went to the MOMA on a weekday to see the new Nam June Paik exhibition. I didn’t love all of it, but the bits I really enjoyed were all about putting TVs in unexpected situations. Which makes sense, since I really enjoy when surrealism is executed well. I loved &lt;a href=&quot;https://sfmoma-media-dev.s3.us-west-1.amazonaws.com/www-media/2021/01/06155432/02-Nam-June-Paik-TV-Garden-768x512.jpg&quot;&gt;the TV garden&lt;/a&gt; which was a dark room of real life plants with a bunch of old school CRTs showing … weird ass videos; &lt;a href=&quot;https://sfmoma-media-dev.s3.us-west-1.amazonaws.com/www-media/2021/01/16103830/14-Peter-Moore-Charlotte-Moorman-with-TV-Cello-and-TV-Eyeglasses-768x965.jpg&quot;&gt;the TV cello&lt;/a&gt; and &lt;a href=&quot;https://walker-col.imgix.net/wac_5538.tif?fm=jpg&amp;amp;w=1440&amp;amp;h=1050&amp;amp;fit=max&amp;amp;dpr=1.5&quot;&gt;TV bra&lt;/a&gt; which are exactly what they say they are, and a bunch of TV sculptures, like this &lt;a href=&quot;https://sfmoma-media-dev.s3.us-west-1.amazonaws.com/www-media/2021/01/13165445/16-Nam-June-Paik-Merce-Digital-768x940.jpg&quot;&gt;TV robot&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;The museum still requires indoor masks, which I have nothing against but thought it was an interesting choice since most of SF has given up on indoor masks for the vaccinated and the whole point of museums is to like… not touch anything, people or art. Anyway, I bought a dope book from the gift shop about architectural form that (as I am writing this entry 3 weeks later) I have yet to open.&lt;/li&gt;
+  &lt;li&gt;Speaking of architectural form, the MOMA has a bonkers layout and I can never find the stairway that goes in the direction I need. I always end up wandering aimlessly around like a chicken. I have nothing against wandering aimlessly through a museum, I just don’t like it to be in a quest for stairs.&lt;/li&gt;
+  &lt;li&gt;I bought a Diana Instant camera!!! Suz was the one who bought one first and tweeted about it, and it reminded me about how when I was poor in uni and “into photography” I was all about plastic leaky cameras (like Holgas and Dianas) but they were mad expensive and I needed to spend my money on predominantly food and wine. But now they’re an afforable price for adult Monica AND they’ve made an instant version that works with the Instax film so you don’t have to wait for 3 weeks to see you took a tragically exposed photo. Suz and I are now having this paired adventure where we text each other bad photos and compare notes. It’s fun.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Week 28: I did a vacation</title>
+   <link href="https://meowni.ca/posts/week-28"/>
+   <updated>2021-07-12T00:00:00+00:00</updated>
+   <id>https://meowni.ca/posts/week-28</id>
+   <content type="html">&lt;ul&gt;
+  &lt;li&gt;So here’s what happened: I went on vacation and because I’m leaning so hard into this funemployment life I didn’t open my laptop once.&lt;/li&gt;
+  &lt;li&gt;Every year Zach and I go to his parents’ (now my in-laws! hah!) lake in Minnesota for the 4th of July. Normally we fly there, but last year we drove (because of the panderoni) and this year we also drove because you can’t fly with a big dog anymore. It’s kind of a bummer, and I hope airlines revisit this decision and find a middle ground that works both for the rest of the plane and people with nice but big dogs that don’t fit under seats (like …buying your dog their own seat. I’d be fine with that).&lt;/li&gt;
+  &lt;li&gt;Anyway, this all to say: we drove for 3 days again from SF to Minnesota (and then 3 days back). This year was a bit easier because I (finally) got my US driver’s license so Zach didn’t have to drive 9 hour days by himself. Also we didn’t camp or stop for sightseeing because we’ve exhausted everything of note in the middle of America.&lt;/li&gt;
+  &lt;li&gt;Related: Montana is enormous. I feel we drove an entire day through Montana and there was still some Montana left.&lt;/li&gt;
+  &lt;li&gt;Having now driven SEVERAL hours on the highway: truck drivers are wild. Some started signalling and pulling in my passing lane as I was trying to pass &lt;em&gt;them&lt;/em&gt;; some do dick moves like drive parallel with another truck so nobody can pass them; almost none of them respect the 55 speed limit in construction zones. Rules? Who is she.&lt;/li&gt;
+  &lt;li&gt;Something I should’ve predicted is that I emotionally implode with anxiety while driving thinking that the people behind me are judging me. Do they think I’m weak because I’m only driving the posted limit in this construction zone? Don’t they know fines double?? Should I be speeding? I know I’m driving a Tesla but I’m an old woman at heart who would love it if we could all just follow the rules, ok?&lt;/li&gt;
+  &lt;li&gt;Both the dog and I had a great time at the lake. She spent all day in the lake swimming and playing with my 5 year old nephew; she also tried to play with the A, 3 year old, but their motor skills didn’t match well. A would try to throw a buoy for her, but she couldn’t throw it well, so Hopper thought this was actually an invitation to play tug and would accidentally hip check A, who would then trip, drop the buoy, get excited, pick up the buoy again and repeat this until bored. Hopper was exhausted every night and slept like a rock. I also slept like a rock because kids babysat my dog and unlike previous years I had zero work stress on my soul.&lt;/li&gt;
+  &lt;li&gt;I read nonstop while sat in the sun with industrial amounts of sun screen on. I did my yearly penance of watching nightly baseball because it was on, saw the Habs make it and then lose the Stanley cup (it’s fine, I’m not heartbroken), watched (on purpose) the Euros and Wimbledon, ate a lot of cheese curds.&lt;/li&gt;
+  &lt;li&gt;Books: Parable of the Sower (loved it, strangely apropos for 2020s fire and drought California), The invisible life of Addie Larue (TikTok made me read it, great beach read), Klara and the Sun (allegedly a sci-fi but not in like a Dune or aliens kind of way), Little Weirds (did not finish it; didn’t enjoy the writing style AND my book was badly bound making it a frustrating discovery). I’m now reading Homegoing which is shaping up to be great.&lt;/li&gt;
+  &lt;li&gt;A weird thing that happened on the drive back is that I had a medium-bad allergy to (I think) peanut butter. I broke out in hives and now I need to either get that shit checked out or do another test at home with an epi-pen nearby because in general only bad things follow hives. Ugh.&lt;/li&gt;
+  &lt;li&gt;Did y’all have a summer break? Was it good? Maybe tell me about it on Twitter?&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Week 29: I do some actual work for a change</title>
+   <link href="https://meowni.ca/posts/week-29"/>
+   <updated>2021-07-19T00:00:00+00:00</updated>
+   <id>https://meowni.ca/posts/week-29</id>
+   <content type="html">&lt;ul&gt;
+  &lt;li&gt;First off: I think I’ve done a bad numbering in some of these recent weeks, because I wanted to write about what I actually did on July 13/14, but apparently I’ve already counted that week? Counting, man, a hell of a thing.&lt;/li&gt;
+  &lt;li&gt;My good friend &lt;a href=&quot;https://www.maeghansmulders.com/&quot;&gt;Maeghan&lt;/a&gt; who aside from being a top drawer human being and tswift fan is an amazing professional contact (and I don’t deserve her one bit), connected me
+with the European Innovation Academy (&lt;a href=&quot;https://www.inacademy.eu/&quot;&gt;EIA&lt;/a&gt;) to do some technical mentoring for them. They run a pretty neat incubator-like program, where they teach university students how to get from startup idea to feature work, to sort-of implementing and finally pitching to VCs&lt;/li&gt;
+  &lt;li&gt;I was a bit terrified of doing this because I think of myself as having no startup experience, but it turns out a lot of the things I learnt running small projects inside of Google really apply and I was kind of really good at it? I know, self confidence, who saw this coming.&lt;/li&gt;
+  &lt;li&gt;Related: I’m trying to be a little less self-deprecating professionally. I deal with social anxiety by telling jokes and being wildly self-deprecating, but I’ve noticed when people just meet me and don’t know me at all, they don’t know I’m joking and I come off like an incompetent weirdo. This is a big change for me because I hate confrontation and being assertive, but I need people to know I am actually a badass. C’est la vie.&lt;/li&gt;
+  &lt;li&gt;Observed anecdote: the teams that were predominantly women were on top of their shit and kicked ass. The teams that were predominantly men, OR had a very loud and uninformed men in charge were super behind and not doing super well. This makes sense because we know women are particularly good at organization and doing homework, but tragic because we also don’t have a ton of women leading startups.&lt;/li&gt;
+  &lt;li&gt;We were in Tahoe for the week and my local friend Jessica somehow tricked me to go to 3 (THREE) days of yoga classes. Two of them were hot and disgusting, and one of them was aerial! What’s even more disgusting than the amount of sweating that I did is that I enjoyed them? Who am i.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Week 30: this little drummer girl</title>
+   <link href="https://meowni.ca/posts/week-30"/>
+   <updated>2021-07-26T00:00:00+00:00</updated>
+   <id>https://meowni.ca/posts/week-30</id>
+   <content type="html">&lt;ul&gt;
+  &lt;li&gt;On Monday Frances took me to the teamLab exhibition at the Asian Art museum. It was really wonderful! I hadn’t seen the one in Japan so I was new to it, but the interactive art nerd in me was all over the concept and trying to figure out what was static and what was interactive, and where the sensors were. Tons of fun!&lt;/li&gt;
+  &lt;li&gt;On the weekend we went to the Gold Cup ⚽️ final in Vegas. This is important only because: the powers that be let me bring my own drum and I &lt;a href=&quot;https://twitter.com/AmericanOutlaws/status/1422234579436457986?s=20&quot;&gt;drummed for the whole 120 minutes&lt;/a&gt;. As I might have mentioned this has been a dream of mine, and I’m 100% that dream-believe-achieve bitch. I still need to improve a lot, and bless Ryan (who played the big boi drum next to me) who had to put up with me coming in sliiiightly too early a lot. Only up from here!&lt;/li&gt;
+  &lt;li&gt;Looking at my calendar, a lot of my funemployment is spent levelling up. This will not shock anyone but: I kind of loved school. My first 2 years in uni I audited like 2 or 3 extra classes a semester, because I’d get all the bits I loved (going to class, learning things, taking notes), and none of the existential dread and panic attacks of being evaluated. So now that I’m an adult who gets to control how I learn things, I’m all over it. Here’s what’s currently on the docket:&lt;/li&gt;
+  &lt;li&gt;Practicing drum rudiments on my snare drum. I should probably find a human to pay to help me with this, since I’m figuring it all out from YouTube and tbh, I have some questions.&lt;/li&gt;
+  &lt;li&gt;Singing classes. I really enjoy singing in the car but I a) don’t like the sound of my voice and b) don’t actually like to produce loud sounds that draw attention to me, both of which make me not
+want to sing along in front of people. A lot of singing is relearning how to breathe, and that is Extremely Weird.&lt;/li&gt;
+  &lt;li&gt;Spanish on Duolingo. I used to speak it as a kid (I used to watch a lot of telenovelas, and I’m a bit of a language sponge), but I lost it since I never actually used it. I want to be able to speak to my friend’s Colombian family when we go to their wedding, so here I am.&lt;/li&gt;
+  &lt;li&gt;Conversational French hangouts on italki. French and I have a super uncomfortable relationship where after 11 years in Montreal I understand and can read most of it, but I’m unable to speak it. It’s not that I don’t know what to say, it’s that I literally panic and refuse to say the words. I’ve had a lot of kind of traumatic experiences with a bunch of french (and quebecois) native speakers who were really hostile to people who speak French poorly, and it left me a bit terrified of even trying. I figured the best I can do to work on it is pay a complete stranger to talk to me – even if they think I’m shit, I won’t ever see them in person. I will be able to sleep at night just fine.&lt;/li&gt;
+  &lt;li&gt;Books: I am struggling with Homegoing by Yaa Gyasi, because it’s a devastating book. It’s well written and I desperately want to finish, but I find myself dreading reading it; all the stories are about horrible things that people did to slaves and my heart just breaks on every page.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Week 32: putting these on pause</title>
+   <link href="https://meowni.ca/posts/week-32"/>
+   <updated>2021-08-16T00:00:00+00:00</updated>
+   <id>https://meowni.ca/posts/week-32</id>
+   <content type="html">&lt;p&gt;It’s been  &lt;del&gt;one week since you looked at me&lt;/del&gt; 8 months since I’ve been writing these weekly notes, and
+I think I’m going to take a small break from it. It’s been a good experiment, but I’ve been getting sloppy with remembering they’re due, and it’s starting to feel a bit self-indulgent. Because I don’t actually advertise that they exist, I don’t think anyone reads them, so I’m not entirely sure why I’m writing them if nobody on either side of the fence is particularly amused by the experience. I do have a blog post in the barrel which is a rare and momentuous occasion y’all can look forward to.&lt;/p&gt;
+
+&lt;p&gt;xoxo,
+monica&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+
+</feed>

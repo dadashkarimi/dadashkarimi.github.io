@@ -1,0 +1,302 @@
+<head>
+  <style>
+    img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+    }
+  </style>
+</head>
+
+	<div id="page" class="post">
+  <h1 class="title">Mercer&#39;s Theorem</h1>
+
+
+  <div class="post-date">
+    <time datetime="2022-01-16T00:00:00Z">Jan 16, 2022</time> <span class="readtime">&middot; 7 min read</span>
+  </div>
+  <div>
+   <p>Given data points $(X_1,Y_1)$ , $(X_2,Y_2)$ , .. , and $(X_n,Y_n)$ where we want to predict $Y$ via design matrix $X$.
+Let&rsquo;s say $Y_i=m(X_i)+\epsilon_i$ where $m(x)$ is a smooth function of $x$.</p>
+<p>In statistics, the most popular methods to derive $m(x)$ are <code>kernel methods</code>:</p>
+<ol>
+<li>Smoothing kernels</li>
+<li>Mercer kernels</li>
+</ol>
+<p>The primary distinction between smoothing and Mercer kernels is that the former employs local averaging, whereas the latter employs regularization.</p>
+<h2 id="smoothing-kernel-estimator">Smoothing kernel estimator</h2>
+<p>$$
+\hat{m_h}(x) = \frac{\sum_{i=1}^n Y_i K_h(X_i,x)}{\sum_{i=1}^n K_h(X_i,x)}
+$$</p>
+<p>where $K_h(x,z)$ is a kernel such as:
+<img src="../../images/sds-365/different_kernels.png" alt="Example"></p>
+<p>For example let&rsquo;s say our kernel is a Gaussian:
+$$
+K_h(x,z) = \exp \Big( -\frac{||x-x||^2}{2h^2} \Big)
+$$</p>
+<p>$\hat{m_h}(x)$ is just a local average of the $Y_i$&rsquo;s near $x$.
+Furthermore, the bandwidth $h$ controls the bias-variance tradeoff where smaller $h$ indicates large variance and large $h$ implies large bias.</p>
+<p><img src="../../images/sds-365/kernel_bandwidth.png" alt="Example"></p>
+<h2 id="risks-in-smoothing-kernels">Risks in smoothing kernels</h2>
+<p>$$
+\text{Risk} = \mathbb{E}[Y-\hat{m_h}(X)]^2 = \text{bias}^2+\text{variance}^2+\sigma^2
+$$</p>
+<p>Let&rsquo;s make an assumption on distribution of data:</p>
+<p>$$
+\begin{aligned}
+\text{bias}^2 \approx h^4 \\
+\text{variance} \approx \frac{1}{nh^p}
+\end{aligned}
+$$</p>
+<p>where $p=$ dimension of $X$ and $\sigma^2=\mathbb{E}[Y-m(X)]^2$ is the unavoidable prediction error.
+We can think of this another way: when we set $h$ small bias is low and variance is high implying undersmoothing. On the other hand, when $h$ is large, we are averaging over many surrending points that causes high bias and low variance; this is called oversmoothing.</p>
+<p><img src="../../images/sds-365/bias_variance.jpg" alt="Example"></p>
+<p>Thus, we need to find the optimum value for $h$.</p>
+<h2 id="howe-we-can-estimate-risk">Howe we can estimate Risk?</h2>
+<p>Let&rsquo;s indicate $\hat{Y_{-i}}=\hat{m}_{h,-i}(X_i)$ the estimation based on all but $X_i$.
+To estimate risk using cross-validation:</p>
+<p>$$
+\hat{R}(h) = \frac{1}{n} \sum_{i=1}^n(Y_i-\hat{Y}_{-i})^2
+$$</p>
+<p>We can show this in a very compact form as follows:</p>
+<p>$$
+\hat{R}(h) = \frac{1}{n} \sum_{i=1}^n\Big(\frac{Y_i-\hat{Y_i}}{1-L_{ii}}\Big)^2
+$$</p>
+<p>where $L_{ii} = \frac{K_h(X_i,X_i)}{\sum_{i&rsquo;=1}^n K_h(X_i,X_{i&rsquo;})}$.
+This leads to a big computational savings since it shows us that, to compute leaveone-out cross-validation error, we don’t have to actually ever compute $\hat{Y}_{-i}$.
+To prove this the following hints would be helpful:</p>
+<p>$$
+\begin{aligned}
+\sum_{i&rsquo;}{K_h(X_i,X_{i&rsquo;})} = K_h(X_i,X_i) + \sum_{i&rsquo;\neq i}{K_h(X_i,X_{i&rsquo;})} \\
+Y_i-\hat{Y_i} = Y_i - \frac{\sum_{i&rsquo;}Y_{i&rsquo;}K_h(X_{i&rsquo;},X_i)}{\sum_{i&rsquo;}K_h(X_{i&rsquo;},X_i)}
+\end{aligned}
+$$</p>
+<h2 id="the-curse-of-dimensionality">The curse of dimensionality</h2>
+<p>We can apply the method for any dimmensionality $h$. Yet, it doesn&rsquo;t work as well.</p>
+<ol>
+<li>The squared bias scales as $h^4$ and the variance scales as $\frac{1}{nh^p}$</li>
+<li>Then, the risk goes down no faster than $n^{-4/(4+p)}$</li>
+</ol>
+<p>$$
+n^{\frac{4}{4+p}} R(\hat{m}_n,m) &gt; 0
+$$</p>
+<p>How many data points do we need to make this risk as small as $\epsilon$:</p>
+<p>$$
+n\geq \Big(\frac{1}{\epsilon}\Big)^{1+p/4}
+$$</p>
+<p>But, why? What does our assumption on distribution of data imply? Let&rsquo;s consider a very simple example with a uniform distribution of data falling under a squared kernel.
+Suppose the support of the distribution of inputs is an $l_{\infty}$-ball of radius $\frac{1}{2}$ in dimension $p=2$, then with $h_n=1/8$, in order to have a consistent estimation for each of the $(2h_n)^{-p}$=16 candidate test points $\hat{x_1},..,\hat{x_16}$, the number of points in each of the $m=(2h_n)^{−p}$ balls has to grow unbounded and thus $\frac{n}{m}=n(2h_n)^p$ has to grow unbounded.
+<img src="../../images/sds-365/kernel_data_assumption.png" alt="Example"></p>
+<p>In other words:</p>
+<p>$$
+\begin{aligned}
+h_n &amp;\rightarrow 0\\
+nh_n^p &amp;\rightarrow + \infty
+\end{aligned}
+$$</p>
+<p>Therefore, in order to obtain a consistent estimator, the bandwidth of translation-invariant kernels has to go to zero slowly enough, slower than $n^{−1/p}$, and the final estimation error is converging to zero, but slower than $n^{−1/p}$. This is the usual curse of dimensionality.In order to obtain a certain error $\epsilon$, the number of observations has to grow at least as $\epsilon^{-p}$, and thus exponentially in dimension. When the underlying function has weak smoothness properties (here just Lipschitz-continuous), such a dependence in $p$ is provably unavoidable in general (see <a href="https://francisbach.com/cursed-kernels/">here</a> for more information).</p>
+<h2 id="mercers-kernel">Mercer&rsquo;s kernel</h2>
+<p>Instead of using local smoothing, we can optimize the fit to the data
+subject to regularization (penalization).
+For example, let&rsquo;s say choose $\hat{m}$ to minimize:</p>
+<p>$$
+\sum_i (Y_i -\hat{m}(X_i))^2 +\lambda \text{penalty}(\hat{m})
+$$</p>
+<p>Sometimes people call $\text{penalty}(\hat{m})$ roughness penalty.
+$\lambda$ is the parameter that controls the amount of smoothing.</p>
+<h3 id="how-do-we-construct-a-penalty-that-measures-roughness">How do we construct a penalty that measures roughness?</h3>
+<p>There are two approaches:</p>
+<ol>
+<li>Mercer&rsquo;s kernel</li>
+<li>Reproducing Kernel Hilbert Spaces (RKHS)</li>
+</ol>
+<p>A Mercer kernel $k(x,x&rsquo;)$ is symmetric and positive definite:</p>
+<p>$$
+\int \int f(x) f(x&rsquo;) K(x,x&rsquo;) dx dx&rsquo; \geq 0 \quad \forall f
+$$</p>
+<p>For example $K(x,x&rsquo;)=e^{-||x-x&rsquo;||^2/2}$ is a Mercer kernel.</p>
+<p>If $k(x,x&rsquo;)$ is a similarity function between $x$ and $x&rsquo;$, then we will create a set of basis functions based on $k$.
+For a fixed $z$ $K(z,x)=K_z(x)$ is a function of $x$.</p>
+<h3 id="recall-1">Recall-1</h3>
+<p>Recall that  a kernel function computes the inner product of the feature maps under an embedding $\phi$ of two data points:</p>
+<p>$$
+K(x,z) = &lt;\phi(x) ,\phi(z)&gt;
+$$</p>
+<h4 id="verifying-a-kernel-function-method-1">verifying a kernel function (method 1):</h4>
+<p>Forming a matrix of the pairwise evaluations of a kernel function on a set of inputs gives a positive semi-definite matrix.
+This is one way of verifying that the function is a kernel, that is to construct a feature space for which the function corresponds to first performing the feature mapping and then computing the inner product between the two images.
+For example  polynomial function is a kernel and the exponential of the cardinality of a set intersection is also a kernel.</p>
+<h4 id="verifying-a-kernel-function-method-2">verifying a kernel function (method 2):</h4>
+<p>We  assume that $K$ satisfies the finitely positive semi-definite property and proceed to construct a feature mapping $\phi$ into a Hilbert space for which $K$ is the kernel.
+There is one slightly unusual aspect of the construction in that the elements of the feature space will in fact be functions. They are, however, points in a vector space and will fulfil all the required properties.</p>
+<p>Lets:</p>
+<p>$$
+\mathcal{F} = \Big\{   f(.) = \sum_{j=1}^k \beta_j K(z_j,.) \Big\}
+$$</p>
+<p>we define a norm: $||f||_K = \sum_j \sum_k \beta_j \beta_k K(z_j,z_k)$.
+If $||f||_K $ is small then we can say that $f$ is smooth.</p>
+<p>If $f=\sum_r \alpha_r K(z_r,.)$ and $g=\sum_s \beta_s K(w_s,.)$, the inner product is:</p>
+<p>$$
+&lt;f,g&gt;_K = \sum_r \sum_s \alpha_r \beta_s K(z_r,w_s)
+$$</p>
+<p>$\mathcal{F}$ is reproducing kernel Hilbert space (RKHS) since:</p>
+<p>$$
+&lt;f,K(x,.)&gt; = f(x)
+$$</p>
+<h3 id="hint">Hint:</h3>
+<p>$$
+\begin{aligned}
+f= &amp; \sum_r \alpha_r K(z_r,.) \\
+g= &amp; \sum_s \beta_s K(w_s,.) \\
+&lt;f,g&gt; = &amp; \sum_r \sum_s \alpha_r \beta_s K(z_r,w_s) \\
+= &amp; \sum_r \alpha_r g(z_r) \\
+= &amp; \sum_s \beta_s f(w_s)
+\end{aligned}
+$$</p>
+<p>where the second and third equalities follow from the definitions of $f$ and $g$. It is clear from these equalities that $⟨f, g⟩$ is real-valued, symmetric and bilinear and hence satisfies the properties of an inner product.</p>
+<p>$$
+&lt;f,f&gt; \geq 0 \quad \forall \quad f\in \mathcal{F}
+$$</p>
+<p>but this follows from the assumption that all kernel matrices are positive
+semi-definite, since:</p>
+<p>$$
+\begin{aligned}
+&lt;f,f&gt; = &amp; \sum_r \sum_s \alpha_r \alpha_s K(x_r,x_s)  \\
+=&amp; \alpha&rsquo; \mathbb{K} \alpha \geq 0
+\end{aligned}
+$$</p>
+<p>then the last property:</p>
+<p>$$
+\begin{aligned}
+&lt;f,K(x,.)&gt; = &amp; \sum_{r} \alpha_r K(x_r,x) \\
+= &amp; f(x)
+\end{aligned}
+$$</p>
+<p>is directly coming from first few equations after Hint.</p>
+<h2 id="nonparametric-regression-mercer-kernels">Nonparametric Regression: Mercer Kernels</h2>
+<p>Let&rsquo;s get back to our original problem which was estimating $\hat{m}(x)$ by minimizing:</p>
+<p>$$
+J(m)= \sum_{i=1}^n (Y_i - m(X_i))^2 + \lambda ||m||^2_K
+$$</p>
+<p>Then,
+$$
+\hat{m}(x) = \sum_{i=1}^n \alpha_i K(X_i,x)
+$$</p>
+<p>for some coefficients $\alpha_1,..,\alpha_n$.</p>
+<h3 id="how-to-find-alpha">How to find $\alpha$?</h3>
+<p>Let&rsquo;s plug $\hat{m}(x) = \sum_{i=1}^n \alpha_i K(X_i,x)$ into minimizer $J$:</p>
+<p>$$
+\begin{aligned}
+J(\alpha) = &amp; || Y- \mathbb{K} \alpha ||^2 +\lambda \alpha^T \mathbb{K} \alpha \\
+\hat{\alpha} = &amp; (\mathbb{K}+\lambda I )^{-1}Y \\
+\hat{m}(x) = &amp; \sum_i \hat{\alpha_i} K(X_i,x)
+\end{aligned}
+$$</p>
+<p>where $K_{jk} = K(X_j,X_k)$.
+Like the smoothing kernel regression we choose $\lambda$ according to bias-variance tradeoff by cross-validation.</p>
+<p>In smoothing kernels: the bandwidth h controls the amount of smoothing while In Mercer kernels: norm $||f||_K$ controls the amount of smoothing.
+In practice these two methods give answers that are very similar.</p>
+<p>For more information about Mercer&rsquo;s theorem see <a href="https://people.eecs.berkeley.edu/~jordan/kernels/0521813972c03_p47-84.pdf">here</a>.</p>
+<h2 id="additive-models">Additive models</h2>
+<p>Is less parametric than kernel smoothing and Mercer&rsquo;s kernel and is better in high dimensions.</p>
+<p>$$
+m(x)= \beta_0 + \sum_{j=1}^p m_j(x_j)
+$$</p>
+<p>we can remove $\beta_0$ from now on.
+Basically, we want to minimize:
+$$
+\sum_{i=1}^n \Big( Y_i - (m_1(X_{i1}))+ ..+ m_p(X_{ip})) \Big)
+$$</p>
+<p>subject to $m_j$ smooth.</p>
+<h3 id="backfitting-algorithm">Backfitting algorithm</h3>
+<p>In this algorithm, we do following:</p>
+<ol>
+<li>take data point $(X_i,Y_i)$</li>
+<li>until convergence</li>
+<li>for each <code>j=1,..,p</code></li>
+<li>compute residual: $R_j=Y-\sum_{k\neq j} \hat{m_k}(X_k)$</li>
+<li>smooth $\hat{m_j}=S_jR_j$</li>
+<li>return $\hat{m(x_i)} = \sum_j \hat{m_j}(X_{ij})$</li>
+</ol>
+<h2 id="sparse-additive-models">Sparse additive models</h2>
+<p>In additive model we have $Y_i = \sum_{j=1}^p m_j(X_{ij}+\epsilon_i$ for $i=1,..,n$.
+In high dimension where $n&laquo; p$ most $m_j=0$ and we want to minimize :</p>
+<p>$$
+\mathbb{E}\Big( Y - \sum_{j=1}^p m_j(X_{ij} \Big)^2
+$$</p>
+<p>subject to:
+$$
+\begin{aligned}
+\sum_{j=1}^p \sqrt{\mathbb{E}(m_j^2)} \leq L_n, \\
+\mathbb{E}(m_j) = 0
+\end{aligned}
+$$</p>
+<p>This method generalizes to lasso.</p>
+<h3 id="sparse-backfitting-algorithm">Sparse backfitting algorithm</h3>
+<ol>
+<li>take data point $(X_i,Y_i)$ and regularization parameter $\lambda$</li>
+<li>until convergence</li>
+<li>for each <code>j=1,..,p</code></li>
+<li>compute residual: $R_j=Y-\sum_{k\neq j} \hat{m_k}(X_k)$</li>
+<li>smooth $\hat{m_j}=S_jR_j$</li>
+<li>estimate norm: $s_j=  \sqrt{\mathbb{E}(m_j^2)}$</li>
+<li>soft threshold: $\hat{m_j} \leftarrow \Big[ 1- \frac{\lambda}{\hat{s_j}}\Big]$</li>
+<li>return $\hat{x_i} = \sum_j \hat{m_j}(X_{ij})$</li>
+</ol>
+<p>This generalizes coordinate descent algorithm from last time.</p>
+<p>We covered this post in the intermediate machine learning SDS 365/565, Yale University, <a href="https://en.wikipedia.org/wiki/John_D._Lafferty">John Lafferty</a> where I was TF.</p>
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+  </main>
+
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+magnify("myimage", 3);
+
+</script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="../../js/jquery.min.js"></script>
+  <script src="../../js/soho.js"></script>
+
+  <script src="https://dadashkarimi.github.io/js/blog.js"></script>
+
+
+</body>
+</html>

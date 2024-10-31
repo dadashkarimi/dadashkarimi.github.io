@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+<meta charset="utf-8">
+<title>
+    I redesigned my site &ndash; Monica Dinculescu
+  </title>
+<meta name="author" content="Monica Dinculescu" />
+<meta name="description" content="Monica Dinculescu's blog" />
+<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+<link rel="alternate" type="application/rss+xml" href="../../atom.xml" />
+<link rel="stylesheet" href="../../css/base.css" type="text/css" media="screen, projection" />
+<link rel="shortcut icon" type="image/x-icon" href="../../images/favicon.png" />
+<link rel="icon" type="image/png" href="../../images/favicon.png">
+<link rel="manifest" href="../../manifest.json">
+
+<link rel="manifest" href="https://meowni.ca/posts/redesign/manifest.json">
+
+<meta name="theme-color" content="#7BE4D5">
+
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="Monica's blog">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Monica's blog">
+
+<link rel="apple-touch-icon" sizes="192x192" href="https://meowni.ca/posts/redesign/icons/icon-192x192.png">
+
+<meta name="msapplication-TileImage" content="images/manifest/icon-192x192.png">
+<meta name="msapplication-TileColor" content="#7BE4D5">
+<meta name="msapplication-tap-highlight" content="no">
+
+<meta name="twitter:card" content="Monica Dinculescu's blog">
+<meta name="twitter:site" content="@notwaldorf">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="my-app">
+<meta property="og:image" content="icons/icon-192x192.png" />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-47334320-2']);
+    _gaq.push(['_setDomainName', 'meowni.ca']);
+    _gaq.push(['_trackPageview']);
+    (function () {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</head>
+
+<body>
+<nav>
+<ul>
+<li id="home_link" class="og"><a href="../../index.html">🏠</a></li>
+<li><a href="../../is.html">about</a></li>
+<li><a href="../../works.html">hire me</a></li>
+<li><a href="https://meownica.studio" target="_blank" rel="noreferrer">art</a></li>
+<li><a href="../../reads.html">reading</a></li>
+<li><a href="../../writes.html">writing</a></li>
+<li><a href="../../makes.html">projects</a></li>
+<li><a href="../../talks.html">talks</a></li>
+</ul>
+</nav>
+<div class="splash short">
+<div class="splash-wrapper">
+<div>
+<section class="byline">
+June 24, 2021
+</section>
+<div>
+<h1><a href="index.html">I redesigned my site</a></h1>
+</div>
+</div>
+</div>
+</div>
+<section class="content">
+<p>The last time I changed something big on my site was 3+ years ago. I was really into gradient rainbow text and IBM Plex Mono. It was a mild increment over whatever I had before, which was just a cleaned up and colourful version of <a href="https://zachholman.com/left/">Left</a> from like 6 years prior. Anyway, what I’m saying is: this website had hella split ends. Here’s the before and after:</p>
+<style>
+  .arrow {
+    font-size: 40px;
+    text-align: center;
+    font-weight: bold;
+  }
+</style>
+<div>
+<img alt="my old website. a column of text, with a navbar at the top, and rainbow h1 headers" src="../../images/redesign/before.jpg" />
+<div class="arrow">↓</div>
+<img alt="my new website. the structure of the site is the same, but below the nav bar there are
+  now 2 columns: the left one has a small blurb about me, the right one has a grid of colourful cells." src="../../images/redesign/after.jpg" />
+</div>
+<h1 id="but-also-why">But also, why?</h1>
+<p>I used to write a lot of blog posts, so my website was very blog focused. Originally the home page was just a listing of posts with some copy sprinkled in. As the pandemic hit, I started writing fewer and fewer posts, so having the one post of 2020 show up as a listing was ridiculous.</p>
+<p>On top of that, this year I started focusing a lot more on making generative art and I thought it was sad I wasn’t showing that anywhere on the site! The beauty of generative art is that you can just keep generating it over and over again, and my site was a long white column of text. No more!</p>
+<h1 id="git-diff">git diff</h1>
+<p><img alt="+1580 lines -23906 lines" src="../../images/redesign/diff.png" />
+Ok so hear me out, this looks bad and that’s because: it is bad. One cute thing my old site had was a <code class="language-plaintext highlighter-rouge">&lt;emoji-rain&gt;</code> custom element. You pressed it and got a rain of emoji. Brilliant. The problem is that
+I wrote that in like 2017, and used the well deceased v0 version of the web components spec. As a result, it had a gazillion dependencies (rip <code class="language-plaintext highlighter-rouge">bower_components</code>) and polyfills and ancient trash. 23906 lines of trash to be exact. Gooood riddance.</p>
+<p>The added 1580 lines are a bit of a bore:</p>
+<ul>
+<li>100 of these are this post.</li>
+<li>another 300 is the <a href="https://css-tricks.com/new-site-html-ipsum/">HTML Ipsum</a> from CSS tricks because I’m always scared I’m going to break a style on some ancient post.</li>
+<li>300 lines of JavaScript for the header art that I don’t minify because I’d like to be able to read this in the future to fix whatever mistakes past Monica made, and I don’t have a build step set up. I’m still using the Jekyll that comes out of the box with GitHub pages and I am never looking back.</li>
+<li>the rest is actual code that I touched! There was some really horrifying markup on the project/talks/template pages and now it’s uhhhh slightly less so.</li>
+</ul>
+<h1 id="lighthouse">Lighthouse?</h1>
+<p><img alt="lighthouse scores all green" src="../../images/redesign/lighthouse.png" />
+Seems fine. The 93 is because I’m running this on localhost, where I don’t have <code class="language-plaintext highlighter-rouge">https</code>. I’ll double check
+it once after I deploy, but that 96 on performance is sitting fine with me given that I (again) don’t minify anything on this site.</p>
+<p>I still don’t have a service worker installed because last time I did it cached things into oblivion, and I make hella typos on my posts and it was a bad time. Who even reads this site? Why would you want it offline? You don’t.</p>
+<h1 id="colours">Colours</h1>
+<p>I tried <a href="https://twitter.com/notwaldorf/status/1407102532992655361?s=20">really hard</a> to add some dreamy pastel blobs randomly in the page. As you can tell from the replies on that tweet, it went to the Bad Place. The thing that worked the most was “blurred spans positioned absolutely” which makes browsers and my soul cry. I also didn’t want to use images, because … I didn’t. Downloading bytes of background images? In this economy??</p>
+<p>With pastels out of the way, I went for the exact opposite: <span class="hilite">bright</span> and
+<span class="dotted">patterned</span>. I recently worked on a Bauhaus inspired project for HashiConf (which ended up in the end not looking very Bauhaus at all), so I had a bunch of unused code lying around. <a href="https://en.wikipedia.org/wiki/Bauhaus">Bauhaus</a> aesthetics are all about grids and bold, simple colours – I don’t know if I did it justice, but I certainly tried.</p>
+<p>The blog and weaknotes pages are listings of links which I always struggle with and 2021 didn’t fix
+that. If all the text is a link, and links are meant to be bright, then most of the page is a bright, unreadable scream of colours. So on these pages, the default href styles are gone, and I added some hatching on hover only. That way there’s splotches of colour, but they’re mostly out of the way.</p>
+<h1 id="the-generative-art-bits">The generative art bits</h1>
+<p>I experimented with a bunch of basic generative art algorithms for the pages, like animated <a href="https://genekogan.com/code/p5js-perlin-noise/">Perlin noise</a> and grid-based randomness. In the end, I did a variation on a pretty standard <a href="https://en.wikipedia.org/wiki/Truchet_tiles">Truchet tile</a> grid that you see a lot in beginner generative art tutorials: you have a grid of cells, and each cell can be one of the 4 orientations of a quarter-circle. After staring a bunch at these quarter circles, some started looking like objects: a tulip, a boat, a bird. I kept one of each and painted them in black, so that they pop out.</p>
+<h2 id="an-accidental-p5js-mini-polyfill">An accidental p5.js mini-polyfill</h2>
+<p>I do all of my generative art in <a href="https://p5js.org/">p5.js</a> and <a href="https://github.com/mattdesl/canvas-sketch">canvas-sketch</a> because I want to write the least amount of canvas code I can, and most of the time I do that offline and for printing on paper. In this case though this code would live on every single page, and p5.js comes in at a couple hundred kb, most of which I am not actually using. I am a lazy woman with a lot of napping to do; I don’t want to rewrite any of my already written p5.js code! So I ended up writing a <a href="https://gist.github.com/notwaldorf/e63ea117011ac059a258776d65b6ffc3">little small object</a> that implements only the bits of the p5.js API I was using. Cute eh?</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">context</span><span class="p">;</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">p</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">PI</span><span class="p">:</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="p">,</span>
+  <span class="na">HALF_PI</span><span class="p">:</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="na">random</span><span class="p">:</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">a</span> <span class="o">!==</span> <span class="kc">undefined</span> <span class="o">&amp;&amp;</span> <span class="nx">b</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="nx">b</span><span class="p">)</span> <span class="o">+</span> <span class="nx">a</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// Assume a is an array.</span>
+    <span class="kd">const</span> <span class="nx">i</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="nx">a</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">a</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="na">fill</span><span class="p">:</span> <span class="p">(</span><span class="nx">c</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">context</span><span class="p">.</span><span class="nx">fillStyle</span> <span class="o">=</span> <span class="nx">c</span><span class="p">,</span>
+  <span class="na">stroke</span><span class="p">:</span> <span class="p">(</span><span class="nx">c</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">context</span><span class="p">.</span><span class="nx">strokeStyle</span> <span class="o">=</span> <span class="nx">c</span><span class="p">,</span>
+  <span class="na">noFill</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">context</span><span class="p">.</span><span class="nx">fillStyle</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">transparent</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">noStroke</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">context</span><span class="p">.</span><span class="nx">strokeStyle</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">transparent</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">push</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">context</span><span class="p">.</span><span class="nx">save</span><span class="p">(),</span>
+  <span class="na">pop</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">context</span><span class="p">.</span><span class="nx">restore</span><span class="p">(),</span>
+  <span class="na">translate</span><span class="p">:</span> <span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="nx">y</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">context</span><span class="p">.</span><span class="nx">translate</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="nx">y</span><span class="p">),</span>
+  <span class="na">scale</span><span class="p">:</span> <span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="nx">y</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">context</span><span class="p">.</span><span class="nx">scale</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="nx">y</span><span class="p">),</span>
+  <span class="na">rect</span><span class="p">:</span> <span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="nx">y</span><span class="p">,</span><span class="nx">w</span><span class="p">,</span><span class="nx">h</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">context</span><span class="p">.</span><span class="nx">fillRect</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">w</span><span class="p">,</span> <span class="nx">h</span><span class="p">);</span>
+    <span class="nx">context</span><span class="p">.</span><span class="nx">strokeRect</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">w</span><span class="p">,</span> <span class="nx">h</span><span class="p">);</span>
+  <span class="p">},</span>
+  <span class="na">circle</span><span class="p">:</span> <span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="nx">y</span><span class="p">,</span><span class="nx">d</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">context</span><span class="p">.</span><span class="nx">beginPath</span><span class="p">();</span>
+    <span class="nx">context</span><span class="p">.</span><span class="nx">arc</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">d</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+    <span class="nx">context</span><span class="p">.</span><span class="nx">fill</span><span class="p">();</span>
+    <span class="nx">context</span><span class="p">.</span><span class="nx">stroke</span><span class="p">();</span>
+  <span class="p">},</span>
+  <span class="na">arc</span><span class="p">:</span> <span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">w</span><span class="p">,</span> <span class="nx">h</span><span class="p">,</span> <span class="nx">start</span><span class="p">,</span> <span class="nx">stop</span><span class="p">,</span> <span class="nx">slice</span><span class="o">=</span><span class="kc">false</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">context</span><span class="p">.</span><span class="nx">beginPath</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">slice</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">context</span><span class="p">.</span><span class="nx">moveTo</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nx">context</span><span class="p">.</span><span class="nx">arc</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">w</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="nx">start</span><span class="p">,</span> <span class="nx">stop</span><span class="p">);</span>
+    <span class="nx">context</span><span class="p">.</span><span class="nx">closePath</span><span class="p">();</span>
+    <span class="nx">context</span><span class="p">.</span><span class="nx">fill</span><span class="p">();</span>
+    <span class="nx">context</span><span class="p">.</span><span class="nx">stroke</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>Then you get to write your <code class="language-plaintext highlighter-rouge">setup</code> and <code class="language-plaintext highlighter-rouge">draw</code> functions in almost the same way you would in p5.js.</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">context</span><span class="p">;</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">p</span> <span class="o">=</span> <span class="p">{...}</span>
+
+<span class="kd">function</span> <span class="nx">mySketch</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">function</span> <span class="nx">setup</span><span class="p">()</span> <span class="p">{</span> 
+    <span class="c1">// ...</span>
+    <span class="nx">draw</span><span class="p">();</span>
+  <span class="p">}</span>
+
+
+  <span class="kd">function</span> <span class="nx">draw</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">//</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// "Instantiate" our weird "p5.js" "instance" mode.</span>
+<span class="nx">mySketch</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Woof, you made it this far? Slow news day, eh?</p>
+<div class="prev-next">
+<a href="../tree-rings/index.html">&laquo; From JavaScript to paper: a linocut adventure</a>
+<a href="../hashicollab/index.html">A HashiConf art collab &raquo;</a>
+</div>
+</section>
+<div class="footer">
+<div class="thanks">
+<span>Thanks for reading! <span class="og" style="color: var(--red)">❤︎</span></span>
+<a href="https://twitter.com/share" class="twitter-share-button" data-via="notwaldorf" title="Tweet at me!" aria-label="Tweet at me!">Tweet</a>
+</div>
+</div>
+<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
+</body>
+<script>
+  'use strict';
+
+  // Load the pygments stylesheet so that it's not render blocking.
+  var head = document.head;
+  var link = document.createElement('link');
+  link.type = 'text/css';
+  link.rel = 'stylesheet';
+  link.href = '/css/pygments.css'
+  head.appendChild(link);
+</script>
+</html>

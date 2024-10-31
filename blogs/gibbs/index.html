@@ -1,0 +1,203 @@
+<head>
+  <style>
+    img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+    }
+  </style>
+</head>
+
+<div id="page" class="post">
+  <h1 class="title">Gibbs Sampling</h1>
+
+
+  <div class="post-date">
+    <time datetime="2022-03-02T00:00:00Z">Mar 2, 2022</time> <span class="readtime">&middot; 4 min read</span>
+  </div>
+  <div>
+   <h2 id="review">Review:</h2>
+<p>In the previous post, we talked about the Dirichlet process and Dirichlet process mixture, as the Dirichlet process is for CDF estimation and the Dirichlet process mixture is for density estimation (i.e., both are tools for estimation distributions).</p>
+<p>Each sample from the Dirichlet process prior has a <strong>random collection of weights</strong> assigned to a <strong>random selection of data</strong>.
+Indeed, we wanted to make synthetic data, and the stick-breaking process was a valuable tool.
+In the stick-breaking process, we sampled the distribution function.
+Not any distribution function. It was a step function.
+We can approximate any smooth function via the step function, and the Dirichlet process prior is concentrated at the step function.
+We said that posterior is another Dirichlet process: $\text{DP}(\alpha+n , \hat{F_n})$ where $n$ is the number of data points we observed and:</p>
+<p>$$
+\hat{F_n} = \frac{n}{n+\alpha}F_n+\frac{\alpha}{n+\alpha}F_0
+$$</p>
+<p>We also talked about the effect of $\alpha$.</p>
+<ol>
+<li>Increasing $\alpha$ leads to having many pieces in the stick-breaking process, then the posterior will be concentrated on the prior distribution.</li>
+<li>Decreasing $\alpha$ leads to having fewer pieces in the stick-breaking process, then the posterior will likely be close to accurate distribution (i.e., possibly with high $n$, which means many steps).</li>
+</ol>
+<p>However, we can only sometimes efficiently compute the posterior for the Dirichlet process mixture.</p>
+<p><img src="../../images/sds-365/bayes_table.png" alt="Example"></p>
+<p>Gibbs sampling approximates our inference.
+Chinese restaurant problem is instrumental for Gibbs sampling to get to work.
+CRP helps us to parametrize the repeats of samples $X_1, X_2,..$:</p>
+<p>$$
+X_1,X_2,.., X_n | F \sim F
+$$</p>
+<p><img src="../../images/sds-365/crp.png" alt="Example"></p>
+<p>Let $n_j=|\{i:c_j=j\}|$ is the number of times $X_j^*$ appears. Then:</p>
+<p>$$
+X_n =
+\begin{cases}
+X_j^* &amp; \text{with probability } \frac{n_j}{n+\alpha-1} \\
+X\sim F_{0}  &amp; \text{with probability } \frac{\alpha}{n+\alpha-1}
+\end{cases}
+$$</p>
+<h2 id="nonparametric-bayesian-mixture-model">Nonparametric Bayesian Mixture model</h2>
+<p>$$
+\begin{aligned}
+F\sim  DP(\alpha,F_0) \\
+\theta_1,\theta_2,..\theta_n | F \sim F \\
+X_i | \theta_i \sim f(x|\theta_i) ~ i=1,2,..
+\end{aligned}
+$$</p>
+<ol>
+<li>$F$ is the distribution of parameters, not data.</li>
+<li>$X_i$ is a sample from the density function corresponding to parameter $\theta_i$</li>
+</ol>
+<p>$$
+\theta_{n+1} =
+\begin{cases}
+\theta_j^* &amp; \text{with probability } \frac{n_j}{n+\alpha-1} \\
+\theta\sim F_{0}  &amp; \text{with probability } \frac{\alpha}{n+\alpha-1}
+\end{cases}
+$$</p>
+<h2 id="gibbs-sampling">Gibbs sampling</h2>
+<ol>
+<li><strong>Goal</strong>: To sample from posterior.</li>
+<li>We will use the CRP to approximate the DPM posterior.</li>
+<li>I have prior DP prior. I observed data: $X_1, X_2,.., X_5$.</li>
+<li>To draw samples from posterior: $\theta_1,\theta_2,..\theta_5$ and $\theta_0$ from $F_0$.</li>
+<li><strong>Why?</strong> CRP helps us to predict the next point (e.g., $X_{n+1}$).</li>
+</ol>
+<p>$$
+f(x|\theta) = \frac{1}{5+\alpha}f(X|\theta_1) +..+ \frac{1}{5+\alpha}f(X|\theta_5) +\frac{\alpha}{5+\alpha}f(X|\theta_0)
+$$</p>
+<p><strong>problem?</strong> I am ignoring the repeats of the data.
+In general, with repeats. With repeats:</p>
+<p>$$
+f(x|\theta) = \sum_{\text{tables} j} \frac{n_j}{5+\alpha} f(x|\theta_j^*) + \frac{\alpha}{5+\alpha} f(x|\theta_0)
+$$</p>
+<p>If $f$ are Gaussian with different means,  $f(x|\theta) $ is the sum of Gaussians with different weights.
+Gibbs sampling will help us how to sample these $\theta$.
+In general, Gibbs sampler works as follows:</p>
+<ol>
+<li>I want sample from posterior $P(\theta_1,\theta_2,..,\theta_n| \text{Data})$</li>
+<li>Gibbs sampling will sample one dimension given all the others.</li>
+<li>Pick a random $j$</li>
+<li>Sample $\theta_j$ from $P(\theta_j| \text{Data}, \theta_{-j})$. It means freeze all $\theta$ except $\theta_j$.</li>
+</ol>
+<p><img src="../../images/sds-365/crp_5.png" alt="Example"></p>
+<p>In Gibbs sampling, there are two random elements. <strong>Which ones?</strong></p>
+<ol>
+<li>$\theta$ or dishes</li>
+<li>clustering or which customer sits where</li>
+</ol>
+<p>There is another version of CRP that only involves the second one: <strong>Collapsed Gibbs sampling</strong>.</p>
+<h3 id="simple-setup">Simple setup:</h3>
+<p>$$
+f_x(\theta) \sim \text{Normal}(\theta,\sigma^2)
+$$</p>
+<p>And base distribution:</p>
+<p>$$
+F_0 \sim \text{Normal}(\mu_0,\tau_o^2)
+$$</p>
+<h3 id="posterior">Posterior:</h3>
+<p>$$
+\begin{aligned}
+P(\theta| X_1,..,X_n) \sim &amp; \text{Normal}(\bar{\theta_n},\bar{\tau^2}_n) \\
+\text{posterior mean: } \bar{\theta_n} = &amp; w_n \bar{x_n} + (1-w_n)\mu_o \\
+\text{posterior variance: } 1/\bar{\tau_n^2}= &amp; 1/{\sigma^2_n} + 1/{\tau_0^2}
+\end{aligned}
+$$</p>
+<p>You can show that as the sample size $n$ gets large, the bayesian inference and frequentist approaches will give the same results.
+In other words, posterior distribution becomes concentrated around the sample mean, the maximum likelihood estimator, and the variance goes to zero.
+Also, the predictive distribution:</p>
+<p>$$
+X_{n+1}|X_1,..X_n \sim \text{Normal}(\bar{\theta_n},\tau_n^2+\sigma^2)
+$$</p>
+<p>Where $\sigma^2$ comes from the additional prediction.</p>
+<p>Let&rsquo;s remove the first customer and suppose the rest are in a restaurant:
+<img src="../../images/sds-365/crp_5_gipps_1.png" alt="Example"></p>
+<p>What&rsquo;s the chance customer $1$ is seated at table $1$?
+$$
+\begin{aligned}
+P(X|\theta_1) \propto \frac{1}{4+\alpha} w_1 \\
+w_1 =p(x_1|\theta_1^*)\\
+P(X|\theta_2) \propto \frac{1}{4+\alpha} w_2 \\
+w_2 =p(x_1|\theta_2^*)\\
+P(X|\theta_3) \propto \frac{1}{4+\alpha} w_3 \\
+w_3 =p(x_1|\theta_3^*)\\
+\end{aligned}
+$$</p>
+<p>these $w_1,w_2,w_3$ are like three sided dices. Maybe you will get table 2:</p>
+<p><img src="../../images/sds-365/crp_5_gibbs_2.png" alt="Example"></p>
+<p>We have to resample two tables:</p>
+<ol>
+<li>The table that we removed $X_1$ from</li>
+<li>The table that we added $X_1$ to</li>
+</ol>
+<p>If you repeat this process many times, you will end up with $\theta_1^*$, $\theta_2^*$, ..$\theta_n^*$.</p>
+<p>We covered this post in the intermediate machine learning SDS 365/565, Yale University, <a href="https://en.wikipedia.org/wiki/John_D._Lafferty">John Lafferty</a>, where I was TF.</p>
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+  </main>
+
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+magnify("myimage", 3);
+
+</script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="../../js/jquery.min.js"></script>
+  <script src="../../js/soho.js"></script>
+
+  <script src="https://dadashkarimi.github.io/js/blog.js"></script>
+
+
+</body>
+</html>

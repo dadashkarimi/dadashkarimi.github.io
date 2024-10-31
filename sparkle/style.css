@@ -1,0 +1,197 @@
+body {
+  font-family: 'Lato', 'Helvetica', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a:link, a:visited {
+  color: #23C8B9;
+  text-decoration: none;
+}
+a:hover {
+  color: #FF862D;
+}
+
+.title {
+  font-family: 'Pacifico';
+  font-size: 4.3em;
+  letter-spacing: 2px;
+  text-align: center;
+  color: #23C8B9;
+  margin: 20px 0;
+}
+
+@media all and (max-width: 500px) {
+  .title {
+    font-size: 3.0em;
+  }
+}
+
+.content {
+  position: relative;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.horizontal {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  max-width: 100%;
+}
+
+.wrap {
+  -ms-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+
+  -ms-flex-pack: distribute;
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
+}
+
+.text {
+  color: #34495E;
+  font-weight: bold;
+  padding: 0;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.container {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  font-size: 0px;
+  margin: 20px auto;
+}
+.pixel {
+  transition: background-color 0.3s ease;
+}
+
+.footer {
+  font-family: 'Lato', 'Helvetica', sans-serif;
+  font-size: 12px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 50px auto;
+  padding-top: 10px;
+  border-top: 2px solid #23C8B9;
+  max-width: 400px;
+}
+
+.file, .numbers {
+  position: relative;
+  max-width: 150px;
+  display: inline-block;
+  text-align: center;
+}
+
+.file, .file > .text {
+  max-width: 150px;
+}
+
+.numbers, .numbers > .text {
+  max-width: 100px;
+}
+
+.file label, .plus, .minus, button {
+  user-select: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  background: #23C8B9;
+  color: white;
+  font-weight: normal;
+  transition: all .4s;
+  height: 30px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  vertical-align: middle;
+  font-size: 0.8em;
+}
+
+@media all and (max-width: 400px) {
+  .file label, .plus, .minus, button{
+    font-size: 0.6em;
+  }
+}
+
+.file label {
+  display: block;
+  width: 100%;
+  padding: 0 10px;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+.file input {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  cursor: pointer;
+  display: none;
+}
+
+.file input:hover + label,
+.file input:focus + label {
+  outline: none;
+  background: #FF862D;
+  color: white;
+}
+
+.counter {
+  text-align: center;
+  outline: none;
+  margin: 0;
+  pointer-events: none;
+  border: 1px solid #23C8B9;
+  -ms-flex: 1 1 0.000000001px;
+  -webkit-flex: 1;
+  flex: 1;
+  -webkit-flex-basis: 0.000000001px;
+  flex-basis: 0.000000001px;
+  /* FF has a giant min-width for inputs */
+  min-width: 0px;
+}
+
+.minus:active, .plus:active,
+.minus:hover, .plus:hover,
+.minus:focus, .plus:focus {
+  outline: none;
+  background: #FF862D;
+  outline: none;
+}
+
+.minus {
+  border-right: none;
+  border-radius: 2px 0 0 2px;
+  width: 30px;
+}
+
+.plus {
+  border-left: none;
+  border-radius: 0 2px 2px 0;
+  width: 30px;
+}
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

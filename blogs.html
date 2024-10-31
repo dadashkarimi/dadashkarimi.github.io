@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+<meta charset="utf-8">
+<title>
+    About &ndash; Javid Dadashkarimi
+</title>
+<meta name="author" content="Javid Dadashkarimi" />
+<meta name="description" content="Javid Dadashkarimi's blog" />
+<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+<link rel="alternate" type="application/rss+xml" href="atom.xml" />
+<link rel="stylesheet" href="css/base.css" type="text/css" media="screen, projection" />
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#7BE4D5">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="Monica's blog">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Monica's blog">
+<link rel="apple-touch-icon" sizes="192x192" href="icons/icon-192x192.png">
+<meta name="msapplication-TileImage" content="images/manifest/icon-192x192.png">
+<meta name="msapplication-TileColor" content="#7BE4D5">
+<meta name="msapplication-tap-highlight" content="no">
+<meta name="twitter:card" content="Javid Dadashkarimi's blog">
+<meta name="twitter:site" content="@notwaldorf">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="my-app">
+<meta property="og:image" content="icons/icon-192x192.png" />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-47334320-2']);
+    _gaq.push(['_setDomainName', 'meowni.ca']);
+    _gaq.push(['_trackPageview']);
+    (function () {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<style>
+table {
+  display: grid;
+  border-collapse: collapse;
+  gap: 4px;
+  max-width: 100%;
+  overflow: scroll;
+}
+table.small {
+  grid-template-columns: 1fr 8fr;
+}
+table.all {
+  grid-template-columns: 2.8fr 0.6fr 0.5fr 0.9fr 0.5fr;
+}
+
+thead,
+tbody,
+tr {
+  display: contents;
+}
+
+th,
+td {
+  font-size: 14px;
+}
+td.small {
+  font-size: 14px;
+}
+td.center {
+  text-align: center;
+}
+th {
+  border-bottom: 3px solid black;
+  text-align: left;
+  font-size: 16px;
+}
+table.all td {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+td a:link, td a:visited {
+  color: black;
+  text-decoration-color: var(--red);
+  text-decoration-thickness: .125em;
+}
+tr.full {
+  display: none;
+}
+tr.full.show {
+  display: contents;
+}
+tr.full td {
+  grid-column: 1 / -1;
+  padding: 20px 40px;
+  border-left: 3px solid #ddd;
+  font-size: 16px;
+  line-height: 1.5;
+}
+button {
+  background: transparent;
+  font-family: inherit;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-bottom: 2px solid var(--red);
+  color: black;
+}
+tr.full td button {
+  margin-right: 24px;
+}
+@media screen and (max-width:600px) {
+  table.all {
+    grid-template-columns: 1fr 1fr 0.5fr 0.7fr 0.7fr;
+  }
+  tr.full td {
+    max-width: 80%;
+    padding: 16px;
+  }
+}
+
+</style>
+<script>
+  function toggleReview(el) {
+    const tr = el.parentElement.parentElement;
+    const nextTr = tr.nextElementSibling;
+    nextTr.classList.toggle('show');
+  }
+  function hideReview(el) {
+    const tr = el.parentElement.parentElement;
+    tr.classList.remove('show');
+  }
+  function copyReview(el) {
+    const tr = el.parentElement.parentElement;
+    const copyText = tr.querySelector('div').textContent;
+    navigator.clipboard.writeText(copyText);
+  }
+</script>
+
+<body>
+<nav>
+<ul>
+<li class="og"><a href="index.html" >🏠</a></li>
+<li><a href="works.html">Hire me</a></li>
+<li><a href="reads.html">Reading</a></li>
+<li><a href="blogs.html">Posts</a></li>
+<li><a href="pubs.html">Publications</a></li>
+<li><a href="talks.html">Talks</a></li>
+</ul>
+</nav>
+<div class="splash">
+<div class="splash-wrapper">
+<div class="splash-copy">
+<h1>Blog posts</h1>
+</div>
+<div id="birbs">
+<canvas></canvas>
+<div class="birbs-legend">
+<b>click this art</b> to regenerate it
+<button>[<b>?</b>]</button>
+
+</div>
+</div>
+</div>
+<div class="dots"></div>
+</div>
+<section class="content">
+<style>
+#home_link {display: none !important;}
+</style>
+
+<p>Here are my notes from teaching Yale's SD&S 365 & 565 with Professor John Lafferty and CPSC 481/581 with Andre Wibisono. Each course aimed to deepen students' understanding of machine learning. If you have ideas to enhance the content, please <a href="mailto:javiddadashkarimi@gmail.com">reach out</a>.</p>
+
+<p>Resource Highlights:</p>
+<table class="small">
+  <tbody>
+    <tr>
+      <td>RNN</td>
+      <td>Recurrent neural networks</td>
+    </tr>
+    <tr>
+      <td>RL</td>
+      <td>Reinforcement Learning</td>
+    </tr>
+    <tr>
+      <td>GS</td>
+      <td>Gibbs Sampling</td>
+    </tr>
+    <tr>
+      <td>VAE</td>
+      <td>Variational Auto Encoders</td>
+    </tr>
+    <tr>
+      <td>LSTM</td>
+      <td>Long Short-Term Memory</td>
+    </tr>
+    <tr>
+      <td>NLTK</td>
+      <td>Neural Tangent Kernels</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<hr>
+
+
+
+<h2></h2>
+<p></p>
+
+
+<table class="all">
+<thead>
+<tr>
+<th>Title</th>
+<th>School</th>
+<th>Date</th>
+<th>Topic</th>
+<th>Info</th>
+</tr>
+</thead>
+<tbody>
+
+  <tr>
+      <td>
+          Sequence Models and Recurrent Neural Networks
+      </td>
+      <td>CS/Yale</td>
+      <td class="small">2022/04/10</td>
+      <td class="center stars">
+          NLP
+      </td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+
+  <tr class="full">
+      <td>
+          <div>
+            <div class="project-description">
+              <div class="project-content", id="dynamic-content1">
+                <iframe src="blogs/rnn/index.html" style="border:none; width:100%; height:700px;"></iframe>
+
+                  <div class="project-buttons">
+                                        </div>
+                </div>
+
+
+           </div>
+          <br/>
+      </td>
+  </tr>
+  <tr>
+      <td>
+          Reinforcement Learning
+      </td>
+      <td>CS/Yale</td>
+      <td class="small">2022/04/01</td>
+      <td class="center stars">
+          AI
+      </td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td>
+          <div>
+            <div class="project-description">
+              <div class="project-content", id="dynamic-content1">
+                <iframe src="blogs/rl/index.html" style="border:none; width:100%; height:700px;"></iframe>
+
+                  <div class="project-buttons">
+                                        </div>
+                </div>
+
+
+           </div>
+          <br/>
+      </td>
+  </tr>
+  <tr>
+      <td>
+          Sparsity and Graphs
+      </td>
+      <td>CS/Yale</td>
+      <td class="small">2022/03/28</td>
+      <td class="center stars">
+          Graph Theory
+      </td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td>
+          <div>
+            <div class="project-description">
+              <div class="project-content", id="dynamic-content1">
+                <iframe src="blogs/graphs/index.html" style="border:none; width:100%; height:700px;"></iframe>
+
+                  <div class="project-buttons">
+                                        </div>
+                </div>
+
+
+           </div>
+          <br/>
+      </td>
+  </tr>
+  <tr>
+      <td>
+          Variational Inference
+      </td>
+      <td>CS/Yale</td>
+      <td class="small">2022/03/11</td>
+      <td class="center stars">
+          ML
+      </td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td>
+          <div>
+            <div class="project-description">
+              <div class="project-content", id="dynamic-content1">
+                <iframe src="blogs/variational_inference_vae/index.html" style="border:none; width:100%; height:700px;"></iframe>
+                </div>
+
+
+           </div>
+          <br/>
+      </td>
+  </tr>
+  <tr>
+      <td>
+          Approximation Inference
+      </td>
+      <td>CS/Yale</td>
+      <td class="small">2022/03/07</td>
+      <td class="center stars">
+          Statistics
+      </td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td>
+          <div>
+            <div class="project-description">
+              <div class="project-content", id="dynamic-content1">
+                <iframe src="blogs/approx-inf/index.html" style="border:none; width:100%; height:700px;"></iframe>
+
+                  <div class="project-buttons">
+                                        </div>
+                </div>
+
+
+           </div>
+          <br/>
+      </td>
+  </tr>
+  <tr>
+      <td>
+          Gibbs Sampling
+      </td>
+      <td>CS/Yale</td>
+      <td class="small">2022/03/02</td>
+      <td class="center stars">
+          Statistics
+      </td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td>
+          <div>
+            <div class="project-description">
+              <div class="project-content", id="dynamic-content1">
+                <iframe src="blogs/gibbs/index.html" style="border:none; width:100%; height:700px;"></iframe>
+
+                  <div class="project-buttons">
+                                        </div>
+                </div>
+
+
+           </div>
+          <br/>
+      </td>
+  </tr>
+  <tr>
+      <td>
+          Gibbs Sampling
+      </td>
+      <td>CS/Yale</td>
+      <td class="small">2022/03/02</td>
+      <td class="center stars">
+          Statistics
+      </td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td>
+          <div>
+            <div class="project-description">
+              <div class="project-content", id="dynamic-content1">
+                <iframe src="blogs/dirichlet/index.html" style="border:none; width:100%; height:700px;"></iframe>
+
+                  <div class="project-buttons">
+                                        </div>
+                </div>
+
+
+           </div>
+          <br/>
+      </td>
+  </tr>
+  <tr>
+      <td>
+          Dirichle Processes
+      </td>
+      <td>CS/Yale</td>
+      <td class="small">2022/02/19</td>
+      <td class="center stars">
+          ML
+      </td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td>
+          <div>
+            <div class="project-description">
+              <div class="project-content", id="dynamic-content1">
+                <iframe src="blogs/bayes/index.html" style="border:none; width:100%; height:700px;"></iframe>
+
+                  <div class="project-buttons">
+                                        </div>
+                </div>
+
+
+           </div>
+          <br/>
+      </td>
+  </tr>
+  <tr>
+      <td>
+          Neural Tangent Kernels
+      </td>
+      <td>CS/Yale</td>
+      <td class="small">2022/02/19</td>
+      <td class="center stars">
+          ML
+      </td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td>
+          <div>
+            <div class="project-description">
+              <div class="project-content", id="dynamic-content1">
+                <iframe src="blogs/ntk/index.html" style="border:none; width:100%; height:700px;"></iframe>
+
+                  <div class="project-buttons">
+                                        </div>
+                </div>
+
+
+           </div>
+          <br/>
+      </td>
+  </tr>
+  <tr>
+      <td>
+          Representer Theorem
+      </td>
+      <td>CS/Yale</td>
+      <td class="small">2022/02/10</td>
+      <td class="center stars">
+          Statistics
+      </td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td>
+          <div>
+            <div class="project-description">
+              <div class="project-content", id="dynamic-content1">
+                <iframe src="blogs/representer/index.html" style="border:none; width:100%; height:700px;"></iframe>
+
+                  <div class="project-buttons">
+                                        </div>
+                </div>
+
+
+           </div>
+          <br/>
+      </td>
+  </tr>
+  <tr>
+      <td>
+          Mercer&#39;s Theorem
+      </td>
+      <td>CS/Yale</td>
+      <td class="small">2022/01/16</td>
+      <td class="center stars">
+          Statistics
+      </td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td>
+          <div>
+            <div class="project-description">
+              <div class="project-content", id="dynamic-content1">
+                <iframe src="blogs/mercer-2022/index.html" style="border:none; width:100%; height:700px;"></iframe>
+
+                  <div class="project-buttons">
+                                        </div>
+                </div>
+
+
+           </div>
+          <br/>
+      </td>
+  </tr>
+  <tr>
+      <td>
+          Sparsity Meets Convexity
+      </td>
+      <td>CS/Yale</td>
+      <td class="small">2022/01/16</td>
+      <td class="center stars">
+          Statistics
+      </td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td>
+          <div>
+            <div class="project-description">
+              <div class="project-content", id="dynamic-content1">
+                <iframe src="blogs/sparsity-2022/index.html" style="border:none; width:100%; height:700px;"></iframe>
+
+                  <div class="project-buttons">
+                                        </div>
+                </div>
+
+
+           </div>
+          <br/>
+      </td>
+  </tr>
+  <tr>
+      <td>
+          Expectation Maximization
+      </td>
+      <td>CS/Yale</td>
+      <td class="small">2022/12/06</td>
+      <td class="center stars">
+        Statistics
+      </td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td>
+          <div>
+            <div class="project-description">
+              <div class="project-content", id="dynamic-content1">
+                <iframe src="blogs/em-2021/index.html" style="border:none; width:100%; height:700px;"></iframe>
+
+                  <div class="project-buttons">
+                                        </div>
+                </div>
+
+
+           </div>
+          <br/>
+      </td>
+  </tr>
+  <tr>
+      <td>
+          How to Manage Large Experiments with Brain Imaging Datasets
+      </td>
+      <td>CS/Yale</td>
+      <td class="small">2022/12/05</td>
+      <td class="center stars">
+          Software Engineering
+      </td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td>
+          <div>
+            <div class="project-description">
+              <div class="project-content", id="dynamic-content1">
+                <iframe src="blogs/bigdata-experiments-2021/index.html" style="border:none; width:100%; height:700px;"></iframe>
+
+                  <div class="project-buttons">
+                                        </div>
+                </div>
+
+
+           </div>
+          <br/>
+      </td>
+  </tr>
+  <tr>
+      <td>
+          Mixture Models and EM
+      </td>
+      <td>CS/Yale</td>
+      <td class="small">2022/12/03</td>
+      <td class="center stars">
+          ML
+      </td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td>
+          <div>
+            <div class="project-description">
+              <div class="project-content", id="dynamic-content1">
+                <iframe src="blogs/mixture-2021/index.html" style="border:none; width:100%; height:700px;"></iframe>
+
+                  <div class="project-buttons">
+                                        </div>
+                </div>
+
+
+           </div>
+          <br/>
+      </td>
+  </tr>
+  <tr>
+      <td>
+          Posterior Inference
+      </td>
+      <td>CS/Yale</td>
+      <td class="small">2022/11/26</td>
+      <td class="center stars">
+          ML
+      </td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td>
+          <div>
+            <div class="project-description">
+              <div class="project-content", id="dynamic-content1">
+                <iframe src="blogs/inference-2021/index.html" style="border:none; width:100%; height:700px;"></iframe>
+
+                  <div class="project-buttons">
+                                        </div>
+                </div>
+
+
+           </div>
+          <br/>
+      </td>
+  </tr>
+  <tr>
+      <td>
+          Empirical Risk Minimization
+      </td>
+      <td>CS/Yale</td>
+      <td class="small">2022/11/16</td>
+      <td class="center stars">
+          ML
+      </td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td>
+          <div>
+            <div class="project-description">
+              <div class="project-content", id="dynamic-content1">
+                <iframe src="blogs/erm-2021/index.html" style="border:none; width:100%; height:700px;"></iframe>
+
+                  <div class="project-buttons">
+                                        </div>
+                </div>
+
+
+           </div>
+          <br/>
+      </td>
+  </tr>
+  <tr>
+      <td>
+          Maximum Likelihood and Maximum A Posteriori Estimation
+      </td>
+      <td>CS/Yale</td>
+      <td class="small">2022/11/16</td>
+      <td class="center stars">
+          ML
+      </td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td>
+          <div>
+            <div class="project-description">
+              <div class="project-content", id="dynamic-content1">
+                <iframe src="blogs/mle-2021/index.html" style="border:none; width:100%; height:700px;"></iframe>
+
+                  <div class="project-buttons">
+                                        </div>
+                </div>
+
+
+           </div>
+          <br/>
+      </td>
+  </tr>
+  <tr>
+      <td>
+          Stochastic Functions in Python
+      </td>
+      <td>CS/Yale</td>
+      <td class="small">2022/11/01</td>
+      <td class="center stars">
+        ML
+      </td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td>
+          <div>
+            <div class="project-description">
+              <div class="project-content", id="dynamic-content1">
+                <iframe src="blogs/vae-2021/index.html" style="border:none; width:100%; height:700px;"></iframe>
+
+                  <div class="project-buttons">
+                                        </div>
+                </div>
+
+
+           </div>
+          <br/>
+      </td>
+  </tr>
+  <tr>
+      <td>
+          Kernel Methods
+      </td>
+      <td>CS/Yale</td>
+      <td class="small">2022/10/20</td>
+      <td class="center stars">
+          ML
+      </td>
+      <td class="center read">
+          <button onclick="toggleReview(this)">read ▿</button>
+      </td>
+  </tr>
+  <tr class="full">
+      <td>
+          <div>
+            <div class="project-description">
+              <div class="project-content">
+                <iframe src="blogs/kernel-2021/index.html" style="border:none; width:100%; height:700px;"></iframe>
+
+                  <div class="project-buttons">
+                                        </div>
+                </div>
+
+
+           </div>
+          <br/>
+      </td>
+  </tr>
+</tbody>
+</table>
+
+
+</section>
+
+<script>
+  function hideReview() {
+    document.getElementById("dynamic-content1").style.display = "none";
+  }
+</script>
+
+<script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/birds.js"></script>
+</body>
+<script>
+  'use strict';
+
+  // Load the pygments stylesheet so that it's not render blocking.
+  var head = document.head;
+  var link = document.createElement('link');
+  link.type = 'text/css';
+  link.rel = 'stylesheet';
+  link.href = '/css/pygments.css'
+  head.appendChild(link);
+</script>
+</html>

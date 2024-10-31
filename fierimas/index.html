@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="style.css">
+<title>🎅🎄</title>
+<style>
+    /* something something gh-pages caching is weird rn */
+      button {
+        border: none;
+        background: transparent;
+        box-shadow: none;
+        color: white;
+        cursor: pointer;
+        fill: white;
+        stroke: transparent;
+        box-sizing: border-box;
+        border-radius: 50%;
+        padding: 4px;
+        height: 30px;
+        width: 30px;
+        vertical-align: middle;
+        text-align: center;
+      }
+
+      button:hover {
+        background: rgba(255, 255, 255, 0.5);
+        fill: #E8392E;
+        stroke: #E8392E;
+      }
+    </style>
+</head>
+<body>
+<div class="container">
+<div class="top">
+<h2> A Fieri Christmas 🎅🎄</h2>
+<p>Guy Fieri's Grocery Games is a terribly amazing cooking show where
+each elimination challenge has an arbitrary restriction -- like only using
+foods that start with the letter "<b>M</b>". This is basically that, but for
+presents you buy for your friends. </p>
+<p>Each of you can load this
+page, and whatever challenge you get below is what you're going to be
+gifting to your friends! Keep refreshing until you get a good one,
+or click on a challenge to send the link to your friends! 🎲
+</p>
+</div>
+<div class="bottom">
+<h2>Challenge
+<button onclick="doAThing(null)" aria-label="New random challenge">
+<svg height="24" width="24" viewBox="0 0 24 24">
+<path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"></path></g>
+</svg>
+</button>
+<br>
+<a id="which" target="_blank" title="Open this challenge in a new tab"></a>
+</h2>
+<p id="what"></p>
+</div>
+</div>
+<footer>
+<p>made with ☃️ by <a href="https://twitter.com/notwaldorf">monica</a> &amp;
+<a href="https://twitter.com/holman">holman</a>. find this on
+<a href="https://github.com/notwaldorf/fierimas" aria-label="link to github repo">💻</a>.
+</footer>
+<canvas id="snow" class="snow"></canvas>
+</body>
+<script type="text/javascript" src="snow.js"></script>
+<script type="text/javascript" src="app.js"></script>
+<script>
+    var hash = window.location.hash ? window.location.hash.split('#')[1] : null;
+    doAThing(hash);
+
+    makeASnow(document.getElementById('snow'));
+  </script>
+</html>

@@ -1,0 +1,295 @@
+<div id="page" class="post">
+  <h1 class="title">Gaussian Processes</h1>
+
+  <head>
+    <style>
+      img {
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+      }
+    </style>
+  </head>
+
+  <div class="post-date">
+    <time datetime="2022-02-19T00:00:00Z">Feb 19, 2022</time> <span class="readtime">&middot; 5 min read</span>
+  </div>
+  <div>
+   <h2 id="bayesian-inference">Bayesian Inference</h2>
+<p>The parameter $\theta$ in Bayesian Inference is viewed as a random variable.
+Usually, the following steps are taken:</p>
+<ol>
+<li>Choose a generative model $p(x|\theta)$ for the data</li>
+<li>Choose a prior distribution $\pi(\theta)$</li>
+<li>After observing data points $\{x_1,x_2,..,x_n\}$ calculate posterior distribution $p(\theta | x_1, ..,x_n)$</li>
+</ol>
+<h3 id="bayes-theorem">Bayes&rsquo; Theorem</h3>
+<p>A simple consequence of conditional probability:</p>
+<p>$$
+\begin{aligned}
+P(A|B) = &amp; \frac{P(A \cup B)}{P(B)} \\
+= &amp; \frac{P(B|A)P(A)}{P(B)}
+\end{aligned}
+$$</p>
+<p>Using this theorem, we can write down the posterior distribution:</p>
+<p>$$
+\begin{aligned}
+P(\theta|x_1,..,x_n) =&amp; \frac{P(x_1,..,x_n|\theta)\pi(\theta) }{P(x_1,..,x_n)} \\
+= &amp;\frac{\mathcal{L}_n(\theta)\pi(\theta)}{c_n} \\
+\propto &amp; \mathcal{L}_n(\theta)\pi(\theta)
+\end{aligned}
+$$</p>
+<p>where $\mathcal{L}_n(\theta)$ is the likelihood function and:</p>
+<p>$$
+c_n = \int \mathcal{L}_n(\theta) \pi(\theta) d\theta
+$$</p>
+<p>Is the normalizing constant or <strong>evidence</strong>?</p>
+<h2 id="example-1">Example 1:</h2>
+<p>Take model $X\sim \text{Bernoulli}(\theta)$. Flipping a coin (i.e., $X\in \{0,1\}$) is an example of this distribution.
+Natural prior over parameter $\theta$ is Beta$(\alpha,\beta)$ distribution:
+$$
+\pi_{\alpha,\beta}(\theta) \propto \theta^{\alpha-1}(1-\theta)^{\beta-1}
+$$</p>
+<p>$\alpha$ and $\beta$ determine the shape of the prior distribution.
+A perfect property of this model is that the posterior distribution is also the Beta distribution.</p>
+<h3 id="observing-data">Observing data:</h3>
+<p>Let $s=\sum_{i=1}^n x_i$ be the number of heads over $n$ trials.
+Posterior distribution $\theta | x_1,..,x_n$ is another Beta distribution:</p>
+<p>$$
+\begin{aligned}
+\tilde{\alpha} = \alpha+ \text{number of heads} = \alpha +s \\
+\tilde{\beta} = \beta+ \text{number of tails} = \alpha+n-s
+\end{aligned}
+$$</p>
+<p>Bernoulli distribution is conjugate to the Beta prior.
+We will cover in this post that the Gaussian process is similar in that the posterior distribution has the same form as the prior distribution.</p>
+<h2 id="dirichlet_alphatheta">Dirichlet$_\alpha(\theta)$</h2>
+<p>A general form for the coin problem is dice trial:</p>
+<p>$$
+\text{Dirichlet}_\alpha(\theta) \propto \theta_1^{\alpha_1-1} \theta_2^{\alpha_2-1} .. \theta_K^{\alpha_K-1}
+$$</p>
+<p>where $\alpha=(\alpha_1,..,\alpha_k)\in \mathbb{R}_+^K$ is a non-negative vector.
+For example, in a regular dice, we have six parameters.
+Probability of rolling $1$ is $\theta_1^{\alpha_1-1}$ and etc.</p>
+<p><img src="../../images/sds-365/dirichlet.png" alt="Example"></p>
+<p>Indeed, when we see more and more data, the Dirichlet distribution will concentrate on proper parameters, or the variance will be $0$.
+We will see that the pick of the posterior or maximum posterior (MAP) estimator is the mode of the data.</p>
+<h1 id="nonparametric-bayesian-inference">Nonparametric Bayesian Inference</h1>
+<p>Here we want to make Bayesian inference for functions.
+Typically neither the prior nor the posterior have a density, but the rear is still well-defined.
+We can&rsquo;t compute posterior distribution, but we can sample from it.</p>
+<p><img src="../../images/sds-365/bayes_table.png" alt="Example"></p>
+<h2 id="stochastic-processes">Stochastic Processes</h2>
+<p>In stochastic processes, we have a set of random variables $\{X_i\}_t$.
+The other way of representing stochastic functions is:</p>
+<p>$$
+t \rightarrow X_t(\omega)
+$$</p>
+<p>It is now a random function indexed by time (let&rsquo;s say a time series).
+I will get another stochastic function if I have another random $\omega$.
+Recall that $\omega$ is coming from probability space here, and we are drawing samples from there and computing $X_t(\omega)$.</p>
+<h1 id="gaussian-processes">Gaussian Processes</h1>
+<p>Suppose I have a Gaussian distribution in $2$ dimension.
+Let&rsquo;s say we have the following:
+$$X =
+\begin{pmatrix}
+X_1 \\
+X_2
+\end{pmatrix} = \text{Normal} \Big(<br>
+\begin{pmatrix}
+0 \\
+0
+\end{pmatrix},
+\begin{pmatrix}
+K_{11} &amp; K_{12} \\
+K_{21} &amp; K_{22}
+\end{pmatrix}
+\Big)
+$$</p>
+<p>What can we tell about matrix $K$?</p>
+<ol>
+<li>It&rsquo;s symmetric: $K_{12} = K_{21}$</li>
+<li>It&rsquo;s positive definite: $K\succcurlyeq 0$</li>
+</ol>
+<p>Which are Mercer properties.
+The conditionals are also Gaussian:</p>
+<p>$$
+\begin{aligned}
+X_2|X_1 = \text{Normal}\Big(  \frac{K_{12}}{K_{22}}X_2, K_{11}-\frac{K_{12}^2}{K_{22}}\Big) \\
+X_1|X_2 = \text{Normal}\Big(  \frac{K_{12}}{K_{11}}X_1, K_{22}-\frac{K_{12}^2}{K_{11}}\Big)
+\end{aligned}
+$$</p>
+<p>If these random variables are not correlated then $K_{12}$ and $K_{21}$ will be $0$. So the posterior will be $\mu=0$ and $\Sigma=K_{22}$.</p>
+<h2 id="how-about-multidimensional-gaussian">How about multidimensional Gaussian?</h2>
+<p>$$X =
+\begin{pmatrix}
+X_1 \\
+X_2  \\
+X_3
+\end{pmatrix} = \text{Normal} \Big(<br>
+\begin{pmatrix}
+0 \\
+0 \\
+0
+\end{pmatrix},
+\begin{pmatrix}
+K_{11} &amp; K_{12} &amp; K_{13}\\
+K_{21} &amp; K_{22} &amp; K_{23} \\
+K_{31} &amp; K_{32} &amp; K_{33}
+\end{pmatrix}
+\Big)
+$$</p>
+<p>Again:</p>
+<ol>
+<li>It&rsquo;s symmetric: $K_{12} = K_{21}$</li>
+<li>It&rsquo;s positive definite: $K\succcurlyeq 0$</li>
+</ol>
+<h3 id="stochastic-process-is-a-gaussian-process-m-if-for-every-finite-set-x_1x_2x_n-mx_1mx_2--mx_n-is-normally-distributed">Stochastic process is a Gaussian process $m$ if for every finite set $X_1,X_2,..,X_N$, $m(x_1),m(x_2), .., m(x_N)$ is normally distributed</h3>
+<p><img src="../../images/sds-365/gaussian.png" alt="Example"></p>
+<p>$$X =
+\begin{pmatrix}
+m(X_1) \\
+\vdots  \\
+m(X_N)
+\end{pmatrix} = \text{Normal} \Big(<br>
+\mu(X),K(X)
+\Big)
+$$</p>
+<p>Where:</p>
+<p>$$
+K(X) = \begin{pmatrix}
+K(X_i,X_j)
+\end{pmatrix}
+$$</p>
+<p>Where $K$ is a Mercer kernel.</p>
+<p>Let&rsquo;s fix some values $X_1, X_2,.., X_N$. $ K$ will indicate our covariance matrix.
+What is the prior distribution over $m$?</p>
+<p>$$
+\pi(m) = (2\pi)^{-n/2}|K|^{-1/2} \exp \Big( -\frac{1}{2} m^T K^{-1}m\Big)
+$$</p>
+<p>In other words, our prior over these $n$ points is $\pi(m)$.</p>
+<p>Similar to Mercer kernel regression, now we can do a change of variable $m=K\alpha$ where $\alpha \sim \text{Normal}(0, K^{-1})$. So specifying prior on $m$ is equivalent to specifying prior on $\alpha $:
+$$
+\pi(\alpha) = (2\pi)^{-n/2}|K|^{-1/2} \exp \Big( -\frac{1}{2} \alpha^T K \alpha\Big)
+$$</p>
+<p>What functions have high probability according to the Gaussian process prior?
+The prior favors $mK^{-1}m$ being small.</p>
+<h3 id="recall">Recall</h3>
+<p>Let $v$ is eigenvector of $K$ with eigenvalue $\lambda$ then:</p>
+<p>$$
+\frac{1}{\lambda} = v^T K^{-1}v
+$$</p>
+<h2 id="using-the-likelihood">Using the likelihood</h2>
+<p>We observe $Y_i = m(X_i)+\epsilon_i$ where $\epsilon_i \sim \text{Normal}(0,\sigma^2)$.</p>
+<p>$$
+\log p(Y_i|X_i) = -\frac{1}{2\sigma^2} (Y_i - m(X_i))^2
+$$</p>
+<p>And then:</p>
+<p>$$
+\begin{aligned}
+\log \pi(m) \propto &amp; \log \exp(-1/2m^TK^{-1}m) \\
+\propto &amp; -1/2m^T K^{-1} m
+\end{aligned}
+$$</p>
+<p>If we combine them:
+$$
+\begin{aligned}
+\log p(Y|X, m) + \log \pi(m)  = &amp; -\frac{1}{2\sigma^2} \sum_i  (Y_i - m(X_i))^2 - 1/2m^TK^{-1}m \\
+=&amp; -\frac{1}{2\sigma^2} (Y-K\alpha)^2 -1/2\alpha^TK\alpha
+\end{aligned}
+$$</p>
+<h2 id="map-estimation">MAP estimation</h2>
+<p>This is MAP estimation:
+$$
+\hat{\alpha} = \arg\max ||Y-K\alpha||^2 + \sigma^2\alpha^TK\alpha
+$$</p>
+<p>And we have a solution for this based on Mercer&rsquo;s kernel:</p>
+<p>$$
+\hat{\alpha} = (K+\sigma^2I)^{-1}Y
+$$</p>
+<p>and our estimation for $\hat{m}$:</p>
+<p>$$
+\begin{aligned}
+\hat{m} = &amp; K \hat{\alpha} \\
+= &amp; K(K+\sigma^2I)^{-1}Y
+\end{aligned}
+$$</p>
+<h2 id="note-a-general-formula-for-n-dimensional-data-points">Note: a general formula for $n$ dimensional data points:</h2>
+<p>Suppose $(X_1,X_2)$ are jointly Gaussian with distribution:</p>
+<p>$$X =
+\begin{pmatrix}
+X_1 \\
+X_2
+\end{pmatrix} = \text{Normal} \Big(<br>
+\begin{pmatrix}
+\mu_1 \\
+\mu_2
+\end{pmatrix},
+\begin{pmatrix}
+A &amp; C \\
+C^T &amp; B
+\end{pmatrix}
+\Big)
+$$</p>
+<p>Then the conditional distributions are:</p>
+<p>$$
+\begin{aligned}
+X_1|x_2 =&amp; \text{Normal}\Big( \mu_1+ CB^{-1}(x_2-\mu_2), A-CB^{-1}C^T\Big) \\
+X_2|x_1 = &amp;\text{Normal}\Big( \mu_2+ C^TA^{-1}(x_1-\mu_1), B-C^TA^{-1}C\Big)
+\end{aligned}
+$$</p>
+<p>The covariance matrix will be in a similar form as follows:
+<img src="../../images/sds-365/gp_cond_2.png" alt="Example"></p>
+<p>We covered this post in the intermediate machine learning SDS 365/565, Yale University, <a href="https://en.wikipedia.org/wiki/John_D._Lafferty">John Lafferty</a>, where I was TF.</p>
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+</div>
+  </main>
+
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+magnify("myimage", 3);
+
+</script>
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="../../js/jquery.min.js"></script>
+  <script src="../../js/soho.js"></script>
+
+  <script src="https://dadashkarimi.github.io/js/blog.js"></script>
+
+
+</body>
+</html>

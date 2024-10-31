@@ -1,0 +1,443 @@
+<!doctype html>
+<html>
+<head>
+<title>mix patterns!</title>
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta charset="utf-8">
+<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+<link rel="import" href="bower_components/paper-slider/paper-slider.html">
+<script src="bower_components/d3/d3.min.js"></script>
+<script src="bower_components/textures/textures.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Amatic+SC:700">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato:400">
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<style is="custom-style">
+#input1 {
+  --paper-slider-active-color: #2196F3;
+  --paper-slider-knob-color: #2196F3;
+  --paper-slider-knob-start-color: #2196F3;
+  --paper-slider-knob-start-border-color: #2196F3;
+  --paper-progress-container-color: #2196F3;
+  --paper-slider-height: 4px;
+}
+#input2 {
+  --paper-slider-active-color: darkorange;
+  --paper-slider-knob-color: darkorange;
+  --paper-slider-knob-start-color: darkorange;
+  --paper-slider-knob-start-border-color: darkorange;
+  --paper-progress-container-color: darkorange;
+  --paper-slider-height: 4px;
+}
+</style>
+<body unresolved>
+<div class="container">
+<h1>Let's mix patterns!</h1>
+<div class="playground horizontal">
+<div id="svg"></div>
+</div>
+<div class="horizontal">
+<paper-slider id="input1" step="1" min="0"></paper-slider>
+<div class="slider-spacer" style="background-color: #2196F3;"></div>
+<div class="slider-spacer" style="background-color: darkorange;"></div>
+<paper-slider id="input2" step="1" min="0"></paper-slider>
+</div>
+<div class="horizontal buttons">
+<a "https://meowni.ca/muster/href" class="button" id="random">Random</a>
+<a "https://meowni.ca/muster/href" class="button" id="reset">Reset</a>
+</div>
+<div class="footer">
+<p>made with <span class="heart">❤︎</span> by <a href="https://twitter.com/notwaldorf">monica</a>
+using <a href="https://riccardoscalco.github.io/textures/">textures.js</a>.
+find this on <a href="https://github.com/notwaldorf/muster">github</a></p>
+</div>
+</div>
+</body>
+<script>
+  var strokeColor = "rgb(255, 140, 0)";
+  var backgroundColor = "rgba(255, 140, 0, 0.7)";
+
+  // Hurray for globals and magic numbers that I have no idea if they're right.
+  // TODO(future me): Check this midnight math out.
+  var w = window.innerWidth < 500 ? 290 : 390;
+  var r = (w - 2 * 50 /* the overlap */) / 2;
+  var h = window.innerWidth < 500 ? 250 : 300;
+  document.getElementById('svg').style.width = w;
+  var svg = createSVG();
+  var circle1 = createCircle(0, r, 50);
+  var circle2 = createCircle(1, r, 50);
+  var textures = createTextures();
+
+  document.addEventListener('WebComponentsReady', function() {
+    input1.max = input2.max = textures.length - 1;
+    setupListeners();
+    loadOrResetState();
+  })
+
+
+  function fillWithTexture(c, t) {
+    svg.call(textures[t]);
+    c.style.fill = textures[t].url();
+  }
+
+  function createSVG() {
+    var svg = d3.select("#svg")
+        .append("svg")
+        .attr("width",w)
+        .attr("height", h);
+    return svg;
+  }
+
+  function createCircle(i, r, overlap) {
+    // Create the shape
+    var offset = (w - 2*r - overlap) / 2;
+    var circle = svg.append("circle")
+      .attr({
+          "cx": offset + r + overlap * i,
+          "cy": h/2,
+          "r": r,
+          id: 'circle' + i
+      })
+      .style({
+          "fill": "white", // we'll fill with the texture later
+          "stroke": strokeColor,
+          "stroke-width": 2
+      });
+    return document.getElementById('circle' + i);
+  }
+
+  function createTextures() {
+    var empty = textures.lines()
+      .size(0)
+      .strokeWidth(0)
+      .background("white")
+      .stroke("white");
+
+    var vertical = textures.lines()
+        .orientation("vertical")
+        .stroke(strokeColor)   // .heavier .lighter
+        .size(10)               // 1 is the smallest
+        .strokeWidth(1)         // 2 is .thicker. can also have .thinner
+        .shapeRendering("crispEdges");
+
+    var horizontal = textures.lines()
+        .orientation("horizontal")
+        .stroke(strokeColor)   // .heavier .lighter
+        .size(10)               // 1 is the smallest
+        .strokeWidth(1)         // 2 is .thicker. can also have .thinner
+        .shapeRendering("crispEdges");
+
+    var diagonal = textures.lines()
+        .orientation("diagonal")
+        .stroke(strokeColor)   // .heavier .lighter
+        .size(10)               // 1 is the smallest
+        .strokeWidth(1)         // 2 is .thicker. can also have .thinner
+        .shapeRendering("crispEdges");
+
+    var grid = textures.lines()
+      .orientation("vertical", "horizontal")
+      .size(10)
+      .strokeWidth(1)
+      .shapeRendering("crispEdges")
+      .stroke(strokeColor);
+
+    var gridInv = textures.lines()
+      .orientation("vertical", "horizontal")
+      .size(10)
+      .strokeWidth(1)
+      .shapeRendering("crispEdges")
+      .stroke("white")
+      .background(backgroundColor);
+
+    var gridLarger = textures.lines()
+      .orientation("vertical", "horizontal")
+      .size(20)
+      .strokeWidth(1)
+      .shapeRendering("crispEdges")
+      .stroke(strokeColor);
+
+    var gridLargerInv = textures.lines()
+      .orientation("vertical", "horizontal")
+      .size(20)
+      .strokeWidth(1)
+      .shapeRendering("crispEdges")
+      .stroke("white")
+      .background(backgroundColor);
+
+    var gridThicker = textures.lines()
+      .orientation("vertical", "horizontal")
+      .size(20)
+      .strokeWidth(2)
+      .shapeRendering("crispEdges")
+      .stroke(strokeColor);
+
+    var gridThickerInv = textures.lines()
+      .orientation("vertical", "horizontal")
+      .size(20)
+      .strokeWidth(2)
+      .shapeRendering("crispEdges")
+      .stroke("white")
+      .background(backgroundColor);
+
+    var diagonalGrid = textures.lines()
+      .orientation("2/8", "6/8")
+      .size(10)
+      .strokeWidth(1)
+      .shapeRendering("crispEdges")
+      .stroke(strokeColor);
+
+    var diagonalGridInv = textures.lines()
+      .orientation("2/8", "6/8")
+      .size(10)
+      .strokeWidth(1)
+      .stroke("white")
+      .shapeRendering("crispEdges")
+      .background(backgroundColor);
+
+    var diagonalGridLarger = textures.lines()
+      .orientation("2/8", "6/8")
+      .size(20)
+      .strokeWidth(1)
+      .shapeRendering("crispEdges")
+      .stroke(strokeColor);
+
+    var diagonalGridLargerInv = textures.lines()
+      .orientation("2/8", "6/8")
+      .size(20)
+      .strokeWidth(1)
+      .stroke("white")
+      .shapeRendering("crispEdges")
+      .background(backgroundColor);
+
+    var diagonalGridThicker = textures.lines()
+      .orientation("2/8", "6/8")
+      .size(20)
+      .strokeWidth(2)
+      .shapeRendering("crispEdges")
+      .stroke(strokeColor);
+
+    var diagonalGridThickerInv = textures.lines()
+      .orientation("2/8", "6/8")
+      .size(20)
+      .strokeWidth(2)
+      .stroke("white")
+      .shapeRendering("crispEdges")
+      .background(backgroundColor);
+
+    var dots = textures
+      .circles()
+      .thicker()
+      .fill(strokeColor)
+      .stroke(strokeColor);
+
+    var dotsInv = textures
+      .circles()
+      .thicker()
+      .fill("white")
+      .stroke("white")
+      .background(backgroundColor);
+
+    var dots1 = textures
+      .circles()
+      .complement()
+      .fill(strokeColor)
+      .stroke(strokeColor);
+
+    var dots1Inv = textures
+      .circles()
+      .complement()
+      .fill("white")
+      .stroke("white")
+      .background(backgroundColor);
+
+    var dots2 = textures
+      .circles()
+      .fill(strokeColor)
+      .stroke(strokeColor)
+      .size(8);
+
+    var dots2Inv = textures
+      .circles()
+      .fill("white")
+      .stroke("white")
+      .size(8)
+      .background(backgroundColor);
+
+    var dots21 = textures
+      .circles()
+      .fill(strokeColor)
+      .stroke(strokeColor)
+      .complement()
+      .size(10);
+
+    var dots21Inv = textures
+      .circles()
+      .fill("white")
+      .stroke("white")
+      .complement()
+      .background(backgroundColor)
+      .size(10);
+
+    var dots3 = textures.circles()
+    .radius(4)
+    .fill("white")
+    .strokeWidth(2)
+    .stroke(strokeColor);
+
+    var dots33 = textures.circles()
+      .radius(4)
+      .complement()
+      .fill("white")
+      .strokeWidth(2)
+      .stroke(strokeColor);
+
+    var dots4 = textures.circles()
+      .radius(4)
+      .fill(strokeColor)
+      .strokeWidth(2)
+      .stroke("white");
+
+    var dots44 = textures.circles()
+      .radius(4)
+      .fill(strokeColor)
+      .strokeWidth(2)
+      .stroke("white")
+      .complement();
+
+    var dots5 = textures.circles()
+      .radius(4)
+      .fill(strokeColor)
+      .strokeWidth(2)
+      .stroke("white")
+      .background(backgroundColor);
+
+    var dots6 = textures.circles()
+      .radius(4)
+      .fill(strokeColor)
+      .strokeWidth(2)
+      .stroke("white")
+      .complement()
+      .background(backgroundColor);
+
+
+    var hexes = textures.paths()
+      .d("hexagons")
+      .size(5)
+      .strokeWidth(1)
+      .stroke(strokeColor);
+
+    var exes = textures.paths()
+      .d("crosses")
+      .strokeWidth(2)
+      .stroke(strokeColor);
+
+    var exesInv = textures.paths()
+      .d("crosses")
+      .strokeWidth(2)
+      .background(backgroundColor)
+      .stroke("white");
+
+    var exes2 = textures.paths()
+      .d("crosses")
+      .size(10)
+      .strokeWidth(1)
+      .stroke(strokeColor);
+
+    var exesInv2 = textures.paths()
+      .d("crosses")
+      .size(10)
+      .strokeWidth(1)
+      .background(backgroundColor)
+      .stroke("white");
+
+    var woven = textures.paths()
+      .d("woven")
+      .lighter()
+      .thicker()
+      .stroke(strokeColor);
+
+    var waves = textures.paths()
+      .d("waves")
+      .thicker()
+      .stroke(strokeColor);
+
+    var squares = textures.paths()
+      .d("squares")
+      .stroke(strokeColor);
+
+    return [empty,
+        horizontal, vertical, grid, gridInv, gridLarger, gridLargerInv, gridThicker, gridThickerInv,
+        diagonal, diagonalGrid, diagonalGridInv, diagonalGridLarger, diagonalGridLargerInv,
+        diagonalGridThicker, diagonalGridThickerInv,
+        dots, dots1, dots2, dots21, dots3, dots33, dots4, dots44, dots5, dots6,
+        dotsInv, dots1Inv, dots2Inv, dots21Inv,
+        hexes, exes, exesInv, exes2, exesInv2, woven, waves, squares];
+  }
+
+  function loadOrResetState() {
+    var didAThing = false;
+
+    // Maybe we saved some values?
+    if (window.location.hash !== '') {
+      var applied = window.location.hash.split('#')[1].split('&');
+      if (applied.length == 2 && !isNaN(parseInt(applied[0])) && !isNaN(parseInt(applied[1]))) {
+        fillWithTexture(circle1, applied[0]);
+        input1.value = applied[0];
+        fillWithTexture(circle2, applied[1]);
+        input2.value = applied[1];
+        didAThing = true;
+      }
+    }
+
+    // We didn't load anything, use the defaults
+    if (!didAThing) {
+      fillWithTexture(circle1, 1);
+      input1.value = 1;
+      fillWithTexture(circle2, 0);
+    }
+  }
+
+  function setupListeners() {
+    function updateLeft(value) {
+      fillWithTexture(circle1, value);
+      window.location.hash = value + '&' + input2.value;
+    }
+    function updateRight(value) {
+      fillWithTexture(circle2, value);
+      window.location.hash = input1.value + '&' + value;
+    }
+
+    input1.addEventListener('immediate-value-change', function(e) {
+      updateLeft(e.srcElement.immediateValue);
+    });
+    input2.addEventListener('immediate-value-change', function(e) {
+      updateRight(e.srcElement.immediateValue);
+    });
+
+    input1.addEventListener('change', function(e) {
+      // Only update if the value is different.
+      if (window.location.hash !== '#' + input1.value + '&' + input2.value) {
+        updateLeft(input1.value);
+      }
+    });
+    input2.addEventListener('change', function(e) {
+      if (window.location.hash !== '#' + input1.value + '&' + input2.value) {
+        updateRight(input2.value);
+      }
+    });
+
+    random.addEventListener('click', function(event) {
+      input1.value = Math.floor((Math.random() * textures.length));
+      input2.value = Math.floor((Math.random() * textures.length));
+      updateLeft(input1.value);
+      updateRight(input2.value);
+
+      // On mobile the link stays hovered after being clicked, so fix that.
+      this.className = 'button';
+      event.preventDefault();
+    });
+  }
+</script>
+</html>

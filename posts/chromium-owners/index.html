@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+<meta charset="utf-8">
+<title>
+    Why Chromium has code owners &ndash; Monica Dinculescu
+  </title>
+<meta name="author" content="Monica Dinculescu" />
+<meta name="description" content="Monica Dinculescu's blog" />
+<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+<link rel="alternate" type="application/rss+xml" href="../../atom.xml" />
+<link rel="stylesheet" href="../../css/base.css" type="text/css" media="screen, projection" />
+<link rel="shortcut icon" type="image/x-icon" href="../../images/favicon.png" />
+<link rel="icon" type="image/png" href="../../images/favicon.png">
+<link rel="manifest" href="../../manifest.json">
+
+<link rel="manifest" href="https://meowni.ca/posts/chromium-owners/manifest.json">
+
+<meta name="theme-color" content="#7BE4D5">
+
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="Monica's blog">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Monica's blog">
+
+<link rel="apple-touch-icon" sizes="192x192" href="https://meowni.ca/posts/chromium-owners/icons/icon-192x192.png">
+
+<meta name="msapplication-TileImage" content="images/manifest/icon-192x192.png">
+<meta name="msapplication-TileColor" content="#7BE4D5">
+<meta name="msapplication-tap-highlight" content="no">
+
+<meta name="twitter:card" content="Monica Dinculescu's blog">
+<meta name="twitter:site" content="@notwaldorf">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="my-app">
+<meta property="og:image" content="icons/icon-192x192.png" />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-47334320-2']);
+    _gaq.push(['_setDomainName', 'meowni.ca']);
+    _gaq.push(['_trackPageview']);
+    (function () {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</head>
+
+<body>
+<nav>
+<ul>
+<li id="home_link" class="og"><a href="../../index.html">🏠</a></li>
+<li><a href="../../is.html">about</a></li>
+<li><a href="../../works.html">hire me</a></li>
+<li><a href="https://meownica.studio" target="_blank" rel="noreferrer">art</a></li>
+<li><a href="../../reads.html">reading</a></li>
+<li><a href="../../writes.html">writing</a></li>
+<li><a href="../../makes.html">projects</a></li>
+<li><a href="../../talks.html">talks</a></li>
+</ul>
+</nav>
+<div class="splash short">
+<div class="splash-wrapper">
+<div>
+<section class="byline">
+March 24, 2015
+</section>
+<div>
+<h1><a href="../chromium-owners.html">Why Chromium has code owners</a></h1>
+</div>
+</div>
+</div>
+</div>
+<section class="content">
+<p>My favourite thing about the Chromium code is this <a href="https://chromium.googlesource.com/chromium/src/+/d413b2dcb54d523811d386f1ff4084f677a6d089/chrome/browser/chrome_browser_main_mac.mm#37">enum</a> of cats and all the comments in that file. My second favourite thing is <code class="language-plaintext highlighter-rouge">OWNER</code> files. Guess what this post is about (hint: it’s not about cats NOT EVERYTHING IS ABOUT CATS, OK?)</p>
+<p>Edit: In a clear and deliberate conspiracy, the cats have been removed from Chromium. The old new cool thing is <a href="https://code.google.com/p/chromium/codesearch#chromium/src/base/pickle.h&amp;q=pickle&amp;sq=package:chromium&amp;type=cs&amp;l=138">pickles</a>, and the new new cool thing is <a href="https://code.google.com/p/chromium/codesearch#chromium/src/base/mac/objc_property_releaser_unittest.mm&amp;l=16">Count Von Counts</a>. Bonus points to @thakis for finding that last one. 💁</p>
+<h2 id="why-should-you-care">Why should you care?</h2>
+<p>Owners in Chromium are people who own an area of code. This can be a small feature (the <code class="language-plaintext highlighter-rouge">chrome://settings</code> page) or a giant area (all of the Cocoa UI). You don’t <em>have</em> to be an owner to be successful – you get to be an owner because you <em>want</em> to. This usually means that you have contributed a lot to that particular nugget of code, have acquired a slightly unhealthy obsession for it (symptoms: if you’ve whispered “my precious” to a line of code in the last hour, you will make a great code owner one day), and generally care about its well being. I have been trying (unsuccessfully) for years to be an owner of pizza; hit me up if you have any leads.</p>
+<p>Owners are gatekeepers of code, and their main responsibility is making sure the code doesn’t go to shit. Comments that make sense. No copy pasting, no hacks, no soup for you. None of that “I don’t really know how to make this code better so I’m going to merge it and run” nonsense. They are the very model of a modern Major-General, they know the kings of England, and they quote the fights historical.</p>
+<p>TL; DR: owners won’t let you merge crappy code. Imagine if each of the 2000 Chromium commiters merged a random hack in one of the 7 million lines of code we have. IMAGINE. 🔥🔥🔥</p>
+<h2 id="what-it-means-for-owners">What it means for owners</h2>
+<p>Realtalk: being an owner means that people will send you a lot of code to review, because your blessing (or “LGTM”) is required for that code to be committed. <a href="https://codereview.chromium.org/search?closed=1&amp;owner=&amp;reviewer=sky%40chromium.org&amp;cc=&amp;repo_guid=&amp;base=&amp;project=&amp;private=1&amp;commit=1&amp;created_before=&amp;created_after=&amp;modified_before=&amp;modified_after=&amp;order=&amp;format=html&amp;keys_only=False&amp;with_messages=False&amp;cursor=&amp;limit=30">@sky</a> is an owner of the Windows UI code, and he does something like 500+ reviews a quarter. And also writes code. And helps me out when I (invariably) break the UI. He’s pretty much the best.</p>
+<p>Basically:</p>
+<ul>
+<li>People will ask you general questions when they’re stuck. It’s totally fine not to know the answer – you’ll probably at least know who to point them at.</li>
+<li>Whenever shit hits the fan and it’s on your turf of code, if no obvious culprit is to be found, you win the lottery and get to fix it. Spoilers: this sometimes means fixing things that you didn’t actually break. Currently, I’m on day 6 of this giant yak shave that I won by fixing a random crash. Regrets, I am them.</li>
+<li>You get to live the dream and be picky about code. Don’t like a method’s name? A particular comment? Think that there’s a bit of a refactor needed to make this better? You get to ask for it, and guess what: people usually have to listen.</li>
+</ul>
+<p>👉 Developers trust owners to not be insane. Owners trust developers not to try to commit stuff behind their back. This is why it works. 👈</p>
+<h2 id="what-it-means-for-developers">What it means for developers</h2>
+<p>First, when you’re stuck, you know who to ask questions (an owner!). Second, in order for you to commit any code, you need to get the owners’ approval for your changes.</p>
+<p>Here’s an <a href="https://codereview.chromium.org/861053004">example</a> of a code review. I like to explicitly <a href="https://codereview.chromium.org/861053004/#msg11">mention</a> which owner should review which file, because one person might own multiple files/areas in a given CL (if you’re a <code class="language-plaintext highlighter-rouge">chrome/browser</code> owner, you own ALL of the things), but might not be required to review all of them.</p>
+<p>So, who owns <code class="language-plaintext highlighter-rouge">profile_info_cache.cc</code>? Everyone named in the <code class="language-plaintext highlighter-rouge">chrome/browser/profiles/OWNERS</code> file. On top of that, everyone up the directory tree (so in <code class="language-plaintext highlighter-rouge">chrome/browser/OWNERS</code>) is also an owner. If you stumble on a directory that doesn’t have an owners file (for example <code class="language-plaintext highlighter-rouge">chrome/browser/ui/cocoa/profiles</code>), just crawl on up until you find the closest one (in this case, you would add an owner from <code class="language-plaintext highlighter-rouge">chrome/browser/ui/cocoa/OWNERS</code>. This is also useful if you do a fairly innocent refactor that touches a lot of files, like renaming a method. In that case, rather than adding 17 different owners, you can just get one, root owner and run with that.</p>
+<h2 id="how-you-can-get-owner-files-in-your-project">How YOU can get owner files in your project</h2>
+<p>If you want to implement owner files for your projects (YAY!), you need to do a couple of things:</p>
+<ul>
+<li>Add some sort of presubmit check so that people can’t commit code without getting all their ducks in a row. If you give people a chance to merge code under the radar, they will. So, don’t.</li>
+<li>Here’s the Chromium <a href="https://code.google.com/p/chromium/codesearch#chromium/src/PRESUBMIT.py&amp;l=996">script</a>. It will probably most likely not work out of the box, but it could be a useful starting point.</li>
+<li>Create OWNER files in all the directories that makes sense. Format them in a way that scripts can read them. Here are <a href="https://code.google.com/p/chromium/codesearch#search/&amp;q=OWNERS&amp;type=cs&amp;sq=package:chromium">all</a> the Chromium ones.</li>
+<li>Owner files can have rules <a href="https://code.google.com/p/chromium/codesearch#chromium/src/chrome/browser/profiles/OWNERS&amp;l=1">per subdirectory</a> but also <a href="https://code.google.com/p/chromium/codesearch#chromium/src/chrome/browser/profiles/OWNERS&amp;l=15">per file</a>. For really tedious file changes (like build files), any committer can be an owner using <a href="https://code.google.com/p/chromium/codesearch#chromium/src/chrome/common/OWNERS&amp;l=4">wildcards</a>).</li>
+<li>Make sure the owner files are up to date: when people leave teams, remove them. When people start becoming friendly with an area of code, let them know that ownership is an option.</li>
+<li>Watch how your code gets better over time.</li>
+</ul>
+<div class="prev-next">
+<a href="../chromium-101/index.html">&laquo; Contributing to Chromium: an illustrated guide</a>
+<a href="../keypress-is-bananas/index.html">Keypress is bananas &raquo;</a>
+</div>
+</section>
+<div class="footer">
+<div class="thanks">
+<span>Thanks for reading! <span class="og" style="color: var(--red)">❤︎</span></span>
+<a href="https://twitter.com/share" class="twitter-share-button" data-via="notwaldorf" title="Tweet at me!" aria-label="Tweet at me!">Tweet</a>
+</div>
+</div>
+<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
+</body>
+<script>
+  'use strict';
+
+  // Load the pygments stylesheet so that it's not render blocking.
+  var head = document.head;
+  var link = document.createElement('link');
+  link.type = 'text/css';
+  link.rel = 'stylesheet';
+  link.href = '/css/pygments.css'
+  head.appendChild(link);
+</script>
+</html>

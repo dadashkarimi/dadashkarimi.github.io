@@ -30,7 +30,7 @@ function squares(p) {
     let img;
     let blockSize;
     const displayDelay = 500;
-    let isDrawing = false; // Flag to prevent interruption during drawing
+    let isDrawing = false;
 
     const folders = ['church/1/', 'church/2/', 'church/3/','church/4/','church/5/',
         'church/6/','church/7/','church/8/','church/9/','church/10/','church/11/',
@@ -65,15 +65,21 @@ function squares(p) {
     }
 
     function loadRandomContent() {
-        if (Math.random() < 0.2) {
+        if (window.innerWidth <= 600) {
+            // For small screens, always draw shapes (solid squares only)
             drawShapes();
         } else {
-            loadRandomImage();
+            // For larger screens, continue with original random content selection
+            if (Math.random() < 0.2) {
+                drawShapes();
+            } else {
+                loadRandomImage();
+            }
         }
     }
 
     function loadRandomImage() {
-        isDrawing = true; // Set flag to indicate drawing is in progress
+        isDrawing = true;
         const randomFolder = p.random(folders);
         img = new Image();
         img.src = randomFolder + imageName;
@@ -99,13 +105,13 @@ function squares(p) {
                     col * blockSize, row * blockSize, blockSize, blockSize,
                     x, y, blockSize, blockSize
                 );
-                if (i === indices.length - 1) isDrawing = false; // Reset flag when done
+                if (i === indices.length - 1) isDrawing = false;
             }, i * displayDelay);
         });
     }
 
     function drawShapes() {
-        isDrawing = true; // Set flag to indicate drawing is in progress
+        isDrawing = true;
         const colors = ['#84B4F9', '#1231B5', '#BFE9DC', '#39948E', '#FAC832', '#FECBCA', '#F83735'];
         const shapes = ['square', 'skip'];
 
@@ -142,7 +148,7 @@ function squares(p) {
                 }
                 if (currentRow >= rows) {
                     clearInterval(animationInterval);
-                    isDrawing = false; // Reset flag when done
+                    isDrawing = false;
                 }
             }
         }, 100);

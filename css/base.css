@@ -149,7 +149,12 @@ iframe {
 #birbs canvas {
     cursor: pointer;
     user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+
 
 .birbs-legend {
     text-align: center;

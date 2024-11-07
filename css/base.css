@@ -154,7 +154,13 @@ iframe {
     justify-content: center;
 }
 
-
+.left-image {
+    float: left;        /* Floats the image to the left */
+    margin-right: 15px; /* Adds some space between the image and the text */
+    margin-bottom: 10px; /* Adds some space below the image */
+    width: 200px;      /* You can adjust the width as needed */
+    height: auto;      /* Maintains aspect ratio */
+}
 
 .birbs-legend {
     text-align: center;

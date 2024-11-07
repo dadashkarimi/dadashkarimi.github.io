@@ -159,7 +159,7 @@ iframe {
     margin-right: 15px; /* Adds some space between the image and the text */
     margin-top: 15px;
     margin-bottom: 5px; /* Adds some space below the image */
-    width: 200px;      /* You can adjust the width as needed */
+    width: 300px;      /* You can adjust the width as needed */
     height: auto;      /* Maintains aspect ratio */
 }
 

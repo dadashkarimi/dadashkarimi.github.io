@@ -39,7 +39,10 @@ function squares(p) {
         'church/16/', 'church/17/', 'church/18/', 'church/19/', 'church/20/',
         'church/21/', 'church/22/', 'church/24/', 'church/26/',
         // Add 'church/30/' multiple times to increase its likelihood
-        'church/30/', 'church/30/', 'church/30/','church/30/', 'church/31/', 'church/31/','church/31/', 'church/31/'
+        'church/30/', 'church/30/', 'church/30/','church/30/', 
+        'church/32/',
+        'church/32/','church/32/','church/32/',
+        'church/33/','church/33/','church/33/',
     ];
 
     const imageName = 'church-doors.png';

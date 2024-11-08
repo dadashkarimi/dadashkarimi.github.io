@@ -180,12 +180,25 @@ iframe {
   height: auto;      /* Maintains aspect ratio */
 }
 
+#text-image-right {
+  float: right;        /* Floats the image to the left */
+  margin-left: 15px; /* Adds some space between the image and the text */
+  margin-bottom: 15px;
+  width: 300px;      /* You can adjust the width as needed */
+  height: auto;      /* Maintains aspect ratio */
+}
+
 @media (max-width: 600px) { /* Adjust the width as needed */
     #text-image  {
         display: none;
     }
 }
 
+@media (max-width: 600px) { /* Adjust the width as needed */
+    #text-image-right  {
+        display: none;
+    }
+}
 
 .birbs-legend {
     text-align: center;

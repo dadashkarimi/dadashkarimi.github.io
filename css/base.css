@@ -186,6 +186,7 @@ iframe {
   margin-bottom: 15px;
   width: 250px;      /* You can adjust the width as needed */
   height: auto;      /* Maintains aspect ratio */
+  
 }
 
 @media (max-width: 600px) { /* Adjust the width as needed */

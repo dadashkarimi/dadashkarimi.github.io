@@ -46,7 +46,8 @@ function squares(p) {
         'church/36/','church/36/','church/36/','church/36/','church/36/','church/36/',
         'church/39/','church/39/','church/39/','church/39/','church/39/','church/39/',
         'church/40/','church/40/','church/40/',
-        'church/41/','church/41/','church/41/'
+        'church/41/','church/41/','church/41/',
+        'church/42/','church/42/','church/42/'
     ];
 
     const imageName = 'church-doors.png';

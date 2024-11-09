@@ -243,7 +243,9 @@ tr.full td button {
             <td>Machine Learning Tools in Computational Neuroimaging: From Connectomes to FIT</td>
             <td class="small">Nov, 2024</td>
             <td>Susan Gabrieli</td>
-            <td>Coming soon</td>
+            <td>
+              <a href="slides/center_for_precision_psychiatry.pptx">slides</a>
+            </td>
             <td class="center read">
                 <button onclick="toggleReview(this)">abstract ▿</button>
             </td>
@@ -251,7 +253,7 @@ tr.full td button {
         <tr class="full">
             <td colspan="6">
                 <div>
-                    An overview of machine learning tools in computational neuroimaging, covering connectomes and functional imaging techniques.
+Automated fetal brain extraction from MRI is a challenging task due to variable head sizes, orientations, complex anatomy, and prevalent artifacts. While deep learning (DL) models trained on synthetic images have been successful in adult brain extraction, adapting these networks for fetal MRI is difficult due to the scarcity of labeled data, leading to increased false-positive predictions. To address this, we propose a test-time strategy that reduces false positives in networks trained on sparse, synthetic labels. The approach uses a breadth-first scan (BFS) to identify a subvolume likely to contain the fetal brain, followed by a depth-focused sliding window (DFS) search to refine the extraction, pooling predictions to minimize false positives. We train models at different window sizes using synthetic images derived from a small number of fetal brain label maps, augmented with geometric shapes. Each model is trained on diverse head positions and scales, including cases with partial or no brain tissue. On clinical HASTE scans of third-trimester fetuses, our framework matches state-of-the-art brain extraction methods and exceeds them by up to three Dice points in the second trimester and for EPI scans. These results demonstrate the utility of a sliding-window approach, which improves brain-extraction accuracy by progressively refining the regions of interest, minimizing the risk of missing brain mask slices, or incorrectly identifying other tissues as brain.
                 </div>
                 <br/>
                 <button onclick="hideReview(this)">close ⌃</button>

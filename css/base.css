@@ -198,6 +198,23 @@ iframe {
     justify-content: center;
 }
 
+.selected-projects #text-image-left{
+  float: left;        /* Floats the image to the left */
+  margin-right: 25px; /* Adds some space between the image and the text */
+  margin-top: 15px;
+  margin-bottom: 5px; /* Adds some space below the image */
+  width: 250px;      /* You can adjust the width as needed */
+  height: auto;      /* Maintains aspect ratio */
+}
+
+.selected-projects #text-image-right{
+  float: right;        /* Floats the image to the left */
+  margin-left: 25px; /* Adds some space between the image and the text */
+  margin-top: 15px;
+  margin-bottom: 5px; /* Adds some space below the image */
+  width: 160px;      /* You can adjust the width as needed */
+  height: auto;      /* Maintains aspect ratio */
+}
 .left-image {
     float: left;        /* Floats the image to the left */
     margin-right: 15px; /* Adds some space between the image and the text */

@@ -426,10 +426,13 @@ tr.full td button {
     <img src="church/50/church-doors.gif" alt="Church Doors" class="left-image" id="text-image-left">
 The tools and solutions I’ve built are versatile and designed for deployment across various data modalities, including time-series data, stock market analysis, EEG signals for neural data, cardiovascular ECG data for heart disease prediction,
 and complex imaging data such as fMRI and MRI. </p>
-<img src="church/49/church-doors.gif" alt="Church Doors" class="right-image" id="text-image-right">
 <p>Specifically, I focus on <b>brain segmentation</b>, body organ segmentation, skull stripping, brain and organ masking, and <b>face detection</b>. In areas like prenatal neuroimaging, where training data is limited, I employ <b>generative AI</b> to produce <b>synthetic images</b> and precise masks, enabling robust model development in these challenging domains.
-
-<p></p>
+  <img src="church/49/church-doors.gif" alt="Church Doors" class="right-image" id="text-image-right">
+<p>In one of our projects, we developed a <b>sliding-window</b> approach specifically designed to improve automated fetal brain extraction from <b>full-uterus</b> MRI images.
+  This method addresses the common issue of false-positive tissue predictions by navigating towards the fetal brain and selectively extracting brain tissue.
+  Using a <b>breadth-fine search (BFS)</b> followed by a <b>deep-focused sliding window (DFS)</b>, our approach refines the extraction process, significantly reducing false positives.
+  Trained on a small set of <b>synthetic fetal brain images</b>, our model achieves state-of-the-art accuracy, especially in challenging second-trimester cases and for EPI scans.
+</p>
 </p>
 </div>
 <p>Some of my projects are:</p>
@@ -466,7 +469,7 @@ and complex imaging data such as fMRI and MRI. </p>
             <div class="project-description">
               <div class="project-content">
                   <p>This project implements a <strong>hybrid 3D, multi-scale model for fetal brain extraction</strong> from MRI scans using a <em>cascade of U-Net architectures</em>.
-                    Using a Breadth-Fine Search (BFS) and Deep-Focused Sliding Window (DFS) approach, our framework achieves precise segmentation results in full-uterus stack-of-slices scans, even with limited training data and annotations.</p>
+                    Using a Breadth-Fine Search (BFS) and Deep-Focused Sliding Window (DFS) approach, our framework achieves precise segmentation results in <b>full-uterus</b> stack-of-slices scans, even with limited training data and annotations.</p>
 
                   <p>Our method employs a cascade of four models—<strong>A, B, C, and D</strong>—trained to focus on 3D patches of decreasing sizes from a synthesized set of training images augmented with random geometric shapes.
                     At inference, we pool sliding-window predictions across multiple sizes to detect and refine the region of interest (ROI) that most likely contains the fetal brain. Subsequently, we derive an accurate brain mask through voxel-wise majority voting.</p>

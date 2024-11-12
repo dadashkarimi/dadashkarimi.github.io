@@ -53,7 +53,8 @@ function squares(p) {
         'church/45/','church/45/','church/45/',
         'church/46/','church/46/','church/46/','church/46/','church/46/','church/46/','church/46/',
         'church/47/',  'church/47/',  'church/47/',
-        'church/48/','church/48/','church/48/'
+        'church/48/','church/48/','church/48/',
+        'church/49/','church/49/','church/49/'
 
     ];
 

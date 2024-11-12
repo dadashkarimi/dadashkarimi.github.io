@@ -142,6 +142,8 @@ iframe {
   margin-bottom: 25px;
 }
 
+
+
 .social-icon {
   width: 34px;
   height: 34px;
@@ -224,9 +226,10 @@ iframe {
 
 #text-image-right {
   float: right;        /* Floats the image to the left */
-  margin-left: 15px; /* Adds some space between the image and the text */
-  margin-bottom: 15px;
-  width: 250px;      /* You can adjust the width as needed */
+  margin-left: 25px; /* Adds some space between the image and the text */
+  margin-bottom: 25px;
+  margin-top: 5px;
+  width: 200px;      /* You can adjust the width as needed */
   height: auto;      /* Maintains aspect ratio */
 
 }

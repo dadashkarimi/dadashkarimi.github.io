@@ -135,6 +135,24 @@ iframe {
     font-size: 1.3em;
 }
 
+.social-media-icons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 25px;
+}
+
+.social-icon {
+  width: 34px;
+  height: 34px;
+  transition: transform 0.2s;
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
+}
+
+
 #birbs {
     min-width: 340px;
     min-height: 340px;

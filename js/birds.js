@@ -92,7 +92,7 @@ function squares(p) {
             drawShapes();
         } else {
             // For larger screens, continue with original random content selection
-            if (Math.random() < 0.2) {
+            if (Math.random() < 1) {
                 drawShapes();
             } else {
                 loadRandomImage();

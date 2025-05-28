@@ -424,22 +424,47 @@ tr.full td button {
 
 </p>
 <div class="selected-projects">
+  <img src="figs/bfsdfs.gif" alt="Fetal Brain Masking" class="right-image" id="text-image-left">
+
   <p>
-    <!--img src="church/51/church-doors.gif" alt="Church Doors" class="left-image" id="text-image-left"-->
-The tools and solutions I’ve built are versatile and designed for deployment across various data modalities, including time-series data, stock market analysis, EEG signals for neural data, cardiovascular ECG data for heart disease prediction,
-and complex imaging data such as fMRI and MRI. </p>
-<p>Specifically, I focus on <b>brain segmentation</b>, body organ segmentation, skull stripping, brain and organ masking, and <b>face detection</b>. In areas like prenatal neuroimaging, where training data is limited, I employ <b>generative AI</b> to produce <b>synthetic images</b> and precise masks, enabling robust model development in these challenging domains.
-  <img src="church/49/church-doors.gif" alt="Church Doors" class="right-image" id="text-image-right">
-<p>In one of our projects, we developed a <b>sliding-window</b> approach specifically designed to improve automated fetal brain extraction from <b>full-uterus</b> MRI images.
-  <img src="figs/bfsdfs.gif" alt="Church Doors" class="right-image" id="text-image-left">
+    I work on a variety of <b>medical image analysis</b> problems and develop tools that help researchers and doctors better understand the body and brain. These tools are designed to work on different types of images — from fetal MRI scans to brain scans of animals and full-body medical images.
+  </p>
 
-  This method addresses the common issue of false-positive tissue predictions by navigating towards the fetal brain and selectively extracting brain tissue.
+  <p>
+    One tool I developed helps find and extract the brain from <b>fetal MRI scans</b>. This is hard to do because the fetus moves a lot and the brain keeps changing as it grows. Our method works by scanning through the image step by step and locating just the brain.
 
-  Using a <b>breadth-fine search (BFS)</b> followed by a <b>deep-focused sliding window (DFS)</b>, our approach refines the extraction process, significantly reducing false positives.
-  Trained on a small set of <b>synthetic fetal brain images</b>, our model achieves state-of-the-art accuracy, especially in challenging second-trimester cases and for EPI scans.
-</p>
-</p>
+  </p>
+
+  <img src="figs/pig.png" alt="Pig Brain Masking" class="right-image" id="text-image-right">
+  <p>
+    I’ve also worked with <b>animal brain scans</b>, especially from pigs. Pig brains are similar to human brains and are used in research on <b>traumatic brain injury (TBI)</b>. I built tools to automatically extract the brain from these images so researchers can study injury effects and potential treatments more easily.
+  </p>
+
+  <img src="figs/body.gif" alt="Body Organ Segmentation" class="right-image" id="text-image-left">
+  <p>
+    Beyond the brain, I also build tools for <b>body organ segmentation</b>. This means teaching AI to find and outline organs like the liver, lungs, and kidneys in CT or MRI scans. These tools are useful for tracking diseases, measuring organ size, and preparing for surgery.
+  </p>
+  <img src="figs/tracts.gif" alt="Tractography Clustering" class="right-image" id="text-image-right">
+
+
+  <p>
+    Another important area I focus on is <b>tractography</b>, which maps the brain's internal wiring — called white matter tracts. I build models that group these tracts into bundles doctors recognize. This is especially important for patients with <b>brain tumors</b> or <b>TBI</b>, where knowing the exact location of brain connections helps avoid damage during treatment.
+  </p>
+
+
+  <p>
+    A lot of my work uses <b>machine learning</b>, which needs large amounts of labeled training data. But in medicine, it's often hard to get enough real data. To solve this, I use methods like <b>Gaussian Mixture Models (GMM)</b> or <b>Hidden Markov Random Fields (HMRF)</b> to generate <b>label maps</b> — which are used to create unlimited synthetic training images and build more reliable AI tools.
+  </p>
+
+  <img src="figs/hmrf-full.png" alt="Tractography Clustering" id="text-image-center">
+
+  <!-- <img src="figs/hmrf-1.png" alt="Synthetic Data with GMM or HMRF" class="right-image" id="text-image"> -->
+
+
 </div>
+
+
+
 <p>Some of my projects are:</p>
 
 

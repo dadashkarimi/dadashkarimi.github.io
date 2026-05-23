@@ -1,7 +1,16 @@
 (function () {
   var key = 'site-theme';
   var btn = document.getElementById('themeToggle');
+  var menuBtn = document.getElementById('menuToggle');
   if (!btn) return;
+
+  if (menuBtn) {
+    menuBtn.addEventListener('click', function () {
+      var open = document.body.classList.toggle('nav-open');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      menuBtn.textContent = open ? 'close' : 'menu';
+    });
+  }
 
   function setTheme(theme) {
     var dark = theme === 'dark';

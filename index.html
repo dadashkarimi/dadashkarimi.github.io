@@ -103,6 +103,17 @@ nav {
   align-items: center;
   gap: 10px;
 }
+.menu-toggle {
+  display: none;
+  font-family: 'Caveat', cursive;
+  font-size: 18px;
+  color: var(--ink);
+  background: transparent;
+  border: 1.5px solid var(--ink);
+  padding: 3px 10px;
+  cursor: pointer;
+}
+.menu-toggle:hover { background: var(--paper-dark); }
 .brand {
   font-family: 'Caveat', cursive;
   font-size: 26px;
@@ -379,6 +390,42 @@ body.theme-dark .cred-card.tool-sticker.sticker-link:hover {
   box-shadow: 6px 10px 0 #66ff00;
 }
 
+.education-strip {
+  padding: 10px 0 56px;
+}
+.education-item {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 1px dashed var(--rule);
+  align-items: baseline;
+}
+.education-item:last-child {
+  border-bottom: none;
+}
+.education-year {
+  font-family: 'Caveat', cursive;
+  font-size: 24px;
+  color: var(--red);
+  line-height: 1.05;
+}
+.education-place {
+  font-family: 'Newsreader', serif;
+  font-size: 22px;
+  font-style: italic;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.education-detail {
+  font-family: 'Caveat', cursive;
+  font-size: 18px;
+  line-height: 1.18;
+  color: var(--ink-2);
+}
+body.theme-dark .education-detail { color: #d8ffc8; }
+
 .section { padding: 60px 0; border-top: 2px dashed var(--rule); }
 .section-head {
   margin-bottom: 40px;
@@ -521,11 +568,28 @@ body.theme-dark .social-icons a img:hover { opacity: 1; }
   .wrap { padding: 0 max(20px, env(safe-area-inset-left)) 0 max(20px, env(safe-area-inset-right)); }
   nav {
     padding: 16px max(20px, env(safe-area-inset-left)) 16px max(20px, env(safe-area-inset-right));
-    flex-direction: column;
+    position: relative;
     gap: 12px;
-    align-items: flex-start;
+    align-items: center;
   }
-  .nav-right { width: 100%; display: flex; flex-wrap: wrap; gap: 8px; }
+  .nav-right { display: flex; gap: 8px; margin-left: auto; }
+  .brand { font-size: 22px; }
+  .menu-toggle, .theme-toggle { font-size: 16px; padding: 3px 8px; }
+  .menu-toggle { display: inline-flex; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: max(20px, env(safe-area-inset-right));
+    z-index: 20;
+    width: min(220px, calc(100vw - 40px));
+    padding: 10px;
+    background: var(--paper);
+    border: 1.5px solid var(--ink);
+    box-shadow: 4px 4px 0 var(--green);
+  }
+  body.nav-open .nav-links { display: flex; flex-direction: column; align-items: stretch; }
+  .nav-links a { font-size: 20px; padding: 6px 10px; }
   .hero { padding: 40px 0 28px; }
   .hero h1 { font-size: clamp(38px, 10.5vw, 58px); }
   .hero-lead { font-size: 19px; }
@@ -537,6 +601,8 @@ body.theme-dark .social-icons a img:hover { opacity: 1; }
   .tracts-frame { height: 340px; }
   .credentials { padding: 40px 0; }
   .cred-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .education-item { grid-template-columns: 82px 1fr; gap: 14px; }
+  .education-year { font-size: 21px; }
   .notes { grid-template-columns: 1fr; gap: 24px; }
   .pub-row { grid-template-columns: 50px 1fr; gap: 12px; }
   .pub-row .venue { grid-column: 2; text-align: left; }
@@ -546,8 +612,9 @@ body.theme-dark .social-icons a img:hover { opacity: 1; }
   .footer-links a { margin-left: 0; margin-right: 16px; }
 }
 @media (max-width: 480px) {
-  .tracts-frame { height: 280px; }
+  .tracts-frame { height: 320px; }
   .cred-grid { grid-template-columns: 1fr; }
+  .education-item { grid-template-columns: 1fr; gap: 4px; }
 }
 </style>
 </head>
@@ -562,7 +629,8 @@ body.theme-dark .social-icons a img:hover { opacity: 1; }
 <nav>
   <a href="index.html" class="brand">Javid Dadashkarimi</a>
   <div class="nav-right">
-    <div class="nav-links">
+    <button id="menuToggle" class="menu-toggle" aria-expanded="false" aria-controls="siteNav">menu</button>
+    <div class="nav-links" id="siteNav">
       <a href="#research">research</a>
       <a href="#pubs">papers</a>
       <a href="pubs.html">all pubs</a>
@@ -639,21 +707,6 @@ body.theme-dark .social-icons a img:hover { opacity: 1; }
       <div class="cred-label">histology app for tissue segmentation and annotation workflows</div>
     </div>
     <div class="cred-card tool-sticker">
-      <span class="tool-badge badge-education" title="Education">ED</span>
-      <div class="cred-num">University of Tehran</div>
-      <div class="cred-label">undergrad and master</div>
-    </div>
-    <div class="cred-card tool-sticker">
-      <span class="tool-badge badge-education" title="Education">ED</span>
-      <div class="cred-num">Yale</div>
-      <div class="cred-label">PhD in Computer Science (2023)</div>
-    </div>
-    <div class="cred-card tool-sticker">
-      <span class="tool-badge badge-affiliation" title="Affiliation">AF</span>
-      <div class="cred-num">Harvard</div>
-      <div class="cred-label">worked as a developer at the Martinos Center (MGH/Harvard) for one year</div>
-    </div>
-    <div class="cred-card tool-sticker">
       <span class="tool-badge badge-affiliation" title="Affiliation">AF</span>
       <div class="cred-num">UPENN</div>
       <div class="cred-label">postdoctoral research fellowship at Penn Medicine</div>
@@ -668,6 +721,40 @@ body.theme-dark .social-icons a img:hover { opacity: 1; }
       <div class="cred-num">Articles</div>
       <div class="cred-label">peer-reviewed journal and conference research articles</div>
     </a>
+  </div>
+</section>
+
+<section class="education-strip" aria-label="Education and training">
+  <div class="cred-title">education &amp; training</div>
+  <div class="education-list">
+    <div class="education-item">
+      <div class="education-year">2008–2015</div>
+      <div>
+        <div class="education-place">University of Tehran</div>
+        <div class="education-detail">undergraduate and master's training in software engineering</div>
+      </div>
+    </div>
+    <div class="education-item">
+      <div class="education-year">2017–2023</div>
+      <div>
+        <div class="education-place">Yale University</div>
+        <div class="education-detail">PhD in Computer Science, connectomics and optimal transport</div>
+      </div>
+    </div>
+    <div class="education-item">
+      <div class="education-year">2023–2025</div>
+      <div>
+        <div class="education-place">MGH / Harvard</div>
+        <div class="education-detail">developer at the Martinos Center for Biomedical Imaging</div>
+      </div>
+    </div>
+    <div class="education-item">
+      <div class="education-year">2025–present</div>
+      <div>
+        <div class="education-place">UPENN</div>
+        <div class="education-detail">postdoctoral research fellow in medical AI and neuroimaging</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -815,8 +902,17 @@ body.theme-dark .social-icons a img:hover { opacity: 1; }
 (function () {
   var key = 'site-theme';
   var btn = document.getElementById('themeToggle');
+  var menuBtn = document.getElementById('menuToggle');
   var tractFrame = document.getElementById('tractsFrame');
   if (!btn) return;
+
+  if (menuBtn) {
+    menuBtn.addEventListener('click', function () {
+      var open = document.body.classList.toggle('nav-open');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      menuBtn.textContent = open ? 'close' : 'menu';
+    });
+  }
 
   function syncTractTheme(theme) {
     if (!tractFrame || !tractFrame.contentWindow) return;

@@ -88,6 +88,17 @@ nav {
   align-items: center;
   gap: 10px;
 }
+.menu-toggle {
+  display: none;
+  font-family: 'Caveat', cursive;
+  font-size: 18px;
+  color: var(--ink);
+  background: transparent;
+  border: 1.5px solid var(--ink);
+  padding: 3px 10px;
+  cursor: pointer;
+}
+.menu-toggle:hover { background: var(--paper-dark); }
 .brand {
   font-family: 'Caveat', cursive;
   font-size: 26px;
@@ -533,8 +544,25 @@ body.theme-dark .post-card:hover { box-shadow: 5px 5px 0 #66ff00; }
 /* ---- Responsive ---- */
 @media (max-width: 800px) {
   .wrap { padding: 0 20px; }
-  nav { padding: 16px 20px; flex-direction: column; gap: 12px; align-items: flex-start; }
-  .nav-right { width: 100%; display: flex; flex-wrap: wrap; gap: 8px; }
+  nav { padding: 16px 20px; position: relative; gap: 12px; align-items: center; }
+  .nav-right { display: flex; gap: 8px; margin-left: auto; }
+  .brand { font-size: 22px; }
+  .menu-toggle, .theme-toggle { font-size: 16px; padding: 3px 8px; }
+  .menu-toggle { display: inline-flex; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 20px;
+    z-index: 20;
+    width: min(220px, calc(100vw - 40px));
+    padding: 10px;
+    background: var(--paper);
+    border: 1.5px solid var(--ink);
+    box-shadow: 4px 4px 0 var(--green);
+  }
+  body.nav-open .nav-links { display: flex; flex-direction: column; align-items: stretch; }
+  .nav-links a { font-size: 20px; padding: 6px 10px; }
   .pub-row { grid-template-columns: 44px 1fr; }
   .pub-row .pub-cite { grid-column: 2; text-align: left; }
   .talk-row { grid-template-columns: 72px 1fr; }

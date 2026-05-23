@@ -1,429 +1,160 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<title>
-    Books &ndash; Javid Dadashkarimi
-  </title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Talks — Javid Dadashkarimi</title>
 <meta name="author" content="Javid Dadashkarimi" />
-<meta name="description" content="Javid Dadashkarimi's blog" />
-<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-<link rel="alternate" type="application/rss+xml" href="atom.xml" />
-<link rel="stylesheet" href="css/base.css" type="text/css" media="screen, projection" />
+<meta name="description" content="Invited talks by Javid Dadashkarimi" />
 <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
 <link rel="icon" type="image/png" href="images/favicon.png">
 <link rel="manifest" href="manifest.json">
-
-<link rel="manifest" href="https://meowni.ca/reads/manifest.json">
-
-<meta name="theme-color" content="#7BE4D5">
-
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="application-name" content="Javid's blog">
-
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Javid's blog">
-
-<link rel="apple-touch-icon" sizes="192x192" href="https://meowni.ca/reads/icons/icon-192x192.png">
-
-<meta name="msapplication-TileImage" content="images/manifest/icon-192x192.png">
-<meta name="msapplication-TileColor" content="#7BE4D5">
-<meta name="msapplication-tap-highlight" content="no">
-
-<meta name="twitter:card" content="Javid Dadashkarimi's blog">
-<meta name="twitter:site" content="@notwaldorf">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="my-app">
-<meta property="og:image" content="icons/icon-192x192.png" />
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
-<script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-47334320-2']);
-    _gaq.push(['_setDomainName', 'meowni.ca']);
-    _gaq.push(['_trackPageview']);
-    (function () {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
+<meta name="theme-color" content="#000000">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/notebook.css">
 </head>
+<body class="theme-dark">
 
-<body>
+<div class="extreme-tracker">
+  <script src="https://efreecode.com/js.js" id="eXF-javiddad-0" async defer></script>
+</div>
+
+<div class="tape">notebook · javid's talks · est. 2026</div>
+
 <nav>
-<ul>
-<li id="home_link" class="og"><a href="index.html">🏠</a></li>
-<li><a href="works.html">Contact me</a></li>
-<li><a href="reads.html">Reading</a></li>
-<!--li><a href="art.html">Art & Sciences</a></li-->
-<li><a href="blogs.html">Posts</a></li>
-<li><a href="pubs.html">Publications</a></li>
-<li><a href="talks.html">Talks</a></li>
-</ul>
+  <a href="index.html" class="brand">Javid Dadashkarimi</a>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="index.html#research">research</a>
+      <a href="pubs.html">papers</a>
+      <a href="blogs.html">blog</a>
+      <a href="talks.html" class="active">talks</a>
+      <a href="reads.html">reading</a>
+      <a href="works.html">contact</a>
+    </div>
+    <button id="themeToggle" class="theme-toggle" aria-label="Switch to bright theme">bright</button>
+  </div>
 </nav>
-<div class="splash">
-<div class="splash-wrapper">
-<div class="splash-copy">
-<h1>Invited Talks</h1>
-<br>
-<p></p>
-</div>
-<div id="birbs">
-<canvas></canvas>
-<div class="birbs-legend">
-<b>click this art</b> to regenerate it
-<button>[<b>?</b>]</button>
-<div class="birbs-note">I whipped up this little piece of art that changes every time you click on it.
-</div>
 
-</div>
-</div>
-</div>
-<div class="dots"></div>
-</div>
-<section class="content">
-<p>
-<style>
-table {
-  display: grid;
-  border-collapse: collapse;
-  gap: 4px;
-  max-width: 100%;
-  overflow: scroll;
-}
-table.small {
-  grid-template-columns: 1fr 8fr;
-}
-table.all {
-  grid-template-columns: 2.5fr 1.5fr 1.2fr 1fr 1fr;
-}
+<div class="wrap">
 
-thead,
-tbody,
-tr {
-  display: contents;
-}
-
-th,
-td {
-  font-size: 14px;
-}
-td.small {
-  font-size: 14px;
-}
-td.center {
-  text-align: center;
-}
-th {
-  border-bottom: 3px solid black;
-  text-align: left;
-  font-size: 16px;
-}
-table.all td {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-td a:link, td a:visited {
-  color: black;
-  text-decoration-color: var(--red);
-  text-decoration-thickness: .125em;
-}
-tr.full {
-  display: none;
-}
-tr.full.show {
-  display: contents;
-}
-tr.full td {
-  grid-column: 1 / -1;
-  padding: 20px 40px;
-  border-left: 3px solid #ddd;
-  font-size: 16px;
-  line-height: 1.5;
-}
-button {
-  background: transparent;
-  font-family: inherit;
-  font-size: 14px;
-  margin: 0;
-  padding: 0;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  border-bottom: 2px solid var(--red);
-  color: black;
-}
-tr.full td button {
-  margin-right: 24px;
-}
-@media screen and (max-width:600px) {
-  table.all {
-    grid-template-columns: 1fr 1fr 0.5fr 0.7fr 0.7fr;
-  }
-  tr.full td {
-    max-width: 80%;
-    padding: 16px;
-  }
-}
-
-</style>
-<script>
-  function toggleReview(el) {
-    const tr = el.parentElement.parentElement;
-    const nextTr = tr.nextElementSibling;
-    nextTr.classList.toggle('show');
-  }
-  function hideReview(el) {
-    const tr = el.parentElement.parentElement;
-    tr.classList.remove('show');
-  }
-  function copyReview(el) {
-    const tr = el.parentElement.parentElement;
-    const copyText = tr.querySelector('div').textContent;
-    navigator.clipboard.writeText(copyText);
-  }
-</script>
-<section class="content">
-  <p>I am grateful to be invited to give talks about my projects.
-    <img src="church/38/church-doors.png" alt="Church Doors" class="left-image" id="text-image">
-    Sharing my work with others is both a privilege and an opportunity to connect with those who are passionate about advancing research and technology.
- I’m thankful for the chance to engage with such insightful audiences and learn from their perspectives as well. I would be more than happy to speak about machine learning and its applications to connectomics and neuroimaging at future events.
-    Feel free to <a href="mailto:javiddadashkarimi@gmail.com">reach out</a>!</p>
+<div class="page-hero">
+  <div class="page-eyebrow">~ invited talks &amp; presentations ~</div>
+  <h1>Talks &amp; <em>Lectures</em></h1>
+  <p>
+    I'm grateful to be invited to share my research. Happy to speak on machine learning,
+    connectomics, neuroimaging, or medical AI at future events.
+    <a href="mailto:javiddadashkarimi@gmail.com">Reach out!</a>
   </p>
+</div>
 
+<div class="section">
+  <div class="section-head">
+    <div class="section-num">§ 01</div>
+    <h2 class="section-title">invited talks</h2>
+  </div>
 
-</section>
-<br><br>
-<p>Acronyms Explained</p>
-  <table class="small">
-  <tbody>
-  <tr>
-  <td>MGH</td>
-  <td>Massachusetts General Hospital
-  </td>
-  </tr>
-  <tr>
-  <td>MIT</td>
-  <td>Massachusetts Institute of Technology
-  </td>
-  </tr>
-  <tr>
-  <td>CISS</td>
-  <td>Annual Conference on Information Sciences and Systems
-  </td>
-  </tr>
-  <tr>
-  <td>Martinos</td>
-  <td>Athinoula A. Martinos Center for Biomedical Imaging
-  </td>
-  </tr>
-  <tr>
-  <td>JHU</td>
-  <td>Johns Hopkins University
-  </td>
-  </tr>
+  <div class="talk-row">
+    <div class="talk-date">Nov 2024</div>
+    <div>
+      <div class="talk-title">AI in Neuroimaging: Tools and Techniques from Connectomes to Synthetic Data</div>
+      <div class="talk-host">→ Ragini Verma · Penn Medicine</div>
+    </div>
+    <div class="talk-links">
+      <a href="slides/center_for_precision_psychiatry.pptx">slides</a>
+    </div>
+  </div>
 
-  </tbody>
-  </table>
-<br/>
-<br/>
-<table class="all">
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Date</th>
-            <th>Host</th>
-            <th >Records</th>
-            <th>Info</th>
-        </tr>
-    </thead>
-    <tbody>
-      <tr>
-          <td>AI in Neuroimaging: Tools and Techniques from Connectomes to Synthetic Data</td>
-          <td class="small">Nov, 2024</td>
-          <td>Ragini Verma</td>
-          <td>
-            <a href="slides/center_for_precision_psychiatry.pptx">slides</a>
-          </td>
-          <td class="center read">
-              <button onclick="toggleReview(this)">abstract ▿</button>
-          </td>
-      </tr>
-      <tr class="full">
-          <td colspan="6">
-              <div>
-                coming soon
-              </div>
-              <br/>
-              <button onclick="hideReview(this)">close ⌃</button>
-              <button onclick="copyReview(this)">copy to clipboard</button>
-          </td>
-      </tr>
-        <tr>
-            <td>Machine Learning Tools in Computational Neuroimaging: From Connectomes to FIT</td>
-            <td class="small">Nov, 2024</td>
-            <td>Susan Gabrieli</td>
-            <td>
-              <a href="slides/center_for_precision_psychiatry.pptx">slides</a>
-            </td>
-            <td class="center read">
-                <button onclick="toggleReview(this)">abstract ▿</button>
-            </td>
-        </tr>
-        <tr class="full">
-            <td colspan="6">
-                <div>
-Automated fetal brain extraction from MRI is a challenging task due to variable head sizes, orientations, complex anatomy, and prevalent artifacts. While deep learning (DL) models trained on synthetic images have been successful in adult brain extraction, adapting these networks for fetal MRI is difficult due to the scarcity of labeled data, leading to increased false-positive predictions. To address this, we propose a test-time strategy that reduces false positives in networks trained on sparse, synthetic labels. The approach uses a breadth-first scan (BFS) to identify a subvolume likely to contain the fetal brain, followed by a depth-focused sliding window (DFS) search to refine the extraction, pooling predictions to minimize false positives. We train models at different window sizes using synthetic images derived from a small number of fetal brain label maps, augmented with geometric shapes. Each model is trained on diverse head positions and scales, including cases with partial or no brain tissue. On clinical HASTE scans of third-trimester fetuses, our framework matches state-of-the-art brain extraction methods and exceeds them by up to three Dice points in the second trimester and for EPI scans. These results demonstrate the utility of a sliding-window approach, which improves brain-extraction accuracy by progressively refining the regions of interest, minimizing the risk of missing brain mask slices, or incorrectly identifying other tissues as brain.
-                </div>
-                <br/>
-                <button onclick="hideReview(this)">close ⌃</button>
-                <button onclick="copyReview(this)">copy to clipboard</button>
-            </td>
-        </tr>
+  <div class="talk-row">
+    <div class="talk-date">Nov 2024</div>
+    <div>
+      <div class="talk-title">Machine Learning Tools in Computational Neuroimaging: From Connectomes to FIT</div>
+      <div class="talk-host">→ Susan Gabrieli · MIT</div>
+    </div>
+    <div class="talk-links">
+      <a href="slides/center_for_precision_psychiatry.pptx">slides</a>
+    </div>
+  </div>
 
-        <tr>
-            <td>Machine Learning Tools in Computational Neuroimaging: From Connectomes to FIT</td>
-            <td class="small">Oct, 2024</td>
-            <td>Julie Price</td>
-            <td>
-                <a href="slides/supergroup_martinox.pptx">slides</a>, <a href="https://www.youtube.com/watch?v=0z68WAkjVNc">video</a>
-            </td>
-            <td class="center read">
-                <button onclick="toggleReview(this)">abstract ▿</button>
-            </td>
-        </tr>
-        <tr class="full">
-            <td colspan="6">
-                <div>
-                  Automated fetal brain extraction from MRI is a challenging task due to variable head sizes, orientations, complex anatomy, and prevalent artifacts. While deep learning (DL) models trained on synthetic images have been successful in adult brain extraction, adapting these networks for fetal MRI is difficult due to the scarcity of labeled data, leading to increased false-positive predictions. To address this, we propose a test-time strategy that reduces false positives in networks trained on sparse, synthetic labels. The approach uses a breadth-first scan (BFS) to identify a subvolume likely to contain the fetal brain, followed by a depth-focused sliding window (DFS) search to refine the extraction, pooling predictions to minimize false positives.
+  <div class="talk-row">
+    <div class="talk-date">Oct 2024</div>
+    <div>
+      <div class="talk-title">Machine Learning Tools in Computational Neuroimaging: From Connectomes to FIT</div>
+      <div class="talk-host">→ Julie Price · Martinos Center, MGH/Harvard</div>
+    </div>
+    <div class="talk-links">
+      <a href="slides/supergroup_martinox.pptx">slides</a>
+      <a href="https://www.youtube.com/watch?v=0z68WAkjVNc" target="_blank">video</a>
+    </div>
+  </div>
 
-                  We train models at different window sizes using synthetic images derived from a small number of fetal brain label maps, augmented with geometric shapes. Each model is trained on diverse head positions and scales, including cases with partial or no brain tissue. On clinical HASTE scans of third-trimester fetuses, our framework matches state-of-the-art brain extraction methods and exceeds them by up to three Dice points in the second trimester and for EPI scans. These results demonstrate the utility of a sliding-window approach, which improves brain-extraction accuracy by progressively refining the regions of interest, minimizing the risk of missing brain mask slices, or incorrectly identifying other tissues as brain.
+  <div class="talk-row">
+    <div class="talk-date">Jul 2023</div>
+    <div>
+      <div class="talk-title">Data-driven Methods for Functional Connectomes using Optimal Transport</div>
+      <div class="talk-host">→ PhD Defense · Yale University</div>
+    </div>
+    <div class="talk-links">
+      <a href="slides/phd.pdf">slides</a>
+    </div>
+  </div>
 
-                  </div>
-                <br/>
-                <button onclick="hideReview(this)">close ⌃</button>
-                <button onclick="copyReview(this)">copy to clipboard</button>
-            </td>
-        </tr>
+  <div class="talk-row">
+    <div class="talk-date">Mar 2023</div>
+    <div>
+      <div class="talk-title">Stacking Multiple Optimal Transport Policies to Map Functional Connectomes</div>
+      <div class="talk-host">→ CISS 2023 · Johns Hopkins University</div>
+    </div>
+    <div class="talk-links">
+      <a href="slides/CISS_2023_March.pdf">slides</a>
+    </div>
+  </div>
 
-        <tr>
-            <td>Data-driven Methods for Functional Connectomes using Optimal Transport</td>
-            <td class="small">July, 2023</td>
-            <td>PhD Defense</td>
-            <td>
-                <a href="slides/phd.pdf">slides</a>
-            </td>
-            <td class="center read">
-                <button onclick="toggleReview(this)">abstract ▿</button>
-            </td>
-        </tr>
-        <tr class="full">
-            <td colspan="6">
-                <div>
-                    under construction ..
-                </div>
-                <br/>
-                <button onclick="hideReview(this)">close ⌃</button>
-                <button onclick="copyReview(this)">copy to clipboard</button>
-            </td>
-        </tr>
+  <div class="talk-row">
+    <div class="talk-date">Feb 2023</div>
+    <div>
+      <div class="talk-title">Cross Atlas Remapping via Optimal Transport (CAROT)</div>
+      <div class="talk-host">→ Ev Fedorenko · MIT</div>
+    </div>
+    <div class="talk-links">
+      <a href="slides/MIT_2023_March.pdf">slides</a>
+    </div>
+  </div>
 
-        <tr>
-            <td>Stacking multiple optimal transport policies to map functional connectomes</td>
-            <td class="small">March, 2023</td>
-            <td>JHU</td>
-            <td>
-                <a href="slides/CISS_2023_March.pdf">slides</a>
-            </td>
-            <td class="center read">
-                <button onclick="toggleReview(this)">abstract ▿</button>
-            </td>
-        </tr>
-        <tr class="full">
-            <td colspan="6">
-                <div>
-                  under construction ..
-                </div>
-                <br/>
-                <button onclick="hideReview(this)">close ⌃</button>
-                <button onclick="copyReview(this)">copy to clipboard</button>
-            </td>
-        </tr>
+  <div class="talk-row">
+    <div class="talk-date">Mar 2023</div>
+    <div>
+      <div class="talk-title">Cross Atlas Remapping via Optimal Transport (CAROT)</div>
+      <div class="talk-host">→ Bruce Fischl · Martinos Center, MGH/Harvard</div>
+    </div>
+    <div class="talk-links">
+      <a href="slides/Harvard_2023_March.pdf">slides</a>
+    </div>
+  </div>
 
-        <tr>
-            <td>Cross Atlas Remapping via Optimal Transport (CAROT)</td>
-            <td class="small">Feb, 2023</td>
-            <td>Ev Fedorenko</td>
-            <td>
-                <a href="slides/MIT_2023_March.pdf">slides</a>
-            </td>
-            <td class="center read">
-                <button onclick="toggleReview(this)">abstract ▿</button>
-            </td>
-        </tr>
-        <tr class="full">
-            <td colspan="6">
-                <div>
-                  under construction ..
-                </div>
-                <br/>
-                <button onclick="hideReview(this)">close ⌃</button>
-                <button onclick="copyReview(this)">copy to clipboard</button>
-            </td>
-        </tr>
+</div>
 
-        <tr>
-            <td>Cross Atlas Remapping via Optimal Transport (CAROT)</td>
-            <td class="small">March, 2023</td>
-            <td>Bruce Fischl</td>
-            <td>
-                <a href="slides/Harvard_2023_March.pdf">slides</a>
-            </td>
-            <td class="center read">
-                <button onclick="toggleReview(this)">abstract ▿</button>
-            </td>
-        </tr>
-        <tr class="full">
-            <td colspan="6">
-                <div>
-                  under construction ..
-                </div>
-                <br/>
-                <button onclick="hideReview(this)">close ⌃</button>
-                <button onclick="copyReview(this)">copy to clipboard</button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+</div><!-- end .wrap -->
 
+<footer class="footer">
+  <div class="footer-inner">
+    <h2>Let's <span class="wavy">collaborate.</span></h2>
+    <p>Reach out for research collaborations, consulting, or just a friendly hello.</p>
+    <a href="mailto:javiddadashkarimi@gmail.com" class="footer-mail">javiddadashkarimi [at] gmail [dot] com</a>
+    <div class="footer-links">
+      <div>© 2026 Javid · made with ♡ in Philly</div>
+      <div>
+        <a href="https://scholar.google.com/citations?user=LrXokpIAAAAJ&hl=en" target="_blank">scholar</a>
+        <a href="https://github.com/dadashkarimi" target="_blank">github</a>
+        <a href="https://www.linkedin.com/in/javid-dadashkarimi-0b26b3199/" target="_blank">linkedin</a>
+        <a href="https://x.com/JDadashkarimi" target="_blank">twitter</a>
+      </div>
+    </div>
+  </div>
+</footer>
 
-<script>
-function toggleDetails(button) {
-    const row = button.closest("tr").nextElementSibling;
-    row.style.display = row.style.display === "table-row" ? "none" : "table-row";
-}
-
-function hideDetails(button) {
-    const row = button.closest("tr");
-    row.style.display = "none";
-}
-</script>
-
-  <hr>
-</section>
-<script src="js/birds.js"></script>
+<script src="js/site-theme.js"></script>
 </body>
-<script>
-  'use strict';
-
-  // Load the pygments stylesheet so that it's not render blocking.
-  var head = document.head;
-  var link = document.createElement('link');
-  link.type = 'text/css';
-  link.rel = 'stylesheet';
-  link.href = '/css/pygments.css'
-  head.appendChild(link);
-</script>
 </html>

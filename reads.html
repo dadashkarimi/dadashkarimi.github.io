@@ -1,514 +1,296 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<title>
-    Books &ndash; Javid Dadashkarimi
-  </title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Reading — Javid Dadashkarimi</title>
 <meta name="author" content="Javid Dadashkarimi" />
-<meta name="description" content="Javid Dadashkarimi's blog" />
-<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-<link rel="alternate" type="application/rss+xml" href="atom.xml" />
-<link rel="stylesheet" href="css/base.css" type="text/css" media="screen, projection" />
+<meta name="description" content="Book reviews and reading notes by Javid Dadashkarimi" />
 <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
 <link rel="icon" type="image/png" href="images/favicon.png">
 <link rel="manifest" href="manifest.json">
-
-<link rel="manifest" href="https://meowni.ca/reads/manifest.json">
-
-<meta name="theme-color" content="#7BE4D5">
-
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="application-name" content="Javid's blog">
-
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Javid's blog">
-
-<link rel="apple-touch-icon" sizes="192x192" href="https://meowni.ca/reads/icons/icon-192x192.png">
-
-<meta name="msapplication-TileImage" content="images/manifest/icon-192x192.png">
-<meta name="msapplication-TileColor" content="#7BE4D5">
-<meta name="msapplication-tap-highlight" content="no">
-
-<meta name="twitter:card" content="Javid Dadashkarimi's blog">
-<meta name="twitter:site" content="@notwaldorf">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="my-app">
-<meta property="og:image" content="icons/icon-192x192.png" />
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
-<script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-47334320-2']);
-    _gaq.push(['_setDomainName', 'meowni.ca']);
-    _gaq.push(['_trackPageview']);
-    (function () {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-</head>
-
-<body>
-<nav>
-<ul>
-<li id="home_link" class="og"><a href="index.html">🏠</a></li>
-<li><a href="works.html">Contact me</a></li>
-<li><a href="reads.html">Reading</a></li>
-<!--li><a href="art.html">Art & Sciences</a></li-->
-<li><a href="blogs.html">Posts</a></li>
-<li><a href="pubs.html">Publications</a></li>
-<li><a href="talks.html">Talks</a></li>
-</ul>
-</nav>
-<div class="splash">
-<div class="splash-wrapper">
-<div class="splash-copy">
-<h1>Book Reviews</h1>
-<p></p>
-</div>
-<div id="birbs">
-<canvas></canvas>
-<div class="birbs-legend">
-<b>click this art</b> to regenerate it
-<button>[<b>?</b>]</button>
-<div class="birbs-note">I whipped up this little piece of art that changes every time you click on it.
-</div>
-
-</div>
-</div>
-</div>
-<div class="dots"></div>
-</div>
-<section class="content">
-<p>
-I'm an avid reader and usually enjoy these books on the subway, Amtrak trains around New England, or in coffee shops like Caffè Nero or Mr. Crepe in Boston.
-I try to be fair in my reviews and not deduct stars just because I didn’t enjoy a book.</p>
-
+<meta name="theme-color" content="#000000">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/notebook.css">
+<script src="https://cdn.jsdelivr.net/npm/brain.js"></script>
 <style>
-table {
-  display: grid;
-  border-collapse: collapse;
-  gap: 4px;
-  max-width: 100%;
-  overflow: scroll;
+#birbs {
+  width: 100%;
+  height: 130px;
+  overflow: hidden;
+  border-top: 1.5px dashed var(--rule);
+  border-bottom: 1.5px dashed var(--rule);
+  margin: 32px 0 0;
+  position: relative;
+  opacity: 0.85;
 }
-table.small {
-  grid-template-columns: 1fr 8fr;
+#birbs canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
 }
-table.all {
-  grid-template-columns: 2.5fr 2fr 1fr 0.7fr 0.7fr;
-}
-
-thead,
-tbody,
-tr {
-  display: contents;
-}
-
-th,
-td {
-  font-size: 14px;
-}
-td.small {
-  font-size: 14px;
-}
-td.center {
-  text-align: center;
-}
-th {
-  border-bottom: 3px solid black;
-  text-align: left;
-  font-size: 16px;
-}
-table.all td {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-td a:link, td a:visited {
-  color: black;
-  text-decoration-color: var(--red);
-  text-decoration-thickness: .125em;
-}
-tr.full {
-  display: none;
-}
-tr.full.show {
-  display: contents;
-}
-tr.full td {
-  grid-column: 1 / -1;
-  padding: 20px 40px;
-  border-left: 3px solid #ddd;
-  font-size: 16px;
-  line-height: 1.5;
-}
-button {
-  background: transparent;
-  font-family: inherit;
-  font-size: 14px;
-  margin: 0;
-  padding: 0;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  border-bottom: 2px solid var(--red);
-  color: black;
-}
-tr.full td button {
-  margin-right: 24px;
-}
-@media screen and (max-width:600px) {
-  table.all {
-    grid-template-columns: 1fr 1fr 0.5fr 0.7fr 0.7fr;
-  }
-  tr.full td {
-    max-width: 80%;
-    padding: 16px;
-  }
-}
-
 </style>
+</head>
+<body class="theme-dark">
+
+<div class="extreme-tracker">
+  <script src="https://efreecode.com/js.js" id="eXF-javiddad-0" async defer></script>
+</div>
+
+<div class="tape">notebook · javid's reading list · est. 2026</div>
+
+<nav>
+  <a href="index.html" class="brand">Javid Dadashkarimi</a>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="index.html#research">research</a>
+      <a href="pubs.html">papers</a>
+      <a href="blogs.html">blog</a>
+      <a href="talks.html">talks</a>
+      <a href="reads.html" class="active">reading</a>
+      <a href="works.html">contact</a>
+    </div>
+    <button id="themeToggle" class="theme-toggle" aria-label="Switch to bright theme">bright</button>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<div class="page-hero">
+  <div class="page-eyebrow">~ books i've read &amp; annotated ~</div>
+  <h1>Reading <em>List</em></h1>
+  <p>
+    A small collection of books that have shaped how I think about research, startups, and the brain.
+    Ratings are personal; reviews are my own honest takes.
+  </p>
+  <div id="birbs"><canvas></canvas></div>
+</div>
+
+<div class="section">
+  <div class="section-head">
+    <div class="section-num">§ 01</div>
+    <h2 class="section-title">books</h2>
+  </div>
+
+  <div class="book-list">
+
+    <div class="book-row">
+      <div class="book-year">2026</div>
+      <div class="book-body">
+        <div class="book-title">50 Great Short Stories</div>
+        <div class="book-author">Edited by Milton Crane</div>
+        <div class="book-rating">★ 4.7 / 5</div>
+        <button class="book-review-btn" onclick="toggleReview(this)">read review ▿</button>
+        <div class="book-review">
+          A landmark anthology that gathers fifty masterpieces of the short story form — Hemingway, Chekhov,
+          Maupassant, Katherine Anne Porter, Shirley Jackson, and more. Crane's selection is thoughtful and
+          wide-ranging, making this the perfect entry point into the genre. Each story is tight, purposeful,
+          and rewards re-reading. Jackson's "The Lottery" alone is worth the price of admission.
+        </div>
+      </div>
+    </div>
+
+    <div class="book-row">
+      <div class="book-year">2025</div>
+      <div class="book-body">
+        <div class="book-title">Zero to One: Notes on Startups</div>
+        <div class="book-author">Peter Thiel</div>
+        <div class="book-rating">★ 4.5 / 5</div>
+        <button class="book-review-btn" onclick="toggleReview(this)">read review ▿</button>
+        <div class="book-review">
+          Thiel offers unconventional insights into innovation and building startups, emphasizing the importance of
+          creating unique value rather than copying existing ideas. The book challenges readers to think critically
+          about technology, business models, and the future of progress.
+        </div>
+      </div>
+    </div>
+
+    <div class="book-row">
+      <div class="book-year">2025</div>
+      <div class="book-body">
+        <div class="book-title">Lost and Founder: A Painfully Honest Field Guide to the Startup World</div>
+        <div class="book-author">Rand Fishkin</div>
+        <div class="book-rating">★ 4.2 / 5</div>
+        <button class="book-review-btn" onclick="toggleReview(this)">read review ▿</button>
+        <div class="book-review">
+          Fishkin provides a candid and humorous account of the challenges of building a startup, debunking Silicon
+          Valley myths while offering hard-won lessons on growth, fundraising, and resilience. A must-read for founders
+          seeking a grounded perspective.
+        </div>
+      </div>
+    </div>
+
+    <div class="book-row">
+      <div class="book-year">2025</div>
+      <div class="book-body">
+        <div class="book-title">Brain: An Owner's Guide (The Body Literacy Library)</div>
+        <div class="book-author">Elizabeth R. Ricker</div>
+        <div class="book-rating">★ 4.5 / 5</div>
+        <button class="book-review-btn" onclick="toggleReview(this)">read review ▿</button>
+        <div class="book-review">
+          A practical and easy-to-read book about how the brain works. I liked how it mixes science with everyday
+          advice, making it simple to apply to real life.
+        </div>
+      </div>
+    </div>
+
+    <div class="book-row">
+      <div class="book-year">2025</div>
+      <div class="book-body">
+        <div class="book-title">Secrets of Sand Hill Road: Venture Capital and How to Get It</div>
+        <div class="book-author">Scott Kupor</div>
+        <div class="book-rating">★ 4.4 / 5</div>
+        <button class="book-review-btn" onclick="toggleReview(this)">read review ▿</button>
+        <div class="book-review">
+          Kupor, managing partner at Andreessen Horowitz, pulls back the curtain on venture capital. The book explains
+          how VCs think, what they look for in startups, and how founders can successfully navigate funding negotiations.
+        </div>
+      </div>
+    </div>
+
+    <div class="book-row">
+      <div class="book-year">2025</div>
+      <div class="book-body">
+        <div class="book-title">The Parasitic Mind: How Infectious Ideas Are Killing Common Sense</div>
+        <div class="book-author">Gad Saad</div>
+        <div class="book-rating">★ 4.1 / 5</div>
+        <button class="book-review-btn" onclick="toggleReview(this)">read review ▿</button>
+        <div class="book-review">
+          Saad argues that harmful ideas spread like mind parasites, undermining rational thinking and common sense.
+          Blending psychology and cultural critique, the book calls for resilience against ideological conformity.
+        </div>
+      </div>
+    </div>
+
+    <div class="book-row">
+      <div class="book-year">2025</div>
+      <div class="book-body">
+        <div class="book-title">Mastery</div>
+        <div class="book-author">Robert Greene</div>
+        <div class="book-rating">★ 4.5 / 5</div>
+        <button class="book-review-btn" onclick="toggleReview(this)">read review ▿</button>
+        <div class="book-review">
+          Greene explores the path to mastery, blending history, psychology, and philosophy to show how individuals
+          can achieve excellence in their fields. Drawing from the lives of great masters, he outlines a blueprint
+          for sustained personal and professional growth.
+        </div>
+      </div>
+    </div>
+
+    <div class="book-row">
+      <div class="book-year">2024</div>
+      <div class="book-body">
+        <div class="book-title">Sleep Tight</div>
+        <div class="book-author">J.H. Markert</div>
+        <div class="book-rating">★ 4.5 / 5</div>
+        <button class="book-review-btn" onclick="toggleReview(this)">read review ▿</button>
+        <div class="book-review">
+          This book gripped me from start to finish. The atmosphere is dark, chilling, and relentless, making every
+          page feel like a descent into madness. Father Silence is one of the most terrifying villains I've come
+          across. The way the author plays with memory and trauma adds so much depth to the characters. Definitely a
+          must-read for horror fans looking for a story that stays with you.
+        </div>
+      </div>
+    </div>
+
+    <div class="book-row">
+      <div class="book-year">2023</div>
+      <div class="book-body">
+        <div class="book-title">The Deep History of Ourselves</div>
+        <div class="book-author">Joseph LeDoux</div>
+        <div class="book-rating">★ 4.8 / 5</div>
+        <button class="book-review-btn" onclick="toggleReview(this)">read review ▿</button>
+        <div class="book-review">
+          LeDoux delivers an awe-inspiring journey through four billion years of evolution to explore how consciousness
+          emerged. From the cellular to the cerebral, each chapter brings clarity to complex ideas, connecting ancient
+          survival mechanisms with modern human behavior. I used some of the figures in the book during my PhD defense
+          at Yale University.
+        </div>
+      </div>
+    </div>
+
+    <div class="book-row">
+      <div class="book-year">2023</div>
+      <div class="book-body">
+        <div class="book-title">fMRI</div>
+        <div class="book-author">Peter Bandettini</div>
+        <div class="book-rating">★ 4.0 / 5</div>
+        <button class="book-review-btn" onclick="toggleReview(this)">read review ▿</button>
+        <div class="book-review">
+          Bandettini presents an engaging and accessible account of the history and breakthroughs in fMRI. The book
+          distills complex scientific progress into a concise and approachable narrative, ideal for both newcomers and
+          those with a background in neuroimaging. His personal insights add depth to the technical journey.
+        </div>
+      </div>
+    </div>
+
+    <div class="book-row">
+      <div class="book-year">2022</div>
+      <div class="book-body">
+        <div class="book-title">The Entangled Brain: How Perception, Cognition, and Emotion Are Woven Together</div>
+        <div class="book-author">Luiz Pessoa</div>
+        <div class="book-rating">★ 4.6 / 5</div>
+        <button class="book-review-btn" onclick="toggleReview(this)">read review ▿</button>
+        <div class="book-review">
+          A thoughtful book about how the brain's functions are deeply interconnected. I liked how it challenges the
+          idea of separating thinking, feeling, and perception, showing how they all work together.
+        </div>
+      </div>
+    </div>
+
+    <div class="book-row">
+      <div class="book-year">2022</div>
+      <div class="book-body">
+        <div class="book-title">Causal Inference</div>
+        <div class="book-author">Paul R. Rosenbaum</div>
+        <div class="book-rating">★ 4.1 / 5</div>
+        <button class="book-review-btn" onclick="toggleReview(this)">read review ▿</button>
+        <div class="book-review">
+          Rosenbaum's <em>Causal Inference</em> is a rigorous and enlightening exploration of causal analysis, blending
+          mathematical precision with practical application. Highly recommended for anyone delving into the challenges
+          of establishing causation in observational data.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- end .wrap -->
+
+<footer class="footer">
+  <div class="footer-inner">
+    <h2>Let's <span class="wavy">collaborate.</span></h2>
+    <p>Have a book recommendation? I'd love to hear it.</p>
+    <a href="mailto:javiddadashkarimi@gmail.com" class="footer-mail">javiddadashkarimi [at] gmail [dot] com</a>
+    <div class="footer-links">
+      <div>© 2026 Javid · made with ♡ in Philly</div>
+      <div>
+        <a href="https://scholar.google.com/citations?user=LrXokpIAAAAJ&hl=en" target="_blank">scholar</a>
+        <a href="https://github.com/dadashkarimi" target="_blank">github</a>
+        <a href="https://www.linkedin.com/in/javid-dadashkarimi-0b26b3199/" target="_blank">linkedin</a>
+        <a href="https://x.com/JDadashkarimi" target="_blank">twitter</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
 <script>
-  function toggleReview(el) {
-    const tr = el.parentElement.parentElement;
-    const nextTr = tr.nextElementSibling;
-    nextTr.classList.toggle('show');
+function toggleReview(btn) {
+  var review = btn.nextElementSibling;
+  if (review.classList.contains('open')) {
+    review.classList.remove('open');
+    btn.textContent = 'read review ▿';
+  } else {
+    review.classList.add('open');
+    btn.textContent = 'close ⌃';
   }
-  function hideReview(el) {
-    const tr = el.parentElement.parentElement;
-    tr.classList.remove('show');
-  }
-  function copyReview(el) {
-    const tr = el.parentElement.parentElement;
-    const copyText = tr.querySelector('div').textContent;
-    navigator.clipboard.writeText(copyText);
-  }
+}
 </script>
-<p>Ratings explained:</p>
-<table class="small">
-<tbody>
-<tr>
-<td>5 / 5</td>
-<td>Loved it a lot, would reread</td>
-</tr>
-<tr>
-<td>4 / 5</td>
-<td>I liked it, but I probably won't reread it again</td>
-</tr>
-<tr>
-<td>3 / 5</td>
-<td>It was fine. It wasn't amazing but it was a fun read and I don't regret reading it</td>
-</tr>
-<tr>
-<td>2 / 5</td>
-<td>I didn't like this *at all* and I'll probably say it was badly written</td>
-</tr>
-<tr>
-<td>1 / 5</td>
-<td>This book literally pissed me off</td>
-</tr>
-<tr>
-<td>n / a</td>
-<td>I didn't feel comfortable rating this book because it was either about facts, or I didn't finish it (which doesn't necessarily mean I didn't love it; I'm looking at you John Banville.)
-</td>
-</tr>
-</tbody>
+<script src="js/site-theme.js"></script>
+<script src="script.js"></script>
 
-</table>
-<p><br/></p>
-<table class="all">
-<thead>
-<tr>
-<th>Title</th>
-<th>Author</th>
-<th>Read</th>
-<th>Rating</th>
-<th>Review</th>
-</tr>
-</thead>
-<tbody>
-
-  <tr>
-    <td>
-        Zero to One: Notes on Startups
-    </td>
-    <td>Peter Thiel</td>
-    <td class="small">2025</td>
-    <td class="center stars">
-        <b>4.5</b> / 5
-    </td>
-    <td class="center read">
-        <button onclick="toggleReview(this)">read ▿</button>
-    </td>
-</tr>
-<tr class="full">
-    <td>
-        <div>
-            Thiel offers unconventional insights into innovation and building startups, emphasizing the importance of creating unique value rather than copying existing ideas. The book challenges readers to think critically about technology, business models, and the future of progress.
-        </div>
-        <br/>
-        <button onclick="hideReview(this)">close ⌃</button>
-        <button onclick="copyReview(this)">copy to clipboard</button>
-    </td>
-</tr>
-
-<tr>
-    <td>
-        Lost and Founder: A Painfully Honest Field Guide to the Startup World
-    </td>
-    <td>Rand Fishkin</td>
-    <td class="small">2025</td>
-    <td class="center stars">
-        <b>4.2</b> / 5
-    </td>
-    <td class="center read">
-        <button onclick="toggleReview(this)">read ▿</button>
-    </td>
-</tr>
-<tr class="full">
-    <td>
-        <div>
-            Fishkin provides a candid and humorous account of the challenges of building a startup, debunking Silicon Valley myths while offering hard-won lessons on growth, fundraising, and resilience. A must-read for founders seeking a grounded perspective.
-        </div>
-        <br/>
-        <button onclick="hideReview(this)">close ⌃</button>
-        <button onclick="copyReview(this)">copy to clipboard</button>
-    </td>
-</tr>
-
-<tr>
-    <td>
-        Brain: An Owner's Guide (The Body Literacy Library)
-    </td>
-    <td>Elizabeth R. Ricker</td>
-    <td class="small">2025</td>
-    <td class="center stars">
-        <b>4.5</b> / 5
-    </td>
-    <td class="center read">
-        <button onclick="toggleReview(this)">read ▿</button>
-    </td>
-</tr>
-<tr class="full">
-    <td>
-        <div>
-            A practical and easy-to-read book about how the brain works. I liked how it mixes science with everyday advice, making it simple to apply to real life.
-        </div>
-        <br/>
-        <button onclick="hideReview(this)">close ⌃</button>
-        <button onclick="copyReview(this)">copy to clipboard</button>
-    </td>
-</tr>
-
-
-<tr>
-    <td>
-        Secrets of Sand Hill Road: Venture Capital and How to Get It
-    </td>
-    <td>Scott Kupor</td>
-    <td class="small">2025</td>
-    <td class="center stars">
-        <b>4.4</b> / 5
-    </td>
-    <td class="center read">
-        <button onclick="toggleReview(this)">read ▿</button>
-    </td>
-</tr>
-<tr class="full">
-    <td>
-        <div>
-            Kupor, managing partner at Andreessen Horowitz, pulls back the curtain on venture capital. The book explains how VCs think, what they look for in startups, and how founders can successfully navigate funding negotiations.
-        </div>
-        <br/>
-        <button onclick="hideReview(this)">close ⌃</button>
-        <button onclick="copyReview(this)">copy to clipboard</button>
-    </td>
-</tr>
-
-<tr>
-    <td>
-        The Parasitic Mind: How Infectious Ideas Are Killing Common Sense
-    </td>
-    <td>Gad Saad</td>
-    <td class="small">2025</td>
-    <td class="center stars">
-        <b>4.1</b> / 5
-    </td>
-    <td class="center read">
-        <button onclick="toggleReview(this)">read ▿</button>
-    </td>
-</tr>
-<tr class="full">
-    <td>
-        <div>
-            Saad argues that harmful ideas spread like mind parasites, undermining rational thinking and common sense. Blending psychology and cultural critique, the book calls for resilience against ideological conformity.
-        </div>
-        <br/>
-        <button onclick="hideReview(this)">close ⌃</button>
-        <button onclick="copyReview(this)">copy to clipboard</button>
-    </td>
-</tr>
-
-<tr>
-    <td>
-        Mastery
-    </td>
-    <td>Robert Greene</td>
-    <td class="small">2025</td>
-    <td class="center stars">
-        <b>4.5</b> / 5
-    </td>
-    <td class="center read">
-        <button onclick="toggleReview(this)">read ▿</button>
-    </td>
-</tr>
-<tr class="full">
-    <td>
-        <div>
-            Greene explores the path to mastery, blending history, psychology, and philosophy to show how individuals can achieve excellence in their fields. Drawing from the lives of great masters, he outlines a blueprint for sustained personal and professional growth.
-        </div>
-        <br/>
-        <button onclick="hideReview(this)">close ⌃</button>
-        <button onclick="copyReview(this)">copy to clipboard</button>
-    </td>
-</tr>
-
-
-  <tr>
-      <td>
-          Sleep Tight
-      </td>
-      <td>J.H. Markert</td>
-      <td class="small">2024</td>
-      <td class="center stars">
-          <b>4.5</b> / 5
-      </td>
-      <td class="center read">
-          <button onclick="toggleReview(this)">read ▿</button>
-      </td>
-  </tr>
-  <tr class="full">
-      <td>
-          <div>
-              This book gripped me from start to finish. The atmosphere is dark, chilling, and relentless, making every page feel like a descent into madness. The author skillfully weaves tension with an eerie sense of dread that creeps into every corner of the story. Father Silence is one of the most terrifying villains I’ve come across, and the twists keep coming, making it impossible to put down. The way the author plays with memory and trauma adds so much depth to the characters, especially Tess. Definitely a must-read for horror fans looking for a story that stays with you.
-          </div>
-          <br/>
-          <button onclick="hideReview(this)">close ⌃</button>
-          <button onclick="copyReview(this)">copy to clipboard</button>
-      </td>
-  </tr>
-  <tr>
-    <td>
-        The Entangled Brain: How Perception, Cognition, and Emotion Are Woven Together
-    </td>
-    <td>Luiz Pessoa</td>
-    <td class="small">2022/05/17</td>
-    <td class="center stars">
-        <b>4.6</b> / 5
-    </td>
-    <td class="center read">
-        <button onclick="toggleReview(this)">read ▿</button>
-    </td>
-</tr>
-<tr class="full">
-    <td>
-        <div>
-            A thoughtful book about how the brain’s functions are deeply interconnected. I liked how it challenges the idea of separating thinking, feeling, and perception, showing how they all work together.
-        </div>
-        <br/>
-        <button onclick="hideReview(this)">close ⌃</button>
-        <button onclick="copyReview(this)">copy to clipboard</button>
-    </td>
-</tr>
-
-  <tr>
-      <td>
-          The Deep History of Ourselves
-      </td>
-      <td>Joseph LeDoux</td>
-      <td class="small">2023</td>
-      <td class="center stars">
-          <b>4.8</b> / 5
-      </td>
-      <td class="center read">
-          <button onclick="toggleReview(this)">read ▿</button>
-      </td>
-  </tr>
-  <tr class="full">
-      <td>
-          <div>
-              LeDoux delivers an awe-inspiring journey through four billion years of evolution to explore how consciousness emerged. The book's depth is remarkable, balancing scientific rigor with fascinating storytelling. From the cellular to the cerebral, each chapter brings clarity to complex ideas, connecting ancient survival mechanisms with modern human behavior. LeDoux’s perspective on consciousness as a product of evolution offers profound insights, though the detail-heavy approach may feel dense at times. For anyone curious about the deep roots of human awareness, this is an enlightening and thought-provoking read. I used some of the figures in the book during my PhD defene at Yale University.
-          </div>
-          <br/>
-          <button onclick="hideReview(this)">close ⌃</button>
-          <button onclick="copyReview(this)">copy to clipboard</button>
-      </td>
-  </tr>
-  <tr>
-      <td>
-          fMRI
-      </td>
-      <td>Peter Bandettini</td>
-      <td class="small">2023</td>
-      <td class="center stars">
-          <b>4</b> / 5
-      </td>
-      <td class="center read">
-          <button onclick="toggleReview(this)">read ▿</button>
-      </td>
-  </tr>
-  <tr class="full">
-      <td>
-          <div>
-              Bandettini presents an engaging and accessible account of the history and breakthroughs in fMRI. The book distills complex scientific progress into a concise and approachable narrative, ideal for both newcomers and those with a background in neuroimaging. His personal insights add depth to the technical journey, reflecting on the field's early days to the advances shaping our understanding today. It’s a brief read, but one that resonates, reminding us of the fascinating evolution behind one of neuroscience's most influential tools.
-          </div>
-          <br/>
-          <button onclick="hideReview(this)">close ⌃</button>
-          <button onclick="copyReview(this)">copy to clipboard</button>
-      </td>
-  </tr>
-  <tr>
-      <td>
-          Causal Inference
-      </td>
-      <td>Paul R. Rosenbaum</td>
-      <td class="small">2022</td>
-      <td class="center stars">
-          <b>4.1</b> / 5
-      </td>
-      <td class="center read">
-          <button onclick="toggleReview(this)">read ▿</button>
-      </td>
-  </tr>
-  <tr class="full">
-      <td>
-          <div>
-              Rosenbaum’s <b>Causal Inference</b> is a rigorous and enlightening exploration of causal analysis, blending mathematical precision with practical application. His explanations on topics like matching, instrumental variables, and sensitivity analysis are both comprehensive and accessible, making complex concepts understandable even to non-specialists. The book is dense with valuable insights and provides a strong foundation in causal reasoning, especially for those in social sciences and epidemiology. Highly recommended for anyone delving into the challenges of establishing causation in observational data.
-          </div>
-          <br/>
-          <button onclick="hideReview(this)">close ⌃</button>
-          <button onclick="copyReview(this)">copy to clipboard</button>
-      </td>
-  </tr>
-
-</tbody>
-</table>
-<hr>
-</section>
-<script src="js/birds.js"></script>
 </body>
-<script>
-  'use strict';
-
-  // Load the pygments stylesheet so that it's not render blocking.
-  var head = document.head;
-  var link = document.createElement('link');
-  link.type = 'text/css';
-  link.rel = 'stylesheet';
-  link.href = '/css/pygments.css'
-  head.appendChild(link);
-</script>
 </html>

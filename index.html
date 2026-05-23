@@ -1,937 +1,862 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<title>
-    About &ndash; Javid Dadashkarimi
-</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Javid Dadashkarimi — Notebook</title>
 <meta name="author" content="Javid Dadashkarimi" />
-<meta name="description" content="Javid Dadashkarimi's blog" />
-<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-<link rel="alternate" type="application/rss+xml" href="atom.xml" />
-<link rel="stylesheet" href="css/base.css" type="text/css" media="screen, projection" />
+<meta name="description" content="Javid Dadashkarimi — researcher in medical imaging &amp; deep learning" />
 <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
 <link rel="icon" type="image/png" href="images/favicon.png">
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#7BE4D5">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="application-name" content="Javid's blog">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Javid's blog">
-<link rel="apple-touch-icon" sizes="192x192" href="icons/icon-192x192.png">
-<meta name="msapplication-TileImage" content="images/manifest/icon-192x192.png">
-<meta name="msapplication-TileColor" content="#7BE4D5">
-<meta name="msapplication-tap-highlight" content="no">
-<meta name="twitter:card" content="Javid Dadashkarimi's blog">
-<meta name="twitter:site" content="@notwaldorf">
+<meta name="theme-color" content="#000000">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@JDadashkarimi">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="my-app">
 <meta property="og:image" content="icons/icon-192x192.png" />
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-#extreme
-    {
-    z-index: 1;
-    visibility: hidden;
-    position: absolute;
-    z-index: 10000;
-    max-width:0rem;
-    }
+:root {
+  --paper: #ffffff;
+  --paper-dark: #f5f5f5;
+  --ink: #1a1a1a;
+  --ink-2: #4a4a4a;
+  --footer-bg: #1a1a1a;
+  --footer-fg: #ffffff;
+  --red: #00aa00;
+  --green: #00aa00;
+  --blue: #0066cc;
+  --yellow: #ffaa00;
+  --rule: #e0e0e0;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Atkinson Hyperlegible', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.6;
+  background-image:
+    radial-gradient(circle at 25% 35%, rgba(196,69,58,0.04) 0%, transparent 30%),
+    radial-gradient(circle at 75% 65%, rgba(74,124,59,0.03) 0%, transparent 30%);
+  -webkit-font-smoothing: antialiased;
+}
+body.theme-dark {
+  --paper: #000000;
+  --paper-dark: #0f0f0f;
+  --ink: #ffffff;
+  --ink-2: #b8ff8f;
+  --footer-bg: #000000;
+  --footer-fg: #ffffff;
+  --red: #ffffff;
+  --green: #00ff41;
+  --blue: #ffffff;
+  --yellow: #66ff00;
+  --rule: #1a4d1a;
+}
+.hand { font-family: 'Caveat', cursive; }
+.serif { font-family: 'Newsreader', serif; }
+
+.extreme-tracker {
+  position: absolute;
+  visibility: hidden;
+  max-width: 0;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.wrap { max-width: 920px; margin: 0 auto; padding: 0 32px; }
+
+.tape {
+  background: var(--yellow);
+  color: var(--ink);
+  text-align: center;
+  padding: 6px 16px;
+  font-family: 'Caveat', cursive;
+  font-size: 20px;
+  letter-spacing: 0.02em;
+  transform: rotate(-0.3deg);
+  margin: 0 auto;
+  max-width: 1000px;
+  border-bottom: 1px dashed rgba(0,0,0,0.15);
+}
+body.theme-dark .tape {
+  background: #000;
+  color: #fff;
+  border-bottom: 1px dashed #1a4d1a;
+}
+
+nav {
+  padding: 20px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--rule);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.brand {
+  font-family: 'Caveat', cursive;
+  font-size: 26px;
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: 600;
+}
+.brand::before { content: '★ '; color: var(--red); }
+.nav-links { display: flex; gap: 8px; flex-wrap: wrap; }
+.nav-links a {
+  font-family: 'Caveat', cursive;
+  font-size: 19px;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 4px 10px;
+  border: 1.5px solid transparent;
+  transition: all 0.15s;
+}
+.nav-links a:hover {
+  border-color: var(--ink);
+  background: var(--paper-dark);
+  transform: rotate(-1deg);
+}
+.theme-toggle {
+  font-family: 'Caveat', cursive;
+  font-size: 18px;
+  color: var(--ink);
+  background: transparent;
+  border: 1.5px solid var(--ink);
+  padding: 3px 10px;
+  cursor: pointer;
+}
+.theme-toggle:hover { background: var(--paper-dark); }
+
+.hero { padding: 60px 0 40px; position: relative; }
+.hero-eyebrow {
+  font-family: 'Caveat', cursive;
+  font-size: 28px;
+  color: var(--red);
+  margin-bottom: 12px;
+  transform: rotate(-1deg);
+  display: inline-block;
+}
+.hero h1 {
+  font-family: 'Newsreader', serif;
+  font-weight: 500;
+  font-size: clamp(48px, 6.8vw, 84px);
+  line-height: 1.02;
+  letter-spacing: 0;
+  margin-bottom: 32px;
+  color: var(--ink);
+  max-width: 980px;
+  text-wrap: balance;
+}
+.hero h1 .hero-line { display: block; }
+.hero h1 .hero-line-accent { white-space: normal; }
+.hero h1 .scribble {
+  position: relative;
+  display: inline-block;
+  font-style: italic;
+}
+.hero h1 .scribble::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: -4px;
+  right: -4px;
+  height: 8px;
+  background: var(--yellow);
+  z-index: -1;
+  transform: skewX(-8deg);
+}
+.hero-lead {
+  font-family: 'Newsreader', serif;
+  font-size: 22px;
+  line-height: 1.5;
+  max-width: 700px;
+  margin-bottom: 32px;
+  color: var(--ink-2);
+}
+.hero-lead b { color: inherit; font-weight: 700; }
+.hero-lead .red-focus { color: var(--green); font-weight: 700; }
+.hero-lead .hero-highlight { color: var(--green); font-weight: 700; }
+.hero-lead a {
+  color: var(--blue);
+  text-decoration: none;
+}
+.hero-lead a:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.hero-cta {
+  margin-top: 8px;
+  margin-bottom: 24px;
+  font-family: 'Caveat', cursive;
+  font-size: 26px;
+  color: var(--ink);
+}
+.hero-cta a {
+  color: var(--blue);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.hero-cta a:hover { border-bottom-color: var(--blue); }
+
+.quick-meta {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  padding: 16px 0;
+  border-top: 1px dashed var(--rule);
+  border-bottom: 1px dashed var(--rule);
+}
+.quick-meta div { font-size: 14px; }
+.quick-meta div span:first-child {
+  color: var(--ink-2);
+  margin-right: 6px;
+  font-family: 'Caveat', cursive;
+  font-size: 18px;
+}
+.quick-meta a { color: var(--blue); }
+
+.tracts {
+  padding: 24px 0 52px;
+}
+.tracts-shell {
+  background: color-mix(in srgb, var(--paper) 92%, #fffdf6 8%);
+  border: 1.5px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  overflow: hidden;
+}
+.tracts-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 12px 14px;
+  border-bottom: 1px dashed var(--rule);
+  background: var(--paper-dark);
+}
+.tracts-title {
+  font-family: 'Caveat', cursive;
+  font-size: 24px;
+  color: var(--ink);
+}
+.tracts-note {
+  font-size: 12px;
+  color: var(--ink-2);
+  letter-spacing: 0.03em;
+}
+.tracts-frame {
+  width: 100%;
+  height: 480px;
+  border: 0;
+  display: block;
+  background: var(--paper-dark);
+}
+
+.credentials { padding: 60px 0; position: relative; }
+.cred-title {
+  font-family: 'Caveat', cursive;
+  font-size: 32px;
+  margin-bottom: 32px;
+  color: var(--ink);
+  transform: rotate(-1deg);
+  display: inline-block;
+}
+.cred-title::before { content: '→ '; color: var(--red); }
+.cred-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+.cred-card {
+  padding: 18px 16px;
+  background: var(--paper-dark);
+  border: 1.5px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+  position: relative;
+  min-width: 0;
+}
+.cred-card:nth-child(odd) { transform: rotate(-1deg); }
+.cred-card:nth-child(even) { transform: rotate(1deg); background: #fce8c4; }
+.cred-card:nth-child(3) { background: #d6e4d0; transform: rotate(-0.5deg); }
+.cred-card:nth-child(5) { background: #f2d4d2; transform: rotate(1.5deg); }
+body.theme-dark .cred-card,
+body.theme-dark .cred-card:nth-child(even),
+body.theme-dark .cred-card:nth-child(3),
+body.theme-dark .cred-card:nth-child(5) {
+  background: #0b0d0b;
+  border-color: #f2f2f2;
+  box-shadow: 3px 3px 0 #66ff00;
+}
+.cred-num {
+  font-family: 'Newsreader', serif;
+  font-size: 32px;
+  font-weight: 600;
+  font-style: italic;
+  line-height: 1;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+.cred-label {
+  font-family: 'Caveat', cursive;
+  font-size: 18px;
+  line-height: 1.2;
+  color: var(--ink-2);
+}
+body.theme-dark .cred-num { color: #fff; }
+body.theme-dark .cred-label { color: #d8ffc8; }
+.cred-card.tool-sticker { padding: 18px 14px 16px; }
+.cred-card.tool-sticker .tool-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(42, 38, 34, 0.7);
+  background: rgba(255, 255, 255, 0.55);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Atkinson Hyperlegible', sans-serif;
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+body.theme-dark .cred-card.tool-sticker .tool-badge {
+  color: #000;
+  border-color: #d8ffc8;
+  background: #d8ffc8;
+}
+.cred-card.tool-sticker .tool-badge.badge-tools { background: #e7f0de; }
+.cred-card.tool-sticker .tool-badge.badge-education { background: #f6e7c9; }
+.cred-card.tool-sticker .tool-badge.badge-affiliation { background: #f3dbdb; }
+.cred-card.tool-sticker .tool-badge.badge-patent { background: #e4dbf5; }
+.cred-card.tool-sticker .tool-badge.badge-articles { background: #dce8f5; }
+body.theme-dark .cred-card.tool-sticker .tool-badge.badge-tools,
+body.theme-dark .cred-card.tool-sticker .tool-badge.badge-education,
+body.theme-dark .cred-card.tool-sticker .tool-badge.badge-affiliation,
+body.theme-dark .cred-card.tool-sticker .tool-badge.badge-patent,
+body.theme-dark .cred-card.tool-sticker .tool-badge.badge-articles {
+  background: #d8ffc8;
+}
+.cred-card.tool-sticker .cred-num {
+  font-size: clamp(24px, 2.8vw, 33px);
+  letter-spacing: 0.01em;
+  overflow-wrap: anywhere;
+}
+.cred-card.tool-sticker .cred-num.no-wrap {
+  white-space: nowrap;
+  font-size: clamp(20px, 2.2vw, 28px);
+}
+.cred-card.tool-sticker .cred-label {
+  font-size: 16px;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+.cred-card.tool-sticker.sticker-link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.cred-card.tool-sticker.sticker-link:hover {
+  transform: translateY(-6px) rotate(-1deg);
+  box-shadow: 6px 10px 0 var(--ink);
+}
+body.theme-dark .cred-card.tool-sticker.sticker-link:hover {
+  box-shadow: 6px 10px 0 #66ff00;
+}
+
+.section { padding: 60px 0; border-top: 2px dashed var(--rule); }
+.section-head {
+  margin-bottom: 40px;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+.section-num { font-family: 'Caveat', cursive; font-size: 28px; color: var(--red); }
+.section-title {
+  font-family: 'Newsreader', serif;
+  font-size: clamp(32px, 4.5vw, 52px);
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+}
+
+.notes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+.note {
+  background: color-mix(in srgb, var(--paper) 92%, #fffdf5 8%);
+  border: 1.5px solid var(--ink);
+  padding: 28px;
+  position: relative;
+  box-shadow: 4px 4px 0 var(--ink);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.note:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+.note::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  width: 50px;
+  height: 22px;
+  background: var(--yellow);
+  border: 1px solid rgba(0,0,0,0.15);
+  transform: rotate(-3deg);
+  opacity: 0.85;
+}
+.note-tag { font-family: 'Caveat', cursive; font-size: 18px; color: var(--red); margin-bottom: 4px; }
+.note h3 {
+  font-family: 'Newsreader', serif;
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  line-height: 1.1;
+}
+.note p { font-size: 15px; line-height: 1.55; color: var(--ink-2); }
+.note-meta {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--rule);
+  font-family: 'Caveat', cursive;
+  font-size: 17px;
+  color: var(--ink-2);
+}
+.note-meta b { color: var(--green); font-weight: normal; }
+
+.pub-row {
+  display: grid;
+  grid-template-columns: 70px 1fr 120px;
+  gap: 24px;
+  padding: 18px 0;
+  border-bottom: 1px dashed var(--rule);
+  align-items: baseline;
+}
+.pub-row .year { font-family: 'Caveat', cursive; font-size: 24px; color: var(--red); }
+.pub-row .title { font-family: 'Newsreader', serif; font-size: 19px; line-height: 1.35; }
+.pub-row .title a { color: var(--ink); text-decoration-color: var(--red); }
+.pub-row .venue { font-family: 'Caveat', cursive; font-size: 19px; color: var(--ink-2); text-align: right; }
+.pub-row .venue::before { content: '→ '; color: var(--red); }
+
+.awards-list { display: flex; flex-direction: column; gap: 0; }
+.award-row {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 24px;
+  padding: 14px 0;
+  border-bottom: 1px dashed var(--rule);
+  align-items: baseline;
+}
+.award-row .year { font-family: 'Caveat', cursive; font-size: 24px; color: var(--red); }
+.award-row .detail { font-family: 'Newsreader', serif; font-size: 18px; line-height: 1.35; }
+.award-row .detail a { color: var(--blue); }
+
+.social-icons { display: flex; gap: 16px; margin-top: 24px; }
+.social-icons a img { width: 32px; height: 32px; opacity: 0.75; transition: filter 0.15s, opacity 0.15s; }
+.social-icons a img:hover { opacity: 1; }
+body.theme-dark .social-icons a img {
+  filter: invert(1) grayscale(1) contrast(1.25) brightness(1.15);
+  opacity: 0.9;
+}
+body.theme-dark .social-icons a img:hover { opacity: 1; }
+
+.footer {
+  background: var(--footer-bg);
+  color: var(--footer-fg);
+  padding: 60px 32px 40px;
+  margin-top: 60px;
+}
+.footer-inner { max-width: 920px; margin: 0 auto; }
+.footer h2 {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-size: clamp(40px, 6vw, 64px);
+  line-height: 1;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+.footer h2 .wavy { color: var(--yellow); }
+.footer p { font-family: 'Newsreader', serif; font-size: 20px; max-width: 600px; opacity: 0.85; margin-bottom: 28px; }
+.footer-mail {
+  display: inline-block;
+  font-family: 'Caveat', cursive;
+  font-size: 32px;
+  background: var(--yellow);
+  color: #000;
+  padding: 8px 20px;
+  text-decoration: none;
+  transform: rotate(-1.5deg);
+  border: 2px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--red);
+}
+.footer-links {
+  margin-top: 60px;
+  padding-top: 24px;
+  border-top: 1px dashed color-mix(in srgb, var(--footer-fg) 30%, transparent 70%);
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Caveat', cursive;
+  font-size: 18px;
+}
+.footer-links a { color: var(--footer-fg); margin-left: 16px; }
+.footer-links a:first-child { margin-left: 0; }
+
+@media (max-width: 800px) {
+  .wrap { padding: 0 max(20px, env(safe-area-inset-left)) 0 max(20px, env(safe-area-inset-right)); }
+  nav {
+    padding: 16px max(20px, env(safe-area-inset-left)) 16px max(20px, env(safe-area-inset-right));
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .nav-right { width: 100%; display: flex; flex-wrap: wrap; gap: 8px; }
+  .hero { padding: 40px 0 28px; }
+  .hero h1 { font-size: clamp(38px, 10.5vw, 58px); }
+  .hero-lead { font-size: 19px; }
+  .hero-cta { font-size: 23px; }
+  .quick-meta { gap: 16px; }
+  .quick-meta div { width: 100%; }
+  .tracts { padding: 18px 0 38px; }
+  .tracts-head { flex-direction: column; align-items: flex-start; }
+  .tracts-frame { height: 340px; }
+  .credentials { padding: 40px 0; }
+  .cred-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .notes { grid-template-columns: 1fr; gap: 24px; }
+  .pub-row { grid-template-columns: 50px 1fr; gap: 12px; }
+  .pub-row .venue { grid-column: 2; text-align: left; }
+  .award-row { grid-template-columns: 50px 1fr; }
+  .footer { padding: 40px 20px; }
+  .footer-links { flex-direction: column; gap: 12px; }
+  .footer-links a { margin-left: 0; margin-right: 16px; }
+}
+@media (max-width: 480px) {
+  .tracts-frame { height: 280px; }
+  .cred-grid { grid-template-columns: 1fr; }
+}
 </style>
-
-
-<script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-47334320-2']);
-    _gaq.push(['_setDomainName', 'meowni.ca']);
-    _gaq.push(['_trackPageview']);
-    (function () {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-</script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
+<body class="theme-dark">
 
-<script>
-  function toggleReview(el) {
-    const tr = el.parentElement.parentElement;
-    const nextTr = tr.nextElementSibling;
-    nextTr.classList.toggle('show');
-  }
-  function hideReview(el) {
-    const tr = el.parentElement.parentElement;
-    tr.classList.remove('show');
-  }
-  function copyReview(el) {
-    const tr = el.parentElement.parentElement;
-    const copyText = tr.querySelector('div').textContent;
-    navigator.clipboard.writeText(copyText);
-  }
-</script>
+<div class="extreme-tracker">
+  <script src="https://efreecode.com/js.js" id="eXF-javiddad-0" async defer></script>
+</div>
 
-<body>
+<div class="tape">notebook · javid's homepage · est. 2026</div>
 
 <nav>
-<ul>
-<li id="home_link" class="og"><a href="index.html">🏠</a></li>
-<li><a href="works.html">Contact Me</a></li>
-<li><a href="reads.html">Reading</a></li>
-<!--li><a href="art.html">Art & Sciences</a></li-->
-<li><a href="blogs.html">Posts</a></li>
-<li><a href="pubs.html">Publications</a></li>
-<li><a href="talks.html">Talks</a></li>
-</ul>
+  <a href="index.html" class="brand">Javid Dadashkarimi</a>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="#research">research</a>
+      <a href="#pubs">papers</a>
+      <a href="pubs.html">all pubs</a>
+      <a href="blogs.html">blog</a>
+      <a href="talks.html">talks</a>
+      <a href="works.html">contact</a>
+    </div>
+    <button id="themeToggle" class="theme-toggle" aria-label="Switch to bright theme">bright</button>
+  </div>
 </nav>
-<div class="splash">
-<div class="splash-wrapper">
-<div class="splash-copy">
-<h1>Javid <br>Dadashkarimi</h1>
-<p>
-  I am a Postdoctoral Research Fellow at the Perelman School of Medicine, University of Pennsylvania, working with Professor Ragini Verma on developing <b>deep learning</b> tools for <b>diffusion MRI</b>.
-  Previously, I completed my Ph.D. at Yale University under the guidance of Professors Dustin Scheinost and Amin Karbasi, where my research focused on applying <b>optimal transport</b> to <b>connectomics</b> data.
-  I also spent a postdoctoral fellowship at the Martinos Center, where I developed <b>synthetic data-based fetal brain segmentation</b> tools.
-  For more details, check out the latest version of my <a href="slides/CV_JDadashkarimi.pdf">CV</a>.
-</div>
-<div id="birbs">
-<canvas></canvas>
-<div class="birbs-legend">
-<b>click this art</b> to regenerate it
-<button>[<b>?</b>]</button>
-<div class="birbs-note">I whipped up this little piece of art that changes every time you click on it.
-</div>
-</div>
-</div>
-</div>
 
-<div class="dots"></div>
-</div>
-<section class="content">
-<p>With a passion for AI-driven solutions in medical imaging, I focus on developing cutting-edge tools that elevate diagnostic precision and advance patient care.
-  My research has been featured in some of the leading journals and conferences, including <i>Nature</i>, <i>Molecular Psychiatry</i>, MICCAI, and COLING.
-  In addition to medical imaging, I bring expertise in natural language processing, particularly in machine translation and information retrieval, where I also hold a patent. You can explore my personal projects on <a href="https://github.com/dadashkarimi">GitHub</a>.
-  I am currently available for freelance opportunities in prototyping, consulting, and technical advisory roles.
-   For collaboration inquiries, feel free to <a href="mailto:javiddadashkarimi@gmail.com">reach out</a> – let’s connect!</p>
-<p>Also here is my updated <a  href="https://www.linkedin.com/in/javid-dadashkarimi-0b26b3199/">Linkedin</a> profile, academic <a  href="https://x.com/JDadashkarimi/">X</a> page, <a href="https://scholar.google.com/citations?user=LrXokpIAAAAJ&hl=en">Google Scholar</a>.</p>
-  <!--a href="https://extremetracking.com/open?login=javiddad" rel="me" title="Visitors" target="_blank">Visitors</a-->
-  <div id="extreme">
-  	<script src="https://efreecode.com/js.js" id="eXF-javiddad-0" async defer></script>
+<div class="wrap">
+
+<section class="hero">
+  <div class="hero-eyebrow">~ hello, internet ~</div>
+  <h1><span class="hero-line">I teach machines to</span><span class="hero-line hero-line-accent"><span class="scribble">read</span> the human brain.</span></h1>
+  <p class="hero-lead">
+    I am a postdoctoral research fellow at <span class="hero-highlight">Penn Medicine</span> working with Prof. Ragini Verma. My research develops <span class="hero-highlight">AI tools</span> that connect cellular-resolution histopathology with macroscopic brain imaging. I build <span class="hero-highlight">deep learning</span> methods for segmenting and quantifying axonal injury in APP immunohistochemistry, with the goal of linking <span class="red-focus">microscopic pathology maps</span> to imaging measures of white-matter injury, including MRI, diffusion MRI, and tractography-derived measures.
+  </p>
+  <p class="hero-cta">Currently open for collaborations and consulting. <a href="mailto:javiddadashkarimi@gmail.com">say hi →</a></p>
+
+  <div class="quick-meta">
+    <div><span class="hand">currently:</span> Penn Medicine, Philadelphia</div>
+    <div><span class="hand">working on:</span> histopathology + diffusion MRI + tractography validation</div>
+    <div><span class="hand">links:</span>
+      <a href="slides/CV_JDadashkarimi.pdf">CV</a>,
+      <a href="https://scholar.google.com/citations?user=LrXokpIAAAAJ&hl=en" target="_blank">Scholar</a>,
+      <a href="https://github.com/dadashkarimi" target="_blank">GitHub</a>
+    </div>
   </div>
 
-  <div class="social-media-icons">
-    <a href="https://x.com/JDadashkarimi" target="_blank">
-      <img src="icons/twitter.png" alt="X" class="social-icon">
-    </a>
-    <a href="https://www.linkedin.com/in/javid-dadashkarimi-0b26b3199/" target="_blank">
-      <img src="icons/linkedin.png" alt="LinkedIn" class="social-icon">
-    </a>
-    <a href="https://www.instagram.com/dadashkarimi.javid/" target="_blank">
-      <img src="icons/instagram.png" alt="Instagram" class="social-icon">
-    </a>
-    <a href="https://www.youtube.com/channel/UC6UfhoRfKx5ar04hfZ0Nh4w" target="_blank">
-      <img src="icons/youtube.png" alt="YouTube" class="social-icon">
-    </a>
-    <a href="https://scholar.google.com/citations?user=LrXokpIAAAAJ&hl=en" target="_blank">
-      <img src="icons/scholar.png" alt="Google Scholar" class="social-icon">
-    </a>
+  <div class="social-icons">
+    <a href="https://x.com/JDadashkarimi" target="_blank"><img src="icons/twitter.png" alt="X / Twitter"></a>
+    <a href="https://www.linkedin.com/in/javid-dadashkarimi-0b26b3199/" target="_blank"><img src="icons/linkedin.png" alt="LinkedIn"></a>
+    <a href="https://www.instagram.com/javid.fujifilm/" target="_blank"><img src="icons/instagram.png" alt="Instagram"></a>
+    <a href="https://extremetracking.com/open?login=javiddad" target="_blank"><img src="icons/visitors.svg" alt="Visitors"></a>
+    <a href="https://scholar.google.com/citations?user=LrXokpIAAAAJ&hl=en" target="_blank"><img src="icons/scholar.png" alt="Google Scholar"></a>
   </div>
-  <div id="extreme">
-    <script src="https://efreecode.com/js.js" id="eXF-javiddad-0" async defer></script>
-  </div>
-
-
-<style>
-  p {
-    font-size: var(--font-size-s);
-  }
-  .content .listing.table li > a {
-    flex-shrink: 0;
-    flex-grow: 0;
-    width: 40%;
-  }
-  .content .listing.table li > div {
-    flex-grow: 1;
-    text-transform: none;
-    letter-spacing: 0;
-    margin-left: var(--spacing-xs);
-  }
-  .content .listing.table li > div:before {
-    content: '→ ';
-    font-weight:bold;
-  }
-  @media screen and (max-width:600px) {
-    .content .listing.table li {
-      flex-wrap: wrap;
-      justify-content: flex-start;
-      margin-bottom: var(--spacing-m);
-    }
-    .content .listing.table li > div {
-      margin-left: 0;
-    }
-    .content .listing.table li > a {
-      width: 100% !important;
-      flex-shrink: 0;
-    }
-  }
-</style>
-
-<style>
-table {
-  display: grid;
-  border-collapse: collapse;
-  gap: 4px;
-  max-width: 100%;
-  overflow: scroll;
-}
-table.small {
-  grid-template-columns: 1fr 8fr;
-}
-table.research {
-  grid-template-columns: 0.2fr 10fr;
-}
-
-table.all {
-  grid-template-columns: 2.5fr 2fr 1fr 0.7fr 0.7fr;
-}
-
-table.education {
-  grid-template-columns: 0.1fr 0.5fr 1.2fr 1.7fr 0.7fr;
-}
-
-table.awards {
-  grid-template-columns: 0.1fr 0.5fr 1.2fr;
-}
-
-thead,
-tbody,
-tr {
-  display: contents;
-}
-
-th,
-td {
-  font-size: 14px;
-}
-td.small {
-  font-size: 14px;
-}
-td.center {
-  text-align: center;
-}
-th {
-  border-bottom: 3px solid black;
-  text-align: left;
-  font-size: 16px;
-}
-table.all td {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-td a:link, td a:visited {
-  color: black;
-  text-decoration-color: var(--red);
-  text-decoration-thickness: .125em;
-}
-tr.full {
-  display: none;
-}
-tr.full.show {
-  display: contents;
-}
-tr.full td {
-  grid-column: 1 / -1;
-  padding: 20px 40px;
-  border-left: 3px solid #ddd;
-  font-size: 16px;
-  line-height: 1.5;
-}
-button {
-  background: transparent;
-  font-family: inherit;
-  font-size: 14px;
-  margin: 0;
-  padding: 0;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  border-bottom: 2px solid var(--red);
-  color: black;
-}
-tr.full td button {
-  margin-right: 24px;
-}
-@media screen and (max-width:600px) {
-  table.all {
-    grid-template-columns: 1fr 1fr 0.5fr 0.7fr 0.7fr;
-  }
-  tr.full td {
-    max-width: 80%;
-    padding: 16px;
-  }
-}
-
-</style>
-<script>
-  function toggleReview(el) {
-    const tr = el.parentElement.parentElement;
-    const nextTr = tr.nextElementSibling;
-    nextTr.classList.toggle('show');
-  }
-  function hideReview(el) {
-    const tr = el.parentElement.parentElement;
-    tr.classList.remove('show');
-  }
-  function copyReview(el) {
-    const tr = el.parentElement.parentElement;
-    const copyText = tr.querySelector('div').textContent;
-    navigator.clipboard.writeText(copyText);
-  }
-</script>
-
-
-
-<style>
-table {
-  display: grid;
-  border-collapse: collapse;
-  gap: 4px;
-  max-width: 100%;
-  overflow: scroll;
-}
-table.small {
-  grid-template-columns: 1fr 8fr;
-}
-table.all {
-  grid-template-columns: 1.5fr 1fr 0.7fr 1.5fr 0.7fr;
-}
-
-thead,
-tbody,
-tr {
-  display: contents;
-}
-
-th,
-td {
-  font-size: 14px;
-}
-td.small {
-  font-size: 14px;
-}
-td.center {
-  text-align: center;
-}
-th {
-  border-bottom: 3px solid black;
-  text-align: left;
-  font-size: 16px;
-}
-table.all td {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-td a:link, td a:visited {
-  color: black;
-  text-decoration-color: var(--red);
-  text-decoration-thickness: .125em;
-}
-tr.full {
-  display: none;
-}
-tr.full.show {
-  display: contents;
-}
-tr.full td {
-  grid-column: 1 / -1;
-  padding: 20px 40px;
-  border-left: 3px solid #ddd;
-  font-size: 16px;
-  line-height: 1.5;
-}
-button {
-  background: transparent;
-  font-family: inherit;
-  font-size: 14px;
-  margin: 0;
-  padding: 0;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  border-bottom: 2px solid var(--red);
-  color: black;
-}
-tr.full td button {
-  margin-right: 24px;
-}
-@media screen and (max-width:600px) {
-  table.all {
-    grid-template-columns: 0.8fr 0.5fr 0.5fr 1.9fr 0.5fr;
-  }
-  tr.full td {
-    max-width: 80%;
-    padding: 16px;
-  }
-}
-
-</style>
-
-
-<h2>Selected Projects</h2>
-
-<p>
-
-</p>
-<div class="selected-projects">
-  <img src="figs/bfsdfs.gif" alt="Fetal Brain Masking" class="right-image" id="text-image-left">
-
-  <p>
-    I work on a variety of <b>medical image analysis</b> problems and develop tools that help researchers and doctors better understand the body and brain. These tools are designed to work on different types of images — from fetal MRI scans to brain scans of animals and full-body medical images.
-  </p>
-
-  <p>
-    One tool I developed helps find and extract the brain from <b>fetal MRI scans</b>. This is hard to do because the fetus moves a lot and the brain keeps changing as it grows. Our method works by scanning through the image step by step and locating just the brain.
-
-  </p>
-
-  <img src="figs/pig.png" alt="Pig Brain Masking" class="right-image" id="text-image-right">
-  <p>
-    I’ve also worked with <b>animal brain scans</b>, especially from pigs. Pig brains are similar to human brains and are used in research on <b>traumatic brain injury (TBI)</b>. I built tools to automatically extract the brain from these images so researchers can study injury effects and potential treatments more easily.
-  </p>
-
-  <img src="figs/body.gif" alt="Body Organ Segmentation" class="right-image" id="text-image-left">
-  <p>
-    Beyond the brain, I also build tools for <b>body organ segmentation</b>. This means teaching AI to find and outline organs like the liver, lungs, and kidneys in CT or MRI scans. These tools are useful for tracking diseases, measuring organ size, and preparing for surgery.
-  </p>
-  <img src="figs/tracts.gif" alt="Tractography Clustering" class="right-image" id="text-image-right">
-
-
-  <p>
-    Another important area I focus on is <b>tractography</b>, which maps the brain's internal wiring — called white matter tracts. I build models that group these tracts into bundles doctors recognize. This is especially important for patients with <b>brain tumors</b> or <b>TBI</b>, where knowing the exact location of brain connections helps avoid damage during treatment.
-  </p>
-
-
-  <p>
-    A lot of my work uses <b>machine learning</b>, which needs large amounts of labeled training data. But in medicine, it's often hard to get enough real data. To solve this, I use methods like <b>Gaussian Mixture Models (GMM)</b> or <b>Hidden Markov Random Fields (HMRF)</b> to generate <b>label maps</b> — which are used to create unlimited synthetic training images and build more reliable AI tools.
-  </p>
-
-  <img src="figs/hmrf-full.png" alt="Tractography Clustering" id="text-image-center">
-
-  <!-- <img src="figs/hmrf-1.png" alt="Synthetic Data with GMM or HMRF" class="right-image" id="text-image"> -->
-
-
-</div>
-
-
-
-<p>Some of my projects are:</p>
-
-
-<table class="all">
-<thead>
-<tr>
-<th>Title</th>
-<th>Institution</th>
-<th>Date</th>
-<th>Topic</th>
-<th>Info</th>
-</tr>
-</thead>
-<tbody>
-
-  <tr>
-      <td><a href="https://github.com/dadashkarimi/cascade" target="_blank">
-          Cascade U-Nets
-      </a></td>
-      <td>MGH/Harvard</td>
-      <td class="small">2024/10/27</td>
-      <td class="left stars">
-          DL for Segmentation
-      </td>
-      <td class="center read">
-          <button onclick="toggleReview(this)">read ▿</button>
-      </td>
-  </tr>
-  <tr class="full">
-      <td>
-          <div>
-            <div class="project-description">
-              <div class="project-content">
-                  <p>This project implements a <strong>hybrid 3D, multi-scale model for fetal brain extraction</strong> from MRI scans using a <em>cascade of U-Net architectures</em>.
-                    Using a Breadth-Fine Search (BFS) and Deep-Focused Sliding Window (DFS) approach, our framework achieves precise segmentation results in <b>full-uterus</b> stack-of-slices scans, even with limited training data and annotations.</p>
-
-                  <p>Our method employs a cascade of four models—<strong>A, B, C, and D</strong>—trained to focus on 3D patches of decreasing sizes from a synthesized set of training images augmented with random geometric shapes.
-                    At inference, we pool sliding-window predictions across multiple sizes to detect and refine the region of interest (ROI) that most likely contains the fetal brain. Subsequently, we derive an accurate brain mask through voxel-wise majority voting.</p>
-
-                  <h3>Pipeline Overview</h3>
-                  <p>In the <strong>BFS</strong> stage, Models A and D generate probability maps \( P_A \) and \( P_D \) across the full input volume \( I \), producing a coarse brain mask from the largest connected components across maps. We then perform a bounding box fit on this mask to extract the 3D ROI \( R \subset I \).</p>
-
-                  <div class="figure">
-                      <img src="figs/bfs-dfs.png" alt="BFS-DFS Pipeline" style="width:100%;">
-                      <p class="caption">Figure 1: BFS-DFS Pipeline for fetal brain segmentation.</p>
-                  </div>
-
-                  <p>In the <strong>DFS</strong> stage, Models B, C, and D progressively refine \( R \) through sliding-window passes, each stage narrowing the ROI and updating a binary mask \( S_{final} \) via majority voting across maps \( S_B, S_C, \) and \( S_D \), leading to an optimized fetal brain mask with minimized false positives.</p>
-                  <h3>Label Maps</h3>
-                  <p>
-                  Training involves generating synthetic shapes around the brain label maps, which represent human-annotated segmentations of the fetal brain.
-                   To create synthetic images from these label maps, we utilized the following parameters, indicating the standard deviation for each parameter:
-                  </p>
-
-                  <div class="figure">
-                      <img src="figs/bfs-dfs-tab1.png" alt="Parameter Table" style="width:100%;">
-                      <p class="caption">Table 1: Model parameters and sliding window configurations.</p>
-                  </div>
-
-                  Here are two examples illusterating this augmentation where labels 1 to 7 point to brain structures and others belong to the background:</p>
-
-                  <div class="figure">
-                      <img src="figs/bfs-dfs-examples.png" alt="Synthetic Shapes Example" style="width:100%;">
-                      <p class="caption">Figure 2: Example of synthetic shapes surrounding the brain label map to simulate diverse training conditions.</p>
-                  </div>
-                <h3>Training Data</h3>
-                Here are two examples of training data derived from the label maps: one for Model A, which is approapriate for the largest patches in the image, and another for Model D, which targets the smallest patches.
-
-                  <div class="figure">
-                      <img src="figs/bfs-dfs-examples2.png" alt="Synthetic Shapes Example" style="width:50%;">
-                      <p class="caption">Figure 2: Example of synthetic images derived from the label maps for model \( A \) and model \( D \).</p>
-                  </div>
-                  <h3>Key Advantages:</h3>
-                  <ul>
-                      <li><strong>False Positive Reduction:</strong> BFS and DFS steps progressively refine the region of interest, minimizing false positives.</li>
-                      <li><strong>Adaptability to Sparse Data:</strong> Trained on synthetic data, the model performs well even with limited annotations.</li>
-                      <li><strong>Precision Across Variability:</strong> Multi-scale sliding windows capture diverse head orientations and anatomy for accurate segmentation.</li>
-                      <li><strong>High Accuracy:</strong> Outperforms existing methods, improving Dice scores by up to 5% on second-trimester and EPI scans.</li>
-                        <li><strong>Reliable Localization:</strong> The initial localization process ensures accurate brain segmentation, allowing for finer navigation within the womb and reducing the risk of segmenting non-relevant areas.</li>
-                      </ul>
-
-
-
-                  <p>This repository is an invaluable resource for medical imaging problems, particularly for body organ segmentation.
-                    It provides a robust tool for addressing challenges related to limited training data and sparse annotations.</p>
-                  <div class="project-buttons">
-                      <a href="https://github.com/dadashkarimi/cascade" target="_blank" class="btn-secondary">View on GitHub</a>
-                  </div>
-                </div>
-
-
-           </div>
-          <br/>
-          <button onclick="hideReview(this)">close ⌃</button>
-      </td>
-  </tr>
-
-  <tr>
-      <td><a href="https://github.com/dadashkarimi/cascade" target="_blank">
-          ECG2AF
-      </a></td>
-      <td>Broad Institute</td>
-      <td class="small">2024/10/29</td>
-      <td>
-          AI for AF Prediction
-      </td>
-      <td class="center read">
-          <button onclick="toggleReview(this)">read ▿</button>
-      </td>
-  </tr>
-  <tr class="full">
-      <td>
-          <div>
-            <div class="project-description">
-              <section class="content">
-                <section class="content">
-                  <h1>ECG2AF Model Web Application</h1>
-
-                  <p>This application demonstrates our ECG2AF tool, a clinical AI model designed to predict the risk of developing atrial fibrillation (AF) from ECG data.</p>
-                  <p> We have shut down the online demo temporarily but to run this app locally, place <code>app.py</code>, <code>ecg_model.py</code>, and the required folders inside the <code>app/</code> directory.
-                  Ensure that <code>Dockerfile</code> and <code>requirements.txt</code> are in the parent directory.</p>
-
-                  <p>I developed this project using editors like <code>vim</code> and <code>VS Code</code>, and also Copilot for some function autocompletion.
-                    The app was (will be) deployed on an <code>EC2</code> instance (Linux <code>t2.medium</code>), with an attached 32 GB <code>gp3</code> volume for additional storage.
-                    Additionally, We’ve set the Nginx file upload limit to 500 MB to accommodate larger files.</p>
-
-                  <h2>Background</h2>
-                  <p>AI is widely used in clinical applications to improve risk stratification and intervention.
-                     This project focuses on cardiovascular disease, aiming to predict AF risk based on ECG data.</p>
-
-                  <h2>Objective</h2>
-                  <p>Our objective is to allow users to:</p>
-                  <ul>
-                    <li>Upload an ECG file (<code>.hd5</code> format)</li>
-                    <li>Process the uploaded ECG using a pre-trained ECG2AF model</li>
-                    <li>Display the prediction results, including four output values</li>
-                  </ul>
-
-                  <h2>How It Works</h2>
-                  <ol>
-                    <li><b>Upload your file(s)</b> in <code>.hd5</code> format by dragging and dropping it into the upload area.
-                      <img src="https://github.com/dadashkarimi/ecg2af/blob/main/fig/uploads2.png?raw=true" alt="Upload ECG File" style="width:80%; display:block; margin:auto;"/>
-</li>
-                    <li><b>Process with ECG2AF:</b> The model processes the file in real-time.</li>
-                    <li><b>View Predictions:</b> The app displays four predictions for each ECG file, including AF risk and demographic estimations.
-                      You’ll also see charts for better interpretation.
-                      <img src="https://github.com/dadashkarimi/ecg2af/blob/main/fig/results-table.png?raw=true" alt="Example Results" style="width:80%; display:block; margin:auto;"/>
-                    </li>
-                  </ol>
-
-
-                  <h3>Prediction Outputs</h3>
-                  <ul>
-                    <li><b>AF Risk:</b> Estimated risk for developing atrial fibrillation.</li>
-                    <li><b>Sex Prediction (Male/Female):</b> Probability-based estimate of biological sex.</li>
-                    <li><b>Age Prediction:</b> Estimated age based on ECG data.</li>
-                    <li><b>AF In Read (Yes/No):</b> Classification for AF presence in the read.</li>
-                  </ul>
-
-                  <h2>Scalability Considerations</h2>
-                  <ul>
-                    <li><b>Batch Processing:</b> Process multiple ECG files simultaneously.</li>
-                    <li><b>Database and Caching:</b> Store previously uploaded files separately for each user.</li>
-                    <li><b>Cloud Deployment and Load Balancing:</b> AWS’s Elastic Load Balancer (ELB) is used for additional scaling.</li>
-                  </ul>
-
-                  <h2>Visualization and Results</h2>
-                  <p>The charts in the application are created using <a href="https://www.chartjs.org/">Chart.js</a>. Each chart presents predictions related to the uploaded .hd5 files, including AF risk, sex prediction, and age prediction values.</p>
-
-                  <img src="https://github.com/dadashkarimi/ecg2af/blob/main/fig/results-chart.png?raw=true" alt="Example Results" style="width:80%; display:block; margin:auto;"/>
-
-                  <h2>Adding Nginx to Flask with Docker</h2>
-                  <p>Nginx acts as a reverse proxy for our Flask app in Docker, handling HTTP requests on port <code>80</code> and forwarding them to Flask on port 5000.</p>
-
-                  <h3>Benefits of Using Nginx</h3>
-                  <ul>
-                    <li><b>Security:</b> Nginx hides the Flask server from direct internet exposure.</li>
-                    <li><b>Load Balancing:</b> Manages traffic efficiently and scales easily.</li>
-                    <li><b>Static File Handling:</b> Serves static files faster, reducing Flask's load.</li>
-                    <li><b>Production-Ready:</b> Handles multiple users reliably, unlike Flask's dev server.</li>
-                  </ul>
-
-                  <p>If you have any questions, feel free to <a href="mailto:javiddadashkarimi@gmail.com">email me</a>.</p>
-                </section>
-
-
-          </div>
-          <div class="project-buttons">
-              <a href="https://github.com/dadashkarimi/ecg2af" target="_blank" class="btn-secondary">View on GitHub</a>
-          </div>
-        </div>
-
-
-        </div>
-        <br/>
-        <button onclick="hideReview(this)">close ⌃</button>
-      </section>
-      </section>
-        </td>
-  </tr>
-  <tr>
-      <td><a href="https://github.com/dadashkarimi/seq2sql" target="_blank">
-          SEQ2SQL
-      </a></td>
-      <td>YINS/YALE</td>
-      <td class="small">2024/10/29</td>
-      <td>
-        Text to SQL
-      </td>
-      <td class="center read">
-          <button onclick="toggleReview(this)">read ▿</button>
-      </td>
-  </tr>
-  <tr class="full">
-      <td>
-          <div>
-            <div class="project-description">
-              <section class="content">
-                <style>
-                  body {
-                      font-family: Arial, sans-serif;
-                      margin: 20px;
-                      line-height: 1.6;
-                  }
-                  h1, h2 {
-                      color: #333;
-                  }
-                  code {
-                      background-color: #f4f4f4;
-                      padding: 2px 4px;
-                      border-radius: 4px;
-                  }
-                  pre {
-                      background-color: #f4f4f4;
-                      padding: 10px;
-                      border-radius: 4px;
-                      overflow-x: auto;
-                  }
-              </style>
-
-              <h2>What’s the Scoop?</h2>
-              <p>This project is all about turning natural language questions into SQL commands. We’ve got a model that uses LSTM and GRU units to make sense of your questions and turn them into SQL.
-                 Think of it as chatting with your database!</p>
-
-              <h2>Datasets We Played With</h2>
-              <p>We trained on some cool datasets:</p>
-              <ul>
-                  <li><strong>ATIS</strong>: Questions about flights.</li>
-                  <li><strong>GEO880</strong>: Geographic info with 880 examples.</li>
-                  <li><strong>Overnight</strong>: Covers 11 fun domains like sports and restaurants.</li>
-                  <li><strong>Toy</strong>: A small dataset with 600 examples.</li>
-                  <li><strong>WikiSQL</strong>: A solid 1,000 examples for generating SQL queries.</li>
-              </ul>
-
-              <h2>Query Examples</h2>
-              <p>Check out some killer examples:</p>
-              <div class="example-container">
-                  <div class="example">
-                      <strong>What’s the description of a CH-47D Chinook?</strong>
-                      <pre><code>SELECT col1 FROM table_1_10006830_1 WHERE col0='CH-47D Chinook';</code></pre>
-                  </div>
-                  <div class="example">
-                      <strong>What’s the max gross weight of the Robinson R-22?</strong>
-                      <pre><code>SELECT col2 FROM table_1_10006830_1 WHERE col0='Robinson R-22';</code></pre>
-                  </div>
-                  <div class="example">
-                      <strong>What school did player number 6 come from?</strong>
-                      <pre><code>SELECT col5 FROM table_1_10015132_1 WHERE col1='6';</code></pre>
-                  </div>
-              </div>
-
-
-              <h2>How It Works</h2>
-<p>So, how does it all come together? The model learns to associate pairs of natural language questions with their corresponding SQL commands, determining the best SQL query based on the input question.
-  I accomplished this during my first year of grad school at Yale! I’m thrilled to see that my repository has received <b>93 stars</b> and <b>23 forks</b> on <a href="https://github.com/dadashkarimi/seq2sql" target="_blank" class="btn-secondary">GitHub</a> so far.</p>
-
-
-                  <p>If you have any questions, feel free to <a href="mailto:javiddadashkarimi@gmail.com">email me</a>.</p>
-                </section>
-
-
-          </div>
-          <div class="project-buttons">
-              <a href="https://github.com/dadashkarimi/seq2sql" target="_blank" class="btn-secondary">View on GitHub</a>
-          </div>
-        </div>
-
-
-        </div>
-        <br/>
-        <button onclick="hideReview(this)">close ⌃</button>
-      </section>
-      </section>
-        </td>
-  </tr>
-  <tr>
-      <td><a href="https://github.com/dadashkarimi/EM4QT" target="_blank">
-          EM4QT
-      </a></td>
-      <td>University of Tehran</td>
-      <td class="small">2016/10/29</td>
-      <td>CLIR
-      </td>
-      <td class="center read">
-          <button onclick="toggleReview(this)">read ▿</button>
-      </td>
-  </tr>
-  <tr class="full">
-      <td>
-          <div>
-            <div class="project-description">
-              <section class="content">
-
-                <style>
-                    body {
-                        font-family: Arial, sans-serif;
-                        margin: 20px;
-                        line-height: 1.6;
-                    }
-                    h1, h2 {
-                        color: #333;
-                    }
-                    code {
-                        background-color: #f4f4f4;
-                        padding: 2px 4px;
-                        border-radius: 4px;
-                    }
-                    pre {
-                        background-color: #f4f4f4;
-                        padding: 10px;
-                        border-radius: 4px;
-                        overflow-x: auto;
-                        text-align: left; /* Align code to the left */
-                        white-space: pre; /* Maintain whitespace */
-                    }
-                </style>
-
-
-
-                <h1>Dictionary-based Query Translation in CLIR</h1>
-
-                <p>So, what’s the deal with this project? It’s all about improving the query language model by using top-ranked documents in a cross-lingual information retrieval (CLIR) setting.
-                   We use the Information derived from both source and target language documents, pulling them based on user queries.</p>
-                <img src="https://pbs.twimg.com/media/DtDTF_MWkAAJBAa.jpg:large" alt="EM4QT" style="width:70%;"/>
-
-                <h2>Query Translation Idea</h2>
-                <p>The main idea behind EM4QT is to grab relevant documents in both languages.
-                  When someone asks a question in their native language, we kick things off by retrieving a set of documents that match that query.
-                  This gives us our initial batch of source language documents.</p>
-                <p>However, at the same time, we whip up an initial guess of translation candidates using a bilingual dictionary.
-
-                <p>Once we have both sets of documents, we fine-tune our translation candidates based on the top retrieved documents. This back-and-forth process makes sure we consider the most relevant and contextually appropriate translations, boosting the accuracy of our cross-lingual information retrieval.</p>
-
-                <h2>Expectation-Maximization Algorithm</h2>
-                <p>The EM algorithm is all about upping the translation quality by leveraging those top-retrieved documents in both languages. It boils down to two main steps:</p>
-                <ul>
-                    <li><strong>E-Step:</strong> We estimate the translation confidence probabilities using the documents we’ve retrieved.</li>
-                    <li><strong>M-Step:</strong> Next, we maximize the likelihood of these probabilities, refining the translation model as we go.</li>
-                </ul>
-
-                <p>This iterative refinement keeps going until we reach convergence, resulting in a more accurate translation distribution that enhances the overall quality of our cross-lingual retrieval.
-
-                The full detail of the algorithm is published at <a href="https://www.sciencedirect.com/science/article/abs/pii/S0306457316306379">IP&M Journal</a>.
-If you have any questions, feel free to <a href="mailto:javiddadashkarimi@gmail.com">email me</a>.</p>
-                </section>
-
-
-          </div>
-          <div class="project-buttons">
-              <a href="https://github.com/dadashkarimi/seq2sql" target="_blank" class="btn-secondary">View on GitHub</a>
-          </div>
-        </div>
-
-
-        </div>
-        <br/>
-        <button onclick="hideReview(this)">close ⌃</button>
-      </section>
-      </section>
-        </td>
-  </tr>
-
-</tbody>
-</table>
-
-
-
-<h2>Education</h2>
-<table class="education">
-    <tr>
-      <th>Year</th>
-      <th>Degree</th>
-      <th>Field</th>
-      <th>Institution</th>
-      <th>Location</th>
-    </tr>
-    <tr>
-      <td>2023</td>
-      <td>PhD</td>
-      <td>Computer Science</td>
-      <td>Yale University</td>
-      <td>USA</td>
-    </tr>
-    <tr>
-      <td>2015</td>
-      <td>MEng</td>
-      <td>Software Engineering</td>
-      <td>University of Tehran</td>
-      <td>Iran</td>
-    </tr>
-</table>
-
-
-<h2>Research Interests</h2>
-<p>I am broadly interested in medical image analysis, machine learning,
-  <img src="church/40/church-doors.png" alt="Church Doors" class="right-image" id="text-image">predictive modeling, and data-driven methods and precision medicine, with a focus on:.</p>
-
-<p></p>
-<table class="research">
-<tbody>
-<tr>
-  <td>-</td>
-<td>Brain Segmentation
-</td>
-</tr>
-<tr>
-  <td>-</td>
-<td>Fetal Brain Extraction
-</td>
-</tr>
-<tr>
-  <td>-</td>
-<td> Functional Connectomics and Brain-behavior Associations
-</td>
-</tr>
-<tr>
-  <td>-</td>
-<td>Optimal Transport and Data-driven Methods for Conectomics Data
-</td>
-</tr>
-<tr>
-  <td>-</td>
-<td>High-Performance Computing
-</td>
-</tr>
-</tbody>
-</table>
-
-<h2>Honors and Scholarships</h2>
-<table class="awards">
-    <tr>
-      <th>Year</th>
-      <th>Award</th>
-      <th>Details</th>
-    </tr>
-    <tr>
-      <td>2022</td>
-      <td>Best Paper Award</td>
-      <td>Graphs in Biomedical Imaging, MICCAI
-          (<a href="https://grail-miccai.github.io/grail2022/">url</a>)
-      </td>
-    </tr>
-    <tr>
-        <td>2022</td>
-        <td>MICCAI Student Award</td>
-        <td>Early Acceptance, Singapore</td>
-    </tr>
-    <tr>
-      <td>2021</td>
-      <td>Brain Initiative Trainee Award</td>
-      <td>Flash talk <a href="https://www.braininitiative.org/">url</a></td>
-    </tr>
-    <tr>
-      <td>2020</td>
-      <td>Best Poster Award</td>
-      <td>Connectomics for NeuroImaging, MICCAI
-          (<a href="https://link.springer.com/book/10.1007/978-3-030-32391-2">url</a>)
-      </td>
-    </tr>
-    <tr>
-        <td>2012</td>
-        <td>Graduate School Fellowship</td>
-        <td>Ranked 5th in Undergraduate Studies, University of Tehran</td>
-    </tr>
-    <tr>
-      <td>2008</td>
-      <td>Ranked 331st/220,000</td>
-      <td>Top 0.2% in Iran's Nationwide University Entrance Exam</td>
-    </tr>
-</table>
-<hr>
-
 </section>
-<script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/birds.js"></script>
-</body>
-<script>
-  'use strict';
 
-  // Load the pygments stylesheet so that it's not render blocking.
-  var head = document.head;
-  var link = document.createElement('link');
-  link.type = 'text/css';
-  link.rel = 'stylesheet';
-  link.href = '/css/pygments.css'
-  head.appendChild(link);
+<section class="tracts" aria-label="Brain tractography demo">
+  <div class="tracts-shell">
+    <div class="tracts-head">
+      <div class="tracts-title">3d brain tractography demo</div>
+      <div class="tracts-note">drag to orbit, scroll/pinch to zoom, right-drag to pan</div>
+    </div>
+    <iframe
+      id="tractsFrame"
+      class="tracts-frame"
+      src="brain_hcp842_3d_embedded.html?theme=dark"
+      title="Brain Tractography HCP-842 3D"
+      loading="lazy"
+      referrerpolicy="no-referrer"
+    ></iframe>
+  </div>
+</section>
+
+<section class="credentials">
+  <div class="cred-title">a few things i'm proud of</div>
+  <div class="cred-grid">
+    <div class="cred-card tool-sticker">
+      <span class="tool-badge badge-tools" title="Tools">TL</span>
+      <div class="cred-num">CAROT</div>
+      <div class="cred-label">fMRI parcellation remapping between atlases using optimal transport</div>
+    </div>
+    <div class="cred-card tool-sticker">
+      <span class="tool-badge badge-tools" title="Tools">TL</span>
+      <div class="cred-num">PIGSKIN</div>
+      <div class="cred-label">pig brain skull-stripping model trained with synthetic data and neural nets</div>
+    </div>
+    <div class="cred-card tool-sticker">
+      <span class="tool-badge badge-tools" title="Tools">TL</span>
+      <div class="cred-num">PIGMENT</div>
+      <div class="cred-label">histology app for tissue segmentation and annotation workflows</div>
+    </div>
+    <div class="cred-card tool-sticker">
+      <span class="tool-badge badge-education" title="Education">ED</span>
+      <div class="cred-num">University of Tehran</div>
+      <div class="cred-label">undergrad and master</div>
+    </div>
+    <div class="cred-card tool-sticker">
+      <span class="tool-badge badge-education" title="Education">ED</span>
+      <div class="cred-num">Yale</div>
+      <div class="cred-label">PhD in Computer Science (2023)</div>
+    </div>
+    <div class="cred-card tool-sticker">
+      <span class="tool-badge badge-affiliation" title="Affiliation">AF</span>
+      <div class="cred-num">Harvard</div>
+      <div class="cred-label">worked as a developer at the Martinos Center (MGH/Harvard) for one year</div>
+    </div>
+    <div class="cred-card tool-sticker">
+      <span class="tool-badge badge-affiliation" title="Affiliation">AF</span>
+      <div class="cred-num">UPENN</div>
+      <div class="cred-label">postdoctoral research fellowship at Penn Medicine</div>
+    </div>
+    <div class="cred-card tool-sticker">
+      <span class="tool-badge badge-patent" title="Patent">PT</span>
+      <div class="cred-num">US Patent</div>
+      <div class="cred-label">method and system for information retrieval (US 10,540,399)</div>
+    </div>
+    <a href="pubs.html" class="cred-card tool-sticker sticker-link" aria-label="Go to publications page">
+      <span class="tool-badge badge-articles" title="Articles">AR</span>
+      <div class="cred-num">Articles</div>
+      <div class="cred-label">peer-reviewed journal and conference research articles</div>
+    </a>
+  </div>
+</section>
+
+<section class="section" id="research">
+  <div class="section-head">
+    <div class="section-num">no. 01 →</div>
+    <h2 class="section-title">what i'm working on</h2>
+  </div>
+
+  <div class="notes">
+    <div class="note">
+      <div class="note-tag">fetal MRI</div>
+      <h3>Finding tiny brains</h3>
+      <p>Cascade U-Nets that extract the brain from motion-corrupted in-utero MRI. The fetus moves, the brain is small, and it's growing fast — classical methods fail. Synthetic training data fills the gap.</p>
+      <div class="note-meta"><b>tools:</b> deep learning · synthetic data · 3D segmentation</div>
+    </div>
+    <div class="note">
+      <div class="note-tag">diffusion MRI</div>
+      <h3>Mapping the wiring</h3>
+      <p>Tractography &amp; white-matter bundling for neurosurgical planning. Knowing exactly which connections to spare in TBI and tumor patients is the difference between recovery and lasting harm.</p>
+      <div class="note-meta"><b>tools:</b> tractography · clinical pipelines · dMRI</div>
+    </div>
+    <div class="note">
+      <div class="note-tag">connectomics</div>
+      <h3>Brains as distributions</h3>
+      <p>Optimal transport over functional connectomes — for alignment, comparison, and behavior prediction. The math is beautiful and the predictions hold up. This was my PhD thesis work at Yale.</p>
+      <div class="note-meta"><b>tools:</b> optimal transport · graph theory · fMRI</div>
+    </div>
+    <div class="note">
+      <div class="note-tag">generative</div>
+      <h3>When real data is scarce</h3>
+      <p>Medical datasets are tiny. So we generate them. Gaussian Mixture and Hidden Markov Random Field models produce label maps that synthesize unlimited training images — for any modality you can describe.</p>
+      <div class="note-meta"><b>tools:</b> GMM · HMRF · label-map synthesis</div>
+    </div>
+    <div class="note">
+      <div class="note-tag">whole-body</div>
+      <h3>Beyond the brain</h3>
+      <p>Organ segmentation in CT/MRI — liver, lungs, kidneys. The pipelines I build help radiologists track disease progression, measure organs, and plan surgery across modalities and centers.</p>
+      <div class="note-meta"><b>tools:</b> CT/MRI segmentation · multi-organ</div>
+    </div>
+    <div class="note">
+      <div class="note-tag">past lives</div>
+      <h3>Cross-lingual IR</h3>
+      <p>Before medical imaging, I worked on EM-based dictionary translation for cross-lingual retrieval. Resulted in a US patent and publications in COLING and IP&amp;M Journal. Different field, same instincts.</p>
+      <div class="note-meta"><b>tools:</b> NLP · machine translation · IR</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="pubs">
+  <div class="section-head">
+    <div class="section-num">no. 02 →</div>
+    <h2 class="section-title">selected papers</h2>
+  </div>
+
+  <div class="pub-row">
+    <div class="year">2024</div>
+    <div class="title"><a href="https://github.com/dadashkarimi/cascade" target="_blank">Cascade U-Nets for fetal brain extraction in motion-corrupted MRI</a></div>
+    <div class="venue">MICCAI</div>
+  </div>
+  <div class="pub-row">
+    <div class="year">2023</div>
+    <div class="title">Optimal transport for functional connectome alignment and prediction</div>
+    <div class="venue">Nat. Hum. Behav.</div>
+  </div>
+  <div class="pub-row">
+    <div class="year">2022</div>
+    <div class="title"><a href="https://grail-miccai.github.io/grail2022/" target="_blank">Graph-based brain-behavior modeling</a> <span style="font-family:'Caveat',cursive;color:var(--red);font-size:16px;">(Best Paper, GRAIL)</span></div>
+    <div class="venue">MICCAI-W</div>
+  </div>
+  <div class="pub-row">
+    <div class="year">2021</div>
+    <div class="title">Connectome-based predictive modeling of psychiatric outcomes</div>
+    <div class="venue">Mol. Psychiatry</div>
+  </div>
+  <div class="pub-row">
+    <div class="year">2017</div>
+    <div class="title"><a href="https://www.sciencedirect.com/science/article/abs/pii/S0306457316306379" target="_blank">EM-based dictionary query translation for cross-lingual IR</a></div>
+    <div class="venue">IP&amp;M Journal</div>
+  </div>
+
+  <p style="margin-top:28px;font-family:'Caveat',cursive;font-size:20px;">
+    → <a href="pubs.html" style="color:var(--blue);">see full publication list</a>
+  </p>
+</section>
+
+<section class="section" id="cv">
+  <div class="section-head">
+    <div class="section-num">no. 03 →</div>
+    <h2 class="section-title">honors &amp; education</h2>
+  </div>
+
+  <div class="awards-list">
+    <div class="award-row">
+      <div class="year">2022</div>
+      <div class="detail"><strong>Best Paper Award</strong> — Graphs in Biomedical Imaging, MICCAI (<a href="https://grail-miccai.github.io/grail2022/">url</a>)</div>
+    </div>
+    <div class="award-row">
+      <div class="year">2022</div>
+      <div class="detail"><strong>MICCAI Student Award</strong> — Early Acceptance, Singapore</div>
+    </div>
+    <div class="award-row">
+      <div class="year">2021</div>
+      <div class="detail"><strong>Brain Initiative Trainee Award</strong> — Flash talk (<a href="https://www.braininitiative.org/">url</a>)</div>
+    </div>
+    <div class="award-row">
+      <div class="year">2020</div>
+      <div class="detail"><strong>Best Poster Award</strong> — Connectomics for NeuroImaging, MICCAI (<a href="https://link.springer.com/book/10.1007/978-3-030-32391-2">url</a>)</div>
+    </div>
+    <div class="award-row">
+      <div class="year">2023</div>
+      <div class="detail"><strong>PhD, Computer Science</strong> — Yale University, New Haven</div>
+    </div>
+    <div class="award-row">
+      <div class="year">2015</div>
+      <div class="detail"><strong>MEng, Software Engineering</strong> — University of Tehran, Iran (ranked 5th in undergrad)</div>
+    </div>
+    <div class="award-row">
+      <div class="year">2008</div>
+      <div class="detail"><strong>Ranked 331st / 220,000</strong> — Top 0.2% in Iran's Nationwide University Entrance Exam</div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer class="footer" id="contact">
+  <div class="footer-inner">
+    <h2>Let's <span class="wavy">collaborate.</span></h2>
+    <p>I love hearing from researchers, engineers, and clinicians working on medical AI. Coffee, code, or just a friendly hello — all welcome.</p>
+    <a href="mailto:javiddadashkarimi@gmail.com" class="footer-mail">javiddadashkarimi [at] gmail [dot] com</a>
+    <div class="footer-links">
+      <div>© 2026 Javid · made with ♡ in Philly</div>
+      <div>
+        <a href="https://scholar.google.com/citations?user=LrXokpIAAAAJ&hl=en" target="_blank">scholar</a>
+        <a href="https://github.com/dadashkarimi" target="_blank">github</a>
+        <a href="https://www.linkedin.com/in/javid-dadashkarimi-0b26b3199/" target="_blank">linkedin</a>
+        <a href="https://x.com/JDadashkarimi" target="_blank">twitter</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var key = 'site-theme';
+  var btn = document.getElementById('themeToggle');
+  var tractFrame = document.getElementById('tractsFrame');
+  if (!btn) return;
+
+  function syncTractTheme(theme) {
+    if (!tractFrame || !tractFrame.contentWindow) return;
+    tractFrame.contentWindow.postMessage({ type: 'setTheme', theme: theme }, '*');
+  }
+
+  function setTheme(theme) {
+    var dark = theme === 'dark';
+    document.body.classList.toggle('theme-dark', dark);
+    btn.textContent = dark ? 'bright' : 'black';
+    btn.setAttribute('aria-label', dark ? 'Switch to bright theme' : 'Switch to black theme');
+
+    var themeMeta = document.querySelector('meta[name="theme-color"]');
+    if (themeMeta) themeMeta.setAttribute('content', dark ? '#000000' : '#ffffff');
+
+    syncTractTheme(dark ? 'dark' : 'bright');
+  }
+
+  var saved = localStorage.getItem(key);
+  if (saved === 'dark' || saved === 'bright') {
+    setTheme(saved === 'dark' ? 'dark' : 'bright');
+  } else {
+    setTheme('dark');
+  }
+
+  btn.addEventListener('click', function () {
+    var nowDark = document.body.classList.contains('theme-dark');
+    var next = nowDark ? 'bright' : 'dark';
+    setTheme(next);
+    localStorage.setItem(key, next);
+  });
+
+  if (tractFrame) {
+    tractFrame.addEventListener('load', function () {
+      var nowDark = document.body.classList.contains('theme-dark');
+      syncTractTheme(nowDark ? 'dark' : 'bright');
+    });
+  }
+})();
 </script>
 
+</body>
 </html>

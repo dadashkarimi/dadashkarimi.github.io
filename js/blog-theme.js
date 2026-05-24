@@ -68,10 +68,19 @@
     }
   }
 
+  function loadDiagramEnhancer() {
+    if (document.querySelector('script[src="/js/blog-diagrams.js"]')) return;
+    var script = document.createElement('script');
+    script.src = '/js/blog-diagrams.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  }
+
   function boot() {
     injectChrome();
     var saved = localStorage.getItem(key);
     setTheme(saved === 'bright' ? 'bright' : 'dark');
+    loadDiagramEnhancer();
   }
 
   if (document.readyState === 'loading') {

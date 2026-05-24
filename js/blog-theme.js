@@ -28,7 +28,7 @@
   function refreshBlogStylesheet() {
     var sheet = document.querySelector('link[href^="/css/blog-post.css"]');
     if (sheet && sheet.getAttribute('href') === '/css/blog-post.css') {
-      sheet.setAttribute('href', '/css/blog-post.css?v=20260524-plate-math');
+      sheet.setAttribute('href', '/css/blog-post.css?v=20260524-svg-math');
     }
   }
 
@@ -311,7 +311,7 @@
   function loadDiagramEnhancer() {
     if (document.querySelector('script[src^="/js/blog-diagrams.js"]')) return;
     var script = document.createElement('script');
-    script.src = '/js/blog-diagrams.js?v=20260524-plate-math';
+    script.src = '/js/blog-diagrams.js?v=20260524-svg-math';
     script.defer = true;
     document.head.appendChild(script);
   }

@@ -28,7 +28,7 @@
   function refreshBlogStylesheet() {
     var sheet = document.querySelector('link[href^="/css/blog-post.css"]');
     if (sheet && sheet.getAttribute('href') === '/css/blog-post.css') {
-      sheet.setAttribute('href', '/css/blog-post.css?v=20260524-svg-math');
+      sheet.setAttribute('href', '/css/blog-post.css?v=20260524-mathjax-scifig');
     }
   }
 
@@ -287,6 +287,13 @@
   }
 
   function loadMathJax() {
+    function typesetPostMath() {
+      if (!window.MathJax || !window.MathJax.typesetPromise) return;
+      var root = document.querySelector('#page.post') || document.body;
+      if (window.MathJax.typesetClear) window.MathJax.typesetClear([root]);
+      window.MathJax.typesetPromise([root]).catch(function () {});
+    }
+
     window.MathJax = window.MathJax || {};
     window.MathJax.tex = window.MathJax.tex || {};
     window.MathJax.tex.inlineMath = [['$', '$'], ['\\(', '\\)']];
@@ -294,24 +301,36 @@
     window.MathJax.tex.processEscapes = true;
     window.MathJax.options = window.MathJax.options || {};
     window.MathJax.options.skipHtmlTags = ['script', 'noscript', 'style', 'textarea', 'pre', 'code'];
+    window.MathJax.startup = window.MathJax.startup || {};
+    window.MathJax.startup.typeset = false;
 
     if (window.MathJax.typesetPromise) {
-      window.MathJax.typesetPromise([document.querySelector('#page.post') || document.body]).catch(function () {});
+      window.requestAnimationFrame(typesetPostMath);
       return;
     }
-    if (document.getElementById('MathJax-script')) return;
+
+    var existingScript = document.getElementById('MathJax-script');
+    if (existingScript) {
+      existingScript.addEventListener('load', function () {
+        window.requestAnimationFrame(typesetPostMath);
+      }, { once: true });
+      return;
+    }
 
     var script = document.createElement('script');
     script.id = 'MathJax-script';
     script.async = true;
     script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+    script.addEventListener('load', function () {
+      window.requestAnimationFrame(typesetPostMath);
+    }, { once: true });
     document.head.appendChild(script);
   }
 
   function loadDiagramEnhancer() {
     if (document.querySelector('script[src^="/js/blog-diagrams.js"]')) return;
     var script = document.createElement('script');
-    script.src = '/js/blog-diagrams.js?v=20260524-svg-math';
+    script.src = '/js/blog-diagrams.js?v=20260524-mathjax-scifig';
     script.defer = true;
     document.head.appendChild(script);
   }

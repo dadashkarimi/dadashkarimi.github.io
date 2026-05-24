@@ -372,6 +372,36 @@ body.theme-dark .blog-tape {
   height: auto;
 }
 
+.diagram-panel-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.diagram-panel-grid--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.diagram-panel-grid--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.diagram-panel-cell {
+  min-width: 0;
+  padding: 8px;
+  border: 1px solid #e5e5e5;
+  border-radius: 2px;
+  background: #ffffff;
+}
+
+.diagram-panel-cell-label {
+  margin-bottom: 2px;
+  color: #666666;
+  font-family: 'Newsreader', serif;
+  font-size: 14px;
+  font-style: italic;
+  text-align: center;
+}
+
 #page.post .concept-diagram__caption,
 .concept-diagram__status {
   color: var(--green);
@@ -758,6 +788,133 @@ body.theme-bright .diagram-node--observed {
   font-weight: 500;
 }
 
+.diagram-paper-label--small {
+  font-size: 24px;
+}
+
+.diagram-paper-note {
+  fill: #666666;
+  font-family: 'Caveat', cursive;
+  font-size: 20px;
+  font-style: normal;
+}
+
+.diagram-paper-note--green { fill: #2d8c50; }
+.diagram-paper-note--orange { fill: #e8693f; }
+.diagram-paper-note--pink { fill: #c44488; }
+.diagram-paper-note--purple { fill: #7e4dc8; }
+.diagram-paper-note--red { fill: #c4453a; }
+
+.diagram-figure-cross {
+  fill: none;
+  stroke: #2b78d6;
+  stroke-linecap: round;
+  stroke-width: 2.2;
+}
+
+.diagram-figure-mean {
+  fill: #2d8c50;
+}
+
+.diagram-figure-axis {
+  stroke: #7e4dc8;
+  stroke-linecap: round;
+  stroke-width: 2.6;
+}
+
+.diagram-figure-axis-line {
+  stroke: #111111;
+  stroke-linecap: round;
+  stroke-width: 2.2;
+}
+
+.diagram-figure-axis-line--blue {
+  stroke: #3b6cb8;
+}
+
+.diagram-figure-arrowhead {
+  fill: #111111;
+}
+
+.diagram-figure-arrowhead--purple {
+  fill: #7e4dc8;
+}
+
+.diagram-figure-curve,
+.diagram-gp-path {
+  fill: none;
+  stroke: #2d8c50;
+  stroke-linecap: round;
+  stroke-width: 3;
+}
+
+.diagram-gp-path {
+  stroke: #111111;
+}
+
+.diagram-figure-guide {
+  stroke: #111111;
+  stroke-dasharray: 4 4;
+  stroke-width: 1.3;
+}
+
+.diagram-figure-guide--pink,
+.diagram-figure-tick.diagram-figure-guide--pink {
+  stroke: #c44488;
+  stroke-dasharray: none;
+  stroke-width: 2;
+}
+
+.diagram-figure-guide--red {
+  stroke: #c4453a;
+}
+
+.diagram-figure-chord {
+  stroke: #7e4dc8;
+  stroke-linecap: round;
+  stroke-width: 2.8;
+}
+
+.diagram-figure-chord-dot {
+  fill: #7e4dc8;
+}
+
+.diagram-figure-mid-dot {
+  fill: #c4453a;
+}
+
+.diagram-mini-axis {
+  stroke: #333333;
+  stroke-width: 0.9;
+}
+
+.diagram-mini-truth,
+.diagram-mini-mean {
+  fill: none;
+  stroke-linecap: round;
+  stroke-width: 2;
+}
+
+.diagram-mini-truth {
+  stroke: #2d8c50;
+}
+
+.diagram-mini-mean {
+  stroke: #c4453a;
+}
+
+.diagram-mini-observation {
+  fill: #ffffff;
+  stroke: #3b6cb8;
+  stroke-width: 1.5;
+}
+
+.diagram-figure-draw {
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+  animation: diagram-figure-draw 2.8s ease-out forwards;
+}
+
 .diagram-paper-math--sequence {
   font-size: 28px;
 }
@@ -897,6 +1054,10 @@ body.theme-bright .diagram-node--observed {
   100% { stroke-dashoffset: -520; }
 }
 
+@keyframes diagram-figure-draw {
+  to { stroke-dashoffset: 0; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .diagram-arrow,
   .diagram-flow,
@@ -908,10 +1069,25 @@ body.theme-bright .diagram-node--observed {
   .diagram-simplex-dot,
   .diagram-loop-action,
   .diagram-loop-state,
-  .diagram-loop-reward {
+  .diagram-loop-reward,
+  .diagram-figure-draw {
     animation: none;
     opacity: 1;
     transform: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .diagram-panel-grid--3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .diagram-panel-grid--2,
+  .diagram-panel-grid--3 {
+    grid-template-columns: 1fr;
   }
 }
 

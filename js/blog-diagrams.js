@@ -201,6 +201,133 @@
     mountDiagram(target, card.card);
   }
 
+  function drawGaussianCloudFigure(target) {
+    var card = makeStaticCard('gaussian-cloud', 'Gaussian over a data cloud', 'A Gaussian fit captures the mean at the center of mass and the covariance orientation through the principal axes of Σ.');
+    var svg = createSvg(820, 380, '0 0 820 380');
+    svg.setAttribute('aria-label', 'Gaussian data cloud with mean, covariance ellipse, and principal axes.');
+    var markerUrl = addArrowhead(svg, 'arrowhead-gaussian-cloud', 'diagram-figure-arrowhead diagram-figure-arrowhead--purple');
+    var points = [[290, 116], [336, 104], [383, 102], [432, 116], [481, 132], [258, 164], [316, 154], [366, 172], [424, 185], [474, 202], [518, 216], [288, 222], [346, 230], [404, 247], [452, 260], [488, 274], [240, 198], [548, 185], [392, 296]];
+
+    svg.appendChild(el('ellipse', { cx: 410, cy: 190, rx: 190, ry: 112, fill: 'none', stroke: '#e8693f', 'stroke-width': 2.8, 'stroke-dasharray': '10 7', transform: 'rotate(-15 410 190)', class: 'diagram-figure-draw' }));
+    points.forEach(function (point) {
+      svg.appendChild(el('path', { d: 'M' + (point[0] - 7) + ' ' + (point[1] - 7) + ' L' + (point[0] + 7) + ' ' + (point[1] + 7) + ' M' + (point[0] + 7) + ' ' + (point[1] - 7) + ' L' + (point[0] - 7) + ' ' + (point[1] + 7), class: 'diagram-figure-cross' }));
+    });
+    svg.appendChild(el('circle', { cx: 418, cy: 198, r: 5, class: 'diagram-figure-mean' }));
+    svg.appendChild(text(432, 222, 'μ', 'diagram-paper-label diagram-paper-label--small'));
+    svg.appendChild(el('line', { x1: 418, y1: 198, x2: 323, y2: 132, class: 'diagram-figure-axis', 'marker-end': markerUrl }));
+    svg.appendChild(el('line', { x1: 418, y1: 198, x2: 516, y2: 158, class: 'diagram-figure-axis', 'marker-end': markerUrl }));
+    svg.appendChild(text(72, 64, 'data points (×)', 'diagram-paper-small diagram-paper-note'));
+    svg.appendChild(text(72, 90, '1σ contour', 'diagram-paper-small diagram-paper-note diagram-paper-note--orange'));
+    svg.appendChild(text(72, 116, 'principal axes', 'diagram-paper-small diagram-paper-note diagram-paper-note--purple'));
+    card.stage.appendChild(svg);
+    mountDiagram(target, card.card);
+  }
+
+  function drawConvexityFigure(target) {
+    var card = makeStaticCard('convexity-figure', 'Convexity: chord lies above the curve', 'For a convex function, the chord between f(x) and f(y) sits above the curve, so f((x + y)/2) ≤ (f(x) + f(y))/2.');
+    var svg = createSvg(820, 380, '0 0 820 380');
+    svg.setAttribute('aria-label', 'Convex function diagram with chord between two points above the curve.');
+    svg.appendChild(el('line', { x1: 80, y1: 320, x2: 760, y2: 320, class: 'diagram-figure-axis-line diagram-figure-axis-line--blue' }));
+    svg.appendChild(el('line', { x1: 410, y1: 48, x2: 410, y2: 335, class: 'diagram-figure-axis-line diagram-figure-axis-line--blue' }));
+    svg.appendChild(el('path', { d: 'M110 88 Q410 410 710 88', class: 'diagram-figure-curve diagram-figure-draw' }));
+    svg.appendChild(text(722, 88, 'f', 'diagram-paper-small diagram-paper-note diagram-paper-note--green'));
+    [['x', 210, 174], ['y', 610, 174]].forEach(function (point) {
+      svg.appendChild(el('line', { x1: point[1], y1: point[2], x2: point[1], y2: 320, class: 'diagram-figure-guide diagram-figure-guide--pink' }));
+      svg.appendChild(el('line', { x1: point[1], y1: 314, x2: point[1], y2: 326, class: 'diagram-figure-tick diagram-figure-guide--pink' }));
+      svg.appendChild(text(point[1] - 6, 350, point[0], 'diagram-paper-small diagram-paper-note diagram-paper-note--pink'));
+    });
+    svg.appendChild(el('line', { x1: 210, y1: 174, x2: 610, y2: 174, class: 'diagram-figure-chord' }));
+    svg.appendChild(el('circle', { cx: 210, cy: 174, r: 6, class: 'diagram-figure-chord-dot' }));
+    svg.appendChild(el('circle', { cx: 610, cy: 174, r: 6, class: 'diagram-figure-chord-dot' }));
+    svg.appendChild(el('circle', { cx: 410, cy: 246, r: 6, class: 'diagram-figure-mid-dot' }));
+    svg.appendChild(el('line', { x1: 410, y1: 246, x2: 410, y2: 320, class: 'diagram-figure-guide diagram-figure-guide--red' }));
+    svg.appendChild(text(380, 350, '(x + y)/2', 'diagram-paper-small diagram-paper-note diagram-paper-note--red'));
+    card.stage.appendChild(svg);
+    mountDiagram(target, card.card);
+  }
+
+  function drawPosteriorPredictiveFigure(target) {
+    var card = makeStaticCard('posterior-grid', 'Posterior predictive shrinks with more data', 'As n grows, the posterior predictive band narrows around the true function; uncertainty decreases at the usual O(1/√n) scale.');
+    var grid = document.createElement('div');
+    grid.className = 'diagram-panel-grid diagram-panel-grid--2';
+
+    function addPanel(label, band, mean, observations, tight) {
+      var cell = document.createElement('div');
+      cell.className = 'diagram-panel-cell';
+      var title = document.createElement('div');
+      title.className = 'diagram-panel-cell-label';
+      title.textContent = label;
+      var svg = createSvg(220, 145, '0 0 220 145');
+      svg.appendChild(el('line', { x1: 24, y1: 72, x2: 204, y2: 72, class: 'diagram-mini-axis' }));
+      svg.appendChild(el('line', { x1: 24, y1: 18, x2: 24, y2: 128, class: 'diagram-mini-axis' }));
+      svg.appendChild(el('path', { d: band, fill: tight ? '#fcd34d' : '#fed7e2', opacity: tight ? 0.58 : 0.82 }));
+      svg.appendChild(el('path', { d: 'M24 72 Q66 25 110 72 T204 72', class: 'diagram-mini-truth' }));
+      svg.appendChild(el('path', { d: mean, class: 'diagram-mini-mean' }));
+      observations.forEach(function (point) {
+        svg.appendChild(el('circle', { cx: point[0], cy: point[1], r: 3, class: 'diagram-mini-observation' }));
+      });
+      cell.appendChild(title);
+      cell.appendChild(svg);
+      grid.appendChild(cell);
+    }
+
+    addPanel('n = 1', 'M24 22 Q70 118 112 38 T204 106 L204 120 Q156 35 112 112 T24 36 Z', 'M24 72 Q112 60 204 82', [[112, 56]]);
+    addPanel('n = 2', 'M24 38 Q70 104 112 54 T204 96 L204 108 Q156 58 112 98 T24 50 Z', 'M24 72 Q70 62 112 72 T204 78', [[70, 45], [154, 88]]);
+    addPanel('n = 4', 'M24 50 Q70 98 112 60 T204 90 L204 102 Q156 66 112 96 T24 62 Z', 'M24 72 Q70 35 112 72 T204 72', [[58, 38], [102, 67], [150, 92], [184, 78]]);
+    addPanel('n = 25', 'M24 62 Q70 35 112 62 T204 72 L204 82 Q156 46 112 74 T24 72 Z', 'M24 72 Q70 30 112 72 T204 70', [[34, 66], [48, 55], [60, 43], [72, 34], [84, 38], [96, 50], [108, 65], [120, 78], [132, 90], [146, 96], [160, 92], [174, 82], [188, 74], [198, 70]], true);
+    card.stage.appendChild(grid);
+    mountDiagram(target, card.card);
+  }
+
+  function drawEmIterationsFigure(target) {
+    var card = makeStaticCard('em-grid', 'EM iterations on a 2-Gaussian mixture', 'EM converges from poor circular guesses to anisotropic ellipses aligned with the two clusters; after a few iterations, the parameters are essentially fixed.');
+    var grid = document.createElement('div');
+    grid.className = 'diagram-panel-grid diagram-panel-grid--3';
+    var panels = [['(a) init', 14, 14, 0], ['(b) L = 1', 20, 10, -22], ['(c) L = 2', 24, 9, -30], ['(d) L = 5', 28, 8, -32], ['(e) L = 20', 22, 6, -35], ['(f) converged', 25, 5, -35]];
+
+    panels.forEach(function (panel, panelIndex) {
+      var cell = document.createElement('div');
+      cell.className = 'diagram-panel-cell';
+      var title = document.createElement('div');
+      title.className = 'diagram-panel-cell-label';
+      title.textContent = panel[0];
+      var svg = createSvg(180, 145, '0 0 180 145');
+      svg.appendChild(el('line', { x1: 16, y1: 72, x2: 168, y2: 72, class: 'diagram-mini-axis' }));
+      svg.appendChild(el('line', { x1: 90, y1: 14, x2: 90, y2: 132, class: 'diagram-mini-axis' }));
+      [[62, 45, '#3b6cb8'], [122, 92, '#c4453a']].forEach(function (cluster, clusterIndex) {
+        svg.appendChild(el('ellipse', { cx: cluster[0], cy: cluster[1], rx: panel[1], ry: panel[2], transform: 'rotate(' + panel[3] + ' ' + cluster[0] + ' ' + cluster[1] + ')', fill: 'none', stroke: cluster[2], 'stroke-width': panelIndex > 3 ? 1.9 : 1.6 }));
+        if (panelIndex > 3) svg.appendChild(el('ellipse', { cx: cluster[0], cy: cluster[1], rx: Math.max(8, panel[1] - 9), ry: Math.max(3, panel[2] - 2), transform: 'rotate(' + panel[3] + ' ' + cluster[0] + ' ' + cluster[1] + ')', fill: 'none', stroke: cluster[2], 'stroke-width': 1.2, opacity: 0.9 }));
+        for (var index = 0; index < 9; index += 1) {
+          var offsetX = ((index * 17) % 27) - 13;
+          var offsetY = ((index * 23) % 25) - 12;
+          svg.appendChild(el('circle', { cx: cluster[0] + offsetX, cy: cluster[1] + offsetY, r: 2, fill: panelIndex === 0 ? '#2d8c50' : cluster[2] }));
+        }
+      });
+      cell.appendChild(title);
+      cell.appendChild(svg);
+      grid.appendChild(cell);
+    });
+    card.stage.appendChild(grid);
+    mountDiagram(target, card.card);
+  }
+
+  function drawGaussianProcessFigure(target) {
+    var card = makeStaticCard('gp-function', 'Gaussian process as a random function', 'A draw from a GP is a random continuous function; evaluating it at any finite set of inputs gives a multivariate Gaussian vector.');
+    var svg = createSvg(820, 340, '0 0 820 340');
+    svg.setAttribute('aria-label', 'Gaussian process random function evaluated at three input points.');
+    var markerUrl = addArrowhead(svg, 'arrowhead-gp-axis', 'diagram-figure-arrowhead');
+    svg.appendChild(el('line', { x1: 90, y1: 250, x2: 748, y2: 250, class: 'diagram-figure-axis-line', 'marker-end': markerUrl }));
+    svg.appendChild(el('path', { d: 'M105 165 Q165 78 232 112 Q280 150 330 118 Q384 82 430 166 Q478 236 525 178 Q578 130 624 188 Q665 235 710 202', class: 'diagram-gp-path diagram-figure-draw' }));
+    [[232, 112, 'X₁', 'm(X₁)'], [330, 118, 'X₂', 'm(X₂)'], [430, 166, 'X₃', 'm(X₃)']].forEach(function (point) {
+      svg.appendChild(el('line', { x1: point[0], y1: point[1], x2: point[0], y2: 250, class: 'diagram-figure-guide' }));
+      svg.appendChild(el('circle', { cx: point[0], cy: point[1], r: 7, class: 'diagram-figure-mid-dot' }));
+      svg.appendChild(text(point[0] - 24, point[1] - 24, point[3], 'diagram-paper-small diagram-paper-note'));
+      svg.appendChild(text(point[0] - 10, 282, point[2], 'diagram-paper-small diagram-paper-note'));
+    });
+    card.stage.appendChild(svg);
+    mountDiagram(target, card.card);
+  }
+
   function drawLatentPlateFigure(target) {
     var card = makeStaticCard('latent-plate', 'Latent assignment model for a mixture', 'For each observation xₙ, a hidden one-hot variable zₙ chooses which Gaussian component generated it.');
     var svg = createSvg(820, 360, '0 0 820 360');
@@ -910,8 +1037,18 @@
 
     Array.prototype.slice.call(body.querySelectorAll('img')).forEach(function (image) {
       var src = image.getAttribute('src') || '';
-      if (/mixture-2021\.png/i.test(src)) {
+      if (/gaussian-2021\.png/i.test(src)) {
+        drawGaussianCloudFigure(image);
+      } else if (/mixture-2021\.png/i.test(src)) {
         drawGaussianDataFigure(image);
+      } else if (/convex\.JPG/i.test(src)) {
+        drawConvexityFigure(image);
+      } else if (/posterior\.png/i.test(src)) {
+        drawPosteriorPredictiveFigure(image);
+      } else if (/mixture-em-1d\.png/i.test(src)) {
+        drawEmIterationsFigure(image);
+      } else if (/sds-365\/gaussian\.png/i.test(src)) {
+        drawGaussianProcessFigure(image);
       } else if (/map2?\.jpg/i.test(src)) {
         drawIidPlateFigure(image, /map2\.jpg/i.test(src));
       } else if (/bayes_table\.png/i.test(src)) {

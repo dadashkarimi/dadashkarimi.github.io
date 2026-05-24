@@ -22,7 +22,7 @@
 <p>$$
 \text{Normal}(\mu,\Sigma) = \frac{\exp(-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu))}{(2\pi)^{\frac{d}{2}}\sqrt{\text{det}{\Sigma}}}
 $$</p>
-<p>Given i.i.d data points $x_1$, $x_2$, .., $x_n \sim \text{Normal}(x|\mu^<em>,\Sigma^</em>)$, maximum likelihood estimator is:</p>
+<p>Given i.i.d. data points $x_1$, $x_2$, .., $x_n \sim \text{Normal}(x|\mu^*,\Sigma^*)$, the maximum likelihood estimator is:</p>
 <p>$$
 \begin{align}
 \begin{aligned}
@@ -43,8 +43,8 @@ $$</p>
 $$</p>
 <p>But how about data that looks like this?</p>
 <p><img src="../../images/mixture-2021.png" alt="Example"></p>
-<p>Here, Gaussian could be a better model, and we can not fit a multi-modal Gaussian.
-One solution is a mixture of Gaussian:</p>
+<p>Here, a single Gaussian cannot fit multi-modal data.
+One solution is a mixture of Gaussians:</p>
 <p>$$
 p(x) = \pi_1 \text{Normal}(x|\mu_1,\Sigma_1)+..+ \pi_k \text{Normal}(x|\mu_k,\Sigma_k)
 $$</p>
@@ -62,7 +62,7 @@ $$</p>
 <h2 id="mixture-of-gaussian-with-k-components">Mixture of Gaussian with $K$ components</h2>
 <p>Let&rsquo;s formalize a mixture of the Gaussian model:</p>
 <p>$$
-p(x) = \sum_{i=1}^K \pi_k \text{Normal}(x| \mu_k,\Sigma_k)
+p(x) = \sum_{k=1}^K \pi_k \text{Normal}(x| \mu_k,\Sigma_k)
 $$</p>
 <p>define $z\in (0,1)^k$ to encode which component $x$ comes from: $z=(z_1,z_2,..,z_k)$ and $z_k\in(0,1)$ and $z_1+..+z_k=1$.
 Or in other words:</p>
@@ -91,7 +91,7 @@ $$</p>
 <p>$$
 p(z_k=1) = \pi_k \quad \text{for} \quad 1\leq k\leq K
 $$</p>
-<p>where $\pi=(\pi_1,..,\pi_k)$ satisfies $0\leq pi_k \leq 1$, $\sum_{k=1}^K \pi_k = 1$. Because $z=(z_1,..,z_k) \in (0,1)^k$ we can write the following equation:</p>
+<p>where $\pi=(\pi_1,..,\pi_K)$ satisfies $0\leq \pi_k \leq 1$, $\sum_{k=1}^K \pi_k = 1$. Because $z=(z_1,..,z_K) \in \{0,1\}^K$ we can write the following equation:</p>
 <p>$$
 p(z) = \prod_{k=1}^K \pi_k^{z_k}
 $$</p>
@@ -119,7 +119,7 @@ $$</p>
 <li>marginal is a mixture of Gaussian:</li>
 </ol>
 <p>$$
-p(x) = \sum_z p(x,z) =\sum_{k=1}^K p(x,z_k=1) = \pi_k \text{Normal}(x|\mu_k,\Sigma_k)
+p(x) = \sum_z p(x,z) =\sum_{k=1}^K p(x,z_k=1) = \sum_{k=1}^K \pi_k \text{Normal}(x|\mu_k,\Sigma_k)
 $$</p>
 <p>Therefore to sample from a mixture of Gaussian:</p>
 <p>$$
@@ -134,8 +134,8 @@ $$</p>
 <p>$$
 \begin{aligned}
 \gamma(z_k)  = &amp; p(z_k=1|x) \\\
-= &amp; \frac{p(z_k=1).p(x|z_k=1)}{\sum_{i=1}^Kp(z_j=1).p(x|z_j=1)} \\\
-=&amp; \frac{\pi_k.\text{Normal}(x|\mu_k,\Sigma_k)}{\sum_{i=1}^K\pi_j.\text{Normal}(x|\mu_j,\Sigma_j)}
+= &amp; \frac{p(z_k=1).p(x|z_k=1)}{\sum_{j=1}^Kp(z_j=1).p(x|z_j=1)} \\\
+=&amp; \frac{\pi_k.\text{Normal}(x|\mu_k,\Sigma_k)}{\sum_{j=1}^K\pi_j.\text{Normal}(x|\mu_j,\Sigma_j)}
 \end{aligned}
 $$</p>
 <h2 id="maximum-likelihood-estimation-for-gaussian-mixture">Maximum Likelihood Estimation for Gaussian Mixture</h2>
@@ -164,7 +164,7 @@ $$</p>
 </ol>
 <p>$$
 \begin{aligned}
-\frac{\partial}{\partial \mu_k} \log p(x) = &amp; \sum_{i=1}^N  \frac{\pi_k \text{Normal}(x_n| \mu_k,\Sigma_k)}{\sum_{j=1}^K \text{Normal}(x_n| \mu_j,\Sigma_j} .\Sigma_k^{-1}(x_n-\mu_k)\\\
+&#92;frac{&#92;partial}{&#92;partial &#92;mu_k} &#92;log p(x) = &amp; &#92;sum_{i=1}^N  &#92;frac{&#92;pi_k &#92;text{Normal}(x_n| &#92;mu_k,&#92;Sigma_k)}{&#92;sum_{j=1}^K &#92;pi_j &#92;text{Normal}(x_n| &#92;mu_j,&#92;Sigma_j)} .&#92;Sigma_k^{-1}(x_n-&#92;mu_k)&#92;&#92;
 \end{aligned}
 $$</p>
 <p>where ${\sum_{j=1}^K \text{Normal}(x_n| \mu_j,\Sigma_j)} = \gamma (z_{nk}) = p(z_{nk}=1|x_n)$.

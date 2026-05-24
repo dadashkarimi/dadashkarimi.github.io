@@ -16,20 +16,20 @@
     <time datetime="2021-11-26T00:00:00Z">Nov 26, 2021</time> <span class="readtime">&middot; 3 min read</span>
   </div>
   <div>
-   <p><strong>Bayesian Inference</strong>  what can we do with posterior distribution $p(\theta|x)$ that we can not do with point estimate: For example we can estimate by $\theta_{\text{MAP}} = \arg \max_{\theta} p(\theta|x)$</p>
+  <p><strong>Bayesian Inference</strong>  What can we do with a posterior distribution $p(\theta|x)$ that we cannot do with a point estimate? For example, we can estimate $\theta$ by $\theta_{\text{MAP}} = \arg \max_{\theta} p(\theta|x)$.</p>
 <p><strong>1-Quantify Uncertainty</strong>  Posterior variance typically decreases as $1/n$ when we see $n$ data points.</p>
 <p><strong>2-Posterior Mean</strong> $\theta_{\text{Mean}} = E_{P(\theta|x)}[\theta] = \int_{\mathcal{\theta}}\theta.p(\theta|x) d\theta$. Recall that if $\theta \sim p(\theta)$ and $x|\theta \sim p(x|\theta)$ we can define joint probability with $p(\theta,x) = p(\theta).p(x|\theta)$.
 Indeed, the posterior mean minimizes the mean square loss:
 $$
 \theta_{\text{Mean}} = \arg \min_{\theta(x)} E[||\theta(x)-\theta||^2]
 $$</p>
-<p><strong>3-Posterior Median</strong> In a one dimensional space $\theta_{\text{Median}} = \theta^<em>$ subject to $F(\theta^</em>)=\int_{-\inf}^{\theta^*}p(\theta|x)d\theta=\frac{1}{2}$. In other words, posterior median minimizes the following loss:
+<p><strong>3-Posterior Median</strong> In a one-dimensional space $\theta_{\text{Median}} = \theta^*$ subject to $F(\theta^*)=\int_{-\infty}^{\theta^*}p(\theta|x)d\theta=\frac{1}{2}$. In other words, the posterior median minimizes the following loss:
 $$
 \theta_{\text{Median}} = \arg \min_{\theta(x)} E[|\theta(x)-\theta|]
 $$</p>
 <p><strong>Conjugate Prior</strong> We say a prior distribution $p(\theta) \in F$ is a conjugate prior for a likelihood function $p(x|\theta)$ if the posterior is in the same family: $p(\theta|x) \in F$.</p>
 <h3 id="examples">Examples</h3>
-<p><strong>Beta-Bernoulli model</strong> Lets say $\theta \in [0,1]$ and $\theta \sim \text{Beta}(\alpha,\beta): p(\theta) \propto \theta^{\alpha-1}(1-\theta)^{\beta-1}$. $x \in {0,1}$ and $x|\theta \sim \text{Bernoulli}(\theta): p(x|\theta) = \theta^x (1-\theta)^{1-x}$. Therefore the posterior distribution equals:</p>
+<p><strong>Beta-Bernoulli model</strong> Let&rsquo;s say $\theta \in [0,1]$ and $\theta \sim \text{Beta}(\alpha,\beta): p(\theta) \propto \theta^{\alpha-1}(1-\theta)^{\beta-1}$. $x \in \{0,1\}$ and $x|\theta \sim \text{Bernoulli}(\theta): p(x|\theta) = \theta^x (1-\theta)^{1-x}$. Therefore the posterior distribution equals:</p>
 <p>$$
 \begin{align}
 \begin{aligned}
@@ -43,8 +43,8 @@ $$</p>
 $$
 \begin{align}
 \begin{aligned}
-\theta \in \Delta_k  = {p=(p_1,..,p_k)}: p_i \geq 0, \sum_{i=1}^k = 1 \\\
-x \in { 1,2,..,k}
+	heta \in \Delta_k  = \{p=(p_1,..,p_k): p_i \geq 0, \sum_{i=1}^k p_i = 1\} \\
+x \in \{ 1,2,..,k\}
 \end{aligned}
 \end{align}
 $$</p>
@@ -62,12 +62,12 @@ $$</p>
 $$
 \begin{align}
 \begin{aligned}
-w^<em><em>{\text{ridge}} = &amp; \arg \min</em>{w\in R^d} \frac{1}{2} \sum_{i=1}^n (y_i-w.x_i)^2+\frac{\lambda}{2}||w||<em>2^2\\\
-= &amp; \arg\min</em>{w\in R^d} \frac{1}{2}||y-X^Tw||_2^2 + \frac{\lambda}{2} ||w||_2^2
+w^*_{&#92;text{ridge}} = &amp; &#92;arg &#92;min_{w&#92;in R^d} &#92;frac{1}{2} &#92;sum_{i=1}^n (y_i-w.x_i)^2+&#92;frac{&#92;lambda}{2}||w||_2^2&#92;&#92;
+= &amp; \arg\min_{w\in R^d} \frac{1}{2}||y-X^Tw||_2^2 + \frac{\lambda}{2} ||w||_2^2
 \end{aligned}
 \end{align}
 $$
-where $X=(x_1,..,x_n) \in R^{d\times n}$. Remember that the solution for this problem was $w^</em>_{\text{ridge}} = (XX^T+\lambda I )^{-1}Xy$</p>
+where $X=(x_1,..,x_n) \in R^{d\times n}$. Remember that the solution for this problem was $w^*_{\text{ridge}} = (XX^T+\lambda I )^{-1}Xy$</p>
 <p>Recall <strong>probabilistic model</strong>: prior is $w \sim \text{Normal}(0,\frac{\sigma^2}{\lambda}I) \in R^d$. Likelihood is $y | x,w \sim \text{Normal}(x.w,\sigma^2) \in R$. This is analogous to $y_i = w.x_i+\epsilon_i$ for $\epsilon_i \in \text{Normal}(0,1)$.
 Then $p(w) \propto \exp(-\frac{\lambda ||w||^2}{2\sigma^2})$. Therefore prediction for datapoint $x_i$ is $p(y_i| x_i,w) \propto \exp(-\frac{(y_i-w.x_i)^2}{2\sigma^2}) \forall i=1,..,n$.
 Let $y=(y_1,..,y_n)$ and $x=(x_1,..,x_n)$.

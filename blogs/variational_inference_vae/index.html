@@ -18,8 +18,7 @@
   <div>
    <p>In the previous post, we talked about approximation inference.
 We want to compute $p(\theta,z|x)$, but it&rsquo;s too complicated.
-One strategy is to approximate as $q(\theta,z)$ that has an excellent form where $q$ is a function of variational parameters optimized for each $x$.
-$q$ is a function of variational parameters optimized for each $x$.
+One strategy is to approximate it as $q(\theta,z)$, where $q$ is a tractable distribution with variational parameters optimized for each $x$.
 Maximize a lower bound on $p(x)$ to choose $q$.</p>
 <p>Remember the Bayes&rsquo; rule:</p>
 <p>$$

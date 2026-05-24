@@ -18,7 +18,7 @@
   <div>
    <p>Let&rsquo;s start with a simple regression method. Let&rsquo;s assume that we have a dataset of $n$ points ${(x_i,y_i)}_{i=1}^n$ where $y_i \in \mathbb{R}$ and $x_i \in \mathbb{R}^d$:</p>
 <p>$$
-f(w,x) = W^T X
+f(W,x) = W^T x
 $$</p>
 <p>is a simple linear model that you can define for your data points.
 Then a simple loss function could be:</p>
@@ -80,9 +80,9 @@ In many cases, without explicit computation of $\phi(x_i)$ we can compute $K(x_i
 <h2 id="neural-networks">Neural Networks:</h2>
 <p>Let&rsquo;s define a simple neural network with two layers:</p>
 <p>$$
-y = f(W,x) = \textcolor{red}{\frac{1}{\sqrt(m)}}\sum_{i=1}^m b_i \sigma(a_i&rsquo;X)
+y = f(W,x) = \textcolor{red}{\frac{1}{\sqrt{m}}}\sum_{i=1}^m b_i \sigma(a_i&rsquo;X)
 $$</p>
-<p>The scaling factor $\textcolor{red}{\frac{1}{\sqrt(m)}}$ will have some magical behavior that we will touch base later.</p>
+<p>The scaling factor $\textcolor{red}{\frac{1}{\sqrt{m}}}$ will have some useful behavior that we will touch on later.</p>
 <p>$$
 \mathcal{L}(W) = \frac{1}{2} \sum_{i=1}^n ( f(W,x_i)-y_i)^2
 $$</p>
@@ -123,13 +123,13 @@ Here, my transformation is coming from neural network evaluated at point $W_0$.
 So it&rsquo;s a fixed transformation and is not going to change across gradient descent trajectory.
 So everything is consistent so far (like optimization is convex and $\phi(.)$ is fixed).</p>
 <p>$$
-f_m(W,x) = \textcolor{red}{\frac{1}{\sqrt(m)}}\sum_{i=1}^m b_i \sigma(a_i&rsquo;X)
+f_m(W,x) = \textcolor{red}{\frac{1}{\sqrt{m}}}\sum_{i=1}^m b_i \sigma(a_i&rsquo;X)
 $$</p>
 <p>Then:
 $$
 \begin{align}
-\bigtriangledown_{a_i}f_m(W,X) =  \textcolor{red}{\frac{1}{\sqrt(m)}}b_i \sigma&rsquo;(a_i&rsquo;X)X \\
-\bigtriangledown_{b_i}f_m(W,X) = \textcolor{red}{\frac{1}{\sqrt(m)}}\sigma (a_i&rsquo;X)
+\bigtriangledown_{a_i}f_m(W,X) =  \textcolor{red}{\frac{1}{\sqrt{m}}}b_i \sigma&rsquo;(a_i&rsquo;X)X \\
+\bigtriangledown_{b_i}f_m(W,X) = \textcolor{red}{\frac{1}{\sqrt{m}}}\sigma (a_i&rsquo;X)
 \end{align}
 $$</p>
 <p>Therefore:</p>

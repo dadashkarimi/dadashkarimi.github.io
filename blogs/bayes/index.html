@@ -58,7 +58,7 @@ Posterior distribution $\theta | x_1,..,x_n$ is another Beta distribution:</p>
 <p>$$
 \begin{aligned}
 \tilde{\alpha} = \alpha+ \text{number of heads} = \alpha +s \\
-\tilde{\beta} = \beta+ \text{number of tails} = \alpha+n-s
+&#92;tilde{&#92;beta} = &#92;beta+ &#92;text{number of tails} = &#92;beta+n-s
 \end{aligned}
 $$</p>
 <p>Bernoulli distribution is conjugate to the Beta prior.
@@ -70,13 +70,13 @@ We will cover in this post that the Gaussian process is similar in that the post
 $$</p>
 <p>where $\alpha=(\alpha_1,..,\alpha_k)\in \mathbb{R}_+^K$ is a non-negative vector.
 For example, in a regular dice, we have six parameters.
-Probability of rolling $1$ is $\theta_1^{\alpha_1-1}$ and etc.</p>
+The probability of rolling $1$ is $\theta_1$; $\alpha_1$ is the corresponding concentration parameter.</p>
 <p><img src="../../images/sds-365/dirichlet.png" alt="Example"></p>
 <p>Indeed, when we see more and more data, the Dirichlet distribution will concentrate on proper parameters, or the variance will be $0$.
 We will see that the pick of the posterior or maximum posterior (MAP) estimator is the mode of the data.</p>
 <h1 id="nonparametric-bayesian-inference">Nonparametric Bayesian Inference</h1>
 <p>Here we want to make Bayesian inference for functions.
-Typically neither the prior nor the posterior have a density, but the rear is still well-defined.
+Typically neither the prior nor the posterior has a density, but the posterior is still well-defined.
 We can&rsquo;t compute posterior distribution, but we can sample from it.</p>
 <p><img src="../../images/sds-365/bayes_table.png" alt="Example"></p>
 <h2 id="stochastic-processes">Stochastic Processes</h2>

@@ -28,8 +28,8 @@ evaluate the initial value of the log likelihood.</li>
 <p>$$
 \begin{aligned}
 \gamma(z_k)  = &amp; p(z_k=1|x) \\\
-= &amp; \frac{p(z_k=1).p(x|z_k=1)}{\sum_{i=1}^Kp(z_j=1).p(x|z_j=1)} \\\
-=&amp; \frac{\pi_k.\text{Normal}(x|\mu_k,\Sigma_k)}{\sum_{i=1}^K\pi_j.\text{Normal}(x|\mu_j,\Sigma_j)}
+= &amp; \frac{p(z_k=1).p(x|z_k=1)}{\sum_{j=1}^Kp(z_j=1).p(x|z_j=1)} \\\
+=&amp; \frac{\pi_k.\text{Normal}(x|\mu_k,\Sigma_k)}{\sum_{j=1}^K\pi_j.\text{Normal}(x|\mu_j,\Sigma_j)}
 \end{aligned}
 $$</p>
 <ol start="3">
@@ -203,12 +203,12 @@ $$</p>
 <p>As you see, EM is an iterative method to maximize $\log p(x|\theta)$ and may converge to local maxima. We may need to run multiple times.</p>
 <p>We also have the following decomposition:</p>
 <p>$$
-\text{ELBO}(x,q|\theta) = \mathcal{L}(q,\theta) = \log p(x|\theta) - \text{KL}(q || p(z|x,\theta)
+&#92;text{ELBO}(x,q|&#92;theta) = &#92;mathcal{L}(q,&#92;theta) = &#92;log p(x|&#92;theta) - &#92;text{KL}(q || p(z|x,&#92;theta))
 $$</p>
 <p>where $\text{KL}(q || p(z|x,\theta)) = \sum_z q(z)\log \frac{q(z)}{p(z|x,\theta)}$.</p>
 <ol>
 <li>Since $\text{KL} \geq 0 $ then $\text{ELBO}(x,q|\theta)\leq \log p(x|\theta)$.</li>
-<li>$\text{ELBO}(x,q|\theta) = \log p(x|\theta)$ if $\text{KL}(q || p(z|x,\theta)$ if and only if $q(z) = p(z|x,\theta)$</li>
+<li>$\text{ELBO}(x,q|\theta) = \log p(x|\theta)$ if $\text{KL}(q || p(z|x,\theta))=0$, which holds if and only if $q(z) = p(z|x,\theta)$.</li>
 </ol>
 <p>In general, for any distribution $q(z),p(z)$ the <strong>Kullback-Leible divergence</strong> of $q$ with respect to $p$ is :</p>
 <p>$$

@@ -20,12 +20,12 @@ Suppose that we have a probabilistic model of generating random data $x \in \mat
 $$
 P_{\theta}(x) : \mathcal{X} \rightarrow R, \quad \int_xP_{\theta}(x) dx = 1
 $$</p>
-<p>Let&rsquo;s say we have seen some independent samples $x_1, x_2,.. x_n \sim P_{\theta^<em>}$. By definition:
+<p>Let&rsquo;s say we have seen some independent samples $x_1, x_2,.. x_n \sim P_{\theta^*}$. By definition:
 $$
-P_{\theta^</em>} (x_1,x_2,..,x_n) = P_{\theta^<em>}(x_1) P_{\theta^</em>}(x_2)..P_{\theta^*}(x_n)
+P_{\theta^*} (x_1,x_2,..,x_n) = P_{\theta^*}(x_1) P_{\theta^*}(x_2)..P_{\theta^*}(x_n)
 $$</p>
 <h3 id="can-we-estimate-theta">Can we estimate $\theta^*$?</h3>
-<p>So, how can we estimate the hidden variable $ heta $ from which our probability distributions are derived?</p>
+<p>So, how can we estimate the hidden variable $\theta$ from which our probability distributions are derived?</p>
 <h3 id="example-1--bernoulli-distribution">Example 1:  Bernoulli distribution</h3>
 <p>In this example, our family is a class of random variables with possible values drawn from $\mathcal{X} \in {0,1}$ analogous to tossing a two-sided coin. We can derive the probability of each outcome via the following functions:</p>
 <p>$$
@@ -63,7 +63,7 @@ $$
 Where:
 $$
 \mu = E_{P_{\theta}}[x]\\\
-\sigma^2 = \text{Var}<em>{P</em>{\theta}(x)} = E_{P_{\theta}}[(x-\mu)^2]
+\sigma^2 = \text{Var}_{P_{\theta}}(x) = E_{P_{\theta}}[(x-\mu)^2]
 $$
 and
 $$
@@ -87,7 +87,7 @@ $$</p>
 <ol>
 <li>
 <p><em><strong>Consistency</strong></em>:
-Given $x_1,.., x_n \sim P_{\theta^<em>}$ are iid data points. If $n \rightarrow \infty$, then $\theta_{\text{MLE}} \rightarrow \theta^</em>$</p>
+Given $x_1,.., x_n \sim P_{\theta^*}$ are iid data points. If $n \rightarrow \infty$, then $\theta_{\text{MLE}} \rightarrow \theta^*$</p>
 </li>
 <li>
 <p><em><strong>Invariance</strong></em>:

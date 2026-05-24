@@ -19,7 +19,7 @@
    <p><strong>Empirical Risk Minimization</strong>: Given $(x_1,y_1), .., (x_n,y_n) \in X \times y$ and we want to predict $f(x)=y$. Choose hypothesis class $\mathcal{F}={f_{\theta}: \theta \in \mathcal{\theta}}$.
 Choose:
 $$
-\theta^* = \arg \min_{\theta \in \mathcal{\theta}} \sum_{i=1}^n \text{Loss}(f_{\theta}(x_i,y_i))
+&#92;theta^* = \arg \min_{\theta \in \mathcal{\theta}} \sum_{i=1}^n \text{Loss}(f_{\theta}(x_i),y_i)
 $$</p>
 <p>Let&rsquo;s review maximum likelihood estimation in this context. Maximum likelihood estimation is a probabilistic model defined by $y|x,\theta \sim P_{\theta}(y|x) = p(y| x,\theta)$. Our observations are $(x_1,y_1),..,(x_n,y_n) \in X \times y$.</p>
 <p>$$
@@ -55,7 +55,7 @@ $$</p>
 <p>$$
 \begin{align}
 \begin{aligned}
-\text{Normal}(y|\mu,\sigma^2) = \frac{1}{\sqrt(2\pi \sigma^2)} e ^{-\frac{(y-\mu)^2}{2\sigma^2}} \\\
+  &#92;text{Normal}(y|&#92;mu,&#92;sigma^2) = &#92;frac{1}{&#92;sqrt{2&#92;pi &#92;sigma^2}} e ^{-&#92;frac{(y-&#92;mu)^2}{2&#92;sigma^2}} &#92;&#92;
 \mu = \text{mean} = E[Y] \in \mathbb{R} \\\
 \sigma^2 = \text{variance} = E[(y-\mu)^2] &gt; 0
 \end{aligned}
@@ -95,11 +95,11 @@ y| x,\theta \sim \text{Normal}(x.\theta,\Sigma^2)
 \end{aligned}
 \end{align}</p>
 <p>where $y=x.\theta+\epsilon$ and $\epsilon \sim \text{Normal}(0,\sigma^2)$.</p>
-<p><strong>L1 regularizer</strong>: $C(\theta) = ||\theta||<em>1=\sum</em>{i=1}^d |\theta_i|$</p>
+<p><strong>L1 regularizer</strong>: $C(\theta) = ||\theta||_1=\sum_{i=1}^d |\theta_i|$</p>
 <p><strong>Laplace distribution</strong>: In one dimension: $p(\theta|\mu,b) = \frac{1}{2b}e^{-\frac{|\theta-\mu|}{b}} $
 Laplace has a heavier tail than Gaussian.</p>
 <p>In d-dimension:
-$p(\theta|\mu,b) = \frac{1}{(2b)^d}e^{-\frac{||\theta-\mu||<em>1}{b}} = \prod</em>{i=1}^d p(\theta_i| \mu_i,b)
+$p(\theta|\mu,b) = \frac{1}{(2b)^d}e^{-\frac{||\theta-\mu||_1}{b}} = \prod_{i=1}^d p(\theta_i| \mu_i,b)
 $ which corresponds to L1 regularizer:
 \begin{align}
 \begin{aligned}

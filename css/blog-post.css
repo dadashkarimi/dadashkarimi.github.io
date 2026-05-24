@@ -201,6 +201,22 @@ body.theme-dark .blog-tape {
   background: #fff;
 }
 
+#page.post .highlight,
+#page.post .chroma,
+#page.post .lntable,
+#page.post .lntd {
+  max-width: 100%;
+}
+
+#page.post .highlight,
+#page.post .chroma {
+  overflow-x: auto;
+}
+
+#page.post .lntable {
+  display: block;
+}
+
 .concept-diagram {
   margin: 34px auto 38px;
   padding: 18px;
@@ -242,6 +258,12 @@ body.theme-dark .blog-tape {
 }
 
 .concept-diagram--mixture-plot .concept-diagram__stage {
+  background: #ffffff;
+}
+
+.concept-diagram.is-static .concept-diagram__stage,
+.concept-diagram--cluster-figure .concept-diagram__stage,
+.concept-diagram--latent-plate .concept-diagram__stage {
   background: #ffffff;
 }
 
@@ -364,6 +386,99 @@ body.theme-bright .diagram-node--observed {
   stroke: var(--rule);
   stroke-width: 2;
   stroke-dasharray: 8 8;
+}
+
+.diagram-paper-node {
+  stroke: #111111;
+  stroke-width: 2.5;
+}
+
+.diagram-paper-node--latent {
+  fill: #ffffff;
+}
+
+.diagram-paper-node--observed {
+  fill: #e6e6e6;
+  stroke-dasharray: 5 4;
+}
+
+.diagram-paper-plate {
+  fill: transparent;
+  stroke: #111111;
+  stroke-width: 2;
+}
+
+.diagram-paper-edge {
+  stroke: #111111;
+  stroke-width: 2;
+  opacity: 0.78;
+}
+
+.diagram-paper-box,
+.diagram-paper-node--latent-box {
+  fill: #ffffff;
+  stroke: #111111;
+  stroke-width: 2;
+}
+
+.diagram-paper-node--latent-box {
+  fill: #f4f4f4;
+  stroke-dasharray: 6 5;
+}
+
+.diagram-paper-output {
+  fill: #f7fbff;
+}
+
+.diagram-paper-arrow {
+  fill: none;
+  stroke: #111111;
+  stroke-width: 2.3;
+  stroke-linecap: round;
+}
+
+.diagram-paper-arrow--thin {
+  stroke-width: 1.6;
+  opacity: 0.8;
+}
+
+.diagram-paper-arrowhead {
+  fill: #111111;
+}
+
+.diagram-paper-dot {
+  fill: #1f77b4;
+}
+
+.diagram-table {
+  fill: #ffffff;
+  stroke: #111111;
+  stroke-width: 2;
+}
+
+.diagram-table-customer {
+  stroke: #ffffff;
+  stroke-width: 2;
+}
+
+.diagram-paper-label,
+.diagram-paper-param,
+.diagram-paper-small {
+  fill: #111111;
+  font-family: 'Newsreader', serif;
+}
+
+.diagram-paper-label {
+  font-size: 28px;
+}
+
+.diagram-paper-param {
+  font-size: 24px;
+}
+
+.diagram-paper-small {
+  font-family: 'Atkinson Hyperlegible', sans-serif;
+  font-size: 15px;
 }
 
 .diagram-copy {

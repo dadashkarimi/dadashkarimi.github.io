@@ -491,6 +491,15 @@ body.theme-bright .diagram-node--observed {
   fill: var(--ink);
 }
 
+.concept-diagram--bayes-graph .diagram-arrow,
+.concept-diagram--bayes-graph .diagram-flow {
+  stroke: #111111;
+}
+
+.concept-diagram--bayes-graph .diagram-arrowhead {
+  fill: #111111;
+}
+
 .diagram-plate {
   fill: transparent;
   stroke: var(--rule);
@@ -568,6 +577,32 @@ body.theme-bright .diagram-node--observed {
 }
 
 .diagram-paper-arrowhead {
+  fill: #111111;
+}
+
+.concept-diagram--single-plate .diagram-paper-arrow,
+.concept-diagram--iid-plate .diagram-paper-arrow {
+  stroke: #111111;
+  opacity: 0.95;
+}
+
+.concept-diagram--single-plate .diagram-paper-arrowhead,
+.concept-diagram--iid-plate .diagram-paper-arrowhead {
+  fill: #111111;
+}
+
+.concept-diagram--single-plate .diagram-paper-node--observed-red,
+.concept-diagram--iid-plate .diagram-paper-node--observed-red {
+  fill: #ffffff;
+  stroke: var(--green);
+}
+
+.concept-diagram--single-plate .diagram-paper-math--white,
+.concept-diagram--iid-plate .diagram-paper-math--white,
+.concept-diagram--single-plate .diagram-paper-math--white .diagram-paper-math-symbol,
+.concept-diagram--single-plate .diagram-paper-math--white .diagram-paper-math-sub,
+.concept-diagram--iid-plate .diagram-paper-math--white .diagram-paper-math-symbol,
+.concept-diagram--iid-plate .diagram-paper-math--white .diagram-paper-math-sub {
   fill: #111111;
 }
 

@@ -326,7 +326,7 @@ controls.enableDamping = true;
 controls.dampingFactor = 0.08;
 controls.rotateSpeed = 0.8;
 controls.zoomSpeed = 0.9;
-controls.enabled = false;  // unlocked after reveal completes
+controls.enabled = false;
 
 function resize() {
   const w = window.innerWidth, h = window.innerHeight;
@@ -345,6 +345,7 @@ let activeBundleIdx = 0;
 let activeBundleStartTime = 0;
 let speed = 1.0;
 let animationRunning = false;
+let interactionUnlocked = false;
 const BETWEEN_BUNDLE_PAUSE_MS = 250;
 
 function buildBundleMeshes(bundles) {
@@ -379,17 +380,25 @@ function buildBundleMeshes(bundles) {
 }
 
 function startReveal() {
-  // Return to sagittal view, disable controls during reveal
+  // Return to sagittal view, then unlock controls once the first streamlines appear.
   camera.position.set(500, 0, 0);
   controls.target.set(0, 0, 0);
   camera.up.set(0, 0, 1);
   camera.lookAt(0, 0, 0);
   controls.update();
   controls.enabled = false;
+  interactionUnlocked = false;
   hintEl.classList.remove('visible');
   for (const bo of bundleObjs) bo.mesh.geometry.setDrawRange(0, 0);
   activeBundleIdx = 0;
   beginBundle();
+}
+
+function unlockInteraction() {
+  if (interactionUnlocked) return;
+  controls.enabled = true;
+  hintEl.classList.add('visible');
+  interactionUnlocked = true;
 }
 
 function beginBundle() {
@@ -411,6 +420,7 @@ function updateReveal(now) {
   const t = Math.min(1, elapsed / totalMs);
   const linesShown = Math.floor(t * bo.nLines);
   bo.mesh.geometry.setDrawRange(0, linesShown * bo.vertsPerLine);
+  if (linesShown > 0) unlockInteraction();
   if (t >= 1) {
     bo.mesh.geometry.setDrawRange(0, bo.totalVerts);
     activeBundleIdx++;
@@ -423,8 +433,7 @@ function finish() {
   tractNameEl.textContent = '✓ complete · ' + bundleObjs.length + ' bundles · ' +
     bundleObjs.reduce((s,b)=>s + b.nLines, 0).toLocaleString() + ' streamlines';
   animationRunning = false;
-  controls.enabled = true;
-  hintEl.classList.add('visible');
+  unlockInteraction();
 }
 
 function drawAll() {

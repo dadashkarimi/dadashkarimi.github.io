@@ -302,15 +302,9 @@ function applyTheme(theme) {
 }
 
 const themeParam = new URLSearchParams(window.location.search).get('theme');
+const autostart = new URLSearchParams(window.location.search).get('autostart') !== 'false';
 const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 applyTheme(themeParam === 'dark' ? 'dark' : (themeParam === 'bright' ? 'bright' : (prefersDark ? 'dark' : 'bright')));
-
-window.addEventListener('message', (event) => {
-  const data = event.data || {};
-  if (data.type !== 'setTheme') return;
-  if (data.theme !== 'dark' && data.theme !== 'bright') return;
-  applyTheme(data.theme);
-});
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(25, 1, 1, 5000);
@@ -346,6 +340,9 @@ let activeBundleStartTime = 0;
 let speed = 1.0;
 let animationRunning = false;
 let interactionUnlocked = false;
+let viewerReady = false;
+let pendingRevealStart = false;
+let revealStarted = false;
 const BETWEEN_BUNDLE_PAUSE_MS = 250;
 
 function buildBundleMeshes(bundles) {
@@ -380,6 +377,11 @@ function buildBundleMeshes(bundles) {
 }
 
 function startReveal() {
+  if (!viewerReady) {
+    pendingRevealStart = true;
+    return;
+  }
+  revealStarted = true;
   // Return to sagittal view, then unlock controls once the first streamlines appear.
   camera.position.set(500, 0, 0);
   controls.target.set(0, 0, 0);
@@ -392,6 +394,14 @@ function startReveal() {
   for (const bo of bundleObjs) bo.mesh.geometry.setDrawRange(0, 0);
   activeBundleIdx = 0;
   beginBundle();
+}
+
+function waitForRevealStart() {
+  tractNameEl.textContent = 'ready · scroll into view to draw tracts';
+  controls.enabled = false;
+  interactionUnlocked = false;
+  hintEl.classList.remove('visible');
+  for (const bo of bundleObjs) bo.mesh.geometry.setDrawRange(0, 0);
 }
 
 function unlockInteraction() {
@@ -475,7 +485,12 @@ async function boot() {
       '(embedded, self-contained)';
     loadingEl.classList.add('hidden');
     requestAnimationFrame(animate);
-    startReveal();
+    viewerReady = true;
+    if (autostart || pendingRevealStart) {
+      startReveal();
+    } else {
+      waitForRevealStart();
+    }
   } catch (err) {
     loadingEl.innerHTML = 'Failed: ' + err.message;
     console.error(err);
@@ -509,6 +524,18 @@ document.getElementById('viewSelect').addEventListener('change', (event) => {
   }
   controls.target.set(0, 0, 0);
   controls.update();
+});
+
+window.addEventListener('message', (event) => {
+  const data = event.data || {};
+  if (data.type === 'setTheme') {
+    if (data.theme !== 'dark' && data.theme !== 'bright') return;
+    applyTheme(data.theme);
+    return;
+  }
+  if (data.type === 'startReveal' && !revealStarted) {
+    startReveal();
+  }
 });
 
 boot();

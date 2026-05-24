@@ -680,9 +680,9 @@ body.theme-dark .social-icons a img:hover { opacity: 1; }
     <iframe
       id="tractsFrame"
       class="tracts-frame"
-      data-src="brain_hcp842_3d_embedded.html?theme=dark"
+      src="brain_hcp842_3d_embedded.html?theme=dark&autostart=false"
       title="Brain Tractography HCP-842 3D"
-      loading="lazy"
+      loading="eager"
       referrerpolicy="no-referrer"
     ></iframe>
   </div>
@@ -899,6 +899,7 @@ body.theme-dark .social-icons a img:hover { opacity: 1; }
   var btn = document.getElementById('themeToggle');
   var menuBtn = document.getElementById('menuToggle');
   var tractFrame = document.getElementById('tractsFrame');
+  var tractRevealRequested = false;
   if (!btn) return;
 
   if (menuBtn) {
@@ -914,10 +915,10 @@ body.theme-dark .social-icons a img:hover { opacity: 1; }
     tractFrame.contentWindow.postMessage({ type: 'setTheme', theme: theme }, '*');
   }
 
-  function startTractFrame() {
-    if (!tractFrame || tractFrame.src) return;
-    var nowDark = document.body.classList.contains('theme-dark');
-    tractFrame.src = 'brain_hcp842_3d_embedded.html?theme=' + (nowDark ? 'dark' : 'bright');
+  function startTractReveal() {
+    if (!tractFrame || !tractFrame.contentWindow) return;
+    tractRevealRequested = true;
+    tractFrame.contentWindow.postMessage({ type: 'startReveal' }, '*');
   }
 
   function setTheme(theme) {
@@ -950,19 +951,20 @@ body.theme-dark .social-icons a img:hover { opacity: 1; }
     tractFrame.addEventListener('load', function () {
       var nowDark = document.body.classList.contains('theme-dark');
       syncTractTheme(nowDark ? 'dark' : 'bright');
+      if (tractRevealRequested) startTractReveal();
     });
 
     if ('IntersectionObserver' in window) {
       var tractObserver = new IntersectionObserver(function (entries, observer) {
         entries.forEach(function (entry) {
           if (!entry.isIntersecting) return;
-          startTractFrame();
+          startTractReveal();
           observer.disconnect();
         });
       }, { rootMargin: '0px 0px -10% 0px', threshold: 0.15 });
       tractObserver.observe(tractFrame);
     } else {
-      startTractFrame();
+      startTractReveal();
     }
   }
 })();

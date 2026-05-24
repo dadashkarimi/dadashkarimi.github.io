@@ -25,7 +25,7 @@
     <time datetime="2022-02-19T00:00:00Z">Feb 19, 2022</time> <span class="readtime">&middot; 5 min read</span>
   </div>
   <div>
-   <p>Let&rsquo;s start with a simple regression method. Let&rsquo;s assume that we have a dataset of $n$ points ${(x_i,y_i)}_{i=1}^n$ where $y_i \in \mathbb{R}$ and $x_i \in \mathbb{R}^d$:</p>
+   <p>Let's start with a simple regression method. Let's assume that we have a dataset of $n$ points ${(x_i,y_i)}_{i=1}^n$ where $y_i \in \mathbb{R}$ and $x_i \in \mathbb{R}^d$:</p>
 <p>$$
 f(W,x) = W^T x
 $$</p>
@@ -37,14 +37,14 @@ $$</p>
 <p>where $\hat{y}_i = f(W,x_i)$ is our prediction. This is a simple convex optimization problem where each step is defined by:</p>
 <p>$$
 \begin{aligned}
-W(t+1) = &amp; W(t) - \eta_t \bigtriangledown \mathcal{L}(w_t) \\
-= &amp; W(t) - \eta_t \sum_{i=1}^n (y_i-f(W,x_i))\bigtriangledown_wf(W_t,x_i) \\
+W(t+1) = &amp; W(t) - \eta_t \nabla \mathcal{L}(w_t) \\
+= &amp; W(t) - \eta_t \sum_{i=1}^n (y_i-f(W,x_i))\nabla_wf(W_t,x_i) \\
 =&amp; W(t) - \eta_t \sum_{i=1}^n (y_i-f(W,x_i))x_i
 \end{aligned}
 $$</p>
 <h2 id="kernel-method">Kernel Method:</h2>
 <p>We previously introduced kernel methods <a href="../kernel-2021/index.html#page">here</a>.
-Indeed, instead of representing our data points $x_i \in \mathbb{R}^d$ we represent them in non linear transformation space, possibly with larger dimmensions $\phi(x_i) \in \mathbb{R}^D$ for $D \gg d$.</p>
+Indeed, instead of representing our data points $x_i \in \mathbb{R}^d$ we represent them in non linear transformation space, possibly with larger dimensions $\phi(x_i) \in \mathbb{R}^D$ for $D \gg d$.</p>
 <h3 id="example-polynomial-kernels">Example: Polynomial kernels</h3>
 <p>Assume:
 $$
@@ -80,16 +80,16 @@ $$</p>
 $$</p>
 <p>But, here we have two issues: 1. $\phi(.)$ is fixed and 2. We will suffer from the curse of dimensionality for $\phi(X) \in \mathbb{R}^D$ for $D\gg d$ or $\mathcal{O}(d^k)$ for a polynomial with order $k$.</p>
 <h3 id="kernel-trick">Kernel Trick:</h3>
-<p>In most cases we don&rsquo;t really need to calculate $\phi(X)$ individually. Instead:</p>
+<p>In most cases we don't really need to calculate $\phi(X)$ individually. Instead:</p>
 <p>$$
 K(x_i,x_j) = &lt;\phi(x_i),\phi(x_j)&gt;
 $$</p>
 <p>Then a kernel matrix $K\in \mathbb{R}^{n\times n}$ represent some measures of similarity between data points. Kernel matrix is symmetric and positive semi definite.
 In many cases, without explicit computation of $\phi(x_i)$ we can compute $K(x_i,x_j)$.</p>
 <h2 id="neural-networks">Neural Networks:</h2>
-<p>Let&rsquo;s define a simple neural network with two layers:</p>
+<p>Let's define a simple neural network with two layers:</p>
 <p>$$
-y = f(W,x) = \textcolor{red}{\frac{1}{\sqrt{m}}}\sum_{i=1}^m b_i \sigma(a_i&rsquo;X)
+y = f(W,x) = \textcolor{red}{\frac{1}{\sqrt{m}}}\sum_{i=1}^m b_i \sigma(a_i'X)
 $$</p>
 <p>The scaling factor $\textcolor{red}{\frac{1}{\sqrt{m}}}$ will have some useful behavior that we will touch on later.</p>
 <p>$$
@@ -97,30 +97,30 @@ $$</p>
 $$</p>
 <p>$$
 \begin{aligned}
-W(t+1) = &amp; W(t) - \eta_t \bigtriangledown \mathcal{L}(w_t) \\
-= &amp; W(t) - \eta_t \sum_{i=1}^n (f(W,x_i)-y_i)\bigtriangledown_wf(W_t,x_i)
+W(t+1) = &amp; W(t) - \eta_t \nabla \mathcal{L}(w_t) \\
+= &amp; W(t) - \eta_t \sum_{i=1}^n (f(W,x_i)-y_i)\nabla_wf(W_t,x_i)
 \end{aligned}
 $$</p>
-<p>In linear model $\bigtriangledown_wf(W_t,x_i)=x_i$ or static and was not changing.
-Let&rsquo;s initialize weights with $\mathcal{N}(0,1)$:</p>
+<p>In linear model $\nabla_wf(W_t,x_i)=x_i$ or static and was not changing.
+Let's initialize weights with $\mathcal{N}(0,1)$:</p>
 <p>$$
 W(0) \rightarrow W(1) \rightarrow W(2) ..
 $$</p>
 <p><strong>Empirical observation</strong>: When $m$ (width of the network) is large, these matrices along the trajectory of gradient descent are almost <code>static</code>.</p>
 <p><img src="../../images/sds-365/ntk.jpg" alt="Example"></p>
 <p>In machine learning this phenomena is called &ldquo;Lazy Training&rdquo;.</p>
-<h2 id="first-order-taylors-approximation">First Order Taylor&rsquo;s Approximation:</h2>
-<p>Because changes in $W(t)$ are small we can do Taylor&rsquo;s approximation:</p>
+<h2 id="first-order-taylors-approximation">First Order Taylor's Approximation:</h2>
+<p>Because changes in $W(t)$ are small we can do Taylor's approximation:</p>
 <p>$$
-f(W,X) \approx f(W_0,X) + \bigtriangledown_wf(W_0,X)^T(W-W_0)
+f(W,X) \approx f(W_0,X) + \nabla_wf(W_0,X)^T(W-W_0)
 $$</p>
 <ol>
 <li><strong>Question:</strong> Is this approximate linear in $W$? <strong>answer:</strong> Yes</li>
 <li><strong>Question:</strong> Is this approximate linear in $X$? <strong>answer:</strong> No</li>
 </ol>
-<p>Let&rsquo;s call:</p>
+<p>Let's call:</p>
 <p>$$
-\phi(X) = \bigtriangledown_wf(W_0,X)
+\phi(X) = \nabla_wf(W_0,X)
 $$</p>
 <p>non linear transformation of $X$ (instead of polynomial transformation).
 Then,</p>
@@ -129,47 +129,47 @@ K(x_i,x_j) = &lt;\phi(x_i),\phi(x_j)&gt;
 $$</p>
 <p>is also called <strong>Neural Tangent Kernel</strong> (NTK).
 Here, my transformation is coming from neural network evaluated at point $W_0$.
-So it&rsquo;s a fixed transformation and is not going to change across gradient descent trajectory.
+So it's a fixed transformation and is not going to change across gradient descent trajectory.
 So everything is consistent so far (like optimization is convex and $\phi(.)$ is fixed).</p>
 <p>$$
-f_m(W,x) = \textcolor{red}{\frac{1}{\sqrt{m}}}\sum_{i=1}^m b_i \sigma(a_i&rsquo;X)
+f_m(W,x) = \textcolor{red}{\frac{1}{\sqrt{m}}}\sum_{i=1}^m b_i \sigma(a_i'X)
 $$</p>
 <p>Then:
 $$
 \begin{align}
-\bigtriangledown_{a_i}f_m(W,X) =  \textcolor{red}{\frac{1}{\sqrt{m}}}b_i \sigma&rsquo;(a_i&rsquo;X)X \\
-\bigtriangledown_{b_i}f_m(W,X) = \textcolor{red}{\frac{1}{\sqrt{m}}}\sigma (a_i&rsquo;X)
+\nabla_{a_i}f_m(W,X) =  \textcolor{red}{\frac{1}{\sqrt{m}}}b_i \sigma'(a_i'X)X \\
+\nabla_{b_i}f_m(W,X) = \textcolor{red}{\frac{1}{\sqrt{m}}}\sigma (a_i'X)
 \end{align}
 $$</p>
 <p>Therefore:</p>
 <p>$$
-K_m(x,x&rsquo;) = K_m^a(x,x&rsquo;) + K_m^b(x,x&rsquo;)
+K_m(x,x') = K_m^a(x,x') + K_m^b(x,x')
 $$</p>
 <p>where:</p>
 <p>$$
 \begin{align}
-K_m^a(x,x&rsquo;)  =  \textcolor{red}{\frac{1}{m}}\sum_{i=1}^mb_i^2  \sigma&rsquo;(a_i&rsquo;x)\sigma&rsquo;(a_i&rsquo;x&rsquo;)x.x&rsquo;\\
-K_m^b(x,x&rsquo;) = \textcolor{red}{\frac{1}{m}}\sum_{i=1}^m\sigma (a_i&rsquo;x) \sigma (a_i&rsquo;x&rsquo;)
+K_m^a(x,x')  =  \textcolor{red}{\frac{1}{m}}\sum_{i=1}^mb_i^2  \sigma'(a_i'x)\sigma'(a_i'x')x.x'\\
+K_m^b(x,x') = \textcolor{red}{\frac{1}{m}}\sum_{i=1}^m\sigma (a_i'x) \sigma (a_i'x')
 \end{align}
 $$</p>
-<p>where $x.x&rsquo;$ is the interproduct between two data points.</p>
+<p>where $x.x'$ is the interproduct between two data points.</p>
 <h2 id="law-of-large-numbers">Law of large numbers:</h2>
-<p>If $a_i$s and $b_i$s are independant sample at initialization based on law of large numbers when $m\rightarrow \infty$:</p>
+<p>If $a_i$s and $b_i$s are independent samples at initialization based on law of large numbers when $m\rightarrow \infty$:</p>
 <p>$$
 \begin{align}
-K_m^a(x,x&rsquo;) | {m\rightarrow \infty} \equiv K^a(x,x&rsquo;) = \mathbb{E}[b^2\sigma&rsquo;(a&rsquo;x)\sigma&rsquo;(a&rsquo;x&rsquo;)(x.x&rsquo;)] \\
-K_m^b(x,x&rsquo;) | {m\rightarrow \infty} \equiv K^b(x,x&rsquo;) = \mathbb{E}[\sigma(a.x)\sigma(a.x&rsquo;)]
+K_m^a(x,x') | {m\rightarrow \infty} \equiv K^a(x,x') = \mathbb{E}[b^2\sigma'(a'x)\sigma'(a'x')(x.x')] \\
+K_m^b(x,x') | {m\rightarrow \infty} \equiv K^b(x,x') = \mathbb{E}[\sigma(a.x)\sigma(a.x')]
 \end{align}
 $$</p>
-<p>interesting point is that these kernels $K^a(x,x&rsquo;)$ and $K^b(x,x&rsquo;)$ are <code>NTK</code> and coming from infinite width.</p>
+<p>interesting point is that these kernels $K^a(x,x')$ and $K^b(x,x')$ are <code>NTK</code> and coming from infinite width.</p>
 <h3 id="if-sigma-is-relu-and-distribution-of-a_i-are-rotation-invariant-like-gaussian">If $\sigma(.)$ is Relu and distribution of $a_i$ are rotation invariant, like Gaussian:</h3>
 <p>$$
-K^a(x,x&rsquo;) = \frac{(x.x&rsquo;)\mathbb{E}[b^2]}{2\pi}(\pi -\theta(x,x&rsquo;))
+K^a(x,x') = \frac{(x.x')\mathbb{E}[b^2]}{2\pi}(\pi -\theta(x,x'))
 $$</p>
-<p>where $\theta(x,x&rsquo;) \in [0,\pi]$ is angle between two data points $x$ and $x&rsquo;$.
+<p>where $\theta(x,x') \in [0,\pi]$ is angle between two data points $x$ and $x'$.
 Similarly:
 $$
-K^b(x,x&rsquo;) = \frac{(||x||||x&rsquo;||\mathbb{E}[a^2]}{2\pi d}\Big((\pi -\theta(x,x&rsquo;))\cos \theta  + \sin \theta\Big)
+K^b(x,x') = \frac{(||x||||x'||\mathbb{E}[a^2]}{2\pi d}\Big((\pi -\theta(x,x'))\cos \theta  + \sin \theta\Big)
 $$</p>
 <ol>
 <li><strong>Question:</strong> When Taylor expansion is good? <strong>answer:</strong> If Hessian has bounded eigenvalues (Hessian constant). In one layer neural network we showed this.</li>
@@ -177,15 +177,15 @@ $$</p>
 <h2 id="analyze-gradient-descent">Analyze Gradient Descent:</h2>
 <p>If $\eta \rightarrow 0$ gradient flow:</p>
 <p>$$
-W(t+1) = W(t) - \eta \bigtriangledown_wf(W(t))
+W(t+1) = W(t) - \eta \nabla_wf(W(t))
 $$</p>
 <p>Then:</p>
 <p>$$
-\frac{W(t+1) - W(t)}{\eta} = - \bigtriangledown_wf(W(t))
+\frac{W(t+1) - W(t)}{\eta} = - \nabla_wf(W(t))
 $$</p>
 <p>If $\eta \rightarrow 0$ :
 $$
-\frac{\partial W(t)}{\partial t} = - \bigtriangledown_w\mathcal{L}(W(t))
+\frac{\partial W(t)}{\partial t} = - \nabla_w\mathcal{L}(W(t))
 $$</p>
 <p>Recall that:</p>
 <p>$$
@@ -193,17 +193,17 @@ $$</p>
 $$</p>
 <p>Then:
 $$
-\bigtriangledown_w\mathcal{L}(W(t)) = \bigtriangledown \hat{y}(W) (\hat{y}(W)-Y)
+\nabla_w\mathcal{L}(W(t)) = \nabla \hat{y}(W) (\hat{y}(W)-Y)
 $$</p>
 <p>Therefore:
 $$
-\frac{\partial W(t)}{\partial t} = -  \bigtriangledown \hat{y}(W) (\hat{y}(W)-Y)
+\frac{\partial W(t)}{\partial t} = -  \nabla \hat{y}(W) (\hat{y}(W)-Y)
 $$</p>
 <p>is called dynamics of weights in parameter space. How about our output?</p>
 <p>$$
 \begin{align}
-\frac{\partial \hat{y}(W(t))}{\partial t}  = &amp;   \bigtriangledown \hat{y}(W)^T \frac{\partial W(t)}{\partial t} \\
-= &amp; -  \bigtriangledown \hat{y}(W)^T \bigtriangledown \hat{y}(W) (\hat{y}(W)-Y) \\
+\frac{\partial \hat{y}(W(t))}{\partial t}  = &amp;   \nabla \hat{y}(W)^T \frac{\partial W(t)}{\partial t} \\
+= &amp; -  \nabla \hat{y}(W)^T \nabla \hat{y}(W) (\hat{y}(W)-Y) \\
 = &amp; - K(W_0) (\hat{y}(W)-Y)
 \end{align}
 $$</p>
@@ -211,7 +211,7 @@ $$</p>
 <p>$$
 \frac{\partial u}{\partial t} = - K(W_0) u
 $$</p>
-<p>What is the soloution for this problem?</p>
+<p>What is the solution for this problem?</p>
 <p>$$
 u(t) = u(0) \exp(-K(W_0)t)
 $$</p>
@@ -225,7 +225,7 @@ u(t) = u(0)  \prod_{i=1}^n \exp(-\lambda_i v_i v_i^T)
 $$</p>
 <p>Therefore, the minimum eigenvalue will determine the rate of <code>convergence</code>.</p>
 <p>We covered this post in the intermediate machine learning SDS 365/565, Yale University, <a href="https://en.wikipedia.org/wiki/John_D._Lafferty">John Lafferty</a> where I was TF.
-Some of the notations are also borrowed from <a href="https://www.cs.umd.edu/~sfeizi/">Soheil Feizi</a>&lsquo;&rsquo;s course on neural tangent kernel.</p>
+Some of the notations are also borrowed from <a href="https://www.cs.umd.edu/~sfeizi/">Soheil Feizi</a>''s course on neural tangent kernel.</p>
 
 
 

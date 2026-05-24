@@ -98,7 +98,7 @@ Then, the <code>prediction error</code> or <code>risk</code> is defined as:</p>
 <p>$$
 R = \mathbb{E}(Y-\hat{Y})^2
 $$</p>
-<p>The best preictor is regression function:</p>
+<p>The best predictor is the regression function:</p>
 <p>$$
 m(x) = \mathbb{E}(Y|X=x) = \int yp(y|x) dy
 $$</p>
@@ -119,7 +119,7 @@ $$</p>
 \end{aligned}
 $$</p>
 <p>Therefore, prediction risks = $\text{Bias}^2$ + Variance. Methods with low bias tend to have high variance and methods with low variance will have high bias.
-For example, if you alwasy predict $m(x) = 0$, your models have $0$ variance but will be terribly biased.
+For example, if you always predict $m(x) = 0$, your models have $0$ variance but will be terribly biased.
 Thus, we need to have a balance beween these two.</p>
 <h2 id="bias-variance-tradeoff">Bias-Variance Tradeoff</h2>
 <p>Generally, we need to tradeoff approximation error against estimation error:
@@ -198,11 +198,11 @@ $$</p>
 <p>$$
 \hat{\beta} = \arg \min_{\beta} \frac{1}{n} \sum_{i=1}^n (Y_i-\beta^T X_i)^2 + \frac{\lambda}{n} ||\beta||_2^2
 $$</p>
-<p>where $||\beta||_2 =\sqrt{\sum_j\beta_j^2}$. There is a closed form soloution for this:</p>
+<p>where $||\beta||_2 =\sqrt{\sum_j\beta_j^2}$. There is a closed-form solution for this:</p>
 <p>$$
 \hat{\beta} = (X^TX+\lambda I )^{-1} X^TY
 $$</p>
-<p>the parameter $\lambda$ controls the bias-variance trade-off. When $\lambda=0$ the soloution is the least squres while when it is $\infty$ then $\hat{\beta}=0$.
+<p>The parameter $\lambda$ controls the bias-variance trade-off. When $\lambda=0$ the solution is least squares, while when it is $\infty$ then $\hat{\beta}=0$.
 We can choose $\lambda$ by minimizing prediction risk $\hat{R}(\lambda)$.
 To estimate prediction risk, do <code>not</code> use training error:
 $$

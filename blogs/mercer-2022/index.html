@@ -41,14 +41,14 @@ $$</p>
 <img src="../../images/sds-365/different_kernels.png" alt="Example"></p>
 <p>For example let&rsquo;s say our kernel is a Gaussian:
 $$
-K_h(x,z) = \exp \Big( -\frac{||x-x||^2}{2h^2} \Big)
+K_h(x,z) = \exp \Big( -\frac{||x-z||^2}{2h^2} \Big)
 $$</p>
 <p>$\hat{m_h}(x)$ is just a local average of the $Y_i$&rsquo;s near $x$.
 Furthermore, the bandwidth $h$ controls the bias-variance tradeoff where smaller $h$ indicates large variance and large $h$ implies large bias.</p>
 <p><img src="../../images/sds-365/kernel_bandwidth.png" alt="Example"></p>
 <h2 id="risks-in-smoothing-kernels">Risks in smoothing kernels</h2>
 <p>$$
-\text{Risk} = \mathbb{E}[Y-\hat{m_h}(X)]^2 = \text{bias}^2+\text{variance}^2+\sigma^2
+\text{Risk} = \mathbb{E}[Y-\hat{m_h}(X)]^2 = \text{bias}^2+\text{variance}+\sigma^2
 $$</p>
 <p>Let&rsquo;s make an assumption on distribution of data:</p>
 <p>$$
@@ -81,7 +81,7 @@ Y_i-\hat{Y_i} = Y_i - \frac{\sum_{i&rsquo;}Y_{i&rsquo;}K_h(X_{i&rsquo;},X_i)}{\s
 \end{aligned}
 $$</p>
 <h2 id="the-curse-of-dimensionality">The curse of dimensionality</h2>
-<p>We can apply the method for any dimensionality $h$. Yet, it doesn&rsquo;t work as well.</p>
+<p>We can apply the method for any bandwidth $h$. Yet, it doesn&rsquo;t work as well.</p>
 <ol>
 <li>The squared bias scales as $h^4$ and the variance scales as $\frac{1}{nh^p}$</li>
 <li>Then, the risk goes down no faster than $n^{-4/(4+p)}$</li>

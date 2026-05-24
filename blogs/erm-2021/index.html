@@ -28,7 +28,7 @@
    <p><strong>Empirical Risk Minimization</strong>: Given $(x_1,y_1), .., (x_n,y_n) \in X \times y$ and we want to predict $f(x)=y$. Choose hypothesis class $\mathcal{F}={f_{\theta}: \theta \in \mathcal{\theta}}$.
 Choose:
 $$
-&#92;theta^* = \arg \min_{\theta \in \mathcal{\theta}} \sum_{i=1}^n \text{Loss}(f_{\theta}(x_i),y_i)
+\theta^* = \arg \min_{\theta \in \mathcal{\theta}} \sum_{i=1}^n \text{Loss}(f_{\theta}(x_i),y_i)
 $$</p>
 <p>Let&rsquo;s review maximum likelihood estimation in this context. Maximum likelihood estimation is a probabilistic model defined by $y|x,\theta \sim P_{\theta}(y|x) = p(y| x,\theta)$. Our observations are $(x_1,y_1),..,(x_n,y_n) \in X \times y$.</p>
 <p>$$
@@ -57,52 +57,58 @@ P_{\theta} (y_n|x_n) \pi(\theta)\\\
 \end{aligned}
 \end{align}
 $$</p>
-<p>where $\text{Loss}f_{\theta}(y_i|x_i,\theta)=-\log P_{\theta} (y_i|x_i,\theta) $. In other words, $\text{MAP} \equiv \text{ Regularized } \text{ERM}$ with $\log$ loss and regularizer is given by log prior.</p>
+<p>where $\text{Loss}f_{\theta}(y_i|x_i,\theta)=-\log P_{\theta} (y_i|x_i,\theta) $. In other words, $\text{MAP} \equiv \text{ Regularized } \text{ERM}$ with $\log$ loss and regularizer given by the negative log prior.</p>
 <h2 id="example">Example:</h2>
 <p><strong>Regression:</strong>  We know that $y = \theta.x$</p>
 <p><strong>Gaussian Model:</strong> observe $y = \theta.x + \epsilon$ where $\epsilon \sim \text{Normal}(0,\sigma^2)$. Recall that one dimensional Gaussian $\text{Normal}(\mu,\sigma^2)$ has density:</p>
 <p>$$
 \begin{align}
 \begin{aligned}
-  &#92;text{Normal}(y|&#92;mu,&#92;sigma^2) = &#92;frac{1}{&#92;sqrt{2&#92;pi &#92;sigma^2}} e ^{-&#92;frac{(y-&#92;mu)^2}{2&#92;sigma^2}} &#92;&#92;
+  \text{Normal}(y|\mu,\sigma^2) = \frac{1}{\sqrt{2\pi \sigma^2}} e ^{-\frac{(y-\mu)^2}{2\sigma^2}} \\
 \mu = \text{mean} = E[Y] \in \mathbb{R} \\\
 \sigma^2 = \text{variance} = E[(y-\mu)^2] &gt; 0
 \end{aligned}
 \end{align}
 $$</p>
 <p>In this case, probabilistic model is $p(y| x,\theta) = \text{Normal}(y| \theta.x,\sigma^2)$ where $\mu = \theta.x$. For ERM, the loss is:
+$$
 \begin{align}
 \begin{aligned}
 \text{Loss}(\theta,x,y) = -\log p(y|x,\theta)
 = \frac{(y-\theta.x)^2}{2\sigma^2} + \frac{1}{2} \log (2\pi \sigma^2)
 \end{aligned}
-\end{align}</p>
+\end{align}
+$$</p>
 <h3 id="quadratic-regularizer">Quadratic regularizer:</h3>
 <p>Assume our regularizer is $C(\theta) = \frac{1}{2}||\theta||^2$. Assume a Gaussian prior on $\theta \sim \text{Normal}(\mu,\Sigma)$ where $\Sigma = \Sigma^T \in
 R^{d\times d}$ with the following density:</p>
 <p>$$
-\text{Normal}(\theta| \mu,\Sigma) = \frac{1}{\text{det}(2\pi \Sigma)} e^{-\frac{(\theta-\mu)^T\Sigma^{-1}(\theta-\mu)}{2}}
+\text{Normal}(\theta| \mu,\Sigma) = \frac{1}{\sqrt{\text{det}(2\pi \Sigma)}} e^{-\frac{(\theta-\mu)^T\Sigma^{-1}(\theta-\mu)}{2}}
 $$</p>
 <p>where $\text{det}(2\pi \Sigma)=(2\pi)^d \text{det}(\Sigma)$. Then we can re-write the regularized function as:
+$$
 \begin{align}
 \begin{aligned}
 C(\theta) =&amp; -\log \text{Normal}(\theta|\mu,\Sigma) \\\
 =&amp; \frac{(\theta-\mu)^T\Sigma^{-1}(\theta-\mu)}{2} + \frac{1}{2}\log \text{det}(2\pi \Sigma) \\\
 =&amp; \frac{(\theta-\mu)^T\Sigma^{-1}(\theta-\mu)}{2}+ \frac{1}{2}\log \text{det}(\Sigma) +  \frac{d}{2}\log \text{det}(2\pi)<br>
 \end{aligned}
-\end{align}</p>
+\end{align}
+$$</p>
 <p>where $\frac{d}{2}\log \text{det}(2\pi) $ is a constant. If we assume $\mu=0$ and $\Sigma=I$:
 $$
 C(\theta) = \frac{1}{2} ||\theta||^2_2 + \text{c}
 $$</p>
 <h3 id="ridge-regression-with-quadratic-regularizer">Ridge regression with Quadratic Regularizer:</h3>
 <p>This comes from the Gaussian-Gaussian model:</p>
-<p>\begin{align}
+<p>$$
+\begin{align}
 \begin{aligned}
 \theta \sim \text{Normal}(\mu,\Sigma ) \\\
-y| x,\theta \sim \text{Normal}(x.\theta,\Sigma^2)
+y| x,\theta \sim \text{Normal}(x.\theta,\sigma^2)
 \end{aligned}
-\end{align}</p>
+\end{align}
+$$</p>
 <p>where $y=x.\theta+\epsilon$ and $\epsilon \sim \text{Normal}(0,\sigma^2)$.</p>
 <p><strong>L1 regularizer</strong>: $C(\theta) = ||\theta||_1=\sum_{i=1}^d |\theta_i|$</p>
 <p><strong>Laplace distribution</strong>: In one dimension: $p(\theta|\mu,b) = \frac{1}{2b}e^{-\frac{|\theta-\mu|}{b}} $

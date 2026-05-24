@@ -74,7 +74,7 @@ $$</p>
 This prevents overfitting and helps our inference not to be very special.</p>
 <p><img src="../../images/sds-365/entropy.png" alt="Example"></p>
 <p>The second term $\mathbb{E}_q(\log p(x,z,\theta))$ is trying to align $q$ and $p$ while keeping the entropy large that&rsquo;s going to spread out the $q$ distribution.
-This is a general receipt, and we have yet to discuss how you should choose $q$.
+This is a general recipe, and we have yet to discuss how you should choose $q$.
 If we choose $q$ to be true posterior, we will get a good lower bound, but I can&rsquo;t compute with it.
 I want some $q$ that is easy to compute and flexible enough to give us a good lower bound.</p>
 <h2 id="example-2-a-finite-mixture-model">Example 2: A finite mixture model</h2>

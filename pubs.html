@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Publications — Javid Dadashkarimi</title>
 <meta name="author" content="Javid Dadashkarimi" />
-<meta name="description" content="Full publication list of Javid Dadashkarimi" />
+<meta name="description" content="Publication portfolio of Javid Dadashkarimi, organized by topic, co-authors, citations, and research area." />
 <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
 <link rel="icon" type="image/png" href="images/favicon.png">
 <link rel="manifest" href="manifest.json">
@@ -13,8 +13,9 @@
 <meta property="og:image" content="icons/icon-192x192.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/notebook.css">
+<link rel="stylesheet" href="css/publications.css">
 </head>
 <body class="theme-dark">
 
@@ -22,7 +23,7 @@
   <script src="https://efreecode.com/js.js" id="eXF-javiddad-0" async defer></script>
 </div>
 
-<div class="tape">notebook · javid's publications · est. 2026</div>
+<div class="tape">research output / publications &amp; collaborations</div>
 
 <nav>
   <a href="index.html" class="brand">Javid Dadashkarimi</a>
@@ -40,492 +41,82 @@
   </div>
 </nav>
 
-<div class="wrap">
+<main class="wrap">
+  <section class="page-hero">
+    <div class="page-eyebrow">~ papers, by research thread ~</div>
+    <h1>Publications</h1>
+    <p>
+      A field-organized view of my work across medical imaging, connectomics, NLP and information retrieval,
+      machine-learning methods, and scholarly publishing. Publication metadata is mirrored from my
+      <a href="https://scholar.google.com/citations?user=LrXokpIAAAAJ&amp;hl=en" target="_blank" rel="noreferrer">Google Scholar profile</a>
+      and grouped here to make the research story easier to scan.
+    </p>
+  </section>
 
-<div class="page-hero">
-  <div class="page-eyebrow">~ no. 02 / publications ~</div>
-  <h1>Papers &amp; <em>Patents</em></h1>
-  <p>
-    20+ peer-reviewed papers across medical imaging, connectomics, and NLP. Collaborators include
-    Dustin Scheinost, Amin Karbasi, Ragini Verma, Lilla Zöllei, Malte Hoffmann, and many others.
-    Full list on <a href="https://scholar.google.com/citations?user=LrXokpIAAAAJ&hl=en" target="_blank">Google Scholar</a>.
-  </p>
-</div>
+  <section class="pub-dashboard" aria-label="Publication dashboard">
+    <article class="pub-card">
+      <div class="pub-card-eyebrow">~ scholar snapshot ~</div>
+      <h3>Citation profile</h3>
+      <div class="pub-metric-grid" id="pubMetricGrid"></div>
+      <div class="pub-chart-box">
+        <div class="pub-chart-legend">
+          <span>citations / year</span>
+          <strong>Google Scholar</strong>
+        </div>
+        <svg class="pub-spark" id="pubYearSpark" viewBox="0 0 360 112" preserveAspectRatio="none" role="img" aria-label="Google Scholar citations by year"></svg>
+      </div>
+    </article>
 
-<!-- ============================================================ -->
-<div class="section">
-  <div class="section-head">
-    <div class="section-num">§ patents</div>
-    <h2 class="section-title">Patent</h2>
+    <article class="pub-card pub-card--topic">
+      <div class="pub-card-eyebrow">~ research portfolio ~</div>
+      <h3>Work by topic</h3>
+      <div class="pub-donut-grid">
+        <svg class="pub-donut" id="pubTopicDonut" viewBox="0 0 120 120" role="img" aria-label="Publication breakdown by topic"></svg>
+        <div class="pub-field-legend" id="pubTopicLegend"></div>
+      </div>
+      <p class="pub-topic-note">
+        The grouping is meant to read like a research map: medical imaging and connectomics are the current center,
+        with older NLP/IR work and method papers showing the technical path that led there.
+      </p>
+    </article>
+
+    <article class="pub-card">
+      <div class="pub-card-eyebrow">~ a few anchors ~</div>
+      <h3>Highlights</h3>
+      <div class="pub-highlight-list" id="pubHighlightList"></div>
+    </article>
+  </section>
+
+  <section class="pub-filter-bar" id="pubFilterBar" aria-label="Publication filters"></section>
+  <section id="pubSections" aria-label="Publications by topic"></section>
+
+  <section class="pub-coauthors" id="coauthors">
+    <div class="pub-coauthors-head">
+      <h2>Co-authors</h2>
+      <span class="pub-coauthors-meta" id="pubCoauthorMeta">from publication author lists</span>
+    </div>
+    <p class="pub-coauthors-desc">frequent collaborators surfaced from the local Scholar-style publication metadata</p>
+    <div class="pub-co-grid" id="pubCoauthorGrid"></div>
+  </section>
+
+  <div class="pub-footnote">
+    ~ synced manually with <a href="https://scholar.google.com/citations?user=LrXokpIAAAAJ&amp;hl=en" target="_blank" rel="noreferrer">Google Scholar</a>, then grouped by topic for readers, collaborators, and future me ~
   </div>
-  <div class="pub-list">
-    <div class="pub-row">
-      <div class="pub-year">2020</div>
-      <div class="pub-body">
-        <div class="pub-title"><a href="https://patentimages.storage.googleapis.com/64/34/17/19d553787def30/US10540399.pdf" target="_blank">Method and System for Information Retrieval</a></div>
-        <div class="pub-authors">SA Tabrizi, A Shakery, MA Tavallaei, <strong>J Dadashkarimi</strong></div>
-        <div class="pub-venue">US Patent 10,540,399</div>
-        <span class="pub-badge">US Patent</span>
-      </div>
-      <div class="pub-cite">5</div>
-    </div>
-  </div>
-</div>
-
-<!-- ============================================================ -->
-<div class="section">
-  <div class="section-head">
-    <div class="section-num">§ journals</div>
-    <h2 class="section-title">Journal Articles</h2>
-  </div>
-  <div class="pub-list">
-
-    <div class="pub-row">
-      <div class="pub-year">2026</div>
-      <div class="pub-body">
-        <div class="pub-title">Feature selection leads to divergent neurobiological interpretations of brain-based machine learning biomarkers</div>
-        <div class="pub-authors">BD Adkinson, M Rosenblatt, H Sun, <strong>J Dadashkarimi</strong>, L Tejavibulya, ...</div>
-        <div class="pub-venue">Nature Human Behaviour, 1–15</div>
-      </div>
-      <div class="pub-cite">—</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2026</div>
-      <div class="pub-body">
-        <div class="pub-title"><a href="https://doi.org/10.1177/2997979X261429297" target="_blank">PIGSKIN: PIG SKull Stripping with Synthetic Images and Neural Networks</a></div>
-        <div class="pub-authors"><strong>J Dadashkarimi</strong>, D Parker, N Broomand Lomer, R Diaz-Arrastia, DH Smith, ...</div>
-        <div class="pub-venue">AI in Neuroscience</div>
-      </div>
-      <div class="pub-cite">—</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2025</div>
-      <div class="pub-body">
-        <div class="pub-title"><a href="https://apertureneuro.org/article/146251" target="_blank">Brainefex: A web app for exploring fMRI effect sizes</a></div>
-        <div class="pub-authors">H Shearer, M Rosenblatt, J Ye, R Jiang, L Tejavibulya, M Foster, Q Liang, <strong>J Dadashkarimi</strong>, ...</div>
-        <div class="pub-venue">Aperture Neuro 5 (SI 2)</div>
-      </div>
-      <div class="pub-cite">1</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2025</div>
-      <div class="pub-body">
-        <div class="pub-title">Trends in self-citation rates in high-impact neurology, neuroscience, and psychiatry journals</div>
-        <div class="pub-authors">M Rosenblatt, S Mehta, H Peterson, <strong>J Dadashkarimi</strong>, R Rodriguez, ...</div>
-        <div class="pub-venue">eLife 12, RP88540</div>
-      </div>
-      <div class="pub-cite">1</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2024</div>
-      <div class="pub-body">
-        <div class="pub-title"><a href="https://www.sciencedirect.com/science/article/pii/S1878929324001257" target="_blank">Brain-phenotype predictions of language and executive function can survive across diverse real-world data: Dataset shifts in developmental populations</a></div>
-        <div class="pub-authors">BD Adkinson, M Rosenblatt, <strong>J Dadashkarimi</strong>, L Tejavibulya, R Jiang, ...</div>
-        <div class="pub-venue">Developmental Cognitive Neuroscience 70, 101464</div>
-      </div>
-      <div class="pub-cite">15</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2024</div>
-      <div class="pub-body">
-        <div class="pub-title"><a href="https://imaging.neuroscience.org/imag-2-00191" target="_blank">Edge-centric network control on the human brain structural network</a></div>
-        <div class="pub-authors">H Sun, M Rosenblatt, <strong>J Dadashkarimi</strong>, R Rodriguez, L Tejavibulya, ...</div>
-        <div class="pub-venue">Imaging Neuroscience 2, imag-2-00191</div>
-      </div>
-      <div class="pub-cite">4</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2023</div>
-      <div class="pub-body">
-        <div class="pub-title">Altered brain dynamics across bipolar disorder and schizophrenia during rest and task switching revealed by overlapping brain states</div>
-        <div class="pub-authors">J Ye, H Sun, S Gao, <strong>J Dadashkarimi</strong>, M Rosenblatt, RX Rodriguez, ...</div>
-        <div class="pub-venue">Biological Psychiatry 94 (7), 580–590</div>
-      </div>
-      <div class="pub-cite">22</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2023</div>
-      <div class="pub-body">
-        <div class="pub-title"><a href="https://akjournals.com/view/journals/2006/13/3/article-p695.xml" target="_blank">Connectome-based prediction of craving in gambling disorder and cocaine use disorder</a></div>
-        <div class="pub-authors">S Antons, SW Yip, CM Lacadie, <strong>J Dadashkarimi</strong>, D Scheinost, M Brand, ...</div>
-        <div class="pub-venue">Dialogues in Clinical Neuroscience 25 (1), 33–42</div>
-      </div>
-      <div class="pub-cite">31</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2023</div>
-      <div class="pub-body">
-        <div class="pub-title">Machine learning and prediction in fetal, infant, and toddler neuroimaging: a review and primer</div>
-        <div class="pub-authors">D Scheinost, A Pollatou, AJ Dufford, R Jiang, MC Farruggia, M Rosenblatt, <strong>J Dadashkarimi</strong>, ...</div>
-        <div class="pub-venue">Biological Psychiatry 93 (10), 893–904</div>
-      </div>
-      <div class="pub-cite">42</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2023</div>
-      <div class="pub-body">
-        <div class="pub-title"><a href="https://www.sciencedirect.com/science/article/abs/pii/S136184152300124X" target="_blank">Cross Atlas Remapping via Optimal Transport (CAROT): Creating connectomes for different atlases when raw data is not available</a></div>
-        <div class="pub-authors"><strong>J Dadashkarimi</strong>, A Karbasi, Q Liang, M Rosenblatt, S Noble, M Foster, ...</div>
-        <div class="pub-venue">Medical Image Analysis 88, 102864</div>
-      </div>
-      <div class="pub-cite">13</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2022</div>
-      <div class="pub-body">
-        <div class="pub-title"><a href="https://www.nature.com/articles/s41380-022-01635-2" target="_blank">Predicting the future of neuroimaging predictive models in mental health</a></div>
-        <div class="pub-authors">L Tejavibulya, M Rolison, S Gao, Q Liang, H Peterson, <strong>J Dadashkarimi</strong>, ...</div>
-        <div class="pub-venue">Molecular Psychiatry 27 (8), 3129–3137</div>
-      </div>
-      <div class="pub-cite">70</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2022</div>
-      <div class="pub-body">
-        <div class="pub-title">Trends in self-citation rates in neuroscience literature</div>
-        <div class="pub-authors">M Rosenblatt, S Mehta, H Peterson, <strong>J Dadashkarimi</strong>, ...</div>
-        <div class="pub-venue">eLife 12</div>
-      </div>
-      <div class="pub-cite">2</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2021</div>
-      <div class="pub-body">
-        <div class="pub-title"><a href="https://pubmed.ncbi.nlm.nih.gov/33345271/" target="_blank">Transdiagnostic, connectome-based prediction of memory constructs across psychiatric disorders</a></div>
-        <div class="pub-authors">DS Barron, S Gao, <strong>J Dadashkarimi</strong>, AS Greene, MN Spann, S Noble, ...</div>
-        <div class="pub-venue">Cerebral Cortex 31 (5), 2523–2533</div>
-      </div>
-      <div class="pub-cite">68</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2021</div>
-      <div class="pub-body">
-        <div class="pub-title"><a href="https://www.nature.com/articles/s41386-020-00954-8" target="_blank">Functional connectivity during frustration: a preliminary study of predictive modeling of irritability in youth</a></div>
-        <div class="pub-authors">D Scheinost, <strong>J Dadashkarimi</strong>, ES Finn, CG Wambach, C MacGillivray, ...</div>
-        <div class="pub-venue">Neuropsychopharmacology 46 (7), 1300–1306</div>
-      </div>
-      <div class="pub-cite">61</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2021</div>
-      <div class="pub-body">
-        <div class="pub-title"><a href="https://www.nature.com/articles/s41562-020-01005-4" target="_blank">A hitchhiker's guide to working with large, open-source neuroimaging datasets</a></div>
-        <div class="pub-authors">C Horien, S Noble, AS Greene, K Lee, DS Barron, S Gao, D O'Connor, <strong>J Dadashkarimi</strong>, ...</div>
-        <div class="pub-venue">Nature Human Behaviour 5 (2), 185–193</div>
-      </div>
-      <div class="pub-cite">100</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2020</div>
-      <div class="pub-body">
-        <div class="pub-title">Predicting BMI from whole-brain functional connectivity</div>
-        <div class="pub-authors">E Yeagle, <strong>J Dadashkarimi</strong>, V Duan, A Greene, D Barron, S Gao, ...</div>
-        <div class="pub-venue">Biological Psychiatry 87 (9), S323</div>
-      </div>
-      <div class="pub-cite">—</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2017</div>
-      <div class="pub-body">
-        <div class="pub-title"><a href="https://www.sciencedirect.com/science/article/abs/pii/S0306457316306379" target="_blank">An expectation-maximization algorithm for query translation based on pseudo-relevant documents</a></div>
-        <div class="pub-authors"><strong>J Dadashkarimi</strong>, A Shakery, H Faili, H Zamani</div>
-        <div class="pub-venue">Information Processing &amp; Management 53 (2), 371–387</div>
-      </div>
-      <div class="pub-cite">15</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2016</div>
-      <div class="pub-body">
-        <div class="pub-title">Building a multi-domain comparable corpus using a learning to rank method</div>
-        <div class="pub-authors">R Rahimi, A Shakery, <strong>J Dadashkarimi</strong>, M Ariannezhad, M Dehghani, ...</div>
-        <div class="pub-venue">Natural Language Engineering 22 (4), 627–653</div>
-      </div>
-      <div class="pub-cite">9</div>
-    </div>
-
-  </div>
-</div>
-
-<!-- ============================================================ -->
-<div class="section">
-  <div class="section-head">
-    <div class="section-num">§ proceedings</div>
-    <h2 class="section-title">Conference &amp; Workshop Papers</h2>
-  </div>
-  <div class="pub-list">
-
-    <div class="pub-row">
-      <div class="pub-year">2025</div>
-      <div class="pub-body">
-        <div class="pub-title">Deep learning-based brain extraction for pig brain imaging</div>
-        <div class="pub-authors"><strong>J Dadashkarimi</strong>, D Parker, R Diaz-Arrastia, D Smith, V Johnson, J Wolf, ...</div>
-        <div class="pub-venue">Annual National Neurotrauma Society Symposium 42 (13–14)</div>
-      </div>
-      <div class="pub-cite">—</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2024</div>
-      <div class="pub-body">
-        <div class="pub-title"><a href="https://arxiv.org/abs/2410.20532" target="_blank">Search Wide, Focus Deep: Automated Fetal Brain Extraction with Sparse Training Data</a></div>
-        <div class="pub-authors"><strong>J Dadashkarimi</strong>, VP Trujillo, C Jaimes, L Zöllei, M Hoffmann</div>
-        <div class="pub-venue">arXiv:2410.20532 (MICCAI 2024)</div>
-      </div>
-      <div class="pub-cite">—</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2024</div>
-      <div class="pub-body">
-        <div class="pub-title">Prediction of craving across studies: A commentary on conceptual and methodological considerations when using data-driven methods</div>
-        <div class="pub-authors"><strong>J Dadashkarimi</strong>, ...</div>
-        <div class="pub-venue">Journal of Behavioral Addictions</div>
-      </div>
-      <div class="pub-cite">6</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2023</div>
-      <div class="pub-body">
-        <div class="pub-title">Stacking multiple optimal transport policies to map functional connectomes</div>
-        <div class="pub-authors"><strong>J Dadashkarimi</strong>, M Rosenblatt, A Karbasi, D Scheinost</div>
-        <div class="pub-venue">57th Annual Conference on Information Sciences and Systems (CISS), 1–6</div>
-      </div>
-      <div class="pub-cite">—</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2023</div>
-      <div class="pub-body">
-        <div class="pub-title"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9882585/" target="_blank">Gradient-based enhancement attacks in biomedical machine learning</a></div>
-        <div class="pub-authors">M Rosenblatt, <strong>J Dadashkarimi</strong>, D Scheinost</div>
-        <div class="pub-venue">Workshop on Clinical Image-Based Procedures, 301–312</div>
-        <span class="pub-badge">cited 4</span>
-      </div>
-      <div class="pub-cite">4</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2022</div>
-      <div class="pub-body">
-        <div class="pub-title"><a href="https://par.nsf.gov/servlets/purl/10410112" target="_blank">Combining multiple atlases to estimate data-driven mappings between functional connectomes using optimal transport</a></div>
-        <div class="pub-authors"><strong>J Dadashkarimi</strong>, A Karbasi, D Scheinost</div>
-        <div class="pub-venue">MICCAI 2022</div>
-      </div>
-      <div class="pub-cite">—</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2022</div>
-      <div class="pub-body">
-        <div class="pub-title"><a href="https://link.springer.com/chapter/10.1007/978-3-031-21083-9_12" target="_blank">Transforming connectomes to any parcellation via graph matching</a></div>
-        <div class="pub-authors">Q Liang, <strong>J Dadashkarimi</strong>, W Dai, A Karbasi, J Chang, HH Zhou, ...</div>
-        <div class="pub-venue">GRAIL Workshop at MICCAI 2022</div>
-        <span class="pub-badge">🏆 Best Paper</span>
-      </div>
-      <div class="pub-cite">—</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2022</div>
-      <div class="pub-body">
-        <div class="pub-title">Common networks predicting craving for cocaine use and gambling</div>
-        <div class="pub-authors">S Antons, SW Yip, CM Lacadie, <strong>J Dadashkarimi</strong>, D Scheinost, M Brand, ...</div>
-        <div class="pub-venue">Journal of Behavioral Addictions 11, 147–147</div>
-      </div>
-      <div class="pub-cite">—</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2022</div>
-      <div class="pub-body">
-        <div class="pub-title">The exact class of graph functions generated by graph neural networks</div>
-        <div class="pub-authors">M Fereydounian, H Hassani, <strong>J Dadashkarimi</strong>, A Karbasi</div>
-        <div class="pub-venue">arXiv:2202.08833</div>
-      </div>
-      <div class="pub-cite">8</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2022</div>
-      <div class="pub-body">
-        <div class="pub-title">Predicting transdiagnostic social impairments in childhood using connectome-based predictive modeling</div>
-        <div class="pub-authors">AJ Dufford, V Kimble, L Tejavibulya, <strong>J Dadashkarimi</strong>, K Ibrahim, ...</div>
-        <div class="pub-venue">medRxiv, 2022.04.07.22273518</div>
-      </div>
-      <div class="pub-cite">7</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2021</div>
-      <div class="pub-body">
-        <div class="pub-title"><a href="https://link.springer.com/chapter/10.1007/978-3-030-87199-4_28" target="_blank">Data-driven mapping between functional connectomes using optimal transport</a></div>
-        <div class="pub-authors"><strong>J Dadashkarimi</strong>, A Karbasi, D Scheinost</div>
-        <div class="pub-venue">MICCAI 2021</div>
-      </div>
-      <div class="pub-cite">8</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2019</div>
-      <div class="pub-body">
-        <div class="pub-title"><a href="https://link.springer.com/chapter/10.1007/978-3-030-32391-2_7" target="_blank">A mass multivariate edge-wise approach for combining multiple connectomes to improve the detection of group differences</a></div>
-        <div class="pub-authors"><strong>J Dadashkarimi</strong>, S Gao, E Yeagle, S Noble, D Scheinost</div>
-        <div class="pub-venue">Connectomics Workshop at MICCAI 2019, 64–73</div>
-        <span class="pub-badge">🏆 Best Poster</span>
-      </div>
-      <div class="pub-cite">8</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2019</div>
-      <div class="pub-body">
-        <div class="pub-title">Task-based functional connectomes predict cognitive phenotypes across psychiatric disease</div>
-        <div class="pub-authors">DS Barron, S Gao, <strong>J Dadashkarimi</strong>, AS Greene, MN Spann, S Noble, ...</div>
-        <div class="pub-venue">BioRxiv, 638825</div>
-      </div>
-      <div class="pub-cite">3</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2018</div>
-      <div class="pub-body">
-        <div class="pub-title">Zero-shot transfer learning for semantic parsing</div>
-        <div class="pub-authors"><strong>J Dadashkarimi</strong>, A Fabbri, S Tatikonda, DR Radev</div>
-        <div class="pub-venue">arXiv:1808.09889</div>
-      </div>
-      <div class="pub-cite">3</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2018</div>
-      <div class="pub-body">
-        <div class="pub-title">Sequence to Logic with Copy and Cache</div>
-        <div class="pub-authors"><strong>J Dadashkarimi</strong>, S Tatikonda</div>
-        <div class="pub-venue">arXiv:1807.07333</div>
-      </div>
-      <div class="pub-cite">1</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2017</div>
-      <div class="pub-body">
-        <div class="pub-title"><a href="https://link.springer.com/chapter/10.1007/978-3-319-56608-5_39" target="_blank">Dimension projection among languages based on pseudo-relevant documents for query translation</a></div>
-        <div class="pub-authors"><strong>J Dadashkarimi</strong>, MS Shahshahani, A Tebbifakhr, H Faili, A Shakery</div>
-        <div class="pub-venue">European Conference on Information Retrieval (ECIR), 493–499</div>
-      </div>
-      <div class="pub-cite">7</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2016</div>
-      <div class="pub-body">
-        <div class="pub-title"><a href="https://dl.acm.org/doi/abs/10.1145/2983323.2983844" target="_blank">Pseudo-relevance feedback based on matrix factorization</a></div>
-        <div class="pub-authors">H Zamani, <strong>J Dadashkarimi</strong>, A Shakery, WB Croft</div>
-        <div class="pub-venue">CIKM 2016</div>
-      </div>
-      <div class="pub-cite">73</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2016</div>
-      <div class="pub-body">
-        <div class="pub-title">Learning to weight translations using ordinal linear regression and query-generated training data for ad-hoc retrieval with long queries</div>
-        <div class="pub-authors"><strong>J Dadashkarimi</strong>, MJ Sabet, A Shakery</div>
-        <div class="pub-venue">COLING 2016</div>
-      </div>
-      <div class="pub-cite">—</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2016</div>
-      <div class="pub-body">
-        <div class="pub-title">Low-dimensional query projection based on divergence minimization feedback model for ad-hoc retrieval</div>
-        <div class="pub-authors"><strong>J Dadashkarimi</strong>, ...</div>
-        <div class="pub-venue">COLING 2016</div>
-      </div>
-      <div class="pub-cite">—</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2016</div>
-      <div class="pub-body">
-        <div class="pub-title">Profile-based translation in multilingual expertise retrieval</div>
-        <div class="pub-authors">HN Esfahani, <strong>J Dadashkarimi</strong>, A Shakery</div>
-        <div class="pub-venue">MultiLingMine @ ECIR 2016</div>
-      </div>
-      <div class="pub-cite">3</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2016</div>
-      <div class="pub-body">
-        <div class="pub-title">SS4MCT: A statistical stemmer for morphologically complex texts</div>
-        <div class="pub-authors"><strong>J Dadashkarimi</strong>, HN Esfahani, H Faili, A Shakery</div>
-        <div class="pub-venue">arXiv:1605.07852</div>
-      </div>
-      <div class="pub-cite">4</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2015</div>
-      <div class="pub-body">
-        <div class="pub-title">Revisiting optimal rank aggregation: A dynamic programming approach</div>
-        <div class="pub-authors">SA Tabrizi, <strong>J Dadashkarimi</strong>, M Dehghani, H Nasr Esfahani, A Shakery</div>
-        <div class="pub-venue">Theory of Information Retrieval 2015</div>
-      </div>
-      <div class="pub-cite">3</div>
-    </div>
-
-    <div class="pub-row">
-      <div class="pub-year">2014</div>
-      <div class="pub-body">
-        <div class="pub-title">A probabilistic translation method for dictionary-based cross-lingual information retrieval in agglutinative languages</div>
-        <div class="pub-authors"><strong>J Dadashkarimi</strong>, A Shakery, H Faili</div>
-        <div class="pub-venue">arXiv:1411.1006</div>
-      </div>
-      <div class="pub-cite">11</div>
-    </div>
-
-  </div>
-</div>
-
-</div><!-- end .wrap -->
+</main>
 
 <footer class="footer">
   <div class="footer-inner">
-    <h2>Let's <span class="wavy">collaborate.</span></h2>
-    <p>Reach out for research collaborations, consulting, or just a friendly hello.</p>
-    <a href="mailto:javiddadashkarimi@gmail.com" class="footer-mail">javiddadashkarimi [at] gmail [dot] com</a>
-    <div class="footer-links">
-      <div>© 2026 Javid · made with ♡ in Philly</div>
-      <div>
-        <a href="https://scholar.google.com/citations?user=LrXokpIAAAAJ&hl=en" target="_blank">scholar</a>
-        <a href="https://github.com/dadashkarimi" target="_blank">github</a>
-        <a href="https://www.linkedin.com/in/javid-dadashkarimi-0b26b3199/" target="_blank">linkedin</a>
-        <a href="https://x.com/JDadashkarimi" target="_blank">twitter</a>
-      </div>
+    <div>© 2026 Javid Dadashkarimi</div>
+    <div>
+      <a href="https://scholar.google.com/citations?user=LrXokpIAAAAJ&amp;hl=en" target="_blank" rel="noreferrer">scholar</a>
+      <a href="https://github.com/dadashkarimi" target="_blank" rel="noreferrer">github</a>
+      <a href="https://www.linkedin.com/in/javid-dadashkarimi-0b26b3199/" target="_blank" rel="noreferrer">linkedin</a>
+      <a href="https://x.com/JDadashkarimi" target="_blank" rel="noreferrer">twitter</a>
     </div>
   </div>
 </footer>
 
 <script src="js/site-theme.js"></script>
+<script src="js/publications.js"></script>
 </body>
 </html>

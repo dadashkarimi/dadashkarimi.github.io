@@ -48,7 +48,7 @@ $$</p>
 <p>where $K$ is a kernel and $h$ is bandwidth.</p>
 <p>In the Bayesian method, we need to define a prior distribution over $m$ before we see any data.
 And then calculate the posterior distribution.
-We also talk about this magical property of Gaussian: if our data is usually distributed, our conditional and so posterior is also Gaussian.</p>
+We also talk about this magical property of Gaussian: if our data is normally distributed, our conditional and so posterior is also Gaussian.</p>
 <p>We also showed that the conditional is Gaussian with some variance, that is, the shaded area in the following plot:</p>
 <p><img src="../../images/sds-365/conditional_gaussian.jpg" alt="Example"></p>
 <p>It&rsquo;s a standard assumption that you put prior $0$ before seeing the data.
@@ -172,7 +172,7 @@ X\sim F_{0}  &amp; \text{with probability } \frac{\alpha}{i+\alpha-1}
 \end{cases}
 $$</p>
 <p>where $F_{i-1}$ is the empirical distribution of $X_1,..,X_{i-1}$.
-This helps us a sample from the marginal distribution over $X$ without explicitly drawing a distribution $F$ from $DP$.</p>
+This helps us sample from the marginal distribution over $X$ without explicitly drawing a distribution $F$ from $DP$.</p>
 <p>Let $X_1^*,X_2^*,..$ denote unique values of $X_1,X_2,.., X_n$.
 Define cluster assignment variables  $c_1,..,C_n$ where $c_i=j$ means that $X_i$ takes the value $X_j^*$.
 Let $n_j = |\{i: c_j=j\}|$. Then:</p>

@@ -36,7 +36,7 @@ Usually, the following steps are taken:</p>
 <p>A simple consequence of conditional probability:</p>
 <p>$$
 \begin{aligned}
-P(A|B) = &amp; \frac{P(A \cup B)}{P(B)} \\
+P(A|B) = &amp; \frac{P(A \cap B)}{P(B)} \\
 = &amp; \frac{P(B|A)P(A)}{P(B)}
 \end{aligned}
 $$</p>
@@ -52,7 +52,7 @@ $$</p>
 <p>$$
 c_n = \int \mathcal{L}_n(\theta) \pi(\theta) d\theta
 $$</p>
-<p>Is the normalizing constant or <strong>evidence</strong>?</p>
+<p>This is the normalizing constant, also called the <strong>evidence</strong>.</p>
 <h2 id="example-1">Example 1:</h2>
 <p>Take model $X\sim \text{Bernoulli}(\theta)$. Flipping a coin (i.e., $X\in \{0,1\}$) is an example of this distribution.
 Natural prior over parameter $\theta$ is Beta$(\alpha,\beta)$ distribution:
@@ -66,8 +66,8 @@ A perfect property of this model is that the posterior distribution is also the 
 Posterior distribution $\theta | x_1,..,x_n$ is another Beta distribution:</p>
 <p>$$
 \begin{aligned}
-\tilde{\alpha} = \alpha+ \text{number of heads} = \alpha +s \\
-&#92;tilde{&#92;beta} = &#92;beta+ &#92;text{number of tails} = &#92;beta+n-s
+	ilde{\alpha} = \alpha+ \text{number of heads} = \alpha +s \\
+	ilde{\beta} = \beta+ \text{number of tails} = \beta+n-s
 \end{aligned}
 $$</p>
 <p>Bernoulli distribution is conjugate to the Beta prior.
@@ -82,7 +82,7 @@ For example, in a regular dice, we have six parameters.
 The probability of rolling $1$ is $\theta_1$; $\alpha_1$ is the corresponding concentration parameter.</p>
 <p><img src="../../images/sds-365/dirichlet.png" alt="Example"></p>
 <p>Indeed, when we see more and more data, the Dirichlet distribution will concentrate on proper parameters, or the variance will be $0$.
-We will see that the pick of the posterior or maximum posterior (MAP) estimator is the mode of the data.</p>
+We will see that the peak of the posterior, or maximum a posteriori (MAP) estimator, is the mode of the posterior distribution.</p>
 <h1 id="nonparametric-bayesian-inference">Nonparametric Bayesian Inference</h1>
 <p>Here we want to make Bayesian inference for functions.
 Typically neither the prior nor the posterior has a density, but the posterior is still well-defined.

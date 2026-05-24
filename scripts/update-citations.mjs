@@ -1,125 +1,86 @@
 #!/usr/bin/env node
 
-import { readFile, writeFile } from 'node:fs/promises';
+import { mkdir, writeFile } from 'node:fs/promises';
 
-const publicationsFile = new URL('../pubs.html', import.meta.url);
 const authorId = process.env.SCHOLAR_AUTHOR_ID || 'LrXokpIAAAAJ';
-const apiKey = process.env.SERPAPI_KEY;
+const apiKey = process.env.SERPAPI_API_KEY || process.env.SERPAPI_KEY;
+const outputFile = new URL('../data/scholar-profile.json', import.meta.url);
 
 if (!apiKey) {
-  console.log('SERPAPI_KEY is not set; skipping citation update.');
+  console.log('SERPAPI_API_KEY or SERPAPI_KEY is not set; skipping Scholar profile update.');
   process.exit(0);
 }
 
-function decodeEntities(text) {
-  const entities = {
-    amp: '&',
-    apos: "'",
-    gt: '>',
-    lt: '<',
-    nbsp: ' ',
-    quot: '"',
+function metricFromTable(table, metricName) {
+  const row = table.find((item) => item && item[metricName]);
+  const metric = row ? row[metricName] : {};
+  const sinceKey = Object.keys(metric).find((key) => key.startsWith('since_'));
+
+  return {
+    all: Number(metric.all) || 0,
+    since: sinceKey ? Number(metric[sinceKey]) || 0 : 0,
+    sinceYear: sinceKey ? sinceKey.replace('since_', '') : '2021',
   };
-
-  return text.replace(/&(#x?[0-9a-f]+|[a-z]+);/gi, (match, entity) => {
-    if (entity[0] === '#') {
-      const isHex = entity[1]?.toLowerCase() === 'x';
-      const codePoint = Number.parseInt(entity.slice(isHex ? 2 : 1), isHex ? 16 : 10);
-      return Number.isFinite(codePoint) ? String.fromCodePoint(codePoint) : match;
-    }
-
-    return entities[entity.toLowerCase()] || match;
-  });
 }
 
-function titleText(titleHtml) {
-  return decodeEntities(titleHtml.replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ').trim();
+function normalizeGraph(graph) {
+  return graph
+    .map((row) => ({
+      year: Number(row.year),
+      citations: Number(row.citations) || 0,
+    }))
+    .filter((row) => row.year)
+    .sort((a, b) => a.year - b.year);
 }
 
-function normalizeTitle(title) {
-  return title
-    .toLowerCase()
-    .replace(/[’]/g, "'")
-    .replace(/&/g, 'and')
-    .replace(/[^a-z0-9]+/g, ' ')
-    .trim();
-}
+async function fetchScholarProfile() {
+  const url = new URL('https://serpapi.com/search.json');
+  url.searchParams.set('engine', 'google_scholar_author');
+  url.searchParams.set('author_id', authorId);
+  url.searchParams.set('api_key', apiKey);
+  url.searchParams.set('hl', 'en');
 
-async function fetchScholarArticles() {
-  const articles = [];
-
-  for (let start = 0; start < 500; start += 100) {
-    const url = new URL('https://serpapi.com/search.json');
-    url.searchParams.set('engine', 'google_scholar_author');
-    url.searchParams.set('author_id', authorId);
-    url.searchParams.set('api_key', apiKey);
-    url.searchParams.set('hl', 'en');
-    url.searchParams.set('num', '100');
-    url.searchParams.set('start', String(start));
-
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`SerpAPI request failed with ${response.status} ${response.statusText}`);
-    }
-
-    const payload = await response.json();
-    const pageArticles = payload.articles || [];
-    articles.push(...pageArticles);
-
-    if (pageArticles.length < 100) break;
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`SerpAPI request failed with ${response.status} ${response.statusText}`);
   }
 
-  return articles;
+  return response.json();
 }
 
-function buildCitationMap(articles) {
-  const citations = new Map();
+const payload = await fetchScholarProfile();
+const citedBy = payload.cited_by || {};
+const table = Array.isArray(citedBy.table) ? citedBy.table : [];
+const graph = Array.isArray(citedBy.graph) ? citedBy.graph : [];
 
-  for (const article of articles) {
-    if (!article.title) continue;
-    const citedBy = article.cited_by?.value;
-    const value = Number.parseInt(String(citedBy ?? '').replace(/[^0-9]/g, ''), 10);
-    if (!Number.isFinite(value)) continue;
-    citations.set(normalizeTitle(article.title), value);
-  }
+const citations = metricFromTable(table, 'citations');
+const hIndex = metricFromTable(table, 'h_index');
+const i10Index = metricFromTable(table, 'i10_index');
+const citationsByYear = normalizeGraph(graph);
 
-  return citations;
+if (!citations.all || !citationsByYear.length) {
+  throw new Error('SerpAPI response did not include usable citation metrics and graph data.');
 }
 
-function updatePublicationHtml(html, citations) {
-  let matched = 0;
-  let changed = 0;
+const profile = {
+  source: 'serpapi/google_scholar_author',
+  authorId,
+  updatedAt: new Date().toISOString(),
+  sinceYear: citations.sinceYear,
+  metrics: {
+    citationsAll: citations.all,
+    citationsSince2021: citations.since,
+    hIndexAll: hIndex.all,
+    hIndexSince2021: hIndex.since,
+    i10All: i10Index.all,
+    i10Since2021: i10Index.since,
+  },
+  citationsByYear,
+};
 
-  const nextHtml = html.replace(
-    /(<div class="pub-row">[\s\S]*?<div class="pub-title">)([\s\S]*?)(<\/div>[\s\S]*?<div class="pub-cite">)([^<]*)(<\/div>)/g,
-    (row, beforeTitle, titleHtml, beforeCite, currentCite, afterCite) => {
-      const title = titleText(titleHtml);
-      const count = citations.get(normalizeTitle(title));
+await mkdir(new URL('../data/', import.meta.url), { recursive: true });
+await writeFile(outputFile, `${JSON.stringify(profile, null, 2)}\n`);
 
-      if (count === undefined) return row;
-      matched += 1;
-
-      const nextCite = String(count);
-      if (currentCite.trim() !== nextCite) changed += 1;
-
-      let updatedRow = `${beforeTitle}${titleHtml}${beforeCite}${nextCite}${afterCite}`;
-      updatedRow = updatedRow.replace(/<span class="pub-badge">cited\s+\d+<\/span>/i, `<span class="pub-badge">cited ${nextCite}</span>`);
-      return updatedRow;
-    }
-  );
-
-  return { nextHtml, matched, changed };
-}
-
-const html = await readFile(publicationsFile, 'utf8');
-const articles = await fetchScholarArticles();
-const citations = buildCitationMap(articles);
-const { nextHtml, matched, changed } = updatePublicationHtml(html, citations);
-
-if (nextHtml !== html) {
-  await writeFile(publicationsFile, nextHtml);
-}
-
-console.log(`Fetched ${articles.length} Scholar articles.`);
-console.log(`Matched ${matched} publication rows.`);
-console.log(`Updated ${changed} citation counts.`);
+console.log(`Updated Scholar profile for ${authorId}.`);
+console.log(`Citations: ${profile.metrics.citationsAll} total, ${profile.metrics.citationsSince2021} since ${profile.sinceYear}.`);
+console.log(`Citation graph years: ${citationsByYear[0].year}-${citationsByYear[citationsByYear.length - 1].year}.`);

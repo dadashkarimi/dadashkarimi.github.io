@@ -58,7 +58,7 @@ $$</p>
 <p>In kernel density estimation, we define kernels centered at data points $x_i$: $1/hK(\frac{x_i-.}{h})$.
 But, in Hilbert space, there are no data points yet (i.e., $x_i$), and we instead have parameter $x_j$.
 Furthermore, those $\alpha_j$ are arbitrary and could be either positive or negative. On the other hand, in kernel density estimation, those $\alpha_j$ are uniformly distributed like $1/n$.</p>
-<p>Now let&rsquo;s define norms and inter products in this space:</p>
+<p>Now let&rsquo;s define norms and inner products in this space:</p>
 <p>$$
 ||f||_K = &lt;f,f&gt;_K
 $$</p>
@@ -80,7 +80,7 @@ $$</p>
 <p>(note: the dimension of this space is infinite).</p>
 <h3 id="is-fg-well-defined">Is $&lt;f,g&gt;$ well defined?</h3>
 <p>If we define the same function in two different ways, we will have a problem.
-If we have another representation for $f$ and another one for $g$, does the inteproduct change?
+If we have another representation for $f$ and another one for $g$, does the inner product change?
 If it does, we will have a problem.</p>
 <p>$$
 \sum_{i,j} \alpha_j \beta_i K(x_j,x_i)
@@ -101,8 +101,8 @@ $$</p>
 <p>which doesn&rsquo;t depend on $\beta_i$ and $y_i$. Then it doesn&rsquo;t depend on how I represent $g$. Then this is well defined.
 This property does a lot of stuff work with the Mercer kernel.
 In kernel trick, you can take an algorithm and then Kernelize it.</p>
-<h2 id="representer-theorem-makes-regression-over-rkhs-works">Representer Theorem: Makes regression over RKHS works</h2>
-<p>What presenter theorem says the following is <strong>infinite dimensional regression</strong>:</p>
+<h2 id="representer-theorem-makes-regression-over-rkhs-works">Representer Theorem: Makes regression over RKHS work</h2>
+<p>What the representer theorem says the following is <strong>infinite dimensional regression</strong>:</p>
 <p>$$
 \begin{aligned}
 \hat{f}=\arg \min ||y-f(x)||^2+\lambda||f||_K^2 \\
@@ -114,7 +114,7 @@ $$</p>
 $$</p>
 <p>By solving this:</p>
 <p>$$
-\hat{\alpha} = \arg \min_{\alpha in \mathbb{R}^n} || Y -K \alpha ||^2 + \alpha^TK\alpha
+\hat{\alpha} = \arg \min_{\alpha \in \mathbb{R}^n} || Y -K \alpha ||^2 + \alpha^TK\alpha
 $$</p>
 <p>where $K  =[K(x_i,x_j)]_{n\times n} $</p>
 <h3 id="why-is-this-true">Why is this true?</h3>
@@ -155,8 +155,8 @@ $$</p>
 \end{aligned}
 $$</p>
 <p>We showed that squared error doesn&rsquo;t depend on $g$. Now it&rsquo;s time for the penalty part.
-To minimize squared error, we can always mess with $\alpha$.
-But I can always reduce the penalty by taking $g$ small and more petite for a given squared error.
+To minimize squared error, we can always adjust $\alpha$.
+But I can always reduce the penalty by taking $g$ small and smaller for a given squared error.
 Then minimizer has always $g=0$</p>
 <h3 id="remark-we-showed-that-arg-min-y-fx2lambdaf_k2-is-finite-dimensional-ridge-regression">Remark: We showed that $\arg \min ||y-f(x)||^2+\lambda||f||_K^2$ is finite-dimensional ridge regression.</h3>
 <p>Now let&rsquo;s get back to matrices.

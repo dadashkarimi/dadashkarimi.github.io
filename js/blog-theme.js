@@ -1,28 +1,28 @@
 (function () {
   var key = 'site-theme';
   var lessons = [
-    { href: '/blogs/rnn/index.html', title: 'Sequence Models & RNNs' },
-    { href: '/blogs/rl/index.html', title: 'Reinforcement Learning' },
-    { href: '/blogs/graphs/index.html', title: 'Sparsity and Graphs' },
-    { href: '/blogs/variational_inference_vae/index.html', title: 'Variational Inference' },
-    { href: '/blogs/approx-inf/index.html', title: 'Approximation Inference' },
-    { href: '/blogs/gibbs/index.html', title: 'Gibbs Sampling' },
-    { href: '/blogs/dirichlet/index.html', title: 'Dirichlet Processes' },
-    { href: '/blogs/bayes/index.html', title: 'Bayesian Inference' },
-    { href: '/blogs/ntk/index.html', title: 'Neural Tangent Kernels' },
-    { href: '/blogs/representer/index.html', title: 'Representer Theorem' },
-    { href: '/blogs/mercer-2022/index.html', title: 'Mercer\'s Theorem' },
-    { href: '/blogs/sparsity-2022/index.html', title: 'Sparsity Meets Convexity' },
-    { href: '/blogs/em-2021/index.html', title: 'Expectation Maximization' },
-    { href: '/blogs/bigdata-experiments-2021/index.html', title: 'Brain Imaging Experiments' },
-    { href: '/blogs/mixture-2021/index.html', title: 'Mixture Models and EM' },
-    { href: '/blogs/inference-2021/index.html', title: 'Posterior Inference' },
-    { href: '/blogs/erm-2021/index.html', title: 'Empirical Risk Minimization' },
-    { href: '/blogs/mle-2021/index.html', title: 'MLE and MAP Estimation' },
-    { href: '/blogs/vae-2021/index.html', title: 'Stochastic Functions' },
-    { href: '/blogs/kernel-2021/index.html', title: 'Kernel Methods' },
-    { href: '/blogs/ot-2021/index.html', title: 'Optimal Transport' },
-    { href: '/blogs/ot-convex/index.html', title: 'Optimal Transport & Convexity' }
+    { href: '/blogs/rnn/index.html', title: 'Sequence Models & RNNs', meta: 'Apr 10, 2022', read: '10 min' },
+    { href: '/blogs/rl/index.html', title: 'Reinforcement Learning', meta: 'Apr 1, 2022', read: '15 min' },
+    { href: '/blogs/graphs/index.html', title: 'Sparsity and Graphs', meta: 'Mar 28, 2022', read: '9 min' },
+    { href: '/blogs/variational_inference_vae/index.html', title: 'Variational Inference', meta: 'Mar 11, 2022', read: '6 min' },
+    { href: '/blogs/approx-inf/index.html', title: 'Approximate Inference', meta: 'Mar 7, 2022', read: '5 min' },
+    { href: '/blogs/gibbs/index.html', title: 'Gibbs Sampling', meta: 'Mar 2, 2022', read: '4 min' },
+    { href: '/blogs/dirichlet/index.html', title: 'Dirichlet Processes', meta: 'Feb 25, 2022', read: '6 min' },
+    { href: '/blogs/bayes/index.html', title: 'Bayesian Inference', meta: 'Feb 19, 2022', read: '5 min' },
+    { href: '/blogs/ntk/index.html', title: 'Neural Tangent Kernels', meta: 'Feb 19, 2022', read: '5 min' },
+    { href: '/blogs/representer/index.html', title: 'Representer Theorem', meta: 'Feb 10, 2022', read: '5 min' },
+    { href: '/blogs/mercer-2022/index.html', title: 'Mercer\'s Theorem', meta: 'Jan 16, 2022', read: '7 min' },
+    { href: '/blogs/sparsity-2022/index.html', title: 'Sparsity Meets Convexity', meta: 'Jan 16, 2022', read: '7 min' },
+    { href: '/blogs/em-2021/index.html', title: 'Expectation Maximization', meta: 'Dec 6, 2021', read: '5 min' },
+    { href: '/blogs/bigdata-experiments-2021/index.html', title: 'Brain Imaging Experiments', meta: 'Dec 5, 2021', read: '8 min' },
+    { href: '/blogs/mixture-2021/index.html', title: 'Mixture Models and EM', meta: 'Dec 3, 2021', read: '4 min' },
+    { href: '/blogs/inference-2021/index.html', title: 'Posterior Inference', meta: 'Nov 26, 2021', read: '3 min' },
+    { href: '/blogs/erm-2021/index.html', title: 'Empirical Risk Minimization', meta: 'Nov 16, 2021', read: '3 min' },
+    { href: '/blogs/mle-2021/index.html', title: 'MLE and MAP Estimation', meta: 'Nov 9, 2021', read: '7 min' },
+    { href: '/blogs/vae-2021/index.html', title: 'Stochastic Functions', meta: 'Nov 1, 2021', read: '5 min' },
+    { href: '/blogs/kernel-2021/index.html', title: 'Kernel Methods', meta: 'Oct 20, 2021', read: '12 min' },
+    { href: '/blogs/ot-2021/index.html', title: 'Optimal Transport', meta: 'Oct 17, 2021', read: '2 min' },
+    { href: '/blogs/ot-convex/index.html', title: 'Optimal Transport & Convexity', meta: 'Oct 28, 2021', read: '4 min' }
   ];
 
   function setTheme(theme) {
@@ -98,28 +98,114 @@
 
   function lessonLink(item, direction) {
     var link = document.createElement('a');
-    link.className = 'lesson-rail__link lesson-rail__link--' + direction;
+    link.className = 'post-nav-card ' + direction;
     link.href = item.href;
     link.innerHTML = '' +
-      '<span class="lesson-rail__eyebrow">' + (direction === 'prev' ? 'previous lesson' : 'next lesson') + '</span>' +
-      '<span class="lesson-rail__title">' + item.title + '</span>';
+      '<span class="post-nav-card-eyebrow">' + (direction === 'prev' ? 'previous lesson' : 'next lesson') + '</span>' +
+      '<span class="post-nav-card-title">' + item.title + '</span>';
     return link;
   }
 
-  function injectLessonRail() {
-    if (document.querySelector('.lesson-rail')) return;
+  function sectionTitle(index) {
+    if (index < 7) return 'Part I - Modern ML Systems';
+    if (index < 13) return 'Part II - Bayesian Inference';
+    if (index < 19) return 'Part III - Estimation & Latent Variables';
+    return 'Part IV - Kernels & Transport';
+  }
+
+  function ensureLessonLayout(post, sidebar) {
+    var layout = document.querySelector('.blog-lesson-layout');
+    if (!layout) {
+      layout = document.createElement('div');
+      layout.className = 'blog-lesson-layout';
+      post.parentNode.insertBefore(layout, post);
+      layout.appendChild(post);
+    }
+    if (sidebar && sidebar.parentNode !== layout) layout.appendChild(sidebar);
+  }
+
+  function injectPostNav(post, index) {
+    if (post.querySelector('.post-nav')) return;
+    var nav = document.createElement('nav');
+    nav.className = 'post-nav';
+    nav.setAttribute('aria-label', 'Previous and next lessons');
+    if (index > 0) nav.appendChild(lessonLink(lessons[index - 1], 'prev'));
+    if (index < lessons.length - 1) nav.appendChild(lessonLink(lessons[index + 1], 'next'));
+    if (nav.children.length) post.appendChild(nav);
+  }
+
+  function injectLessonPlaylist() {
+    if (document.querySelector('.playlist-wrap')) return;
+    var post = document.querySelector('#page.post');
+    if (!post) return;
     var current = normalizePath(window.location.pathname);
     var index = lessons.findIndex(function (lesson) {
       return normalizePath(lesson.href) === current;
     });
     if (index === -1) return;
 
-    var rail = document.createElement('aside');
-    rail.className = 'lesson-rail';
-    rail.setAttribute('aria-label', 'Lesson navigation');
-    if (index > 0) rail.appendChild(lessonLink(lessons[index - 1], 'prev'));
-    if (index < lessons.length - 1) rail.appendChild(lessonLink(lessons[index + 1], 'next'));
-    document.body.appendChild(rail);
+    var sidebar = document.createElement('aside');
+    sidebar.className = 'playlist-wrap';
+    sidebar.setAttribute('aria-label', 'Lecture series playlist');
+
+    var nextLesson = lessons[index + 1];
+    sidebar.innerHTML = '' +
+      '<div class="playlist-header">' +
+        '<div class="playlist-title"><span class="playlist-icon" aria-hidden="true">&#9636;</span><span>Statistical ML - Lecture Series</span></div>' +
+        '<div class="playlist-progress"><span class="current-num">' + (index + 1) + '</span> / ' + lessons.length + '</div>' +
+      '</div>' +
+      '<div class="playlist-subhead">' + lessons.length + ' lessons · <a href="/blogs.html">view all notes</a></div>' +
+      '<div class="playlist-body"></div>';
+
+    var body = sidebar.querySelector('.playlist-body');
+    var lastSection = '';
+    lessons.forEach(function (lesson, lessonIndex) {
+      var section = sectionTitle(lessonIndex);
+      if (section !== lastSection) {
+        var sectionHead = document.createElement('div');
+        sectionHead.className = 'pl-section-head';
+        sectionHead.textContent = section;
+        body.appendChild(sectionHead);
+        lastSection = section;
+      }
+
+      var item = document.createElement('a');
+      item.href = lesson.href;
+      item.className = 'pl-item';
+      if (lessonIndex < index) item.className += ' watched';
+      if (lessonIndex === index) {
+        item.className += ' current';
+        item.setAttribute('aria-current', 'page');
+      }
+      item.innerHTML = '' +
+        '<span class="pl-num">' + (lessonIndex >= index ? lessonIndex + 1 : '') + '</span>' +
+        '<span class="pl-content">' +
+          '<span class="pl-title">' + lesson.title + '</span>' +
+          (lessonIndex === index ? '<span class="pl-now-playing">now reading</span>' : '<span class="pl-meta">' + lesson.meta + '</span>') +
+        '</span>' +
+        '<span class="pl-duration">' + lesson.read + '</span>';
+      body.appendChild(item);
+    });
+
+    if (nextLesson) {
+      var upNext = document.createElement('a');
+      upNext.className = 'up-next-strip';
+      upNext.href = nextLesson.href;
+      upNext.innerHTML = '' +
+        '<span class="up-next-eyebrow">up next</span>' +
+        '<span class="up-next-title">' + nextLesson.title + '</span>' +
+        '<span class="up-next-meta">' + nextLesson.read + ' · ' + nextLesson.meta + '</span>';
+      sidebar.appendChild(upNext);
+    }
+
+    injectPostNav(post, index);
+    ensureLessonLayout(post, sidebar);
+
+    window.setTimeout(function () {
+      var currentItem = sidebar.querySelector('.pl-item.current');
+      if (!currentItem || !body) return;
+      body.scrollTop = Math.max(0, currentItem.offsetTop - ((body.clientHeight - currentItem.clientHeight) / 2));
+    }, 0);
   }
 
   function getPostBody(post) {
@@ -227,7 +313,7 @@
     injectChrome();
     cleanupLegacyArtifacts();
     injectLessonMap();
-    injectLessonRail();
+    injectLessonPlaylist();
     loadMathJax();
     var saved = localStorage.getItem(key);
     setTheme(saved === 'bright' ? 'bright' : 'dark');

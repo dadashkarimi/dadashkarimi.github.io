@@ -1,5 +1,5 @@
 <div id="page" class="post">
-  <h1 class="title">Approximation Inference</h1>
+  <h1 class="title">Approximate Inference</h1>
 
   <head>
 <meta charset="UTF-8">
@@ -46,13 +46,13 @@ Two approaches:</p>
 <ol>
 <li>marginal probabilities $P(Z_i=z|x)$</li>
 <li>marginal means $\mathbb{E}(Z_i=z|x)$</li>
-<li>most probable assignments $z^*= \arg\max_z P(\{Z_i=z_i\}|x)$. This could be called a maximum apposteriori (MAP) problem.</li>
+<li>most probable assignments $z^*= \arg\max_z P(\{Z_i=z_i\}|x)$. This is a maximum a posteriori (MAP) problem.</li>
 <li>maximum marginals $z_i^* = \arg\max_{z_i} P(Z_i=z_i|x)$</li>
 <li>joint probability $P(Z|x)$</li>
 <li>joint mean $P(Z|x)$</li>
 </ol>
-<p>We can only solve these problems in a reasonable amount of time.
-We have to approximate in some way.</p>
+<p>We usually cannot solve all of these problems exactly in a reasonable amount of time.
+Therefore, we approximate the posterior in a controlled way.</p>
 <h2 id="wrap-up-gibbs-sampling">Wrap up Gibbs sampling</h2>
 <p>Before continuing with simulation and variational methods, let&rsquo;s finish derivations for Gibbs sampling.</p>
 <p>$$
@@ -86,7 +86,7 @@ $$
 j=1,w_1: &amp; \frac{1}{4+\alpha} p(x_1|x_5)
 \end{align}
 $$</p>
-<h2 id="example">EXample:</h2>
+<h2 id="example">Example:</h2>
 <p>Assume $p(x|\theta)$ is a Normal distribution $\text{Normal}(\theta,\sigma^2)$.
 $$
 F_0 = \text{Normal}(\mu_0,\tau_0^2)
@@ -117,8 +117,7 @@ j=2,w_2: &amp; \frac{3}{4+\alpha} p(x_1|x_2,x_3,x_4) \\
 =&amp;w_3\frac{x_1+x_2+x_3}{3} + (1-w_3)\mu_0  <br>
 \end{align}
 $$</p>
-<p>**why $w_3$
-<strong>Answer:</strong> because there are three data points.</p>
+<p><strong>Why $w_3$?</strong> Because there are three data points at that table.</p>
 <p>And similarly, for variance and table 3.</p>
 <p>How about the new table?</p>
 <p>$$

@@ -35,7 +35,7 @@ When you think of Reinforcement Learning you might relate many concepts to that:
 <li>A robot vacuum cleaning up the house</li>
 <li>Drug discovery, personalized health, energy management</li>
 </ol>
-<p>In RL the environment is in state $s$ at a given time and the agent takes action $a$. The environment transitions to state $s&rsquo; = \text{next}(s, a)$. The agent receives reward $r = \text{reward}(s; a)$.
+<p>In RL the environment is in state $s$ at a given time and the agent takes action $a$. The environment transitions to state $s' = \text{next}(s, a)$. The agent receives reward $r = \text{reward}(s; a)$.
 This is said to be a <code>Markov decision process</code>. It’s “Markov” because
 the next state only depends on the current state and the action
 selected. It’s a “decision process” because the agent is making
@@ -47,7 +47,7 @@ The aim of RL is to learn to make optimal decisions from experience.</p>
 <ol>
 <li>The environment is in state $s$ at a given time.</li>
 <li>The agent takes action $a$.</li>
-<li>The environment transitions to state $s&rsquo; = \text{next}(s; a)$</li>
+<li>The environment transitions to state $s' = \text{next}(s; a)$</li>
 <li>The agent receives reward $r = \text{reward}(s; a)$</li>
 </ol>
 <p>RL is inherently sequential</p>
@@ -130,7 +130,7 @@ action has in the current time step.</p>
 <h2 id="q-learning-update">Q-Learning Update</h2>
 <p>$$
 \begin{align}
-Q(s,q) \leftarrow Q(s,q) + \alpha (\text{reward}(s,a)+\gamma \max_{a&rsquo;} Q(\text{next}(s,a),a&rsquo;)-Q(s,a))
+Q(s,a) \leftarrow Q(s,a) + \alpha (\text{reward}(s,a)+\gamma \max_{a'} Q(\text{next}(s,a),a')-Q(s,a))
 \end{align}
 $$</p>
 <p>This is like gradient ascent.
@@ -141,11 +141,11 @@ As $\gamma$ gets larger we are putting more emphasize on long term rewards.</p>
 <p>Sometimes, there is another parameter named $\epsilon$ to choose random actions (i.e., to explore).
 But, with probability $1-\epsilon$ you wanna choose the action that maximize your reward (i.e., Exploration vs exploitation).</p>
 <p>When action $a$ is taken in state $s$, reward $\text{reward}(s; a)$ is given. Then, the algorithm moves to a new state $\text{next}(s; a)$.</p>
-<p>Cumulative future reward of this action is $\max_{a&rsquo;} Q(\text{next}(s,a),a&rsquo;)-Q(s,a))$.
+<p>Cumulative future reward of this action is $\max_{a'} Q(\text{next}(s,a),a')-Q(s,a))$.
 Future rewards discounted by factor $\gamma &lt; 1$.
 Trades off short-term against long-term rewards.</p>
 <p>You can start $Q$ with arbitrary initialization. And the algorithm will keep running until a terminal state which could be the state where the passenger will be dropped off.
-After this step, there is no expected reward for that episode (i.e., it&rsquo;s $0$). Indeed, you initialize them to $0$ and basically they are known quantity for that game.</p>
+After this step, there is no expected reward for that episode (i.e., it's $0$). Indeed, you initialize them to $0$ and basically they are known quantity for that game.</p>
 <h2 id="example-exploring-randomly">Example: Exploring randomly</h2>
 <p>There is a default per-step reward of -1,
 and a reward of +20 for delivering the passenger.
@@ -178,26 +178,26 @@ term reward starting from that state.</p>
 <p>$$
 v_* = \max_a \Big\{ \text{reward}(s,a) + \gamma v_*(\text{next}(s,a)) \Big\}
 $$</p>
-<p>You can&rsquo;t solve this equation directly. You have to solve it by iteration using gradient descent.</p>
+<p>You can't solve this equation directly. You have to solve it by iteration using gradient descent.</p>
 <p>The Q function is a detailed version of $v$ function.
-It&rsquo;s the value of taking action $a$ when being at state $s$.
+It's the value of taking action $a$ when being at state $s$.
 The optimality condition for the Q-function is:</p>
 <p>$$
-Q_*(s,a) = \text{reward}(s,a) + \gamma \max_{a&rsquo;} Q_*(\text{next}(s,a),a&rsquo;)
+Q_*(s,a) = \text{reward}(s,a) + \gamma \max_{a'} Q_*(\text{next}(s,a),a')
 $$</p>
-<p>Then $v_*(s) =\max_{a&rsquo;} Q_*(s,a&rsquo;)$.</p>
-<p>And Q-learning algorithm is trying to solve this fixed point equation. And that&rsquo;s where this comes from:</p>
+<p>Then $v_*(s) =\max_{a'} Q_*(s,a')$.</p>
+<p>And Q-learning algorithm is trying to solve this fixed point equation. And that's where this comes from:</p>
 <p>$$
 \begin{align}
-Q(s,q) \leftarrow Q(s,q) + \alpha (\text{reward}(s,a)+\gamma \max_{a&rsquo;} Q(\text{next}(s,a),a&rsquo;)-Q(s,a))
+Q(s,a) \leftarrow Q(s,a) + \alpha (\text{reward}(s,a)+\gamma \max_{a'} Q(\text{next}(s,a),a')-Q(s,a))
 \end{align}
 $$</p>
 <p><code>If we know $Q_*$, we know $v_*$</code>:
 $$
 \begin{align}
-v_*(s) =&amp; \max_{a&rsquo;} Q_*(s,a&rsquo;) \\
-=&amp;  \max_a \Big \{ \text{reward}(s,a) + \gamma \max_{a&rsquo;} Q_*(\text{next}(s,a),a&rsquo;) \Big \} \\
-=&amp;  \max_a \Big \{ \text{reward}(s,a) + \gamma \max_{a&rsquo;} v_*(\text{next}(s,a)) \Big \}
+v_*(s) =&amp; \max_{a'} Q_*(s,a') \\
+=&amp;  \max_a \Big \{ \text{reward}(s,a) + \gamma \max_{a'} Q_*(\text{next}(s,a),a') \Big \} \\
+=&amp;  \max_a \Big \{ \text{reward}(s,a) + \gamma \max_{a'} v_*(\text{next}(s,a)) \Big \}
 \end{align}
 $$</p>
 <p>which is the Bellman equation.</p>
@@ -205,7 +205,7 @@ $$</p>
 <p>The optimality condition for the value function $v_*$ is:</p>
 <p>$$
 \begin{align}
-v_* = &amp; \max_a \sum_{s&rsquo;,r} p(s&rsquo;,r|s,a) \Big \{ r+\gamma v_*(s&rsquo;)\Big\} \\
+v_* = &amp; \max_a \sum_{s',r} p(s',r|s,a) \Big \{ r+\gamma v_*(s')\Big\} \\
 =&amp; \max_a E\Big[R_{t+1} +\gamma v_*(S_{t+1}) | S_t = s, A_t=a \Big]
 \end{align}
 $$</p>
@@ -215,19 +215,19 @@ $$</p>
 v_* = \max_a E\Big[R_{t+1} +\gamma v_*(S_{t+1}) | S_t = s, A_t=a \Big]
 \end{align}
 $$
-It&rsquo;s the largest expected long-term reward.</p>
+It's the largest expected long-term reward.</p>
 <h3 id="q-function-optimality">Q function optimality</h3>
 <p>The optimality condition for the Q function is:</p>
 <p>$$
 \begin{align}
-Q_*(s,a) = &amp; \max_a \sum_{s&rsquo;,r} p(s&rsquo;,r|s,a) \Big \{ r+\gamma \max_{a&rsquo;}Q_*(s&rsquo;,a&rsquo;)\Big\} \\
-=&amp; \max_a E\Big[R_{t+1} +\gamma Q_*(S_{t+1},a&rsquo;) | S_t = s, A_t=a \Big]
+Q_*(s,a) = &amp; \max_a \sum_{s',r} p(s',r|s,a) \Big \{ r+\gamma \max_{a'}Q_*(s',a')\Big\} \\
+=&amp; \max_a E\Big[R_{t+1} +\gamma Q_*(S_{t+1},a') | S_t = s, A_t=a \Big]
 \end{align}
 $$</p>
 <h2 id="some-comments-on-q-learning">Some Comments on Q-learning</h2>
 <p>Q-learning is an example of temporal difference (TD) learning.
-It&rsquo;s an implicit policy and there is not explicit policy.
-It&rsquo;s just a simple exploration policy with probability $\epsilon$ and exploitation with probability $1-\epsilon$.
+It's an implicit policy and there is not explicit policy.
+It's just a simple exploration policy with probability $\epsilon$ and exploitation with probability $1-\epsilon$.
 It is an “off-policy” approach that is practical if the space of
 actions is small.
 Value iteration is analogous approach for learning the value
@@ -240,17 +240,17 @@ Deep RL uses a multilayer neural network to learn these features
 and the Q-function.</p>
 <p>$$
 \begin{align}
-Q_*(s,a;\theta) = E\Big[R_{t+1} +\gamma Q_*(S_{t+1},a&rsquo;;\theta) | S_t = s, A_t=a \Big]
+Q_*(s,a;\theta) = E\Big[R_{t+1} +\gamma Q_*(S_{t+1},a';\theta) | S_t = s, A_t=a \Big]
 \end{align}
 $$</p>
 <p>the parameter $\theta$ are the weights in a neural network.
-We can&rsquo;t put the Q function in a table because it&rsquo;s huge.
+We can't put the Q function in a table because it's huge.
 The state $S_{t+1}$ is the input to the network.
 Each possible action $a$ is assigned a value by the network.</p>
 <p><code>How do we solve this implicit equation for the network parameters?</code>.</p>
 <p>Let $y_t$ be a sample from this conditional distribution:</p>
 <p>$$
-y_t = R_{t+1} + \gamma \max_{a&rsquo;} Q(S_{t+1},a&rsquo;;\theta_{\text{current}})
+y_t = R_{t+1} + \gamma \max_{a'} Q(S_{t+1},a';\theta_{\text{current}})
 $$</p>
 <p>Adjust the parameters $\theta$ to make the squared error small (SGD):</p>
 <p>$$
@@ -258,7 +258,7 @@ $$</p>
 $$</p>
 <p>How?</p>
 <p>$$
-\theta \leftarrow \theta + \eta (y_t-Q(s,a;\theta))\bigtriangledown_{\theta} Q(s,a;\theta)
+\theta \leftarrow \theta + \eta (y_t-Q(s,a;\theta))\nabla_{\theta} Q(s,a;\theta)
 $$</p>
 <p>This is the framework for the space invader game.
 It should be multiple frames for the game to appropriately capture states over time.</p>
@@ -270,14 +270,14 @@ Q-learning carried out over mini batches of playing sequences
 that are “remembered and replayed”.</p>
 <p><img src="../../images/sds-365/q_nn.png" alt="Example"></p>
 <p>Recall from Bellman equation that $y_t$ is an expectation.
-Learning takes place when expectations are violated. The receipt of
+Learning takes place when expectations are violated. Receiving
 the reward itself does not cause changes.
 Like dopamine in your brain.</p>
 <h2 id="simple-dqn-example">Simple DQN example</h2>
 <p>Recall that in supervised learning loss function is $L(\hat{Y},Y)$ where we can program it directly.
 Often RL loss functions are built up dynamically.
 Automatic differentiation allows us to handle this which is one of the biggest achievements in 20th century.
-It&rsquo;s even bigger than impact of GPUs in deep learning (i.e., According to John Lafferty&rsquo;s speech in University of Texas at Austin).
+It's even bigger than impact of GPUs in deep learning (i.e., According to John Lafferty's speech in University of Texas at Austin).
 TensorFlow supports automatic differentiation by recording relevant
 operations executed inside the context of a “tape”.</p>
 <p>It then uses the record to compute the numerical values of gradients
@@ -294,7 +294,7 @@ using “reverse mode differentiation”.</p>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line hl"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </span></span><span class="line hl"><span class="cl"><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
-</span></span><span class="line hl"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Vriable</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span>
+</span></span><span class="line hl"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span>
 </span></span><span class="line hl"><span class="cl"><span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="n">tape</span><span class="p">:</span>
 </span></span><span class="line hl"><span class="cl">	<span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
 </span></span><span class="line hl"><span class="cl"><span class="n">dy_x</span> <span class="o">=</span> <span class="n">tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">)</span></span></span></code></pre></td></tr></table>
@@ -362,8 +362,8 @@ using “reverse mode differentiation”.</p>
 <h2 id="multi-armed-bandits">Multi-armed bandits</h2>
 <p>You have a set of k-slot machines (e.g., $k=5$).
 The assumption is that, one of the slot machines is gonna give you big payoff and the other slot machines are gonna pay you lower payoffs.
-The simplest abstraction of this problem: every time you pull an arm it&rsquo;s independent from the other times you pull the arm.
-So it&rsquo;s not the case that you long pull an arm the more you get paid.
+The simplest abstraction of this problem: every time you pull an arm it's independent from the other times you pull the arm.
+So it's not the case that you long pull an arm the more you get paid.
 However, there are many different versions of this.</p>
 <p>Arm $k$ has the expected payoff $\mu_k$ with variance $\sigma^2_k$ on each pull.
 Each time step, pull an arm and observe the resulting reward.
@@ -538,7 +538,7 @@ Then we construct the 4 layer neural network.
 </span></span><span class="line"><span class="cl">            <span class="n">plot</span><span class="p">(</span><span class="n">q_values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">bandits</span><span class="p">)</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
-<p>Overall, we can catogorize reinforcement learning algorithms as follows:</p>
+<p>Overall, we can categorize reinforcement learning algorithms as follows:</p>
 <p><img src="../../images/sds-365/rl_algorithms.png" alt="Example"></p>
 <h2 id="policy-iteration">Policy iteration</h2>
 <ol start="0">
@@ -550,11 +550,11 @@ Then we construct the 4 layer neural network.
 <p><img src="../../images/sds-365/val_pol_iter.png" alt="Example"></p>
 <p>We evaluate a policy $\pi(s)$ by calculating the state value function $V(s)$:</p>
 <p>$$
-V(S) = \sum_{s&rsquo;,r&rsquo;} p(s&rsquo;,r&rsquo;|s,\pi(s))[\text{reward}(s,a) + \gamma V(s&rsquo;)]
+V(S) = \sum_{s',r'} p(s',r'|s,\pi(s))[\text{reward}(s,a) + \gamma V(s')]
 $$
 Then, we calculate the improved policy by using one-step look-ahead to replace the initial policy $\pi(s)$:</p>
 <p>$$
-\pi(S) = \arg\max_a  \sum_{s&rsquo;,r&rsquo;} p(s&rsquo;,r&rsquo;|s,\pi(s))[\text{reward}(s,a) + \gamma V(s&rsquo;)]
+\pi(S) = \arg\max_a  \sum_{s',r'} p(s',r'|s,\pi(s))[\text{reward}(s,a) + \gamma V(s')]
 $$</p>
 <p>As for vanilla Q-learning, this only works for small state spaces.
 A “tabular” method, computes all values $V(s)$ and actions $\pi(s)$.</p>
@@ -562,7 +562,7 @@ A “tabular” method, computes all values $V(s)$ and actions $\pi(s)$.</p>
 <p>In value iteration, we compute the optimal state value function by iteratively updating the estimate $V(S)$.
 We start with a random value function $V(s)$. At each step, we update it:</p>
 <p>$$
-V(S) = \max_a \sum_{s&rsquo;,r&rsquo;} p(s&rsquo;,r&rsquo;|s,\pi(s))[\text{reward}(s,a) + \gamma V(s&rsquo;)]
+V(S) = \max_a \sum_{s',r'} p(s',r'|s,\pi(s))[\text{reward}(s,a) + \gamma V(s')]
 $$</p>
 <h2 id="policy-gradient-methods">Policy gradient methods</h2>
 <p>Parameterize the policy—$\pi(s)$—and use features of states.
@@ -574,8 +574,8 @@ good policy without accurately estimating the value function.</p>
 <p>$$
 \tau: S,a_0 \rightarrow (S_1,r_1;a_1) \rightarrow (S_2,r_2;a_2) \rightarrow .. \rightarrow (S_t,r_t;a_t) \rightarrow S_{t+1} (\text{episode is over})
 $$</p>
-<p>randomness is in environemnt and the sequence of actions.
-This is one reason we need automatic diffentiation because the loss function is not explicit.</p>
+<p>randomness is in environment and the sequence of actions.
+This is one reason we need automatic differentiation because the loss function is not explicit.</p>
 <p>$$
 \text{Reward}(\tau) = \sum_{t=1}^t r_t
 $$</p>
@@ -592,26 +592,26 @@ $$</p>
 <p>We wanna do gradient ascent on it (i.e., maximize the reward):
 $$
 \begin{align}
-\theta \leftarrow &amp; \theta + \eta \triangledown_{\theta} J(\theta) \\
-\leftarrow &amp; \theta + \eta \triangledown_{\theta} E_{\theta}(R(\tau))
+\theta \leftarrow &amp; \theta + \eta \nabla_{\theta} J(\theta) \\
+\leftarrow &amp; \theta + \eta \nabla_{\theta} E_{\theta}(R(\tau))
 \end{align}
 $$</p>
 <p>there is a couple of tricks and observation to compute this gradient.
 $$
 \begin{align}
-\triangledown_{\theta} J(\theta)= &amp; \triangledown_{\theta} \int R(\tau) p(\tau | \theta) d\tau \\
-=&amp;  \int R(\tau) \triangledown_{\theta} p(\tau | \theta) d\tau \\
-=&amp; \int R(\tau) \frac{\triangledown_{\theta} p(\tau | \theta)}{p(\tau | \theta)} p(\tau | \theta) d\tau \\
-= &amp; E_{\theta}\Big[R(\tau) \triangledown \log p(\tau | \theta)\Big] \\
-=&amp; \frac{1}{N} \sum_{i=1}^N R(\tau^i) \triangledown \log p(\tau^i | \theta) \\
-=&amp; \frac{1}{N} \sum_{i=1}^N R(\tau^i) \sum_{t=0}^T \triangledown \log \pi_{\theta}(a_t^i | s_t^i)
+\nabla_{\theta} J(\theta)= &amp; \nabla_{\theta} \int R(\tau) p(\tau | \theta) d\tau \\
+=&amp;  \int R(\tau) \nabla_{\theta} p(\tau | \theta) d\tau \\
+=&amp; \int R(\tau) \frac{\nabla_{\theta} p(\tau | \theta)}{p(\tau | \theta)} p(\tau | \theta) d\tau \\
+= &amp; E_{\theta}\Big[R(\tau) \nabla \log p(\tau | \theta)\Big] \\
+=&amp; \frac{1}{N} \sum_{i=1}^N R(\tau^i) \nabla \log p(\tau^i | \theta) \\
+=&amp; \frac{1}{N} \sum_{i=1}^N R(\tau^i) \sum_{t=0}^T \nabla \log \pi_{\theta}(a_t^i | s_t^i)
 \end{align}
 $$</p>
 <p>We can compute this by sampling: generate sequences according to our policy that gives us the interplay with respect to the environment and lets us try out our actions.
-It&rsquo;s like we ride bike while we fall off and we asjust our policy and we get back to bike and ride again.
+It's like we ride bike while we fall off and we adjust our policy and we get back to bike and ride again.
 Here riding the bike $N$ times before we adjust our policy.</p>
 <p>$$
-\theta \leftarrow \theta + \alpha \triangledown_{\theta} \widehat{J(\theta)}
+\theta \leftarrow \theta + \alpha \nabla_{\theta} \widehat{J(\theta)}
 $$</p>
 <p>we can also compute this using automatic differentiation.</p>
 <p>Using Markov property, calculate $E_{\theta}(R(\tau))$:</p>
@@ -624,7 +624,7 @@ $$</p>
 <p>It follows that:
 $$
 \begin{align}
-\triangledown_{\theta}p(\tau | \theta) = \sum_{t=0}^T \triangledown_{\theta} \log \pi_{\theta}(a_t|s_t) = \sum_{t=0}^T \frac{\triangledown_{\theta}\pi_{\theta}(a_t|s_t)}{\pi_{\theta}(a_t|s_t)}
+\nabla_{\theta}p(\tau | \theta) = \sum_{t=0}^T \nabla_{\theta} \log \pi_{\theta}(a_t|s_t) = \sum_{t=0}^T \frac{\nabla_{\theta}\pi_{\theta}(a_t|s_t)}{\pi_{\theta}(a_t|s_t)}
 \end{align}
 $$</p>
 <h2 id="actor-critic-approaches-idea">Actor-critic approaches: Idea</h2>
@@ -632,7 +632,7 @@ $$</p>
 Actor: policy used to select actions.
 Critic: value function used to criticize actor.
 Error signal from the critic drives all learning.
-It&rsquo;s an an on-policy approach that means that we are estimating policy directly.</p>
+It's an an on-policy approach that means that we are estimating policy directly.</p>
 <p>After each selected action, critic evaluates new state. Have things gone better or worse than expected?
 If we are better that means that it was a good action.
 The error signal is used to update actor and value function.</p>
@@ -646,7 +646,7 @@ $$</p>
 \delta_t &lt; 0 : \text{ action was worse than expected}
 \end{align}
 $$</p>
-<p>It&rsquo;s very similar to temporal difference learning, which is popular in neuroscience.
+<p>It's very similar to temporal difference learning, which is popular in neuroscience.
 Then value function is updated as:</p>
 <p>$$
 V(S_t) \leftarrow V(S_t) + \alpha \delta_t

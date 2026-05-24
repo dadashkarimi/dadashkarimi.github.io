@@ -1,4 +1,4 @@
-name: Update publication citations
+name: Update Scholar citation dashboard
 
 on:
   schedule:
@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 jobs:
-  update-citations:
+  update-scholar-profile:
     runs-on: ubuntu-latest
     steps:
       - name: Check out site
@@ -20,14 +20,15 @@ jobs:
         with:
           node-version: 20
 
-      - name: Update citations from Google Scholar
+      - name: Update Scholar profile from SerpAPI
         run: node scripts/update-citations.mjs
         env:
+          SERPAPI_API_KEY: ${{ secrets.SERPAPI_API_KEY }}
           SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
           SCHOLAR_AUTHOR_ID: LrXokpIAAAAJ
 
-      - name: Commit citation changes
+      - name: Commit Scholar dashboard changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: Update publication citation counts
-          file_pattern: pubs.html
+          commit_message: Update Scholar citation dashboard
+          file_pattern: data/scholar-profile.json

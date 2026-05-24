@@ -93,7 +93,7 @@ $$</p>
 We use <strong>EM</strong> algorithm to approximate $\max_{\theta} p(x|\theta)$ by repeating two steps:</p>
 <ol>
 <li><strong>E step</strong> (Expectation step)</li>
-<li>** M step** (Maximization step)</li>
+<li><strong>M step</strong> (Maximization step)</li>
 </ol>
 <p>Which are easier to implement.</p>
 <p><strong>Review:</strong>  a function $f: \mathbb{R} \rightarrow \mathbb{R}$ is convex if $f&rsquo;&rsquo;(x)\geq 0$ for all $x \in \mathbb{R}$.</p>
@@ -212,16 +212,16 @@ $$</p>
 <p>As you see, EM is an iterative method to maximize $\log p(x|\theta)$ and may converge to local maxima. We may need to run multiple times.</p>
 <p>We also have the following decomposition:</p>
 <p>$$
-&#92;text{ELBO}(x,q|&#92;theta) = &#92;mathcal{L}(q,&#92;theta) = &#92;log p(x|&#92;theta) - &#92;text{KL}(q || p(z|x,&#92;theta))
+\text{ELBO}(x,q|\theta) = \mathcal{L}(q,\theta) = \log p(x|\theta) - \text{KL}(q || p(z|x,\theta))
 $$</p>
 <p>where $\text{KL}(q || p(z|x,\theta)) = \sum_z q(z)\log \frac{q(z)}{p(z|x,\theta)}$.</p>
 <ol>
 <li>Since $\text{KL} \geq 0 $ then $\text{ELBO}(x,q|\theta)\leq \log p(x|\theta)$.</li>
 <li>$\text{ELBO}(x,q|\theta) = \log p(x|\theta)$ if $\text{KL}(q || p(z|x,\theta))=0$, which holds if and only if $q(z) = p(z|x,\theta)$.</li>
 </ol>
-<p>In general, for any distribution $q(z),p(z)$ the <strong>Kullback-Leible divergence</strong> of $q$ with respect to $p$ is :</p>
+<p>In general, for any distributions $q(z)$ and $p(z)$, the <strong>Kullback-Leibler divergence</strong> of $q$ with respect to $p$ is:</p>
 <p>$$
-\text{KL}(p || q) = \sum_z q(z) \log \frac{q(z)}{p(z)}
+\text{KL}(q || p) = \sum_z q(z) \log \frac{q(z)}{p(z)}
 $$</p>
 <p>These are some graphs that you can find in the Bishop book illustrating <strong>E-step</strong>:
 <img src="../../images/e-step.JPG" alt="Example"></p>

@@ -1,0 +1,23 @@
+{
+  "source": "serpapi/google_scholar_author",
+  "authorId": "LrXokpIAAAAJ",
+  "updatedAt": "2026-05-24T00:00:00.000Z",
+  "metrics": {
+    "citationsAll": 629,
+    "citationsSince2021": 544,
+    "hIndexAll": 11,
+    "hIndexSince2021": 10,
+    "i10All": 12,
+    "i10Since2021": 10
+  },
+  "citationsByYear": [
+    { "year": 2019, "citations": 22 },
+    { "year": 2020, "citations": 20 },
+    { "year": 2021, "citations": 41 },
+    { "year": 2022, "citations": 65 },
+    { "year": 2023, "citations": 101 },
+    { "year": 2024, "citations": 116 },
+    { "year": 2025, "citations": 160 },
+    { "year": 2026, "citations": 64 }
+  ]
+}

@@ -37,7 +37,7 @@ $$</p>
 \begin{aligned}
 \text{MLE} (\mu,\Sigma) = &amp; \arg \max \prod_{i=1}^n \text{Normal}(x_i|\mu,\Sigma) \\\
 =&amp; \arg \min -\sum_{i=1}^n \log \text{Normal}(x_i|\mu,\Sigma) \\\
-=&amp; \arg \min \sum_{i=1}^n \frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu)+\frac{1}{2}\log \text{det} \Sigma + \frac{d}{2}\log 2\pi
+=&amp; \arg \min \sum_{i=1}^n \frac{1}{2}(x_i-\mu)^T\Sigma^{-1}(x_i-\mu)+\frac{1}{2}\log \text{det} \Sigma + \frac{d}{2}\log 2\pi
 \end{aligned}
 \end{align}
 $$</p>
@@ -68,7 +68,7 @@ p(x) = \pi_1 \text{Normal}(x|\mu_1,\sigma_1^2)+  \pi_2 \text{Normal}(x|\mu_2,\si
 \end{align}
 $$</p>
 <p><img src="../../images/mixture-1d.png" alt="Example"></p>
-<h2 id="mixture-of-gaussian-with-k-components">Mixture of Gaussian with $K$ components</h2>
+<h2 id="mixture-of-gaussian-with-k-components">Mixture of $K$ Gaussians</h2>
 <p>Let&rsquo;s formalize a mixture of the Gaussian model:</p>
 <p>$$
 p(x) = \sum_{k=1}^K \pi_k \text{Normal}(x| \mu_k,\Sigma_k)
@@ -173,7 +173,7 @@ $$</p>
 </ol>
 <p>$$
 \begin{aligned}
-&#92;frac{&#92;partial}{&#92;partial &#92;mu_k} &#92;log p(x) = &amp; &#92;sum_{i=1}^N  &#92;frac{&#92;pi_k &#92;text{Normal}(x_n| &#92;mu_k,&#92;Sigma_k)}{&#92;sum_{j=1}^K &#92;pi_j &#92;text{Normal}(x_n| &#92;mu_j,&#92;Sigma_j)} .&#92;Sigma_k^{-1}(x_n-&#92;mu_k)&#92;&#92;
+\frac{\partial}{\partial \mu_k} \log p(x) = &amp; \sum_{i=1}^N  \frac{\pi_k \text{Normal}(x_n| \mu_k,\Sigma_k)}{\sum_{j=1}^K \pi_j \text{Normal}(x_n| \mu_j,\Sigma_j)} .\Sigma_k^{-1}(x_n-\mu_k)\\
 \end{aligned}
 $$</p>
 <p>where ${\sum_{j=1}^K \text{Normal}(x_n| \mu_j,\Sigma_j)} = \gamma (z_{nk}) = p(z_{nk}=1|x_n)$.

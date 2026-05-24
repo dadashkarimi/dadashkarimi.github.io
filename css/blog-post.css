@@ -805,6 +805,11 @@ body.theme-bright .diagram-node--observed {
   animation: diagram-fade-copy 3.8s ease-in-out infinite;
 }
 
+.concept-diagram--iid-plate .diagram-copy--1 { animation-delay: 0.2s; }
+.concept-diagram--iid-plate .diagram-copy--2 { animation-delay: 0.65s; }
+.concept-diagram--iid-plate .diagram-copy--3 { animation-delay: 1.1s; }
+.concept-diagram--iid-plate .diagram-copy--4 { animation-delay: 1.55s; }
+
 .diagram-simplex-base {
   fill: #fff9ba;
   stroke: #111111;

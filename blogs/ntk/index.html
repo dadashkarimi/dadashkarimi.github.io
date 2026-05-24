@@ -14,7 +14,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Caveat:wght@500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/notebook.css">
 <link rel="stylesheet" href="/css/blog-post.css">
-<script defer src="/js/blog-theme.js"></script>
+<script defer src="/js/blog-theme.js?v=20260524-plate-math"></script>
 </head>
 
 	<div id="page" class="post">
@@ -89,9 +89,9 @@ In many cases, without explicit computation of $\phi(x_i)$ we can compute $K(x_i
 <h2 id="neural-networks">Neural Networks:</h2>
 <p>Let's define a simple neural network with two layers:</p>
 <p>$$
-y = f(W,x) = \textcolor{red}{\frac{1}{\sqrt{m}}}\sum_{i=1}^m b_i \sigma(a_i'X)
+y = f(W,x) = {\color{red}\frac{1}{\sqrt{m}}}\sum_{i=1}^m b_i \sigma(a_i'X)
 $$</p>
-<p>The scaling factor $\textcolor{red}{\frac{1}{\sqrt{m}}}$ will have some useful behavior that we will touch on later.</p>
+<p>The scaling factor ${\color{red}\frac{1}{\sqrt{m}}}$ will have some useful behavior that we will touch on later.</p>
 <p>$$
 \mathcal{L}(W) = \frac{1}{2} \sum_{i=1}^n ( f(W,x_i)-y_i)^2
 $$</p>
@@ -111,47 +111,47 @@ $$</p>
 <p>In machine learning this phenomena is called &ldquo;Lazy Training&rdquo;.</p>
 <h2 id="first-order-taylors-approximation">First Order Taylor's Approximation:</h2>
 <p>Because changes in $W(t)$ are small we can do Taylor's approximation:</p>
-<p>$$
+<p>\[
 f(W,X) \approx f(W_0,X) + \nabla_wf(W_0,X)^T(W-W_0)
-$$</p>
+\]</p>
 <ol>
 <li><strong>Question:</strong> Is this approximate linear in $W$? <strong>answer:</strong> Yes</li>
 <li><strong>Question:</strong> Is this approximate linear in $X$? <strong>answer:</strong> No</li>
 </ol>
 <p>Let's call:</p>
-<p>$$
+<p>\[
 \phi(X) = \nabla_wf(W_0,X)
-$$</p>
+\]</p>
 <p>non linear transformation of $X$ (instead of polynomial transformation).
 Then,</p>
-<p>$$
+<p>\[
 K(x_i,x_j) = &lt;\phi(x_i),\phi(x_j)&gt;
-$$</p>
+\]</p>
 <p>is also called <strong>Neural Tangent Kernel</strong> (NTK).
 Here, my transformation is coming from neural network evaluated at point $W_0$.
 So it's a fixed transformation and is not going to change across gradient descent trajectory.
 So everything is consistent so far (like optimization is convex and $\phi(.)$ is fixed).</p>
-<p>$$
-f_m(W,x) = \textcolor{red}{\frac{1}{\sqrt{m}}}\sum_{i=1}^m b_i \sigma(a_i'X)
-$$</p>
+<p>\[
+f_m(W,x) = {\color{red}\frac{1}{\sqrt{m}}}\sum_{i=1}^m b_i \sigma(a_i'X)
+\]</p>
 <p>Then:
-$$
+\[
 \begin{align}
-\nabla_{a_i}f_m(W,X) =  \textcolor{red}{\frac{1}{\sqrt{m}}}b_i \sigma'(a_i'X)X \\
-\nabla_{b_i}f_m(W,X) = \textcolor{red}{\frac{1}{\sqrt{m}}}\sigma (a_i'X)
+\nabla_{a_i}f_m(W,X) =  {\color{red}\frac{1}{\sqrt{m}}}b_i \sigma'(a_i'X)X \\
+\nabla_{b_i}f_m(W,X) = {\color{red}\frac{1}{\sqrt{m}}}\sigma (a_i'X)
 \end{align}
-$$</p>
+\]</p>
 <p>Therefore:</p>
-<p>$$
+<p>\[
 K_m(x,x') = K_m^a(x,x') + K_m^b(x,x')
-$$</p>
+\]</p>
 <p>where:</p>
-<p>$$
+<p>\[
 \begin{align}
-K_m^a(x,x')  =  \textcolor{red}{\frac{1}{m}}\sum_{i=1}^mb_i^2  \sigma'(a_i'x)\sigma'(a_i'x')x.x'\\
-K_m^b(x,x') = \textcolor{red}{\frac{1}{m}}\sum_{i=1}^m\sigma (a_i'x) \sigma (a_i'x')
+K_m^a(x,x')  =  {\color{red}\frac{1}{m}}\sum_{i=1}^mb_i^2  \sigma'(a_i'x)\sigma'(a_i'x')x.x'\\
+K_m^b(x,x') = {\color{red}\frac{1}{m}}\sum_{i=1}^m\sigma (a_i'x) \sigma (a_i'x')
 \end{align}
-$$</p>
+\]</p>
 <p>where $x.x'$ is the interproduct between two data points.</p>
 <h2 id="law-of-large-numbers">Law of large numbers:</h2>
 <p>If $a_i$s and $b_i$s are independent samples at initialization based on law of large numbers when $m\rightarrow \infty$:</p>

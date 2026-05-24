@@ -25,6 +25,13 @@
     { href: '/blogs/ot-convex/index.html', title: 'Optimal Transport & Convexity', meta: 'Oct 28, 2021', read: '4 min' }
   ];
 
+  function refreshBlogStylesheet() {
+    var sheet = document.querySelector('link[href^="/css/blog-post.css"]');
+    if (sheet && sheet.getAttribute('href') === '/css/blog-post.css') {
+      sheet.setAttribute('href', '/css/blog-post.css?v=20260524-plate-math');
+    }
+  }
+
   function setTheme(theme) {
     var dark = theme === 'dark';
     document.body.classList.toggle('theme-dark', dark);
@@ -302,14 +309,15 @@
   }
 
   function loadDiagramEnhancer() {
-    if (document.querySelector('script[src="/js/blog-diagrams.js"]')) return;
+    if (document.querySelector('script[src^="/js/blog-diagrams.js"]')) return;
     var script = document.createElement('script');
-    script.src = '/js/blog-diagrams.js';
+    script.src = '/js/blog-diagrams.js?v=20260524-plate-math';
     script.defer = true;
     document.head.appendChild(script);
   }
 
   function boot() {
+    refreshBlogStylesheet();
     injectChrome();
     cleanupLegacyArtifacts();
     injectLessonMap();

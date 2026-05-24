@@ -1,0 +1,33 @@
+name: Update publication citations
+
+on:
+  schedule:
+    - cron: '17 10 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-citations:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out site
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Update citations from Google Scholar
+        run: node scripts/update-citations.mjs
+        env:
+          SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
+          SCHOLAR_AUTHOR_ID: LrXokpIAAAAJ
+
+      - name: Commit citation changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Update publication citation counts
+          file_pattern: pubs.html

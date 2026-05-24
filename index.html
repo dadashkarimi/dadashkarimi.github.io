@@ -648,13 +648,13 @@ body.theme-dark .social-icons a img:hover { opacity: 1; }
   <div class="hero-eyebrow">~ hello, internet ~</div>
   <h1><span class="hero-line">I teach machines to</span><span class="hero-line hero-line-accent"><span class="scribble">read</span> the human brain.</span></h1>
   <p class="hero-lead">
-    I am a postdoctoral research fellow at <span class="hero-highlight">Penn Medicine</span> working with Prof. Ragini Verma. My research develops <span class="hero-highlight">AI tools</span> that connect cellular-resolution histopathology with macroscopic brain imaging. I build <span class="hero-highlight">deep learning</span> methods for segmenting and quantifying axonal injury in APP immunohistochemistry, with the goal of linking <span class="red-focus">microscopic pathology maps</span> to imaging measures of white-matter injury, including MRI, diffusion MRI, and tractography-derived measures.
+    I am a postdoctoral research fellow at <span class="hero-highlight">Penn Medicine</span> working with Prof. Ragini Verma. My research develops <span class="hero-highlight">AI tools</span> that connect cellular-resolution histopathology with macroscopic brain imaging. I build <span class="hero-highlight">deep learning</span> methods for segmenting and quantifying axonal injury in APP immunohistochemistry, with the goal of linking <span class="red-focus">microscopic pathology maps</span> to imaging measures of white-matter injury, including MRI, fMRI, diffusion MRI, and tractography-derived measures.
   </p>
   <p class="hero-cta">Currently open for collaborations and consulting. <a href="mailto:javiddadashkarimi@gmail.com">say hi →</a></p>
 
   <div class="quick-meta">
     <div><span class="hand">currently:</span> Penn Medicine, Philadelphia</div>
-    <div><span class="hand">working on:</span> histopathology + diffusion MRI + tractography validation</div>
+    <div><span class="hand">working on:</span> High Resolution Segmentation, Histology to MRI Registration, Deep Learning, Tractography Segmentation</div>
     <div><span class="hand">links:</span>
       <a href="slides/CV_JDadashkarimi.pdf">CV</a>,
       <a href="https://scholar.google.com/citations?user=LrXokpIAAAAJ&hl=en" target="_blank">Scholar</a>,
@@ -705,11 +705,6 @@ body.theme-dark .social-icons a img:hover { opacity: 1; }
       <span class="tool-badge badge-tools" title="Tools">TL</span>
       <div class="cred-num">PIGMENT</div>
       <div class="cred-label">histology app for tissue segmentation and annotation workflows</div>
-    </div>
-    <div class="cred-card tool-sticker">
-      <span class="tool-badge badge-affiliation" title="Affiliation">AF</span>
-      <div class="cred-num">UPENN</div>
-      <div class="cred-label">postdoctoral research fellowship at Penn Medicine</div>
     </div>
     <div class="cred-card tool-sticker">
       <span class="tool-badge badge-patent" title="Patent">PT</span>
@@ -767,37 +762,37 @@ body.theme-dark .social-icons a img:hover { opacity: 1; }
   <div class="notes">
     <div class="note">
       <div class="note-tag">fetal MRI</div>
-      <h3>Finding tiny brains</h3>
+      <h3>High-resolution fetal brain segmentation</h3>
       <p>Cascade U-Nets that extract the brain from motion-corrupted in-utero MRI. The fetus moves, the brain is small, and it's growing fast — classical methods fail. Synthetic training data fills the gap.</p>
       <div class="note-meta"><b>tools:</b> deep learning · synthetic data · 3D segmentation</div>
     </div>
     <div class="note">
       <div class="note-tag">diffusion MRI</div>
-      <h3>Mapping the wiring</h3>
+      <h3>Tractography segmentation for neurosurgical planning</h3>
       <p>Tractography &amp; white-matter bundling for neurosurgical planning. Knowing exactly which connections to spare in TBI and tumor patients is the difference between recovery and lasting harm.</p>
       <div class="note-meta"><b>tools:</b> tractography · clinical pipelines · dMRI</div>
     </div>
     <div class="note">
       <div class="note-tag">connectomics</div>
-      <h3>Brains as distributions</h3>
+      <h3>Connectome alignment with optimal transport</h3>
       <p>Optimal transport over functional connectomes — for alignment, comparison, and behavior prediction. The math is beautiful and the predictions hold up. This was my PhD thesis work at Yale.</p>
       <div class="note-meta"><b>tools:</b> optimal transport · graph theory · fMRI</div>
     </div>
     <div class="note">
       <div class="note-tag">generative</div>
-      <h3>When real data is scarce</h3>
+      <h3>Synthetic medical image generation</h3>
       <p>Medical datasets are tiny. So we generate them. Gaussian Mixture and Hidden Markov Random Field models produce label maps that synthesize unlimited training images — for any modality you can describe.</p>
       <div class="note-meta"><b>tools:</b> GMM · HMRF · label-map synthesis</div>
     </div>
     <div class="note">
       <div class="note-tag">whole-body</div>
-      <h3>Beyond the brain</h3>
+      <h3>Whole-body CT/MRI segmentation</h3>
       <p>Organ segmentation in CT/MRI — liver, lungs, kidneys. The pipelines I build help radiologists track disease progression, measure organs, and plan surgery across modalities and centers.</p>
       <div class="note-meta"><b>tools:</b> CT/MRI segmentation · multi-organ</div>
     </div>
     <div class="note">
       <div class="note-tag">past lives</div>
-      <h3>Cross-lingual IR</h3>
+      <h3>Cross-lingual information retrieval</h3>
       <p>Before medical imaging, I worked on EM-based dictionary translation for cross-lingual retrieval. Resulted in a US patent and publications in COLING and IP&amp;M Journal. Different field, same instincts.</p>
       <div class="note-meta"><b>tools:</b> NLP · machine translation · IR</div>
     </div>

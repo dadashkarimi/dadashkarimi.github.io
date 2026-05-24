@@ -1,4 +1,5 @@
 <head>
+<meta charset="UTF-8">
   <style>
     img {
       width: 100%;
@@ -125,7 +126,7 @@ $$</p>
 <p>$$
 \mathcal{H}_K = V \oplus V^{\perp}
 $$</p>
-<p>is <strong>infinite dimmensional</strong>. $ V^{\perp}$ is the set of functions that are orthogonal to each one of $K(x_1,.), K(x_2,.), .., K(x_n,.)$.</p>
+<p>is <strong>infinite-dimensional</strong>. $ V^{\perp}$ is the set of functions that are orthogonal to each one of $K(x_1,.), K(x_2,.), .., K(x_n,.)$.</p>
 <p>$$
 \begin{aligned}
 f \in \mathcal{H} : f = &amp;  v+g \\
@@ -157,7 +158,7 @@ $$</p>
 To minimize squared error, we can always mess with $\alpha$.
 But I can always reduce the penalty by taking $g$ small and more petite for a given squared error.
 Then minimizer has always $g=0$</p>
-<h3 id="remark-we-showed-that-arg-min-y-fx2lambdaf_k2-is-finite-dimmensional-ridge-regression">Remark: We showed that $\arg \min ||y-f(x)||^2+\lambda||f||_K^2$ is finite dimmensional ridge regression.</h3>
+<h3 id="remark-we-showed-that-arg-min-y-fx2lambdaf_k2-is-finite-dimensional-ridge-regression">Remark: We showed that $\arg \min ||y-f(x)||^2+\lambda||f||_K^2$ is finite-dimensional ridge regression.</h3>
 <p>Now let&rsquo;s get back to matrices.
 Let&rsquo;s define $M$ is symmetric and positive definite matrix (i.e., $\lambda_j$s are real and $\lambda_j\geq 0$):</p>
 <p>$$
@@ -191,7 +192,7 @@ K \Phi_j = \lambda_j \Phi_j, \quad \lambda_j \geq 0
 $$</p>
 <p>Then we can define feature mapping:</p>
 <p>$$
-X \rightarrow \Phi(x) : (\sqrt{\lambda} \Phi_1,\sqrt{\lambda_2}\Phi_2,..) \quad \text{infinite dimmensional}
+X \rightarrow \Phi(x) : (\sqrt{\lambda} \Phi_1,\sqrt{\lambda_2}\Phi_2,..) \quad \text{infinite-dimensional}
 $$</p>
 <p>Indeed, Mercer&rsquo;s kernel gives you another way of manipulating features.</p>
 <p>We covered this post in the intermediate machine learning SDS 365/565, Yale University, <a href="https://en.wikipedia.org/wiki/John_D._Lafferty">John Lafferty</a>, where I was TF.</p>

@@ -1,4 +1,5 @@
 <head>
+<meta charset="UTF-8">
   <style>
     img {
       width: 100%;
@@ -60,7 +61,7 @@ $$</p>
 We can think of this another way: when we set $h$ small bias is low and variance is high implying undersmoothing. On the other hand, when $h$ is large, we are averaging over many surrending points that causes high bias and low variance; this is called oversmoothing.</p>
 <p><img src="../../images/sds-365/bias_variance.jpg" alt="Example"></p>
 <p>Thus, we need to find the optimum value for $h$.</p>
-<h2 id="howe-we-can-estimate-risk">Howe we can estimate Risk?</h2>
+<h2 id="how-can-we-estimate-risk">How can we estimate risk?</h2>
 <p>Let&rsquo;s indicate $\hat{Y_{-i}}=\hat{m}_{h,-i}(X_i)$ the estimation based on all but $X_i$.
 To estimate risk using cross-validation:</p>
 <p>$$
@@ -80,7 +81,7 @@ Y_i-\hat{Y_i} = Y_i - \frac{\sum_{i&rsquo;}Y_{i&rsquo;}K_h(X_{i&rsquo;},X_i)}{\s
 \end{aligned}
 $$</p>
 <h2 id="the-curse-of-dimensionality">The curse of dimensionality</h2>
-<p>We can apply the method for any dimmensionality $h$. Yet, it doesn&rsquo;t work as well.</p>
+<p>We can apply the method for any dimensionality $h$. Yet, it doesn&rsquo;t work as well.</p>
 <ol>
 <li>The squared bias scales as $h^4$ and the variance scales as $\frac{1}{nh^p}$</li>
 <li>Then, the risk goes down no faster than $n^{-4/(4+p)}$</li>

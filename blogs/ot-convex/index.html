@@ -1,4 +1,5 @@
 <head>
+<meta charset="UTF-8">
   <style>
     img {
       width: 100%;
@@ -43,8 +44,8 @@
 
     <p>where the push-forward operator $\sharp$ represents the direction of the transportation plan.</p>
 
-    <h2 id="kantrovich-relaxation">Kantrovich Relaxation</h2>
-    <p>Kantrovich proposed a relaxation of the Monge problem, allowing a source bin to be distributed to multiple locations in the target. Feasible solutions for this problem are defined by $U$ as follows:</p>
+    <h2 id="kantorovich-relaxation">Kantorovich Relaxation</h2>
+    <p>Kantorovich proposed a relaxation of the Monge problem, allowing a source bin to be distributed to multiple locations in the target. Feasible solutions for this problem are defined by $U$ as follows:</p>
 
     <p>$$
     U(a,b) = \{T \in \mathrm{R}^{n\times m}_+ : T \mathrm{1}_m = a , T^T \mathrm{1}_n = b\},
@@ -80,7 +81,7 @@
 
     <p><img src="../../images/ot-convex2.png" alt="Example"></p>
 
-    <p>Their method utilizes a dual form of Kantrovich’s relaxation:</p>
+    <p>Their method utilizes a dual form of Kantorovich’s relaxation:</p>
 
     <p>$$
     W(a,b) = \sup_{(f,g) \in \phi_c} \mathrm{E}_a[f(x)] + \mathrm{E}_b[g(y)]
@@ -103,17 +104,17 @@
 
     <p>where $C_{a,b} = \frac{1}{2} \mathrm{E}[x^2] + \frac{1}{2} \mathrm{E}[y^2]$, based on $f(x) + g(y) \leq \frac{1}{2} ||x-y||^2$.</p>
 
-    <p>Ultimately, we can define the optimal transport map $\triangledown f^*$ by Brenier’s theorem:</p>
+    <p>Ultimately, we can define the optimal transport map $\nabla f^*$ by Brenier’s theorem:</p>
 
     <p>$$
-    \mathrm{E}_b ||\triangledown f^*(y)- y||^2 = \inf_{T: T_{\sharp} a = b} \mathrm{E}_b ||T(y) - y||^2
+    \mathrm{E}_b ||\nabla f^*(y)- y||^2 = \inf_{T: T_{\sharp} a = b} \mathrm{E}_b ||T(y) - y||^2
     $$</p>
 
     <h2 id="breniers-theorem">Brenier’s Theorem</h2>
     <p>Brenier’s theorem states that if $b$ admits a density with respect to the Lebesgue measure on $\mathrm{R}^d$, then there exists a unique optimal coupling $\pi$ for the Monge problem:</p>
 
     <p>$$
-    d \pi (x,y) = df(y) \delta_{x = \triangledown f^*(y)}.
+    d \pi (x,y) = df(y) \delta_{x = \nabla f^*(y)}.
     $$</p>
 
   </div>

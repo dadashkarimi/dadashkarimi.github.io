@@ -1,4 +1,5 @@
 <head>
+<meta charset="UTF-8">
   <style>
     img {
       width: 100%;
@@ -77,7 +78,7 @@ $$</p>
 <p>$$
 \arg \min_w \mathcal{L}(W) = \frac{1}{2} \sum_{i=1}^n (y_i - W^T\phi(x_i))^2
 $$</p>
-<p>But, here we have two issues: 1. $\phi(.)$ is fixed and 2. We will suffer from curse of dimmensionality for $\phi(X) \in \mathbb{R}^D$ for $D\gg d$ or $\mathcal{O}(d^k)$ for polynomial with order $k$.</p>
+<p>But, here we have two issues: 1. $\phi(.)$ is fixed and 2. We will suffer from the curse of dimensionality for $\phi(X) \in \mathbb{R}^D$ for $D\gg d$ or $\mathcal{O}(d^k)$ for a polynomial with order $k$.</p>
 <h3 id="kernel-trick">Kernel Trick:</h3>
 <p>In most cases we don&rsquo;t really need to calculate $\phi(X)$ individually. Instead:</p>
 <p>$$

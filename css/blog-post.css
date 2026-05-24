@@ -110,6 +110,67 @@ body.theme-dark .blog-tape {
   font-size: 19px;
 }
 
+#page.post .share-buttons,
+#page.post .twitter-share-button,
+#page.post .linkedin-share-button,
+#page.post .facebook-share-button,
+#page.post .telegram-share-button,
+#page.post .pinterest-share-button {
+  display: none !important;
+}
+
+.lesson-map {
+  margin: 8px 0 42px;
+  padding: 22px 24px 24px;
+  color: var(--ink);
+  background: var(--paper-dark);
+  border: 1.5px solid var(--ink);
+  box-shadow: 6px 6px 0 var(--green);
+}
+
+.lesson-map__eyebrow {
+  color: var(--green);
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  line-height: 1;
+}
+
+#page.post .lesson-map h2 {
+  margin: 4px 0 10px;
+  font-size: clamp(24px, 3vw, 34px);
+}
+
+#page.post .lesson-map h2::before {
+  content: none;
+}
+
+#page.post .lesson-map p {
+  margin-bottom: 16px;
+  color: var(--ink-2);
+  font-size: 15.5px;
+  line-height: 1.55;
+}
+
+.lesson-map__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 18px;
+  margin: 0;
+  padding-left: 22px;
+}
+
+#page.post .lesson-map__list li {
+  margin: 0;
+  color: var(--green);
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.lesson-map__list a {
+  color: var(--ink);
+  text-decoration-thickness: 1px;
+}
+
 #page.post > div:last-of-type {
   border-top: 2px dashed var(--rule);
   padding-top: 34px;
@@ -334,29 +395,38 @@ body.theme-dark .blog-tape {
 }
 
 .diagram-node {
-  stroke: var(--ink);
+  stroke: #111111;
   stroke-width: 3;
   transition: transform 0.35s ease, opacity 0.35s ease;
 }
 
 .diagram-node--latent {
-  fill: var(--paper);
+  fill: #ffffff;
 }
 
 .diagram-node--observed {
-  fill: var(--green);
+  fill: #f6fff1;
+  stroke: var(--green);
 }
 
 body.theme-bright .diagram-node--observed {
-  fill: var(--yellow);
+  fill: #ffffff;
+  stroke: var(--green);
 }
 
 .diagram-node-label,
 .diagram-edge-label,
 .diagram-plate-label {
-  fill: var(--ink);
+  fill: #111111;
   font-family: 'Newsreader', serif;
   font-size: 28px;
+}
+
+.diagram-node-label {
+  paint-order: stroke;
+  stroke: #ffffff;
+  stroke-width: 3px;
+  stroke-linejoin: round;
 }
 
 .diagram-edge-label,

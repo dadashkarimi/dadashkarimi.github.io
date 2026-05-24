@@ -426,14 +426,14 @@
     svg.appendChild(theta);
     svg.appendChild(x);
     svg.appendChild(arrow);
-    svg.appendChild(text(154, 86, 'theta', 'diagram-node-label'));
+    svg.appendChild(text(162, 86, '\u03b8', 'diagram-node-label diagram-node-label--math'));
     svg.appendChild(text(164, 187, 'x', 'diagram-node-label'));
     svg.appendChild(text(350, 202, 'n observations', 'diagram-plate-label diagram-copy'));
     copies.forEach(function (node) { svg.appendChild(node); });
 
     var status = document.createElement('div');
     status.className = 'concept-diagram__status';
-    status.textContent = 'Parameter theta generates one observation x.';
+    status.textContent = 'Parameter \u03b8 generates one observation x.';
 
     card.stage.appendChild(svg);
     card.card.appendChild(status);
@@ -442,8 +442,8 @@
       state.step = (state.step + 1) % 2;
       card.card.classList.toggle('is-expanded', state.step === 1);
       status.textContent = state.step === 1
-        ? 'The same latent parameter can generate a sample x1, x2, ..., xn.'
-        : 'Parameter theta generates one observation x.';
+        ? 'The same latent parameter \u03b8 can generate a sample x1, x2, ..., xn.'
+        : 'Parameter \u03b8 generates one observation x.';
       this.textContent = state.step === 1 ? 'show one observation' : 'show repeated observations';
     });
 
@@ -803,7 +803,7 @@
     if ((/bayesian inference/.test(title) || (bayesHeading && /bayes/i.test(bayesHeading.textContent))) && bayesHeading) {
       drawBayesGraph(bayesHeading, {
         title: 'Parameter to observation',
-        caption: 'A graphical model makes the modeling assumption visible: theta is latent, x is observed, and the arrow encodes p(x | theta).'
+        caption: 'A graphical model makes the modeling assumption visible: \u03b8 is latent, x is observed, and the arrow encodes p(x | \u03b8).'
       });
     }
 

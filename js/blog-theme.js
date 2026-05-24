@@ -122,6 +122,99 @@
     document.body.appendChild(rail);
   }
 
+  function getPostBody(post) {
+    var candidates = Array.prototype.slice.call(post.children).filter(function (node) {
+      return node.tagName === 'DIV' && !node.classList.contains('post-date') && !node.classList.contains('share-buttons');
+    });
+    if (!candidates.length) return post;
+    return candidates.sort(function (left, right) {
+      var leftScore = left.querySelectorAll('p, h2, h3, img, ol, ul').length;
+      var rightScore = right.querySelectorAll('p, h2, h3, img, ol, ul').length;
+      return rightScore - leftScore;
+    })[0];
+  }
+
+  function cleanupLegacyArtifacts() {
+    Array.prototype.slice.call(document.querySelectorAll('.share-buttons')).forEach(function (node) {
+      node.remove();
+    });
+
+    Array.prototype.slice.call(document.querySelectorAll('script[src*="font-awesome"], link[href*="font-awesome"]')).forEach(function (node) {
+      node.remove();
+    });
+  }
+
+  function injectLessonMap() {
+    var post = document.querySelector('#page.post');
+    if (!post || document.querySelector('.lesson-map')) return;
+    var body = getPostBody(post);
+    var headings = Array.prototype.slice.call(body.querySelectorAll('h2, h3')).filter(function (heading) {
+      var label = heading.textContent.replace(/\s+/g, ' ').trim();
+      return label.length > 2 && label.length <= 120 && !heading.closest('.concept-diagram');
+    }).slice(0, 10);
+    if (headings.length < 2) return;
+
+    var map = document.createElement('section');
+    map.className = 'lesson-map';
+    var title = document.createElement('div');
+    title.className = 'lesson-map__eyebrow';
+    title.textContent = 'lesson flow';
+    var heading = document.createElement('h2');
+    heading.textContent = 'What you will learn';
+    var intro = document.createElement('p');
+    intro.textContent = 'This note is organized like a lecture: start with the motivation, follow the key definitions and derivations, then use the later sections as examples or extensions.';
+    var list = document.createElement('ol');
+    list.className = 'lesson-map__list';
+
+    function cleanHeadingText(value) {
+      var label = value.replace(/[#~]/g, '').replace(/\s+/g, ' ').trim();
+      if (label.length <= 72) return label;
+      return label.slice(0, 69).replace(/[\s,;:.]+$/, '') + '...';
+    }
+
+    headings.forEach(function (section, index) {
+      if (!section.id) section.id = 'lesson-section-' + (index + 1);
+      var item = document.createElement('li');
+      var link = document.createElement('a');
+      link.href = '#' + section.id;
+      link.textContent = cleanHeadingText(section.textContent);
+      link.title = section.textContent.replace(/\s+/g, ' ').trim();
+      item.appendChild(link);
+      list.appendChild(item);
+    });
+
+    map.appendChild(title);
+    map.appendChild(heading);
+    map.appendChild(intro);
+    map.appendChild(list);
+
+    var postDate = post.querySelector('.post-date');
+    if (postDate && postDate.nextSibling) post.insertBefore(map, postDate.nextSibling);
+    else post.insertBefore(map, body);
+  }
+
+  function loadMathJax() {
+    window.MathJax = window.MathJax || {};
+    window.MathJax.tex = window.MathJax.tex || {};
+    window.MathJax.tex.inlineMath = [['$', '$'], ['\\(', '\\)']];
+    window.MathJax.tex.displayMath = [['$$', '$$'], ['\\[', '\\]']];
+    window.MathJax.tex.processEscapes = true;
+    window.MathJax.options = window.MathJax.options || {};
+    window.MathJax.options.skipHtmlTags = ['script', 'noscript', 'style', 'textarea', 'pre', 'code'];
+
+    if (window.MathJax.typesetPromise) {
+      window.MathJax.typesetPromise([document.querySelector('#page.post') || document.body]).catch(function () {});
+      return;
+    }
+    if (document.getElementById('MathJax-script')) return;
+
+    var script = document.createElement('script');
+    script.id = 'MathJax-script';
+    script.async = true;
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+    document.head.appendChild(script);
+  }
+
   function loadDiagramEnhancer() {
     if (document.querySelector('script[src="/js/blog-diagrams.js"]')) return;
     var script = document.createElement('script');
@@ -132,7 +225,10 @@
 
   function boot() {
     injectChrome();
+    cleanupLegacyArtifacts();
+    injectLessonMap();
     injectLessonRail();
+    loadMathJax();
     var saved = localStorage.getItem(key);
     setTheme(saved === 'bright' ? 'bright' : 'dark');
     loadDiagramEnhancer();

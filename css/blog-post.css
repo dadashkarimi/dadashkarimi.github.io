@@ -461,6 +461,14 @@ body.theme-bright .diagram-node--observed {
   stroke-width: 2;
 }
 
+.diagram-attention-matrix {
+  fill: #fbfcff;
+}
+
+.diagram-attention-cell {
+  fill: #111111;
+}
+
 .concept-diagram--sequence-figure .diagram-step {
   opacity: 0;
   animation-duration: 8.5s;

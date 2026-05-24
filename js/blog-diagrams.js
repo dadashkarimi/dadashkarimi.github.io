@@ -291,7 +291,9 @@
     mountDiagram(target, card.card);
   }
 
-  function drawSequenceFigure(target, title, caption) {
+  function drawRnnSequenceFigure(target) {
+    var title = 'Recurrent neural network';
+    var caption = 'Inputs are processed one step at a time through hidden states h_t before producing outputs y_t.';
     var card = makeStaticCard('sequence-figure', title || 'Sequence model', caption || 'A recurrent or attention-based model transforms an input sequence into contextual hidden states before prediction.');
     card.card.classList.add('is-staged');
     var svg = createSvg(820, 360, '0 0 820 360');
@@ -310,6 +312,77 @@
       svg.appendChild(el('path', { d: 'M' + x + ' 140 L' + x + ' 78', class: 'diagram-paper-arrow ' + stageClass, 'marker-end': markerUrl }));
       if (index < 4) svg.appendChild(el('path', { d: 'M' + (x + 34) + ' 174 L' + (x + 96) + ' 174', class: 'diagram-paper-arrow diagram-step diagram-step--link-' + (index + 1), 'marker-end': markerUrl }));
     }
+    card.stage.appendChild(svg);
+    mountDiagram(target, card.card);
+  }
+
+  function drawSelfAttentionFigure(target) {
+    var card = makeStaticCard('attention-figure', 'Self-attention sequence model', 'Each token builds a contextual representation by attending to every token in the sequence.');
+    var svg = createSvg(820, 360, '0 0 820 360');
+    svg.setAttribute('aria-label', 'Self-attention diagram with tokens connected to a shared attention matrix and contextual outputs.');
+    var markerUrl = addArrowhead(svg, 'arrowhead-attention', 'diagram-paper-arrowhead');
+    var tokens = ['x', 'x', 'x', 'x'];
+
+    for (var index = 0; index < 4; index += 1) {
+      var x = 115 + index * 125;
+      svg.appendChild(el('rect', { x: x - 34, y: 260, width: 68, height: 48, rx: 8, class: 'diagram-paper-box' }));
+      svg.appendChild(mathText(x, 289, tokens[index], index + 1, 'diagram-paper-math diagram-paper-math--sequence'));
+      svg.appendChild(el('path', { d: 'M' + x + ' 260 C' + (x + 18) + ' 220 520 220 572 182', class: 'diagram-paper-arrow diagram-paper-arrow--thin', 'marker-end': markerUrl }));
+    }
+
+    svg.appendChild(el('rect', { x: 548, y: 76, width: 176, height: 176, rx: 10, class: 'diagram-paper-box diagram-attention-matrix' }));
+    for (var row = 0; row < 4; row += 1) {
+      for (var col = 0; col < 4; col += 1) {
+        var opacity = 0.22 + 0.13 * ((row + col) % 4);
+        svg.appendChild(el('rect', { x: 570 + col * 34, y: 98 + row * 34, width: 24, height: 24, rx: 4, class: 'diagram-attention-cell', opacity: opacity.toFixed(2) }));
+      }
+    }
+    svg.appendChild(text(586, 67, 'attention weights', 'diagram-paper-small'));
+
+    for (var outIndex = 0; outIndex < 4; outIndex += 1) {
+      var y = 68 + outIndex * 54;
+      svg.appendChild(el('rect', { x: 92, y: y - 22, width: 82, height: 44, rx: 8, class: 'diagram-paper-box diagram-paper-output' }));
+      svg.appendChild(mathText(133, y + 5, 'c', outIndex + 1, 'diagram-paper-math'));
+      svg.appendChild(el('path', { d: 'M548 ' + (116 + outIndex * 34) + ' C420 ' + y + ' 275 ' + y + ' 176 ' + y, class: 'diagram-paper-arrow diagram-paper-arrow--thin', 'marker-end': markerUrl }));
+    }
+
+    svg.appendChild(text(232, 185, 'all tokens interact in parallel', 'diagram-paper-small'));
+    card.stage.appendChild(svg);
+    mountDiagram(target, card.card);
+  }
+
+  function drawEncoderDecoderFigure(target) {
+    var card = makeStaticCard('encoder-decoder-figure', 'Encoder-decoder sequence model', 'The encoder compresses the source sequence into contextual states; the decoder generates target tokens step by step.');
+    var svg = createSvg(820, 360, '0 0 820 360');
+    svg.setAttribute('aria-label', 'Encoder-decoder diagram with source tokens, encoded context, and autoregressive decoder outputs.');
+    var markerUrl = addArrowhead(svg, 'arrowhead-encoder-decoder', 'diagram-paper-arrowhead');
+
+    for (var sourceIndex = 0; sourceIndex < 3; sourceIndex += 1) {
+      var sourceX = 96 + sourceIndex * 94;
+      svg.appendChild(el('rect', { x: sourceX - 31, y: 248, width: 62, height: 44, rx: 8, class: 'diagram-paper-box' }));
+      svg.appendChild(mathText(sourceX, 274, 'x', sourceIndex + 1, 'diagram-paper-math'));
+      svg.appendChild(el('path', { d: 'M' + sourceX + ' 248 L' + sourceX + ' 196', class: 'diagram-paper-arrow', 'marker-end': markerUrl }));
+      svg.appendChild(el('circle', { cx: sourceX, cy: 158, r: 30, class: 'diagram-paper-node diagram-paper-node--latent' }));
+      svg.appendChild(mathText(sourceX, 163, 'e', sourceIndex + 1, 'diagram-paper-math'));
+      if (sourceIndex < 2) svg.appendChild(el('path', { d: 'M' + (sourceX + 31) + ' 158 L' + (sourceX + 63) + ' 158', class: 'diagram-paper-arrow diagram-paper-arrow--thin', 'marker-end': markerUrl }));
+    }
+
+    svg.appendChild(el('path', { d: 'M312 158 C370 106 450 106 508 158', class: 'diagram-paper-arrow', 'marker-end': markerUrl }));
+    svg.appendChild(el('rect', { x: 338, y: 82, width: 144, height: 54, rx: 10, class: 'diagram-paper-node--latent-box' }));
+    svg.appendChild(text(370, 116, 'context', 'diagram-paper-small'));
+
+    for (var targetIndex = 0; targetIndex < 3; targetIndex += 1) {
+      var targetX = 542 + targetIndex * 92;
+      svg.appendChild(el('circle', { cx: targetX, cy: 158, r: 30, class: 'diagram-paper-node diagram-paper-node--latent' }));
+      svg.appendChild(mathText(targetX, 163, 'd', targetIndex + 1, 'diagram-paper-math'));
+      svg.appendChild(el('path', { d: 'M' + targetX + ' 126 L' + targetX + ' 80', class: 'diagram-paper-arrow', 'marker-end': markerUrl }));
+      svg.appendChild(el('rect', { x: targetX - 31, y: 30, width: 62, height: 44, rx: 8, class: 'diagram-paper-box diagram-paper-output' }));
+      svg.appendChild(mathText(targetX, 56, 'y', targetIndex + 1, 'diagram-paper-math'));
+      if (targetIndex < 2) svg.appendChild(el('path', { d: 'M' + (targetX + 31) + ' 158 L' + (targetX + 61) + ' 158', class: 'diagram-paper-arrow diagram-paper-arrow--thin', 'marker-end': markerUrl }));
+    }
+
+    svg.appendChild(text(86, 326, 'encoder: read source sequence', 'diagram-paper-small'));
+    svg.appendChild(text(542, 326, 'decoder: generate target sequence', 'diagram-paper-small'));
     card.stage.appendChild(svg);
     mountDiagram(target, card.card);
   }
@@ -719,11 +792,11 @@
       } else if (/(^|\/)vae\.png|sds-365\/vae\.png/i.test(src)) {
         drawVaeFigure(image);
       } else if (/rnn_2/i.test(src)) {
-        drawSequenceFigure(image, 'Recurrent neural network', 'Inputs are processed one step at a time through hidden states h_t before producing outputs y_t.');
+        drawRnnSequenceFigure(image);
       } else if (/transformer\.png/i.test(src)) {
-        drawSequenceFigure(image, 'Self-attention sequence model', 'Each token representation can use context from the rest of the sequence instead of only the previous hidden state.');
+        drawSelfAttentionFigure(image);
       } else if (/seq_to_seq/i.test(src)) {
-        drawSequenceFigure(image, 'Encoder-decoder sequence model', 'An encoder summarizes the input sequence and a decoder generates the output sequence step by step.');
+        drawEncoderDecoderFigure(image);
       }
     });
 

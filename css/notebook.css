@@ -232,6 +232,10 @@ nav {
   margin-top: 4px;
   display: inline-block;
 }
+body.theme-dark .pub-badge {
+  color: #000;
+  border-color: #d8ffc8;
+}
 .pub-cite {
   font-family: 'Caveat', cursive;
   font-size: 16px;

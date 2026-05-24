@@ -534,22 +534,52 @@ body.theme-bright .diagram-node--observed {
 
 .diagram-paper-label,
 .diagram-paper-param,
-.diagram-paper-small {
+.diagram-paper-small,
+.diagram-paper-math {
   fill: #111111;
   font-family: 'Newsreader', serif;
+  font-variant-numeric: lining-nums tabular-nums;
+  letter-spacing: -0.01em;
+  text-rendering: geometricPrecision;
 }
 
 .diagram-paper-label {
   font-size: 28px;
+  font-style: italic;
+  font-weight: 500;
 }
 
 .diagram-paper-param {
   font-size: 24px;
+  font-style: italic;
+  font-weight: 500;
 }
 
 .diagram-paper-small {
-  font-family: 'Atkinson Hyperlegible', sans-serif;
-  font-size: 15px;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 450;
+}
+
+.diagram-paper-math {
+  dominant-baseline: middle;
+  font-size: 25px;
+  text-anchor: middle;
+}
+
+.diagram-paper-math-symbol {
+  font-style: italic;
+  font-weight: 520;
+}
+
+.diagram-paper-math-sub {
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.diagram-paper-math--sequence {
+  font-size: 28px;
 }
 
 .diagram-copy {
@@ -645,6 +675,73 @@ mjx-container {
   color: var(--blue);
   text-decoration-color: var(--green);
   text-underline-offset: 4px;
+}
+
+.lesson-rail {
+  display: none;
+}
+
+@media (min-width: 1180px) {
+  .lesson-rail {
+    display: block;
+  }
+
+  .lesson-rail__link {
+    position: fixed;
+    top: 50%;
+    z-index: 30;
+    width: 190px;
+    padding: 13px 15px 15px;
+    color: var(--ink);
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    border: 1.5px solid var(--ink);
+    box-shadow: 5px 5px 0 var(--green);
+    text-decoration: none;
+    transform: translateY(-50%);
+    transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+  }
+
+  .lesson-rail__link:hover {
+    background: var(--paper-dark);
+    box-shadow: 8px 8px 0 var(--green);
+  }
+
+  .lesson-rail__link--prev {
+    left: 22px;
+  }
+
+  .lesson-rail__link--prev:hover {
+    transform: translate(-4px, -50%);
+  }
+
+  .lesson-rail__link--next {
+    right: 22px;
+    text-align: right;
+  }
+
+  .lesson-rail__link--next:hover {
+    transform: translate(4px, -50%);
+  }
+
+  .lesson-rail__eyebrow,
+  .lesson-rail__title {
+    display: block;
+  }
+
+  .lesson-rail__eyebrow {
+    margin-bottom: 5px;
+    color: var(--green);
+    font-family: 'Caveat', cursive;
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  .lesson-rail__title {
+    font-family: 'Newsreader', serif;
+    font-size: 18px;
+    font-weight: 520;
+    line-height: 1.08;
+  }
 }
 
 @media (max-width: 720px) {

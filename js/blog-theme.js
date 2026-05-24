@@ -1,5 +1,29 @@
 (function () {
   var key = 'site-theme';
+  var lessons = [
+    { href: '/blogs/rnn/index.html', title: 'Sequence Models & RNNs' },
+    { href: '/blogs/rl/index.html', title: 'Reinforcement Learning' },
+    { href: '/blogs/graphs/index.html', title: 'Sparsity and Graphs' },
+    { href: '/blogs/variational_inference_vae/index.html', title: 'Variational Inference' },
+    { href: '/blogs/approx-inf/index.html', title: 'Approximation Inference' },
+    { href: '/blogs/gibbs/index.html', title: 'Gibbs Sampling' },
+    { href: '/blogs/dirichlet/index.html', title: 'Dirichlet Processes' },
+    { href: '/blogs/bayes/index.html', title: 'Bayesian Inference' },
+    { href: '/blogs/ntk/index.html', title: 'Neural Tangent Kernels' },
+    { href: '/blogs/representer/index.html', title: 'Representer Theorem' },
+    { href: '/blogs/mercer-2022/index.html', title: 'Mercer\'s Theorem' },
+    { href: '/blogs/sparsity-2022/index.html', title: 'Sparsity Meets Convexity' },
+    { href: '/blogs/em-2021/index.html', title: 'Expectation Maximization' },
+    { href: '/blogs/bigdata-experiments-2021/index.html', title: 'Brain Imaging Experiments' },
+    { href: '/blogs/mixture-2021/index.html', title: 'Mixture Models and EM' },
+    { href: '/blogs/inference-2021/index.html', title: 'Posterior Inference' },
+    { href: '/blogs/erm-2021/index.html', title: 'Empirical Risk Minimization' },
+    { href: '/blogs/mle-2021/index.html', title: 'MLE and MAP Estimation' },
+    { href: '/blogs/vae-2021/index.html', title: 'Stochastic Functions' },
+    { href: '/blogs/kernel-2021/index.html', title: 'Kernel Methods' },
+    { href: '/blogs/ot-2021/index.html', title: 'Optimal Transport' },
+    { href: '/blogs/ot-convex/index.html', title: 'Optimal Transport & Convexity' }
+  ];
 
   function setTheme(theme) {
     var dark = theme === 'dark';
@@ -68,6 +92,36 @@
     }
   }
 
+  function normalizePath(path) {
+    return path.replace(/\/index\.html$/, '/').replace(/\/$/, '/');
+  }
+
+  function lessonLink(item, direction) {
+    var link = document.createElement('a');
+    link.className = 'lesson-rail__link lesson-rail__link--' + direction;
+    link.href = item.href;
+    link.innerHTML = '' +
+      '<span class="lesson-rail__eyebrow">' + (direction === 'prev' ? 'previous lesson' : 'next lesson') + '</span>' +
+      '<span class="lesson-rail__title">' + item.title + '</span>';
+    return link;
+  }
+
+  function injectLessonRail() {
+    if (document.querySelector('.lesson-rail')) return;
+    var current = normalizePath(window.location.pathname);
+    var index = lessons.findIndex(function (lesson) {
+      return normalizePath(lesson.href) === current;
+    });
+    if (index === -1) return;
+
+    var rail = document.createElement('aside');
+    rail.className = 'lesson-rail';
+    rail.setAttribute('aria-label', 'Lesson navigation');
+    if (index > 0) rail.appendChild(lessonLink(lessons[index - 1], 'prev'));
+    if (index < lessons.length - 1) rail.appendChild(lessonLink(lessons[index + 1], 'next'));
+    document.body.appendChild(rail);
+  }
+
   function loadDiagramEnhancer() {
     if (document.querySelector('script[src="/js/blog-diagrams.js"]')) return;
     var script = document.createElement('script');
@@ -78,6 +132,7 @@
 
   function boot() {
     injectChrome();
+    injectLessonRail();
     var saved = localStorage.getItem(key);
     setTheme(saved === 'bright' ? 'bright' : 'dark');
     loadDiagramEnhancer();

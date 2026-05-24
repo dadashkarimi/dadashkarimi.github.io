@@ -26,6 +26,17 @@
     return node;
   }
 
+  function mathText(x, y, symbol, index, className) {
+    var node = el('text', { x: x, y: y, class: className || 'diagram-paper-math' });
+    var main = el('tspan', { class: 'diagram-paper-math-symbol' });
+    main.textContent = symbol;
+    var sub = el('tspan', { class: 'diagram-paper-math-sub', dx: '1', dy: '7' });
+    sub.textContent = String(index);
+    node.appendChild(main);
+    node.appendChild(sub);
+    return node;
+  }
+
   function addArrowhead(svg, id, className) {
     var markerId = id + '-' + (++diagramUid);
     var defs = el('defs');
@@ -96,7 +107,7 @@
     context.fillRect(0, 0, canvas.width, canvas.height);
     context.strokeStyle = '#e1e1e1';
     context.lineWidth = 1;
-    context.font = '14px Atkinson Hyperlegible, sans-serif';
+    context.font = '14px Newsreader, serif';
     context.fillStyle = '#333333';
 
     for (var xTick = Math.ceil(bounds.xMin); xTick <= bounds.xMax; xTick += options.xStep || 1) {
@@ -129,7 +140,7 @@
     context.lineTo(yEnd.x, yEnd.y);
     context.stroke();
     context.fillStyle = '#111111';
-    context.font = '18px Atkinson Hyperlegible, sans-serif';
+    context.font = 'italic 19px Newsreader, serif';
     context.fillText(options.xLabel || 'x1', xEnd.x - 16, xEnd.y + 40);
     context.save();
     context.translate(yEnd.x - 48, yEnd.y + 36);
@@ -283,21 +294,21 @@
   function drawSequenceFigure(target, title, caption) {
     var card = makeStaticCard('sequence-figure', title || 'Sequence model', caption || 'A recurrent or attention-based model transforms an input sequence into contextual hidden states before prediction.');
     card.card.classList.add('is-staged');
-    var svg = createSvg(820, 320, '0 0 820 320');
+    var svg = createSvg(820, 360, '0 0 820 360');
     svg.setAttribute('aria-label', 'Sequence model diagram with input tokens, hidden states, and output tokens.');
     var markerUrl = addArrowhead(svg, 'arrowhead-sequence', 'diagram-paper-arrowhead');
     for (var index = 0; index < 5; index += 1) {
       var x = 120 + index * 130;
       var stageClass = 'diagram-step diagram-step--' + (index + 1);
-      svg.appendChild(el('rect', { x: x - 32, y: 218, width: 64, height: 44, rx: 6, class: 'diagram-paper-box ' + stageClass }));
-      svg.appendChild(el('circle', { cx: x, cy: 134, r: 31, class: 'diagram-paper-node diagram-paper-node--latent ' + stageClass }));
-      svg.appendChild(el('rect', { x: x - 32, y: 42, width: 64, height: 44, rx: 6, class: 'diagram-paper-box diagram-paper-output ' + stageClass }));
-      svg.appendChild(text(x - 12, 248, 'x' + (index + 1), 'diagram-paper-small ' + stageClass));
-      svg.appendChild(text(x - 12, 142, 'h' + (index + 1), 'diagram-paper-small ' + stageClass));
-      svg.appendChild(text(x - 12, 72, 'y' + (index + 1), 'diagram-paper-small ' + stageClass));
-      svg.appendChild(el('path', { d: 'M' + x + ' 218 L' + x + ' 168', class: 'diagram-paper-arrow ' + stageClass, 'marker-end': markerUrl }));
-      svg.appendChild(el('path', { d: 'M' + x + ' 102 L' + x + ' 86', class: 'diagram-paper-arrow ' + stageClass, 'marker-end': markerUrl }));
-      if (index < 4) svg.appendChild(el('path', { d: 'M' + (x + 32) + ' 134 L' + (x + 98) + ' 134', class: 'diagram-paper-arrow diagram-step diagram-step--link-' + (index + 1), 'marker-end': markerUrl }));
+      svg.appendChild(el('rect', { x: x - 34, y: 258, width: 68, height: 48, rx: 8, class: 'diagram-paper-box ' + stageClass }));
+      svg.appendChild(el('circle', { cx: x, cy: 174, r: 32, class: 'diagram-paper-node diagram-paper-node--latent ' + stageClass }));
+      svg.appendChild(el('rect', { x: x - 34, y: 28, width: 68, height: 48, rx: 8, class: 'diagram-paper-box diagram-paper-output ' + stageClass }));
+      svg.appendChild(mathText(x, 287, 'x', index + 1, 'diagram-paper-math diagram-paper-math--sequence ' + stageClass));
+      svg.appendChild(mathText(x, 179, 'h', index + 1, 'diagram-paper-math diagram-paper-math--sequence ' + stageClass));
+      svg.appendChild(mathText(x, 57, 'y', index + 1, 'diagram-paper-math diagram-paper-math--sequence ' + stageClass));
+      svg.appendChild(el('path', { d: 'M' + x + ' 258 L' + x + ' 208', class: 'diagram-paper-arrow ' + stageClass, 'marker-end': markerUrl }));
+      svg.appendChild(el('path', { d: 'M' + x + ' 140 L' + x + ' 78', class: 'diagram-paper-arrow ' + stageClass, 'marker-end': markerUrl }));
+      if (index < 4) svg.appendChild(el('path', { d: 'M' + (x + 34) + ' 174 L' + (x + 96) + ' 174', class: 'diagram-paper-arrow diagram-step diagram-step--link-' + (index + 1), 'marker-end': markerUrl }));
     }
     card.stage.appendChild(svg);
     mountDiagram(target, card.card);
@@ -477,7 +488,7 @@
       context.fillRect(0, 0, canvas.width, canvas.height);
       context.strokeStyle = '#d9d9d9';
       context.lineWidth = 1;
-      context.font = '14px Atkinson Hyperlegible, sans-serif';
+      context.font = '14px Newsreader, serif';
       context.fillStyle = '#333333';
 
       for (var xTick = -4; xTick <= 4; xTick += 1) {
@@ -508,7 +519,7 @@
       context.stroke();
 
       context.fillStyle = '#111111';
-      context.font = '18px Atkinson Hyperlegible, sans-serif';
+      context.font = 'italic 19px Newsreader, serif';
       context.fillText('x', xEnd.x - 10, xEnd.y + 38);
       context.save();
       context.translate(yEnd.x - 50, yEnd.y + 105);
@@ -524,7 +535,7 @@
         ['component 3', '#d62728', [8, 6]],
         ['mixture p(x)', '#111111', []]
       ];
-      context.font = '14px Atkinson Hyperlegible, sans-serif';
+      context.font = '14px Newsreader, serif';
       items.forEach(function (item, index) {
         var y = 72 + index * 23;
         context.save();
@@ -559,7 +570,7 @@
       }, '#111111', 3.5);
 
       context.fillStyle = '#111111';
-      context.font = '19px Newsreader, serif';
+      context.font = 'italic 20px Newsreader, serif';
       context.fillText('p(x) = sum_k pi_k N(x | mu_k, sigma^2)', 185, 38);
       drawLegend();
     }

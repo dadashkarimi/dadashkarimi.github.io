@@ -461,6 +461,77 @@ body.theme-bright .diagram-node--observed {
   stroke-width: 2;
 }
 
+.concept-diagram--sequence-figure .diagram-step {
+  opacity: 0;
+  animation-duration: 8.5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.concept-diagram--sequence-figure .diagram-step--1 { animation-name: sequence-step-1; }
+.concept-diagram--sequence-figure .diagram-step--link-1 { animation-name: sequence-step-link-1; }
+.concept-diagram--sequence-figure .diagram-step--2 { animation-name: sequence-step-2; }
+.concept-diagram--sequence-figure .diagram-step--link-2 { animation-name: sequence-step-link-2; }
+.concept-diagram--sequence-figure .diagram-step--3 { animation-name: sequence-step-3; }
+.concept-diagram--sequence-figure .diagram-step--link-3 { animation-name: sequence-step-link-3; }
+.concept-diagram--sequence-figure .diagram-step--4 { animation-name: sequence-step-4; }
+.concept-diagram--sequence-figure .diagram-step--link-4 { animation-name: sequence-step-link-4; }
+.concept-diagram--sequence-figure .diagram-step--5 { animation-name: sequence-step-5; }
+
+@keyframes sequence-step-1 {
+  0%, 3% { opacity: 0; transform: translateY(8px); }
+  8%, 92% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(0); }
+}
+
+@keyframes sequence-step-link-1 {
+  0%, 12% { opacity: 0; transform: translateX(-8px); }
+  17%, 92% { opacity: 1; transform: translateX(0); }
+  100% { opacity: 0; transform: translateX(0); }
+}
+
+@keyframes sequence-step-2 {
+  0%, 20% { opacity: 0; transform: translateY(8px); }
+  25%, 92% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(0); }
+}
+
+@keyframes sequence-step-link-2 {
+  0%, 30% { opacity: 0; transform: translateX(-8px); }
+  35%, 92% { opacity: 1; transform: translateX(0); }
+  100% { opacity: 0; transform: translateX(0); }
+}
+
+@keyframes sequence-step-3 {
+  0%, 38% { opacity: 0; transform: translateY(8px); }
+  43%, 92% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(0); }
+}
+
+@keyframes sequence-step-link-3 {
+  0%, 50% { opacity: 0; transform: translateX(-8px); }
+  55%, 92% { opacity: 1; transform: translateX(0); }
+  100% { opacity: 0; transform: translateX(0); }
+}
+
+@keyframes sequence-step-4 {
+  0%, 58% { opacity: 0; transform: translateY(8px); }
+  63%, 92% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(0); }
+}
+
+@keyframes sequence-step-link-4 {
+  0%, 70% { opacity: 0; transform: translateX(-8px); }
+  75%, 92% { opacity: 1; transform: translateX(0); }
+  100% { opacity: 0; transform: translateX(0); }
+}
+
+@keyframes sequence-step-5 {
+  0%, 78% { opacity: 0; transform: translateY(8px); }
+  83%, 92% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(0); }
+}
+
 .diagram-paper-label,
 .diagram-paper-param,
 .diagram-paper-small {
@@ -514,8 +585,11 @@ body.theme-bright .diagram-node--observed {
 @media (prefers-reduced-motion: reduce) {
   .diagram-arrow,
   .diagram-flow,
-  .diagram-reverse {
+  .diagram-reverse,
+  .concept-diagram--sequence-figure .diagram-step {
     animation: none;
+    opacity: 1;
+    transform: none;
   }
 }
 

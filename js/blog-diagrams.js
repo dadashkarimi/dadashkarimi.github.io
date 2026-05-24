@@ -282,20 +282,22 @@
 
   function drawSequenceFigure(target, title, caption) {
     var card = makeStaticCard('sequence-figure', title || 'Sequence model', caption || 'A recurrent or attention-based model transforms an input sequence into contextual hidden states before prediction.');
+    card.card.classList.add('is-staged');
     var svg = createSvg(820, 320, '0 0 820 320');
     svg.setAttribute('aria-label', 'Sequence model diagram with input tokens, hidden states, and output tokens.');
     var markerUrl = addArrowhead(svg, 'arrowhead-sequence', 'diagram-paper-arrowhead');
     for (var index = 0; index < 5; index += 1) {
       var x = 120 + index * 130;
-      svg.appendChild(el('rect', { x: x - 32, y: 218, width: 64, height: 44, rx: 6, class: 'diagram-paper-box' }));
-      svg.appendChild(el('circle', { cx: x, cy: 134, r: 31, class: 'diagram-paper-node diagram-paper-node--latent' }));
-      svg.appendChild(el('rect', { x: x - 32, y: 42, width: 64, height: 44, rx: 6, class: 'diagram-paper-box diagram-paper-output' }));
-      svg.appendChild(text(x - 12, 248, 'x' + (index + 1), 'diagram-paper-small'));
-      svg.appendChild(text(x - 12, 142, 'h' + (index + 1), 'diagram-paper-small'));
-      svg.appendChild(text(x - 12, 72, 'y' + (index + 1), 'diagram-paper-small'));
-      svg.appendChild(el('path', { d: 'M' + x + ' 218 L' + x + ' 168', class: 'diagram-paper-arrow', 'marker-end': markerUrl }));
-      svg.appendChild(el('path', { d: 'M' + x + ' 102 L' + x + ' 86', class: 'diagram-paper-arrow', 'marker-end': markerUrl }));
-      if (index < 4) svg.appendChild(el('path', { d: 'M' + (x + 32) + ' 134 L' + (x + 98) + ' 134', class: 'diagram-paper-arrow', 'marker-end': markerUrl }));
+      var stageClass = 'diagram-step diagram-step--' + (index + 1);
+      svg.appendChild(el('rect', { x: x - 32, y: 218, width: 64, height: 44, rx: 6, class: 'diagram-paper-box ' + stageClass }));
+      svg.appendChild(el('circle', { cx: x, cy: 134, r: 31, class: 'diagram-paper-node diagram-paper-node--latent ' + stageClass }));
+      svg.appendChild(el('rect', { x: x - 32, y: 42, width: 64, height: 44, rx: 6, class: 'diagram-paper-box diagram-paper-output ' + stageClass }));
+      svg.appendChild(text(x - 12, 248, 'x' + (index + 1), 'diagram-paper-small ' + stageClass));
+      svg.appendChild(text(x - 12, 142, 'h' + (index + 1), 'diagram-paper-small ' + stageClass));
+      svg.appendChild(text(x - 12, 72, 'y' + (index + 1), 'diagram-paper-small ' + stageClass));
+      svg.appendChild(el('path', { d: 'M' + x + ' 218 L' + x + ' 168', class: 'diagram-paper-arrow ' + stageClass, 'marker-end': markerUrl }));
+      svg.appendChild(el('path', { d: 'M' + x + ' 102 L' + x + ' 86', class: 'diagram-paper-arrow ' + stageClass, 'marker-end': markerUrl }));
+      if (index < 4) svg.appendChild(el('path', { d: 'M' + (x + 32) + ' 134 L' + (x + 98) + ' 134', class: 'diagram-paper-arrow diagram-step diagram-step--link-' + (index + 1), 'marker-end': markerUrl }));
     }
     card.stage.appendChild(svg);
     mountDiagram(target, card.card);

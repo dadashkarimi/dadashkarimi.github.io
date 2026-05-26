@@ -25,9 +25,9 @@
     <time datetime="2022-02-10T00:00:00Z">Feb 10, 2022</time> <span class="readtime">&middot; 5 min read</span>
   </div>
   <div>
-   <p>In the previous post, we talked about Mercer&rsquo;s theorem and defined a mercer kernel as $\int f(x) f(y) k(x,y) dx dy \geq 0$ for any function $f$.
-We call a matrix $M$ positive semi-definite if $f^TMf\geq 0$ for any $f\in \mathbb{R}^n$.
-Then eigenvalues must be non-negative or:</p>
+  <p>The representer theorem explains a key miracle in kernel methods: an optimization problem over an infinite-dimensional function space can collapse to a finite problem in terms of training points.</p>
+<p>We will build that claim step by step, starting from Mercer kernels and RKHS geometry, then showing exactly why the solution lives in the span of kernel evaluations at the data.</p>
+<p>From Mercer&rsquo;s theorem, a kernel satisfies $\int f(x) f(y) k(x,y) dx dy \geq 0$ for any function $f$. We call a matrix $M$ positive semi-definite if $f^TMf\geq 0$ for any $f\in \mathbb{R}^n$. Then eigenvalues must be non-negative:</p>
 <p>$$
 \lambda_1 \geq \lambda_2 \geq .. \geq \lambda_n \geq 0
 $$</p>

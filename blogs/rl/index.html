@@ -27,8 +27,9 @@
     <time datetime="2022-04-01T00:00:00Z">Apr 1, 2022</time> <span class="readtime">&middot; 15 min read</span>
   </div>
   <div>
-   <p>Reinforcement Learning is the third category of big topics in machine learning after supervised learning and unsupervised learning.
-When you think of Reinforcement Learning you might relate many concepts to that:</p>
+  <p>Reinforcement learning starts from a simple question: how should an agent act when each decision changes the future options it will see? Unlike supervised learning, there is no single correct label at each step; the agent must learn by trial, error, and delayed rewards.</p>
+<p>This post keeps one clear thread: define the RL setup, build intuition with the taxi environment, then derive Q-learning and Bellman equations so the update rule feels motivated rather than memorized.</p>
+  <p>Typical examples include games, robotics, recommendation, and resource management, where local decisions affect long-term outcomes.</p>
 <ol>
 <li>Playing chess, backgammon, and etc.</li>
 <li>Learning to walk or ride a bike</li>
@@ -50,8 +51,8 @@ The aim of RL is to learn to make optimal decisions from experience.</p>
 <li>The environment transitions to state $s' = \text{next}(s; a)$</li>
 <li>The agent receives reward $r = \text{reward}(s; a)$</li>
 </ol>
-<p>RL is inherently sequential</p>
-<p><img src="../../images/sds-365/rl.png" alt="Example"></p>
+<p>The diagram below is the core interaction loop between an agent and its environment.</p>
+<p><img src="../../images/sds-365/rl.png" alt="Reinforcement learning loop with state, action, transition, and reward"></p>
 <h2 id="principles">Principles</h2>
 <p><code>Policy</code>: A mapping from states to actions. An algorithm/rule to make
 decisions at each time step, designed to maximize the long term
@@ -76,7 +77,8 @@ In generative model we model the environment which involves the states in that e
 <h2 id="taxi-problem">Taxi Problem</h2>
 <p>A taxicab drives around the environment, picking up and delivering a
 passenger at four locations.</p>
-<p><img src="../../images/sds-365/rl_taxi.png" alt="Example"></p>
+<p>The taxi environment below is a compact benchmark where all states and actions are easy to inspect.</p>
+<p><img src="../../images/sds-365/rl_taxi.png" alt="Taxi gridworld environment with pickup and destination locations"></p>
 <p>Four designated locations: R(ed), G(reen), Y(ellow), and B(lue).
 Taxi starts off at random square and passenger is at random
 location.
@@ -159,17 +161,18 @@ a reward of -10.</p>
 <li>green: full taxi
 other letters (R, G, Y and B): locations for passengers and destinations</li>
 </ol>
-<p><img src="../../images/sds-365/taxi_random.png" alt="Example"></p>
+<p>This rollout shows exploration behavior before a stable policy is learned.</p>
+<p><img src="../../images/sds-365/taxi_random.png" alt="Random exploration trajectory in the taxi environment"></p>
 <p>Now, suppose we fix the passenger location and taxi locations. The possible positions for the passenger are corners, sides, or the taxi itself.
 Therefore we have $5\times 5$ grid points.</p>
 <h3 id="example-1">Example 1:</h3>
 <p>The question is, if the passenger is waiting?</p>
-<p><img src="../../images/sds-365/taxi_value.png" alt="Example"></p>
+<p><img src="../../images/sds-365/taxi_value.png" alt="Taxi value map when passenger is waiting at location B"></p>
 <p><strong>answer</strong>: The passenger is in location B.</p>
 <h3 id="example-2">Example 2:</h3>
 <p>How about this example?
 <strong>answer</strong>: Yes, the passenger is in the taxi and wants to go to top left in the grid.</p>
-<p><img src="../../images/sds-365/taxi_value_2.png" alt="Example"></p>
+<p><img src="../../images/sds-365/taxi_value_2.png" alt="Taxi value map when passenger is already in taxi and heading to destination"></p>
 <h2 id="bellman-equation">Bellman Equation</h2>
 <p>The optimal value function is the largest expected discounted long
 term reward starting from that state.</p>
@@ -268,7 +271,7 @@ sequence of 4 frames; reward is score.
 layer fully connected, 256 neurons.
 Q-learning carried out over mini batches of playing sequences
 that are “remembered and replayed”.</p>
-<p><img src="../../images/sds-365/q_nn.png" alt="Example"></p>
+<p><img src="../../images/sds-365/q_nn.png" alt="Figure for ../../images/sds-365/q_nn.png"></p>
 <p>Recall from Bellman equation that $y_t$ is an expectation.
 Learning takes place when expectations are violated. Receiving
 the reward itself does not cause changes.
@@ -539,7 +542,7 @@ Then we construct the 4 layer neural network.
 </div>
 </div>
 <p>Overall, we can categorize reinforcement learning algorithms as follows:</p>
-<p><img src="../../images/sds-365/rl_algorithms.png" alt="Example"></p>
+<p><img src="../../images/sds-365/rl_algorithms.png" alt="Figure for ../../images/sds-365/rl_algorithms.png"></p>
 <h2 id="policy-iteration">Policy iteration</h2>
 <ol start="0">
 <li>Initialize policy arbitrarily</li>
@@ -547,7 +550,7 @@ Then we construct the 4 layer neural network.
 <li>Update policy to match values (policy improvement)</li>
 <li>Go to 1.</li>
 </ol>
-<p><img src="../../images/sds-365/val_pol_iter.png" alt="Example"></p>
+<p><img src="../../images/sds-365/val_pol_iter.png" alt="Figure for ../../images/sds-365/val_pol_iter.png"></p>
 <p>We evaluate a policy $\pi(s)$ by calculating the state value function $V(s)$:</p>
 <p>$$
 V(S) = \sum_{s',r'} p(s',r'|s,\pi(s))[\text{reward}(s,a) + \gamma V(s')]

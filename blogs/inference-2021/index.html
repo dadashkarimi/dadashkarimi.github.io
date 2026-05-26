@@ -25,7 +25,8 @@
     <time datetime="2021-11-26T00:00:00Z">Nov 26, 2021</time> <span class="readtime">&middot; 3 min read</span>
   </div>
   <div>
-  <p><strong>Bayesian Inference</strong>  What can we do with a posterior distribution $p(\theta|x)$ that we cannot do with a point estimate? For example, we can estimate $\theta$ by $\theta_{\text{MAP}} = \arg \max_{\theta} p(\theta|x)$.</p>
+  <p><strong>Bayesian Inference</strong> Why keep an entire posterior $p(\theta\mid x)$ instead of only one number? Because uncertainty itself is often the decision-relevant quantity, not just the best point estimate.</p>
+<p>This note follows one spine: what posterior summaries give us (mean, median, MAP), how conjugacy makes updates tractable, and how those ideas show up in Bayesian linear regression.</p>
 <p><strong>1-Quantify Uncertainty</strong>  Posterior variance typically decreases as $1/n$ when we see $n$ data points.</p>
 <p><strong>2-Posterior Mean</strong> $\theta_{\text{Mean}} = E_{P(\theta|x)}[\theta] = \int_{\mathcal{\theta}}\theta.p(\theta|x) d\theta$. Recall that if $\theta \sim p(\theta)$ and $x|\theta \sim p(x|\theta)$ we can define joint probability with $p(\theta,x) = p(\theta).p(x|\theta)$.
 Indeed, the posterior mean minimizes the mean square loss:
@@ -122,7 +123,7 @@ w | y,x \sim \text{Normal}((xx^T+\lambda I)^{-1}xy,\sigma^2(xx^T+\lambda I)^{-1}
 $$</p>
 <p>Recall that $x=(x_1,..,x_n)$ and $xx^T=(x_1,..,x_n)(x_1,..,x_n)^T=\sum_{i=1}^{n}x_ix_i^T$.
 For $d=1$ $xx^T=x_1^2+..x_n^2$ and variance is $\frac{\sigma^2}{x_1^2+..x_n^2+\lambda}=O(\frac{1}{n})$. Here are some examples of posterior predictive distribution:</p>
-<p><img src="../../images/posterior.png" alt="Example"></p>
+<p><img src="../../images/posterior.png" alt="Figure"></p>
 <p>We covered this post in the introduction to machine learning CPCS 481/581, Yale University, <a href="http://www.cs.yale.edu/homes/wibisono/">Andre Wibisono</a> where I (joint with <a href="http://iid.yale.edu/people/siddhart.md/">Siddharth Mitra</a>) was TF.</p>
 
 

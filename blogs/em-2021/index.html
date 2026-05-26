@@ -25,10 +25,10 @@
     <time datetime="2021-12-06T00:00:00Z">Dec 6, 2021</time> <span class="readtime">&middot; 5 min read</span>
   </div>
   <div>
-   <p>We discussed the EM algorithm on Gaussian Mixture models in the previous <a href="../mixture-2021.html">post</a>.
-In a Gaussian mixture model, the goal is to maximize the likelihood function
-with respect to the parameters (comprising the means and covariances of the
-components and the mixing coefficients).</p>
+  <p>EM is the algorithm you reach for when maximum likelihood is clear in principle but hard in practice because of latent variables. Gaussian mixtures are the canonical example.</p>
+<p>This post keeps one thread: define the mixture objective, split optimization into E and M steps, and explain why each subproblem is easier than direct optimization of the marginal likelihood.</p>
+<p>As in the previous <a href="../mixture-2021.html">post</a>, in a Gaussian mixture model we maximize likelihood over means, covariances, and mixing weights.</p>
+<p>Intuitively, EM alternates between two questions: given parameters, which cluster likely generated each point (E-step)? Given those soft assignments, what parameters best fit them (M-step)?</p>
 <ol>
 <li>Initialize the means $\mu_k$, covariances $\Sigma_k$ and mixing coefficients $\pi_k$ , and
 evaluate the initial value of the log likelihood.</li>
@@ -97,7 +97,8 @@ We use <strong>EM</strong> algorithm to approximate $\max_{\theta} p(x|\theta)$ 
 </ol>
 <p>Which are easier to implement.</p>
 <p><strong>Review:</strong>  a function $f: \mathbb{R} \rightarrow \mathbb{R}$ is convex if $f&rsquo;&rsquo;(x)\geq 0$ for all $x \in \mathbb{R}$.</p>
-<p><img src="../../images/convex.JPG" alt="Example"></p>
+<p>The curve below illustrates convexity: line segments between points stay above the function.</p>
+<p><img src="../../images/convex.JPG" alt="Convex function illustration for Jensen inequality intuition"></p>
 <p>Equivalently we can say:</p>
 <p>$$
 f(\frac{x+y}{2}) \leq \frac{f(x)+f(y)}{2}
@@ -223,12 +224,12 @@ $$</p>
 <p>$$
 \text{KL}(q || p) = \sum_z q(z) \log \frac{q(z)}{p(z)}
 $$</p>
-<p>These are some graphs that you can find in the Bishop book illustrating <strong>E-step</strong>:
-<img src="../../images/e-step.JPG" alt="Example"></p>
+<p>These Bishop figures summarize the geometric interpretation of the <strong>E-step</strong>:
+<img src="../../images/e-step.JPG" alt="E-step visualization in expectation maximization"></p>
 <p>and <strong>M-step</strong>:
-<img src="../../images/m-step.JPG" alt="Example"></p>
+<img src="../../images/m-step.JPG" alt="M-step visualization in expectation maximization"></p>
 <p>and the decomposition:</p>
-<p><img src="../../images/kl-docm.JPG" alt="Example"></p>
+<p><img src="../../images/kl-docm.JPG" alt="ELBO and KL decomposition figure for expectation maximization"></p>
 <p>Properties:</p>
 <ol>
 <li>$\text{KL}(p || q) \geq 0 \quad \forall p,q$</li>

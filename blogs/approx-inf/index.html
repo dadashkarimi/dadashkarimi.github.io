@@ -24,9 +24,9 @@
     <time datetime="2022-03-07T00:00:00Z">Mar 7, 2022</time> <span class="readtime">&middot; 5 min read</span>
   </div>
   <div>
-   <p>In the previous post, we talked about Gibbs sampling and posterior inference.
-However, computing Bayesian posteriors can be impractical.
-Two approaches:</p>
+  <p>Exact Bayesian posterior inference is beautiful on paper and often painful in practice. The central problem is computational: we know what to compute, but not how to compute it at scale.</p>
+<p>This post compares two practical paths, simulation and variational inference, and keeps one storyline: start from the generative template, invert it into posterior questions, then show where approximation enters and why.</p>
+<p>Two approaches:</p>
 <ol>
 <li>Simulation</li>
 <li>Variational Inference</li>
@@ -63,7 +63,7 @@ X_i | \theta_i \sim f(x|\theta_i), i=1,2,..,n
 \end{aligned}
 $$</p>
 <p>Last time we talked about one way of CRP that we have $\theta_i^*$:</p>
-<p><img src="../../images/sds-365/crp_5.png" alt="Example"></p>
+<p><img src="../../images/sds-365/crp_5.png" alt="Figure"></p>
 <p>Today, we consider the case that we <strong>don&rsquo;t</strong> have $\theta_i^*$.
 $Z_1,Z_2,..,Z_n$ and $\theta_1,\theta_2,..,\theta_n$.
 $Z_i$ will be which table the customer is sitting at (i.e., clustering of the data).
@@ -133,7 +133,7 @@ If it&rsquo;s in the new table, I will move to that table, and if it&rsquo;s in 
 All this is one step in Gibbs sampler.
 Then I take another data point $x_2$ and repeat.</p>
 <p>The predictive density for new point $x$ given this clustering.</p>
-<p><img src="../../images/sds-365/crp_6.png" alt="Example"></p>
+<p><img src="../../images/sds-365/crp_6.png" alt="Figure for ../../images/sds-365/crp_6.png"></p>
 <p>$$
 \begin{aligned}
 \text{table 1: } &amp;\frac{1}{5+\alpha}p(x|x_5) + \text{table 3: }\frac{1}{5+\alpha}p(x|x_1)\\

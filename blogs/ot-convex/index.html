@@ -24,14 +24,13 @@
     <time datetime="2021-10-28T00:00:00Z">Oct 28, 2021</time> <span class="readtime">&middot; 4 min read</span>
   </div>
   <div>
-    <p>The study of optimal transport aims to create a mapping that minimizes the total cost of moving mass from $\alpha$ to $\beta$, as originally formulated by <a href="https://arxiv.org/abs/1803.00567">Monge (1781)</a>. Applications like <a href="https://ieeexplore.ieee.org/document/7053911">shape matching</a>, <a href="https://arxiv.org/abs/1210.0375">data assimilation</a>, and <a href="https://link.springer.com/content/pdf/10.1007/978-3-030-87199-4_28.pdf">active brain transportation</a> are among the exciting research areas advancing these methods to find suitable mappings between $\alpha$ and $\beta$ for specific purposes.<br>
-    This post refers to locations in the source and target as $\alpha$ and $\beta$, respectively, and uses $a$ and $b$ for distributions.
-    The motivation for this post is drawn from a recent paper by <a href="http://proceedings.mlr.press/v119/makkuva20a/makkuva20a.pdf">Makkuva et al.,</a> which introduces a novel approach to learning optimal transport from samples (ICML 2020).</p>
+    <p>Optimal transport gives a principled way to match one distribution to another by minimizing movement cost, but high-dimensional settings make classic solvers expensive. This post focuses on that practical gap between elegant theory and scalable learning.</p>
+    <p>We use one roadmap: Monge and Kantorovich formulations, why direct computation becomes difficult, and how convex neural parameterizations (ICNNs) help learn transport maps from samples.</p>
+    <p>Throughout the post, source and target locations are denoted by $\alpha$ and $\beta$, while $a$ and $b$ denote their associated distributions. The main reference is <a href="http://proceedings.mlr.press/v119/makkuva20a/makkuva20a.pdf">Makkuva et al.</a> (ICML 2020).</p>
 
-    <p>It is noteworthy that optimal transport was initially proposed for tasks such as resource allocation among warehouses, traffic management, and distributing soldiers to different camps.</p>
-
-    <p><img src="../../images/ot-convex1.png" alt="Example"></p>
-
+    <p>Historically, OT was motivated by logistics problems such as moving goods across locations at minimum cost.</p>
+  <p>The figure below illustrates that source-to-target transport intuition before we formalize it.</p>
+  <p><img src="../../images/ot-convex1.png" alt="Conceptual source-to-target transport setup"></p>
     <p>We’ll first discuss the Monge problem itself and then describe the <a href="http://proceedings.mlr.press/v119/makkuva20a/makkuva20a.pdf">sampling approach of Makkuva et al.</a> to learn mappings.</p>
 
     <h2 id="monge-problem">Monge Problem</h2>
@@ -63,9 +62,9 @@
     L_c(\alpha, \beta) = \min_{T} C^T T \text{ s.t., } A \underline{T} = \begin{bmatrix} \alpha \\ \beta \end{bmatrix}
     $$</p>
 
-    <p>where:</p>
+    <p>where the matrix form is:</p>
 
-    <p><img src="../../images/ot/ot-eq.svg" alt="Example"></p>
+    <p><img src="../../images/ot/ot-eq.svg" alt="Linear-program formulation of Kantorovich optimal transport constraints"></p>
 
     <p>Algorithmic solutions for this linear program are well-established. In high-dimensional spaces, however, the proposed algorithms become computationally prohibitive. Some research has suggested quantizing space to handle the curse of dimensionality. For instance, a <a href="http://proceedings.mlr.press/v97/chen19h/chen19h.pdf">semi-discrete approach</a> was proposed at ICML 2019 by the UIUC group.</p>
 
@@ -79,7 +78,8 @@
 
     <p>This approach requires evaluating each point, and heuristic methods sample issues and use those as regularizers, potentially leading to biases. <a href="http://proceedings.mlr.press/v119/makkuva20a/makkuva20a.pdf">Makkuva et al.</a> proposed learning optimal transport from samples by exploring convex function sets.</p>
 
-    <p><img src="../../images/ot-convex2.png" alt="Example"></p>
+    <p>The next figure summarizes the convex-dual view used in the sample-based method.</p>
+    <p><img src="../../images/ot-convex2.png" alt="Convex dual perspective for learning optimal transport from samples"></p>
 
     <p>Their method utilizes a dual form of Kantorovich’s relaxation:</p>
 

@@ -25,18 +25,20 @@
     <time datetime="2021-10-20T00:00:00Z">Oct 20, 2021</time> <span class="readtime">&middot; 12 min read</span>
   </div>
   <div>
-   <p>Empirical risk minimization with linear model $f(x) = w.x$  given data points is a traditional way of learning coefficients $w$. Ridge regression, Lasso, Elastic net, Perceptron, SVM, and Logistic Regression are examples of ERM methods.
-Let&rsquo;s say our data points are $(x_1,y_1) , (x_2,y_2), .., (x_n, y_n)$, then ERM is defined by:</p>
+  <p>Many classical models are linear in parameters, which makes optimization easy but often limits expressiveness. Kernel methods give a way to keep convex training while modeling nonlinear patterns.</p>
+<p>The spine of this post is: ERM in linear form, feature maps for nonlinearity, and the kernel trick that avoids explicit high-dimensional computations.</p>
+<p>Suppose data points are $(x_1,y_1)$, $(x_2,y_2)$, .., $(x_n, y_n)$. A standard ERM objective is:</p>
 <p>$$
 \min_{w\in \mathbb{R}^d} \sum_{i=1}^n L(y_i,w.x_i)+\lambda \text{Reg}(w)
 $$</p>
-<p>You can find $w$ using least square error and (stochastic) gradient descent. But how about nonlinear models? Can we do the same on data points that are not linearly separable?</p>
+<p>You can optimize this with least squares and (stochastic) gradient descent.
+The challenge appears when the relation between $x$ and $y$ is nonlinear: how do we keep optimization manageable without giving up expressive models?</p>
 <h2 id="how-to-extend-this-to-nonlinear-models">How to extend this to nonlinear models?</h2>
 <p>We can do regression (predict $y$ from data $x\in \mathbb{R}^d$) using a nonlinear function $f(x)$ of the form:</p>
 <p>$$
 f(x) = w. \phi (x)
 $$</p>
-<p>for some feature map $\phi: \mathbb{R}^d \rightarrow \mathbb{R}^M$ for some $M$.</p>
+<p>for a feature map $\phi: \mathbb{R}^d \rightarrow \mathbb{R}^M$.</p>
 <p>This captures polynomials. Then, for one dimensional $x$ we can write $f(x)$ as:</p>
 <p>$$
 d=1 :
@@ -83,7 +85,7 @@ x_{i_1}x_{i_2}..x_{i_p}
 \end{bmatrix}
 \end{align}
 $$</p>
-<p>So far, we have captured nonlinearity in our data points with $\phi$. However, our original function $f(x)$ is still linear concerning $w$.</p>
+<p>This is the key trick: the model is nonlinear in $x$ but remains linear in parameters $w$, so optimization still looks like linear regression.</p>
 <p>Let&rsquo;s go over some examples:</p>
 <p>$$
 d=1: f(x) = e^x = 1+ x + \frac{x^2}{2} + \frac{x^3}{3!} + .. = \sum_{m=0}^{\inf} \frac{x^m}{m!}
@@ -101,12 +103,12 @@ $$</p>
 d&gt;1: f(x) = e^{w.x} = 1+w.x + \frac{(w.x)^2}{2} + .. = \sum_{m=0}^{\inf} \frac{(w.x)^m}{m!}
 $$</p>
 <p>Which is derived from Taylor expansion for the exponential function.</p>
-<h3 id="can-we-learn-w-for-fxwphix-without-having-to-compute-phix-in-mathbbrm-directly-phi-mathbbrd-rightarrow-mathbbrm-">Can we learn $w$ for $f(x)=w.\phi(x)$ without having to compute $\phi(x) \in \mathbb{R}^m$ directly: $\phi: \mathbb{R}^d \rightarrow \mathbb{R}^m$ ?</h3>
-<p>Yes, as long as we can compute the inner product between feature vectors. Let&rsquo;s call this <!-- raw HTML omitted --> kernel function <!-- raw HTML omitted -->:</p>
+<h3 id="can-we-learn-w-for-fxwphix-without-having-to-compute-phix-in-mathbbrm-directly-phi-mathbbrd-rightarrow-mathbbrm-">Can we learn $w$ for $f(x)=w.\phi(x)$ without explicitly constructing high-dimensional $\phi(x)$?</h3>
+<p>Yes. We only need inner products between feature vectors. That quantity is the kernel function:</p>
 <p>$$
 k(x,x&rsquo;) = \phi(x).\phi(x&rsquo;)
 $$</p>
-<p>Now, lets&rsquo; do non-linear regularized least squares: $f(x) = w.\phi(x)$ where we are going to fit $(x_i,y_i), i=1,..,n$.</p>
+<p>Now apply nonlinear regularized least squares with $f(x) = w.\phi(x)$ on training pairs $(x_i,y_i)$:</p>
 <p>$$
 \min_{w\in \mathbb{R}^M} \sum_{i=1}^n (y_i-w.\phi(x))^2+\frac{\lambda}{2} ||w||^2
 $$</p>
@@ -126,7 +128,7 @@ $$</p>
 <p>$$
 w^* = \frac{1}{\lambda}  \sum_{i=1}^n \alpha_i \phi (x_i)
 $$</p>
-<p>Then, solution $w^*$ lies on the span of feature vectors: $\phi(x_1),\phi(x_2),..,\phi(x_n) \in \mathbb{R} ^ m$</p>
+<p>So the solution $w^*$ lies in the span of training feature vectors $\phi(x_1),\phi(x_2),..,\phi(x_n)$.</p>
 <h3 id="how-to-find-residuals">How to find residuals?</h3>
 <p>$$
 \begin{align}
@@ -182,7 +184,7 @@ w^* = &amp; \frac{1}{\lambda}  \sum_{i=1}^n \alpha_i \phi (x_i)\\\
 \end{bmatrix} \qquad \Phi \in \mathbb{R}^{d\times n}
 \end{align}
 $$</p>
-<h3 id="how-to-predict-compute-fx">How to predict? (compute $f(x)$)</h3>
+<h3 id="how-to-predict-compute-fx">How to predict (compute $f(x)$)</h3>
 <p>$$
 \begin{align}
 f(x) = &amp; w^* . \phi(x)\\\
@@ -190,6 +192,7 @@ f(x) = &amp; w^* . \phi(x)\\\
 =&amp;\frac{1}{\lambda} \sum_i \alpha_i K(x_i,x)
 \end{align}
 $$</p>
+<p>This final expression is the practical payoff: prediction depends on kernel evaluations against training points, not on constructing $\phi(x)$ explicitly.</p>
 <p>This material was covered in the introduction to machine learning CPCS 481/581, Yale University, <a href="http://www.cs.yale.edu/homes/wibisono/">Andre Wibisono</a> where I (joint with <a href="http://iid.yale.edu/people/siddhart.md/">Siddharth Mitra</a>) was TF.</p>
 
 

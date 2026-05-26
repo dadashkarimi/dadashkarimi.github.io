@@ -1,6 +1,7 @@
 (function () {
   var svgNs = 'http://www.w3.org/2000/svg';
   var diagramUid = 0;
+  var diagramNumber = 0;
 
   function createSvg(width, height, viewBox) {
     var svg = document.createElementNS(svgNs, 'svg');
@@ -48,18 +49,19 @@
   }
 
   function makeCard(type, title, caption) {
-    var card = document.createElement('section');
-    card.className = 'concept-diagram concept-diagram--' + type;
+    var card = document.createElement('figure');
+    card.className = 'concept-diagram scifig concept-diagram--' + type;
     card.dataset.diagram = type;
 
     var head = document.createElement('div');
-    head.className = 'concept-diagram__head';
+    head.className = 'concept-diagram__head scifig-head';
 
-    var label = document.createElement('div');
-    label.className = 'concept-diagram__label';
+    var label = document.createElement('span');
+    label.className = 'concept-diagram__label scifig-eyebrow';
     label.textContent = 'interactive figure';
 
-    var heading = document.createElement('h3');
+    var heading = document.createElement('span');
+    heading.className = 'scifig-title';
     heading.textContent = title;
 
     head.appendChild(label);
@@ -67,12 +69,17 @@
     card.appendChild(head);
 
     var stage = document.createElement('div');
-    stage.className = 'concept-diagram__stage';
+    stage.className = 'concept-diagram__stage scifig-plate';
+    var number = document.createElement('span');
+    number.className = 'scifig-num';
+    diagramNumber += 1;
+    number.textContent = 'FIG ' + String(diagramNumber).padStart(2, '0');
+    stage.appendChild(number);
     card.appendChild(stage);
 
     if (caption) {
-      var copy = document.createElement('p');
-      copy.className = 'concept-diagram__caption';
+      var copy = document.createElement('figcaption');
+      copy.className = 'concept-diagram__caption scifig-caption';
       copy.textContent = caption;
       card.appendChild(copy);
     }
@@ -83,7 +90,7 @@
   function makeStaticCard(type, title, caption) {
     var card = makeCard(type, title, caption);
     card.card.classList.add('is-static');
-    card.card.querySelector('.concept-diagram__label').textContent = 'scientific figure';
+    card.card.querySelector('.scifig-eyebrow').textContent = 'scientific figure';
     return card;
   }
 
@@ -166,59 +173,124 @@
   }
 
   function drawGaussianDataFigure(target) {
-    var card = makeStaticCard('cluster-figure', 'Why one Gaussian is not enough', 'Two separated clouds are better explained by component-specific means and covariances than by one global Gaussian.');
-    var canvas = document.createElement('canvas');
-    canvas.width = 900;
-    canvas.height = 460;
-    card.stage.appendChild(canvas);
-    var context = canvas.getContext('2d');
-    var bounds = { xMin: -3, xMax: 3, yMin: -3, yMax: 3, left: 70, top: 34, width: 760, height: 350 };
-    drawScientificAxes(context, canvas, bounds, { xStep: 1, yStep: 1, xLabel: 'x₁', yLabel: 'x₂' });
+    var card = makeStaticCard('cluster-figure', 'Gaussian density over (x1, x2) data', 'A 2D Gaussian rendered in 3D: density is vertical, data live on the floor, and the dashed ellipse is the projected 1-sigma contour.');
+    var svg = createSvg(760, 480, '0 0 760 480');
+    svg.setAttribute('class', 'plate-svg');
+    svg.setAttribute('aria-label', '3D Gaussian density over a data cloud with principal axes and equation card.');
 
-    var clusters = [
-      { color: '#1f77b4', cx: -1.25, cy: -0.9, angle: -0.55 },
-      { color: '#d62728', cx: 1.15, cy: 1.0, angle: -0.48 }
-    ];
-    clusters.forEach(function (cluster, clusterIndex) {
-      for (var index = 0; index < 42; index += 1) {
-        var u = (index * 37 % 41) / 41 - 0.5;
-        var v = (index * 19 % 43) / 43 - 0.5;
-        var x = cluster.cx + 1.05 * u + 0.48 * v;
-        var y = cluster.cy + 0.55 * u + 1.0 * v;
-        var p = canvasPoint(canvas, x, y, bounds);
-        context.fillStyle = cluster.color;
-        context.globalAlpha = 0.85;
-        context.beginPath();
-        context.arc(p.x, p.y, 4, 0, Math.PI * 2);
-        context.fill();
-      }
-      context.globalAlpha = 1;
-      drawEllipse(context, canvas, bounds, cluster.cx, cluster.cy, 1.25, 0.72, cluster.angle, cluster.color, [6, 5]);
-      context.fillStyle = cluster.color;
-      context.font = '18px Newsreader, serif';
-      context.fillText('component ' + (clusterIndex + 1), canvasPoint(canvas, cluster.cx - 0.55, cluster.cy + 1.15, bounds).x, canvasPoint(canvas, cluster.cx, cluster.cy + 1.15, bounds).y);
+    var defs = el('defs');
+    var axisMarker = el('marker', { id: 'axarr-gauss3d-' + (++diagramUid), viewBox: '0 0 10 10', refX: '9', refY: '5', markerWidth: '8', markerHeight: '8', orient: 'auto-start-reverse' });
+    axisMarker.appendChild(el('path', { d: 'M0,0 L10,5 L0,10 z', fill: '#1a1a1a' }));
+    defs.appendChild(axisMarker);
+    var purpleMarker = el('marker', { id: 'purplearr-gauss3d-' + (++diagramUid), viewBox: '0 0 10 10', refX: '9', refY: '5', markerWidth: '9', markerHeight: '9', orient: 'auto-start-reverse' });
+    purpleMarker.appendChild(el('path', { d: 'M0,0 L10,5 L0,10 z', fill: '#7e4dc8' }));
+    defs.appendChild(purpleMarker);
+
+    var bellGrad = el('radialGradient', { id: 'bell-grad-' + (++diagramUid), cx: '50%', cy: '55%', r: '55%', fx: '50%', fy: '55%' });
+    bellGrad.appendChild(el('stop', { offset: '0%', 'stop-color': '#fcd34d', 'stop-opacity': '0.95' }));
+    bellGrad.appendChild(el('stop', { offset: '35%', 'stop-color': '#f59e0b', 'stop-opacity': '0.7' }));
+    bellGrad.appendChild(el('stop', { offset: '70%', 'stop-color': '#d97706', 'stop-opacity': '0.4' }));
+    bellGrad.appendChild(el('stop', { offset: '100%', 'stop-color': '#7c2d12', 'stop-opacity': '0.08' }));
+    defs.appendChild(bellGrad);
+
+    var floorGrid = el('pattern', { id: 'floor-grid-' + (++diagramUid), x: '0', y: '0', width: '40', height: '20', patternUnits: 'userSpaceOnUse', patternTransform: 'skewX(-30)' });
+    floorGrid.appendChild(el('line', { x1: '0', y1: '0', x2: '0', y2: '20', stroke: '#e5e7eb', 'stroke-width': '1' }));
+    floorGrid.appendChild(el('line', { x1: '0', y1: '0', x2: '40', y2: '0', stroke: '#e5e7eb', 'stroke-width': '1' }));
+    defs.appendChild(floorGrid);
+
+    var bellGradId = bellGrad.getAttribute('id');
+    var floorGridId = floorGrid.getAttribute('id');
+    var axisMarkerId = axisMarker.getAttribute('id');
+    var purpleMarkerId = purpleMarker.getAttribute('id');
+
+    svg.appendChild(defs);
+
+    svg.appendChild(el('polygon', { points: '210,340 580,250 720,360 350,450', fill: 'url(#' + floorGridId + ')', stroke: '#1a1a1a', 'stroke-width': '1.2' }));
+    svg.appendChild(el('ellipse', { cx: '460', cy: '350', rx: '110', ry: '40', fill: '#fed7aa', 'fill-opacity': '0.55', stroke: '#c2410c', 'stroke-width': '1.6', 'stroke-dasharray': '5 4', transform: 'rotate(-12 460 350)' }));
+    svg.appendChild(el('ellipse', { cx: '460', cy: '350', rx: '170', ry: '62', fill: 'none', stroke: '#c2410c', 'stroke-width': '1', 'stroke-dasharray': '3 5', opacity: '0.4', transform: 'rotate(-12 460 350)' }));
+
+    [[395, 335, 4], [430, 338, 4], [448, 350, 4], [465, 345, 4], [478, 342, 4], [490, 355, 4], [510, 348, 4], [525, 358, 4], [540, 352, 4], [412, 358, 4], [455, 370, 4], [500, 368, 4], [475, 328, 4], [430, 320, 4], [380, 318, 3.5], [560, 375, 3.5], [395, 380, 3.5], [550, 320, 3.5]].forEach(function (point) {
+      svg.appendChild(el('circle', { cx: String(point[0]), cy: String(point[1]), r: String(point[2]), fill: '#2563eb', stroke: '#ffffff', 'stroke-width': '0.8' }));
     });
+
+    [[460, 340, 135, 42, 0.95], [460, 320, 120, 36, 0.92], [460, 295, 105, 30, 0.92], [460, 265, 88, 24, 0.93], [460, 232, 70, 18, 0.94], [460, 200, 50, 13, 0.95], [460, 172, 30, 8, 0.96]].forEach(function (layer) {
+      svg.appendChild(el('ellipse', { cx: String(layer[0]), cy: String(layer[1]), rx: String(layer[2]), ry: String(layer[3]), fill: 'url(#' + bellGradId + ')', opacity: String(layer[4]) }));
+    });
+    svg.appendChild(el('ellipse', { cx: '460', cy: '155', rx: '15', ry: '4', fill: '#fef3c7' }));
+    svg.appendChild(el('circle', { cx: '460', cy: '150', r: '3.5', fill: '#92400e' }));
+
+    svg.appendChild(el('line', { x1: '460', y1: '450', x2: '460', y2: '120', stroke: '#1a1a1a', 'stroke-width': '1', 'stroke-dasharray': '2 4', opacity: '0.5' }));
+    svg.appendChild(el('line', { x1: '460', y1: '155', x2: '460', y2: '350', stroke: '#1a1a1a', 'stroke-width': '1.2', 'stroke-dasharray': '3 3', opacity: '0.6' }));
+    svg.appendChild(el('circle', { cx: '460', cy: '350', r: '5', fill: '#1a1a1a' }));
+    svg.appendChild(text(475, 362, 'μ', 'diagram-paper-math'));
+    svg.appendChild(el('line', { x1: '460', y1: '350', x2: '370', y2: '330', stroke: '#7e4dc8', 'stroke-width': '2.5', 'marker-end': 'url(#' + purpleMarkerId + ')' }));
+    svg.appendChild(el('line', { x1: '460', y1: '350', x2: '490', y2: '305', stroke: '#7e4dc8', 'stroke-width': '2.5', 'marker-end': 'url(#' + purpleMarkerId + ')' }));
+
+    svg.appendChild(el('line', { x1: '210', y1: '340', x2: '360', y2: '455', stroke: '#1a1a1a', 'stroke-width': '1.8', opacity: '0.85', 'marker-end': 'url(#' + axisMarkerId + ')' }));
+    svg.appendChild(text(370, 470, 'x₁', 'diagram-paper-math'));
+    svg.appendChild(el('line', { x1: '210', y1: '340', x2: '585', y2: '245', stroke: '#1a1a1a', 'stroke-width': '1.8', opacity: '0.85', 'marker-end': 'url(#' + axisMarkerId + ')' }));
+    svg.appendChild(text(595, 240, 'x₂', 'diagram-paper-math'));
+    svg.appendChild(el('line', { x1: '210', y1: '340', x2: '210', y2: '60', stroke: '#1a1a1a', 'stroke-width': '1.8', opacity: '0.85', 'marker-end': 'url(#' + axisMarkerId + ')' }));
+    svg.appendChild(text(195, 50, 'p(x)', 'diagram-paper-math'));
+
+    svg.appendChild(el('line', { x1: '380', y1: '318', x2: '295', y2: '295', stroke: '#2563eb', 'stroke-width': '1', opacity: '0.5' }));
+    svg.appendChild(el('circle', { cx: '295', cy: '295', r: '3', fill: '#2563eb' }));
+    svg.appendChild(text(212, 286, 'observations', 'diagram-paper-note'));
+    svg.appendChild(text(218, 304, 'x_i in R^2', 'diagram-paper-note'));
+
+    svg.appendChild(el('line', { x1: '370', y1: '330', x2: '280', y2: '220', stroke: '#7e4dc8', 'stroke-width': '1', opacity: '0.5' }));
+    svg.appendChild(el('circle', { cx: '280', cy: '220', r: '3', fill: '#7e4dc8' }));
+    svg.appendChild(text(160, 210, 'eigenvectors of Σ', 'diagram-paper-note diagram-paper-note--purple'));
+    svg.appendChild(text(176, 228, 'principal axes', 'diagram-paper-note'));
+
+    svg.appendChild(el('line', { x1: '460', y1: '155', x2: '600', y2: '165', stroke: '#92400e', 'stroke-width': '1', opacity: '0.6' }));
+    svg.appendChild(el('circle', { cx: '600', cy: '165', r: '3', fill: '#92400e' }));
+    svg.appendChild(text(610, 155, 'p(μ): max density', 'diagram-paper-note diagram-paper-note--orange'));
+
+    // Place the equation card in an isolated top-left area to avoid overlap.
+    svg.appendChild(el('rect', { x: '26', y: '22', width: '216', height: '52', rx: '4', fill: '#fafaf9', stroke: '#1a1a1a', 'stroke-width': '1', opacity: '0.96' }));
+    svg.appendChild(text(62, 44, 'p(x) = N(x; μ, Σ)', 'diagram-paper-math'));
+    svg.appendChild(text(82, 62, '2D Gaussian density', 'diagram-paper-small'));
+
     mountDiagram(target, card.card);
   }
 
   function drawGaussianCloudFigure(target) {
-    var card = makeStaticCard('gaussian-cloud', 'Gaussian over a data cloud', 'A Gaussian fit captures the mean at the center of mass and the covariance orientation through the principal axes of Σ.');
-    var svg = createSvg(820, 380, '0 0 820 380');
-    svg.setAttribute('aria-label', 'Gaussian data cloud with mean, covariance ellipse, and principal axes.');
-    var markerUrl = addArrowhead(svg, 'arrowhead-gaussian-cloud', 'diagram-figure-arrowhead diagram-figure-arrowhead--purple');
-    var points = [[290, 116], [336, 104], [383, 102], [432, 116], [481, 132], [258, 164], [316, 154], [366, 172], [424, 185], [474, 202], [518, 216], [288, 222], [346, 230], [404, 247], [452, 260], [488, 274], [240, 198], [548, 185], [392, 296]];
+    var card = makeStaticCard('gaussian-cloud', 'Gaussian over a data cloud', 'The mean μ sits at the center of mass, the 1σ ellipse captures the main spread, and principal axes come from eigenvectors of Σ.');
+    var svg = createSvg(760, 360, '0 0 760 360');
+    svg.setAttribute('class', 'plate-svg');
+    svg.setAttribute('aria-label', '2D Gaussian over a data cloud with contour, mean, and principal axes.');
+    var markerId = 'pp-flat-gauss-' + (++diagramUid);
+    var defs = el('defs');
+    var marker = el('marker', { id: markerId, viewBox: '0 0 10 10', refX: '9', refY: '5', markerWidth: '8', markerHeight: '8', orient: 'auto-start-reverse' });
+    marker.appendChild(el('path', { d: 'M0,0 L10,5 L0,10 z', fill: '#7e4dc8' }));
+    defs.appendChild(marker);
+    svg.appendChild(defs);
 
-    svg.appendChild(el('ellipse', { cx: 410, cy: 190, rx: 190, ry: 112, fill: 'none', stroke: '#e8693f', 'stroke-width': 2.8, 'stroke-dasharray': '10 7', transform: 'rotate(-15 410 190)', class: 'diagram-figure-draw' }));
+    svg.appendChild(el('rect', { x: '20', y: '20', width: '720', height: '320', rx: '2', fill: 'none', stroke: '#f1f5f9' }));
+    svg.appendChild(el('ellipse', { cx: '400', cy: '180', rx: '220', ry: '120', fill: 'none', stroke: '#e8693f', 'stroke-width': '1', 'stroke-dasharray': '2 4', opacity: '0.45', transform: 'rotate(-15 400 180)' }));
+    svg.appendChild(el('ellipse', { cx: '400', cy: '180', rx: '150', ry: '80', fill: '#fed7aa', 'fill-opacity': '0.18', stroke: '#e8693f', 'stroke-width': '2', 'stroke-dasharray': '8 5', transform: 'rotate(-15 400 180)' }));
+
+    var points = [[296, 131], [341, 121], [391, 116], [436, 121], [476, 131], [271, 166], [326, 161], [376, 171], [426, 181], [471, 191], [516, 201], [301, 216], [356, 226], [406, 236], [456, 246], [496, 251], [251, 201], [561, 181]];
     points.forEach(function (point) {
-      svg.appendChild(el('path', { d: 'M' + (point[0] - 7) + ' ' + (point[1] - 7) + ' L' + (point[0] + 7) + ' ' + (point[1] + 7) + ' M' + (point[0] + 7) + ' ' + (point[1] - 7) + ' L' + (point[0] - 7) + ' ' + (point[1] + 7), class: 'diagram-figure-cross' }));
+      svg.appendChild(el('line', { x1: String(point[0] - 6), y1: String(point[1] - 6), x2: String(point[0] + 6), y2: String(point[1] + 6), stroke: '#2b78d6', 'stroke-width': '2', 'stroke-linecap': 'round' }));
+      svg.appendChild(el('line', { x1: String(point[0] + 6), y1: String(point[1] - 6), x2: String(point[0] - 6), y2: String(point[1] + 6), stroke: '#2b78d6', 'stroke-width': '2', 'stroke-linecap': 'round' }));
     });
-    svg.appendChild(el('circle', { cx: 418, cy: 198, r: 5, class: 'diagram-figure-mean' }));
-    svg.appendChild(text(432, 222, 'μ', 'diagram-paper-label diagram-paper-label--small'));
-    svg.appendChild(el('line', { x1: 418, y1: 198, x2: 323, y2: 132, class: 'diagram-figure-axis', 'marker-end': markerUrl }));
-    svg.appendChild(el('line', { x1: 418, y1: 198, x2: 516, y2: 158, class: 'diagram-figure-axis', 'marker-end': markerUrl }));
-    svg.appendChild(text(72, 64, 'data points (×)', 'diagram-paper-small diagram-paper-note'));
-    svg.appendChild(text(72, 90, '1σ contour', 'diagram-paper-small diagram-paper-note diagram-paper-note--orange'));
-    svg.appendChild(text(72, 116, 'principal axes', 'diagram-paper-small diagram-paper-note diagram-paper-note--purple'));
+
+    svg.appendChild(el('circle', { cx: '408', cy: '185', r: '5', fill: '#2d8c50' }));
+    svg.appendChild(text(420, 200, 'μ', 'diagram-paper-math'));
+    svg.appendChild(el('line', { x1: '408', y1: '185', x2: '320', y2: '130', stroke: '#7e4dc8', 'stroke-width': '2.5', 'marker-end': 'url(#' + markerId + ')' }));
+    svg.appendChild(el('line', { x1: '408', y1: '185', x2: '500', y2: '155', stroke: '#7e4dc8', 'stroke-width': '2.5', 'marker-end': 'url(#' + markerId + ')' }));
+
+    svg.appendChild(text(50, 50, 'data points (x)', 'diagram-paper-note'));
+    svg.appendChild(text(50, 72, '1σ contour', 'diagram-paper-note diagram-paper-note--orange'));
+    svg.appendChild(text(50, 94, 'principal axes', 'diagram-paper-note diagram-paper-note--purple'));
+    svg.appendChild(text(50, 116, 'μ - mean', 'diagram-paper-note diagram-paper-note--green'));
+
+    svg.appendChild(el('rect', { x: '608', y: '38', width: '115', height: '42', rx: '4', fill: '#fafaf9', stroke: '#1a1a1a', 'stroke-width': '1' }));
+    svg.appendChild(text(632, 60, 'x ~ N(μ, Σ)', 'diagram-paper-math'));
+    svg.appendChild(text(646, 74, 'd = 2', 'diagram-paper-small'));
+
     card.stage.appendChild(svg);
     mountDiagram(target, card.card);
   }
@@ -312,18 +384,34 @@
   }
 
   function drawGaussianProcessFigure(target) {
-    var card = makeStaticCard('gp-function', 'Gaussian process as a random function', 'A draw from a GP is a random continuous function; evaluating it at any finite set of inputs gives a multivariate Gaussian vector.');
-    var svg = createSvg(820, 340, '0 0 820 340');
-    svg.setAttribute('aria-label', 'Gaussian process random function evaluated at three input points.');
-    var markerUrl = addArrowhead(svg, 'arrowhead-gp-axis', 'diagram-figure-arrowhead');
-    svg.appendChild(el('line', { x1: 90, y1: 250, x2: 748, y2: 250, class: 'diagram-figure-axis-line', 'marker-end': markerUrl }));
-    svg.appendChild(el('path', { d: 'M105 165 Q165 78 232 112 Q280 150 330 118 Q384 82 430 166 Q478 236 525 178 Q578 130 624 188 Q665 235 710 202', class: 'diagram-gp-path diagram-figure-draw' }));
-    [[232, 112, 'X₁', 'm(X₁)'], [330, 118, 'X₂', 'm(X₂)'], [430, 166, 'X₃', 'm(X₃)']].forEach(function (point) {
-      svg.appendChild(el('line', { x1: point[0], y1: point[1], x2: point[0], y2: 250, class: 'diagram-figure-guide' }));
-      svg.appendChild(el('circle', { cx: point[0], cy: point[1], r: 7, class: 'diagram-figure-mid-dot' }));
-      svg.appendChild(text(point[0] - 24, point[1] - 24, point[3], 'diagram-paper-small diagram-paper-note'));
-      svg.appendChild(text(point[0] - 10, 282, point[2], 'diagram-paper-small diagram-paper-note'));
+    var card = makeStaticCard('gp-function', 'Gaussian process as a random function', 'A draw from a GP is a continuous random function; at finite inputs X1, X2, X3 the outputs are jointly Gaussian.');
+    var svg = createSvg(760, 280, '0 0 760 280');
+    svg.setAttribute('class', 'plate-svg');
+    svg.setAttribute('aria-label', 'Gaussian process random function with horizontal m(Xi) labels and dashed drop lines.');
+    var markerUrl = addArrowhead(svg, 'arrowhead-gp-axis', 'diagram-paper-arrowhead');
+
+    svg.appendChild(el('path', {
+      d: 'M 90 80 Q 140 0 200 30 Q 250 90 290 50 Q 330 10 370 100 Q 410 170 450 110 Q 490 60 530 130 Q 570 180 610 140 L 610 170 Q 570 220 530 170 Q 490 110 450 150 Q 410 210 370 140 Q 330 50 290 90 Q 250 130 200 70 Q 140 40 90 120 Z',
+      fill: '#fde68a',
+      opacity: '0.35'
+    }));
+    svg.appendChild(el('path', {
+      d: 'M 90 100 Q 140 20 200 50 Q 250 110 290 70 Q 330 30 370 120 Q 410 190 450 130 Q 490 80 530 150 Q 570 200 610 160',
+      fill: 'none',
+      stroke: '#1a1a1a',
+      'stroke-width': '2.5'
+    }));
+    svg.appendChild(el('line', { x1: 60, y1: 220, x2: 700, y2: 220, stroke: '#1a1a1a', 'stroke-width': 2, 'marker-end': markerUrl }));
+
+    [[200, 50, 'X₁', 'm(X₁)'], [290, 70, 'X₂', 'm(X₂)'], [370, 120, 'X₃', 'm(X₃)']].forEach(function (point) {
+      svg.appendChild(el('line', { x1: point[0], y1: point[1], x2: point[0], y2: 220, stroke: '#1a1a1a', 'stroke-width': 1, 'stroke-dasharray': '3 3' }));
+      svg.appendChild(el('circle', { cx: point[0], cy: point[1], r: 6, fill: '#c4453a', stroke: '#ffffff', 'stroke-width': 1.5 }));
+      svg.appendChild(text(point[0] - 18, point[1] - 14, point[3], 'diagram-paper-math'));
+      svg.appendChild(text(point[0] - 10, 245, point[2], 'diagram-paper-math'));
     });
+
+    svg.appendChild(text(606, 50, 'one draw m(.)', 'diagram-paper-note'));
+    svg.appendChild(text(590, 68, '+ credible band', 'diagram-paper-note diagram-paper-note--orange'));
     card.stage.appendChild(svg);
     mountDiagram(target, card.card);
   }
@@ -405,80 +493,284 @@
   }
 
   function drawBayesComparisonTable(target) {
-    var card = makeStaticCard('bayes-table', 'Frequentist and Bayesian estimators', 'The same statistical problem can be approached as direct estimation or as inference under a prior over functions or distributions.');
-    var table = document.createElement('table');
-    table.className = 'diagram-comparison-table';
-    table.innerHTML = '' +
-      '<thead><tr><th>Statistical problem</th><th>Frequentist approach</th><th>Bayesian approach</th></tr></thead>' +
-      '<tbody>' +
-        '<tr><td>regression</td><td>kernel smoother</td><td>Gaussian process</td></tr>' +
-        '<tr><td>CDF estimation</td><td>empirical CDF</td><td>Dirichlet process</td></tr>' +
-        '<tr><td>density estimation</td><td>kernel density estimator</td><td>Dirichlet process mixture</td></tr>' +
-      '</tbody>';
-    card.stage.appendChild(table);
+    var card = makeStaticCard('bayes-table', 'Two estimation paradigms', 'Frequentist methods produce point estimators while Bayesian methods place distributions over the same objects.');
+    var svg = createSvg(760, 360, '0 0 760 360');
+    svg.setAttribute('class', 'plate-svg');
+    svg.setAttribute('aria-label', 'Frequentist and Bayesian estimation paradigms across regression, CDF, and density estimation.');
+
+    svg.appendChild(el('rect', { x: '30', y: '20', width: '200', height: '36', rx: '18', fill: '#1a1a1a' }));
+    svg.appendChild(text(62, 44, 'STATISTICAL PROBLEM', 'diagram-paper-label diagram-paper-label--white'));
+    svg.appendChild(el('rect', { x: '260', y: '20', width: '230', height: '36', rx: '18', fill: '#e8f3ff', stroke: '#2b78d6', 'stroke-width': '1.5' }));
+    svg.appendChild(text(330, 44, 'FREQUENTIST', 'diagram-paper-note diagram-paper-note--purple'));
+    svg.appendChild(el('rect', { x: '520', y: '20', width: '230', height: '36', rx: '18', fill: '#fce4ec', stroke: '#c44488', 'stroke-width': '1.5' }));
+    svg.appendChild(text(606, 44, 'BAYESIAN', 'diagram-paper-note diagram-paper-note--red'));
+
+    [['regression', 115], ['CDF estimation', 205], ['density estimation', 295]].forEach(function (row) {
+      svg.appendChild(text(35, row[1], row[0], 'diagram-paper-math'));
+    });
+
+    svg.appendChild(el('rect', { x: '265', y: '80', width: '220', height: '70', rx: '6', fill: '#f9fbff', stroke: '#cbd5e1' }));
+    svg.appendChild(el('path', { d: 'M 280 128 Q 315 108 360 105 T 465 122', fill: 'none', stroke: '#2b78d6', 'stroke-width': '2' }));
+    svg.appendChild(text(332, 145, 'kernel smoother', 'diagram-paper-small'));
+
+    svg.appendChild(el('rect', { x: '525', y: '80', width: '220', height: '70', rx: '6', fill: '#fef5f8', stroke: '#f8c8da' }));
+    svg.appendChild(el('path', { d: 'M 540 108 Q 575 88 620 86 T 725 106 L 725 130 Q 690 130 620 120 T 540 140 Z', fill: '#f4a8c4', opacity: '0.45' }));
+    svg.appendChild(el('path', { d: 'M 540 128 Q 575 108 620 105 T 725 122', fill: 'none', stroke: '#c44488', 'stroke-width': '2' }));
+    svg.appendChild(text(592, 145, 'Gaussian process', 'diagram-paper-small'));
+
+    svg.appendChild(el('rect', { x: '265', y: '170', width: '220', height: '70', rx: '6', fill: '#f9fbff', stroke: '#cbd5e1' }));
+    svg.appendChild(el('path', { d: 'M 280 225 L 315 225 L 315 215 L 350 215 L 350 202 L 385 202 L 385 192 L 420 192 L 420 185 L 465 185', fill: 'none', stroke: '#2b78d6', 'stroke-width': '2' }));
+    svg.appendChild(text(334, 235, 'empirical CDF', 'diagram-paper-small'));
+
+    svg.appendChild(el('rect', { x: '525', y: '170', width: '220', height: '70', rx: '6', fill: '#fef5f8', stroke: '#f8c8da' }));
+    svg.appendChild(el('path', { d: 'M 540 225 L 575 223 L 575 213 L 610 211 L 610 199 L 645 197 L 645 187 L 680 184 L 725 182', fill: 'none', stroke: '#c44488', 'stroke-width': '2' }));
+    svg.appendChild(text(584, 235, 'Dirichlet process', 'diagram-paper-small'));
+
+    svg.appendChild(el('rect', { x: '265', y: '260', width: '220', height: '70', rx: '6', fill: '#f9fbff', stroke: '#cbd5e1' }));
+    svg.appendChild(el('path', { d: 'M 280 315 Q 315 300 350 292 Q 390 280 430 296 Q 455 306 470 315', fill: '#cfe1f4', opacity: '0.55', stroke: '#2b78d6', 'stroke-width': '2' }));
+    svg.appendChild(text(328, 322, 'kernel density est.', 'diagram-paper-small'));
+
+    svg.appendChild(el('rect', { x: '525', y: '260', width: '220', height: '70', rx: '6', fill: '#fef5f8', stroke: '#f8c8da' }));
+    svg.appendChild(el('path', { d: 'M 540 315 Q 565 310 580 290 Q 595 275 610 290 Q 625 310 640 315 Q 665 315 680 290 Q 695 275 710 290 Q 722 305 730 315', fill: '#fce4ec', opacity: '0.85', stroke: '#c44488', 'stroke-width': '2' }));
+    svg.appendChild(text(610, 322, 'DP mixture', 'diagram-paper-small'));
+
+    [70, 160, 250, 340].forEach(function (y) {
+      svg.appendChild(el('line', { x1: '30', y1: String(y), x2: '750', y2: String(y), stroke: '#e5e7eb', 'stroke-width': '1' }));
+    });
+
+    card.stage.appendChild(svg);
     mountDiagram(target, card.card);
   }
 
   function drawDirichletSimplexFigure(target) {
-    var card = makeStaticCard('dirichlet-simplex', 'Dirichlet posterior concentration', 'As more categorical observations arrive, the posterior mass concentrates around the empirical proportions.');
-    var svg = createSvg(820, 430, '0 0 820 430');
-    svg.setAttribute('aria-label', 'Four triangular simplex panels showing prior, likelihood, and posterior concentration for a Dirichlet model.');
+    var card = makeStaticCard('dirichlet-simplex', 'Dirichlet posterior concentration', 'As n grows, contours contract around empirical proportions and posterior spread shrinks at the expected 1/sqrt(n) rate.');
+    var grid = document.createElement('div');
+    grid.className = 'diagram-panel-grid diagram-panel-grid--2';
 
-    function triangle(cx, cy, scale, label, phase) {
-      var top = [cx, cy - 72];
-      var left = [cx - 82, cy + 64];
-      var right = [cx + 82, cy + 64];
-      svg.appendChild(el('polygon', { points: top.join(',') + ' ' + left.join(',') + ' ' + right.join(','), class: 'diagram-simplex-base' }));
-      for (var ring = 0; ring < 5; ring += 1) {
-        var t = 0.12 + ring * 0.12 + phase;
-        var points = [
-          [cx, cy - 58 + ring * 10],
-          [cx - 62 + ring * 9, cy + 50 - ring * 5],
-          [cx + 62 - ring * 12, cy + 50 - ring * 8]
-        ];
-        svg.appendChild(el('polygon', { points: points.map(function (point) { return point.join(','); }).join(' '), class: 'diagram-simplex-contour', opacity: (0.28 + t).toFixed(2) }));
-      }
-      svg.appendChild(el('circle', { cx: cx - 14 + phase * 48, cy: cy + 6 - phase * 32, r: 6, class: 'diagram-simplex-dot' }));
-      svg.appendChild(text(cx - 102, cy + 104, label, 'diagram-paper-small'));
+    function panel(label, sigma, innerSvg) {
+      var cell = document.createElement('div');
+      cell.className = 'diagram-panel-cell';
+      var svg = createSvg(240, 220, '0 0 240 220');
+      svg.setAttribute('class', 'plate-svg');
+      svg.setAttribute('aria-label', label);
+      innerSvg(svg);
+      cell.appendChild(svg);
+      var cap = document.createElement('div');
+      cap.className = 'diagram-panel-cell-label';
+      cap.textContent = label + '   sigma ~ ' + sigma;
+      cell.appendChild(cap);
+      grid.appendChild(cell);
     }
 
-    triangle(220, 124, 1, 'prior: Dirichlet(6,6,6)', 0.02);
-    triangle(600, 124, 1, 'likelihood after n = 20', 0.12);
-    triangle(220, 318, 1, 'posterior after n = 20', 0.18);
-    triangle(600, 318, 1, 'posterior after n = 200', 0.28);
-    card.stage.appendChild(svg);
+    function simplexBase(svg) {
+      svg.appendChild(el('polygon', { points: '120,30 30,180 210,180', fill: '#ffffff', stroke: '#1a1a1a', 'stroke-width': 1.5 }));
+      svg.appendChild(text(112, 22, 'θ₁', 'diagram-paper-math'));
+      svg.appendChild(text(14, 196, 'θ₂', 'diagram-paper-math'));
+      svg.appendChild(text(206, 196, 'θ₃', 'diagram-paper-math'));
+    }
+
+    panel('prior - Dirichlet(1,1,1)', '0.18', function (svg) {
+      simplexBase(svg);
+      ['120,55 50,170 190,170', '120,75 65,160 175,160', '120,90 78,153 162,153', '120,103 88,145 152,145', '120,113 96,140 144,140'].forEach(function (points) {
+        svg.appendChild(el('polygon', { points: points, fill: 'none', stroke: '#d97706', 'stroke-width': 1.2, opacity: 0.85 }));
+      });
+      svg.appendChild(el('polygon', { points: '120,90 78,153 162,153', fill: '#fde68a', opacity: 0.25 }));
+      svg.appendChild(el('circle', { cx: 120, cy: 130, r: 5, fill: '#1a1a1a' }));
+    });
+
+    panel('posterior - n = 20', '0.18', function (svg) {
+      simplexBase(svg);
+      [48, 36, 26, 16, 8].forEach(function (radius) {
+        svg.appendChild(el('ellipse', { cx: 92, cy: 148, rx: radius, ry: Math.max(5, Math.round(radius * 0.66)), transform: 'rotate(20 92 148)', fill: 'none', stroke: '#d97706', 'stroke-width': 1.2, opacity: 0.85 }));
+      });
+      svg.appendChild(el('ellipse', { cx: 92, cy: 148, rx: 36, ry: 24, transform: 'rotate(20 92 148)', fill: '#fde68a', opacity: 0.25 }));
+      svg.appendChild(el('circle', { cx: 92, cy: 148, r: 5, fill: '#1a1a1a' }));
+    });
+
+    panel('posterior - n = 200', '0.06', function (svg) {
+      simplexBase(svg);
+      [[22, 14], [16, 10], [11, 7], [6, 4]].forEach(function (radius) {
+        svg.appendChild(el('ellipse', { cx: 88, cy: 150, rx: radius[0], ry: radius[1], transform: 'rotate(20 88 150)', fill: 'none', stroke: '#d97706', 'stroke-width': 1.2, opacity: 0.9 }));
+      });
+      svg.appendChild(el('ellipse', { cx: 88, cy: 150, rx: 16, ry: 10, transform: 'rotate(20 88 150)', fill: '#fde68a', opacity: 0.35 }));
+      svg.appendChild(el('circle', { cx: 88, cy: 150, r: 5, fill: '#1a1a1a' }));
+    });
+
+    panel('posterior - n = 2000', '0.02', function (svg) {
+      simplexBase(svg);
+      [[8, 5], [5, 3]].forEach(function (radius) {
+        svg.appendChild(el('ellipse', { cx: 86, cy: 151, rx: radius[0], ry: radius[1], transform: 'rotate(20 86 151)', fill: 'none', stroke: '#d97706', 'stroke-width': 1.2, opacity: 0.9 }));
+      });
+      svg.appendChild(el('ellipse', { cx: 86, cy: 151, rx: 6, ry: 4, transform: 'rotate(20 86 151)', fill: '#fde68a', opacity: 0.5 }));
+      svg.appendChild(el('circle', { cx: 86, cy: 151, r: 5, fill: '#1a1a1a' }));
+      svg.appendChild(el('line', { x1: 83, y1: 148, x2: 89, y2: 154, stroke: '#c4453a', 'stroke-width': 2 }));
+      svg.appendChild(el('line', { x1: 89, y1: 148, x2: 83, y2: 154, stroke: '#c4453a', 'stroke-width': 2 }));
+      svg.appendChild(text(98, 143, 'true θ', 'diagram-paper-note diagram-paper-note--red'));
+    });
+
+    card.stage.appendChild(grid);
     mountDiagram(target, card.card);
   }
 
-  function drawRlLoopFigure(target) {
+  function drawRlLoopFigure(target, variant) {
+    if (variant === 'taxi-grid') {
+      var gridCard = makeStaticCard('taxi-gridworld', 'Taxi gridworld environment', 'Four named locations (R, G, Y, B), walls, and the taxi state make a compact but structured RL benchmark.');
+      var gridSvg = createSvg(720, 480, '0 0 720 480');
+      gridSvg.setAttribute('class', 'plate-svg');
+      gridSvg.setAttribute('aria-label', 'Taxi 5x5 gridworld with landmarks and walls.');
+
+      for (var r = 0; r < 5; r += 1) {
+        for (var c = 0; c < 5; c += 1) {
+          var fill = '#ffffff';
+          if ((r === 3 && c === 0) || (r === 0 && c === 0)) fill = '#dbeafe';
+          if (r === 4 && c === 0) fill = '#ede9fe';
+          if (r === 4 && c === 3) fill = '#e0f2fe';
+          gridSvg.appendChild(el('rect', { x: 80 + c * 80, y: 50 + r * 80, width: 80, height: 80, fill: fill, stroke: '#1a1a1a', 'stroke-width': 1.2 }));
+        }
+      }
+      gridSvg.appendChild(el('line', { x1: 240, y1: 50, x2: 240, y2: 130, stroke: '#1a1a1a', 'stroke-width': 5 }));
+      gridSvg.appendChild(el('line', { x1: 240, y1: 290, x2: 240, y2: 370, stroke: '#1a1a1a', 'stroke-width': 5 }));
+      gridSvg.appendChild(el('line', { x1: 320, y1: 370, x2: 320, y2: 450, stroke: '#1a1a1a', 'stroke-width': 5 }));
+      [['R', 120, 90, '#3b82f6', '#ffffff'], ['G', 440, 90, '#ffffff', '#1a1a1a'], ['Y', 120, 410, '#a855f7', '#ffffff'], ['B', 360, 410, '#ffffff', '#1a1a1a'], ['T', 200, 330, '#f97316', '#ffffff']].forEach(function (node) {
+        gridSvg.appendChild(el('circle', { cx: node[1], cy: node[2], r: 20, fill: node[3], stroke: '#1a1a1a', 'stroke-width': 1.5 }));
+        gridSvg.appendChild(text(node[1] - 6, node[2] + 6, node[0], 'diagram-paper-label'));
+      });
+      gridCard.stage.appendChild(gridSvg);
+      mountDiagram(target, gridCard.card);
+      return;
+    }
+
+    if (variant === 'taxi-rollout') {
+      var rolloutCard = makeStaticCard('taxi-rollout', 'Rollout filmstrip - 4 snapshots', 'Four moments from one episode show exploration before policy convergence.');
+      var rolloutSvg = createSvg(800, 320, '0 0 800 320');
+      rolloutSvg.setAttribute('class', 'plate-svg');
+      rolloutSvg.setAttribute('aria-label', 'Taxi rollout snapshots at different timesteps.');
+      var labels = ['dropoff', 'east', 'north', 'pickup'];
+      var tSteps = ['7', '43', '93', '100'];
+      for (var panel = 0; panel < 4; panel += 1) {
+        var ox = 20 + panel * 200;
+        rolloutSvg.appendChild(el('rect', { x: ox, y: 30, width: 180, height: 200, fill: '#fafaf9', stroke: '#1a1a1a', 'stroke-width': 1.2 }));
+        rolloutSvg.appendChild(text(ox + 36, 20, 'action: ' + labels[panel], 'diagram-paper-note'));
+        rolloutSvg.appendChild(el('rect', { x: ox + 60 + panel * 2, y: 50, width: 12, height: 14, fill: '#f97316', opacity: 0.75 }));
+        rolloutSvg.appendChild(text(ox + 14, 135, 't=' + tSteps[panel], 'diagram-paper-small'));
+      }
+      rolloutSvg.appendChild(el('line', { x1: 40, y1: 265, x2: 780, y2: 265, stroke: '#1a1a1a', 'stroke-width': 2 }));
+      rolloutCard.stage.appendChild(rolloutSvg);
+      mountDiagram(target, rolloutCard.card);
+      return;
+    }
+
+    if (variant === 'taxi-value') {
+      var valueCard = makeStaticCard('taxi-value', 'Value function over taxi position', 'Darker cells indicate lower value for the selected passenger-location condition.');
+      var valueSvg = createSvg(760, 360, '0 0 760 360');
+      valueSvg.setAttribute('class', 'plate-svg');
+      valueSvg.setAttribute('aria-label', 'Taxi value heatmap over a 5x5 grid.');
+      var colors = [
+        ['#fafafa', '#f4f4f5', '#e7e5e4', '#d6d3d1', '#a8a29e'],
+        ['#f4f4f5', '#e7e5e4', '#d6d3d1', '#a8a29e', '#78716c'],
+        ['#e7e5e4', '#d6d3d1', '#a8a29e', '#78716c', '#57534e'],
+        ['#d6d3d1', '#a8a29e', '#78716c', '#44403c', '#1c1917'],
+        ['#a8a29e', '#78716c', '#57534e', '#1c1917', '#0c0a09']
+      ];
+      for (var rr = 0; rr < 5; rr += 1) {
+        for (var cc = 0; cc < 5; cc += 1) {
+          valueSvg.appendChild(el('rect', { x: 170 + cc * 60, y: 70 + rr * 60, width: 50, height: 50, fill: colors[rr][cc] }));
+        }
+      }
+      valueSvg.appendChild(el('rect', { x: 620, y: 70, width: 25, height: 240, fill: 'url(#valuebar)' }));
+      var defs = el('defs');
+      var gradient = el('linearGradient', { id: 'valuebar', x1: '0', y1: '0', x2: '0', y2: '1' });
+      gradient.appendChild(el('stop', { offset: '0%', 'stop-color': '#fafafa' }));
+      gradient.appendChild(el('stop', { offset: '100%', 'stop-color': '#0c0a09' }));
+      defs.appendChild(gradient);
+      valueSvg.appendChild(defs);
+      valueCard.stage.appendChild(valueSvg);
+      mountDiagram(target, valueCard.card);
+      return;
+    }
+
     var card = makeStaticCard('rl-loop', 'Agent-environment loop', 'At each time step, the agent observes state and reward, takes an action, and the environment transitions to the next state.');
-    card.card.classList.add('is-animated-loop');
-    var svg = createSvg(820, 380, '0 0 820 380');
-    svg.setAttribute('aria-label', 'Reinforcement learning loop connecting agent and environment through actions, states, and rewards.');
-    var markerUrl = addArrowhead(svg, 'arrowhead-rl-loop', 'diagram-paper-arrowhead');
+    var svg = createSvg(760, 380, '0 0 760 380');
+    svg.setAttribute('class', 'plate-svg');
+    svg.setAttribute('aria-label', 'Closed reinforcement learning loop with action, state, and reward arrows.');
+    var defs = el('defs');
+    var action = el('marker', { id: 'arr-action-loop', viewBox: '0 0 10 10', refX: '9', refY: '5', markerWidth: '9', markerHeight: '9', orient: 'auto-start-reverse' });
+    action.appendChild(el('path', { d: 'M0,0 L10,5 L0,10 z', fill: '#1a1a1a' }));
+    var state = el('marker', { id: 'arr-state-loop', viewBox: '0 0 10 10', refX: '9', refY: '5', markerWidth: '9', markerHeight: '9', orient: 'auto-start-reverse' });
+    state.appendChild(el('path', { d: 'M0,0 L10,5 L0,10 z', fill: '#2b78d6' }));
+    var reward = el('marker', { id: 'arr-reward-loop', viewBox: '0 0 10 10', refX: '9', refY: '5', markerWidth: '9', markerHeight: '9', orient: 'auto-start-reverse' });
+    reward.appendChild(el('path', { d: 'M0,0 L10,5 L0,10 z', fill: '#c4453a' }));
+    defs.appendChild(action);
+    defs.appendChild(state);
+    defs.appendChild(reward);
+    svg.appendChild(defs);
 
-    svg.appendChild(el('rect', { x: 292, y: 48, width: 236, height: 72, rx: 18, class: 'diagram-paper-box diagram-paper-box--agent' }));
-    svg.appendChild(text(366, 92, 'Agent', 'diagram-paper-label diagram-paper-label--white'));
-    svg.appendChild(el('rect', { x: 292, y: 252, width: 236, height: 72, rx: 18, class: 'diagram-paper-box diagram-paper-box--environment' }));
-    svg.appendChild(text(334, 296, 'Environment', 'diagram-paper-label diagram-paper-label--white'));
+    svg.appendChild(el('rect', { x: 270, y: 50, width: 220, height: 70, rx: 10, fill: '#2d8c50', stroke: '#1a1a1a', 'stroke-width': 1.5 }));
+    svg.appendChild(text(345, 92, 'Agent', 'diagram-paper-label diagram-paper-label--white'));
+    svg.appendChild(el('rect', { x: 270, y: 260, width: 220, height: 70, rx: 10, fill: '#3b6cb8', stroke: '#1a1a1a', 'stroke-width': 1.5 }));
+    svg.appendChild(text(307, 302, 'Environment', 'diagram-paper-label diagram-paper-label--white'));
 
-    svg.appendChild(el('path', { d: 'M528 84 C668 84 678 288 530 288', class: 'diagram-paper-arrow diagram-loop-action', 'marker-end': markerUrl }));
-    svg.appendChild(el('path', { d: 'M292 288 C146 288 144 84 290 84', class: 'diagram-paper-arrow diagram-loop-state', 'marker-end': markerUrl }));
-    svg.appendChild(el('path', { d: 'M292 305 C176 305 174 102 292 102', class: 'diagram-paper-arrow diagram-loop-reward', 'marker-end': markerUrl }));
+    svg.appendChild(el('path', { d: 'M 490 85 Q 620 85 620 190 Q 620 295 490 295', fill: 'none', stroke: '#1a1a1a', 'stroke-width': 2.2, 'marker-end': 'url(#arr-action-loop)' }));
+    svg.appendChild(el('path', { d: 'M 270 295 Q 140 295 140 190 Q 140 85 270 85', fill: 'none', stroke: '#2b78d6', 'stroke-width': 2.2, 'marker-end': 'url(#arr-state-loop)' }));
+    svg.appendChild(el('path', { d: 'M 290 295 Q 200 295 200 190 Q 200 105 290 105', fill: 'none', stroke: '#c4453a', 'stroke-width': 2, 'marker-end': 'url(#arr-reward-loop)' }));
 
-    svg.appendChild(mathText(680, 154, 'A', 't', 'diagram-paper-math'));
-    svg.appendChild(text(720, 158, 'action', 'diagram-paper-small'));
-    svg.appendChild(mathText(82, 178, 'S', 't', 'diagram-paper-math'));
-    svg.appendChild(text(34, 178, 'state', 'diagram-paper-small'));
-    svg.appendChild(mathText(188, 204, 'R', 't', 'diagram-paper-math'));
-    svg.appendChild(mathText(326, 354, 'S', 't+1', 'diagram-paper-math'));
-    svg.appendChild(mathText(436, 354, 'R', 't+1', 'diagram-paper-math'));
-
+    svg.appendChild(mathText(640, 185, 'A', 't', 'diagram-paper-math'));
+    svg.appendChild(text(640, 210, 'action', 'diagram-paper-note'));
+    svg.appendChild(mathText(142, 180, 'S', 't', 'diagram-paper-math'));
+    svg.appendChild(text(100, 180, 'state', 'diagram-paper-note diagram-paper-note--purple'));
+    svg.appendChild(mathText(218, 195, 'R', 't', 'diagram-paper-math'));
+    svg.appendChild(text(218, 170, 'reward', 'diagram-paper-note diagram-paper-note--red'));
+    svg.appendChild(text(322, 360, 'S_{t+1}, R_{t+1} arrive next step', 'diagram-paper-small'));
     card.stage.appendChild(svg);
     mountDiagram(target, card.card);
   }
 
-  function drawGraphModelFigure(target, title, caption) {
+  function drawGraphModelFigure(target, variant, title, caption) {
+    if (variant === 'sparse-estimation') {
+      var sparseCard = makeStaticCard('graph-estimation', 'From binary samples to a sparse graph', 'Node-wise sparse logistic regressions are merged with an agreement rule to recover graph structure.');
+      var sparseSvg = createSvg(800, 320, '0 0 800 320');
+      sparseSvg.setAttribute('class', 'plate-svg');
+      sparseSvg.setAttribute('aria-label', 'Pipeline from binary samples to sparse graph estimation.');
+      var m1 = addArrowhead(sparseSvg, 'arrowhead-graph-estimation', 'diagram-paper-arrowhead');
+      sparseSvg.appendChild(el('rect', { x: 30, y: 60, width: 180, height: 180, fill: '#fff', stroke: '#1a1a1a', 'stroke-width': 1.2 }));
+      sparseSvg.appendChild(text(52, 90, 'Z1 Z2 Z3 Z4', 'diagram-paper-small'));
+      sparseSvg.appendChild(el('line', { x1: 225, y1: 150, x2: 280, y2: 150, class: 'diagram-paper-arrow', 'marker-end': m1 }));
+      [0, 1, 2].forEach(function (idx) {
+        sparseSvg.appendChild(el('rect', { x: 290, y: 70 + idx * 55, width: 190, height: 40, rx: 4, fill: '#e8f3ff', stroke: '#2b78d6', 'stroke-width': 1.2 }));
+        sparseSvg.appendChild(text(344, 96 + idx * 55, 'Z' + (idx + 1) + ' ~ Z_-'+ (idx + 1), 'diagram-paper-small'));
+      });
+      sparseSvg.appendChild(el('line', { x1: 498, y1: 150, x2: 555, y2: 150, class: 'diagram-paper-arrow', 'marker-end': m1 }));
+      [[630, 110, 'Z1'], [710, 110, 'Z2'], [630, 190, 'Z3'], [710, 190, 'Z4']].forEach(function (node) {
+        sparseSvg.appendChild(el('circle', { cx: node[0], cy: node[1], r: 22, fill: '#f3f4f6', stroke: '#1a1a1a', 'stroke-width': 1.5 }));
+        sparseSvg.appendChild(text(node[0] - 10, node[1] + 5, node[2], 'diagram-paper-small'));
+      });
+      sparseSvg.appendChild(el('line', { x1: 652, y1: 110, x2: 688, y2: 110, stroke: '#1a1a1a', 'stroke-width': 2 }));
+      sparseSvg.appendChild(el('line', { x1: 630, y1: 132, x2: 630, y2: 168, stroke: '#1a1a1a', 'stroke-width': 2 }));
+      sparseCard.stage.appendChild(sparseSvg);
+      mountDiagram(target, sparseCard.card);
+      return;
+    }
+
+    if (variant === 'laplacian') {
+      var lapCard = makeStaticCard('graph-laplacian', 'Graph and its Laplacian, side by side', 'Diagonal entries are node degrees, off-diagonals are -1 on edges, and each row sums to zero.');
+      var lapSvg = createSvg(780, 340, '0 0 780 340');
+      lapSvg.setAttribute('class', 'plate-svg');
+      lapSvg.setAttribute('aria-label', 'Graph with highlighted center node and corresponding Laplacian matrix.');
+      [['A', 80, 80], ['B', 100, 160], ['C', 170, 160], ['D', 240, 100], ['E', 240, 220], ['F', 100, 220], ['G', 170, 270]].forEach(function (node) {
+        lapSvg.appendChild(el('circle', { cx: node[1], cy: node[2], r: node[0] === 'C' ? 22 : 18, fill: node[0] === 'C' ? '#06b6d4' : '#e5e5e5', stroke: '#1a1a1a', 'stroke-width': 1.5 }));
+        lapSvg.appendChild(text(node[1] - 5, node[2] + 4, node[0], 'diagram-paper-small'));
+      });
+      [[170, 160, 80, 80], [170, 160, 100, 160], [170, 160, 240, 100], [170, 160, 240, 220], [170, 160, 100, 220], [170, 160, 170, 270]].forEach(function (edge) {
+        lapSvg.appendChild(el('line', { x1: edge[0], y1: edge[1], x2: edge[2], y2: edge[3], stroke: '#1a1a1a', 'stroke-width': 1.5 }));
+      });
+      lapSvg.appendChild(el('rect', { x: 430, y: 70, width: 260, height: 220, fill: '#fff', stroke: '#1a1a1a', 'stroke-width': 1.2 }));
+      lapSvg.appendChild(text(520, 56, 'L = D - A', 'diagram-paper-math'));
+      lapSvg.appendChild(text(450, 108, 'row C: [-1, -1, 5, -1, -1, -1, -1]', 'diagram-paper-small'));
+      lapCard.stage.appendChild(lapSvg);
+      mountDiagram(target, lapCard.card);
+      return;
+    }
+
     var card = makeStaticCard('graph-model', title || 'Graphical model structure', caption || 'Nodes represent random variables and edges encode the conditional-dependence structure.');
     var svg = createSvg(820, 360, '0 0 820 360');
     svg.setAttribute('aria-label', 'Scientific graph diagram with variables connected by conditional-dependence edges.');
@@ -486,10 +778,7 @@
     edges.forEach(function (edge) {
       svg.appendChild(el('line', { x1: edge[0], y1: edge[1], x2: edge[2], y2: edge[3], class: 'diagram-paper-edge' }));
     });
-    [
-      ['X₁', 170, 110, 'observed'], ['X₂', 320, 90, 'observed'], ['X₃', 470, 126, 'latent'],
-      ['X₄', 610, 100, 'observed'], ['X₅', 330, 230, 'latent'], ['X₆', 565, 245, 'observed'], ['X₇', 260, 250, 'observed']
-    ].forEach(function (node) {
+    [['X₁', 170, 110, 'observed'], ['X₂', 320, 90, 'observed'], ['X₃', 470, 126, 'latent'], ['X₄', 610, 100, 'observed'], ['X₅', 330, 230, 'latent'], ['X₆', 565, 245, 'observed'], ['X₇', 260, 250, 'observed']].forEach(function (node) {
       svg.appendChild(el('circle', { cx: node[1], cy: node[2], r: 32, class: 'diagram-paper-node diagram-paper-node--' + node[3] }));
       svg.appendChild(text(node[1] - 14, node[2] + 8, node[0], 'diagram-paper-label'));
     });
@@ -549,96 +838,125 @@
 
   function drawRnnSequenceFigure(target) {
     var title = 'Recurrent neural network';
-    var caption = 'Inputs are processed one step at a time through hidden states h_t before producing outputs y_t.';
-    var card = makeStaticCard('sequence-figure', title || 'Sequence model', caption || 'A recurrent or attention-based model transforms an input sequence into contextual hidden states before prediction.');
-    card.card.classList.add('is-staged');
-    var svg = createSvg(820, 360, '0 0 820 360');
-    svg.setAttribute('aria-label', 'Sequence model diagram with input tokens, hidden states, and output tokens.');
-    var markerUrl = addArrowhead(svg, 'arrowhead-sequence', 'diagram-paper-arrowhead');
-    for (var index = 0; index < 5; index += 1) {
-      var x = 120 + index * 130;
-      var stageClass = 'diagram-step diagram-step--' + (index + 1);
-      svg.appendChild(el('rect', { x: x - 34, y: 258, width: 68, height: 48, rx: 8, class: 'diagram-paper-box ' + stageClass }));
-      svg.appendChild(el('circle', { cx: x, cy: 174, r: 32, class: 'diagram-paper-node diagram-paper-node--latent ' + stageClass }));
-      svg.appendChild(el('rect', { x: x - 34, y: 28, width: 68, height: 48, rx: 8, class: 'diagram-paper-box diagram-paper-output ' + stageClass }));
-      svg.appendChild(mathText(x, 287, 'x', index + 1, 'diagram-paper-math diagram-paper-math--sequence ' + stageClass));
-      svg.appendChild(mathText(x, 179, 'h', index + 1, 'diagram-paper-math diagram-paper-math--sequence ' + stageClass));
-      svg.appendChild(mathText(x, 57, 'y', index + 1, 'diagram-paper-math diagram-paper-math--sequence ' + stageClass));
-      svg.appendChild(el('path', { d: 'M' + x + ' 258 L' + x + ' 208', class: 'diagram-paper-arrow ' + stageClass, 'marker-end': markerUrl }));
-      svg.appendChild(el('path', { d: 'M' + x + ' 140 L' + x + ' 78', class: 'diagram-paper-arrow ' + stageClass, 'marker-end': markerUrl }));
-      if (index < 4) svg.appendChild(el('path', { d: 'M' + (x + 34) + ' 174 L' + (x + 96) + ' 174', class: 'diagram-paper-arrow diagram-step diagram-step--link-' + (index + 1), 'marker-end': markerUrl }));
-    }
+    var caption = 'The blue hidden-state chain carries information through time, so each output depends on the full input prefix.';
+    var card = makeStaticCard('sequence-figure', title, caption);
+    var svg = createSvg(720, 320, '0 0 720 320');
+    svg.setAttribute('class', 'plate-svg');
+    svg.setAttribute('aria-label', 'Recurrent neural network with inputs x_t, hidden states h_t, and outputs y_t.');
+    var markerUrl = addArrowhead(svg, 'arrowhead-rnn', 'diagram-paper-arrowhead');
+
+    svg.appendChild(el('line', { x1: 60, y1: 290, x2: 660, y2: 290, stroke: '#ccc', 'stroke-width': 1, 'stroke-dasharray': '3 3' }));
+    svg.appendChild(text(600, 305, 'time ->', 'diagram-paper-note'));
+
+    [[130, 240, '1'], [320, 240, '2'], [510, 240, '3']].forEach(function (node) {
+      svg.appendChild(el('rect', { x: node[0], y: node[1], width: 50, height: 38, rx: 4, fill: '#ffffff', stroke: '#1a1a1a', 'stroke-width': 1.5 }));
+      svg.appendChild(mathText(node[0] + 25, node[1] + 23, 'x', node[2], 'diagram-paper-math'));
+    });
+    [[155, '1'], [345, '2'], [535, '3']].forEach(function (node) {
+      svg.appendChild(el('circle', { cx: node[0], cy: 170, r: 26, fill: '#e8f3ff', stroke: '#2b78d6', 'stroke-width': 2 }));
+      svg.appendChild(mathText(node[0], 175, 'h', node[1], 'diagram-paper-math'));
+    });
+    [[130, 80, '1'], [320, 80, '2'], [510, 80, '3']].forEach(function (node) {
+      svg.appendChild(el('rect', { x: node[0], y: node[1], width: 50, height: 38, rx: 4, fill: '#fef3c7', stroke: '#d97706', 'stroke-width': 1.5 }));
+      svg.appendChild(mathText(node[0] + 25, node[1] + 23, 'y', node[2], 'diagram-paper-math'));
+    });
+
+    [[155, 240, 155, 198], [345, 240, 345, 198], [535, 240, 535, 198], [155, 144, 155, 120], [345, 144, 345, 120], [535, 144, 535, 120]].forEach(function (line) {
+      svg.appendChild(el('line', { x1: line[0], y1: line[1], x2: line[2], y2: line[3], class: 'diagram-paper-arrow', 'marker-end': markerUrl }));
+    });
+    [[181, 170, 319, 170], [371, 170, 509, 170]].forEach(function (line) {
+      svg.appendChild(el('line', { x1: line[0], y1: line[1], x2: line[2], y2: line[3], stroke: '#2b78d6', 'stroke-width': 2.3, 'marker-end': markerUrl }));
+    });
+
     card.stage.appendChild(svg);
     mountDiagram(target, card.card);
   }
 
   function drawSelfAttentionFigure(target) {
-    var card = makeStaticCard('attention-figure', 'Self-attention sequence model', 'Each token builds a contextual representation by attending to every token in the sequence.');
-    var svg = createSvg(820, 360, '0 0 820 360');
-    svg.setAttribute('aria-label', 'Self-attention diagram with tokens connected to a shared attention matrix and contextual outputs.');
+    var card = makeStaticCard('attention-figure', 'Self-attention sequence model', 'The highlighted token builds its context from all positions using a weighted attention row.');
+    var svg = createSvg(740, 360, '0 0 740 360');
+    svg.setAttribute('class', 'plate-svg');
+    svg.setAttribute('aria-label', 'Self-attention with contextual tokens and attention matrix.');
     var markerUrl = addArrowhead(svg, 'arrowhead-attention', 'diagram-paper-arrowhead');
-    var tokens = ['x', 'x', 'x', 'x'];
 
-    for (var index = 0; index < 4; index += 1) {
-      var x = 115 + index * 125;
-      svg.appendChild(el('rect', { x: x - 34, y: 260, width: 68, height: 48, rx: 8, class: 'diagram-paper-box' }));
-      svg.appendChild(mathText(x, 289, tokens[index], index + 1, 'diagram-paper-math diagram-paper-math--sequence'));
-      svg.appendChild(el('path', { d: 'M' + x + ' 260 C' + (x + 18) + ' 220 520 220 572 182', class: 'diagram-paper-arrow diagram-paper-arrow--thin', 'marker-end': markerUrl }));
-    }
+    [[80, 280, '1'], [180, 280, '2'], [280, 280, '3'], [380, 280, '4']].forEach(function (node) {
+      svg.appendChild(el('rect', { x: node[0], y: node[1], width: 60, height: 40, rx: 4, fill: '#ffffff', stroke: '#1a1a1a', 'stroke-width': 1.5 }));
+      svg.appendChild(mathText(node[0] + 30, node[1] + 25, 'x', node[2], 'diagram-paper-math'));
+    });
+    [[80, 30, 60, 40, '1'], [180, 30, 60, 40, '2'], [278, 28, 64, 44, '3'], [380, 30, 60, 40, '4']].forEach(function (node, index) {
+      svg.appendChild(el('rect', {
+        x: node[0], y: node[1], width: node[2], height: node[3], rx: 4,
+        fill: index === 2 ? '#fef3c7' : '#ffffff',
+        stroke: index === 2 ? '#d97706' : '#1a1a1a',
+        'stroke-width': index === 2 ? 2 : 1.5
+      }));
+      svg.appendChild(mathText(node[0] + node[2] / 2, node[1] + 27, 'c', node[4], 'diagram-paper-math'));
+    });
 
-    svg.appendChild(el('rect', { x: 548, y: 76, width: 176, height: 176, rx: 10, class: 'diagram-paper-box diagram-attention-matrix' }));
+    [[110, 280, 305, 74, '0.25', 1.5], [210, 280, 308, 74, '0.55', 2.2], [310, 280, 310, 74, '1', 3.2], [410, 280, 315, 74, '0.7', 2.4]].forEach(function (edge) {
+      svg.appendChild(el('line', {
+        x1: edge[0], y1: edge[1], x2: edge[2], y2: edge[3],
+        stroke: '#2b78d6', 'stroke-width': edge[5], opacity: edge[4], 'marker-end': markerUrl
+      }));
+    });
+
+    svg.appendChild(text(600, 60, 'attention weights', 'diagram-paper-small'));
     for (var row = 0; row < 4; row += 1) {
       for (var col = 0; col < 4; col += 1) {
-        var opacity = 0.22 + 0.13 * ((row + col) % 4);
-        svg.appendChild(el('rect', { x: 570 + col * 34, y: 98 + row * 34, width: 24, height: 24, rx: 4, class: 'diagram-attention-cell', opacity: opacity.toFixed(2) }));
+        var fills = [
+          ['#e7e5e4', '#a8a29e', '#d6d3d1', '#78716c'],
+          ['#a8a29e', '#e7e5e4', '#57534e', '#a8a29e'],
+          ['#e7e5e4', '#a8a29e', '#1c1917', '#57534e'],
+          ['#d6d3d1', '#78716c', '#a8a29e', '#1c1917']
+        ];
+        svg.appendChild(el('rect', {
+          x: 540 + col * 32,
+          y: 90 + row * 32,
+          width: 30,
+          height: 30,
+          fill: fills[row][col],
+          stroke: row === 2 ? '#d97706' : 'none',
+          'stroke-width': row === 2 ? 2 : 0
+        }));
       }
     }
-    svg.appendChild(text(586, 67, 'attention weights', 'diagram-paper-small'));
 
-    for (var outIndex = 0; outIndex < 4; outIndex += 1) {
-      var y = 68 + outIndex * 54;
-      svg.appendChild(el('rect', { x: 92, y: y - 22, width: 82, height: 44, rx: 8, class: 'diagram-paper-box diagram-paper-output' }));
-      svg.appendChild(mathText(133, y + 5, 'c', outIndex + 1, 'diagram-paper-math'));
-      svg.appendChild(el('path', { d: 'M548 ' + (116 + outIndex * 34) + ' C420 ' + y + ' 275 ' + y + ' 176 ' + y, class: 'diagram-paper-arrow diagram-paper-arrow--thin', 'marker-end': markerUrl }));
-    }
-
-    svg.appendChild(text(232, 185, 'all tokens interact in parallel', 'diagram-paper-small'));
     card.stage.appendChild(svg);
     mountDiagram(target, card.card);
   }
 
   function drawEncoderDecoderFigure(target) {
-    var card = makeStaticCard('encoder-decoder-figure', 'Encoder-decoder sequence model', 'The encoder compresses the source sequence into contextual states; the decoder generates target tokens step by step.');
-    var svg = createSvg(820, 360, '0 0 820 360');
-    svg.setAttribute('aria-label', 'Encoder-decoder diagram with source tokens, encoded context, and autoregressive decoder outputs.');
+    var card = makeStaticCard('encoder-decoder-figure', 'Encoder-decoder with bottleneck', 'The encoder compresses the source into one context vector, and the decoder unrolls outputs from that bottleneck.');
+    var svg = createSvg(800, 340, '0 0 800 340');
+    svg.setAttribute('class', 'plate-svg');
+    svg.setAttribute('aria-label', 'Encoder-decoder with context bottleneck.');
     var markerUrl = addArrowhead(svg, 'arrowhead-encoder-decoder', 'diagram-paper-arrowhead');
 
-    for (var sourceIndex = 0; sourceIndex < 3; sourceIndex += 1) {
-      var sourceX = 96 + sourceIndex * 94;
-      svg.appendChild(el('rect', { x: sourceX - 31, y: 248, width: 62, height: 44, rx: 8, class: 'diagram-paper-box' }));
-      svg.appendChild(mathText(sourceX, 274, 'x', sourceIndex + 1, 'diagram-paper-math'));
-      svg.appendChild(el('path', { d: 'M' + sourceX + ' 248 L' + sourceX + ' 196', class: 'diagram-paper-arrow', 'marker-end': markerUrl }));
-      svg.appendChild(el('circle', { cx: sourceX, cy: 158, r: 30, class: 'diagram-paper-node diagram-paper-node--latent' }));
-      svg.appendChild(mathText(sourceX, 163, 'e', sourceIndex + 1, 'diagram-paper-math'));
-      if (sourceIndex < 2) svg.appendChild(el('path', { d: 'M' + (sourceX + 31) + ' 158 L' + (sourceX + 63) + ' 158', class: 'diagram-paper-arrow diagram-paper-arrow--thin', 'marker-end': markerUrl }));
-    }
+    svg.appendChild(el('rect', { x: 20, y: 20, width: 350, height: 300, rx: 6, fill: '#f0f9ff', opacity: 0.4 }));
+    svg.appendChild(el('rect', { x: 430, y: 20, width: 350, height: 300, rx: 6, fill: '#fef3c7', opacity: 0.35 }));
 
-    svg.appendChild(el('path', { d: 'M312 158 C370 106 450 106 508 158', class: 'diagram-paper-arrow', 'marker-end': markerUrl }));
-    svg.appendChild(el('rect', { x: 338, y: 82, width: 144, height: 54, rx: 10, class: 'diagram-paper-node--latent-box' }));
-    svg.appendChild(text(370, 116, 'context', 'diagram-paper-small'));
+    [[50, 260, '1'], [150, 260, '2'], [250, 260, '3']].forEach(function (node) {
+      svg.appendChild(el('rect', { x: node[0], y: node[1], width: 50, height: 38, rx: 4, fill: '#fff', stroke: '#1a1a1a', 'stroke-width': 1.5 }));
+      svg.appendChild(mathText(node[0] + 25, node[1] + 22, 'x', node[2], 'diagram-paper-math'));
+    });
+    [[75, '1'], [175, '2'], [275, '3']].forEach(function (node) {
+      svg.appendChild(el('circle', { cx: node[0], cy: 185, r: 24, fill: '#e8f3ff', stroke: '#2b78d6', 'stroke-width': 2 }));
+      svg.appendChild(mathText(node[0], 190, 'e', node[1], 'diagram-paper-math'));
+    });
+    [[75, 260, 75, 211], [175, 260, 175, 211], [275, 260, 275, 211], [99, 185, 151, 185], [199, 185, 251, 185], [299, 185, 343, 185], [457, 185, 486, 185], [534, 185, 586, 185], [634, 185, 686, 185], [510, 161, 510, 120], [610, 161, 610, 120], [710, 161, 710, 120]].forEach(function (line) {
+      svg.appendChild(el('line', { x1: line[0], y1: line[1], x2: line[2], y2: line[3], class: 'diagram-paper-arrow', 'marker-end': markerUrl }));
+    });
 
-    for (var targetIndex = 0; targetIndex < 3; targetIndex += 1) {
-      var targetX = 542 + targetIndex * 92;
-      svg.appendChild(el('circle', { cx: targetX, cy: 158, r: 30, class: 'diagram-paper-node diagram-paper-node--latent' }));
-      svg.appendChild(mathText(targetX, 163, 'd', targetIndex + 1, 'diagram-paper-math'));
-      svg.appendChild(el('path', { d: 'M' + targetX + ' 126 L' + targetX + ' 80', class: 'diagram-paper-arrow', 'marker-end': markerUrl }));
-      svg.appendChild(el('rect', { x: targetX - 31, y: 30, width: 62, height: 44, rx: 8, class: 'diagram-paper-box diagram-paper-output' }));
-      svg.appendChild(mathText(targetX, 56, 'y', targetIndex + 1, 'diagram-paper-math'));
-      if (targetIndex < 2) svg.appendChild(el('path', { d: 'M' + (targetX + 31) + ' 158 L' + (targetX + 61) + ' 158', class: 'diagram-paper-arrow diagram-paper-arrow--thin', 'marker-end': markerUrl }));
-    }
+    svg.appendChild(el('rect', { x: 345, y: 160, width: 110, height: 55, rx: 6, fill: '#fef9c3', stroke: '#d97706', 'stroke-width': 2.5, 'stroke-dasharray': '5 3' }));
+    svg.appendChild(text(372, 194, 'context c', 'diagram-paper-note diagram-paper-note--orange'));
 
-    svg.appendChild(text(86, 326, 'encoder: read source sequence', 'diagram-paper-small'));
-    svg.appendChild(text(542, 326, 'decoder: generate target sequence', 'diagram-paper-small'));
+    [[510, '1'], [610, '2'], [710, '3']].forEach(function (node) {
+      svg.appendChild(el('circle', { cx: node[0], cy: 185, r: 24, fill: '#fef3c7', stroke: '#d97706', 'stroke-width': 2 }));
+      svg.appendChild(mathText(node[0], 190, 'd', node[1], 'diagram-paper-math'));
+      svg.appendChild(el('rect', { x: node[0] - 25, y: 80, width: 50, height: 38, rx: 4, fill: '#fff', stroke: '#1a1a1a', 'stroke-width': 1.5 }));
+      svg.appendChild(mathText(node[0], 102, 'y', node[1], 'diagram-paper-math'));
+    });
+
     card.stage.appendChild(svg);
     mountDiagram(target, card.card);
   }
@@ -646,7 +964,7 @@
   function addButton(card, label, onClick) {
     var button = document.createElement('button');
     button.type = 'button';
-    button.className = 'concept-diagram__button';
+    button.className = 'concept-diagram__button scifig-btn';
     button.textContent = label;
     button.addEventListener('click', onClick);
     card.appendChild(button);
@@ -654,9 +972,10 @@
   }
 
   function drawBayesGraph(target, options) {
-    var state = { step: 0 };
+    var state = { mode: 'single' };
     var card = makeCard('bayes-graph', options.title, options.caption);
     var svg = createSvg(640, 260, '0 0 640 260');
+    svg.setAttribute('class', 'plate-svg');
     svg.setAttribute('aria-label', 'Bayesian graphical model showing a parameter θ generating an observation x.');
 
     var defs = el('defs');
@@ -694,14 +1013,39 @@
     card.stage.appendChild(svg);
     card.card.appendChild(status);
 
-    addButton(card.card, 'show repeated observations', function () {
-      state.step = (state.step + 1) % 2;
-      card.card.classList.toggle('is-expanded', state.step === 1);
-      status.textContent = state.step === 1
-        ? 'The same latent parameter \u03b8 can generate a sample x₁, x₂, ..., xₙ.'
-        : 'Parameter \u03b8 generates one observation x.';
-      this.textContent = state.step === 1 ? 'show one observation' : 'show repeated observations';
+    var controls = document.createElement('div');
+    controls.className = 'concept-diagram__controls scifig-controls';
+    card.card.appendChild(controls);
+
+    function applyMode(mode) {
+      state.mode = mode;
+      var singleVisible = mode !== 'many';
+      var plateVisible = mode !== 'single';
+      x.style.display = singleVisible ? '' : 'none';
+      arrow.style.display = singleVisible ? '' : 'none';
+      plate.style.opacity = plateVisible ? '1' : '0.15';
+      copies.forEach(function (node) {
+        node.style.opacity = plateVisible ? '1' : '0.15';
+      });
+      status.textContent = mode === 'single'
+        ? 'Parameter \u03b8 generates one observation x.'
+        : mode === 'many'
+          ? 'The same latent parameter \u03b8 generates a sample x₁, x₂, ..., xₙ.'
+          : 'Both views are visible: one sample and the full plate notation.';
+    }
+
+    ['single', 'many', 'both'].forEach(function (mode, index) {
+      var label = mode === 'single' ? 'show one observation' : mode === 'many' ? 'show n observations' : 'show both';
+      var button = addButton(controls, label, function () {
+        Array.prototype.slice.call(controls.querySelectorAll('.scifig-btn')).forEach(function (node) {
+          node.classList.remove('active');
+        });
+        button.classList.add('active');
+        applyMode(mode);
+      });
+      if (index === 0) button.classList.add('active');
     });
+    applyMode('single');
 
     target.parentNode.insertBefore(card.card, target.nextSibling);
   }
@@ -729,7 +1073,7 @@
     card.stage.appendChild(canvas);
 
     var controls = document.createElement('div');
-    controls.className = 'concept-diagram__controls';
+    controls.className = 'concept-diagram__controls scifig-controls';
 
     function addRange(labelText, min, max, step, value, onInput) {
       var label = document.createElement('label');
@@ -1055,12 +1399,22 @@
         drawBayesComparisonTable(image);
       } else if (/sds-365\/dirichlet\.png/i.test(src)) {
         drawDirichletSimplexFigure(image);
+      } else if (/sds-365\/rl_taxi\.png/i.test(src)) {
+        drawRlLoopFigure(image, 'taxi-grid');
+      } else if (/sds-365\/taxi_random\.png/i.test(src)) {
+        drawRlLoopFigure(image, 'taxi-rollout');
+      } else if (/sds-365\/taxi_value(_2)?\.png/i.test(src)) {
+        drawRlLoopFigure(image, 'taxi-value');
       } else if (/sds-365\/rl\.png/i.test(src)) {
         drawRlLoopFigure(image);
       } else if (/mixture-mle-1d\.png/i.test(src)) {
         drawLatentPlateFigure(image);
+      } else if (/graph_estimation_examples_2\.png/i.test(src)) {
+        drawGraphModelFigure(image, 'sparse-estimation');
+      } else if (/graph_estimation_examples_3\.png/i.test(src)) {
+        drawGraphModelFigure(image, 'laplacian');
       } else if (/(^|\/)graph\.png|cond_ind_graph|discrete_gm/i.test(src)) {
-        drawGraphModelFigure(image, /cond_ind/i.test(src) ? 'Conditional independence graph' : 'Graphical model structure');
+        drawGraphModelFigure(image, null, /cond_ind/i.test(src) ? 'Conditional independence graph' : 'Graphical model structure');
       } else if (/crp(_|\.)|crp_5|crp_6/i.test(src)) {
         drawCrpFigure(image);
       } else if (/(^|\/)vae\.png|sds-365\/vae\.png/i.test(src)) {

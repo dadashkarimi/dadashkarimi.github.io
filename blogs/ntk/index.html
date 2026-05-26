@@ -25,7 +25,9 @@
     <time datetime="2022-02-19T00:00:00Z">Feb 19, 2022</time> <span class="readtime">&middot; 5 min read</span>
   </div>
   <div>
-   <p>Let's start with a simple regression method. Let's assume that we have a dataset of $n$ points ${(x_i,y_i)}_{i=1}^n$ where $y_i \in \mathbb{R}$ and $x_i \in \mathbb{R}^d$:</p>
+  <p>Neural tangent kernels (NTKs) answer a surprising question: why do very wide neural networks often behave like kernel methods during training? To see this, we start from plain regression and progressively add the neural-network pieces.</p>
+<p>The storyline is simple: linear models, kernel trick, wide-network dynamics, and finally the lazy-training view that links gradient descent to a kernel regime.</p>
+<p>Start with a dataset of $n$ points ${(x_i,y_i)}_{i=1}^n$ where $y_i \in \mathbb{R}$ and $x_i \in \mathbb{R}^d$:</p>
 <p>$$
 f(W,x) = W^T x
 $$</p>
@@ -107,7 +109,7 @@ Let's initialize weights with $\mathcal{N}(0,1)$:</p>
 W(0) \rightarrow W(1) \rightarrow W(2) ..
 $$</p>
 <p><strong>Empirical observation</strong>: When $m$ (width of the network) is large, these matrices along the trajectory of gradient descent are almost <code>static</code>.</p>
-<p><img src="../../images/sds-365/ntk.jpg" alt="Example"></p>
+<p><img src="../../images/sds-365/ntk.jpg" alt="Figure"></p>
 <p>In machine learning this phenomena is called &ldquo;Lazy Training&rdquo;.</p>
 <h2 id="first-order-taylors-approximation">First Order Taylor's Approximation:</h2>
 <p>Because changes in $W(t)$ are small we can do Taylor's approximation:</p>

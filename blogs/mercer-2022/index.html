@@ -25,8 +25,9 @@
     <time datetime="2022-01-16T00:00:00Z">Jan 16, 2022</time> <span class="readtime">&middot; 7 min read</span>
   </div>
   <div>
-   <p>Given data points $(X_1,Y_1)$ , $(X_2,Y_2)$ , .. , and $(X_n,Y_n)$ where we want to predict $Y$ via design matrix $X$.
-Let&rsquo;s say $Y_i=m(X_i)+\epsilon_i$ where $m(x)$ is a smooth function of $x$.</p>
+  <p>Kernel methods are often introduced as a bag of formulas, but the practical question is straightforward: when should we use local averaging and when should we use global regularization?</p>
+<p>This post follows that comparison: smoothing kernels first, then their bias-variance limitations, and finally Mercer kernels and RKHS as a regularized alternative.</p>
+<p>Suppose we observe data points $(X_1,Y_1)$, $(X_2,Y_2)$, .., $(X_n,Y_n)$ and want to predict $Y$ from $X$, with $Y_i=m(X_i)+\epsilon_i$ for a smooth regression function $m$.</p>
 <p>In statistics, the most popular methods to derive $m(x)$ are <code>kernel methods</code>:</p>
 <ol>
 <li>Smoothing kernels</li>
@@ -38,14 +39,14 @@ Let&rsquo;s say $Y_i=m(X_i)+\epsilon_i$ where $m(x)$ is a smooth function of $x$
 \hat{m_h}(x) = \frac{\sum_{i=1}^n Y_i K_h(X_i,x)}{\sum_{i=1}^n K_h(X_i,x)}
 $$</p>
 <p>where $K_h(x,z)$ is a kernel such as:
-<img src="../../images/sds-365/different_kernels.png" alt="Example"></p>
+<p><img src="../../images/sds-365/different_kernels.png" alt="Figure"></p>
 <p>For example let&rsquo;s say our kernel is a Gaussian:
 $$
 K_h(x,z) = \exp \Big( -\frac{||x-z||^2}{2h^2} \Big)
 $$</p>
 <p>$\hat{m_h}(x)$ is just a local average of the $Y_i$&rsquo;s near $x$.
 Furthermore, the bandwidth $h$ controls the bias-variance tradeoff where smaller $h$ indicates large variance and large $h$ implies large bias.</p>
-<p><img src="../../images/sds-365/kernel_bandwidth.png" alt="Example"></p>
+<p><img src="../../images/sds-365/kernel_bandwidth.png" alt="Figure for ../../images/sds-365/kernel_bandwidth.png"></p>
 <h2 id="risks-in-smoothing-kernels">Risks in smoothing kernels</h2>
 <p>$$
 \text{Risk} = \mathbb{E}[Y-\hat{m_h}(X)]^2 = \text{bias}^2+\text{variance}+\sigma^2
@@ -59,7 +60,7 @@ $$</p>
 $$</p>
 <p>where $p=$ dimension of $X$ and $\sigma^2=\mathbb{E}[Y-m(X)]^2$ is the unavoidable prediction error.
 We can think of this another way: when we set $h$ small bias is low and variance is high implying undersmoothing. On the other hand, when $h$ is large, we are averaging over many surrending points that causes high bias and low variance; this is called oversmoothing.</p>
-<p><img src="../../images/sds-365/bias_variance.jpg" alt="Example"></p>
+<p><img src="../../images/sds-365/bias_variance.jpg" alt="Figure for ../../images/sds-365/bias_variance.jpg"></p>
 <p>Thus, we need to find the optimum value for $h$.</p>
 <h2 id="how-can-we-estimate-risk">How can we estimate risk?</h2>
 <p>Let&rsquo;s indicate $\hat{Y_{-i}}=\hat{m}_{h,-i}(X_i)$ the estimation based on all but $X_i$.
@@ -95,7 +96,7 @@ n\geq \Big(\frac{1}{\epsilon}\Big)^{1+p/4}
 $$</p>
 <p>But, why? What does our assumption on distribution of data imply? Let&rsquo;s consider a very simple example with a uniform distribution of data falling under a squared kernel.
 Suppose the support of the distribution of inputs is an $l_{\infty}$-ball of radius $\frac{1}{2}$ in dimension $p=2$, then with $h_n=1/8$, in order to have a consistent estimation for each of the $(2h_n)^{-p}$=16 candidate test points $\hat{x_1},..,\hat{x_16}$, the number of points in each of the $m=(2h_n)^{−p}$ balls has to grow unbounded and thus $\frac{n}{m}=n(2h_n)^p$ has to grow unbounded.
-<img src="../../images/sds-365/kernel_data_assumption.png" alt="Example"></p>
+<img src="../../images/sds-365/kernel_data_assumption.png" alt="Figure for ../../images/sds-365/kernel_data_assumption.png"></p>
 <p>In other words:</p>
 <p>$$
 \begin{aligned}

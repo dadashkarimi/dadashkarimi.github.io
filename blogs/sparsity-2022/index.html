@@ -90,8 +90,8 @@ max-width:0rem;
     <time datetime="2022-01-16T00:00:00Z">Jan 16, 2022</time> <span class="readtime">&middot; 7 min read</span>
   </div>
   <div>
-   <p>Here we will talk about basic concepts of regression in sparse data. First of all, let&rsquo;s define some notations: $D = {(X_1,Y_1), .., (X_n,Y_n)}$ is called training data for pairs of observations $(X_i,Y_i)$. Then $Y_i \in \mathbb{R}$ is the response and $X_i\in \mathbb{R}^p$ is the covariate vector. Sometimes people call the covariate vector the feature vector as well.</p>
-<p>The question in a regression problem is that, given a new pair $(X,Y)$ what is our model&rsquo;s prediction for $X$?</p>
+  <p>Modern regression often lives in the high-dimensional regime: many candidate predictors, limited samples, and no guarantee that most variables are useful. The practical question is not just how to fit, but how to keep the model small enough to generalize.</p>
+<p>In this note, we follow one thread from start to finish: prediction risk and bias-variance, why exhaustive model search fails, and why the lasso works as a compromise between sparsity and convex optimization.</p>
 <h1 id="regression">Regression</h1>
 <p>Let $\hat{Y}$ be a prediction of $Y$.
 Then, the <code>prediction error</code> or <code>risk</code> is defined as:</p>
@@ -188,9 +188,9 @@ $$</p>
 Y=\beta+0 +\beta_1X_1 + &hellip; + \beta_{100}X_{100} + \epsilon
 $$</p>
 <p>Here is $\hat{\beta}$ and marginal regression coefficients.
-<img src="../../images/sds-365/sparse-1.png" alt="Example"></p>
+<p><img src="../../images/sds-365/sparse-1.png" alt="Figure"></p>
 <p>Furthermore, $\hat{Y}_i - Y_i$ and a sparse regression &ndash; comming up soon &ndash; are as follows:</p>
-<p><img src="../../images/sds-365/sparse-2.png" alt="Example"></p>
+<p><img src="../../images/sds-365/sparse-2.png" alt="Figure for ../../images/sds-365/sparse-2.png"></p>
 <h2 id="high-dimensional-linear-regression">High Dimensional Linear Regression</h2>
 <p>Now, let&rsquo;s say $p$ is too large or even is larger than data points. Then the least squares estimator is not defined since $X^TX$ is not invertible.The variance of the least squares prediction is huge. Therefore, we need to increase the bias so that we can decrease the variance.</p>
 <h3 id="ridge-regression">Ridge Regression</h3>
@@ -228,7 +228,64 @@ $$</p>
 <p>Ridge regression will find some values for all predictors while only a small fraction of them are relevant.
 Do we really want to try all comination of predictors (model selection)? Then the bias is the error due to omitting important variables. The
 variance is the error due to having to estimate many parameters.</p>
-<p><img src="../../images/sds-365/sparse-3.png" alt="Example"></p>
+<figure class="concept-diagram is-static concept-diagram--model-selection-tree">
+  <div class="concept-diagram__head">
+    <div class="concept-diagram__label">scientific figure</div>
+    <h3>Model search grows as 2^p</h3>
+  </div>
+  <div class="concept-diagram__stage">
+    <svg class="plate-svg" viewBox="0 0 760 380" role="img" aria-label="Binary tree diagram showing model search grows as 2^p with predictor inclusion/exclusion choices">
+      <defs>
+        <marker id="tree-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#475569" />
+        </marker>
+      </defs>
+      <text x="380" y="32" text-anchor="middle" font-family="Caveat, cursive" font-size="24" fill="#666">include or exclude each variable</text>
+
+      <circle cx="380" cy="80" r="26" fill="#fef3c7" stroke="#d97706" stroke-width="2" />
+      <text x="380" y="86" text-anchor="middle" font-family="Newsreader, serif" font-style="italic" font-size="22" fill="#1a1a1a" font-weight="700">X₁?</text>
+
+      <line x1="380" y1="106" x2="220" y2="155" stroke="#475569" stroke-width="1.5" marker-end="url(#tree-arr)" />
+      <line x1="380" y1="106" x2="540" y2="155" stroke="#475569" stroke-width="1.5" marker-end="url(#tree-arr)" />
+      <text x="290" y="125" text-anchor="middle" fill="#475569" font-size="12" font-family="Atkinson Hyperlegible, sans-serif" font-style="italic">X₁ = 0</text>
+      <text x="470" y="125" text-anchor="middle" fill="#475569" font-size="12" font-family="Atkinson Hyperlegible, sans-serif" font-style="italic">X₁ = 1</text>
+
+      <circle cx="220" cy="170" r="24" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.8" />
+      <text x="220" y="176" text-anchor="middle" font-family="Newsreader, serif" font-style="italic" font-size="20" fill="#1a1a1a" font-weight="700">X₂?</text>
+      <circle cx="540" cy="170" r="24" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.8" />
+      <text x="540" y="176" text-anchor="middle" font-family="Newsreader, serif" font-style="italic" font-size="20" fill="#1a1a1a" font-weight="700">X₂?</text>
+
+      <line x1="220" y1="194" x2="140" y2="245" stroke="#475569" stroke-width="1.4" marker-end="url(#tree-arr)" />
+      <line x1="220" y1="194" x2="300" y2="245" stroke="#475569" stroke-width="1.4" marker-end="url(#tree-arr)" />
+      <line x1="540" y1="194" x2="460" y2="245" stroke="#475569" stroke-width="1.4" marker-end="url(#tree-arr)" />
+      <line x1="540" y1="194" x2="620" y2="245" stroke="#475569" stroke-width="1.4" marker-end="url(#tree-arr)" />
+
+      <rect x="105" y="258" width="70" height="36" rx="4" fill="#f1f5f9" stroke="#475569" />
+      <text x="140" y="282" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="16" font-weight="700" fill="#1a1a1a">00</text>
+      <rect x="265" y="258" width="70" height="36" rx="4" fill="#f1f5f9" stroke="#475569" />
+      <text x="300" y="282" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="16" font-weight="700" fill="#1a1a1a">01</text>
+      <rect x="425" y="258" width="70" height="36" rx="4" fill="#f1f5f9" stroke="#475569" />
+      <text x="460" y="282" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="16" font-weight="700" fill="#1a1a1a">10</text>
+      <rect x="585" y="258" width="70" height="36" rx="4" fill="#f1f5f9" stroke="#475569" />
+      <text x="620" y="282" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="16" font-weight="700" fill="#1a1a1a">11</text>
+
+      <text x="140" y="315" text-anchor="middle" font-size="14" fill="#94a3b8" letter-spacing="3">...</text>
+      <text x="300" y="315" text-anchor="middle" font-size="14" fill="#94a3b8" letter-spacing="3">...</text>
+      <text x="460" y="315" text-anchor="middle" font-size="14" fill="#94a3b8" letter-spacing="3">...</text>
+      <text x="620" y="315" text-anchor="middle" font-size="14" fill="#94a3b8" letter-spacing="3">...</text>
+
+      <g transform="translate(720, 100)">
+        <text class="hand" x="0" y="0" fill="#c4453a" font-size="15" text-anchor="end">at p = 30</text>
+        <text class="hand" x="0" y="20" fill="#c4453a" font-size="15" text-anchor="end">~ 1 billion</text>
+        <text class="hand" x="0" y="40" fill="#c4453a" font-size="15" text-anchor="end">candidate models</text>
+      </g>
+
+      <text x="380" y="350" text-anchor="middle" font-family="Caveat, cursive" font-size="18" fill="#666">two variables already make four models · p variables make 2^p</text>
+      <text x="380" y="370" text-anchor="middle" font-family="Atkinson Hyperlegible, sans-serif" font-size="13" fill="#4b4b4b">Both middle nodes ask X2 because each branch already fixed the X1 choice.</text>
+    </svg>
+  </div>
+  <p class="concept-diagram__caption">The exhaustive approach asks a yes/no question for every predictor. That branching structure is why classical subset selection becomes impractical as p grows.</p>
+</figure>
 <p>If there are $p$ variables then there are $2^p$ models.
 In other words, this problem is NP-hard and was a major bottleneck in statistics for many years.</p>
 <p>We can breakdown our problem into two ideas:</p>
@@ -244,7 +301,39 @@ In other words, this problem is NP-hard and was a major bottleneck in statistics
 \end{aligned}
 $$</p>
 <p>Let&rsquo;s take a look at the following example. Which values of q measure (lack of) sparsity?</p>
-<p><img src="../../images/sds-365/sparse-4.png" alt="Example"></p>
+<figure class="concept-diagram is-static concept-diagram--sparsity-measure">
+  <div class="concept-diagram__head">
+    <div class="concept-diagram__label">scientific figure</div>
+    <h3>Smaller q favors fewer active coefficients</h3>
+  </div>
+  <div class="concept-diagram__stage">
+    <svg viewBox="0 0 760 300" role="img" aria-label="Coefficient vectors comparing dense and sparse solutions">
+      <line x1="82" y1="238" x2="318" y2="238" stroke="#222" stroke-width="2" />
+      <line x1="82" y1="238" x2="82" y2="70" stroke="#222" stroke-width="2" />
+      <line x1="442" y1="238" x2="678" y2="238" stroke="#222" stroke-width="2" />
+      <line x1="442" y1="238" x2="442" y2="70" stroke="#222" stroke-width="2" />
+      <text x="200" y="46" text-anchor="middle" font-family="Newsreader, serif" font-size="24" fill="#111">dense vector</text>
+      <text x="560" y="46" text-anchor="middle" font-family="Newsreader, serif" font-size="24" fill="#111">sparse vector</text>
+      <g fill="#6baed6" stroke="#111" stroke-width="1.5">
+        <rect x="112" y="140" width="24" height="98" />
+        <rect x="152" y="118" width="24" height="120" />
+        <rect x="192" y="158" width="24" height="80" />
+        <rect x="232" y="126" width="24" height="112" />
+        <rect x="272" y="150" width="24" height="88" />
+      </g>
+      <g fill="#e25d4f" stroke="#111" stroke-width="1.5">
+        <rect x="472" y="222" width="24" height="16" />
+        <rect x="512" y="92" width="24" height="146" />
+        <rect x="552" y="232" width="24" height="6" />
+        <rect x="592" y="230" width="24" height="8" />
+        <rect x="632" y="224" width="24" height="14" />
+      </g>
+      <text x="200" y="274" text-anchor="middle" font-family="Atkinson Hyperlegible, sans-serif" font-size="16" fill="#333">many small nonzero betas</text>
+      <text x="560" y="274" text-anchor="middle" font-family="Atkinson Hyperlegible, sans-serif" font-size="16" fill="#333">one large beta, most near zero</text>
+    </svg>
+  </div>
+  <p class="concept-diagram__caption">A sparsity measure should reward vectors concentrated on a few coordinates. That is why q at or below 1 is sensitive to the number of active predictors.</p>
+</figure>
 <h3 id="lesson-1to-capture-sparsity-we-need-to-use-q-leq-1">Lesson 1:To capture sparsity we need to use $q \leq 1$.</h3>
 <p>Thus, we estimate $\beta = (\beta_1, ..,\beta_p)$ by minimizing:</p>
 <p>$$
@@ -254,7 +343,44 @@ $$</p>
 <p>If we use $q = 0$ this is same as searching through all $2^p$ models.
 What does the ${\beta: ||\beta||_q \leq \text{small}}$ look like?</p>
 <p>The set of $||\beta_q|| \leq 1$ when $p=2$:</p>
-<p><img src="../../images/sds-365/sparse-5.png" alt="Example"></p>
+<figure class="concept-diagram is-static concept-diagram--q-norm-geometry">
+  <div class="concept-diagram__head">
+    <div class="concept-diagram__label">scientific figure</div>
+    <h3>The L1 ball is both pointed and convex</h3>
+  </div>
+  <div class="concept-diagram__stage">
+    <svg viewBox="0 0 760 320" role="img" aria-label="L2 circle, L1 diamond, and nonconvex q less than 1 ball">
+      <g transform="translate(145 160)">
+        <line x1="-90" y1="0" x2="90" y2="0" stroke="#bbb" stroke-width="1.5" />
+        <line x1="0" y1="90" x2="0" y2="-90" stroke="#bbb" stroke-width="1.5" />
+        <circle cx="0" cy="0" r="72" fill="none" stroke="#6baed6" stroke-width="4" />
+        <text x="0" y="120" text-anchor="middle" font-family="Newsreader, serif" font-size="22" fill="#111">q = 2</text>
+        <text x="0" y="145" text-anchor="middle" font-family="Atkinson Hyperlegible, sans-serif" font-size="14" fill="#333">convex, not sparse</text>
+      </g>
+      <g transform="translate(380 160)">
+        <line x1="-90" y1="0" x2="90" y2="0" stroke="#bbb" stroke-width="1.5" />
+        <line x1="0" y1="90" x2="0" y2="-90" stroke="#bbb" stroke-width="1.5" />
+        <polygon points="0,-78 78,0 0,78 -78,0" fill="none" stroke="#e25d4f" stroke-width="4" />
+        <circle cx="78" cy="0" r="6" fill="#e25d4f">
+          <animate attributeName="r" values="4;9;4" dur="2s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="0" cy="-78" r="6" fill="#e25d4f">
+          <animate attributeName="r" values="9;4;9" dur="2s" repeatCount="indefinite" />
+        </circle>
+        <text x="0" y="120" text-anchor="middle" font-family="Newsreader, serif" font-size="22" fill="#111">q = 1</text>
+        <text x="0" y="145" text-anchor="middle" font-family="Atkinson Hyperlegible, sans-serif" font-size="14" fill="#333">convex and sparse</text>
+      </g>
+      <g transform="translate(615 160)">
+        <line x1="-90" y1="0" x2="90" y2="0" stroke="#bbb" stroke-width="1.5" />
+        <line x1="0" y1="90" x2="0" y2="-90" stroke="#bbb" stroke-width="1.5" />
+        <path d="M0,-82 C18,-28 28,-18 82,0 C28,18 18,28 0,82 C-18,28 -28,18 -82,0 C-28,-18 -18,-28 0,-82 Z" fill="none" stroke="#75c477" stroke-width="4" />
+        <text x="0" y="120" text-anchor="middle" font-family="Newsreader, serif" font-size="22" fill="#111">q &lt; 1</text>
+        <text x="0" y="145" text-anchor="middle" font-family="Atkinson Hyperlegible, sans-serif" font-size="14" fill="#333">sparse, not convex</text>
+      </g>
+    </svg>
+  </div>
+  <p class="concept-diagram__caption">The lasso lands at the compromise q = 1: the diamond has corners on the axes, which encourage zero coefficients, but it is still convex enough to optimize reliably.</p>
+</figure>
 <h3 id="lesson-2to-capture-convexity-we-need-to-use-q-geq-1">Lesson 2:To capture convexity we need to use $q \geq 1$.</h3>
 <h2 id="sparsity-meets-convexity">Sparsity meets convexity</h2>
 <p>We need these sets to have a nice shape (convex). If so, the
@@ -273,7 +399,38 @@ $$</p>
 Magically, we have done model selection without searching (thanks to
 sparsity plus convexity).</p>
 <p>The following figure explains that why most of the coefficients are $0$:</p>
-<p><img src="../../images/sds-365/sparse-6.gif" alt="Example"></p>
+<figure class="concept-diagram is-static concept-diagram--lasso-contact">
+  <div class="concept-diagram__head">
+    <div class="concept-diagram__label">animated figure</div>
+    <h3>Why lasso creates exact zeros</h3>
+  </div>
+  <div class="concept-diagram__stage">
+    <svg viewBox="0 0 760 360" role="img" aria-label="Loss contours touch the L1 diamond at an axis corner">
+      <line x1="100" y1="190" x2="660" y2="190" stroke="#222" stroke-width="2" />
+      <line x1="380" y1="38" x2="380" y2="322" stroke="#222" stroke-width="2" />
+      <text x="650" y="220" font-family="Newsreader, serif" font-size="20" fill="#111">beta1</text>
+      <text x="394" y="54" font-family="Newsreader, serif" font-size="20" fill="#111">beta2</text>
+      <polygon points="380,62 508,190 380,318 252,190" fill="rgba(226,93,79,0.08)" stroke="#e25d4f" stroke-width="4" />
+      <ellipse cx="500" cy="125" rx="190" ry="72" fill="none" stroke="#6baed6" stroke-width="3" transform="rotate(-28 500 125)">
+        <animate attributeName="rx" values="60;190;190" dur="3.5s" repeatCount="indefinite" />
+        <animate attributeName="ry" values="24;72;72" dur="3.5s" repeatCount="indefinite" />
+      </ellipse>
+      <ellipse cx="500" cy="125" rx="115" ry="44" fill="none" stroke="#6baed6" stroke-width="2" opacity="0.75" transform="rotate(-28 500 125)">
+        <animate attributeName="rx" values="35;115;115" dur="3.5s" repeatCount="indefinite" />
+        <animate attributeName="ry" values="14;44;44" dur="3.5s" repeatCount="indefinite" />
+      </ellipse>
+      <circle cx="380" cy="62" r="8" fill="#e25d4f">
+        <animate attributeName="r" values="5;11;5" dur="1.8s" repeatCount="indefinite" />
+      </circle>
+      <text x="398" y="88" font-family="Atkinson Hyperlegible, sans-serif" font-size="16" fill="#333">contact at beta1 = 0</text>
+      <text x="380" y="342" text-anchor="middle" font-family="Atkinson Hyperlegible, sans-serif" font-size="15" fill="#333">
+        <tspan x="380" dy="0">The first contour that hits the L1 constraint often touches a corner,</tspan>
+        <tspan x="380" dy="18">setting one coefficient exactly to zero.</tspan>
+      </text>
+    </svg>
+  </div>
+  <p class="concept-diagram__caption">This is the geometric reason lasso performs model selection: the pointed L1 constraint turns many optimum points into axis-corner solutions.</p>
+</figure>
 <p>Marriage of sparsity and convexity was one of biggest developments
 in statistics and machine learning in last 10-20 years.</p>
 <p>$\hat{\beta}(\lambda)$ is called the lasso estimator. Then define:</p>
@@ -304,7 +461,7 @@ using coordinate descent do the following steps:</p>
 <li>set $\hat{\beta_j} = Soft_{\lambda_j}(\hat{\beta_j} )$ where $\lambda_j = \frac{\lambda}{\frac{1}{n}\sum_i X_{ij}^2}$</li>
 </ol>
 <p>Where $Soft$ is soft thresholding function:</p>
-<p><img src="../../images/sds-365/sparse-7.png" alt="Example"></p>
+<p><img src="../../images/sds-365/sparse-7.png" alt="Figure for ../../images/sds-365/sparse-7.png"></p>
 <p>Then use least squares $\hat{\beta}$ on selected subset $S$.</p>
 <p>We covered this post in the intermediate machine learning SDS 365/565, Yale University, <a href="https://en.wikipedia.org/wiki/John_D._Lafferty">John Lafferty</a> where I was TF.</p>
 

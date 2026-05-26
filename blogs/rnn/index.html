@@ -26,7 +26,8 @@
     <time datetime="2022-04-10T00:00:00Z">Apr 10, 2022</time> <span class="readtime">&middot; 10 min read</span>
   </div>
   <div>
-    <p>Before we dive into recurrent neural networks (RNNs), let's start with an overview of hidden Markov models (HMMs). HMMs are used for sequential data—data that naturally follows a sequence, often in time. Examples include time series data, where events are ordered over time. But sequences aren’t just time-based; they appear in many forms, such as DNA sequences, language, or even the steps in a cooking recipe or building a structure.</p>
+    <p>Why do sequence models matter so much? Because in text, speech, DNA, and time series, order carries meaning that a static model misses. This post follows one spine: first the probabilistic view with hidden Markov models, then recurrent neural networks, then LSTMs and transformers as practical upgrades.</p>
+    <p>The goal is intuition first: what each model assumes about memory, what problem it solves, and why the field moved from one idea to the next.</p>
 
     <h2 id="language-models">Language Models</h2>
     <p>A language model assigns a probability to any sequence of words (or string of text):
@@ -49,9 +50,7 @@
 
     <h2 id="recurrent-neural-networks">Recurrent Neural Networks</h2>
     <p>RNNs are a powerful type of neural network designed for sequence data, acting as language models similar to HMMs but with a key difference: the transitions in RNNs are deterministic, not stochastic. RNNs use distributed states (like embeddings) rather than fixed states. Here’s a typical RNN diagram:</p>
-
-    <p><img src="../../images/sds-365/rnn_2.png" alt="Example"></p>
-
+<p><img src="../../images/sds-365/rnn_2.png" alt="Figure"></p>
     <p>The equations for an RNN are:
     $$
     \begin{align}
@@ -81,13 +80,13 @@
     <p>Transformers represent the latest state-of-the-art in sequence models, using an attention mechanism instead of recurrent processing. Transformers allow us to look at sequences of data all at once, rather than step-by-step, making them much faster and able to capture longer dependencies in the data.</p>
 
     <p>Here’s the main concept: each part of a sentence can attend to every other part, focusing on key segments for better context.</p>
-    <p><img src="../../images/sds-365/transformer.png" alt="Example"></p>
+    <p><img src="../../images/sds-365/transformer.png" alt="Figure for ../../images/sds-365/transformer.png"></p>
     <p>This method is called “self-attention” because each word’s representation is adjusted based on other words’ representations, using attention weights.</p>
 
     <h2 id="sequence-to-sequence-models">Sequence-to-Sequence Models</h2>
     <p>Sequence-to-sequence models are widely used in tasks like translation. These models consist of an encoder RNN that processes the input sequence and a decoder RNN that generates the output. Attention mechanisms help the model focus on relevant parts of the input for each decoding step, improving translation quality.</p>
 
-    <p><img src="../../images/sds-365/seq_to_seq.png" alt="Example"></p>
+    <p><img src="../../images/sds-365/seq_to_seq.png" alt="Figure for ../../images/sds-365/seq_to_seq.png"></p>
     <p>At each decoding step, attention mechanisms help the model connect directly to the encoder, focusing on specific parts of the input sequence that are relevant to the current output being generated.</p>
 
     <p>This content is part of SDS 365/565 Intermediate Machine Learning, taught by Professor John Lafferty at Yale University, where I was a teaching fellow.</p>

@@ -25,8 +25,9 @@
     <time datetime="2021-11-16T00:00:00Z">Nov 16, 2021</time> <span class="readtime">&middot; 3 min read</span>
   </div>
   <div>
-   <p><strong>Empirical Risk Minimization</strong>: Given $(x_1,y_1), .., (x_n,y_n) \in X \times y$ and we want to predict $f(x)=y$. Choose hypothesis class $\mathcal{F}={f_{\theta}: \theta \in \mathcal{\theta}}$.
-Choose:
+  <p><strong>Empirical Risk Minimization</strong> is the backbone of supervised learning: pick a hypothesis class, pick a loss, and choose the parameter that minimizes average training loss.</p>
+<p>This post keeps the connection explicit: ERM, maximum likelihood, and MAP are not separate topics but the same optimization template under different probabilistic assumptions.</p>
+<p>Formally, given $(x_1,y_1), .., (x_n,y_n) \in X \times y$ and a predictor family $\mathcal{F}={f_{\theta}: \theta \in \mathcal{\theta}}$, choose:
 $$
 \theta^* = \arg \min_{\theta \in \mathcal{\theta}} \sum_{i=1}^n \text{Loss}(f_{\theta}(x_i),y_i)
 $$</p>

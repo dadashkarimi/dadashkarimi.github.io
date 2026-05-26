@@ -25,8 +25,9 @@
     <time datetime="2022-03-02T00:00:00Z">Mar 2, 2022</time> <span class="readtime">&middot; 4 min read</span>
   </div>
   <div>
-   <h2 id="review">Review:</h2>
-<p>In the previous post, we talked about the Dirichlet process and Dirichlet process mixture, as the Dirichlet process is for CDF estimation and the Dirichlet process mixture is for density estimation (i.e., both are tools for estimation distributions).</p>
+  <h2 id="review">Review:</h2>
+<p>Dirichlet process mixtures are flexible, but exact posterior calculations quickly become unwieldy. Gibbs sampling is the practical workaround: instead of solving one huge problem, we repeatedly sample one piece at a time from simpler conditional distributions.</p>
+<p>This note follows that workflow directly: connect DP intuition to the Chinese restaurant process, then translate that into concrete Gibbs updates for clustering.</p>
 <p>Each sample from the Dirichlet process prior has a <strong>random collection of weights</strong> assigned to a <strong>random selection of data</strong>.
 Indeed, we wanted to make synthetic data, and the stick-breaking process was a valuable tool.
 In the stick-breaking process, we sampled the distribution function.
@@ -42,14 +43,14 @@ $$</p>
 <li>Decreasing $\alpha$ leads to having fewer pieces in the stick-breaking process, then the posterior will likely be close to accurate distribution (i.e., possibly with high $n$, which means many steps).</li>
 </ol>
 <p>However, we can only sometimes efficiently compute the posterior for the Dirichlet process mixture.</p>
-<p><img src="../../images/sds-365/bayes_table.png" alt="Example"></p>
+<p><img src="../../images/sds-365/bayes_table.png" alt="Figure"></p>
 <p>Gibbs sampling approximates our inference.
 Chinese restaurant problem is instrumental for Gibbs sampling to get to work.
 CRP helps us to parametrize the repeats of samples $X_1, X_2,..$:</p>
 <p>$$
 X_1,X_2,.., X_n | F \sim F
 $$</p>
-<p><img src="../../images/sds-365/crp.png" alt="Example"></p>
+<p><img src="../../images/sds-365/crp.png" alt="Figure for ../../images/sds-365/crp.png"></p>
 <p>Let $n_j=|\{i:c_j=j\}|$ is the number of times $X_j^*$ appears. Then:</p>
 <p>$$
 X_n =
@@ -102,7 +103,7 @@ In general, Gibbs sampler works as follows:</p>
 <li>Pick a random $j$</li>
 <li>Sample $\theta_j$ from $P(\theta_j| \text{Data}, \theta_{-j})$. It means freeze all $\theta$ except $\theta_j$.</li>
 </ol>
-<p><img src="../../images/sds-365/crp_5.png" alt="Example"></p>
+<p><img src="../../images/sds-365/crp_5.png" alt="Figure for ../../images/sds-365/crp_5.png"></p>
 <p>In Gibbs sampling, there are two random elements. <strong>Which ones?</strong></p>
 <ol>
 <li>$\theta$ or dishes</li>
@@ -133,7 +134,7 @@ X_{n+1}|X_1,..X_n \sim \text{Normal}(\bar{\theta_n},\tau_n^2+\sigma^2)
 $$</p>
 <p>Where $\sigma^2$ comes from the additional prediction.</p>
 <p>Let&rsquo;s remove the first customer and suppose the rest are in a restaurant:
-<img src="../../images/sds-365/crp_5_gipps_1.png" alt="Example"></p>
+<img src="../../images/sds-365/crp_5_gipps_1.png" alt="Figure for ../../images/sds-365/crp_5_gipps_1.png"></p>
 <p>What&rsquo;s the chance customer $1$ is seated at table $1$?
 $$
 \begin{aligned}
@@ -146,7 +147,7 @@ w_3 =p(x_1|\theta_3^*)\\
 \end{aligned}
 $$</p>
 <p>these $w_1,w_2,w_3$ are like three-sided die. Maybe you will get table 2:</p>
-<p><img src="../../images/sds-365/crp_5_gibbs_2.png" alt="Example"></p>
+<p><img src="../../images/sds-365/crp_5_gibbs_2.png" alt="Figure for ../../images/sds-365/crp_5_gibbs_2.png"></p>
 <p>We have to resample two tables:</p>
 <ol>
 <li>The table that we removed $X_1$ from</li>

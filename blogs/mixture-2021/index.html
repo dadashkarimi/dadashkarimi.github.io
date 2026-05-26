@@ -25,8 +25,11 @@
     <time datetime="2021-12-03T00:00:00Z">Dec 3, 2021</time> <span class="readtime">&middot; 4 min read</span>
   </div>
   <div>
-   <p>How to model data with a probability distribution? For example, if data looks like a circle or symmetric, we may model it with a Gaussian distribution:</p>
-<p><img src="../../images/gaussian-2021.png" alt="Example"></p>
+  <p>A single Gaussian is elegant, but real data is often multi-modal. The moment one bell curve fails, mixture models become the natural next step.</p>
+<p>This post follows one path: start from single-Gaussian MLE, show where it breaks, introduce latent assignments, and derive the EM updates that make mixture learning practical.</p>
+<p>As a baseline, if data is roughly symmetric and unimodal, a single Gaussian can work well.</p>
+<p>The first figure shows that setting: one main cluster summarized by one mean and one covariance.</p>
+<p><img src="../../images/gaussian-2021.png" alt="Unimodal dataset that is well modeled by a single Gaussian"></p>
 <p>With the following density function:</p>
 <p>$$
 \text{Normal}(\mu,\Sigma) = \frac{\exp(-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu))}{(2\pi)^{\frac{d}{2}}\sqrt{\text{det}{\Sigma}}}
@@ -50,14 +53,14 @@ $$</p>
 \end{aligned}
 \end{align}
 $$</p>
-<p>But how about data that looks like this?</p>
-<p><img src="../../images/mixture-2021.png" alt="Example"></p>
-<p>Here, a single Gaussian cannot fit multi-modal data.
-One solution is a mixture of Gaussians:</p>
+<p>Now compare that with multi-modal data:</p>
+<p><img src="../../images/mixture-2021.png" alt="Multimodal dataset requiring more than one Gaussian component"></p>
+<p>Here, one Gaussian is too restrictive.
+A natural extension is a weighted mixture of Gaussians:</p>
 <p>$$
 p(x) = \pi_1 \text{Normal}(x|\mu_1,\Sigma_1)+..+ \pi_k \text{Normal}(x|\mu_k,\Sigma_k)
 $$</p>
-<p>The following plot is an example of a Gaussian mixture distribution in one dimension showing three Gaussians (each scaled by a coefficient) in blue and their sum in red.</p>
+<p>The next plot makes this concrete in one dimension: blue curves are component densities, and the red curve is their weighted sum.</p>
 <p>$$
 \begin{align}
 \begin{aligned}
@@ -67,29 +70,14 @@ p(x) = \pi_1 \text{Normal}(x|\mu_1,\sigma_1^2)+  \pi_2 \text{Normal}(x|\mu_2,\si
 \end{aligned}
 \end{align}
 $$</p>
-<p><img src="../../images/mixture-1d.png" alt="Example"></p>
+<p><img src="../../images/mixture-1d.png" alt="One-dimensional Gaussian mixture with three components and their weighted sum"></p>
 <h2 id="mixture-of-gaussian-with-k-components">Mixture of $K$ Gaussians</h2>
 <p>Let&rsquo;s formalize a mixture of the Gaussian model:</p>
 <p>$$
 p(x) = \sum_{k=1}^K \pi_k \text{Normal}(x| \mu_k,\Sigma_k)
 $$</p>
-<p>define $z\in (0,1)^k$ to encode which component $x$ comes from: $z=(z_1,z_2,..,z_k)$ and $z_k\in(0,1)$ and $z_1+..+z_k=1$.
-Or in other words:</p>
-<p>$$
-z \in
-e_1=\left( \begin{array}{ccc}
-1   \\\
-0  \\\
-0  \end{array} \right),
-e_2=\left( \begin{array}{ccc}
-0   \\\
-1  \\\
-0  \end{array} \right),
-e_3=\left( \begin{array}{ccc}
-0   \\\
-0  \\\
-1  \end{array} \right)
-$$</p>
+<p>Introduce a latent assignment variable $z=(z_1,\dots,z_K)$ where $z_k\in\{0,1\}$ and $\sum_{k=1}^K z_k=1$.
+This one-hot encoding means exactly one component generated each observation.</p>
 <h2 id="graphical-model">Graphical model:</h2>
 <p>$$
 p(x,z)  = p(z).p(x|z)
@@ -152,8 +140,9 @@ $$</p>
 <p>$$
 p(x) = \sum_k \pi_k \text{Normal}(x|\mu_k,\Sigma_k)
 $$</p>
-<p>for each $x_n \in R^d$ define latent variable $z_n \in (0,1)^k$:</p>
-<p><img src="../../images/mixture-mle-1d.png" alt="Example"></p>
+<p>For each $x_n \in \mathbb{R}^d$, define a latent assignment $z_n$ and estimate soft responsibilities:</p>
+<p><img src="../../images/mixture-mle-1d.png" alt="Latent assignment and responsibility view for Gaussian mixture maximum likelihood"></p>
+<p>This is the key EM idea: assignments are uncertain early, so we use probabilities instead of hard labels.</p>
 <p>joint probability for $x=(x_1,..,x_N)$ is defined as:</p>
 <p>$$
 \begin{aligned}
@@ -203,8 +192,8 @@ $$</p>
 <p>$$
 \pi_k = \frac{N_k}{N}
 $$</p>
-<p>The following plot illustrates the EM algorithm (Bishop Fig. 9.8).
-<img src="../../images/mixture-em-1d.png" alt="Example"></p>
+<p>The final plot illustrates EM iterations (Bishop Fig. 9.8): E-step updates responsibilities, then M-step updates parameters.
+<img src="../../images/mixture-em-1d.png" alt="EM iterations for fitting a one-dimensional Gaussian mixture"></p>
 <p>We covered this post in the introduction to machine learning CPCS 481/581, Yale University, <a href="http://www.cs.yale.edu/homes/wibisono/">Andre Wibisono</a> where I (joint with <a href="http://iid.yale.edu/people/siddhart.md/">Siddharth Mitra</a>) was TF.</p>
 
 

@@ -24,9 +24,10 @@
     <time datetime="2022-02-19T00:00:00Z">Feb 19, 2022</time> <span class="readtime">&middot; 5 min read</span>
   </div>
   <div>
-   <h2 id="bayesian-inference">Bayesian Inference</h2>
-<p>The parameter $\theta$ in Bayesian Inference is viewed as a random variable.
-Usually, the following steps are taken:</p>
+  <h2 id="bayesian-inference">Bayesian Inference</h2>
+<p>Frequentist and Bayesian methods often answer the same question with different objects: one gives a point estimate, the other gives a full distribution over plausible parameters. This post is about why that extra distribution is useful.</p>
+<p>We will move from simple conjugate examples to Gaussian processes with one spine: prior, likelihood, posterior, and what each piece buys us in practice.</p>
+<p>The parameter $\theta$ in Bayesian inference is viewed as a random variable. Usually, the following steps are taken:</p>
 <ol>
 <li>Choose a generative model $p(x|\theta)$ for the data</li>
 <li>Choose a prior distribution $\pi(\theta)$</li>
@@ -80,14 +81,16 @@ $$</p>
 <p>where $\alpha=(\alpha_1,..,\alpha_k)\in \mathbb{R}_+^K$ is a non-negative vector.
 For example, in a regular dice, we have six parameters.
 The probability of rolling $1$ is $\theta_1$; $\alpha_1$ is the corresponding concentration parameter.</p>
-<p><img src="../../images/sds-365/dirichlet.png" alt="Example"></p>
+<p>The simplex plot below shows how concentration parameters control where probability mass tends to lie.</p>
+<p><img src="../../images/sds-365/dirichlet.png" alt="Dirichlet distribution geometry on a simplex"></p>
 <p>Indeed, when we see more and more data, the Dirichlet distribution will concentrate on proper parameters, or the variance will be $0$.
 We will see that the peak of the posterior, or maximum a posteriori (MAP) estimator, is the mode of the posterior distribution.</p>
 <h1 id="nonparametric-bayesian-inference">Nonparametric Bayesian Inference</h1>
 <p>Here we want to make Bayesian inference for functions.
 Typically neither the prior nor the posterior has a density, but the posterior is still well-defined.
 We can&rsquo;t compute posterior distribution, but we can sample from it.</p>
-<p><img src="../../images/sds-365/bayes_table.png" alt="Example"></p>
+<p>This summary table contrasts when posteriors are closed-form, approximate, or simulation-based.</p>
+<p><img src="../../images/sds-365/bayes_table.png" alt="Comparison table of Bayesian inference settings and posterior computation methods"></p>
 <h2 id="stochastic-processes">Stochastic Processes</h2>
 <p>In stochastic processes, we have a set of random variables $\{X_i\}_t$.
 The other way of representing stochastic functions is:</p>
@@ -154,7 +157,8 @@ $$</p>
 <li>It&rsquo;s positive definite: $K\succcurlyeq 0$</li>
 </ol>
 <h3 id="stochastic-process-is-a-gaussian-process-m-if-for-every-finite-set-x_1x_2x_n-mx_1mx_2--mx_n-is-normally-distributed">Stochastic process is a Gaussian process $m$ if for every finite set $X_1,X_2,..,X_N$, $m(x_1),m(x_2), .., m(x_N)$ is normally distributed</h3>
-<p><img src="../../images/sds-365/gaussian.png" alt="Example"></p>
+<p>The next figure visualizes finite-dimensional Gaussian marginals induced by a GP prior.</p>
+<p><img src="../../images/sds-365/gaussian.png" alt="Gaussian process finite-dimensional Gaussian distribution illustration"></p>
 <p>$$X =
 \begin{pmatrix}
 m(X_1) \\
@@ -248,7 +252,7 @@ X_2|x_1 = &amp;\text{Normal}\Big( \mu_2+ C^TA^{-1}(x_1-\mu_1), B-C^TA^{-1}C\Big)
 \end{aligned}
 $$</p>
 <p>The covariance matrix will be in a similar form as follows:
-<img src="../../images/sds-365/gp_cond_2.png" alt="Example"></p>
+<img src="../../images/sds-365/gp_cond_2.png" alt="Figure for ../../images/sds-365/gp_cond_2.png"></p>
 <p>We covered this post in the intermediate machine learning SDS 365/565, Yale University, <a href="https://en.wikipedia.org/wiki/John_D._Lafferty">John Lafferty</a>, where I was TF.</p>
 
 

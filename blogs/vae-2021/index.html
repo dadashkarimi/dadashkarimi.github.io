@@ -25,7 +25,9 @@
     <time datetime="2021-11-01T00:00:00Z">Nov 1, 2021</time> <span class="readtime">&middot; 5 min read</span>
   </div>
   <div>
-   <p>Let&rsquo;s estimate how many ice creams insomnia cookies in New Haven will sell this Fall. Several variables impact our forecasting, including weather and temperature. This blog post will review some essential functionalities and tutorials that <a href="https://pyro.ai/">pyro. Ai</a> provides and then writes our first stochastic function for this problem.</p>
+  <p>Probabilistic programming becomes intuitive once you frame it as storytelling with uncertainty: what random events generate the world, and what do we observe? This post builds that mindset with a small but concrete example.</p>
+<p>We follow one thread from start to finish: define a stochastic weather-and-sales model, implement it in Pyro, and use it to introduce latent variables and inference in plain terms.</p>
+<p>As a running example, we estimate seasonal ice-cream sales in New Haven as a function of uncertain weather and temperature, while introducing key <a href="https://pyro.ai/">Pyro</a> primitives.</p>
 <p>Let&rsquo;s get back to our example; a simple stochastic function that describes weather could be $\text{Bernoulli}(\alpha)$. Our prior belief on how likely a day to be cloudy is $\frac{3}{10}$, and we want to generate a sample using <code>torch</code>&rsquo;s internal distribution library as follows:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -213,7 +215,7 @@ Yet, it needs to have regularity and may lead to overfitting.
 In other words, it doesn&rsquo;t capture the structure of your data.
 Variational AE also captures the structure of your data by guiding your model to generate reliable samples.
 You can quickly learn variational AE using a graphical processing unit (GPU) over millions of documents.</p>
-<p><img src="../../images/vae.png" alt="Example"></p>
+<p><img src="../../images/vae.png" alt="Figure"></p>
 <p>Using the same principles, we learned that we could write advanced posterior inference models like topic modeling for&rsquo; model&rsquo; and&rsquo; guide.&rsquo; Implementing a topic modeling algorithm using <code>model</code> and <code>guide</code> is here: <a href="https://pyro.ai/examples/prodlda.html">code</a>.</p>
 
 

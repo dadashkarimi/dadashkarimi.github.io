@@ -26,10 +26,11 @@
     <time datetime="2022-02-25T00:00:00Z">Feb 25, 2022</time> <span class="readtime">&middot; 6 min read</span>
   </div>
   <div>
-   <h2 id="review">Review:</h2>
-<p>In the previous post, we talked about Bayesian Inference and Gaussian processes.
-We showed that there are methods to obtain posterior:</p>
-<p><img src="../../images/sds-365/bayes_table.png" alt="Example"></p>
+  <h2 id="review">Review:</h2>
+<p>How do we put a prior on an unknown distribution itself, not just on a finite parameter vector? That question leads to Dirichlet processes.</p>
+<p>This post keeps one roadmap: review Bayesian and GP ideas briefly, then build the DP intuition from CDF and density estimation, and finally connect it to mixtures and clustering behavior.</p>
+<p>From the previous discussion, we already have a few templates for posterior inference:</p>
+<p><img src="../../images/sds-365/bayes_table.png" alt="Posterior computation summary across conjugate, approximate, and simulation methods"></p>
 <h3 id="bayesian-inference">Bayesian Inference</h3>
 <p>Usually, the following steps are taken:</p>
 <ol>
@@ -50,7 +51,7 @@ $$</p>
 And then calculate the posterior distribution.
 We also talk about this magical property of Gaussian: if our data is normally distributed, our conditional and so posterior is also Gaussian.</p>
 <p>We also showed that the conditional is Gaussian with some variance, that is, the shaded area in the following plot:</p>
-<p><img src="../../images/sds-365/conditional_gaussian.jpg" alt="Example"></p>
+<p><img src="../../images/sds-365/conditional_gaussian.jpg" alt="Conditional Gaussian mean and uncertainty band after observing one variable"></p>
 <p>It&rsquo;s a standard assumption that you put prior $0$ before seeing the data.
 We also showed that we couldn&rsquo;t write down prior over function $m$, but we can take samples to evaluate them via $m$ and define covariance matrix $K$.
 Then the prior will look like this:
@@ -95,7 +96,8 @@ The empirical CDF is the function:</p>
 <p>$$
 \hat{F}(x) = \frac{1}{n}\sum_{i=1}^n \mathbb{1} (x_i\leq x)
 $$</p>
-<p><img src="../../images/sds-365/ecdf.png" alt="Example">
+<p>The ECDF figure below is the frequentist baseline we later contrast with Bayesian nonparametric priors.</p>
+<p><img src="../../images/sds-365/ecdf.png" alt="Empirical cumulative distribution function estimated from sample data">
 A frequentist $95\%$ confidence band is given by:</p>
 <p>$$
 \hat{F}(x) \pm \sqrt{\frac{1}{2n}\log \frac{2}{0.05}}
@@ -105,7 +107,7 @@ $$</p>
 <p>$$
 \hat{f}(x) = \frac{1}{nh} \sum_{i=1}^n K\Big(\frac{X_i-x}{h}\Big)
 $$</p>
-<p><img src="../../images/sds-365/kde.png" alt="Example"></p>
+<p><img src="../../images/sds-365/kde.png" alt="Kernel density estimate as a smooth approximation of sampled data density"></p>
 <p>Both the empirical CDF and kernel density estimate involve the data.
 In the Bayesian approach, we want to construct a prior distribution over these objects before seeing any data.</p>
 <h2 id="solution-use-synthetic-or-imaginary-data">Solution: Use synthetic or &ldquo;imaginary&rdquo; data</h2>
@@ -114,7 +116,8 @@ In the Bayesian approach, we want to construct a prior distribution over these o
 <li>Step function on these data (<strong>Dirichlet Process</strong>). Each sample from a Dirichlet process prior has a random collection of weights assigned to an arbitrary data selection.</li>
 <li>Sum up Gaussian bumps (<strong>Dirichlet Process Mixture</strong>).  Each sample from a Dirichlet process mixture has a random collection of weights assigned to a random selection of model parameters.</li>
 </ol>
-<p><img src="../../images/sds-365/dp.jpg" alt="Example"></p>
+<p>The following visual contrasts these two constructions: discrete random step functions versus smooth random mixtures.</p>
+<p><img src="../../images/sds-365/dp.jpg" alt="Dirichlet process step-function samples versus Dirichlet process mixture smooth density samples"></p>
 <p>How to make imaginary data?</p>
 <h2 id="stick-breaking-process">Stick-breaking process</h2>
 <p>At each step, break off a fraction:</p>
@@ -159,7 +162,7 @@ CRP will allow us to circumvent sampling $F$.</p>
 <li>Sits at an empty table, with probability proportional to $\alpha$, or</li>
 <li>Sits at the occupied table, with probability proportional to the number of customers already seated.</li>
 </ol>
-<p><img src="../../images/sds-365/crp.png" alt="Example"></p>
+<p><img src="../../images/sds-365/crp.png" alt="Chinese restaurant process seating analogy for clustering under a Dirichlet process"></p>
 <ol>
 <li>Draw $X_1 \sim F_0$</li>
 <li>For $i=2,..,n$: draw</li>

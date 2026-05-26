@@ -28,13 +28,40 @@
     <time datetime="2022-03-28T00:00:00Z">Mar 28, 2022</time> <span class="readtime">&middot; 9 min read</span>
   </div>
   <div>
-   <p>Graphs allow us to encode structural assumptions about data.
-Graphs are the natural language for describing all kinds of problems and data.
-The graphs discussed in this post will quantify statistical relationships between random variables.
-In particular, there is a graph associated with any multivariate distribution.
-There is always a graph associated with random variable $\omega$.</p>
-<p>There are two types of graphs: Directed versus Undirected graphs.</p>
-<p><img src="../../images/sds-365/graph.png" alt="Example"></p>
+  <p>Suppose two variables are strongly correlated. Does that mean they interact directly, or are they connected only through a third variable? That is the main puzzle of this note. Graphs are useful because they let us write these assumptions explicitly instead of hiding them inside a covariance table.</p>
+<p>We will use one spine throughout: first build intuition with directed vs. undirected graphs, then connect those pictures to precision-matrix zeros, and finally show how sparse methods estimate a graph from data.</p>
+<figure class="concept-diagram is-static concept-diagram--graph-types">
+  <div class="concept-diagram__head">
+    <div class="concept-diagram__label">scientific figure</div>
+    <h3>Directed and undirected assumptions</h3>
+  </div>
+  <div class="concept-diagram__stage">
+    <svg viewBox="0 0 760 280" role="img" aria-label="Directed graph and undirected graph side by side">
+      <defs>
+        <marker id="arrow-directed-graph" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+          <path d="M0,0 L10,3.5 L0,7 Z" fill="#222" />
+        </marker>
+      </defs>
+      <rect x="35" y="32" width="310" height="210" fill="#f8fbff" stroke="#c9d8ef" stroke-width="2" />
+      <rect x="415" y="32" width="310" height="210" fill="#fffaf3" stroke="#ead0a9" stroke-width="2" />
+      <text x="190" y="66" text-anchor="middle" font-family="Newsreader, serif" font-size="24" fill="#111">directed</text>
+      <text x="570" y="66" text-anchor="middle" font-family="Newsreader, serif" font-size="24" fill="#111">undirected</text>
+      <line x1="135" y1="140" x2="235" y2="140" stroke="#222" stroke-width="4" marker-end="url(#arrow-directed-graph)" />
+      <line x1="510" y1="140" x2="630" y2="140" stroke="#222" stroke-width="4" />
+      <circle cx="105" cy="140" r="32" fill="#f05a5a" stroke="#111" stroke-width="2" />
+      <circle cx="265" cy="140" r="32" fill="#6baed6" stroke="#111" stroke-width="2" />
+      <circle cx="475" cy="140" r="32" fill="#f05a5a" stroke="#111" stroke-width="2" />
+      <circle cx="665" cy="140" r="32" fill="#6baed6" stroke="#111" stroke-width="2" />
+      <text x="105" y="148" text-anchor="middle" font-family="Atkinson Hyperlegible, sans-serif" font-size="22" fill="#111">X</text>
+      <text x="265" y="148" text-anchor="middle" font-family="Atkinson Hyperlegible, sans-serif" font-size="22" fill="#111">Y</text>
+      <text x="475" y="148" text-anchor="middle" font-family="Atkinson Hyperlegible, sans-serif" font-size="22" fill="#111">X</text>
+      <text x="665" y="148" text-anchor="middle" font-family="Atkinson Hyperlegible, sans-serif" font-size="22" fill="#111">Y</text>
+      <text x="190" y="205" text-anchor="middle" font-family="Atkinson Hyperlegible, sans-serif" font-size="15" fill="#333">direction can encode causal order</text>
+      <text x="570" y="205" text-anchor="middle" font-family="Atkinson Hyperlegible, sans-serif" font-size="15" fill="#333">edge encodes symmetric dependence</text>
+    </svg>
+  </div>
+  <p class="concept-diagram__caption">The two graph types use the same nodes, but the edge semantics differ: arrows encode ordered dependence, while undirected edges encode mutual statistical association.</p>
+</figure>
 <p>A graph $G=(V,E)$ has vertices $V$ and edges $E$.
 If $X=(X_1,.., X_p)$ is a random variable, we will study graphs with $p$ vertices, one for each $X_j$.
 The graph will encode conditional independence relations among the variables.
@@ -84,7 +111,7 @@ $$</p>
 </div>
 </div>
 <p>However, the marginal is still a normal distribution when we condition one random variable.
-<img src="https://dadashkarimi.github.io/images/SDS-365/graph_condition.png" alt="Example">
+<img src="../../images/sds-365/conditional_gaussian.jpg" alt="Conditional Gaussian after conditioning on one variable">
 which is not tilted in any direction.</p>
 <p>This is revealed in the &ldquo;precision matrix&rdquo;:</p>
 <p>$$
@@ -97,7 +124,32 @@ $$</p>
 <p>The zeros lead to <strong>conditional</strong> independence assumptions.
 These <strong>conditional</strong> independence assumptions were hidden in the covariance matrix.</p>
 <h2 id="undirected-graphs">Undirected graphs</h2>
-<p><img src="../../images/sds-365/cond_ind_graph.png" alt="Example"></p>
+<figure class="concept-diagram is-static concept-diagram--conditioning-chain">
+  <div class="concept-diagram__head">
+    <div class="concept-diagram__label">animated figure</div>
+    <h3>Conditioning blocks the path</h3>
+  </div>
+  <div class="concept-diagram__stage">
+    <svg viewBox="0 0 760 250" role="img" aria-label="Chain graph where conditioning on Y blocks dependence between X and Z">
+      <line x1="220" y1="116" x2="380" y2="116" stroke="#222" stroke-width="4" />
+      <line x1="380" y1="116" x2="540" y2="116" stroke="#222" stroke-width="4" />
+      <line x1="220" y1="176" x2="540" y2="176" stroke="#e25d4f" stroke-width="4" stroke-dasharray="10 9">
+        <animate attributeName="opacity" values="0.15;0.9;0.15" dur="3.8s" repeatCount="indefinite" />
+      </line>
+      <rect x="348" y="70" width="64" height="92" rx="6" fill="#fff" stroke="#1f7a45" stroke-width="3">
+        <animate attributeName="opacity" values="0.25;1;1;0.25" dur="3.8s" repeatCount="indefinite" />
+      </rect>
+      <circle cx="190" cy="116" r="34" fill="#f05a5a" stroke="#111" stroke-width="2" />
+      <circle cx="380" cy="116" r="34" fill="#75c477" stroke="#111" stroke-width="2" />
+      <circle cx="570" cy="116" r="34" fill="#6baed6" stroke="#111" stroke-width="2" />
+      <text x="190" y="124" text-anchor="middle" font-family="Atkinson Hyperlegible, sans-serif" font-size="22" fill="#111">X</text>
+      <text x="380" y="124" text-anchor="middle" font-family="Atkinson Hyperlegible, sans-serif" font-size="22" fill="#111">Y</text>
+      <text x="570" y="124" text-anchor="middle" font-family="Atkinson Hyperlegible, sans-serif" font-size="22" fill="#111">Z</text>
+      <text x="380" y="210" text-anchor="middle" font-family="Atkinson Hyperlegible, sans-serif" font-size="17" fill="#333">X and Z communicate through Y; once Y is fixed, the path is blocked.</text>
+    </svg>
+  </div>
+  <p class="concept-diagram__caption">This is the meaning of X independent of Z given Y: the middle node carries the association, so conditioning on it removes the remaining path.</p>
+</figure>
 <p>Here, $V={X,Y,Z}$ and $E={(X,Y),(Y,Z)}$.
 This encodes the independence relation:
 $$
@@ -105,7 +157,7 @@ X \perp \!\!\! \perp Z  ~  | ~  Y
 $$
 This means that $X$ and $Z$ are independent conditioned on $Y$.</p>
 <p>Here is another example.</p>
-<p><img src="../../images/sds-365/cond_ind_graph_4.png" alt="Example"></p>
+<p><img src="../../images/sds-365/cond_ind_graph_4.png" alt="Figure"></p>
 <p>$$
 \begin{align}
 X_1 \perp \!\!\! \perp X_4  ~  | ~  X_2,X_3 \\
@@ -118,7 +170,7 @@ $$</p>
 \{X_1,X_2\} \perp \!\!\! \perp \{X_4,X_8\}  ~  | ~  \{X_3,X_7 \}
 \end{align}
 $$</p>
-<p><img src="../../images/sds-365/cond_ind_graph_8.png" alt="Example"></p>
+<p><img src="../../images/sds-365/cond_ind_graph_8.png" alt="Figure for ../../images/sds-365/cond_ind_graph_8.png"></p>
 <h2 id="special-case">Special case</h2>
 <p>If $(i,j) \not\in E$ then:
 $$
@@ -141,7 +193,45 @@ A zero in $\Omega$ indicates a lack of the corresponding edge in the graph.</p>
 0 &amp; * &amp; *
 \end{pmatrix}
 $$</p>
-<p><img src="../../images/sds-365/cond_ind_graph.png" alt="Example"></p>
+<figure class="concept-diagram is-static concept-diagram--precision-zero">
+  <div class="concept-diagram__head">
+    <div class="concept-diagram__label">animated figure</div>
+    <h3>Zeros in precision remove edges</h3>
+  </div>
+  <div class="concept-diagram__stage">
+    <svg viewBox="0 0 760 300" role="img" aria-label="Precision matrix zero corresponds to missing edge in graph">
+      <defs>
+        <marker id="arrow-precision-zero" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+          <path d="M0,0 L10,3.5 L0,7 Z" fill="#222" />
+        </marker>
+      </defs>
+      <rect x="72" y="54" width="230" height="190" fill="#fff" stroke="#222" stroke-width="2" />
+      <text x="187" y="36" text-anchor="middle" font-family="Newsreader, serif" font-size="24" fill="#111">precision matrix</text>
+      <g font-family="Atkinson Hyperlegible, sans-serif" font-size="24" text-anchor="middle" fill="#111">
+        <text x="120" y="108">*</text><text x="187" y="108">*</text><text x="254" y="108">0</text>
+        <text x="120" y="160">*</text><text x="187" y="160">*</text><text x="254" y="160">*</text>
+        <text x="120" y="212">0</text><text x="187" y="212">*</text><text x="254" y="212">*</text>
+      </g>
+      <rect x="235" y="82" width="38" height="142" fill="none" stroke="#e25d4f" stroke-width="4" stroke-dasharray="8 6">
+        <animate attributeName="opacity" values="0.2;1;0.2" dur="3.2s" repeatCount="indefinite" />
+      </rect>
+      <line x1="395" y1="150" x2="455" y2="150" stroke="#222" stroke-width="2" marker-end="url(#arrow-precision-zero)" />
+      <line x1="555" y1="115" x2="630" y2="190" stroke="#222" stroke-width="4" />
+      <line x1="480" y1="190" x2="555" y2="115" stroke="#222" stroke-width="4" />
+      <line x1="480" y1="190" x2="630" y2="190" stroke="#e25d4f" stroke-width="4" stroke-dasharray="10 8">
+        <animate attributeName="opacity" values="0.9;0.05;0.05;0.9" dur="3.2s" repeatCount="indefinite" />
+      </line>
+      <circle cx="555" cy="115" r="31" fill="#75c477" stroke="#111" stroke-width="2" />
+      <circle cx="480" cy="190" r="31" fill="#f05a5a" stroke="#111" stroke-width="2" />
+      <circle cx="630" cy="190" r="31" fill="#6baed6" stroke="#111" stroke-width="2" />
+      <text x="555" y="123" text-anchor="middle" font-family="Atkinson Hyperlegible, sans-serif" font-size="20" fill="#111">Y</text>
+      <text x="480" y="198" text-anchor="middle" font-family="Atkinson Hyperlegible, sans-serif" font-size="20" fill="#111">X</text>
+      <text x="630" y="198" text-anchor="middle" font-family="Atkinson Hyperlegible, sans-serif" font-size="20" fill="#111">Z</text>
+      <text x="555" y="252" text-anchor="middle" font-family="Atkinson Hyperlegible, sans-serif" font-size="16" fill="#333">Omega_XZ = 0, so no X-Z edge</text>
+    </svg>
+  </div>
+  <p class="concept-diagram__caption">For Gaussian graphical models, a zero off-diagonal entry of the precision matrix means the corresponding variables have no edge after conditioning on the rest.</p>
+</figure>
 <p>And when we have four random variables, we can similarly read off the graph:
 $$
 \Omega = \Sigma^{-1} =  \begin{pmatrix}
@@ -151,7 +241,7 @@ $$
 0 &amp; * &amp; * &amp; *
 \end{pmatrix}
 $$</p>
-<p><img src="../../images/sds-365/cond_ind_graph_4.png" alt="Example"></p>
+<p><img src="../../images/sds-365/cond_ind_graph_4.png" alt="Figure for ../../images/sds-365/cond_ind_graph_4.png"></p>
 <p>$$
 \begin{align}
 X_1 \perp \!\!\! \perp X_4  ~  | ~  X_2,X_3
@@ -219,7 +309,7 @@ $$</p>
 </ol>
 <p>Lets say $G=(V,E)$ be an undirected Graph on $m=|V|$ vertices:</p>
 <p>Recall: <strong>edge</strong> could be a clique, a <strong>triangle</strong> is a clique, but a square is not a clique (i.e., we need cross edges).</p>
-<p><img src="../../images/sds-365/discrete_gm.png" alt="Example"></p>
+<p><img src="../../images/sds-365/discrete_gm.png" alt="Figure for ../../images/sds-365/discrete_gm.png"></p>
 <p>A positive distribution over random variables $Z_1,.., Z_p$ that satisfies the Markov properties of graph $G$ can be represented as:</p>
 <p>$$
 p(Z) \propto \prod_{c\in \mathcal{C}} \psi_c(Z_c)
@@ -284,9 +374,65 @@ $$
 <p>The problem is this:  Given n i.i.d. samples from an Ising distribution, ${Z_i , i = 1, .. ,n}$
 (each is a p-vector of {0, 1} values) identify underlying graph.
 Then, we have some data points like the following graphs:</p>
-<p><img src="https://dadashkarimi.github.io/images/SDS-365/graph_estimation_examples.png" alt="Example"></p>
+<figure class="concept-diagram is-static concept-diagram--graph-estimation-flow">
+  <div class="concept-diagram__head">
+    <div class="concept-diagram__label">animated figure</div>
+    <h3>From binary samples to a sparse graph</h3>
+  </div>
+  <div class="concept-diagram__stage">
+    <svg viewBox="0 0 760 330" role="img" aria-label="Binary samples are converted into an estimated graph">
+      <defs>
+        <marker id="arrow-estimation-flow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+          <path d="M0,0 L10,3.5 L0,7 Z" fill="#222" />
+        </marker>
+      </defs>
+      <text x="145" y="48" text-anchor="middle" font-family="Newsreader, serif" font-size="24" fill="#111">samples</text>
+      <text x="380" y="48" text-anchor="middle" font-family="Newsreader, serif" font-size="24" fill="#111">sparse logistic fits</text>
+      <text x="615" y="48" text-anchor="middle" font-family="Newsreader, serif" font-size="24" fill="#111">estimated graph</text>
+      <g font-family="Atkinson Hyperlegible, sans-serif" font-size="16" text-anchor="middle">
+        <rect x="48" y="72" width="194" height="168" fill="#fff" stroke="#222" stroke-width="2" />
+        <text x="78" y="100">Z1</text><text x="124" y="100">Z2</text><text x="170" y="100">Z3</text><text x="216" y="100">Z4</text>
+        <text x="78" y="132">1</text><text x="124" y="132">1</text><text x="170" y="132">0</text><text x="216" y="132">0</text>
+        <text x="78" y="164">0</text><text x="124" y="164">1</text><text x="170" y="164">1</text><text x="216" y="164">0</text>
+        <text x="78" y="196">1</text><text x="124" y="196">0</text><text x="170" y="196">0</text><text x="216" y="196">1</text>
+        <text x="78" y="228">0</text><text x="124" y="228">1</text><text x="170" y="228">1</text><text x="216" y="228">1</text>
+      </g>
+      <line x1="265" y1="156" x2="315" y2="156" stroke="#222" stroke-width="3" marker-end="url(#arrow-estimation-flow)" />
+      <g>
+        <rect x="324" y="80" width="112" height="38" fill="#f8fbff" stroke="#6baed6" stroke-width="2" />
+        <rect x="324" y="130" width="112" height="38" fill="#f8fbff" stroke="#6baed6" stroke-width="2" />
+        <rect x="324" y="180" width="112" height="38" fill="#f8fbff" stroke="#6baed6" stroke-width="2" />
+        <text x="380" y="105" text-anchor="middle" font-family="Atkinson Hyperlegible, sans-serif" font-size="16" fill="#111">Z1 ~ Z-1</text>
+        <text x="380" y="155" text-anchor="middle" font-family="Atkinson Hyperlegible, sans-serif" font-size="16" fill="#111">Z2 ~ Z-2</text>
+        <text x="380" y="205" text-anchor="middle" font-family="Atkinson Hyperlegible, sans-serif" font-size="16" fill="#111">Z3 ~ Z-3</text>
+        <path d="M455 98 C492 100 493 135 455 146" fill="none" stroke="#e25d4f" stroke-width="3" stroke-dasharray="8 6">
+          <animate attributeName="stroke-dashoffset" values="24;0" dur="1.4s" repeatCount="indefinite" />
+        </path>
+      </g>
+      <line x1="455" y1="156" x2="505" y2="156" stroke="#222" stroke-width="3" marker-end="url(#arrow-estimation-flow)" />
+      <g>
+        <line x1="580" y1="116" x2="660" y2="116" stroke="#222" stroke-width="4" />
+        <line x1="580" y1="116" x2="550" y2="205" stroke="#222" stroke-width="4" />
+        <line x1="660" y1="116" x2="690" y2="205" stroke="#222" stroke-width="4" />
+        <line x1="550" y1="205" x2="690" y2="205" stroke="#bbb" stroke-width="4" stroke-dasharray="8 8">
+          <animate attributeName="opacity" values="0.2;0.8;0.2" dur="2.6s" repeatCount="indefinite" />
+        </line>
+        <circle cx="580" cy="116" r="28" fill="#f05a5a" stroke="#111" stroke-width="2" />
+        <circle cx="660" cy="116" r="28" fill="#75c477" stroke="#111" stroke-width="2" />
+        <circle cx="550" cy="205" r="28" fill="#6baed6" stroke="#111" stroke-width="2" />
+        <circle cx="690" cy="205" r="28" fill="#f3c969" stroke="#111" stroke-width="2" />
+        <text x="580" y="124" text-anchor="middle" font-family="Atkinson Hyperlegible, sans-serif" font-size="18" fill="#111">Z1</text>
+        <text x="660" y="124" text-anchor="middle" font-family="Atkinson Hyperlegible, sans-serif" font-size="18" fill="#111">Z2</text>
+        <text x="550" y="213" text-anchor="middle" font-family="Atkinson Hyperlegible, sans-serif" font-size="18" fill="#111">Z3</text>
+        <text x="690" y="213" text-anchor="middle" font-family="Atkinson Hyperlegible, sans-serif" font-size="18" fill="#111">Z4</text>
+      </g>
+      <text x="380" y="286" text-anchor="middle" font-family="Atkinson Hyperlegible, sans-serif" font-size="16" fill="#333">Each node-wise regression votes for neighbors; the edge rule turns those votes into the final graph.</text>
+    </svg>
+  </div>
+  <p class="concept-diagram__caption">This replaces the empty image: the observed binary vectors are the input, sparse logistic regressions estimate neighborhoods, and the agreed neighbor pairs become edges.</p>
+</figure>
 <p>We want to go from the data points to estimate that graph.</p>
-<p><img src="../../images/sds-365/graph_estimation_examples_2.png" alt="Example"></p>
+<p><img src="../../images/sds-365/graph_estimation_examples_2.png" alt="Figure for ../../images/sds-365/graph_estimation_examples_2.png"></p>
 <p>Consider the Ising model:
 $$
 \psi_{ijk}(Z_i,Z_j,Z_k) = e^{\beta_{ij} Z_i Z_j } e^{\beta_{jk} Z_j Z_k} e^{\beta_{ik} Z_i Z_k }
@@ -325,7 +471,7 @@ Maximum degree $d$ of the $p$ variables. Sample size $n$ must satisfy:</p>
 <h2 id="graph-laplacian">Graph Laplacian</h2>
 <p>Then, the graph Laplacian $L$ is the square $n \times n $ matrix defined as $L=D-A$.
 The graph Laplacian gets its name from being the discrete analog of the Laplacian operator from calculus.</p>
-<p><img src="../../images/sds-365/graph_estimation_examples_3.png" alt="Example"></p>
+<p><img src="../../images/sds-365/graph_estimation_examples_3.png" alt="Figure for ../../images/sds-365/graph_estimation_examples_3.png"></p>
 <h2 id="polynomials-of-the-laplacian">Polynomials of the Laplacian</h2>
 <p>$$
 P_w(L) \in \mathbb{R}^{n\times n} = w_0 I_n + w_1 L + w_2 L^2+ .. + w_d L^d = \sum_{i=0}^d w_i L^i

@@ -895,6 +895,11 @@ body.theme-bright .diagram-node--observed {
   text-anchor: middle;
 }
 
+.diagram-paper-math--left {
+  text-anchor: start;
+  font-size: 22px;
+}
+
 .diagram-paper-math-symbol {
   font-style: italic;
   font-weight: 520;

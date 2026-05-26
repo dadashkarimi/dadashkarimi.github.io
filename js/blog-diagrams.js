@@ -252,6 +252,7 @@
     svg.appendChild(text(62, 44, 'p(x) = N(x; μ, Σ)', 'diagram-paper-math'));
     svg.appendChild(text(82, 62, '2D Gaussian density', 'diagram-paper-small'));
 
+    card.stage.appendChild(svg);
     mountDiagram(target, card.card);
   }
 
@@ -506,7 +507,7 @@
     svg.appendChild(text(606, 44, 'BAYESIAN', 'diagram-paper-note diagram-paper-note--red'));
 
     [['regression', 115], ['CDF estimation', 205], ['density estimation', 295]].forEach(function (row) {
-      svg.appendChild(text(35, row[1], row[0], 'diagram-paper-math'));
+      svg.appendChild(text(54, row[1], row[0], 'diagram-paper-math diagram-paper-math--left'));
     });
 
     svg.appendChild(el('rect', { x: '265', y: '80', width: '220', height: '70', rx: '6', fill: '#f9fbff', stroke: '#cbd5e1' }));

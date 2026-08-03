@@ -1,10 +1,10 @@
 {
   "source": "serpapi/google_scholar_author",
   "authorId": "LrXokpIAAAAJ",
-  "updatedAt": "2026-07-27T11:27:39.486Z",
+  "updatedAt": "2026-08-03T11:27:49.204Z",
   "sinceYear": "2021",
   "metrics": {
-    "citationsAll": 669,
+    "citationsAll": 666,
     "citationsSince2021": 584,
     "hIndexAll": 11,
     "hIndexSince2021": 10,
@@ -22,39 +22,39 @@
     },
     {
       "year": 2018,
-      "citations": 15
+      "citations": 16
     },
     {
       "year": 2019,
-      "citations": 21
-    },
-    {
-      "year": 2020,
       "citations": 20
     },
     {
+      "year": 2020,
+      "citations": 18
+    },
+    {
       "year": 2021,
-      "citations": 40
+      "citations": 39
     },
     {
       "year": 2022,
-      "citations": 66
+      "citations": 65
     },
     {
       "year": 2023,
-      "citations": 100
+      "citations": 98
     },
     {
       "year": 2024,
-      "citations": 115
+      "citations": 118
     },
     {
       "year": 2025,
-      "citations": 160
+      "citations": 157
     },
     {
       "year": 2026,
-      "citations": 99
+      "citations": 103
     }
   ]
 }

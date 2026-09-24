@@ -1,0 +1,55 @@
+name: Sync Pixieset collections
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/sync-pixieset.yml'
+      - 'scripts/sync_pixieset.py'
+permissions:
+  contents: write
+concurrency:
+  group: pixieset-collection-sync
+  cancel-in-progress: false
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: main
+          persist-credentials: false
+      - name: Install browser and image tools
+        run: |
+          python3 -m venv "$RUNNER_TEMP/pixieset-venv"
+          "$RUNNER_TEMP/pixieset-venv/bin/pip" install --disable-pip-version-check playwright pillow
+          "$RUNNER_TEMP/pixieset-venv/bin/python" -m playwright install --with-deps chromium
+      - name: Test parser without accessing Pixieset
+        run: |
+          "$RUNNER_TEMP/pixieset-venv/bin/python" scripts/sync_pixieset.py --self-test
+          node --check js/photography-collections.js
+      - name: Read public collections and prepare the complete update
+        id: sync
+        run: '"$RUNNER_TEMP/pixieset-venv/bin/python" scripts/sync_pixieset.py'
+      - name: Save only verified gallery data and preview images
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git add -- data/pixieset-collections.json images/photography
+          if git diff --cached --quiet; then
+            echo 'Public collection list checked; no changes.' >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Sync public Pixieset collections and cover previews'
+          gh auth setup-git
+          git push origin HEAD:main
+          echo 'Updated the collection feed. The website reads this feed directly; no Pages rebuild is needed for feed updates.' >> "$GITHUB_STEP_SUMMARY"
+      - name: Report blocked or incomplete sync
+        if: failure()
+        run: |
+          echo 'Sync did not complete. The existing website albums were retained. Read the failed step for the reason; a blocked automated request is not a successful sync.' >> "$GITHUB_STEP_SUMMARY"

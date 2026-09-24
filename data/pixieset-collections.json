@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "source": "https://javidstudio.pixieset.com/",
+  "status": "awaiting_first_sync",
+  "last_synced_at": null,
+  "collections": [
+    {
+      "id": "big-house",
+      "title": "Big House (1800)",
+      "url": "https://javidstudio.pixieset.com/bighouse/",
+      "cover": "images/photography/big-house.webp",
+      "alt": "Black-and-white photograph of a porch with wooden chairs.",
+      "width": 604,
+      "height": 403
+    },
+    {
+      "id": "valley-forge",
+      "title": "Valley Forge",
+      "url": "https://javidstudio.pixieset.com/valleyforge/",
+      "cover": "images/photography/valley-forge.webp",
+      "alt": "Black-and-white photograph of a stone memorial arch.",
+      "width": 604,
+      "height": 403
+    },
+    {
+      "id": "national-capitol-columns",
+      "title": "National Capitol Columns",
+      "url": "https://javidstudio.pixieset.com/nationalcapitolcolumns/",
+      "cover": "images/photography/national-capitol-columns.webp",
+      "alt": "A tree in front of stone columns beneath a blue sky.",
+      "width": 604,
+      "height": 403
+    },
+    {
+      "id": "hopewell-lake",
+      "title": "Hopewell Lake",
+      "url": "https://javidstudio.pixieset.com/hopewelllake/",
+      "cover": "images/photography/hopewell-lake.webp",
+      "alt": "Lily pads on blue water reflecting the sky.",
+      "width": 604,
+      "height": 403
+    },
+    {
+      "id": "hopewell-furnace",
+      "title": "Hopewell Furnace National Historic Site",
+      "url": "https://javidstudio.pixieset.com/hopewellfurnacenationalhistoricsite/",
+      "cover": "images/photography/hopewell-furnace.webp",
+      "alt": "Sunlight and shadows on a whitewashed stone building.",
+      "width": 604,
+      "height": 403
+    }
+  ]
+}

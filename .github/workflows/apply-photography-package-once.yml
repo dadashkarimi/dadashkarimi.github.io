@@ -1,0 +1,82 @@
+name: Apply approved photography package
+on:
+  push:
+    branches: [photography-albums-publish-20260924]
+    paths: ['.github/workflows/apply-photography-package-once.yml']
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: photography-albums-publish-20260924
+          fetch-depth: 2
+      - name: Verify and apply the user-approved replacement files
+        env:
+          PACKAGE_URL: 'https://sdmntprcentralus.oaiusercontent.com/files/00000000-ee7c-81f5-9806-6f4e5900cd86/raw?se=2026-09-24T01%3A20%3A35Z&sp=r&sv=2026-02-06&sr=b&scid=2df0a846-aa97-525d-a07b-15e36e975272&skoid=e9d2f8b1-028a-4cff-8eb1-d0e66fbefcca&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-24T00%3A47%3A08Z&ske=2026-09-25T00%3A47%3A08Z&sks=b&skv=2026-02-06&sig=hSzR5jSYLLbuYfx6Dot2jElvWpehAjsyjPoWLZR8G1o%3D'
+        run: |
+          python3 - <<'PY'
+          import hashlib, io, os, subprocess, urllib.request, zipfile
+          from pathlib import Path, PurePosixPath
+          from html.parser import HTMLParser
+          from urllib.parse import urlparse, unquote
+          url = os.environ['PACKAGE_URL']
+          print('::add-mask::' + url)
+          with urllib.request.urlopen(url, timeout=60) as response:
+              data = response.read(10_000_001)
+          assert hashlib.sha256(data).hexdigest() == '64cd72fe32ebf6faeb2f4f7a224132ffa8bf19ea583964998812a354687d3d76', 'Package checksum mismatch'
+          z = zipfile.ZipFile(io.BytesIO(data))
+          names = sorted(z.namelist(), key=lambda n: PurePosixPath(n).parts)
+          assert len(names) == len(set(names)) == 121, 'Unexpected package contents'
+          baseline = []
+          for name in names:
+              p = PurePosixPath(name)
+              assert not p.is_absolute() and '..' not in p.parts and not any(part.startswith('.') for part in p.parts), 'Unsafe package path'
+              assert p.suffix in {'.html', '.css', '.js', '.webp'}, 'Unexpected file type'
+              result = subprocess.run(['git', 'rev-parse', '--verify', 'HEAD:' + name], capture_output=True, text=True)
+              blob = result.stdout.strip() if result.returncode == 0 else '-'
+              baseline.append(name + '\0' + blob + '\n')
+          assert hashlib.sha256(''.join(baseline).encode()).hexdigest() == 'eb8e1b47e0b5fabea0e836a36dbd6d1423e90b513e333f28bd581e5b7555ba2b', 'Original site files changed; refusing to overwrite'
+          for name in names:
+              p = Path(name)
+              p.parent.mkdir(parents=True, exist_ok=True)
+              p.write_bytes(z.read(name))
+          class CheckHTML(HTMLParser):
+              def __init__(self):
+                  super().__init__(); self.depth=0; self.nav_links=[]; self.local=[]; self.iframes=0; self.albums=0
+              def handle_starttag(self, tag, attrs):
+                  attrs=dict(attrs)
+                  if tag=='nav': self.depth+=1
+                  if tag=='a' and self.depth: self.nav_links.append(attrs.get('href',''))
+                  if tag=='iframe': self.iframes+=1
+                  if tag=='article' and 'album' in attrs.get('class','').split(): self.albums+=1
+                  if tag in {'link','script','img'}:
+                      self.local.append(attrs.get('href') if tag=='link' else attrs.get('src'))
+              def handle_endtag(self,tag):
+                  if tag=='nav': self.depth=max(0,self.depth-1)
+          for name in ['index.html','blogs.html','pubs.html','talks.html','reads.html','works.html','photography.html']:
+              parser=CheckHTML(); parser.feed(Path(name).read_text())
+              assert any(urlparse(href).path.endswith('photography.html') for href in parser.nav_links), 'Missing Photography menu: '+name
+          parser=CheckHTML(); parser.feed(Path('photography.html').read_text())
+          assert parser.iframes==0 and parser.albums==5, 'Invalid album gallery'
+          for asset in parser.local:
+              if asset and not urlparse(asset).scheme and not asset.startswith('//'):
+                  assert Path(unquote(urlparse(asset).path).lstrip('/')).is_file(), 'Missing local asset: '+asset
+          for name in ['js/blog-theme.js','js/site-theme.js','js/photography-navigation.js']:
+              subprocess.run(['node','--check',name],check=True)
+          assert '/photography.html' in Path('js/blog-theme.js').read_text(), 'Missing article navigation item'
+          subprocess.run(['git','add','--',*names],check=True)
+          print('Verified and staged all 121 approved files, including five cover previews and site-wide menus.')
+          PY
+      - name: Commit only the approved website files to the staging branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git diff --cached --stat
+          git commit -m 'Install approved album-style photography page and site-wide navigation'
+          git push origin HEAD:refs/heads/photography-albums-publish-20260924
+          echo "PHOTOGRAPHY_COMMIT=$(git rev-parse HEAD)"
+          echo "PHOTOGRAPHY_TREE=$(git rev-parse HEAD^{tree})"

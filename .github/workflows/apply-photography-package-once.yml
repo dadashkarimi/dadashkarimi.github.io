@@ -1,4 +1,4 @@
-name: Prepare approved photography covers
+name: Apply approved photography package once
 on:
   push:
     branches: [photography-albums-publish-20260924]
@@ -6,41 +6,85 @@ on:
 permissions:
   contents: write
 jobs:
-  covers:
+  apply:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: photography-albums-publish-20260924
-      - run: python3 -m pip install pillow
-      - name: Download preview images and verify every pixel against approved covers
+          fetch-depth: 6
+      - name: Verify and apply the exact approved replacement files
         run: |
           python3 - <<'PY'
-          import io, hashlib, subprocess, urllib.request
-          from pathlib import Path
-          from PIL import Image
-          covers = [
-              ('big-house','f6d3e1fd34cc00998b33a92d913c41d7c8710109454fc5160258e968feb0d2d5','https://lh7-rt.googleusercontent.com/slidesz/AGV_vUc9ZapPu-lsqLc7Q_NFXi-gkzsXK5lC5o3Sg9ZJ02wYtGLsVBZ_TNj_I44kSwKGBjQsCKiHRS-IjrVuZpiE4pbXvX0REVOirMlzhggsvplF5WOksL1mj32r6dMKpD1L94lsKnBCzaESIJxJsAGMAqtcZ9_BDMyZzp6Tst56-0xB5GQvT80=s2048?key=Bz0ywEq4vdq1uWTxSlAKRw'),
-              ('valley-forge','d68d3044321c632f877efbbdf8ee8420095bd323aaed72a660f2e8b38650d0be','https://lh7-rt.googleusercontent.com/slidesz/AGV_vUf-ExMkuOtxDOT0SpplZ0KU8JxwiOsC1YLSF7nHnqqyu-Lqyvv5PhulsxrkEAuSJTTdvrQF3rRhOCQc2BhZx2xi8k06mQKmiq8M8oEnXj_RrS5xZDiuMNAblNJgHaCnZXEFmaXz7tThcSzthINBQS2Ruz7jtHBS6YnpJWC-5fBjrMwu=s2048?key=Bz0ywEq4vdq1uWTxSlAKRw'),
-              ('national-capitol-columns','f1adbf91ece8ae09c92e7c3b7ddba42ee202272e1aab865a073d982c91259c98','https://lh7-rt.googleusercontent.com/slidesz/AGV_vUc_xn4s2onTN2KV7y4roDogNoVUcNzcR2kVokY0tiv_aFhiYbU_ObfWbl5OodpbNfdOfLtUXBuVLQaEeN_8yfFcKLwN-iXSGrW3UC6UpHJ-6silmzNu3IrAocU76rqBlCWlHatH5F8Je4mcwckH5wr273KVtuHVVWhg3sTJhnmHHiYNeRQ=s2048?key=Bz0ywEq4vdq1uWTxSlAKRw'),
-              ('hopewell-lake','6200c9590357a39e89b580991f70e3e4fd830bda81c800edf97ccdd3d626089b','https://lh7-rt.googleusercontent.com/slidesz/AGV_vUfFD6DJCmvmm6QPwM4MNTiqNuyGCrD14BzdN8Q64qdsk3M-QZXw33LXJ-Aq8DsjWumQeHDN0wayl1HU-zGazPpD8oki4WdY_2OHmI-mjCFvaq1qNEka_y24PVwxO7cz5R6NDZjYdiQKp5e_0FrVWFMzgRMWcNMKsQB2CqUkTzkLtIB-hVg=s2048?key=Bz0ywEq4vdq1uWTxSlAKRw'),
-              ('hopewell-furnace','02c5f3337a576838b46c5a1ee9e6737254573cf2f02343602b0ba374e29daf64','https://lh7-rt.googleusercontent.com/slidesz/AGV_vUf6yY6P63pu2sj8Q73IGY59OmuohMr008_9CaV6R_6n7XiEqVpiZhO5X-UVuQwQIUKNSaBZfANmWrwzfNPXLNI5-sk1j_GN7lccyf7WWhmTzWgfFHimu9dUPLV1GoZd7i3sxmErUBlYF43azVkQoT-ilMDGgokCgrJQHH2mgqfgT-A6gG4=s2048?key=Bz0ywEq4vdq1uWTxSlAKRw')
-          ]
-          out=Path('images/photography'); out.mkdir(parents=True,exist_ok=True)
-          for name,expected,url in covers:
-              with urllib.request.urlopen(url,timeout=60) as response:
-                  image=Image.open(io.BytesIO(response.read(5_000_000))).convert('RGB')
-              assert image.size == (604,403), 'Unexpected dimensions for '+name
-              assert hashlib.sha256(image.tobytes()).hexdigest()==expected, 'Image pixels changed for '+name
-              image.save(out/(name+'.webp'),format='WEBP',lossless=True,method=6)
-              print('Verified:',name)
-          subprocess.run(['git','add','--','images/photography'],check=True)
+          import hashlib, io, json, subprocess, urllib.request, zipfile
+          from pathlib import Path, PurePosixPath
+          base = 'a1275e7a6e9942e0f7f8bf1a1fa9328d1a390a16'
+          expected = '64cd72fe32ebf6faeb2f4f7a224132ffa8bf19ea583964998812a354687d3d76'
+          url = 'https://sdmntprcentralus.oaiusercontent.com/files/00000000-11c4-81f5-a2df-e9b15cdf2ba3/raw?se=2026-09-24T02%3A28%3A02Z&sp=r&sv=2026-02-06&sr=b&scid=912061c3-4b97-57ef-91dd-ec9d690fc51c&skoid=e9d2f8b1-028a-4cff-8eb1-d0e66fbefcca&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-24T01%3A35%3A34Z&ske=2026-09-25T01%3A35%3A34Z&sks=b&skv=2026-02-06&sig=lzdlKDxddHbHmrlRHhLdbA2lY/dwHK7MdsUtfdsAkB0%3D'
+          live = subprocess.check_output(['git','ls-remote','origin','refs/heads/main'],text=True).split()[0]
+          if live != base:
+              raise RuntimeError('Main changed; review the newer commit before applying this package.')
+          with urllib.request.urlopen(url,timeout=60) as response:
+              data = response.read(1_100_000)
+          if hashlib.sha256(data).hexdigest() != expected:
+              raise RuntimeError('Package integrity check failed.')
+          def original(name):
+              result = subprocess.run(['git','show',base+':'+name],capture_output=True)
+              return result.stdout if result.returncode == 0 else None
+          with zipfile.ZipFile(io.BytesIO(data)) as package:
+              infos = package.infolist()
+              if len(infos) != 121 or sum(i.file_size for i in infos) != 1806385:
+                  raise RuntimeError('Unexpected package manifest.')
+              names = []
+              for item in infos:
+                  path = PurePosixPath(item.filename)
+                  if path.is_absolute() or '..' in path.parts or path.parts[0].startswith('.') or path.suffix not in {'.html','.css','.js','.webp'}:
+                      raise RuntimeError('Unexpected package path: '+item.filename)
+                  dest = Path(item.filename)
+                  if dest.is_symlink() or any(p.is_symlink() for p in dest.parents):
+                      raise RuntimeError('Refusing a symlink: '+item.filename)
+                  wanted = package.read(item)
+                  before = original(item.filename)
+                  current = dest.read_bytes() if dest.exists() else None
+                  is_preview = item.filename.startswith('images/photography/') and path.suffix == '.webp'
+                  if not is_preview and current not in (before, wanted):
+                      raise RuntimeError('File has newer changes: '+item.filename)
+                  names.append(item.filename)
+              for item in infos:
+                  dest = Path(item.filename)
+                  dest.parent.mkdir(parents=True,exist_ok=True)
+                  dest.write_bytes(package.read(item))
+              for item in infos:
+                  if Path(item.filename).read_bytes() != package.read(item):
+                      raise RuntimeError('Written file verification failed: '+item.filename)
+          for name in ['index.html','pubs.html','blogs.html','talks.html','reads.html','works.html','photography.html']:
+              text = Path(name).read_text()
+              if 'href="photography.html"' not in text:
+                  raise RuntimeError('Missing navigation: '+name)
+          gallery = Path('photography.html').read_text()
+          if '<iframe' in gallery or gallery.count('class="album-link"') != 5:
+              raise RuntimeError('The photography page is not the approved five-album layout.')
+          for name in ['big-house','valley-forge','national-capitol-columns','hopewell-lake','hopewell-furnace']:
+              preview = Path('images/photography')/(name+'.webp')
+              raw = preview.read_bytes()
+              if raw[:4] != b'RIFF' or raw[8:12] != b'WEBP':
+                  raise RuntimeError('Invalid cover: '+name)
+          for name in ['js/site-theme.js','js/blog-theme.js','js/photography-navigation.js']:
+              subprocess.run(['node','--check',name],check=True)
+          subprocess.run(['git','add','--']+names,check=True)
+          # Both temporary workflows were created for this photography task.
+          subprocess.run(['git','rm','--ignore-unmatch','--','.github/workflows/apply-photography-package-once.yml','.github/workflows/photography-preview-assets.yml'],check=True)
+          print('VERIFIED_PACKAGE_SHA256='+expected)
+          print('VERIFIED_REPLACEMENT_FILES='+str(len(names)))
+          print('All five covers, seven main-page menus, and JavaScript syntax checks passed.')
           PY
-      - name: Save approved cover previews on staging branch
+      - name: Save the checked update on staging only
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'Add the five verified low-resolution photography album covers'
+          git diff --cached --check
+          git commit -m 'Publish album-style photography page and sitewide navigation'
           git push origin HEAD:refs/heads/photography-albums-publish-20260924
-          echo "PHOTOGRAPHY_COVERS_COMMIT=$(git rev-parse HEAD)"
+          echo "VERIFIED_PHOTOGRAPHY_COMMIT=$(git rev-parse HEAD)"
+          echo "VERIFIED_PHOTOGRAPHY_TREE=$(git rev-parse HEAD^{tree})"

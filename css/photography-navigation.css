@@ -1,0 +1,36 @@
+/* Navigation-only adjustments for the additional Photography item. */
+nav.has-photography .brand { flex-shrink: 0; white-space: nowrap; }
+nav.has-photography .nav-right { min-width: 0; }
+nav.has-photography .nav-links a { white-space: nowrap; }
+nav.has-photography a:focus-visible,
+nav.has-photography button:focus-visible { outline: 2px solid var(--green, #167934); outline-offset: 3px; }
+nav.has-photography .nav-links a[aria-current="page"] { border-color: var(--ink); background: var(--paper-dark); }
+@media (max-width: 1080px) {
+  nav.has-photography { position: relative; gap: 12px; }
+  nav.has-photography .nav-right { margin-left: auto; }
+  nav.has-photography .menu-toggle { display: inline-flex; }
+  nav.has-photography .nav-links {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: max(20px,env(safe-area-inset-right));
+    z-index: 50;
+    width: min(240px,calc(100vw - 40px));
+    padding: 10px;
+    background: var(--paper);
+    border: 1.5px solid var(--ink);
+    box-shadow: 4px 4px 0 var(--green);
+    gap: 2px;
+  }
+  body.nav-open nav.has-photography .nav-links { display: flex; flex-direction: column; align-items: stretch; }
+  nav.has-photography .nav-links a { font-size: 20px; padding: 7px 10px; }
+}
+@media (max-width: 380px) {
+  nav.has-photography { padding-left: 12px; padding-right: 12px; gap: 7px; }
+  nav.has-photography .brand { font-size: 20px; }
+  nav.has-photography .nav-right { gap: 6px; }
+  nav.has-photography .menu-toggle, nav.has-photography .theme-toggle { font-size: 15px; padding: 3px 6px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  nav.has-photography *, nav.has-photography *::before { transition: none !important; }
+}

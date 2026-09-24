@@ -168,17 +168,18 @@
     tape.textContent = 'lecture notes / research notebook';
 
     var nav = document.createElement('nav');
-    nav.className = 'blog-nav';
+    nav.className = 'blog-nav has-photography';
     nav.innerHTML = '' +
       '<a class="brand" href="/index.html">javid dadashkarimi</a>' +
       '<div class="nav-right">' +
-        '<button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false">menu</button>' +
+        '<button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="navLinks">menu</button>' +
         '<div class="nav-links" id="navLinks">' +
           '<a href="/index.html">research</a>' +
           '<a href="/pubs.html">papers</a>' +
           '<a class="active" href="/blogs.html">blog</a>' +
           '<a href="/talks.html">talks</a>' +
           '<a href="/reads.html">reading</a>' +
+          '<a href="/photography.html">photography</a>' +
           '<a href="mailto:javid.dadashkarimi@pennmedicine.upenn.edu">contact</a>' +
         '</div>' +
         '<button class="theme-toggle" id="themeToggle" type="button">bright</button>' +

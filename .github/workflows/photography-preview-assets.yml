@@ -9,115 +9,27 @@ permissions:
 jobs:
   preview:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Copy site source for the replacement-file package
+      - name: Package existing site source without modifying it
         run: |
-          python - <<'PY'
+          python3 - <<'PY'
           from pathlib import Path
-          import subprocess, shutil
-          out = Path('photography-preview-assets/site-source')
-          for name in subprocess.check_output(['git', 'ls-files'], text=True).splitlines():
-              p = Path(name)
-              if p.suffix in {'.html', '.css'} or (name.startswith('js/') and p.suffix == '.js') or name.startswith('icons/') or name == 'images/favicon.png':
-                  if p.is_file():
-                      dest = out / p
-                      dest.parent.mkdir(parents=True, exist_ok=True)
-                      shutil.copy2(p, dest)
-          Path('photography-preview-assets/source-commit.txt').write_text(subprocess.check_output(['git','rev-parse','HEAD'], text=True))
-          PY
-      - name: Install browser for public-gallery preview
-        run: |
-          python -m pip install playwright pillow
-          python -m playwright install --with-deps chromium
-      - name: Read public collection links and cover previews only
-        continue-on-error: true
-        run: |
-          python - <<'PY'
-          import json, io
-          from pathlib import Path
-          from urllib.parse import urlparse, urljoin
-          from playwright.sync_api import sync_playwright
-          from PIL import Image
-          out = Path('photography-preview-assets/pixieset-public')
-          out.mkdir(parents=True, exist_ok=True)
-          home = 'https://javidstudio.pixieset.com/'
-          with sync_playwright() as p:
-              browser = p.chromium.launch()
-              context = browser.new_context(viewport={'width':1440,'height':1000}, device_scale_factor=1)
-              page = context.new_page()
-              try:
-                  response = page.goto(home, wait_until='domcontentloaded', timeout=60000)
-                  page.wait_for_timeout(7000)
-                  for _ in range(5):
-                      page.evaluate('window.scrollBy(0, window.innerHeight)')
-                      page.wait_for_timeout(600)
-                  page.evaluate('window.scrollTo(0,0)')
-                  page.wait_for_timeout(1000)
-                  (out/'homepage.html').write_text(page.content(), encoding='utf-8')
-                  page.screenshot(path=str(out/'homepage.png'), full_page=True)
-                  data = page.evaluate('''() => {
-                    const items = [];
-                    const images = new Set();
-                    function imageURLs(node) {
-                      if (!node) return [];
-                      const urls = new Set();
-                      for (const el of [node, ...node.querySelectorAll('*')]) {
-                        if (el.tagName === 'IMG') {
-                          const src = el.currentSrc || el.src || el.dataset.src;
-                          if (src && !src.startsWith('data:')) urls.add(src);
-                        }
-                        const bg = getComputedStyle(el).backgroundImage;
-                        for (const match of bg.matchAll(/url\(["']?([^"')]+)["']?\)/g)) urls.add(match[1]);
-                      }
-                      return [...urls];
-                    }
-                    for (const a of document.querySelectorAll('a[href]')) {
-                      let u; try { u = new URL(a.href); } catch { continue; }
-                      if (u.hostname !== location.hostname || !u.pathname.replace(/\//g,'')) continue;
-                      const box = a.getBoundingClientRect();
-                      if (!box.width || !box.height) continue;
-                      const ownImages = imageURLs(a);
-                      const covers = ownImages.length ? ownImages : imageURLs(a.parentElement);
-                      covers.forEach(src => images.add(src));
-                      items.push({url:u.href, text:a.innerText.trim(), label:a.getAttribute('aria-label'), parentText:a.parentElement.innerText.trim(), images:covers});
-                    }
-                    return {title:document.title, url:location.href, items, images:[...images]};
-                  }''')
-                  data['status'] = response.status if response else None
-                  downloaded = []
-                  for index, src in enumerate(data['images'][:40]):
-                      try:
-                          url = urljoin(home, src)
-                          if urlparse(url).scheme != 'https': continue
-                          result = context.request.get(url, timeout=30000)
-                          if not result.ok: continue
-                          image = Image.open(io.BytesIO(result.body())).convert('RGB')
-                          image.thumbnail((1200,1200))
-                          filename = f'cover-{index:02d}.webp'
-                          image.save(out/filename, 'WEBP', quality=88)
-                          downloaded.append({'url':src,'filename':filename,'width':image.width,'height':image.height})
-                      except Exception as e:
-                          print('Cover preview skipped:',type(e).__name__)
-                  data['downloaded'] = downloaded
-                  (out/'collections.json').write_text(json.dumps(data, indent=2), encoding='utf-8')
-                  print(json.dumps(data, indent=2))
-              except Exception as e:
-                  (out/'error.txt').write_text(str(e))
-                  raise
-              finally:
-                  browser.close()
+          import subprocess, zipfile
+          with zipfile.ZipFile('photography-site-source.zip','w',zipfile.ZIP_DEFLATED) as z:
+              for name in subprocess.check_output(['git','ls-files'],text=True).splitlines():
+                  p=Path(name)
+                  if p.suffix in {'.html','.css'} or (name.startswith('js/') and p.suffix=='.js') or name.startswith('icons/') or name=='images/favicon.png':
+                      if p.is_file(): z.write(p,name)
+              z.writestr('source-commit.txt',subprocess.check_output(['git','rev-parse','HEAD'],text=True))
+          print('Prepared photography-site-source.zip:',Path('photography-site-source.zip').stat().st_size,'bytes')
           PY
       - uses: actions/upload-artifact@v4
-        if: always()
         with:
-          name: photography-preview-assets
-          path: photography-preview-assets/
-          retention-days: 7
+          name: photography-site-source
+          path: photography-site-source.zip
+          retention-days: 3
           if-no-files-found: error

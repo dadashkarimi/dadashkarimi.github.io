@@ -1,0 +1,52 @@
+/* PIGMENT/ BITTS photos: scoped to the Talks page; the shared theme is unchanged. */
+.talk-photo-entry { border-bottom: 1px dashed var(--rule); scroll-margin-top: 24px; }
+.talk-summary { cursor: pointer; border-bottom: 0; list-style: none; }
+.talk-summary::-webkit-details-marker { display: none; }
+.talk-summary::marker { content: ""; }
+.talk-summary-body { min-width: 0; }
+.talk-summary-body .talk-title, .talk-summary-body .talk-host { display: block; }
+.talk-summary .talk-title { text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: 4px; }
+.talk-summary:hover .talk-title { text-decoration-color: var(--green); }
+.talk-summary:focus-visible { outline: 2px solid var(--green); outline-offset: 5px; }
+.talk-photo-toggle { display: inline-flex; align-items: center; gap: 8px; padding-top: 3px; color: var(--blue); font: 18px/1.2 'Caveat', cursive; white-space: nowrap; }
+.talk-photo-icon { font: 22px/1 monospace; transition: transform .15s; }
+.talk-photo-hide { display: none; }
+.talk-photo-entry[open] .talk-photo-show { display: none; }
+.talk-photo-entry[open] .talk-photo-hide { display: inline; }
+.talk-photo-entry[open] .talk-photo-icon { transform: rotate(45deg); }
+.talk-photo-panel { padding: 2px 0 24px; }
+.talk-event-note { color: var(--ink-2); font-size: 14px; line-height: 1.6; margin: 0 0 18px 110px; }
+.talk-event-note a { display: inline-block; padding: 5px 0; color: var(--blue); text-underline-offset: 3px; }
+.talk-photo-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 20px; }
+.talk-photo-grid figure { min-width: 0; margin: 0; }
+.talk-photo-link { position: relative; display: block; border: 1px solid var(--rule); background: var(--paper-dark); color: var(--ink); text-decoration: none; cursor: zoom-in; }
+.talk-photo-link img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: contain; }
+.talk-photo-link:focus-visible { outline: 2px solid var(--green); outline-offset: 4px; }
+.talk-photo-link:hover { border-color: var(--green); }
+.talk-photo-enlarge { position: absolute; right: 8px; bottom: 8px; padding: 3px 8px; background: rgba(0,0,0,.78); color: #fff; font: 17px/1.35 'Caveat', cursive; }
+.talk-photo-grid figcaption { padding: 8px 0 0; color: var(--ink-2); font: 20px/1.3 'Caveat', cursive; }
+.talk-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+body.talk-photo-modal-open { overflow: hidden; }
+.talk-lightbox { width: min(1200px, calc(100vw - 32px)); max-width: calc(100vw - 32px); max-height: calc(100vh - 32px); max-height: calc(100dvh - 32px); margin: auto; padding: 14px; border: 1px solid var(--rule); background: var(--paper); color: var(--ink); box-shadow: 0 12px 64px rgba(0,0,0,.4); overflow: auto; }
+.talk-lightbox::backdrop { background: rgba(0,0,0,.88); }
+.talk-lightbox-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 10px; }
+.talk-lightbox-counter { font-size: 13px; color: var(--ink-2); }
+.talk-lightbox button { min-width: 44px; min-height: 44px; padding: 6px 12px; background: var(--paper-dark); color: var(--ink); border: 1px solid var(--rule); cursor: pointer; font: 20px/1 'Caveat', cursive; }
+.talk-lightbox button:hover { border-color: var(--ink); }
+.talk-lightbox button:focus-visible, .talk-lightbox a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+.talk-lightbox-image { display: block; width: 100%; max-height: 70vh; max-height: 70dvh; object-fit: contain; }
+.talk-lightbox-bottom { display: flex; gap: 12px; align-items: center; justify-content: space-between; margin-top: 10px; }
+.talk-lightbox-bottom p { text-align: center; font: 20px/1.3 'Caveat', cursive; }
+.talk-lightbox-original { display: block; width: fit-content; margin: 8px auto 0; color: var(--blue); font-size: 13px; padding: 5px 2px; text-underline-offset: 3px; }
+@media (max-width: 700px) {
+  .talk-summary { grid-template-columns: 76px minmax(0,1fr); gap: 12px; }
+  .talk-photo-toggle { grid-column: 2; padding-top: 0; padding-bottom: 4px; }
+  .talk-event-note { margin-left: 88px; }
+}
+@media (max-width: 600px) {
+  .talk-photo-grid { grid-template-columns: minmax(0,1fr); gap: 22px; }
+  .talk-event-note { margin-left: 0; }
+  .talk-lightbox { width: calc(100vw - 16px); max-width: calc(100vw - 16px); padding: 10px; }
+  .talk-lightbox-bottom p { font-size: 18px; }
+}
+@media (prefers-reduced-motion: reduce) { .talk-photo-icon { transition: none; } }

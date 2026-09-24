@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Talks — Javid Dadashkarimi</title>
 <meta name="author" content="Javid Dadashkarimi" />
-<meta name="description" content="Invited talks by Javid Dadashkarimi" />
+<meta name="description" content="Research talks and presentations by Javid Dadashkarimi" />
 <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
 <link rel="icon" type="image/png" href="images/favicon.png">
 <link rel="manifest" href="manifest.json">
@@ -15,6 +15,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/notebook.css">
 <link rel="stylesheet" href="css/photography-navigation.css">
+<link rel="stylesheet" href="css/talk-gallery.css">
 <script defer src="js/photography-navigation.js"></script>
 </head>
 <body class="theme-dark">
@@ -57,8 +58,38 @@
 <div class="section">
   <div class="section-head">
     <div class="section-num">§ 01</div>
-    <h2 class="section-title">invited talks</h2>
+    <h2 class="section-title">talks &amp; presentations</h2>
   </div>
+
+  <details class="talk-photo-entry" id="pigment-bitts-2026">
+    <summary class="talk-row talk-summary">
+      <time class="talk-date" datetime="2026-08">Aug 2026</time>
+      <span class="talk-summary-body">
+        <span class="talk-title">PIGMENT: A Deep Learning Framework for Porcine Immunohistochemistry Segmentation</span>
+        <span class="talk-host">→ BITTS 2026 · Yale University</span>
+      </span>
+      <span class="talk-photo-toggle"><span class="talk-photo-show">photos</span><span class="talk-photo-hide">close photos</span> <span class="talk-photo-icon" aria-hidden="true">+</span></span>
+    </summary>
+    <div class="talk-photo-panel">
+      <p class="talk-event-note">Biomedical Imaging Technology &amp; Translational Science Conference · Yale University<br><a href="https://medicine.yale.edu/biomedical-imaging-institute/news-and-events/bitts-conference/" target="_blank" rel="noopener noreferrer">Conference details <span aria-hidden="true">↗</span><span class="talk-sr-only"> (opens in a new tab)</span></a></p>
+      <div class="talk-photo-grid" aria-label="Photos from the PIGMENT talk at Yale">
+        <figure>
+          <a class="talk-photo-link" href="images/talks/pigment-bitts-yale-presenter.jpg" data-talk-photo data-caption="Presenting PIGMENT at BITTS · Yale University" target="_blank" rel="noopener" aria-label="Enlarge the photo of me presenting PIGMENT at Yale">
+            <img src="images/talks/pigment-bitts-yale-presenter.jpg" width="2048" height="1536" alt="A presenter at the Yale lectern beside the PIGMENT title slide." loading="lazy" decoding="async">
+            <span class="talk-photo-enlarge" aria-hidden="true">enlarge ↗</span>
+          </a>
+          <figcaption>Presenting PIGMENT</figcaption>
+        </figure>
+        <figure>
+          <a class="talk-photo-link" href="images/talks/pigment-bitts-yale-audience.jpg" data-talk-photo data-caption="The audience at BITTS · Yale University" target="_blank" rel="noopener" aria-label="Enlarge the audience photo from BITTS at Yale">
+            <img src="images/talks/pigment-bitts-yale-audience.jpg" width="2048" height="1536" alt="The conference audience seated in the Yale lecture hall." loading="lazy" decoding="async">
+            <span class="talk-photo-enlarge" aria-hidden="true">enlarge ↗</span>
+          </a>
+          <figcaption>The audience at BITTS</figcaption>
+        </figure>
+      </div>
+    </div>
+  </details>
 
   <div class="talk-row">
     <div class="talk-date">Nov 2024</div>
@@ -159,6 +190,21 @@
   </div>
 </footer>
 
+<dialog class="talk-lightbox" id="talk-photo-lightbox" aria-labelledby="talk-lightbox-caption">
+  <div class="talk-lightbox-toolbar">
+    <p class="talk-lightbox-counter" id="talk-photo-counter" aria-live="polite"></p>
+    <button class="talk-lightbox-close" type="button" autofocus aria-label="Close enlarged photo">close <span aria-hidden="true">×</span></button>
+  </div>
+  <img class="talk-lightbox-image" id="talk-lightbox-image" alt="">
+  <div class="talk-lightbox-bottom">
+    <button class="talk-lightbox-prev" type="button" aria-label="Previous photo">←</button>
+    <p id="talk-lightbox-caption"></p>
+    <button class="talk-lightbox-next" type="button" aria-label="Next photo">→</button>
+  </div>
+  <a class="talk-lightbox-original" id="talk-lightbox-original" target="_blank" rel="noopener">Open full-size photo <span aria-hidden="true">↗</span><span class="talk-sr-only"> (opens in a new tab)</span></a>
+</dialog>
+
 <script src="js/site-theme.js"></script>
+<script src="js/talk-gallery.js"></script>
 </body>
 </html>

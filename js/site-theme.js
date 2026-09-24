@@ -22,7 +22,8 @@
     if (themeMeta) themeMeta.setAttribute('content', dark ? '#000000' : '#ffffff');
   }
 
-  var saved = localStorage.getItem(key);
+  var saved = null;
+  try { saved = localStorage.getItem(key); } catch (error) { /* Storage is optional. */ }
   if (saved === 'dark' || saved === 'bright') {
     setTheme(saved === 'dark' ? 'dark' : 'bright');
   } else {
@@ -33,6 +34,6 @@
     var nowDark = document.body.classList.contains('theme-dark');
     var next = nowDark ? 'bright' : 'dark';
     setTheme(next);
-    localStorage.setItem(key, next);
+    try { localStorage.setItem(key, next); } catch (error) { /* Keep the in-page theme. */ }
   });
 })();

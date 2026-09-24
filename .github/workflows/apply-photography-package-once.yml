@@ -1,4 +1,4 @@
-name: Apply approved photography package once
+name: Verify photography page and navigation
 on:
   push:
     branches: [photography-albums-publish-20260924]
@@ -13,73 +13,67 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: photography-albums-publish-20260924
-          fetch-depth: 6
-      - name: Verify and apply the exact approved replacement files
+      - name: Check integrity and apply the approved website-only patch
         run: |
           python3 - <<'PY'
-          import hashlib, io, json, subprocess, urllib.request, zipfile
-          from pathlib import Path, PurePosixPath
-          base = 'a1275e7a6e9942e0f7f8bf1a1fa9328d1a390a16'
-          expected = '64cd72fe32ebf6faeb2f4f7a224132ffa8bf19ea583964998812a354687d3d76'
-          url = 'https://sdmntprcentralus.oaiusercontent.com/files/00000000-11c4-81f5-a2df-e9b15cdf2ba3/raw?se=2026-09-24T02%3A28%3A02Z&sp=r&sv=2026-02-06&sr=b&scid=912061c3-4b97-57ef-91dd-ec9d690fc51c&skoid=e9d2f8b1-028a-4cff-8eb1-d0e66fbefcca&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-24T01%3A35%3A34Z&ske=2026-09-25T01%3A35%3A34Z&sks=b&skv=2026-02-06&sig=lzdlKDxddHbHmrlRHhLdbA2lY/dwHK7MdsUtfdsAkB0%3D'
+          import base64, hashlib, subprocess, tempfile, zlib
+          from pathlib import Path
+          expected_main = 'a1275e7a6e9942e0f7f8bf1a1fa9328d1a390a16'
           live = subprocess.check_output(['git','ls-remote','origin','refs/heads/main'],text=True).split()[0]
-          if live != base:
-              raise RuntimeError('Main changed; review the newer commit before applying this package.')
-          with urllib.request.urlopen(url,timeout=60) as response:
-              data = response.read(1_100_000)
-          if hashlib.sha256(data).hexdigest() != expected:
-              raise RuntimeError('Package integrity check failed.')
-          def original(name):
-              result = subprocess.run(['git','show',base+':'+name],capture_output=True)
-              return result.stdout if result.returncode == 0 else None
-          with zipfile.ZipFile(io.BytesIO(data)) as package:
-              infos = package.infolist()
-              if len(infos) != 121 or sum(i.file_size for i in infos) != 1806385:
-                  raise RuntimeError('Unexpected package manifest.')
-              names = []
-              for item in infos:
-                  path = PurePosixPath(item.filename)
-                  if path.is_absolute() or '..' in path.parts or path.parts[0].startswith('.') or path.suffix not in {'.html','.css','.js','.webp'}:
-                      raise RuntimeError('Unexpected package path: '+item.filename)
-                  dest = Path(item.filename)
-                  if dest.is_symlink() or any(p.is_symlink() for p in dest.parents):
-                      raise RuntimeError('Refusing a symlink: '+item.filename)
-                  wanted = package.read(item)
-                  before = original(item.filename)
-                  current = dest.read_bytes() if dest.exists() else None
-                  is_preview = item.filename.startswith('images/photography/') and path.suffix == '.webp'
-                  if not is_preview and current not in (before, wanted):
-                      raise RuntimeError('File has newer changes: '+item.filename)
-                  names.append(item.filename)
-              for item in infos:
-                  dest = Path(item.filename)
-                  dest.parent.mkdir(parents=True,exist_ok=True)
-                  dest.write_bytes(package.read(item))
-              for item in infos:
-                  if Path(item.filename).read_bytes() != package.read(item):
-                      raise RuntimeError('Written file verification failed: '+item.filename)
+          assert live == expected_main, 'Main changed; preserve newer changes and review first.'
+          part_hashes = [
+              '516d83a1b6f6e4ca97ae1c1b6d8a17b7141bd7680064a131468933ecd968d014',
+              '47c07270da841faac6755dc8bc105763428552c0e4372c12d89dcc5b392dddda',
+              '2db746eef9de273cda02c9034f175da60942e176fb082836727fd70394137546',
+              'aef95b44320c988203ea660de2766f5df5f3bb24c05cd65d90e2ed3cb79836f6',
+              '290fe336fdbece96300d5ae894b281e3253a441969d0c13699295b6498a4661c'
+          ]
+          parts = []
+          for i, expected in enumerate(part_hashes):
+              text = Path(f'.github/photo-patch-{i}.b64').read_text().strip()
+              assert hashlib.sha256(text.encode()).hexdigest() == expected, 'Patch part mismatch: '+str(i)
+              parts.append(text)
+          compressed = base64.b64decode(''.join(parts),validate=True)
+          assert hashlib.sha256(compressed).hexdigest() == '1c8655fe915a2f8d32b6e50607be11d60d90564d648cb8e6bb944ddccd99048c'
+          patch = zlib.decompress(compressed)
+          assert len(patch) == 92096
+          assert hashlib.sha256(patch).hexdigest() == 'edf6d62fceea83ba86e76c2a9530a7594b844865bee261f7f52b670d6af44356'
+          with tempfile.NamedTemporaryFile(suffix='.patch') as file:
+              file.write(patch); file.flush()
+              subprocess.run(['git','apply','--check','--index',file.name],check=True)
+              subprocess.run(['git','apply','--index',file.name],check=True)
+          changed = subprocess.check_output(['git','diff','--cached','--name-only'],text=True).splitlines()
+          assert len(changed) == 116, 'Unexpected text-file count.'
+          assert all(Path(n).suffix in {'.html','.css','.js'} and not n.startswith('.github/') for n in changed)
           for name in ['index.html','pubs.html','blogs.html','talks.html','reads.html','works.html','photography.html']:
-              text = Path(name).read_text()
-              if 'href="photography.html"' not in text:
-                  raise RuntimeError('Missing navigation: '+name)
+              assert 'href="photography.html"' in Path(name).read_text(), 'Missing menu: '+name
           gallery = Path('photography.html').read_text()
-          if '<iframe' in gallery or gallery.count('class="album-link"') != 5:
-              raise RuntimeError('The photography page is not the approved five-album layout.')
-          for name in ['big-house','valley-forge','national-capitol-columns','hopewell-lake','hopewell-furnace']:
-              preview = Path('images/photography')/(name+'.webp')
-              raw = preview.read_bytes()
-              if raw[:4] != b'RIFF' or raw[8:12] != b'WEBP':
-                  raise RuntimeError('Invalid cover: '+name)
+          assert '<iframe' not in gallery and gallery.count('class="album-link"') == 5
+          covers = {
+              'big-house':'3ca4f74f2e4ae0fff6b6da97ade75d925313e9e1',
+              'hopewell-furnace':'57656205c3664f52d83d3562f4d23d5ceba2db57',
+              'hopewell-lake':'0ea7850a3c11257623da10111edd548a57e2e003',
+              'national-capitol-columns':'b7d40a7736285f87721caad51f09ad647f4f8ea1',
+              'valley-forge':'4962bbfb5329849a271c6db63b4d29d6984fb322'
+          }
+          for name,expected in covers.items():
+              path = 'images/photography/'+name+'.webp'
+              actual = subprocess.check_output(['git','hash-object',path],text=True).strip()
+              assert actual == expected, 'Previously pixel-verified cover changed: '+name
           for name in ['js/site-theme.js','js/blog-theme.js','js/photography-navigation.js']:
               subprocess.run(['node','--check',name],check=True)
-          subprocess.run(['git','add','--']+names,check=True)
-          # Both temporary workflows were created for this photography task.
-          subprocess.run(['git','rm','--ignore-unmatch','--','.github/workflows/apply-photography-package-once.yml','.github/workflows/photography-preview-assets.yml'],check=True)
-          print('VERIFIED_PACKAGE_SHA256='+expected)
-          print('VERIFIED_REPLACEMENT_FILES='+str(len(names)))
-          print('All five covers, seven main-page menus, and JavaScript syntax checks passed.')
+          cleanup = [
+              '.github/workflows/apply-photography-package-once.yml',
+              '.github/workflows/photography-preview-assets.yml',
+              '.github/approved-photography.patch.zlib.b64'
+          ] + [f'.github/photo-patch-{i}.b64' for i in range(5)]
+          subprocess.run(['git','rm','--ignore-unmatch','--']+cleanup,check=True)
+          print('VERIFIED_TEXT_FILES=116')
+          print('VERIFIED_ALBUM_COVERS=5')
+          print('Approved patch SHA256: edf6d62fceea83ba86e76c2a9530a7594b844865bee261f7f52b670d6af44356')
+          print('All seven main menus, album links, cover blobs, and JavaScript syntax checks passed.')
           PY
-      - name: Save the checked update on staging only
+      - name: Save checked files on staging without deploying main
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'

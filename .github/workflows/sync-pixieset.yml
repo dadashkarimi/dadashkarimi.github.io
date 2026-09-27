@@ -1,18 +1,14 @@
 name: Sync Pixieset collections
 on:
-  schedule:
-    - cron: '17 */6 * * *'
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/sync-pixieset.yml'
-      - 'scripts/sync_pixieset.py'
+
 permissions:
   contents: write
+
 concurrency:
   group: pixieset-collection-sync
   cancel-in-progress: false
+
 jobs:
   sync:
     runs-on: ubuntu-latest
@@ -52,4 +48,4 @@ jobs:
       - name: Report blocked or incomplete sync
         if: failure()
         run: |
-          echo 'Sync did not complete. The existing website albums were retained. Read the failed step for the reason; a blocked automated request is not a successful sync.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Sync did not complete. The existing website albums were retained. Pixieset may be blocking automated access.' >> "$GITHUB_STEP_SUMMARY"

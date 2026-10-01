@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Javid Dadashkarimi — Notebook</title>
 <meta name="author" content="Javid Dadashkarimi" />
-<meta name="description" content="Javid Dadashkarimi — researcher in medical imaging &amp; deep learning" />
+<meta name="description" content="Javid Dadashkarimi — AI/ML researcher at Penn Medicine and founder of Scoutics, working on brain image analysis and simulation-based sports intelligence." />
 <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
 <link rel="icon" type="image/png" href="images/favicon.png">
 <link rel="manifest" href="manifest.json">
@@ -486,6 +486,8 @@ body.theme-dark .education-detail { color: #d8ffc8; }
   color: var(--ink-2);
 }
 .note-meta b { color: var(--green); font-weight: normal; }
+.note-meta a { color: var(--blue); text-underline-offset: 3px; }
+.education-strip { padding-top: 30px; }
 
 .pub-row {
   display: grid;
@@ -634,6 +636,7 @@ body.theme-dark .social-icons a img:hover { opacity: 1; }
     <button id="menuToggle" class="menu-toggle" aria-expanded="false" aria-controls="siteNav">menu</button>
     <div class="nav-links" id="siteNav">
       <a href="#research">research</a>
+      <a href="#scoutics">Scoutics</a>
       <a href="pubs.html">papers</a>
       <a href="blogs.html">blog</a>
       <a href="talks.html">talks</a>
@@ -649,17 +652,18 @@ body.theme-dark .social-icons a img:hover { opacity: 1; }
 
 <section class="hero">
   <div class="hero-eyebrow">~ hello, internet ~</div>
-  <h1><span class="hero-line">I teach machines to</span><span class="hero-line hero-line-accent"><span class="scribble">read</span> the human brain.</span></h1>
+  <h1><span class="hero-line">From brain imaging</span><span class="hero-line hero-line-accent">to <span class="scribble">sports simulation.</span></span></h1>
   <p class="hero-lead">
-    I am a postdoctoral research fellow at <span class="hero-highlight">Penn Medicine</span> working with Prof. Ragini Verma. My research develops <span class="hero-highlight">AI tools</span> that connect cellular-resolution histopathology with macroscopic brain imaging. I build <span class="hero-highlight">deep learning</span> methods for segmenting and quantifying axonal injury in APP immunohistochemistry, with the goal of linking <span class="red-focus">microscopic pathology maps</span> to imaging measures of white-matter injury, including MRI, fMRI, diffusion MRI, and tractography-derived measures.
+    I’m Javid, an <span class="hero-highlight">AI/ML researcher</span> at Penn Medicine and the founder of <a href="#scoutics">Scoutics</a>. I develop methods for brain image analysis and am building simulation-based tools for sports intelligence.
   </p>
-  <p class="hero-cta">Currently open for collaborations and consulting. <a href="mailto:javiddadashkarimi@gmail.com">say hi →</a></p>
+  <p class="hero-lead">
+    My work began in information retrieval, continued through a PhD in computer science at Yale, and moved into fetal MRI at MGH and brain imaging and histology at Penn. Across these projects, I work on extracting useful information from data that can be limited, noisy, or difficult to compare.
+  </p>
 
   <div class="quick-meta">
-    <div><span class="hand">currently:</span> Penn Medicine, Philadelphia</div>
-    <div><span class="hand">working on:</span> High Resolution Segmentation, Histology to MRI Registration, Deep Learning, Tractography Segmentation</div>
+    <div><span class="hand">based in:</span> Philadelphia</div>
     <div><span class="hand">links:</span>
-      <a href="slides/CV_JDadashkarimi.pdf">CV</a>,
+      <a href="slides/CV_JDadashkarimi.pdf">Academic CV (earlier version)</a>,
       <a href="https://scholar.google.com/citations?user=LrXokpIAAAAJ&hl=en" target="_blank">Scholar</a>,
       <a href="https://github.com/dadashkarimi" target="_blank">GitHub</a>
     </div>
@@ -677,7 +681,7 @@ body.theme-dark .social-icons a img:hover { opacity: 1; }
 <section class="tracts" aria-label="Brain tractography demo">
   <div class="tracts-shell">
     <div class="tracts-head">
-      <div class="tracts-title">3d brain tractography demo</div>
+      <div class="tracts-title">explore the HCP-842 tractography atlas</div>
       <div class="tracts-note">drag to orbit, scroll/pinch to zoom, right-drag to pan</div>
     </div>
     <iframe
@@ -691,189 +695,76 @@ body.theme-dark .social-icons a img:hover { opacity: 1; }
   </div>
 </section>
 
-<section class="credentials">
-  <div class="cred-title">a few things i'm proud of</div>
-  <div class="cred-grid">
-    <div class="cred-card tool-sticker">
-      <span class="tool-badge badge-tools" title="Tools">TL</span>
-      <div class="cred-num">CAROT</div>
-      <div class="cred-label">fMRI parcellation remapping between atlases using optimal transport</div>
-    </div>
-    <div class="cred-card tool-sticker">
-      <span class="tool-badge badge-tools" title="Tools">TL</span>
-      <div class="cred-num">PIGSKIN</div>
-      <div class="cred-label">pig brain skull-stripping model trained with synthetic data and neural nets</div>
-    </div>
-    <div class="cred-card tool-sticker">
-      <span class="tool-badge badge-tools" title="Tools">TL</span>
-      <div class="cred-num">PIGMENT</div>
-      <div class="cred-label">histology app for tissue segmentation and annotation workflows</div>
-    </div>
-    <div class="cred-card tool-sticker">
-      <span class="tool-badge badge-patent" title="Patent">PT</span>
-      <div class="cred-num">US Patent</div>
-      <div class="cred-label">method and system for information retrieval (US 10,540,399)</div>
-    </div>
-    <a href="pubs.html" class="cred-card tool-sticker sticker-link" aria-label="Go to publications page">
-      <span class="tool-badge badge-articles" title="Articles">AR</span>
-      <div class="cred-num">Articles</div>
-      <div class="cred-label">peer-reviewed journal and conference research articles</div>
-    </a>
-  </div>
-</section>
 
-<section class="education-strip" aria-label="Education and training">
-  <div class="cred-title">education &amp; training</div>
+
+<section class="education-strip" aria-label="Education and research appointments">
+  <div class="cred-title">the path so far</div>
   <div class="education-list">
-    <div class="education-item">
-      <div class="education-year">2008–2015</div>
-      <div>
-        <div class="education-place">University of Tehran</div>
-        <div class="education-detail">undergraduate and master's training in software engineering</div>
-      </div>
-    </div>
-    <div class="education-item">
-      <div class="education-year">2017–2023</div>
-      <div>
-        <div class="education-place">Yale University</div>
-        <div class="education-detail">PhD in Computer Science, connectomics and optimal transport</div>
-      </div>
-    </div>
-    <div class="education-item">
-      <div class="education-year">2023–2025</div>
-      <div>
-        <div class="education-place">MGH / Harvard</div>
-        <div class="education-detail">developer at the Martinos Center for Biomedical Imaging</div>
-      </div>
-    </div>
-    <div class="education-item">
-      <div class="education-year">2025–present</div>
-      <div>
-        <div class="education-place">UPENN</div>
-        <div class="education-detail">postdoctoral research fellow in medical AI and neuroimaging</div>
-      </div>
-    </div>
+    <div class="education-item"><div class="education-year">2012 / 2015</div><div><div class="education-place">University of Tehran</div><div class="education-detail">Bachelor’s and master’s degrees · early research in information retrieval</div></div></div>
+    <div class="education-item"><div class="education-year">2017–2023</div><div><div class="education-place">Yale University</div><div class="education-detail">PhD in Computer Science · with Dustin Scheinost and Amin Karbasi</div></div></div>
+    <div class="education-item"><div class="education-year">2023–2024</div><div><div class="education-place">Massachusetts General Hospital / Harvard Medical School</div><div class="education-detail">Research Fellow · July 2023–October 2024</div></div></div>
+    <div class="education-item"><div class="education-year">2024–present</div><div><div class="education-place">University of Pennsylvania</div><div class="education-detail">Postdoctoral Researcher · with Ragini Verma · since November 2024</div></div></div>
   </div>
 </section>
 
 <section class="section" id="research">
-  <div class="section-head">
-    <div class="section-num">no. 01 →</div>
-    <h2 class="section-title">what i'm working on</h2>
-  </div>
-
+  <div class="section-head"><div class="section-num">no. 01 →</div><h2 class="section-title">questions behind the work</h2></div>
   <div class="notes">
     <div class="note">
-      <div class="note-tag">fetal MRI</div>
-      <h3>High-resolution fetal brain segmentation</h3>
-      <p>Cascade U-Nets that extract the brain from motion-corrupted in-utero MRI. The fetus moves, the brain is small, and it's growing fast — classical methods fail. Synthetic training data fills the gap.</p>
-      <div class="note-meta"><b>tools:</b> deep learning · synthetic data · 3D segmentation</div>
+      <div class="note-tag">earlier work · information retrieval</div><h3>Finding information across languages</h3>
+      <p>My early research studied how to translate search queries when a dictionary offers several possible meanings. I developed an expectation-maximization approach that uses retrieved documents to estimate which translations are useful for a query.</p>
+      <div class="note-meta"><a href="https://www.sciencedirect.com/science/article/abs/pii/S0306457316306379" target="_blank" rel="noreferrer">Query-translation paper · 2017 →</a></div>
     </div>
     <div class="note">
-      <div class="note-tag">diffusion MRI</div>
-      <h3>Tractography segmentation for neurosurgical planning</h3>
-      <p>Tractography &amp; white-matter bundling for neurosurgical planning. Knowing exactly which connections to spare in TBI and tumor patients is the difference between recovery and lasting harm.</p>
-      <div class="note-meta"><b>tools:</b> tractography · clinical pipelines · dMRI</div>
+      <div class="note-tag">Yale · connectomics</div><h3>Comparing brain networks across atlases</h3>
+      <p>Brain datasets often use different atlases to define regions, making their connectivity measurements difficult to compare. During my PhD, I developed optimal-transport methods for this problem, including CAROT, which estimates connectomes in a target atlas without requiring the original raw scans.</p>
+      <div class="note-meta"><a href="https://doi.org/10.1016/j.media.2023.102864" target="_blank" rel="noreferrer">CAROT · Medical Image Analysis, 2023 →</a></div>
     </div>
     <div class="note">
-      <div class="note-tag">connectomics</div>
-      <h3>Connectome alignment with optimal transport</h3>
-      <p>Optimal transport over functional connectomes — for alignment, comparison, and behavior prediction. The math is beautiful and the predictions hold up. This was my PhD thesis work at Yale.</p>
-      <div class="note-meta"><b>tools:</b> optimal transport · graph theory · fMRI</div>
+      <div class="note-tag">MGH / Harvard · fetal MRI</div><h3>Locating and segmenting the fetal brain</h3>
+      <p>At MGH, I worked on fetal brain segmentation and extraction from MRI. The method combines models trained with synthetic images and a staged search that first locates the brain, then refines its mask. It addresses limited labeled data and variation in fetal size and position.</p>
+      <div class="note-meta"><a href="https://arxiv.org/abs/2410.20532" target="_blank" rel="noreferrer">Search Wide, Focus Deep · 2024 preprint →</a></div>
     </div>
     <div class="note">
-      <div class="note-tag">generative</div>
-      <h3>Synthetic medical image generation</h3>
-      <p>Medical datasets are tiny. So we generate them. Gaussian Mixture and Hidden Markov Random Field models produce label maps that synthesize unlimited training images — for any modality you can describe.</p>
-      <div class="note-meta"><b>tools:</b> GMM · HMRF · label-map synthesis</div>
+      <div class="note-tag">Penn · porcine MRI</div><h3>Extracting the brain in animal imaging</h3>
+      <p>At Penn, I developed PIGSKIN with collaborators to separate brain tissue from surrounding structures in pig MRI. The method uses synthetic training images derived from a small set of annotated scans, adapting brain-extraction tools to porcine anatomy.</p>
+      <div class="note-meta"><a href="https://doi.org/10.1177/2997979X261429297" target="_blank" rel="noreferrer">PIGSKIN · AI in Neuroscience, 2026 →</a></div>
     </div>
     <div class="note">
-      <div class="note-tag">whole-body</div>
-      <h3>Whole-body CT/MRI segmentation</h3>
-      <p>Organ segmentation in CT/MRI — liver, lungs, kidneys. The pipelines I build help radiologists track disease progression, measure organs, and plan surgery across modalities and centers.</p>
-      <div class="note-meta"><b>tools:</b> CT/MRI segmentation · multi-organ</div>
+      <div class="note-tag">Penn · histology</div><h3>Measuring sparse axonal pathology</h3>
+      <p>With PIGMENT, I am developing a deep-learning framework to segment APP-positive axonal pathology in porcine tissue sections. The work focuses on small, fragmented targets and on measuring pathology beyond pixel overlap alone.</p>
+      <div class="note-meta">Ongoing research · SegFormer · morphology-aware augmentation</div>
     </div>
     <div class="note">
-      <div class="note-tag">past lives</div>
-      <h3>Cross-lingual information retrieval</h3>
-      <p>Before medical imaging, I worked on EM-based dictionary translation for cross-lingual retrieval. Resulted in a US patent and publications in COLING and IP&amp;M Journal. Different field, same instincts.</p>
-      <div class="note-meta"><b>tools:</b> NLP · machine translation · IR</div>
+      <div class="note-tag">Penn · multimodal imaging</div><h3>Connecting tissue sections with MRI</h3>
+      <p>I also contribute to workflows for aligning histology with MRI. The goal is to place microscopic tissue measurements in anatomical context and study their relationship to MRI measures of brain injury, including diffusion imaging.</p>
+      <div class="note-meta">Ongoing research · histology–MRI registration</div>
     </div>
   </div>
+</section>
+
+<section class="section" id="scoutics">
+  <div class="section-head"><div class="section-num">no. 02 →</div><h2 class="section-title">building Scoutics</h2></div>
+  <p class="hero-lead">Alongside my research, I’m building <a href="https://scoutics.ai/" target="_blank" rel="noreferrer">Scoutics</a>: a simulation-driven approach to sports intelligence. The project brings sports data, predictive modeling, and match simulation into one workspace.</p>
+  <p class="hero-lead">The direction is to move beyond a single prediction: let people explore how a game might unfold, change assumptions about lineups or tactics, and examine the range of possible outcomes. Soccer is the starting point for this work, with fantasy football as another application of the underlying models.</p>
+  <p class="hero-cta"><a href="https://scoutics.ai/" target="_blank" rel="noreferrer">Explore Scoutics →</a></p>
 </section>
 
 <section class="section" id="pubs">
-  <div class="section-head">
-    <div class="section-num">no. 02 →</div>
-    <h2 class="section-title">selected papers</h2>
-  </div>
-
-  <div class="pub-row">
-    <div class="year">2026</div>
-    <div class="title"><a href="https://doi.org/10.1177/2997979X261429297" target="_blank">PIGSKIN: PIG SKull Stripping with Synthetic Images and Neural Networks</a></div>
-    <div class="venue">AI in Neuroscience</div>
-  </div>
-  <div class="pub-row">
-    <div class="year">2023</div>
-    <div class="title">Optimal transport for functional connectome alignment and prediction</div>
-    <div class="venue">Nat. Hum. Behav.</div>
-  </div>
-  <div class="pub-row">
-    <div class="year">2022</div>
-    <div class="title"><a href="https://grail-miccai.github.io/grail2022/" target="_blank">Graph-based brain-behavior modeling</a> <span style="font-family:'Caveat',cursive;color:var(--red);font-size:16px;">(Best Paper, GRAIL)</span></div>
-    <div class="venue">MICCAI-W</div>
-  </div>
-  <div class="pub-row">
-    <div class="year">2021</div>
-    <div class="title">Connectome-based predictive modeling of psychiatric outcomes</div>
-    <div class="venue">Mol. Psychiatry</div>
-  </div>
-  <div class="pub-row">
-    <div class="year">2017</div>
-    <div class="title"><a href="https://www.sciencedirect.com/science/article/abs/pii/S0306457316306379" target="_blank">EM-based dictionary query translation for cross-lingual IR</a></div>
-    <div class="venue">IP&amp;M Journal</div>
-  </div>
-
-  <p style="margin-top:28px;font-family:'Caveat',cursive;font-size:20px;">
-    → <a href="pubs.html" style="color:var(--blue);">see full publication list</a>
-  </p>
+  <div class="section-head"><div class="section-num">no. 03 →</div><h2 class="section-title">selected papers</h2></div>
+  <div class="pub-row"><div class="year">2026</div><div class="title"><a href="https://doi.org/10.1177/2997979X261429297" target="_blank" rel="noreferrer">PIGSKIN: PIG SKull Stripping with Synthetic Images and Neural Networks</a></div><div class="venue">AI in Neuroscience</div></div>
+  <div class="pub-row"><div class="year">2024</div><div class="title"><a href="https://arxiv.org/abs/2410.20532" target="_blank" rel="noreferrer">Search Wide, Focus Deep: Automated Fetal Brain Extraction with Sparse Training Data</a></div><div class="venue">arXiv preprint</div></div>
+  <div class="pub-row"><div class="year">2023</div><div class="title"><a href="https://doi.org/10.1016/j.media.2023.102864" target="_blank" rel="noreferrer">Cross Atlas Remapping via Optimal Transport (CAROT): Creating connectomes for different atlases when raw data is not available</a></div><div class="venue">Medical Image Analysis</div></div>
+  <div class="pub-row"><div class="year">2022</div><div class="title"><a href="https://doi.org/10.1007/978-3-031-21083-9_12" target="_blank" rel="noreferrer">Transforming Connectomes to “Any” Parcellation via Graph Matching</a></div><div class="venue">GRAIL / MICCAI</div></div>
+  <div class="pub-row"><div class="year">2017</div><div class="title"><a href="https://www.sciencedirect.com/science/article/abs/pii/S0306457316306379" target="_blank" rel="noreferrer">An expectation-maximization algorithm for query translation based on pseudo-relevant documents</a></div><div class="venue">Information Processing &amp; Management</div></div>
+  <p class="hero-cta"><a href="pubs.html">More publications and collaborators →</a></p>
 </section>
 
 <section class="section" id="cv">
-  <div class="section-head">
-    <div class="section-num">no. 03 →</div>
-    <h2 class="section-title">honors &amp; education</h2>
-  </div>
-
+  <div class="section-head"><div class="section-num">no. 04 →</div><h2 class="section-title">recognition &amp; invention</h2></div>
   <div class="awards-list">
-    <div class="award-row">
-      <div class="year">2022</div>
-      <div class="detail"><strong>Best Paper Award</strong> — Graphs in Biomedical Imaging, MICCAI (<a href="https://grail-miccai.github.io/grail2022/">url</a>)</div>
-    </div>
-    <div class="award-row">
-      <div class="year">2022</div>
-      <div class="detail"><strong>MICCAI Student Award</strong> — Early Acceptance, Singapore</div>
-    </div>
-    <div class="award-row">
-      <div class="year">2021</div>
-      <div class="detail"><strong>Brain Initiative Trainee Award</strong> — Flash talk (<a href="https://www.braininitiative.org/">url</a>)</div>
-    </div>
-    <div class="award-row">
-      <div class="year">2020</div>
-      <div class="detail"><strong>Best Poster Award</strong> — Connectomics for NeuroImaging, MICCAI (<a href="https://link.springer.com/book/10.1007/978-3-030-32391-2">url</a>)</div>
-    </div>
-    <div class="award-row">
-      <div class="year">2023</div>
-      <div class="detail"><strong>PhD, Computer Science</strong> — Yale University, New Haven</div>
-    </div>
-    <div class="award-row">
-      <div class="year">2015</div>
-      <div class="detail"><strong>MEng, Software Engineering</strong> — University of Tehran, Iran (ranked 5th in undergrad)</div>
-    </div>
-    <div class="award-row">
-      <div class="year">2008</div>
-      <div class="detail"><strong>Ranked 331st / 220,000</strong> — Top 0.2% in Iran's Nationwide University Entrance Exam</div>
-    </div>
+    <div class="award-row"><div class="year">2022</div><div class="detail">Co-author of the <a href="https://grail-miccai.github.io/grail2022/" target="_blank" rel="noreferrer">Best Paper at the GRAIL workshop, held with MICCAI</a>, for our graph-matching work on connectome remapping.</div></div>
+    <div class="award-row"><div class="year">2020</div><div class="detail">Co-inventor of <a href="https://patents.google.com/patent/US10540399B2/en" target="_blank" rel="noreferrer">US Patent 10,540,399, “Method and system for information retrieval,”</a> granted in January 2020.</div></div>
   </div>
 </section>
 
@@ -882,7 +773,7 @@ body.theme-dark .social-icons a img:hover { opacity: 1; }
 <footer class="footer" id="contact">
   <div class="footer-inner">
     <h2>Let's <span class="wavy">collaborate.</span></h2>
-    <p>I love hearing from researchers, engineers, and clinicians working on medical AI. Coffee, code, or just a friendly hello — all welcome.</p>
+    <p>For research collaborations, technical discussions, or conversations about Scoutics, please get in touch.</p>
     <a href="mailto:javiddadashkarimi@gmail.com" class="footer-mail">javiddadashkarimi [at] gmail [dot] com</a>
     <div class="footer-links">
       <div>© 2026 Javid · made with ♡ in Philly</div>

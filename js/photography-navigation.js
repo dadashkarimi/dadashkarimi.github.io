@@ -1,9 +1,22 @@
 /* Complements existing menu/theme handlers; does not bind a second toggle. */
 (function () {
   'use strict';
+  function setPhotographyIcon(nav) {
+    var link = nav.querySelector('a[href$="photography.html"]');
+    if (!link || link.querySelector('.photography-nav-icon')) return;
+    var icon = document.createElement('span');
+    icon.className = 'photography-nav-icon';
+    icon.setAttribute('aria-hidden', 'true');
+    icon.textContent = '📸';
+    link.setAttribute('aria-label', 'Photography');
+    link.setAttribute('title', 'Photography');
+    link.textContent = '';
+    link.appendChild(icon);
+  }
   function init() {
     var nav = document.querySelector('nav.has-photography');
     if (!nav) return false;
+    setPhotographyIcon(nav);
     if (nav.dataset.photographyMenuReady) return true;
     var button = nav.querySelector('#menuToggle');
     var links = nav.querySelector('#siteNav, #navLinks');

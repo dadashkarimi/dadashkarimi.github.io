@@ -1,9 +1,27 @@
 {
   "version": 1,
   "source": "https://javidstudio.pixieset.com/",
-  "status": "awaiting_first_sync",
-  "last_synced_at": null,
+  "status": "manually_synced",
+  "last_synced_at": "2026-10-11T17:06:00.105236+00:00",
   "collections": [
+    {
+      "id": "linvilla-holloween",
+      "title": "Linvilla Holloween",
+      "url": "https://javidstudio.pixieset.com/linvillaholloween/",
+      "cover": "images/photography/linvilla-holloween.webp",
+      "alt": "An autumn display of pumpkins, gourds, and a scarecrow at Linvilla.",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "id": "orchards",
+      "title": "Orchards",
+      "url": "https://javidstudio.pixieset.com/orchards/",
+      "cover": "images/photography/orchards.webp",
+      "alt": "Visitors picking colorful flowers beside an orchard field under a blue sky.",
+      "width": 640,
+      "height": 427
+    },
     {
       "id": "big-house",
       "title": "Big House (1800)",

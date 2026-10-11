@@ -1,4 +1,4 @@
-/* Live public collection feed. The five static cards remain the fallback. */
+/* Live public collection feed. The static cards remain the fallback. */
 (function () {
   'use strict';
   var root = 'https://raw.githubusercontent.com/dadashkarimi/dadashkarimi.github.io/main/';

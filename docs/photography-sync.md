@@ -1,7 +1,11 @@
 # Photography collection sync
 
-The four supplied URLs and Valley Forge point directly to their collections.
-The existing five album cards remain a JavaScript-free fallback.
+All album cards point directly to their Pixieset collections.
+The existing seven album cards remain a JavaScript-free fallback.
+
+On October 11, 2026, Linvilla Holloween and Orchards were verified on the
+public Pixieset homepage and added manually, with matching low-resolution covers
+and direct links. The public homepage now lists seven collections.
 
 ## Updates
 

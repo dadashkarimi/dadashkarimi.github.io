@@ -1,11 +1,11 @@
 {
   "source": "serpapi/google_scholar_author",
   "authorId": "LrXokpIAAAAJ",
-  "updatedAt": "2026-11-02T10:20:34.412Z",
+  "updatedAt": "2026-11-09T10:20:46.618Z",
   "sinceYear": "2021",
   "metrics": {
-    "citationsAll": 692,
-    "citationsSince2021": 610,
+    "citationsAll": 694,
+    "citationsSince2021": 612,
     "hIndexAll": 11,
     "hIndexSince2021": 10,
     "i10All": 13,
@@ -54,7 +54,7 @@
     },
     {
       "year": 2026,
-      "citations": 129
+      "citations": 131
     }
   ]
 }
